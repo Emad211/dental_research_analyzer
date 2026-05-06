@@ -1,4 +1,3 @@
-````markdown
 # 📊 Dental Research Statistical Analysis System
 
 > Automated PDF extraction, OCR, and multi-model statistical analysis for dental research articles.
@@ -140,4 +139,3 @@ dental_research_analyzer/
 ---
 
 > ⚠️ **OCR cost:** approximately **$0.15–0.20 per article**. Run `test_analysis.py` first to validate before batch processing.
-````
