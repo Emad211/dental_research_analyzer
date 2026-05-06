@@ -1,27 +1,21 @@
-### `README.md`
-
-```markdown
+````markdown
 # 📊 Dental Research Statistical Analysis System
 
-> Automated PDF extraction, OCR, and multi-model statistical analysis pipeline for dental research articles.
+> Automated PDF extraction, OCR, and multi-model statistical analysis for dental research articles.
 
 ---
 
-## 🚀 Quick Start
+## ⚙️ Setup
 
-### 1️⃣ Installation
-
+**1. Install dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2️⃣ Configuration
-
+**2. Configure API**
 ```bash
 cp .env.example .env
 ```
-
-Edit `.env` and add your API key:
 ```env
 API_KEY=your_api_key_here
 BASE_URL=https://api.gapgpt.app/v1
@@ -29,33 +23,83 @@ BASE_URL=https://api.gapgpt.app/v1
 
 ---
 
-## 📋 Usage
+## 🗂️ First Time: Rename PDFs
 
-### Main Pipeline Commands
+> Files with spaces or `- Copy` in their names will cause errors.  
+> Run this **once** before anything else:
 
-The system has **3 independent steps** that can be run separately or together:
+```bash
+python rename_pdfs.py
+```
 
-| Step | Description | Single PDF | All PDFs |
-|:----:|-------------|------------|----------|
-| **1** | Extract images from PDF | `python main.py step1 --pdf inputs/pdfs/article.pdf` | `python main.py step1 --all-pdfs` |
-| **2** | OCR images with Gemini | `python main.py step2 --pdf inputs/pdfs/article.pdf` | `python main.py step2 --all-pdfs` |
-| **3** | Statistical analysis (4 AI models) | `python main.py step3 --pdf inputs/pdfs/article.pdf` | `python main.py step3 --all-pdfs` |
-| **ALL** | Run all 3 steps sequentially | `python main.py all --pdf inputs/pdfs/article.pdf` | `python main.py all --all-pdfs` |
+Place your PDFs in `inputs/pdfs/` before running.
 
 ---
 
-### 🧪 Quick Test (Single Model)
+## 🚀 How to Run
 
-Test **Step 3** with only `gpt-4.1-mini` model:
+### Option A — Command Line (`main.py`)
 
-#### Option A: Auto-detect latest OCR
+3 independent steps + full pipeline:
+
+| Command | Single PDF | All PDFs |
+|---------|-----------|----------|
+| Step 1 · Extract images | `python main.py step1 --pdf inputs/pdfs/article.pdf` | `python main.py step1 --all-pdfs` |
+| Step 2 · OCR | `python main.py step2 --pdf inputs/pdfs/article.pdf` | `python main.py step2 --all-pdfs` |
+| Step 3 · Analysis | `python main.py step3 --pdf inputs/pdfs/article.pdf` | `python main.py step3 --all-pdfs` |
+| All steps | `python main.py all --pdf inputs/pdfs/article.pdf` | `python main.py all --all-pdfs` |
+
+> Each step saves output to disk. You can run them separately without re-running previous steps.
+
+---
+
+### Option B — Interactive Mode (`run_interactive.py`)
+
+No need to type filenames manually. Select PDF and step from a numbered list:
+
 ```bash
-python test_analysis.py --pdf inputs/pdfs/article.pdf
+python run_interactive.py
 ```
 
-#### Option B: Use specific OCR file
+---
+
+### Option C — Quick Test (`test_analysis.py`)
+
+Runs **Step 3 only** with a single lightweight model (`gpt-4.1-mini`).  
+Use this to verify the analysis pipeline before running all 4 models.
+
 ```bash
+# Auto-detect latest OCR for a PDF
+python test_analysis.py --pdf inputs/pdfs/article.pdf
+
+# Use a specific OCR file
 python test_analysis.py --ocr-file outputs/ocr_results/article_ocr_20240125_143022.txt
+```
+
+---
+
+## 🔄 Workflow
+
+```
+inputs/pdfs/article.pdf
+        │
+        ▼
+[Step 1] PDFExtractor
+        → outputs/images/article/page_001.png ...
+        │
+        ▼
+[Step 2] GeminiOCR                          (~$0.15–0.20 per article)
+        → outputs/ocr_results/article_ocr_<timestamp>.txt
+        │
+        ▼
+[Step 3] StatisticalAnalyzer  ×4 models
+        → outputs/analysis_results/article/
+                ├── gemini-3.1-pro-preview_<timestamp>.txt
+                ├── gpt-5.2_<timestamp>.txt
+                ├── gpt-4o_<timestamp>.txt
+                ├── gpt-5.1_<timestamp>.txt
+                ├── combined_<timestamp>.txt
+                └── metadata_<timestamp>.json
 ```
 
 ---
@@ -65,149 +109,35 @@ python test_analysis.py --ocr-file outputs/ocr_results/article_ocr_20240125_1430
 ```
 dental_research_analyzer/
 │
-├── inputs/pdfs/              # 📥 Place your PDF files here
-│
+├── inputs/pdfs/                # Place PDFs here
 ├── outputs/
-│   ├── images/               # 🖼️  Extracted PNG images
-│   ├── ocr_results/          # 📝 OCR text files
-│   └── analysis_results/     # 📊 Statistical analysis reports
-│       ├── <pdf_name>/       # Regular analysis (4 models)
-│       └── test/             # Test analysis (1 model)
+│   ├── images/                 # Extracted page images
+│   ├── ocr_results/            # OCR text files
+│   └── analysis_results/       # Analysis reports
+│       └── test/               # Test run outputs
 │
-├── config/
-│   └── settings.py           # ⚙️  Configuration
+├── config/settings.py          # Models, DPI, prompt
+├── src/                        # Core modules
 │
-├── src/
-│   ├── pdf_processor/        # 📄 PDF → Images
-│   ├── ocr/                  # 🔍 Images → Text
-│   ├── analyzer/             # 🧠 Text → Analysis
-│   └── utils/                # 🛠️  Helpers
-│
-├── main.py                   # 🎯 Main entry point
-├── test_analysis.py          # 🧪 Quick test script
-└── requirements.txt
+├── main.py                     # CLI pipeline
+├── run_interactive.py          # Interactive mode
+├── test_analysis.py            # Single-model test
+└── rename_pdfs.py              # Clean PDF filenames
 ```
 
 ---
 
-## 🔄 Workflow
+## 🔧 Configuration (`config/settings.py`)
 
-```
-┌─────────────────┐
-│   PDF File      │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  STEP 1         │  Extract images (300 DPI)
-│  PDFExtractor   │  → outputs/images/<pdf_name>/page_001.png
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  STEP 2         │  OCR with Gemini Flash
-│  GeminiOCR      │  → outputs/ocr_results/<pdf_name>_ocr_<timestamp>.txt
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  STEP 3         │  Statistical analysis with 4 AI models
-│  Analyzer       │  ├─ gemini-3.1-pro-preview
-│                 │  ├─ gpt-5.2
-│                 │  ├─ gpt-4o
-│                 │  └─ gpt-5.1
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Output Files   │  → outputs/analysis_results/<pdf_name>/
-│                 │     ├─ gemini-3.1-pro-preview_<timestamp>.txt
-│                 │     ├─ gpt-5.2_<timestamp>.txt
-│                 │     ├─ gpt-4o_<timestamp>.txt
-│                 │     ├─ gpt-5.1_<timestamp>.txt
-│                 │     ├─ combined_<timestamp>.txt
-│                 │     └─ metadata_<timestamp>.json
-└─────────────────┘
-```
+| Setting | Default |
+|---------|---------|
+| Image DPI | `300` |
+| OCR Model | `gemini-3-flash-preview` |
+| Analysis Models | 4 models (Gemini, GPT-5.2, GPT-4o, GPT-5.1) |
+
+> To change models or the statistical prompt, edit `config/settings.py`.
 
 ---
 
-## 💡 Examples
-
-### Example 1: Process a single PDF (all steps)
-```bash
-python main.py all --pdf inputs/pdfs/dental_research_2024.pdf
-```
-
-### Example 2: Process all PDFs (all steps)
-```bash
-python main.py all --all-pdfs
-```
-
-### Example 3: Only extract images from all PDFs
-```bash
-python main.py step1 --all-pdfs
-```
-
-### Example 4: Only run analysis on a specific PDF
-```bash
-python main.py step3 --pdf inputs/pdfs/dental_research_2024.pdf
-```
-
-### Example 5: Quick test with single model
-```bash
-python test_analysis.py --pdf inputs/pdfs/dental_research_2024.pdf
-```
-
----
-
-## 🎯 Key Features
-
-✅ **Modular Design** — Run steps independently or together  
-✅ **High Quality OCR** — 300 DPI image extraction + Gemini Flash  
-✅ **Multi-Model Analysis** — 4 AI models for comprehensive results  
-✅ **Batch Processing** — Process single or multiple PDFs  
-✅ **Quick Testing** — Test mode with single model  
-✅ **Auto-Resume** — Each step saves to disk; next step auto-loads  
-
----
-
-## 📦 Dependencies
-
-- **pymupdf** — PDF processing
-- **Pillow** — Image handling
-- **openai** — API client (works with all providers)
-- **python-dotenv** — Environment variables
-- **tqdm** — Progress bars
-
----
-
-## 🔧 Configuration
-
-Edit `config/settings.py` to customize:
-
-- **Image DPI** (default: 300)
-- **OCR Model** (default: gemini-3-flash-preview)
-- **Analysis Models** (default: 4 models)
-- **Statistical Prompt** (biostatistics analysis template)
-
----
-
-## 📝 Notes
-
-> **💡 Tip:** Each step saves its output to disk, so you can run steps separately without re-processing previous steps.
-
-> **⚠️ Important:** Make sure your `.env` file contains a valid `API_KEY` before running the scripts.
-
-> **🚀 Performance:** Step 2 (OCR) includes 2-second delays between pages to respect API rate limits. Step 3 includes 3-second delays between models.
-
----
-
-## 📄 License
-
-This project is for research purposes.
-
----
-
-**Made with ❤️ for dental research analysis**
-```
+> ⚠️ **OCR cost:** approximately **$0.15–0.20 per article**. Run `test_analysis.py` first to validate before batch processing.
+````
