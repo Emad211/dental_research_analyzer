@@ -1,0 +1,451 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+Nidhi Sinha, MDS,*
+Geeta Asthana, MDS,†
+Girish Parmar, MDS, PhD,†
+Akshayraj Langaliya, MDS,‡
+Jinali Shah, MDS,‡
+Aravind Kumbhar, MDS,‡ and
+Bijay Singh, MDS§
+
+CONSORT RANDOMIZED CLINICAL TRIAL
+Evaluation of Ozone Therapy in
+Endodontic Treatment of Teeth
+with Necrotic Pulp and Apical
+Periodontitis: A Randomized
+Clinical Trial
+
+Check for
+updates
+
+SIGNIFICANCE
+Aqueous ozone has the
+potential to be used as an
+antimicrobial and anti-
+inflammatory agent with
+correct application time and
+activation technique after
+traditional cleaning, shaping,
+and irrigation in
+postendodontic main
+management, especially in
+patients undergoing single-visit
+endodontic treatment.
+
+KEY WORDS
+Manual dynamic activation; ozone treatment; passive ultrasonic activation; randomized
+controlled trial; sonic activation; visual analog pain scale
+
+From the Departments of *Conservative
+Dentistry and Endodontics and
+§Prosthodontics, Pacific Dental College
+and Hospital, Udaipur, Rajasthan, India;
+†Department of Conservative Dentistry
+and Endodontics, Government Dental
+College, Ahmedabad, Gujarat, India; and
+‡Department of Conservative Dentistry
+and Endodontics, Ahmedabad Municipal
+Dental College, Ahmedabad, Gujarat,
+India
+
+Address requests for reprints to Dr Nidhi
+Sinha, 253 Ashapurna Enclave Pal
+Bypass, Jodhpur, Rajasthan, India.
+E-mail address: dr.nidhi.sinha@gmail.com
+0099-2399/$ - see front matter
+
+Copyright © 2021 American Association
+of Endodontists.
+https://doi.org/10.1016/
+j.joen.2021.09.006
+
+Pain is an undesirable and unfortunate yet common sensation after root canal treatment. It may
+commence after a few hours to days after treatment and is at all times an unpleasant experience, both for
+the patient and the clinician1,2. The frequency of postoperative pain in patients can range from mild
+discomfort (3%–58%)3 to severe pain (up to 6%)4. This frequency is still higher in nonvital teeth (40%) in
+comparison with vital teeth (9%)5.
+
+Pain is most likely due to the activation of chemical mediators like prostaglandins released from
+damaged tissues, possibly due to endodontic instrumentation, periapical contamination by caustic
+irrigants, and intracanal medications. These inflammatory mediators can activate and sensitize
+nociceptors, resulting in peripheral sensitization leading to pain. Bacteriologic factors play a critical role in
+increasing the intensity of periapical inflammatory reactions6. Lipopolysaccharide released by gram-
+negative bacteria is a major virulence factor exerting a plethora of biological effects amplifying the
+inflammation7,8.
+
+To improve the antimicrobial capacities and facilitate faster periapical healing, innovative
+approaches in irrigants and irrigation techniques have been proposed. Ozone is one such irrigant that is
+an emerging and promising disinfectant in endodontics, mainly because of its powerful bactericidal action
+and low cytotoxicity. At higher concentrations, its bactericidal action is much faster, and it is 1000 times
+
+1820 Sinha et al.
+JOE • Volume 47, Number 12, December 2021
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+more powerful than most disinfectants. A
+single ozone molecule is equivalent to 3000–
+10,000 chlorine molecules, thereby acting
+around 3500 times faster on microorganisms.
+It not only damages the bacterial cell
+membranes by ozonolysis but also causes
+oxidation of intracellular proteins, leading to
+organelle function loss. It has selective action
+against microbial cells and hence does not
+affect human cells, resulting in minimal
+cytotoxicity and high biocompatibility with oral
+tissues.
+
+Furthermore, it has high efficiency
+against antibiotic-resistant strains, and its
+effect increases in acidic pH. Its other
+advantages include improvement in cell
+immunity and humeral systems, the
+proliferation of immune-competent cells,
+immunoglobulin synthesis, activation of the
+macrophage, and a lack of mutagenicity.
+However, some of the drawbacks of ozone are
+its unstable nature in an aqueous state,
+inconsistent activity in biofilms and gram-
+positive bacteria, no residual effect, poor
+diffusivity to deeper areas of the dentinal
+tubules, and rapid deterioration in the
+presence of organic tissue. The current
+literature suggests that ozone may not be an
+alternative to contemporary irrigants, but it has
+the potential to be a complementary
+disinfectant⁹.
+
+Conventional irrigation regimens fail to
+ensure complete canal disinfection due to
+limitations like air bubble formation and vapor
+locks, which prevent the movement of fluid into
+the narrow confines of fins, webs, isthmuses,
+and lateral canals¹⁰. Thorough movement of
+the irrigation solution with physical agitation
+enhances its chemical and biological action by
+increasing the contact between the fluid and
+the root canal walls and raising the
+temperature of the irrigant, accelerating its
+overall action¹¹.
+
+There is a need to explore the possible
+role of ozone in periapical healing and pain
+management because of its high oxidative
+power, which increases adenosine
+triphosphate synthesis, resulting in
+improvement of the cell metabolism and
+accelerating the repair process by
+angiogenesis stimulation. The efficiency of
+ozone as an antimicrobial agent is well
+researched; however, the literature is lacking
+regarding its use in postendodontic pain
+management. Numerous trials favor its use as
+a disinfection agent;¹²,¹³ however, some
+demonstrate unfavorable outcomes also¹⁴,¹⁵.
+Evidence in regard to its effect on
+postoperative pain control when used with
+activation in patients undergoing single-visit
+endodontics (SVE) is scarce. Hence, this study
+aimed to compare postoperative pain in
+patients undergoing SVE with necrotic pulp
+and apical periodontitis after the application of
+aqueous ozone activated by manual, sonic,
+and ultrasonic activation versus no ozone
+treatment.
+
+The primary objective of this study was
+to evaluate and compare postendodontic pain
+in patients undergoing SVE after aqueous
+ozone application (no agitation, manual, sonic,
+and ultrasonic) versus no ozone treatment at
+baseline; 6, 12, 24, and 48 hours; and 7 days.
+The secondary objective was to analyze the
+effect of other variables like sex (male/female),
+age group, and arch (maxilla/mandible) on
+postendodontic pain.
+
+**MATERIALS AND METHODS**
+
+**Selection of Subjects**
+
+The study was conducted in the Department of
+Conservative Dentistry and Endodontics,
+Pacific Dental College and Hospital, Udaipur,
+Rajasthan, India, from January 2021 to August
+2021. Before starting the study, approval of
+the research protocol and ethical clearance
+(PDCH/19/EC-140) were obtained from the
+institutional review board. The study was
+registered in clinical.trials.gov (REF/2021/03/
+041572) and followed Consolidated Standards
+of Reporting Trials 2010 guidelines.
+
+All trial participants were informed about
+the purpose of the study, the treatment
+protocol to be followed, the benefits and risks
+associated, and alternative treatment options.
+Willing subjects of this blinded, parallel,
+randomized controlled trial (allocation ratio 4:1)
+were requested to sign an informed consent
+form before the study.
+
+**Sample Size Estimation**
+
+To determine the sample size, a pilot study
+with 40 patients was conducted with 5 groups
+(ozone treatment with no activation [NA],
+ozone treatment with manual dynamic
+activation [MDA], ozone treatment with passive
+ultrasonic activation [PSA], ozone treatment
+with sonic activation [SA], and no ozone
+treatment [control]) with 8 subjects each. The
+effect size F was estimated as 0.383 after
+calculating the partial eta square for group *
+time interaction having the value of 0.128. The
+sample size was estimated by using G Power
+(version 3.19.7) software. The sample size of
+110 was calculated at a 95% confidence
+interval with a power of 90% having an effect
+size of F₄ = 0.383. Anticipating dropouts
+during the follow-up, the sample size was
+increased by 10%, making it 121. Hence, a
+final sample size of 24 subjects per group was
+estimated for the study.
+
+**Inclusion and Exclusion Criteria**
+
+Patients in the age range of 18–65 years with
+good general health available for follow-up and
+willingness to give consent for the study were
+selected. Single-rooted teeth with necrotic
+pulp and apical periodontitis, periapical index
+score <3, sound periodontal apparatus, and
+sufficient coronal tooth structure were
+included.
+
+Patients with systemic diseases,
+immunocompromised conditions, pregnancy,
+a history of allergic reactions to the drugs/
+irrigants, a sinus tract, an acute periapical
+abscess, and teeth with calcified canals/
+immature apex/mobility were not included in
+the study. Patients with recent myocardial
+infarction, acute alcohol intoxication, active
+bleeding, uncontrolled hyperthyroidism,
+thrombocytopenia, or glucose 6 phosphatase
+deficiency (contraindications of ozone therapy)
+were excluded.
+
+**Subject Allocation, Blinding, and Randomization Method**
+
+A secondary investigator not involved in the
+trial evaluated the eligibility of the patients
+based on history and clinical and radiographic
+examination. Pulpal diagnosis of each subject
+was determined using cold and electric pulp
+testing. Moreover, the absence of bleeding
+from the root canals during access cavity
+preparation was also considered as a
+confirmatory clinical diagnosis. For
+radiographic examination, intraoral periapical
+radiographs were taken, and areas other than
+the periapex were covered with black
+photographic paper. Using reference
+photographs, the periapical region was scored
+between 1 and 5 categories according to the
+periapical index¹⁶.
+
+To ensure randomization and allocation
+concealment, patients randomly picked a
+computer-generated, randomly sequenced,
+sealed opaque envelope, which contained the
+group code. This envelope was given to the
+primary investigator after completion of
+shaping and cleaning just before ozone
+application. The patients were blinded and
+were unaware of the specific treatment
+protocol they would be receiving depending on
+their group allotment. The patients of the
+control group were irrigated with saline similar
+to the no agitation group as a placebo
+treatment to ensure blinding.
+
+The visual analog scale (VAS) scale was
+used to assess pain at baseline; 6, 12, 24, and
+48 hours; and 7 days. All the participants were
+instructed to put a mark on the VAS scale
+corresponding to pain intensity. On completion
+of the study, a blinded assessor filled the
+master chart with the VAS scores of each
+
+JOE • Volume 47, Number 12, December 2021
+Activated Ozone in Postendodontic Pain Management 1821
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+patient without knowing the actual group of the subject. The statistician concerned with the evaluation of pain intensity was blinded as well.
+
+**Treatment Protocol**
+Of the 177 patients assessed for eligibility for the study, 34 patients did not meet the inclusion criteria, and 23 patients declined to participate in the trial; the remaining 120 patients were randomly divided into 5 groups. The primary investigator performed all the treatments in a single visit. Under rubber dam isolation, a standard access cavity was prepared after achieving adequate anesthesia with 2% lidocaine with 1:100,000 epinephrine (Lignox; Indoco, Warren, Mumbai, India). An electronic apex locator (Root ZX mini; J Morita, Tokyo, Japan) was used for working length estimation followed by radiographic confirmation. Maintaining the apical patency using a #10 K-file, cleaning and shaping were completed with a crown-down technique using rotary nickel-titanium files (ProTaper; Dentsply Maillefer, Ballaigues, Switzerland) and 17% EDTA following the manufacturer’s instructions. With each step of instrumentation, 2 mL 5.25% sodium hypochlorite (NaOCl) was used for irrigation with a 27-G side-vented needle (Dentsply, Tulsa, OK). Apical preparation was completed to 3 sizes greater than the first binding apical file. After completion of instrumentation, patients were assigned to 1 of the following groups based on randomized group allotment:
+
+• Group 1: NA
+• Group 2: MDA
+• Group 3: PUA
+• Group 4: SA
+• Group 5: the control group
+
+Aqueous ozone was obtained by bubbling ozone in the gaseous state (4 mg/mL) in distilled water for 15 minutes using an ozone generator (Dentozone, Analytical & Medical Technology, Mumbai, Maharashtra, India). Individual groups were irrigated with 15 mL ozonated water for 3–5 minutes in each of the canals, keeping the tip 2 mm short of the working length.
+
+MDA was performed with well-fitting gutta-percha (master apical cone) by short push-pull strokes at an approximate rate of 100 strokes per minute. PUA was achieved with a stainless steel ultrasonic file ISO size #10 (Satelec Acteon Group, Merignac Cedex, France) after 3 cycles of 20 seconds each at a power setting of 3. SA was performed using the Pro Agitator Tip System (Innovations Endo Ltd, Nasik, Maharashtra, India).
+
+Root canals were dried with sterile paper points, coated with AH Plus (Dentsply Maillefer) sealer, and obturated at the same appointment using lateral condensation. Teeth were reduced from occlusion and temporized with Cavit (3M ESPE, St Paul, MN).
+
+No postoperative analgesics were advised to the patients. A reserve medication (ibuprofen) and a backup phone number were given in case of severe pain or an emergency. The patients were excluded from the study if the reserve medication was taken within 7 days after treatment.
+
+**Postendodontic Pain Assessment**
+Pain assessment was performed using the VAS scale, which consisted of a 10-cm line anchored by 2 extremes, ‘‘no pain’’ in the beginning and ‘‘pain as bad as it could be’’ in the end. Based on the level of pain perceived, the patient marked a position on the line at specific intervals (ie, before treatment [baseline]; at 6, 12, 24, and 48 hours; and 7 days after treatment). Patients were recalled for follow-up after 2 days and 1 week following treatment to return the pain diary and for a clinical evaluation.
+
+1822 Sinha et al.
+JOE • Volume 47, Number 12, December 2021
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+Assessed for eligibility
+(n=177)
+
+Excluded (n = 57)
+Did not meet inclusion criteria (n = 35)
+Refused to participate (n = 22)
+
+Randomized (n = 120)
+
+Enrollment
+
+Allocation
+Group 1 - Ozone treatment with no activation. Allocated for intervention (n=24)
+Group 2 - Ozone treatment with manual activation. Allocated for intervention (n=24)
+Group 3 - Ozone treatment with passive ultrasonic activation. Allocated for intervention (n=24)
+Group 4 - Ozone treatment with sonic activation. Allocated for intervention (n=24)
+Group 5 - No Ozone treatment (Control Group) Allocated for intervention (n=24)
+
+Follow-up
+Group 1: 2 Lost to follow up (n = 22)
+Group 2: 1 Lost to follow up, 1 pain form incomplete (n = 22)
+Group 3: 2 Lost to follow up, 1 pain form incomplete (n = 21)
+Group 4: 1 pain form incomplete (n = 23)
+Group 5: 1 Lost to follow up (n = 23)
+
+Analysis
+Group 1: Analysed (n = 21), Excluded from analysis (n=1), Took medication
+Group 2: Analysed (n = 22), Excluded from analysis (n=0)
+Group 3: Analysed (
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+1824 Sinha et al.
+JOE • Volume 47, Number 12, December 2021
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+Data presented as mean ± standard deviation.
+
+JOE • Volume 47, Number 12, December 2021
+Activated Ozone in Postendodontic Pain Management 1825
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+**CONCLUSION**
+
+Within the scope of this study, it can be
+concluded that the application of activated
+ozone resulted in less postendodontic pain in
+teeth with necrotic pulp and apical
+periodontitis than no ozone treatment. The
+study outcome suggests that aqueous ozone
+applied with an ultrasonic/sonic technique can
+be recommended as an additional application
+protocol for better pain control, particularly in
+SVE. Its simple application procedure, with a
+suitable irrigation time and a relative absence of
+discomfort, increases patient acceptability and
+compliance. Moreover, its noninvasive nature
+and good biocompatibility make it an ideal
+treatment alternative for clinicians while
+treating blunderbuss canals, internal and
+external resorption cases, perforations,
+extraoral, intraoral sinuses, and primary teeth.
+
+Limitations of the study include
+unequal age and sex distribution of
+patients in the individual groups, which
+could contribute to different pain
+thresholds resulting in variation in
+outcomes. Because the study results were
+based on subjective scores recorded by
+the patients, participant bias was a
+possible drawback. Another potential bias
+was operator bias; in this interventional
+study, the operator could not be blinded
+for the procedures being performed. Future
+clinical trials examining varied clinical
+scenarios with well-defined parameters and
+with minimal bias should be conducted to
+validate the potential role of ozone therapy
+in pain control, particularly in
+postendodontic treatment.
+
+**ACKNOWLEDGMENTS**
+
+The authors thank Dr Sujal Parker for his
+valuable contribution to statistical analysis. The
+authors also thank Drs Preeti K. Doddward,
+Anand C. Patil, and Sonal Joshi for their
+guidance and support.
+The authors deny any conflicts of
+interest related to this study.
+
+1826 Sinha et al.
+JOE • Volume 47, Number 12, December 2021
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+24. Patel R, Bansal N, Dudulwar GD, et al. Evaluation of post-obturation pain after single-visit versus multiple-visit non-surgical endodontic treatments. Int J Cur Res Rev 2021;13:S66–9.
+
+25. Wong AW, Zhang S, Li SK, et al. Incidence of post-obturation pain after single-visit versus multiple-visit non-surgical endodontic treatments. BMC Oral Health 2015;15:96.
+
+26. Boch T, Tennent C, Vach K, et al. Effect of gaseous ozone on Enterococcus faecalis biofilm-an in vitro study. Clin Oral Investig 2016;20:1733–9.
+
+27. Noites R, Pina-Vaz C, Rocha R, et al. Synergistic antimicrobial action of chlorhexidine and ozone in endodontic treatment. Biomed Res Int 2014;2014:592423.
+
+28. Silva EJ, Prado MC, Soares DN, et al. The effect of ozone therapy in root canal disinfection: a systematic review. Int Endod J 2020;53:317–32.
+
+29. Topçuoğlu HS, Topçuoğlu G, Arslan H. The effect of different irrigation agitation techniques on postoperative pain in mandibular molar teeth with symptomatic irreversible pulpitis: a randomized clinical trial. J Endod 2018;44:1451–6.
+
+30. Ramamoorthi S, Nivedhitha MS, Divyanand MJ. Comparative evaluation of postoperative pain after using endodontic needle and Endo-activator during root canal irrigation: a randomized controlled trial. Aust Endod J 2015;41:78–87.
+
+31. Van der Sluis LW, Versluis M, Wu MK, et al. Passive ultrasonic irrigation of the root canal: a review of the literature. Int Endod J 2007;40:415–26.
+
+32. Tang Z, Wang H, Jiang S. Clinical study of single-visit root canal treatment with a nickel-titanium (Ni-Ti) rotary instrument combined with different ultrasonic irrigation solutions for elderly patients with chronic apical periodontitis. Biomed Mater Eng 2015;2:S311–8.
+
+33. Middha M, Sangwan P, Tewari S, et al. Effect of continuous ultrasonic irrigation on postoperative pain in mandibular molars with nonvital pulps: a randomized clinical trial. Int Endod J 2017;50:52230.
+
+34. Rodríguez-Figueroa C, McClanahan SB, Bowles WR. Spectrophotometric determination of irrigant extrusion using passive ultrasonic irrigation, EndoActivator, or syringe irrigation. J Endod 2014;40:1622–6.
+
+35. Vaillant JD, Fraga A, Díaz MT, et al. Ozone oxidative postconditioning ameliorates joint damage and decreases pro-inflammatory cytokine levels and oxidative stress in PG/PS-induced arthritis in rats. Eur J Pharmacol 2013;15:318–24.
+
+1828 Sinha et al. JOE • Volume 47, Number 12, December 2021

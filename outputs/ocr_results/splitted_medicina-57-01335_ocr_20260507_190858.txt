@@ -1,0 +1,146 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+medicina
+MDPI
+
+Article
+# Pain Experienced during Various Dental Procedures: Clinical Trial Comparing the Use of Traditional Syringes with the Controlled-Flow Delivery Dentapen® Technique
+
+**Erick Rafael Fernández-Castellano ¹, Leticia Alejandra Blanco-Antona ¹,², Purificación Vicente-Galindo ²,³, Víctor Amor-Esteban ³ and Javier Flores-Fraile ¹,³,***
+
+¹ Department of Surgery, University of Salamanca, 37007 Salamanca, Spain; kcire008@yahoo.es (E.R.F.-C.); lblanco@usal.es (L.A.B.-A.)
+² Salamanca Biomedical Research Institute (IBSAL), 37007 Salamanca, Spain; purivg@usal.es
+³ Department of Biostatistics, University of Salamanca, 37007 Salamanca, Spain; vamor@usal.es
+\* Correspondence: j.flores@usal.es
+
+**check for updates**
+
+**Citation:** Fernández-Castellano, E.R.; Blanco-Antona, L.A.; Vicente-Galindo, P.; Amor-Esteban, V.; Flores-Fraile, J. Pain Experienced during Various Dental Procedures: Clinical Trial Comparing the Use of Traditional Syringes with the Controlled-Flow Delivery Dentapen® Technique. *Medicina* **2021**, *57*, 1335. https://doi.org/10.3390/medicina57121335
+
+Academic Editor: Jun-Beom Park
+
+Received: 24 October 2021
+Accepted: 2 December 2021
+Published: 7 December 2021
+
+**Publisher’s Note:** MDPI stays neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+**Copyright:** © 2021 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (https://creativecommons.org/licenses/by/4.0/).
+
+**Keywords:** local anaesthesia; pulse rate; computer-delivered anaesthesia; pain
+
+---
+
+### 1. Introduction
+At present, the administration of anaesthesia is one of the most discouraging aspects for most patients undergoing dental procedures, causing many of them [1–4] to feel anxious and uncomfortable. This situation can hinder our therapeutic efforts and cause avoidable discomfort on the patients [1,5–7]. Pain during anaesthesia can be caused by the needle itself or by the injection of the anaesthetic substance [1,5,8–11], aggravated by the patient’s anxiety or fears [1,6,11]. Although the aim of local anaesthesia is to eliminate pain during dental procedures, the apprehension associated with needles and punctures is often considered reason enough for not visiting the dentist [3,12–14].
+
+Grace et al. stated, in their studies conducted on adolescents and young adults from different countries (Belfast (Northern Ireland), Helsinki (Finland), Jyväskylä (Finland), Dubai (UAE), Dunedin (New Zealand), and Singapore), that dental phobias affected 5–15% of them, and that 11–26% experienced high levels of dental fear and anxiety [3,15–18].
+
+---
+*Medicina* **2021**, *57*, 1335. https://doi.org/10.3390/medicina57121335
+https://www.mdpi.com/journal/medicina
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+Medicina 2021, 57, 1335
+2 of 10
+
+In a cross-sectional study on 970 children between the ages of 5 and 12 years, Colares et al. found a prevalence of dental fear and anxiety of 14.4% [19]. The greatest fear was associated with injections [20].
+
+A study on the prevalence of the clinical consequences of untreated tooth decay and its connection with dental fear found that children with fear were 2.05 times more at risk of tooth decay than those with little or no fear [21].
+
+The premise that justifies our study is that the slow injection of anaesthetics at low pressure appears to reduce pain and discomfort during dental anaesthesia. An accurate control of flow and pressure of the injection can therefore mitigate the pain experienced by these patients. Primosch and Brooks revealed that injecting 0.3 mL of local anaesthetic solution at a slow speed with constant flow (161 s/mL) is less painful than with a quicker infiltration (29 s/mL). Other authors stated that, to minimise pain and anxiety, it is important for dentists to start injecting the anaesthetic at a pressure of under 306 mm Hg [4]. Consequently, there is a constant search for new techniques looking to avoid the invasive and often painful nature of the anaesthetic injection required for dental treatments, making it a more pleasant and less distressing experience for patients [10]. Even though there are no techniques available that can totally replace conventional local anaesthesia, some alternatives have been developed that are effective in a limited range of procedures [6]. In 1997, a new method for the administration of anaesthetics was launched: the computer-controlled local anaesthesia delivery system (CCLADS). After 2006, the single tooth anaesthesia system (STA) (Milestone Scientific, Inc. Livingston, NJ, USA) was also introduced [22].
+
+A new, cableless, motorised syringe system (Dentapen®) has recently appeared that stands out for its convenience and ease of use, and that currently does not require specific training. It has several injection settings, allowing it to be held like a syringe or pen, and is compatible with all anaesthetic needles and cartridges from all brands.
+
+The aim of this study was to compare the pain experienced by patients during local anaesthetic injections in different areas and procedures, using both the traditional syringe and the controlled flow technique with the Dentapen® system.
+
+2. Materials and Methods
+
+We conducted a randomised, controlled, single-blind, and single-centre study following the Declaration of Helsinki guidelines and with the approval of the review board of the Ethics Committee of the University of Salamanca (Protocol number 542/2020). It comprised a single operator and 178 adult volunteers requiring some sort of dental treatment aged between 18 and 90 years, 87 of which (48.9%) were men and 91 (51.1%) of which were women. The study was carried out at the Dental Clinic of the University of Salamanca.
+
+Treatment for each patient was assigned by a randomization list, automatically generated prior to the start of the study, in which the treatment material was determined. In the case of bilateral treatments, treatment was assigned to one side or the other, according to a supplementary randomization list. The patient randomization was performed in order to avoid sex bias; thus, the final numbers of men and women in each group were not significantly different, to comply with the blind aspect of the study—participants were not informed of the kind of syringe that was to be used. Patients were also asked to don a mask over their eyes, which remained closed throughout the procedure so as not to see the syringe. The sound of the Dentapen® syringe motor was camouflaged with background music, together with the suction system of the dental chair.
+
+An average of 1.8 ± 1.9 interventions that required anaesthesia were undertaken on each patient up to a total sample of 287 observations (51% in men and 49% in women). The distribution based on the type of procedure was as follows: 119 extractions, 66 fillings, 55 root canal treatments and root canal retreatments, 27 surgeries where a total of 11 implants were performed, 2 atraumatic and 1 traumatic maxillary sinus lift, 1 lip-repositioning surgery, 2 vestibuloplasties, 3 horizontal bone regenerations, 2 crown enlargements, 2 free gingival grafts, and 20 prepared tooth stumps. A Dentapen® syringe was used in 54.7% of the procedures and a conventional syringe was used in the remaining 45.3%.
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+Medicina 2021, 57, 1335
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+Medicina 2021, 57, 1335                                                                                                                              4 of 10
+______________________________________________________________________________________________________________________________________________________
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+Medicina 2021, 57, 1335
+5 of 10
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+Medicina 2021, 57, 1335                                                                                                                                                            6 of 10
+_________________________________________________________________________________________________________________________________________________
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+Medicina 2021, 57, 1335                                                                                                                            7 of 10
+______________________________________________________________________________________________________________________________________________________
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+```
+```
+Medicina 2021, 1335
+Medicina 2021, 57, 1335
+8 of 10
+```
+```
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+Medicina 2021, 57, 1335
+
+════════════════════════════════════════════════════════════
+PAGE 10
+════════════════════════════════════════════════════════════
+Medicina 2021, 57, 1335
+10 of 10
+
+References
+1. Rizzo-Lorenzo, A.; Sánchez-Torres, A.; Noguera-Mutlló, C.; Pérez-Beltrán, I.; Figueiredo, R.; Valmaseda-Castellón, E. Influence of information concerning a computerized anesthesia system on dental anxiety: A randomized controlled clinical trial. Med. Oral Patol. Oral Cir. Bucal 2020, 25, 217–223. [CrossRef]
+2. Hochman, M.; Chiarello, D.; Hochman, C.B.; Lopatkin, R.; Pergola, S. Computerized local anesthetic delivery vs. traditional syringe technique. Subjective pain response. N. Y. State Dent. J. 1997, 63, 24–29.
+3. Garret-Bernardin, A.; Cantile, T.; D’Antò, V.; Galanakis, A.; Fauxpoint, G.; Ferrazzano, G.F.; Galeotti, A. Pain Experience and Behavior Management in Pediatric Dentistry: A Comparison between Traditional Local Anesthesia and the Wand Computerized Delivery System. Pain Res. Manag. 2017, 2017, 7941238. [CrossRef]
+4. Romero-Galvez, J.; Berini-Aytés, L.; Figueiredo, R.; Arnabat-Dominguez, J. A randomized split-mouth clinical trial comparing pain experienced during palatal injections with traditional syringe versus controlled-flow delivery Calaject technique. Quintessence Int. 2016, 47, 797–802.
+5. Kudo, M. Initial injection pressure for dental local anesthesia: Effects on pain and anxiety. Anesth. Prog. 2005, 52, 95–101. [CrossRef]
+6. Kuscu, O.O.; Akyuz, S. Is it the injection device or the anxiety experienced that causes pain during dental local anaesthesia? Int. J. Paediatr. Dent. 2008, 18, 139–145. [CrossRef]
+7. Ram, D.; Peretz, B. Administering local anaesthesia to paediatric dental patients current status and prospects for the future. Int. J. Paediatr. Dent. 2002, 12, 80–89. [CrossRef] [PubMed]
+8. Saloum, F.S.; Baumgartner, J.C.; Marshall, G.; Tinkle, J. A clinical comparison of pain perception to the Wand and a traditional syringe. Oral Surg. Oral Med. Oral Pathol. Oral Radiol. Endod. 2000, 89, 691–695. [CrossRef] [PubMed]
+9. Gibson, R.S.; Allen, K.; Hutfless, S.; Beiraghi, S. The Wand vs. traditional injection: A comparison of pain related behaviors. Pediatr. Dent. 2000, 22, 458–462. [PubMed]
+10. Sumer, M.; Misir, F.; Koyuturk, A.E. Comparison of the Wand with a conventional technique. Oral Surg. Oral Med. Oral Pathol. Oral Radiol. Endod. 2006, 101, 106–109. [CrossRef] [PubMed]
+11. Shah, M.; Shivaswamy, S.; Jain, S.; Tambwekar, S. A clinical comparison of pain perception and extent of area anesthetized by Wand® and a traditional syringe. J. Indian Soc. Periodontol. 2012, 16, 207–212. [CrossRef]
+12. Galeotti, A.; Garret Bernardin, A.; D’Antò, V.; Ferrazzano, G.F.; Gentile, T.; Viarani, V.; Cantile, T. Inhalation Conscious Sedation with Nitrous Oxide and Oxygen as Alternative to General Anesthesia in Precooperative, Fearful, and Disabled Pediatric Dental Patients: A Large Survey on 688 Working Sessions. Biomed. Res. Int. 2016, 2016, 7289310. [CrossRef]
+13. Milgrom, P.; Coldwell, S.E.; Getz, T.; Weinstein, P.; Ramsay, D.S. Four dimensions of fear of dental injections. J. Am. Dent. Assoc. 1997, 128, 756–762. [CrossRef]
+14. Grace, E.G.; Barnes, D.M.; Reid, B.C.; Flores, M.; George, D.L. Computerized local dental anesthetic systems: Patient and dentist satisfaction. J. Dent. 2003, 31, 9–12. [CrossRef]
+15. Humphris, G.M.; Freeman, R.; Campbell, J.; Tuutti, H.; D’Souza, V. Further evidence for the reliability and validity of the Modified Dental Anxiety Scale. Int. Dent. J. 2000, 50, 367–370. [CrossRef]
+16. Skaret, E.; Raadal, M.; Berg, E.; Kvale, G. Dental anxiety and dental avoidance among 12 to 18 year olds in Norway. Eur. J. Oral Sci. 1999, 107, 422–428. [CrossRef]
+17. Locker, D.; Thomson, W.M.; Poulton, R. Onset of and patterns of change in dental anxiety in adolescence and early adulthood: A birth cohort study. Community Dent. Health 2001, 18, 99–104.
+18. Milgrom, P.; Vignehsa, H.; Weinstein, P. Adolescent dental fear and control: Prevalence and theoretical implications. Behav. Res. Ther. 1992, 30, 367–373. [CrossRef]
+19. Colares, V.; Franca, C.; Ferreira, A.; Amorim, H.A.; Oliveira, M.C.A. Dental anxiety and dental pain in 5- to 12-yearold children in Recife, Brazil. Eur. Arch. Paediatr. Dent. 2013, 14, 15–19. [CrossRef]
+20. Versloot, J.; Veerkamp, J.S.J.; Hoogstraten, J. Pain behaviour and distress in children during two sequential dental visits: Comparing a computerised anaesthesia delivery system and a traditional syringe. Br. Dent. J. 2008, 205, E2. [CrossRef] [PubMed]
+21. Murthy, A.K.; Pramila, M.; Ranganath, S. Prevalence of clinical consequences of untreated dental caries and its relation to dental fearamong 12-15-year-old schoolchildren in Bangalore city, India. Eur. Arch. Paediatr. Dent. 2014, 15, 45–49. [CrossRef]
+22. Al-Obaida, M.I.; Haider, M.; Hashim, R.; AlGheriri, W.; Celur, S.L.; Al-Saleh, S.A.; Al-Madi, E.M. Comparison of perceived pain and patients’ satisfaction with traditional local anesthesia and single tooth anesthesia: A randomized clinical trial. World J. Clin. Cases 2019, 7, 2986–2994. [CrossRef]
+23. Campanella, V.; Libonati, A.; Nardi, R.; Angotti, V.; Gallusi, G.; Montemurro, E. Single tooth anesthesia versus conventional anesthesia: A cross-over study. Clin. Oral Investig. 2018, 22, 3205–3213. [CrossRef]
+24. Mittal, M.; Kumar, A.; Srivastava, D.; Sharma, P.; Sharma, S. Pain perception: Computerized versus traditional local anesthesia. J. Clin. Pediatr. Dent. 2015, 39, 470–474. [CrossRef] [PubMed]
+25. Kwak, E.J.; Pang, N.S.; Cho, J.H.; Jung, B.Y.; Kim, K.D.; Park, W. Computer-controlled local anesthetic delivery for painless anesthesia: A literature review. J. Dent. Anesth. Pain Med. 2016, 16, 81–88. [CrossRef] [PubMed]
+26. Tahmassebi, J.F.; Nikolaou, M.; Duggal, M.S. A comparison of pain and anxiety associated with the administration of maxillary local analgesia with Wand and conventional technique. Eur Arch. Paediatr. Dent. 2009, 10, 77–82. [CrossRef] [PubMed]

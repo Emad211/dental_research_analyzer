@@ -1,0 +1,162 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : spitted_admin,+34+-+3391-OJS+-+C+-+D+-+Dr+Shahid+Islam.pdf
+Status : ok
+Time   : 20260507_184802
+══════════════════════════════════════════════════════════════════════
+
+I’m unable to see any substantive methodological content in the text you provided; it appears largely blank/truncated (“PAGE 1…PAGE 4…The [cut off]…” with ellipses). There is not enough information to identify the study design, groups, variables, or measurements.
+
+Because your request is highly dependent on the specific methods of that article, anything I propose now would be speculative and not aligned with good statistical practice.
+
+To proceed properly, I need at least the full Introduction and Methods sections (or a clearly readable portion including: study design, participants, interventions/exposures, outcomes, and planned comparisons).
+
+Below is a template of how I would structure the answer once I have the actual information, so you can see what I will deliver after you paste the full text.
+
+---
+
+## What I Need From You
+
+Please paste (or upload an image of) the full Introduction and Methods sections, including:
+
+- Study design (e.g., randomized controlled trial, cross-sectional, cohort, split-mouth, in vitro, etc.)
+- Groups/arms (e.g., control vs treatment, different materials, etc.)
+- Sample size and how it was determined (if reported)
+- Main outcomes (e.g., probing depth, plaque index, bond strength, etc.)
+- Measurement methods (instruments, scales, time points)
+- Statistical methods (if any are already described in the paper)
+- Any stratification, clustering (e.g., multiple teeth within patient), or follow-up plan
+
+Once I have that, I will:
+
+---
+
+## TASK 1: INFORMATION EXTRACTION (Template)
+
+I will extract and summarize:
+
+1. **Study design**
+   - Type (e.g., randomized clinical trial, cross-sectional observational, in vitro lab study)
+   - Setting (e.g., academic clinic, private practice, lab)
+   - Duration and follow-up schedule
+   - Randomization, blinding, allocation ratio (if applicable)
+
+2. **Objectives / Hypotheses**
+   - Primary objective and primary outcome
+   - Secondary objectives/outcomes
+   - Explicit or implicit hypotheses
+
+3. **Study population / sample**
+   - Inclusion/exclusion criteria
+   - Number of participants/teeth/samples per group
+   - Unit of analysis (e.g., patient-level, tooth-level, site-level, specimen-level)
+
+4. **Groups / interventions / exposures**
+   - Description of each group or intervention (e.g., type of material, procedure)
+   - Control/placebo details
+   - Any stratification (e.g., by jaw, tooth type, baseline disease severity)
+
+5. **Variables and measurements**
+   - Primary outcome variable(s): name, type (continuous, binary, ordinal), measurement method
+   - Secondary outcome variable(s)
+   - Covariates/confounders (e.g., age, sex, smoking, baseline disease)
+   - Time points (e.g., baseline, 3 months, 6 months)
+
+6. **Data collection methods**
+   - Measurement tools (e.g., periodontal probe, radiographic system, universal testing machine)
+   - Calibration of examiners, intra-/inter-examiner reliability
+   - Data recording (paper/electronic), quality control
+
+7. **Planned comparisons / contrasts**
+   - Between-group comparisons
+   - Within-subject comparisons (e.g., split-mouth, pre–post)
+   - Non-inferiority/equivalence margins (if any)
+
+---
+
+## TASK 2: STATISTICAL ANALYSIS PLAN (Template Structure)
+
+I will construct a tailored plan with three categories:
+
+### CATEGORY A – MANDATORY ANALYSES
+
+For each, I will provide:
+
+- **Test name**
+- **Purpose**
+- **Why appropriate (≥2 reasons)**
+- **Why it may not be appropriate (≥1 reason)**
+- **When this test should NOT be used**
+- **Alternative if assumptions are violated**
+
+Examples (these will be adapted to your actual study):
+
+1. **Descriptive statistics**
+   - Means/SD or medians/IQR for continuous variables
+   - Counts/percentages for categorical variables
+
+2. **Baseline comparability**
+   - Chi-square/Fisher’s exact for categorical variables
+   - t-test/Mann–Whitney for continuous variables
+   - Or mixed models if clustered/split-mouth
+
+3. **Primary outcome analysis**
+   - Two-group comparison: t-test / Mann–Whitney, or
+   - Repeated measures: repeated-measures ANOVA / linear mixed effects model
+   - Binary outcomes: chi-square / logistic regression
+   - Time-to-event: Kaplan–Meier + log-rank / Cox regression
+
+4. **Adjustment for clustering (if needed)**
+   - Mixed-effects models or GEE if teeth nested in patients, surfaces in teeth, etc.
+
+5. **Handling missing data**
+   - Description of completeness
+   - Preferred method (complete case vs multiple imputation if appropriate)
+
+All of these will be fully specified once your actual design, outcomes, and unit of analysis are clear.
+
+### CATEGORY B – RECOMMENDED ANALYSES
+
+Examples (to be tailored):
+
+- Multi-variable regression (linear/logistic) to adjust for confounders
+- Sensitivity analyses (e.g., per-protocol vs intention-to-treat)
+- Subgroup analyses (e.g., jaw, tooth type, baseline severity)
+- Reliability analysis (ICC, kappa) if calibration data exist
+
+### CATEGORY C – OPTIONAL ANALYSES
+
+Examples (to be tailored):
+
+- Effect size measures (Cohen’s d, risk differences, odds ratios with CIs)
+- Graphical summaries (boxplots, profile plots, survival curves)
+- Exploratory factor analysis or cluster analysis (if relevant questionnaires)
+- Nonlinear modeling (if dose-response relationship)
+
+---
+
+## TASK 3: INAPPROPRIATE TESTS (Template)
+
+I will list tests that should not be used given the design, such as:
+
+- Simple t-tests ignoring clustering in split-mouth or multi-tooth analyses
+- Multiple t-tests at each time point ignoring repeated measures correlation
+- Parametric tests on severely skewed/small-sample data without checking assumptions
+- Pearson correlation for ordinal scales instead of Spearman, etc.
+
+Each will have a brief explanation specific to your study.
+
+---
+
+## TASK 4: SUMMARY (Template)
+
+I will provide a concise justification of the overall analytical approach, for example:
+
+- Emphasizing alignment with the study’s primary objective and outcome type
+- Correct handling of repeated measures or clustered data
+- Appropriate adjustment for confounders and baseline differences
+- Prespecification of primary analysis and sensitivity analyses
+
+---
+
+Please resend the full Introduction and Methods (or at least the complete Methods) so I can produce a precise, article-specific statistical analysis plan rather than a generic template.

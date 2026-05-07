@@ -1,0 +1,122 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_27-1605284860.pdf
+Status : ok
+Time   : 20260507_190053
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Clinical trial (randomized, non-probability consecutive sampling).
+2. **Objective**: To compare post-endodontic pain outcomes between two groups: acetaminophen prescribed regularly (6-hourly) versus acetaminophen taken on demand (SOS).
+3. **Groups**:
+   - **Group 1**: Regular acetaminophen prescription (6-hourly).
+   - **Group 2**: On-demand acetaminophen (SOS).
+4. **Sample Size**: 60 participants (determined using WHO sample size calculator with population proportions of 0.2 and 0.14, 95% confidence level, and 90% power).
+5. **Inclusion Criteria**:
+   - Patients aged 18–60 years.
+   - Maxillary or mandibular first or second premolar with irreversible pulpitis.
+   - Normal radiographic appearance of peri-apical tissues.
+   - Negative response to pulp sensibility tests (cold, heat, electrical pulp testing).
+6. **Exclusion Criteria**:
+   - Patients <18 or >60 years.
+   - Systemic disorders, sensitivity to acetaminophen, gastric or liver conditions, pregnancy.
+   - Teeth unsuitable for restoration, severe periodontal disease, periapical radiolucency, swelling, or draining sinuses.
+   - Patients taking analgesics within the previous 12 hours.
+7. **Variables**:
+   - **Independent Variable**: Type of acetaminophen administration (regular prescription vs on-demand).
+   - **Dependent Variable**: Pain score at 48 hours post-treatment (measured using Visual Analogue Scale [VAS]).
+8. **Measurements**:
+   - **Baseline**: VAS recorded before treatment.
+   - **Outcome**: VAS recorded 48 hours post-treatment (0–4 = No Pain, 5–10 = Pain).
+9. **Data Collection Methods**:
+   - VAS scores collected via phone follow-up.
+   - Radiographs used to verify canal working length.
+10. **Intervention**:
+    - Endodontic treatment performed by the principal investigator.
+    - Canal irrigants: Sodium hypochlorite (5.25%), normal saline, EDTA.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Chi-Square Test or Fisher’s Exact Test
+   - **Purpose**: To compare the proportion of patients experiencing pain (VAS ≥5) between Group 1 and Group 2.
+   - **Why Appropriate**:
+     - The dependent variable (pain/no pain) is categorical.
+     - The study involves two independent groups.
+   - **Why It May Not Be Appropriate**:
+     - Assumes independence of observations; may not account for potential confounding variables.
+   - **When NOT to Use**: If expected frequencies in any cell are <5.
+   - **Alternative**: Fisher’s Exact Test (if sample size is small).
+
+2. **Test Name**: Independent Samples t-Test or Mann-Whitney U Test
+   - **Purpose**: To compare mean VAS scores between Group 1 and Group 2.
+   - **Why Appropriate**:
+     - VAS scores are continuous and measured on an interval scale.
+     - Two independent groups are being compared.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normal distribution of VAS scores; may not hold true.
+   - **When NOT to Use**: If VAS scores are not normally distributed.
+   - **Alternative**: Mann-Whitney U Test (non-parametric).
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Paired Samples t-Test or Wilcoxon Signed-Rank Test
+   - **Purpose**: To compare baseline VAS scores with 48-hour post-treatment VAS scores within each group.
+   - **Why Appropriate**:
+     - Evaluates the change in pain scores within each group.
+     - Accounts for paired data (pre- and post-treatment scores).
+   - **Why It May Not Be Appropriate**:
+     - Assumes normal distribution of differences; may not hold true.
+   - **When NOT to Use**: If differences are not normally distributed.
+   - **Alternative**: Wilcoxon Signed-Rank Test (non-parametric).
+
+2. **Test Name**: Logistic Regression
+   - **Purpose**: To assess the effect of acetaminophen administration type on the likelihood of experiencing pain (VAS ≥5), adjusting for potential confounders (e.g., age, gender).
+   - **Why Appropriate**:
+     - Dependent variable is binary (pain/no pain).
+     - Allows adjustment for covariates.
+   - **Why It May Not Be Appropriate**:
+     - Requires a large sample size for stable estimates.
+   - **When NOT to Use**: If sample size is insufficient or multicollinearity exists.
+   - **Alternative**: Stratified analysis or subgroup comparisons.
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Analysis of Covariance (ANCOVA)
+   - **Purpose**: To compare post-treatment VAS scores between groups while controlling for baseline VAS scores.
+   - **Why Appropriate**:
+     - Adjusts for baseline differences in pain scores.
+     - Provides more precise estimates of group differences.
+   - **Why It May Not Be Appropriate**:
+     - Assumes homogeneity of regression slopes; may not hold true.
+   - **When NOT to Use**: If assumptions of linearity or homogeneity are violated.
+   - **Alternative**: Non-parametric ANCOVA or stratified analysis.
+
+2. **Test Name**: Repeated Measures ANOVA
+   - **Purpose**: To analyze changes in VAS scores over time (baseline vs 48 hours) across both groups.
+   - **Why Appropriate**:
+     - Accounts for within-subject correlations over time.
+     - Tests for interaction effects between time and group.
+   - **Why It May Not Be Appropriate**:
+     - Requires normality and sphericity assumptions.
+   - **When NOT to Use**: If data are not normally distributed or sphericity is violated.
+   - **Alternative**: Generalized Estimating Equations (GEE).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1. **Test Name**: Pearson Correlation
+   - **Why NOT Appropriate**: Correlation measures linear relationships between two continuous variables, but the study involves categorical group comparisons.
+2. **Test Name**: Kaplan-Meier Survival Analysis
+   - **Why NOT Appropriate**: This test is used for time-to-event data, which is not relevant to the study design.
+3. **Test Name**: ANOVA (One-Way)
+   - **Why NOT Appropriate**: ANOVA assumes more than two groups, whereas this study has only two groups.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach is designed to address the study’s primary objective of comparing post-endodontic pain outcomes between two acetaminophen administration strategies. Mandatory tests focus on group comparisons for categorical and continuous outcomes. Recommended tests enhance rigor by examining within-group changes and adjusting for covariates. Optional tests provide supplementary insights into temporal trends and adjusted group comparisons. The plan ensures robustness by incorporating alternatives for violated assumptions, thereby maintaining the integrity of statistical inference.

@@ -1,0 +1,210 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+ترجمه تخصصی این مقاله
+مورد تایید ایران پیپر https://www.tarjomano.com
+ترجمانو
+
+antibiotics
+MDPI
+
+Article
+# Impact of Adjunctive Laser Irradiation on the Bacterial Load of Dental Root Canals: A Randomized Controlled Clinical Trial
+
+Johannes-Simon Wenzler 1,2,*, Wolfgang Falk 3, Roland Frankenberger 2 and Andreas Braun 1,2
+
+1 Department of Operative Dentistry, Periodontology and Preventive Dentistry, Rheinisch-Westfälische Technische Hochschule University Hospital, Pauwelsstrasse 30, 52074 Aachen, Germany; anbraun@ukaachen.de
+2 Department of Operative Dentistry, Endodontics and Pediatric Dentistry, Campus Marburg, University Medical Center Giessen and Marburg, Georg-Voigt-Str. 3, 35039 Marburg, Germany; frankbg@med.uni-marburg.de
+3 Center for Dental Microbiology, Bergstr. 26, 24103 Kiel, Germany; wolfgang.falk@web.de
+* Correspondence: jwenzler@ukaachen.de; Tel.: +49-(0)241-8037452
+
+check for updates
+
+**Citation:** Wenzler, J.-S.; Falk, W.; Frankenberger, R.; Braun, A. Impact of Adjunctive Laser Irradiation on the Bacterial Load of Dental Root Canals: A Randomized Controlled Clinical Trial. *Antibiotics* **2021**, *10*, 1557. https://doi.org/10.3390/antibiotics10121557
+
+Academic Editor: Clemens Walter
+
+Received: 3 December 2021
+Accepted: 17 December 2021
+Published: 20 December 2021
+
+**Publisher's Note:** MDPI stays neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+CC BY
+
+**Copyright:** © 2021 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (https://creativecommons.org/licenses/by/4.0/).
+
+**Keywords:** semiconductor laser; endodontics; bacterial reduction; sodium hypochlorite; disinfection
+
+## 1. Introduction
+
+Almost all conditions that require endodontic treatment are caused by, or later exacerbated by, microbial infections [1]. Between 10² and 10⁷ bacteria can be detected in an infected root canal system [2]. The migration of these bacteria into all parts of the root canal system and also into the surrounding dentin makes it almost impossible to eliminate them completely. Insufficient reduction of bacteria in the root canal system is, therefore, one of the main reasons for the failure of endodontic treatments. The mechanical removal of infected hard and soft tissue during the shaping of the root canal for subsequent obturation with a suitable filling material leads to a considerable reduction in microorganisms. Still, disinfection of the root canal system is extremely important for systematic root canal treatment. In particular, the cleaning of hard-to-reach parts of the canal sections, mechanical instrumentation of inaccessible side canals, and thorough disinfection of the remaining surrounding dentin are decisive factors that determine the lasting success of endodontic treatment [3]. Rinsing solutions such as sodium hypochlorite (NaOCl), chlorhexidine digluconate (CHX), and ethylenediaminetetraacetic acid (EDTA) are generally used for this purpose. In combination with the mechanical instrumentation of the canal lumen, carefully performed chemomechanical root canal preparation can eliminate over 95% of the microorganisms in the root canal system [4,5].
+
+*Antibiotics* **2021**, *10*, 1557. https://doi.org/10.3390/antibiotics10121557
+https://www.mdpi.com/journal/antibiotics
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+ترجمه تخصصی این مقاله مورد تایید ایران پیپر https://www.tarjomano.com
+Antibiotics 2021, 10, 1557
+2 of 9
+
+In the literature, conventional rinsing with sodium hypochlorite has been reported to be effective in killing bacteria up to dentin depths of 160 µm [6,7]. However, this may not be sufficiently effective in relation to highly resistant bacteria such as Enterococcus faecalis, which reach root dentin penetration depths of more than 1000 µm [6,8]. Several methods have been developed to improve the penetration depth of disinfection measures to eliminate bacteria from deep residual root dentin, such as ultrasound devices, hydrodynamic rinsing methods, and laser-based procedures [9–11]. In addition to the positive effects of greater penetration depths reported in the literature, disadvantages have also been described with some procedures. Particularly with mechanical procedures, a risk of apical extrusion and resulting damage to apical tissues has been reported [12].
+
+Nonmechanical approaches, such as thermally acting laser systems, have therefore also been investigated [13]. These can supplement conventional disinfection methods as adjunctive antimicrobial procedures. It should be noted, however, that laser effects depend on the laser wavelength and power settings used. To date, only a few studies have been conducted to assess the effectiveness of laser irradiation for endodontic disinfection purposes. To the best of the authors’ knowledge, there have been no studies on the blue laser wavelength of 445 nm that has recently been introduced in the field of dentistry. The aim of the present in vivo study was, therefore, to investigate the disinfectant effect of a 445-nm diode laser as an adjuvant therapy option, testing the hypothesis that adjuvant laser irradiation additionally reduces the residual bacterial count after conventional root canal disinfection.
+
+2. Materials and Methods
+
+As part of the regular endodontic treatment regimen, microbiological specimens were collected from 57 patients and microbiologically evaluated. All of the patients had provided informed consent to participation. The study was conducted in full accordance with established ethical principles (World Medical Association Declaration of Helsinki, version VI, 2002) and was approved by the local ethics committee (reference number 016/1749). Only teeth with suspected irreversible pulpal disease were selected according to the diagnostic criteria based on clinical symptoms and radiographic findings. The teeth exhibited an increased stimulus response or spontaneous pain, as well as prolonged pain episodes up to continuous pain. Radiographically, no or minimal radiographic changes were evident. Prolonged pain on cold contact was present, and increased bleeding from the root canal was noted after trepanation. Teeth with pulp necrosis were excluded. The routine treatment of the teeth involves the following steps: trepanation, mechanical root canal treatment (rinsed conventionally using sodium hypochlorite), an intermediate temporary filling, and finally definitive filling of the root canal after 1 week. In the present study design, all of these steps were performed in all of the study arms.
+
+2.1. Patient Selection
+
+The study included patients attending the Department of Operative Dentistry and Endodontology at the University of Marburg who had endodontically induced pain and had been diagnosed with irreversible pulpitis. Inclusion criteria were a minimum age of 18 years, teeth with irreversible pulp disease but with an endodontically preservable root structure, and a written declaration of consent. Exclusion criteria were acute pain after removal of the pulp tissue, antibiotic treatment within the previous 6 months, probing depths indicating a periodontal-endodontic lesion, previous endodontic treatment of the affected tooth, and pregnancy. After the application of these inclusion and exclusion criteria, 57 patients were included in the study.
+
+Following endodontic pain treatment, including rubber dam isolation, trepanation of the pain-triggering tooth, and conventional rinsing with sodium hypochlorite (3%, 5 mL, 1 min), temporary calcium hydroxide paste was filled into the canal and temporarily sealed. The patients were then randomly assigned to the different groups in the clinical trial.
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+ترجمه تخصصی این مقاله
+مورد تایید ایران پیپر
+https://www.tarjomano.com
+ترجمانو
+
+Antibiotics 2021, 10, 1557
+3 of 9
+
+2.2. Treatment Procedure
+One week after emergency endodontic treatment, the tooth was isolated with a rub-
+ber dam, and its surface was disinfected with hydrogen peroxide solution (30%; Carl
+Roth GmbH, Karlsruhe, Germany). The rubber dam was then disinfected with Lugol’s
+iodine solution (5%) and inactivated with sodium thiosulfate (5%; Dr. Franz Köhler
+Chemie GmbH, Bensheim, Germany) so that any residue on it would not influence the
+bacteriological sampling.
+In accordance with the study protocol, the following treatment sequence was per-
+formed, and microbiological samples were taken at three time points using sterile paper
+points (ISO 30; VDW Antaeos GmbH, Munich, Germany), which were left in the root canals
+flooded with saline solution for 1 min each:
+1. Removal of the temporary filling material.
+2. Chemomechanical preparation was performed manually to size 25.02 using hand
+files in a pulling movement only (Hedström, VDW GmbH, Munich, Germany) and
+mechanically to size 30.09 (ProTaper Gold F1-F3 employing SiroNiti Apex endodontic
+handpiece; Dentsply Sirona GmbH, Bensheim, Germany) along the glide path with
+each insertion deeper than the previous one until the working length was reached.
+The root canal system was irrigated with sodium hypochlorite (3%; total 5 mL, applied
+over the duration of the root canal preparation) and ethylenediaminetetraacetic acid
+(15%; 2 mL, 1 min).
+3. Adjuvant disinfection in accordance with one of the following three group-
+specific protocols:
+(a) Additional rinsing with 5 mL sodium hypochlorite (3%; Speiko–Dr. Speier
+GmbH, Bielefeld, Germany) for 1 min.
+(b) Laser irradiation (SiroLaser Blue; Dentsply Sirona) in continuous-wave mode,
+at a power setting of 0.6 W for 4 × 10 s with an attached 200-µm fiber tip (Easy
+Tip Endo; Dentsply Sirona) (Figure 1).
+(c) A combination of sodium hypochlorite rinsing and laser irradiation using the
+same settings as described above (a + b).
+
+Figure 1. Representative picture of adjunctive laser disinfection during root canal treatment.
+Final rinsing with sodium hypochlorite was then performed in all groups before a
+calcium hydroxide paste (Calcicur; Voco GmbH, Cuxhaven, Germany) was applied to the
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+ترجمه تخصصی این مقاله مورد تایید ایران پیپر https://www.tarjomano.com ترجمانو
+
+Antibiotics 2021, 10, 1557 4 of 9
+
+prepared root canal, and the tooth was sealed with a foam pellet and glass ionomer cement (Ketac Cem; 3M Espe, Seefeld, Germany).
+If the tooth remained symptom-free for 1 week, the temporary filling was removed, and the root canal was obturated with a gutta-percha filling. Collected samples were transferred to transport vessels and sent to an external laboratory for microbiological analysis. The assignment of patients to the different experimental groups was predetermined by the study plan and could not be influenced by the operator or the patient. A total of 57 patients (n = 19 in each group) were included in the study.
+
+2.3. Laser Application
+To ensure consistent laser application, the laser fiber was bent by 45°. Before laser application in the root canal, the active power output was checked for a device power setting of 0.6 W using a power meter (PM100D; Thorlabs GmbH, Bergkirchen, Germany). The device setting of 0.6 W corresponds to an effective power of 0.59 W. Assuming a Gaussian laser beam profile [14], the power density was 3760 W/cm² (fiber tip diameter 0.2 mm, 0.58 W output power).
+
+2.4. Microbiological Analysis
+The samples were analyzed in a microbiological laboratory (Oro-Dentale Mikrobiologie ODM, Kiel, Germany) using a quantitative real-time polymerase chain reaction (qPCR) after DNA extraction and quantification of the microbiological samples. The main parameter for the analysis was the total bacterial load (TBL), given in genome equivalent colony-forming units (CFUs) per milliliter in accordance with internal laboratory standards. In addition, the bacteria Porphyromonas endodontalis, Treponema denticola, Tannerella forsythia, Fusobacterium nucleatum, Porphyromonas gingivalis, Prevotella intermedia, Peptostreptococcus micros, and Enterococcus faecalis were analyzed separately in all samples.
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+```Antibiotics 2021, 10, 1557
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+ترجمه تخصصی این مقاله
+مورد تایید ایران پیپر
+https://www.tarjomano.com
+ترجمانو
+
+Antibiotics 2021, 10, 1557 6 of 9
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+```
+Antibiotics 2021, 10, 1557
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+https://www.tarjomano.com ترجمه تخصصی این مقاله مورد تایید ایران پیپر ترجمانو
+
+Antibiotics 2021, 10, 1557
+8 of 9
+
+**5. Conclusions**
+The present study indicates that conventional chemomechanical root canal preparation allows extensive bacterial reduction. Laser irradiation alone did not show comparable antibacterial efficacy, but the combination of conventional root canal treatment and adjunctive 445-nm laser irradiation resulted in significantly higher levels of bacterial reduction. It can therefore be assumed that adjuvant disinfection using 445-nm laser light can usefully supplement conventional approaches to systematic root canal treatment. However, the clinical impact of increased bacterial reduction on the long-term success of endodontic treatment needs to be evaluated during a clinical follow-up of the treated cases.
+
+**Author Contributions:** Conceptualization, A.B.; methodology, J.-S.W. and A.B.; formal analysis, J.-S.W.; investigation, J.-S.W.; microbiological analysis, W.F.; writing, original draft preparation, J.-S.W., R.F. and A.B.; writing, review and editing, J.-S.W., R.F. and A.B.; visualization, A.B.; project administration, A.B. and J.-S.W. All authors have read and agreed to the published version of the manuscript.
+
+**Funding:** This study has been self-funded by the authors.
+
+**Institutional Review Board Statement:** The study was conducted in full accordance with established ethical principles (World Medical Association Declaration of Helsinki, version VI, 2002) and was approved by the local ethics committee (reference number 016/1749).
+
+**Informed Consent Statement:** Informed consent was obtained from all subjects involved in the study.
+
+**Acknowledgments:** The authors would like to thank Dentsply Sirona Deutschland GmbH (Bensheim, Germany) for providing the laser device used in the study.
+
+**Conflicts of Interest:** The laser system was provided by the company Dentsply Sirona Deutschland GmbH (Bensheim, Germany) to the senior author A.B. To avoid a direct conflict of interest, this author was not involved in practical aspects of the study.
+
+**References**
+1. Haapasalo, M. Endodontische Mikrobiologie. In *Endodontologie*, 2nd ed.; Baumann, M.A., Beer, R., Eds.; Thieme Verlag KG: Stuttgart, Germany, 2007; pp. 21–30.
+2. Hülsmann, M. *Endodontie*; Thieme Verlag KG: Stuttgart, Germany, 2008.
+3. Bergenholtz, G. Assessment of treatment failure in endodontic therapy. *J. Oral Rehabil.* **2016**, *43*, 753–758. [[CrossRef](https://doi.org/10.1111/joor.12431)] [[PubMed](https://pubmed.ncbi.nlm.nih.gov/27444342/)]
+4. Blome, B.; Braun, A.; Sobarzo, V.; Jepsen, S. Molecular identification and quantification of bacteria from endodontic infections using real-time polymerase chain reaction. *Oral Microbiol. Immunol.* **2008**, *23*, 384–390. [[CrossRef](https://doi.org/10.1111/j.1399-302X.2008.00440.x)]
+5. Koçkapan, C. *Curriculum Endodontie*; Quintessenz Publishing: Berlin, Germany, 2003.
+6. Vatkar, N.A.; Hegde, V.; Sathe, S. Vitality of *Enterococcus faecalis* inside dentinal tubules after five root canal disinfection methods. *J. Conserv. Dent.* **2016**, *19*, 445–449. [[CrossRef](https://doi.org/10.4103/0972-0707.190014)] [[PubMed](https://pubmed.ncbi.nlm.nih.gov/27656065/)]
+7. Berutti, E.; Marini, R.; Angeretti, A. Penetration ability of different irrigants into dentinal tubules. *J. Endod.* **1997**, *23*, 725–727. [[CrossRef](https://doi.org/10.1016/S0099-2399(97)80343-7)]
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+https://www.tarjomano.com ترجمه تخصصی این مقاله مورد تایید ایران پیپر
+ترجـمانو
+
+Antibiotics 2021, 10, 1557
+9 of 9
+
+8. Kouchi, Y.; Ninomiya, J.; Yasuda, H.; Fukui, K.; Moriyama, T.; Okamoto, H. Location of Streptococcus mutans in the dentinal tubules of open infected root canals. J. Dent. Res. 1980, 59, 2038–2046. [CrossRef]
+9. Iandolo, A.; Amato, M.; Dagna, A.; Poggio, C.; Abdellatif, D.; Franco, V.; Pantaleo, G. Intracanal heating of sodium hypochlorite: Scanning electron microscope evaluation of root canal walls. J. Conserv. Dent. 2018, 21, 569–573. [CrossRef] [PubMed]
+10. Amato, M.; Pantaleo, G.; Abtellatif, D.; Blasi, A.; Gagliani, M.; Iandolo, A. An in vitro evaluation of the degree of pulp tissue dissolution through different root canal irrigation protocols. J. Conserv. Dent. 2018, 21, 175–179. [CrossRef]
+11. Galler, K.M.; Grubmüller, V.; Schlichting, R.; Widbiller, M.; Eidt, A.; Schuller, C.; Wölflick, M.; Hiller, K.; Buchalla, W. Penetration depth of irrigants into root dentine after sonic, ultrasonic and photoacoustic activation. Int. Endod. J. 2019, 52, 1210–1217. [CrossRef]
+12. Dioguardi, M.; Di Gioia, G.; Illuzzi, G.; Laneve, E.; Cocco, A.; Troiano, G. Endodontic irrigants: Different methods to improve efficacy and related problems. Eur. J. Dent. 2018, 12, 459–466. [CrossRef]
+13. Saydjari, Y.; Kuypers, T.; Gutknecht, N. Laser Application in Dentistry: Irradiation Effects of Nd:YAG 1064 nm and Diode 810 nm and 980 nm in Infected Root Canals—A Literature Overview. BioMed Res. Int. 2016, 2016, 8421656. [CrossRef]
+14. Alda, J. Laser and Gaussian beam propagation and transformation. In Encyclopedia of Optical and Photonic Engineering; Driggers, R., Ed.; Dekker: New York, NY, USA, 2003; Volume 3, pp. 999–1013, ISBN 0-8247-4252-4.
+15. Cohen, J. Statistical Power Analysis for the Behavioral Sciences, 2nd ed.; Lawrence Erlbaum Associates: Jillsdale, NJ, USA, 1988.
+16. Kaiwar, A.; Usha, H.L.; Meena, N.; Ashwini, P.; Murthy, C.S. The efficiency of root canal disinfection using a diode laser: In vitro study. Indian J. Dent. Res. 2013, 24, 14–18. [CrossRef] [PubMed]
+17. Asnaashari, M.; Safavi, N. Disinfection of Contaminated Canals by Different Laser Wavelengths, while Performing Root Canal Therapy. J. Lasers Med. Sci. 2013, 4, 8–16.
+18. Schoop, U.; Kluger, W.; Moritz, A.; Nedjelik, N.; Georgopoulos, A.; Sperr, W. Bactericidal effect of different laser systems in the deep layers of dentin. Lasers Surg. Med. 2004, 35, 111–116. [CrossRef] [PubMed]
+19. Kreisler, M.; Kohnen, W.; Beck, M.; Al Haj, H.; Christoffers, A.; Götz, H.; Duschner, H.; Jansen, B.; D’Hoedt, B. Efficacy of NaOCl/H2O2 irrigation and GaAlAs laser in decontamination of root canals in vitro. Lasers Surg. Med. 2003, 32, 189–196. [CrossRef]
+20. Moritz, A.; Gutknecht, N.; Goharkhay, K.; Schoop, U.; Wernisch, J.; Sperr, W. In vitro irradiation of infected root canals with a diode laser: Results of microbiologic, infrared spectrom

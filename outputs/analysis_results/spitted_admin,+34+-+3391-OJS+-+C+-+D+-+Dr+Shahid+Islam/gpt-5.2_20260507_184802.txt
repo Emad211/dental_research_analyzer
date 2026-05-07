@@ -1,0 +1,27 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : spitted_admin,+34+-+3391-OJS+-+C+-+D+-+Dr+Shahid+Islam.pdf
+Status : ok
+Time   : 20260507_184802
+══════════════════════════════════════════════════════════════════════
+
+I can’t extract study characteristics or build a study-specific statistical analysis plan from the provided “ARTICLE TEXT” because it contains no readable Introduction/Methods content (pages are blank/obscured and only show “[cut off]” and filler dots). Without the actual text, any SAP would be guesswork.
+
+Please paste the Introduction + Methods (or upload clearer page images). If the Methods are long, the minimum I need is:
+
+- Study design (RCT/clinical trial/cohort/cross-sectional/in vitro, etc.)
+- Objective/hypotheses
+- Setting and participants (eligibility criteria)
+- Groups/interventions/exposures and allocation method (randomization/blinding)
+- Outcomes (primary/secondary), measurement instruments, time points
+- Sample size (planned/enrolled/analyzed) and any power calculation
+- Data structure (patient-level, tooth-level, site-level; repeated measures)
+- Statistical methods already reported (if any), significance level, software
+- Handling of missing data/outliers
+
+Once you provide the text, I will deliver:
+
+1) **Information extraction** (design, groups, variables, measurement schedule, etc.)  
+2) **Statistical analysis plan** with **Mandatory/Recommended/Optional** tests, each with purpose, appropriateness, limitations, “do not use when…”, and assumption-robust alternatives  
+3) **Inappropriate tests** for this design and why  
+4) **Overall justification** of the analytical approach

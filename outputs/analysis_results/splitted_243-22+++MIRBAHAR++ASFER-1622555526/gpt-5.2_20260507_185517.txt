@@ -1,0 +1,225 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_243-22+++MIRBAHAR++ASFER-1622555526.pdf
+Status : ok
+Time   : 20260507_185517
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Citation/topic
+- **Title:** Comparison of Clinical Outcome of Periapical Surgery in Endodontic and Oral Surgery Units of a Teaching Dental Hospital  
+- **Setting:** Teaching dental hospital; comparisons between **Endodontic unit** vs **Oral Surgery unit**.
+
+### Study objective (explicit/implicit)
+- **Primary objective:** Compare **clinical and radiographic outcomes (success/failure)** of **periapical (endodontic) surgery** performed in two hospital units (Endodontics vs Oral Surgery).
+- **Secondary objective (from conclusion):** Evaluate whether **quality of filling** and **filling material** contribute to outcome.
+
+### Study design
+- The provided pages do **not include the Methods section**. However, the reference list and conclusion strongly suggest a **retrospective comparative cohort (chart review)** similar to Rahbaran 2001 (also retrospective).
+- **Unit of analysis:** likely **tooth/case** (apicectomy/periapical surgery case), not patient, but this is **not stated**.
+
+### Groups/comparators
+- **Group 1:** Periapical surgery performed in **Endodontic unit**
+- **Group 2:** Periapical surgery performed in **Oral Surgery unit**
+
+### Outcomes (dependent variables)
+- **Clinical success vs failure** (binary), definition not provided.
+- **Radiographic success vs failure** (binary), definition not provided.
+- Possibly a combined outcome (“radiographic and clinical success and failure”), but exact operationalization not given.
+
+### Main predictors/exposures (independent variables)
+- **Treatment unit** (Endodontic vs Oral Surgery) — main exposure.
+- **Quality of filling** (categorical/ordinal; not defined).
+- **Filling material** (categorical; types not listed in provided text).
+
+### Potential covariates/confounders (not given, but typically relevant)
+Not stated in provided text; commonly important for periapical surgery outcomes:
+- tooth type/anterior–posterior, maxillary/mandibular
+- lesion size, preoperative periapical status
+- presence of cyst, extrusion, etc.
+- operator experience
+- follow-up duration  
+These are **not extractable** from the provided pages.
+
+### Sample size, follow-up, measurement methods
+- **Not reported** in the provided text (Methods absent).
+- **Data collection method** is not described; likely record review + radiographic reassessment, but cannot be confirmed.
+
+---
+
+## TASK 2 — Statistical Analysis Plan (SAP)
+
+Because the Methods details are missing, the SAP below is written as a **robust plan** that covers the likely data structure for this question (two-group comparison of binary outcomes, with prognostic factors). Where decisions depend on missing details (e.g., repeated teeth per patient, follow-up time), I note the branching options.
+
+### 1) Core analysis principles
+- **Analysis population:** all eligible periapical surgery cases with outcome assessment.
+- **Primary endpoint:** difference in **success proportion** between units (clinical; and radiographic as a separate endpoint unless explicitly combined).
+- **Effect size reporting:** proportions, **risk difference**, **risk ratio**, and/or **odds ratio** with **95% CI**.
+- **Multiplicity:** if both clinical and radiographic outcomes are co-primary, pre-specify adjustment (e.g., Holm) or clearly label one primary and one secondary.
+- **Clustering:** if multiple teeth per patient, account for **intra-patient correlation** (GEE/mixed model).
+- **Missing data:** describe extent/pattern; consider multiple imputation if covariates are used and missingness is non-trivial.
+
+---
+
+# CATEGORY A — MANDATORY tests/models
+
+### A1) Pearson Chi-square test (or Fisher’s exact) for unit vs outcome
+- **Purpose:** Compare **success/failure proportions** between Endodontic vs Oral Surgery units.
+- **Why appropriate:**
+  1. Outcome is **binary** (success/failure) and exposure is **binary** (unit).
+  2. Directly answers the primary comparative question as an unadjusted analysis.
+- **Why it may not be appropriate:**
+  - If expected cell counts are small (sparse table), chi-square approximation may be invalid.
+- **When NOT to use:**
+  - When any expected cell count is too low (rule of thumb: <5 in ≥20% of cells), or sample size is very small.
+- **Alternative if assumptions violated:**
+  - **Fisher’s exact test** (exact inference) for sparse tables.
+
+### A2) Effect size estimation for binary outcomes (RR/OR with 95% CI)
+- **Purpose:** Quantify the magnitude and direction of differences between units beyond p-values.
+- **Why appropriate:**
+  1. Clinical interpretation requires **effect size + CI**.
+  2. Facilitates comparison with prior literature and supports equivalence/non-inferiority discussions (even if not designed as such).
+- **Why it may not be appropriate:**
+  - OR can exaggerate effect when outcomes are common; RR may be preferable but may require specific modeling.
+- **When NOT to use:**
+  - Do not present **only** ORs if the outcome is common without also giving absolute risks.
+- **Alternative if assumptions violated:**
+  - Use **log-binomial regression** for RR; if it fails to converge, use **Poisson regression with robust SE**.
+
+### A3) Multivariable logistic regression (or GEE/mixed-effects logistic) for adjusted comparison
+- **Purpose:** Estimate association of **unit** with success/failure **adjusting** for filling quality and filling material (and any other collected covariates).
+- **Why appropriate:**
+  1. Outcome is binary; logistic model is standard for adjustment.
+  2. Allows simultaneous evaluation of **unit**, **quality of filling**, and **filling material** as prognostic factors (as implied by the conclusion).
+- **Why it may not be appropriate:**
+  - If sample size is small with few failures, estimates may be unstable (separation/overfitting).
+- **When NOT to use:**
+  - When events are too few for the number of predictors (e.g., very low failures), or strong separation exists.
+- **Alternative if assumptions violated:**
+  - **Penalized logistic regression** (Firth) for small-sample/separation.
+  - If clustering by patient exists: **GEE logistic** (population-averaged) or **mixed-effects logistic** (random intercept for patient).
+
+---
+
+# CATEGORY B — RECOMMENDED tests/models
+
+### B1) Baseline comparability: t-test / Mann–Whitney U (continuous) and Chi-square/Fisher (categorical)
+- **Purpose:** Describe whether groups differ on baseline characteristics (potential confounding).
+- **Why appropriate:**
+  1. Non-randomized comparisons require checking imbalance.
+  2. Guides which covariates are important to adjust for.
+- **Why it may not be appropriate:**
+  - “Significance testing baseline” can be misleading; standardized differences are often better.
+- **When NOT to use:**
+  - Do not use baseline p-values as the sole criterion for confounder selection.
+- **Alternative if assumptions violated:**
+  - Use **standardized mean differences (SMD)**; use **Mann–Whitney** if non-normal/ordinal.
+
+### B2) Interaction testing (effect modification): Unit × Filling quality; Unit × Filling material
+- **Purpose:** Determine if the unit’s effect differs by filling quality/material.
+- **Why appropriate:**
+  1. Clinically plausible that outcomes depend on technique/material differently across units.
+  2. Supports nuanced interpretation (e.g., unit difference only when filling quality is poor).
+- **Why it may not be appropriate:**
+  - Low power; can generate false positives if many interactions tested.
+- **When NOT to use:**
+  - When sample size is insufficient for interaction terms (sparse subgroups).
+- **Alternative if assumptions violated:**
+  - Pre-specify a small number of interactions; or perform **stratified analyses** with exact methods if sparse.
+
+### B3) Model diagnostics for logistic regression
+- **Purpose:** Validate model adequacy and reporting quality.
+- **Recommended components:**
+  - **Calibration:** Hosmer–Lemeshow (with caution), calibration plot.
+  - **Discrimination:** AUC/ROC.
+  - **Influence/linearity:** check continuous covariates with splines (if any).
+- **Why appropriate:**
+  1. Ensures regression conclusions are credible.
+  2. Identifies misspecification/outliers.
+- **Why it may not be appropriate:**
+  - Hosmer–Lemeshow is sample-size dependent; can mislead.
+- **When NOT to use:**
+  - Avoid over-interpreting HL p-values; don’t use AUC as “model validity” alone.
+- **Alternative if assumptions violated:**
+  - Use **bootstrapped calibration**, **Brier score**, and **penalization**.
+
+### B4) Sensitivity analysis for clustering (tooth within patient)
+- **Purpose:** Assess robustness if multiple teeth per patient were included.
+- **Why appropriate:**
+  1. Dental data often have within-patient correlation.
+  2. Ignoring clustering inflates type I error (too-narrow CIs).
+- **Why it may not be appropriate:**
+  - If only one tooth per patient, clustering correction is unnecessary.
+- **When NOT to use:**
+  - When clustering cannot occur by design.
+- **Alternative if assumptions violated:**
+  - Use **cluster-robust SE**, **GEE**, or **mixed models**.
+
+---
+
+# CATEGORY C — OPTIONAL (supplementary insights)
+
+### C1) Time-to-event analysis (Kaplan–Meier + Cox regression) *if follow-up times vary and failures occur over time*
+- **Purpose:** Compare **survival/failure over time** between units.
+- **Why appropriate:**
+  1. Handles unequal follow-up and censoring.
+  2. More informative than binary “ever failed” when follow-up duration differs.
+- **Why it may not be appropriate:**
+  - If outcome is assessed at a fixed timepoint for everyone (e.g., 12 months), survival methods are unnecessary.
+- **When NOT to use:**
+  - When failure time is unknown or only final status is recorded.
+- **Alternative if assumptions violated:**
+  - If proportional hazards fails: **restricted mean survival time (RMST)** or stratified Cox.
+
+### C2) Propensity score methods (matching/weighting) *for non-random unit assignment*
+- **Purpose:** Reduce confounding due to systematic differences in case-mix between units.
+- **Why appropriate:**
+  1. Unit assignment is not randomized; PS can improve comparability.
+  2. Provides an alternative to regression adjustment and can be used as sensitivity analysis.
+- **Why it may not be appropriate:**
+  - Requires rich covariate data; unmeasured confounding remains.
+- **When NOT to use:**
+  - When sample size is small or overlap/positivity is poor.
+- **Alternative if assumptions violated:**
+  - Use **doubly robust estimation** or stick to carefully specified multivariable models with sensitivity analyses.
+
+### C3) Agreement between clinical and radiographic outcome (Cohen’s kappa)
+- **Purpose:** Quantify concordance between clinical and radiographic success classifications.
+- **Why appropriate:**
+  1. The paper mentions both clinical and radiographic outcomes; they may disagree.
+  2. Helps interpret whether both endpoints capture the same construct.
+- **Why it may not be appropriate:**
+  - If outcomes are not measured on the same cases/timepoints or are not categorical.
+- **When NOT to use:**
+  - When one measure is continuous or categories are ordered with weights needed.
+- **Alternative if assumptions violated:**
+  - **Weighted kappa** (ordered categories) or **ICC** (continuous).
+
+---
+
+## TASK 3 — Tests that should NOT be used (and why)
+
+1. **Paired t-test / Wilcoxon signed-rank**
+   - Not appropriate because groups are **independent** (different unit cases), not paired/repeated on same tooth/patient (unless explicitly matched).
+
+2. **One-way ANOVA for the primary outcome**
+   - Primary outcome is **binary**; ANOVA assumes continuous normally distributed residuals.
+
+3. **Multiple independent t-tests on proportions**
+   - Proportions require binomial methods; t-tests on 0/1 outcomes are poor practice and yield incorrect SEs in small/moderate samples.
+
+4. **Simple linear regression with binary outcome**
+   - Can predict outside [0,1] and violates homoscedasticity/normality; logistic/binomial models are more appropriate.
+
+5. **Correlation (Pearson/Spearman) between “unit” and outcome**
+   - Correlation is not the correct framework for a binary exposure and binary outcome; contingency-table or regression methods are required.
+
+---
+
+## TASK 4 — Summary justification of the analytical approach
+
+The scientific question is a **two-group comparison** (Endodontic vs Oral Surgery units) on **binary clinical and radiographic success/failure** endpoints, with additional interest in prognostic factors (filling quality/material). Therefore, the analysis must include **unadjusted two-proportion comparisons** plus **effect sizes with CIs**, and—because the comparison is almost certainly **non-randomized**—an **adjusted regression framework** (logistic, with clustering handled if multiple teeth per patient). Sensitivity and supplementary analyses (interactions, survival/PS, agreement) add rigor and interpretability.
+
+If you paste the actual **Methods** text (sampling, inclusion criteria, follow-up, outcome definitions, sample size, variables collected), I can tailor this SAP precisely (including an events-per-variable check, exact model specification, and a mock table/figure shell).

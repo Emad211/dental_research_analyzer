@@ -1,0 +1,400 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_243-22+++MIRBAHAR++ASFER-1622555526.pdf
+Status : ok
+Time   : 20260507_185517
+══════════════════════════════════════════════════════════════════════
+
+TASK 1: INFORMATION EXTRACTION  
+
+The text you provided is incomplete and appears to be partially corrupted and mixed with content from an unrelated microbiology paper. However, some key elements can still be inferred from the title and conclusion.
+
+I’ll separate what is clearly extractable from what is speculative.
+
+A. CLEARLY EXTRACTABLE INFORMATION  
+
+1. Study title  
+- “Comparison of Clinical Outcome of Periapical Surgery in Endodontic and Oral Surgery Units of a Teaching Dental Hospital.”
+
+2. Broad study type  
+- Comparative, retrospective (likely) clinical study.  
+  - The reference 21: “Rahbaran S. Comparison of clinical outcome … A retrospective study.” strongly suggests that the present study has a similar retrospective design, though this is not explicitly stated in the visible text.
+
+3. Objective  
+- To compare clinical and radiographic outcomes (success and failure) of periapical surgery performed in:
+  - Endodontic unit
+  - Oral surgery unit  
+- Secondary objective (from conclusion): To assess the role of “quality of filling” and “filling material” as contributing factors to periapical surgery outcome.
+
+4. Study groups  
+- Group 1: Cases treated with periapical surgery in the endodontic unit.  
+- Group 2: Cases treated with periapical surgery in the oral surgery unit.
+
+5. Main outcome variables  
+- Primary outcomes:
+  - Radiographic success vs failure  
+  - Clinical success vs failure  
+- These are dichotomous variables (success/failure). Likely defined according to standard criteria (e.g., symptom-free plus radiographic healing vs persistence/enlargement of periapical lesion).
+
+6. Key explanatory variables mentioned  
+- Treatment unit: Endodontic vs Oral surgery.  
+- Quality of filling:
+  - Typically categorical (e.g., adequate vs inadequate; length, density, presence of voids, etc.).  
+- Filling material:
+  - Categorical (e.g., amalgam, glass ionomer, EBA, MTA, etc.)—based on references, though exact materials for this study are not specified in the provided text.
+- Other potential pre-/intra-operative factors (not explicitly listed in the extract but highly likely given the references and standard apical surgery work):
+  - Tooth type (anterior vs posterior, maxillary vs mandibular, etc.)
+  - Presence/absence of pre-op radiolucency or size of lesion
+  - Presence of root-end filling or retrograde material
+  - Number of roots, presence of posts, etc.  
+  However, these are not visible in the excerpt, so they must be treated as assumptions rather than confirmed details.
+
+7. Sample size  
+- Not provided in the visible text. The exact number of teeth/patients is unknown from the excerpt.
+
+8. Measurement and data collection  
+- Clinical outcome:
+  - Assessed through clinical follow-up (presence/absence of symptoms such as pain, swelling, sinus tract, tenderness to percussion, etc.).
+- Radiographic outcome:
+  - Assessed by periapical radiographs (and possibly scored by standard periapical index or “healed vs uncertain vs not healed” criteria).  
+- Data collection method:
+  - Likely retrospective chart and radiograph review from a teaching dental hospital (implied by the title and the reference to a similar retrospective study), but not explicitly confirmed.
+
+9. Time frame  
+- Not visible; typical follow-up for periapical surgery outcome studies is at least 6–12 months, often longer, but we cannot assert a specific follow-up duration.
+
+10. Design level notes  
+- Comparative two-group design (Endodontic vs Oral Surgery units).
+- Observational (no random allocation); likely retrospective cohort or case-series comparison.
+- Outcome is binary, and many predictors are categorical; continuous variables (if any) are not visible.
+
+Because the Introduction and Methods are not fully visible and part of the text appears to belong to a different article, any deeper detail (exact criteria, sample size, follow-up time, detailed variables) would be speculative.
+
+For the SAP below, I’ll clearly distinguish between “assumed” elements (based on standard practice in similar studies) and “known” elements (explicitly present or reasonably inferred from this paper’s conclusion and title).
+
+---
+
+TASK 2: STATISTICAL ANALYSIS PLAN  
+
+I will structure the SAP for a typical comparison of periapical surgery outcomes between two units, specifying where assumptions are made.
+
+Assumptions stated up front:
+- Two independent groups (Endodontic-unit surgeries vs Oral-surgery-unit surgeries).
+- Outcome: binary (success vs failure) both clinically and radiographically; may also have a combined outcome (overall success).
+- Sample size adequate for basic 2×2 comparisons (≥30 per group ideally).
+- Key covariates: filling material (categorical), quality of filling (ordered or binary), and basic clinical variables (e.g., tooth type).
+- Data are at the tooth level (unit of analysis); if multiple teeth per patient exist, clustering must be considered.
+
+---
+
+CATEGORY A – MANDATORY TESTS  
+
+1. Descriptive statistics  
+
+1.1 Descriptive summary by unit  
+- Name: Descriptive statistics (frequencies, percentages; means/medians if continuous variables present).  
+- Purpose: Characterize the study population and compare baseline characteristics between endodontic and oral surgery units.  
+- Why appropriate:
+  1) Essential to understand distribution of key variables (age, tooth type, lesion size, filling material, etc.).  
+  2) Necessary to detect any imbalances between units that might confound outcome comparisons.  
+- Why it may not be appropriate:
+  - If numbers are extremely small (e.g., <10 per group), some percentage-based interpretations can be unstable or misleading.  
+- When this should NOT be used:
+  - Never “not used” in practice; but avoid over-interpreting differences in tiny samples.
+- Alternative if assumptions are violated:
+  - For very small samples, present raw counts only and avoid heavy inferential interpretation.
+
+1.2 Baseline comparability tests  
+- Name:  
+  - Chi-square test or Fisher’s exact test for categorical variables (e.g., tooth type, filling material).  
+  - t-test or Mann–Whitney U test for continuous variables (e.g., age), if present.  
+- Purpose: Evaluate whether patients/teeth treated in the two units differ systematically in baseline factors that could bias outcome comparisons.  
+- Why appropriate:
+  1) Groups are independent (different units) and mostly categorical variables; chi-square is the standard for such comparisons.  
+  2) For continuous variables, t-test or Mann–Whitney allows assessment of distribution differences between two independent groups.  
+- Why it may not be appropriate:
+  - If sample sizes are small and expected cell counts <5 for many categories, chi-square assumptions are violated.  
+  - If continuous variables are highly skewed or contain outliers, t-test assumptions fail.  
+- When this should NOT be used:
+  - Avoid chi-square if >20–25% of expected counts are <5; avoid t-test if sample size is very small and normality clearly violated.  
+- Alternatives:
+  - Fisher’s exact test instead of chi-square.  
+  - Mann–Whitney U test instead of t-test for skewed continuous data.
+
+2. Primary outcome comparison: success vs failure between units  
+
+2.1 Clinical success (binary) between units  
+- Name: Chi-square test (or Fisher’s exact test) for 2×2 table.  
+- Purpose: Compare proportion of clinical success between endodontic and oral surgery units.  
+- Why appropriate:
+  1) Outcome is binary and groups are independent; chi-square is standard for such contingency analysis.  
+  2) Simple, interpretable, and directly provides p-value and estimates of association (risk difference, relative risk, odds ratio).  
+- Why it may not be appropriate:
+  - If total sample size or cell counts are small, chi-square approximation may be poor.  
+- When this should NOT be used:
+  - Not when any expected cell count <1 or >20–25% of expected cells <5.  
+- Alternative:
+  - Fisher’s exact test, and/or exact confidence intervals for risk difference/odds ratio.
+
+2.2 Radiographic success (binary) between units  
+- Name: Chi-square test (or Fisher’s exact test) for 2×2 table.  
+- Purpose: Compare proportion of radiographic success between units.  
+- Why appropriate:
+  1) Same binary, independent-group structure as clinical outcome.  
+  2) Directly addresses the conclusion statement “no significant difference regarding radiographic success/failure between units.”  
+- Why it may not be appropriate:
+  - Same as above—small cells or zero cells.  
+- When this should NOT be used:
+  - Same as above.  
+- Alternative:
+  - Fisher’s exact test.
+
+2.3 Combined outcome (overall success)  
+- Name: Chi-square test (or Fisher’s exact test) for overall clinical+radiographic success vs failure.  
+- Purpose: Provide one global primary outcome (if defined), often “success if both clinical and radiographic criteria met.”  
+- Why appropriate:
+  1) Often more clinically relevant to use combined outcome.  
+  2) Same 2×2 structure, same rationale as above.  
+- Why it may not be appropriate:
+  - If combined outcome definition yields very few failures or successes, causing sparse cells.  
+- When this should NOT be used:
+  - When one cell is zero or counts too small; or when outcome definition is poorly standardized.  
+- Alternative:
+  - Fisher’s exact test, or collapse categories into broader “healed vs not healed/uncertain” categories if needed.
+
+3. Primary association analyses with filling quality and filling material  
+
+3.1 Association of filling quality with success  
+- Name: Chi-square test for trend (if quality is ordered) or standard chi-square (if binary); or Fisher’s exact if sparse.  
+- Purpose: Evaluate whether “quality of filling” is associated with clinical/radiographic success.  
+- Why appropriate:
+  1) Filling quality is categorical/ordinal and outcome is binary; contingency analysis is standard.  
+  2) It directly tests the study conclusion that quality of filling is a main factor.  
+- Why it may not be appropriate:
+  - If observers are not calibrated or the “quality” categories are poorly defined, misclassification bias can distort results.  
+- When this should NOT be used:
+  - When inter-rater agreement is very low; or when cell counts are extremely low.  
+- Alternative:
+  - Collapsing categories into “adequate vs inadequate” and using Fisher’s exact test; or logistic regression including filling quality as a covariate.
+
+3.2 Association of filling material with success  
+- Name: Chi-square test (R×2 or 2×2 for each pairwise comparison) or Fisher’s exact test.  
+- Purpose: Examine how different filling materials relate to success/failure.  
+- Why appropriate:
+  1) Filling material is categorical and outcome is binary; chi-square is standard.  
+  2) Aligns with the conclusion that filling material is a main contributing factor.  
+- Why it may not be appropriate:
+  - If some materials are rare, resulting in many small cells; chi-square loses power and validity.  
+- When this should NOT be used:
+  - When multiple materials have very small N (e.g., <5); or when there is severe imbalance.  
+- Alternative:
+  - Combine rare material categories; use Fisher’s exact test; or model via logistic regression with some materials collapsed as “other.”
+
+4. Multivariable analysis (to control for confounding)  
+
+4.1 Logistic regression for success outcome  
+- Name: Binary logistic regression.  
+- Purpose: Evaluate the independent effect of treatment unit on success, adjusting for filling quality, filling material, and other covariates (e.g., tooth type, lesion size).  
+- Why appropriate:
+  1) Outcome is binary; logistic regression is the standard method for multivariable modeling of odds of success.  
+  2) Observational design with potential confounders demands adjustment to avoid biased unit comparisons.  
+- Why it may not be appropriate:
+  - Requires sufficient number of events (rule of thumb ~10 events per predictor); if sample is small, model becomes unstable.  
+- When this should NOT be used:
+  - When total number of failures (or successes) is very low; or when predictor categories yield quasi-complete separation (e.g., one unit has zero failures).  
+- Alternatives:
+  - Exact logistic regression in small samples; Firth’s penalized logistic regression; or, in very small datasets, restricted bivariate analyses and careful descriptive interpretation instead of overfitted models.
+
+---
+
+CATEGORY B – RECOMMENDED TESTS  
+
+5. Inter-rater reliability (if multiple evaluators)  
+
+5.1 Clinical outcome assessment agreement  
+- Name: Cohen’s kappa (two raters) or Fleiss’ kappa (≥3 raters).  
+- Purpose: Evaluate reliability of clinical success/failure classification between different examiners.  
+- Why appropriate:
+  1) Clinical outcomes often involve judgment; assessing agreement is key to credibility.  
+  2) Kappa adjusts for agreement expected by chance, improving interpretation beyond raw percentage agreement.  
+- Why it may not be appropriate:
+  - Requires that at least some cases were rated independently by ≥2 examiners; if not done, cannot be applied.  
+- When this should NOT be used:
+  - When each case is assessed by only one examiner; or when sample for reliability is extremely small (<20).  
+- Alternative:
+  - Simple percent agreement (descriptive) if kappa cannot be estimated; or intra-class correlation (ICC) if measuring continuous scores instead of binary categories.
+
+5.2 Radiographic outcome assessment agreement  
+- Name: Cohen’s kappa / weighted kappa (if ordinal radiographic scores used).  
+- Purpose: Evaluate reliability of radiographic healing assessment.  
+- Why appropriate:
+  1) Radiographic interpretation can be subjective; kappa is standard for categorical imaging scores.  
+  2) Weighted kappa handles ordinal categories (e.g., complete, incomplete, uncertain, failure).  
+- Why it may not be appropriate:
+  - Same constraints as above; requires multiple raters and sufficient shared cases.  
+- When this should NOT be used:
+  - If only one radiographic assessor.  
+- Alternative:
+  - ICC for continuous periapical index scores; or percent agreement.
+
+6. Subgroup analyses  
+
+6.1 Unit-specific analyses by tooth type or filling material  
+- Name: Stratified chi-square or Mantel–Haenszel test.  
+- Purpose:  
+  - Determine whether unit effect differs across strata, e.g., anterior vs posterior teeth or different materials.  
+- Why appropriate:
+  1) Allows exploration of effect modification (interaction) without fitting overly complex models.  
+  2) Useful if the distribution of tooth types or materials is very different between units.  
+- Why it may not be appropriate:
+  - Multiple subgroup analyses increase type I error risk; may be underpowered.  
+- When this should NOT be used:
+  - When sample size per stratum is small and results will be highly unstable; or if no pre-specified subgroups exist.  
+- Alternative:
+  - Include interaction terms in logistic regression (unit × tooth type, unit × material); interpret cautiously.
+
+7. Sensitivity analyses  
+
+7.1 Alternative definitions of success  
+- Name: Repeated chi-square / logistic regression with different success definitions (e.g., success = full healing vs success = full + partial healing).  
+- Purpose: Examine robustness of findings to different clinically plausible outcome definitions.  
+- Why appropriate:
+  1) Clinical success criteria can vary; demonstrating consistent results enhances credibility.  
+  2) Helps understand if “borderline” categories drive results.  
+- Why it may not be appropriate:
+  - Requires adequate sample sizes; multiple analyses risk overinterpretation.  
+- When this should NOT be used:
+  - In very small samples; or when outcome definition is clearly pre-specified and consensus-based.  
+- Alternative:
+  - Pre-register one primary outcome definition and treat others as purely exploratory.
+
+7.2 Analysis by follow-up duration (if variable)  
+- Name: Stratified analysis by follow-up time (e.g., ≤1 year vs >1 year) using chi-square / logistic regression.  
+- Purpose: Assess whether unit differences or failure rates depend on length of follow-up.  
+- Why appropriate:
+  1) Outcome of periapical surgery can evolve over time; early success may fail later.  
+  2) Balancing follow-up time across units reduces bias.  
+- Why it may not be appropriate:
+  - May not be possible if follow-up times are homogeneous or not recorded.  
+- When this should NOT be used:
+  - When follow-up duration information is missing or unreliable.  
+- Alternative:
+  - Time-to-event methods (Kaplan–Meier) if exact failure dates known (see below).
+
+8. Time-to-event analysis (if sufficient data available)  
+
+8.1 Survival analysis of tooth/root survival or time to failure  
+- Name: Kaplan–Meier survival curves and log-rank test; Cox proportional hazards model.  
+- Purpose:  
+  - Evaluate time-dependent outcome such as time to failure or time to extraction; compare survival between units.  
+- Why appropriate:
+  1) If follow-up varies, survival methods correctly account for censoring.  
+  2) Cox model can incorporate filling material, quality, etc., as covariates.  
+- Why it may not be appropriate:
+  - Requires known dates of surgery and failure/censoring; such data may not be available in a retrospective chart review.  
+- When this should NOT be used:
+  - When only “status at last follow-up” is known without time information; or when sample size is too small with few events.  
+- Alternative:
+  - Logistic regression on success at a fixed follow-up point; or simple cross-sectional analysis.
+
+---
+
+CATEGORY C – OPTIONAL TESTS  
+
+9. Effect size estimation and confidence intervals  
+
+9.1 Risk difference, relative risk, odds ratio with CIs  
+- Name: Calculation of effect sizes and 95% confidence intervals (e.g., Newcombe method for risk difference).  
+- Purpose: Provide magnitude and precision of differences, not just p-values.  
+- Why appropriate:
+  1) Effect size quantification is more interpretable for clinicians than p-values alone.  
+  2) Confidence intervals show uncertainty, crucial for “no significant difference” conclusions.  
+- Why it may not be appropriate:
+  - None in principle; but in very small samples CIs can be very wide and unstable.  
+- When this should NOT be used:
+  - Rarely; but be cautious about interpretation when N is tiny.  
+- Alternative:
+  - Report exact binomial CIs for proportions if necessary.
+
+10. Exploratory modeling of radiographic score as ordinal outcome  
+- Name: Ordinal logistic regression (proportional odds model) if radiographic healing is scored on an ordinal scale (e.g., healed, improving, unchanged, worse).  
+- Purpose: Model the entire spectrum of radiographic healing, not just binary success/failure.  
+- Why appropriate:
+  1) Uses more information than dichotomization, potentially more power.  
+  2) Clinically relevant if partial healing categories are important.  
+- Why it may not be appropriate:
+  - Requires assumption of proportional odds; if violated, interpretation becomes complex.  
+- When this should NOT be used:
+  - If sample size is small, or counts in some categories are low; or if assumption tests indicate strong non-proportionality.  
+- Alternative:
+  - Collapsing the scale into binary outcome; or using multinomial logistic regression, though more parameter-hungry.
+
+11. Exploratory association between filling material and specific complications  
+- Name: Chi-square/Fisher’s exact for association of specific complications (e.g., overfill, extrusion, persistent sinus) with material.  
+- Purpose: Explore whether certain materials are associated with specific adverse radiographic or clinical signs.  
+- Why appropriate:
+  1) May highlight clinically important safety differences beyond success/failure.  
+  2) Uses standard contingency methods for binary categorical relationships.  
+- Why it may not be appropriate:
+  - Multiple testing increases false-positive risk; results may be underpowered.  
+- When this should NOT be used:
+  - When sample size per complication is very low or complications are rare.  
+- Alternative:
+  - Descriptive reporting only; or summarizing complications qualitatively.
+
+---
+
+TASK 3: INAPPROPRIATE TESTS  
+
+Given the design and outcome structure, the following tests/methods should be avoided:
+
+1. Paired tests (paired t-test, McNemar’s test)  
+- Why inappropriate:
+  - The study compares independent groups (different patients/teeth in two units). There is no pairwise matching of the same tooth or patient pre- and post-intervention across units.  
+- When might they be considered but still wrong:
+  - If someone misconstrues “before vs after surgery” as paired between units rather than within a single tooth, they might incorrectly use paired tests across units.
+
+2. Repeated-measures ANOVA / mixed models for longitudinal repeated outcomes  
+- Why inappropriate:
+  - Although there may be follow-up over time, the published conclusion is purely about success/failure at follow-up; repeated time points or continuous repeated measures are not described.  
+- When not to use:
+  - When only a single outcome assessment per tooth is available or retained for analysis.
+
+3. One-way or two-way ANOVA for primary success comparison  
+- Why inappropriate:
+  - Primary outcome is binary (success/failure), not continuous. ANOVA assumes continuous, roughly normal outcomes.  
+- When not to use:
+  - For any analysis where the dependent variable is dichotomous.
+
+4. Pearson correlation for main binary outcomes  
+- Why inappropriate:
+  - Correlation is not the primary method for binary outcomes; association between binary variables is better measured by odds ratio/risk ratio or logistic regression.  
+- When not to use:
+  - For assessing association between unit and success, or between filling quality/material and success.
+
+5. Parametric tests without checking assumptions  
+- Example: Using standard t-test on highly skewed or small-sample continuous variables (if any).  
+- Why inappropriate:
+  - Violated assumptions compromise validity; robust or non-parametric alternatives should be used.
+
+6. Complex machine-learning models (e.g., random forests, SVM) for this small comparative study  
+- Why inappropriate:
+  - Overfitting, lack of interpretability, and likely inadequate sample size make them unsuitable and unjustified for a straightforward clinical comparison.
+
+---
+
+TASK 4: SUMMARY – OVERALL ANALYTICAL APPROACH  
+
+- The study’s main question is simple and comparative: Are periapical surgery outcomes (clinical and radiographic success/failure) different between endodontic and oral surgery units in a teaching hospital?  
+- The design is observational with two independent groups and binary outcomes. The backbone of the analysis is thus:
+  - Robust descriptive statistics.
+  - 2×2 comparisons via chi-square/Fisher’s exact tests for primary outcomes (clinical, radiographic, combined success) between units.
+  - Assessment of key predictors (filling quality, filling material) using contingency methods and multivariable logistic regression to control for confounding.
+- Reliability of outcome assessment (kappa) and sensitivity analyses for outcome definitions and follow-up duration improve methodological rigor.
+- If time-to-failure information is available, survival analysis can add depth; if not, cross-sectional binary analyses suffice.
+- The recommended plan balances:
+  - Simplicity and interpretability (critical for clinical readers),
+  - Appropriate handling of binary outcomes and confounding,
+  - Awareness of sample size and assumption constraints.
+
+This structure will allow clear, statistically sound conclusions about whether there is a meaningful difference between units and how filling quality/material influence the success of periapical surgery.

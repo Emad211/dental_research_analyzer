@@ -1,0 +1,24 @@
+{
+  "pdf_name": "spitted_admin,+34+-+3391-OJS+-+C+-+D+-+Dr+Shahid+Islam.pdf",
+  "timestamp": "20260507_184802",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 1412
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 584
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 6291
+    }
+  }
+}

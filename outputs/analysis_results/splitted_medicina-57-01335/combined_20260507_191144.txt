@@ -1,0 +1,920 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_medicina-57-01335.pdf
+Time : 20260507_191144
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study design & setting
+- **Design:** Randomized, controlled, **single-blind**, **single-centre** clinical trial.
+- **Setting:** Dental Clinic, University of Salamanca (Spain).
+- **Ethics:** University of Salamanca Ethics Committee approval (Protocol **542/2020**); Declaration of Helsinki.
+- **Blinding:** Participants blinded to syringe type:
+  - Eye mask during procedure
+  - Background music + chair suction to mask Dentapen motor sound
+- **Operator:** **Single operator** (important for clustering by operator = none; but limits generalizability).
+
+### Objective
+- Compare **pain experienced during local anesthetic injections** across different **areas and procedures**, using:
+  - **Traditional syringe** vs
+  - **Controlled-flow Dentapen®** system.
+
+### Participants
+- **N (patients):** 178 adults, age **18–90** years.
+- **Sex:** 87 men (48.9%), 91 women (51.1%).
+- **Clinical eligibility (as stated):** “Volunteers requiring some sort of dental treatment” requiring anesthesia (no further inclusion/exclusion provided in text).
+
+### Unit of analysis / observations
+- Each patient could contribute >1 anesthetic intervention:
+  - Mean **1.8 ± 1.9** anesthetized interventions per patient.
+  - **Total observations:** **287** anesthetic-injection/procedure observations.
+- **Important implication:** Data are **clustered/repeated within patient** (non-independence).
+
+### Randomization
+- **Allocation:** Treatment assigned by **pre-generated randomization list** (automatic).
+- **Bilateral treatments:** Side assigned using a **supplementary randomization list**.
+- **Sex balancing:** Randomization performed “to avoid sex bias” and keep sex distribution similar by group (implies stratified/blocking by sex, though method not fully specified).
+
+### Intervention / comparison groups
+- **Group 1:** Dentapen® controlled-flow delivery system.
+- **Group 2:** Conventional (traditional) syringe.
+- **Observed distribution across procedures:** Dentapen used **54.7%**, conventional **45.3%** (of 287 observations).
+
+### Procedures performed (case-mix)
+Procedures requiring anesthesia among the 287 observations included:
+- 119 extractions
+- 66 fillings
+- 55 root canals/retreatments
+- 27 surgeries (including 11 implants, sinus lifts, lip repositioning, vestibuloplasty, bone regeneration, crown lengthening, free gingival grafts, etc.)
+- 20 prepared tooth stumps  
+(Procedure mix suggests potential confounding/effect modification: pain may differ strongly by procedure type and injection site.)
+
+### Outcomes / variables explicitly mentioned in provided text
+- **Primary outcome (implied):** **Pain during local anesthetic injection** (measurement instrument not shown in provided text—likely VAS/NRS but not specified here).
+- **Other variables suggested by keywords:** **Pulse rate** (physiologic correlate of anxiety/pain), though measurement protocol not included in provided text.
+- **Covariates available from text:** age, sex, procedure type; laterality/bilateral status.
+
+### Data collection methods (as available in text)
+- Pain recorded “during local anesthetic injections” (timing clear; scale/instrument not provided).
+- Blinding procedures described; no explicit mention of calibration, timing of pulse recordings, anesthetic type/volume/needle gauge/injection site, etc. in provided excerpt.
+
+---
+
+## TASK 2: Statistical Analysis Plan (SAP)
+
+### General principles (applies to all analyses)
+- **Analysis populations**
+  - **Primary:** Intention-to-treat at the *observation level* (each anesthetic event analyzed as randomized), while accounting for **within-patient clustering**.
+  - **Sensitivity:** Per-protocol (exclude protocol deviations if defined).
+- **Primary estimand**
+  - Mean (or median) difference in **pain score** between Dentapen vs conventional during injection.
+- **Key statistical issue**
+  - **Non-independence:** 287 observations from 178 patients → use **mixed-effects** or **GEE**; avoid simple two-sample tests on all observations as if independent.
+- **Descriptive statistics**
+  - By group: counts/percentages for categorical variables; mean±SD or median(IQR) for continuous; importantly, summarize both **patient-level** and **observation-level** characteristics.
+- **Missing data**
+  - Report missingness by variable and group.
+  - If primary outcome missing is non-trivial: use **multiple imputation** compatible with clustered data (or mixed-model likelihood-based approach, depending on outcome model).
+
+---
+
+# CATEGORY A – MANDATORY tests/models
+
+## A1. Linear mixed-effects model (LMM) for pain score (continuous)
+- **Purpose:** Compare mean pain between Dentapen and conventional while accounting for repeated observations within patients.
+- **Why appropriate (≥2 reasons):**
+  1. Handles **correlated outcomes** due to multiple procedures per patient via **random intercept (patient)**.
+  2. Allows adjustment for **procedure type**, sex, age (and potentially injection site, if available) to improve precision and address case-mix imbalance.
+- **Why it may not be appropriate (≥1 reason):**
+  - Pain scales are often **bounded and ordinal**; residual normality/homoscedasticity may be poor, especially with floor effects (many zeros).
+- **When NOT to use:**
+  - When pain is clearly **ordinal with few categories** (e.g., 0–3), or distribution is extremely skewed/zero-inflated and transformation doesn’t help.
+- **Alternative if assumptions violated:**
+  - **Ordinal mixed-effects model** (cumulative logit mixed model) if ordinal.
+  - **Robust LMM** / **bootstrap CI** for group effect.
+  - **Quantile mixed model** (median difference) if heavy skewness.
+
+**Model specification (minimum)**
+- Outcome: pain score per observation  
+- Fixed effects: group (Dentapen vs conventional) + procedure type (+ age, sex; + bilateral indicator if relevant)  
+- Random effects: patient-level random intercept  
+- Report: adjusted mean difference, 95% CI, p-value; also standardized effect size if useful.
+
+---
+
+## A2. Generalized linear mixed model (GLMM) or ordinal mixed model (if pain is ordinal)
+- **Purpose:** Compare pain distributions between groups when pain is ordinal (e.g., VAS categorized, Likert).
+- **Why appropriate:**
+  1. Respects **ordinal nature** (doesn’t assume equal spacing).
+  2. Accounts for **within-patient clustering** via random effects.
+- **Why it may not be appropriate:**
+  - **Proportional odds assumption** may be violated.
+- **When NOT to use:**
+  - When pain is truly continuous (0–100 VAS with near-continuous behavior) and LMM assumptions are acceptable/preferred.
+- **Alternative if assumptions violated:**
+  - **Partial proportional odds mixed model** or **multinomial mixed model**.
+  - Treat pain as continuous with robust SEs as sensitivity.
+
+---
+
+## A3. Baseline comparability / covariate balance checks (descriptive + standardized differences)
+- **Test/metric:** **Standardized mean differences (SMDs)** (not p-values) for age/sex/procedure type by randomized group.
+- **Purpose:** Document randomization success and characterize groups.
+- **Why appropriate:**
+  1. SMDs are not driven by sample size like hypothesis tests.
+  2. Works with clustered data description (at patient-level and observation-level).
+- **Why it may not be appropriate:**
+  - If covariates are measured at the observation level with repeats, SMD calculation needs careful definition (patient-level summaries or cluster-adjusted).
+- **When NOT to use:**
+  - Do not use **significance testing** of baseline variables as a decision rule for modeling.
+- **Alternative if issues:**
+  - Present covariates by group with **cluster-aware summaries** (e.g., per-patient averages, or mixed-model-based descriptive estimates).
+
+---
+
+# CATEGORY B – RECOMMENDED tests/models
+
+## B1. GEE (Generalized Estimating Equations) for pain
+- **Purpose:** Estimate **population-averaged** group difference accounting for clustering by patient.
+- **Why appropriate:**
+  1. Robust to some mis-specification of within-subject correlation (sandwich SE).
+  2. Directly targets marginal/average effect, often relevant clinically.
+- **Why it may not be appropriate:**
+  - With **small number of clusters** GEE SEs can be biased; here 178 clusters is usually adequate.
+- **When NOT to use:**
+  - If interest is primarily **subject-specific** effects or heterogeneity between patients (LMM/GLMM better).
+- **Alternative if assumptions violated:**
+  - Mixed-effects models; or GEE with small-sample corrections (e.g., Mancl–DeRouen).
+
+---
+
+## B2. Interaction (effect modification) testing: group × procedure type
+- **Purpose:** Determine whether Dentapen effect differs by **procedure category** (e.g., extraction vs filling vs endodontics vs surgery).
+- **Why appropriate:**
+  1. Strong a priori rationale: pain differs by procedure and injection context.
+  2. Prevents misleading “overall” effect if effects vary materially across strata.
+- **Why it may not be appropriate:**
+  - Many procedure subtypes → sparse cells → unstable interaction estimates and multiplicity.
+- **When NOT to use:**
+  - When sample size within procedure strata is too small or categories are overly granular; then collapse categories.
+- **Alternative if assumptions violated:**
+  - Pre-specify broader procedure groups; use hierarchical/shrinkage approaches; present stratified estimates with CIs without formal interaction test.
+
+---
+
+## B3. Sensitivity analysis restricting to first observation per patient
+- **Test/model:** Two-sample comparison on first procedure only (e.g., t-test / Mann–Whitney) + confirm with regression.
+- **Purpose:** Check robustness to within-patient correlation and potential learning/fatigue effects.
+- **Why appropriate:**
+  1. Removes clustering entirely (one record per patient).
+  2. Helps assess whether repeated interventions per patient drive findings.
+- **Why it may not be appropriate:**
+  - Discards data → loss of power and representativeness.
+- **When NOT to use:**
+  - As primary analysis (wastes information).
+- **Alternative if assumptions violated:**
+  - Keep all observations and use mixed models (primary).
+
+---
+
+## B4. Model diagnostics / assumption checks
+- **Tools:** residual plots (LMM), Q–Q plots, heteroscedasticity checks; proportional odds check for ordinal models.
+- **Purpose:** Validate chosen model and assumptions.
+- **Why appropriate:**
+  1. Pain outcomes often skewed; diagnostics prevent incorrect inference.
+  2. Supports justification for transformations/alternative models.
+- **Why it may not be appropriate:**
+  - Some diagnostics are less informative for small samples or discrete outcomes.
+- **When NOT to use:**
+  - Never “not use”; but avoid over-interpreting minor departures.
+- **Alternative if issues found:**
+  - Robust SEs, transformation, ordinal/GLMM, bootstrap.
+
+---
+
+# CATEGORY C – OPTIONAL tests/models (supplementary)
+
+## C1. Nonparametric clustered comparison (cluster-level permutation / randomization test)
+- **Purpose:** Provide inference aligned with randomization with minimal distributional assumptions.
+- **Why appropriate:**
+  1. Honors the **randomization** mechanism.
+  2. Useful if pain distribution is highly non-normal and modeling is contentious.
+- **Why it may not be appropriate:**
+  - More complex with repeated measures and covariate adjustment; may be computationally heavy.
+- **When NOT to use:**
+  - If allocation was not strictly random at the observation level (e.g., some deterministic assignment), or if implementation details are unclear.
+- **Alternative if assumptions violated:**
+  - Bootstrap clustered CIs; robust mixed models.
+
+---
+
+## C2. Mediation/association analysis with pulse rate (if pulse measured as outcome/covariate)
+- **Test/model:** Mixed model for pulse rate; correlation between pain and pulse (repeated-measures correlation).
+- **Purpose:** Explore physiologic correlate of pain/anxiety and whether Dentapen influences it.
+- **Why appropriate:**
+  1. Pulse rate is objective and may triangulate self-reported pain.
+  2. Can help interpret whether differences reflect anxiety vs nociception.
+- **Why it may not be appropriate:**
+  - Pulse is influenced by many factors (medications, movement, baseline anxiety) and may be poorly standardized.
+- **When NOT to use:**
+  - If timing/measurement conditions for pulse are inconsistent or missing.
+- **Alternative if assumptions violated:**
+  - Robust mixed models; nonparametric within-subject association methods.
+
+---
+
+## C3. Multiple-comparisons adjustment (if many secondary outcomes/strata)
+- **Method:** Holm or Benjamini–Hochberg (FDR) depending on objective.
+- **Purpose:** Control false positives when examining multiple procedures/sites/outcomes.
+- **Why appropriate:**
+  1. Many dental procedure sub-analyses inflate Type I error.
+  2. Improves credibility of subgroup findings.
+- **Why it may not be appropriate:**
+  - Can be overly conservative for a small set of clinically pre-specified comparisons.
+- **When NOT to use:**
+  - For a single pre-specified primary endpoint comparison.
+- **Alternative if assumptions violated:**
+  - Pre-specify limited hypotheses; emphasize effect sizes and CIs.
+
+---
+
+## TASK 3: Inappropriate tests (should NOT be used)
+
+1. **Independent-samples t-test (or Mann–Whitney) on all 287 observations treating them as independent**
+   - **Why inappropriate:** violates independence due to multiple observations per patient → inflated Type I error and overly narrow CIs.
+
+2. **Multiple separate t-tests per procedure subtype without a model/adjustment**
+   - **Why inappropriate:** multiplicity + sparse data in rare procedures → unstable estimates and false positives.
+
+3. **Chi-square test comparing “pain present vs absent” without accounting for clustering**
+   - **Why inappropriate:** repeated measures per patient; also dichotomizing pain loses information and power.
+
+4. **Simple linear regression ignoring clustering**
+   - **Why inappropriate:** same independence violation; SEs incorrect.
+
+5. **Paired t-test** (as a default)
+   - **Why inappropriate:** only valid for true paired/split-mouth within the same patient with both devices under comparable conditions; the study includes non-bilateral and multiple procedures, and not all patients contribute paired data.
+
+---
+
+## TASK 4: Summary (overall analytical approach)
+
+Primary analysis should compare Dentapen vs conventional on **pain during injection** using a **mixed-effects model (or GEE)** that accounts for **within-patient clustering** from multiple anesthetic events per participant, with adjustment for major drivers of pain such as **procedure type** (and age/sex). This yields valid inference, uses all data efficiently, and supports clinically interpretable overall and procedure-specific (interaction/stratified) conclusions.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: 
+   - Randomized, controlled, single-blind, single-center clinical trial.
+
+2. **Objective**: 
+   - To compare the pain experienced by patients during local anesthetic injections using traditional syringes versus the controlled-flow Dentapen® technique.
+
+3. **Groups**:
+   - Group 1: Traditional syringe technique.
+   - Group 2: Controlled-flow Dentapen® technique.
+
+4. **Sample Size**:
+   - 178 adult volunteers (aged 18–90 years; 87 men and 91 women).
+   - Total of 287 observations (1.8 ± 1.9 interventions per patient).
+
+5. **Variables**:
+   - **Primary Outcome**: Pain experienced during anesthetic injection.
+   - **Secondary Outcomes**: Potential differences in pain across dental procedures (e.g., extractions, fillings, root canal treatments, surgeries).
+   - **Covariates**: Age, sex, type of dental procedure, syringe type.
+
+6. **Measurements**:
+   - Pain assessment (method not explicitly described in the provided text but likely subjective or objective pain scoring).
+   - Distribution of procedures: 119 extractions, 66 fillings, 55 root canal treatments, 27 surgeries, and others.
+
+7. **Data Collection Methods**:
+   - Randomization: Automated randomization list to assign treatment type and side for bilateral procedures.
+   - Blinding: Participants were blinded by masking their eyes and camouflaging the sound of the Dentapen® motor.
+   - Controlled environment: Background music and suction system used to minimize auditory cues.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Independent Samples t-Test (or Mann-Whitney U Test for non-normal data).
+   - **Purpose**: Compare mean pain scores between the two groups (traditional syringe vs. Dentapen®).
+   - **Why Appropriate**:
+     1. The study involves two independent groups.
+     2. Pain scores are likely continuous data.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normal distribution of pain scores; if violated, Mann-Whitney U Test should be used.
+   - **When NOT to Use**:
+     - If pain scores are categorical or ordinal.
+   - **Alternative**: Mann-Whitney U Test for non-normal data.
+
+2. **Test Name**: Chi-Square Test of Independence.
+   - **Purpose**: Assess the association between syringe type and categorical outcomes (e.g., type of procedure performed).
+   - **Why Appropriate**:
+     1. Categorical data (procedure type) is compared across syringe types.
+     2. Randomization ensures independence of observations.
+   - **Why It May Not Be Appropriate**:
+     - Small cell counts may violate assumptions.
+   - **When NOT to Use**:
+     - If expected frequencies are <5 in any cell.
+   - **Alternative**: Fisher’s Exact Test for small sample sizes.
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Repeated Measures ANOVA (or Linear Mixed Models).
+   - **Purpose**: Analyze pain scores across multiple interventions per patient.
+   - **Why Appropriate**:
+     1. Accounts for repeated measures within the same patient.
+     2. Allows adjustment for covariates (e.g., age, sex, procedure type).
+   - **Why It May Not Be Appropriate**:
+     - Assumes sphericity; if violated, corrections like Greenhouse-Geisser should be applied.
+   - **When NOT to Use**:
+     - If pain scores are not continuous.
+   - **Alternative**: Generalized Estimating Equations (GEE) for non-normal data.
+
+2. **Test Name**: Logistic Regression.
+   - **Purpose**: Predict likelihood of high pain scores based on syringe type and procedure type.
+   - **Why Appropriate**:
+     1. Pain scores can be dichotomized (e.g., high vs. low pain).
+     2. Allows adjustment for covariates.
+   - **Why It May Not Be Appropriate**:
+     - Requires large sample size for reliable estimates.
+   - **When NOT to Use**:
+     - If pain scores cannot be dichotomized.
+   - **Alternative**: Multinomial Logistic Regression for more than two categories.
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Subgroup Analysis (e.g., stratified t-tests or ANOVA).
+   - **Purpose**: Explore differences in pain scores across specific procedures (e.g., extractions vs. fillings).
+   - **Why Appropriate**:
+     1. Provides insights into procedure-specific effects.
+     2. Enhances clinical relevance of findings.
+   - **Why It May Not Be Appropriate**:
+     - Risk of type I error due to multiple comparisons.
+   - **When NOT to Use**:
+     - If subgroup sample sizes are too small.
+   - **Alternative**: Bonferroni correction for multiple comparisons.
+
+2. **Test Name**: Correlation Analysis (e.g., Spearman’s Rank Correlation).
+   - **Purpose**: Assess relationships between pain scores and continuous variables (e.g., age).
+   - **Why Appropriate**:
+     1. Useful for exploratory analysis.
+     2. Does not assume linearity (Spearman’s).
+   - **Why It May Not Be Appropriate**:
+     - Does not establish causation.
+   - **When NOT to Use**:
+     - If data are not paired or continuous.
+   - **Alternative**: Partial correlation controlling for covariates.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: Paired t-Test.
+   - **Why NOT Appropriate**: The study compares independent groups (traditional syringe vs. Dentapen®), not paired data.
+2. **Test Name**: Kaplan-Meier Survival Analysis.
+   - **Why NOT Appropriate**: This test is designed for time-to-event data, which is not relevant here.
+3. **Test Name**: One-Way ANOVA.
+   - **Why NOT Appropriate**: The study involves two groups, not multiple groups.
+
+---
+
+### TASK 4: SUMMARY
+The overall analytical approach focuses on comparing pain scores between syringe types while accounting for repeated measures and covariates. Mandatory tests ensure robust primary analysis, while recommended and optional tests provide deeper insights into procedure-specific effects and relationships with covariates. The plan balances statistical rigor with clinical relevance, ensuring valid and interpretable results.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1: INFORMATION EXTRACTION  
+===============================  
+
+1. Study design  
+- Type: Randomised, controlled, single‑blind, single‑centre clinical trial.  
+- Centre: Dental Clinic, University of Salamanca.  
+- Ethics: Approved by Ethics Committee of the University of Salamanca (Protocol 542/2020), Declaration of Helsinki.  
+- Blinding:  
+  - Single‑blind: participants blinded to syringe type.  
+  - Methods: patients not informed of syringe type; eye mask; background music and suction noise to mask Dentapen® motor sound.  
+  - Operator unblinded (single operator).  
+
+2. Participants  
+- Population: Adult volunteers requiring dental treatment.  
+- Setting: University dental clinic.  
+- Inclusion:  
+  - Adults 18–90 years old.  
+  - Requiring some dental treatment needing local anaesthesia.  
+- Exclusion: Not stated in provided text (likely present in missing pages).  
+- Sample size:  
+  - 178 adult volunteers.  
+  - Gender: 87 men (48.9%), 91 women (51.1%).  
+- Unit of analysis (observations):  
+  - Average of 1.8 ± 1.9 interventions requiring anaesthesia per patient.  
+  - Total observations: 287 anaesthetic procedures (51% in men, 49% in women).  
+  - Clustered data: multiple procedures per patient (intra‑subject correlation).
+
+3. Interventions / Groups  
+- Comparison:  
+  - Group 1: Traditional dental syringe (conventional local anaesthesia delivery).  
+  - Group 2: Dentapen® (computer‑controlled/motorised, controlled‑flow delivery syringe).  
+- Allocation:  
+  - Randomization list generated before study start determining treatment material (syringe type) for each patient.  
+  - For bilateral treatments, an additional randomization list determined side allocation.  
+- Group sizes (procedure level):  
+  - Dentapen® used in 54.7% of procedures.  
+  - Conventional syringe used in 45.3% of procedures.  
+
+4. Blinding and bias control  
+- Participant blinding: yes (mask over eyes; sound camouflage).  
+- Balancing by sex:  
+  - Randomization done "in order to avoid sex bias", final numbers of men and women in each group not significantly different.  
+- Single operator to standardize clinical technique.
+
+5. Outcomes and variables (inferred from title/keywords; full details are likely in missing pages but we can outline structure)  
+
+Primary outcome (very likely):  
+- Pain experienced during local anaesthetic injection.  
+  - Expected measurement:  
+    - Visual analogue scale (VAS) or numerical rating scale (NRS) for injection pain, or similar (standard in such trials; exact scale not visible in provided text).  
+    - Likely measured immediately after injection or after procedure.  
+  - Scale type: continuous, bounded (e.g., 0–10, or 0–100).  
+
+Secondary outcomes (inferred from keywords/intro):  
+- Pulse rate:  
+  - Measured as physiological correlate of pain/anxiety.  
+  - Likely measured baseline vs during/after injection (heart rate in beats/min).  
+  - Continuous variable.  
+- Dental procedure type:  
+  - Categorical variable (nominal). Given distribution:  
+    - Extractions (n=119)  
+    - Fillings (n=66)  
+    - Root canal treatments/retreatments (n=55)  
+    - Surgeries (n=27; including 11 implants, 3 sinus lifts, other surgeries).  
+    - Prepared tooth stumps (n=20).  
+- Sex: male/female (binary).  
+- Age: continuous (18–90 years).  
+- Type of syringe: Dentapen® vs conventional (binary, main exposure).  
+- Possibly:  
+  - Site/area of injection (different areas and procedures are mentioned).  
+  - Type of anaesthesia (infiltration vs nerve block, palatal vs buccal etc; not visible but common).  
+  - Baseline dental anxiety (often measured by Modified Dental Anxiety Scale; not explicitly stated here but possible).  
+
+6. Data structure  
+- Hierarchical:  
+  - Level 1: Procedure/anaesthetic injection (n = 287).  
+  - Level 2: Patient (n = 178).  
+- Some procedures bilateral; side randomization suggests:  
+  - Possibly within‑patient comparisons for bilateral cases (one side Dentapen®, other conventional), but not clearly labelled as split‑mouth; design text calls the whole trial randomised-controlled rather than split‑mouth, so likely:  
+    - Most patients received one method per procedure; some bilateral allocation differences exist.  
+- Covariates: potential confounders/stratifiers include sex, age, procedure type, and anatomic site.
+
+7. Data collection / measurement methods  
+- Syringe type: recorded by operator according to randomization schedule.  
+- Pain: likely self‑reported using a standardized pain scale (VAS / NRS) administered by staff; timing ~immediately after injection.  
+- Pulse rate:  
+  - Likely measured using standard clinical equipment (pulse oximeter, blood pressure monitor, or similar) pre‑procedure and during/after injection.  
+- Anonymized data entry; details not visible but standard for RCT.  
+
+8. Hypotheses (implied)  
+- Primary hypothesis: Dentapen® (controlled‑flow injection) results in lower pain during local anaesthetic injection compared to traditional syringe, across different dental procedures and areas.  
+- Secondary:  
+  - Dentapen® reduces physiological stress (lower pulse rate increase).  
+  - Effect may differ by procedure type, injection site, and/or patient characteristics (sex, age).
+
+---
+
+TASK 2: STATISTICAL ANALYSIS PLAN  
+==================================  
+
+Key design implications:  
+- Randomised comparison of two methods (Dentapen® vs conventional).  
+- Repeated/clustered observations per patient (287 procedures in 178 patients).  
+- Outcome(s) are likely continuous (pain score, pulse rate); must account for non‑independence.  
+
+Below, tests are grouped into Mandatory, Recommended, Optional. For each: purpose, appropriateness, possible issues, when not to use, and alternatives.
+
+CATEGORY A – MANDATORY TESTS  
+-----------------------------  
+
+A1. Descriptive statistics and baseline comparability  
+**Test/Methods:**  
+- Descriptive statistics: means ± SD or medians (IQR), counts (%) by group.  
+- Between‑group comparisons for baseline variables:  
+  - t‑test or Mann–Whitney U for continuous variables (e.g., age).  
+  - Chi‑square or Fisher’s exact test for categorical variables (sex, procedure type).  
+
+**Purpose:**  
+- Describe sample and procedures.  
+- Assess balance across treatment groups (Dentapen® vs conventional) despite randomization, particularly for age, sex, and procedure type.  
+
+**Why appropriate:**  
+1. Essential to characterize the population and context of the trial; journals expect this.  
+2. Allows evaluation of the success of randomization and identification of potential imbalances that may deserve adjustment in multivariable models.  
+
+**Why it may not be appropriate:**  
+- Formal hypothesis testing for baseline differences is sometimes discouraged in RCTs (randomization ensures comparability on expectation), so some reviewers prefer descriptive balance statements without p‑values.  
+
+**When NOT to use:**  
+- Avoid over‑interpreting baseline p‑values as evidence of systematic bias; they are often not needed for RCTs with sufficient sample size.  
+
+**Alternative if assumptions violated:**  
+- For non‑normal continuous variables (e.g., skewed age): report medians and IQR; use Mann–Whitney U instead of t‑test.  
+- For sparse categorical data: use Fisher’s exact instead of Chi‑square.
+
+---
+
+A2. Primary analysis: comparison of pain scores between Dentapen® and conventional syringe  
+
+Given multiple observations per patient, the primary analysis must account for clustering. Two main options:
+
+### Option A2.1: Linear mixed‑effects model (LMM)  
+
+**Test name:** Linear mixed‑effects regression (random intercept for patient).  
+
+**Purpose:**  
+- Compare mean pain scores between Dentapen® and conventional syringe while accounting for repeated procedures per patient and adjusting for relevant covariates (e.g., procedure type, sex, age).  
+
+**Why appropriate:**  
+1. Accounts for intra‑patient correlation (clustered data), yielding correct standard errors and valid inference.  
+2. Flexible to include fixed effects for procedure type, injection site, or other covariates, improving precision and allowing adjusted comparisons.  
+
+**Why it may not be appropriate:**  
+- If pain scores are markedly non‑normal or strongly skewed with heavy ceiling/floor effects, LMM’s normality and homoscedasticity assumptions might be violated.  
+
+**When NOT to use:**  
+- When outcome is ordinal with a small number of categories (e.g., Likert 1–5) and clearly non‑interval; LMM may not be ideal.  
+- When there is a substantial number of outliers and residuals are strongly non‑normal even after reasonable transformation.  
+
+**Alternative if assumptions are violated:**  
+- Transform outcome (e.g., log, square root) and re‑fit LMM;  
+- Or use generalized linear mixed model (GLMM) with appropriate link:  
+  - e.g., ordinal mixed model (cumulative logit) if outcome is ordinal.  
+  - Or robust regression / quantile mixed models (if available).  
+
+Model specification example:  
+- Pain_ij = β0 + β1*(Dentapen_ij) + β2*(ProcedureType_ij) + β3*(Sex_i) + β4*(Age_i) + u_i + ε_ij  
+  - i = patient, j = procedure.  
+  - u_i ~ N(0, σ_u²) patient random intercept.  
+
+### Option A2.2: Generalized estimating equations (GEE)  
+
+**Test name:** GEE with identity link (for continuous pain outcome).  
+
+**Purpose:**  
+- Estimate marginal (population‑averaged) difference in mean pain between Dentapen® and conventional syringe accounting for within‑patient correlation.  
+
+**Why appropriate:**  
+1. Provides robust, large‑sample‑consistent standard errors even if correlation structure is misspecified.  
+2. Gives population‑level effect (mean difference) which is often the primary interest in RCTs.  
+
+**Why it may not be appropriate:**  
+- Less efficient in smaller samples than LMM; 178 patients is moderate, but not large if many parameters are included.  
+- Requires correct specification of link function and reasonable continuous outcome.  
+
+**When NOT to use:**  
+- When cluster size is extremely unbalanced or very small N at the cluster level; GEE may perform poorly.  
+- When interest is in subject‑specific effects rather than average effects.  
+
+**Alternative if assumptions violated:**  
+- If outcome highly skewed: use GEE with appropriate link (e.g., log link) and family (e.g., Gaussian with identity/log or Gamma, depending on scale), or use rank‑based methods with clustering (e.g., clustered Wilcoxon, see below).  
+
+Note: Choose either LMM or GEE as primary approach; the other can be used as sensitivity analysis.
+
+---
+
+A3. Secondary analysis: pulse rate changes  
+
+Assuming pulse rate measured at baseline and during/after injection:  
+
+**Test name:** Linear mixed‑effects model for repeated measures of pulse rate (or change scores), or GEE equivalent.  
+
+**Purpose:**  
+- Compare change in pulse rate from baseline between Dentapen® and conventional syringe.  
+
+**Why appropriate:**  
+1. Repeated measures within procedures and/or patients: mixed models/GEE handle this correlation.  
+2. Continuous outcome; these models can directly estimate mean differences in change, adjusting for baseline and other covariates (procedure type, age, sex).  
+
+**Why it may not be appropriate:**  
+- If pulse measurements are few and inconsistent across patients, resulting in sparse or poorly structured repeated measures.  
+
+**When NOT to use:**  
+- If only “single” pulse reading per procedure is available (no baseline), then use simpler clustered models (LMM/GEE on a single time point, not repeated measures).  
+- If measurement error is high and data quality poor.  
+
+**Alternative if assumptions violated:**  
+- Use non‑parametric approaches for paired/clustered data (e.g., cluster‑bootstrap differences in pulse change, or Wilcoxon signed rank for properly paired data); or GEE with robust standard errors.  
+
+---
+
+A4. Procedure‑type–adjusted comparison  
+
+**Test name:** LMM or GEE with interaction or stratification by procedure type.  
+
+**Purpose:**  
+- Investigate whether the effect of Dentapen® on pain differs by procedure type (extraction vs filling vs root canal vs surgery vs stump prep).  
+
+**Why appropriate:**  
+1. Procedure type is strongly related to expected pain; adjusting controls confounding and improves precision.  
+2. Interaction terms detect effect modification (e.g., Dentapen® more effective in palatal injection‑heavy procedures).  
+
+**Why it may not be appropriate:**  
+- Some procedure categories have small sample sizes (e.g., specific surgeries), leading to unstable estimates and unreliable interaction tests.  
+
+**When NOT to use:**  
+- When cell counts are extremely low (e.g., <10 per method per category); interaction tests will have very low power and risk overfitting.  
+
+**Alternative if assumptions violated:**  
+- Collapse similar procedures into broader categories (e.g., restorative vs surgical; simple vs complex) to increase group sizes.  
+- Perform stratified analyses with descriptive comparisons rather than formal interaction tests.
+
+---
+
+CATEGORY B – RECOMMENDED TESTS  
+-------------------------------  
+
+B1. Simple (non‑cluster‑adjusted) comparisons as secondary / sensitivity  
+
+**Test name:**  
+- Independent samples t‑test or Mann–Whitney U test comparing pain scores between Dentapen® and conventional at the procedure level, ignoring clustering.  
+
+**Purpose:**  
+- Provide straightforward, easily interpretable comparisons; useful as sensitivity analyses or for readers unfamiliar with mixed models/GEE.  
+
+**Why appropriate:**  
+1. Simple implementation; widely understood.  
+2. Serves as a check on the robustness of the primary cluster‑adjusted findings; large differences are usually consistent.  
+
+**Why it may not be appropriate:**  
+- Ignores within‑patient correlation; standard errors likely underestimated, p‑values anti‑conservative.  
+
+**When NOT to use:**  
+- As the *primary* analysis, given clearly clustered design.  
+
+**Alternative if assumptions violated:**  
+- For non‑normal distributions or outliers: Mann–Whitney U test.  
+- For matched/bilateral split‑mouth subset: use paired t‑test or Wilcoxon signed‑rank (see B2).
+
+---
+
+B2. Split‑mouth/bilateral subset: paired tests  
+
+For those patients with bilateral treatments where one side received Dentapen® and the other conventional:  
+
+**Test name:**  
+- Paired t‑test (for continuous pain scores) or Wilcoxon signed‑rank test.  
+
+**Purpose:**  
+- Compare within‑patient pain for Dentapen® vs conventional in bilateral cases, which naturally control for patient‑level factors (pain threshold, anxiety).  
+
+**Why appropriate:**  
+1. Within‑patient pairing eliminates inter‑subject variability, increasing power.  
+2. Consistent with random allocation of side to method, yielding unbiased paired effect estimates.  
+
+**Why it may not be appropriate:**  
+- Number of bilateral cases may be small; results may be unstable or unrepresentative of whole sample.  
+
+**When NOT to use:**  
+- When side allocation is not random or when both sides use same syringe type.  
+- If many bilateral procedures differ in type or site across sides (non‑comparable).  
+
+**Alternative if assumptions violated:**  
+- Use sign test (less powerful but robust to non‑normality/blunt measurement).  
+
+---
+
+B3. Ordinal models if pain measured on Likert‑type scale  
+
+If pain is recorded on an ordinal scale (e.g., 0–3, 0–5 categories) rather than continuous:  
+
+**Test name:**  
+- Cumulative logit (proportional odds) mixed model or GEE for ordinal outcomes.  
+
+**Purpose:**  
+- Assess odds of higher pain category with Dentapen® vs conventional.  
+
+**Why appropriate:**  
+1. Respect the ordinal nature of the outcome, avoiding inappropriate treatment as continuous.  
+2. Mixed model/GEE still accommodate clustered data (procedures within patients).  
+
+**Why it may not be appropriate:**  
+- Proportional odds assumption may be violated (effect differs by threshold).  
+
+**When NOT to use:**  
+- When categories are very sparse or some categories rarely used.  
+
+**Alternative if assumptions violated:**  
+- Partial proportional odds models.  
+- Collapsing categories (e.g., low vs high pain) and using binomial mixed model / GEE.
+
+---
+
+B4. Logistic regression for high vs low pain  
+
+**Test name:**  
+- Mixed‑effects logistic regression or GEE logistic regression.  
+
+**Purpose:**  
+- Evaluate the odds of “clinically relevant” pain (e.g., pain score ≥ some threshold) with Dentapen® vs conventional, adjusting for covariates.  
+
+**Why appropriate:**  
+1. Clinically interpretable: probability/odds of experiencing unpleasant pain.  
+2. Handles binary outcome with clustering via random effects or GEE.  
+
+**Why it may not be appropriate:**  
+- Dichotomizing continuous pain can reduce statistical power and discard information.  
+
+**When NOT to use:**  
+- As sole primary analysis when you have a well‑measured continuous pain scale; better as secondary.  
+
+**Alternative if assumptions violated:**  
+- Use GLMM with robust standard errors;  
+- Or keep pain continuous and use LMM/GLMM.
+
+---
+
+B5. Subgroup analyses (sex, age category, procedure type)  
+
+**Test name:**  
+- Mixed model or GEE with interaction terms (e.g., method*sex, method*procedure type).  
+
+**Purpose:**  
+- Explore whether the effect of Dentapen® differs by sex (male vs female), age category (e.g., <40 vs ≥40), or procedure type.  
+
+**Why appropriate:**  
+1. Patient pain perception and anxiety may differ by sex and age; important to check for effect heterogeneity.  
+2. Provides information for tailored clinical recommendations (e.g., greater benefit in surgeries).  
+
+**Why it may not be appropriate:**  
+- Multiple testing; risk of spurious findings if not pre‑specified and corrected.  
+
+**When NOT to use:**  
+- When sample size in subgroups is too small to give interpretable results.  
+
+**Alternative if assumptions violated:**  
+- Descriptive subgroup analyses without formal interaction tests; present means and CIs.  
+
+---
+
+CATEGORY C – OPTIONAL TESTS  
+---------------------------  
+
+C1. Reliability/consistency checks  
+
+If pain was measured multiple times per procedure or by different assessors (not stated, but optional):  
+
+**Test name:**  
+- Intraclass correlation coefficient (ICC) for repeated pain measurements; Cronbach’s alpha for multi‑item anxiety scales.  
+
+**Purpose:**  
+- Evaluate measurement reliability of pain scores or anxiety scales.  
+
+**Why appropriate:**  
+1. Ensures that the primary outcome is measured consistently and reliably.  
+2. Supports validity of comparisons across patients and groups.  
+
+**Why it may not be appropriate:**  
+- Not necessary if only a single measurement per procedure and the instrument is well‑validated.  
+
+**When NOT to use:**  
+- When there is no repeated measurement or multi‑item scale to evaluate.  
+
+**Alternative if assumptions violated:**  
+- Use weighted kappa for categorical pain ratings.
+
+---
+
+C2. Exploratory factor analysis (for anxiety or multi‑item constructs)  
+
+If a multi‑item dental anxiety scale was used (e.g., MDAS):  
+
+**Test name:**  
+- Exploratory factor analysis or confirmatory factor analysis.  
+
+**Purpose:**  
+- Explore the dimensionality of anxiety scale in this population.  
+
+**Why appropriate:**  
+1. Provides insight into underlying constructs measured.  
+2. May help develop composite anxiety measures for further modelling.  
+
+**Why it may not be appropriate:**  
+- Factor analysis requires relatively large sample for stable solutions; 178 patients may be borderline if many items.  
+
+**When NOT to use:**  
+- When the scale is well‑validated and the current sample is too small.  
+
+**Alternative if assumptions violated:**  
+- Use total scale scores; rely on prior validation studies.
+
+---
+
+C3. Time‑to‑event analysis (if relevant)  
+
+If onset and duration of anaesthesia were measured (not shown here, but sometimes included):  
+
+**Test name:**  
+- Kaplan–Meier curves and Cox proportional hazards models comparing methods.  
+
+**Purpose:**  
+- Compare time to onset or time to failure of anaesthesia between methods.  
+
+**Why appropriate:**  
+1. Time‑based outcomes with censoring are best handled by survival analysis.  
+2. Allows adjusted comparisons incorporating covariates.  
+
+**Why it may not be appropriate:**  
+- If such times were not measured or if all patients have nearly identical times, the analysis is unnecessary.  
+
+**When NOT to use:**  
+- When only a single, non‑time‑based measure is available.  
+
+**Alternative if assumptions violated:**  
+- Compare mean times via LMM or non‑parametric tests (e.g., Wilcoxon) if no censoring.
+
+---
+
+TASK 3: INAPPROPRIATE TESTS (TO AVOID)  
+======================================  
+
+T3.1. Simple independent t‑test or ANOVA ignoring clustering as the *primary* analysis  
+
+**Why not:**  
+- Procedures are clustered within patients; ignoring this leads to underestimated standard errors and inflated Type I error (p‑values too small).  
+
+**Better alternative:**  
+- Linear mixed‑effects model or GEE accounting for patient‑level clustering.
+
+---
+
+T3.2. Repeated measures ANOVA treating each procedure as repeated measure within patient (with equal number of observations)  
+
+**Why not:**  
+- Repeated measures ANOVA assumes equal number and spacing of observations per subject; here number of procedures per patient varies (mean 1.8 ± 1.9).  
+- Handles only fixed, balanced time points; not appropriate for unbalanced, irregular number of procedures.  
+
+**Better alternative:**  
+- Mixed‑effects models with random intercepts (and slopes if needed) easily handle unbalanced repeated data.
+
+---
+
+T3.3. Simple paired t‑test as global method  
+
+**Why not:**  
+- Not all patients have paired (bilateral) treatments with both methods; applying paired tests to whole sample is invalid.  
+
+**Better alternative:**  
+- Use paired tests only in subset of true bilateral matched procedures (B2), and use mixed models/GEE for overall data.
+
+---
+
+T3.4. Multiple unadjusted comparisons across procedure types with no multiplicity control  
+
+**Why not:**  
+- Testing many procedure‑specific comparisons without adjustment inflates family‑wise error and increases chance of false positives.  
+
+**Better alternative:**  
+- Pre‑specify key subgroups; use interaction terms in a single model, or adjust p‑values (e.g., Holm) if many post‑hoc tests.
+
+---
+
+T3.5. Use of parametric tests for clearly ordinal outcomes with few categories without justification  
+
+**Examples:**  
+- Using t‑test on a 4‑point categorical pain scale.  
+
+**Why not:**  
+- Violates assumption of interval scale; may misrepresent differences.  
+
+**Better alternative:**  
+- Ordinal logistic mixed models or non‑parametric tests (e.g., Wilcoxon, sign test).
+
+---
+
+T3.6. Stepwise variable selection based purely on p‑values  
+
+**Why not:**  
+- Increases risk of overfitting and biased estimates; results unstable and difficult to interpret, especially with moderate sample size.  
+
+**Better alternative:**  
+- Pre‑specify covariates based on clinical reasoning (sex, age, procedure type) and keep the model parsimonious.
+
+---
+
+TASK 4: SUMMARY OF ANALYTICAL APPROACH  
+=======================================  
+
+- The study is a randomized, single‑blind trial with multiple procedures per patient, comparing Dentapen® vs conventional syringe on pain and pulse rate.  
+- The primary analytic challenge is clustering: 287 procedures in 178 patients, so standard independent‑sample tests are insufficient.  
+- The core approach should therefore use cluster‑aware methods (linear mixed‑effects models or GEE) for continuous outcomes (pain, pulse), adjusting for key covariates like procedure type, sex, and age, and optionally exploring interactions.  
+- Simplified tests (t‑tests/Mann–Whitney) can be used as secondary or descriptive checks, but not as primary evidence.  
+- For bilateral cases, within‑patient paired tests are informative but should be clearly labelled as subset analyses.  
+- This combined strategy respects the randomized design, correctly handles the correlated data structure, and provides clinically interpretable estimates (mean differences and/or odds ratios), ensuring robust and comprehensive evaluation of Dentapen® vs conventional syringes in terms of pain and physiological response.

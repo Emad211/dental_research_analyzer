@@ -1,0 +1,128 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_ASDJ_Volume_23_Issue_3_Pages_1-6.pdf
+Status : ok
+Time   : 20260507_190523
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Prospective, in vivo, clinical study.
+
+2. **Objective**:  
+   - To compare postoperative pain levels at three different time intervals (6 hours, 24 hours, and 48 hours) after manual dynamic agitation of irrigation during endodontic treatment.
+
+3. **Groups**:  
+   - Single group of patients undergoing manual dynamic agitation during endodontic treatment. Pain levels were assessed at three time intervals (6, 24, and 48 hours).
+
+4. **Sample Size**:  
+   - 22 female patients.
+
+5. **Inclusion Criteria**:  
+   - Female patients aged 25–45 years.  
+   - Medically free of systemic diseases.  
+   - Symptomatic irreversible pulpitis in lower molars with mature roots.  
+   - Teeth without calcified root canals, root caries, internal/external root resorption, or periodontal involvement.
+
+6. **Exclusion Criteria**:  
+   - Male patients.  
+   - Pregnant females.  
+   - Patients with bruxism/clenching.  
+   - Previously endodontically treated teeth.  
+   - Teeth with abnormal mobility, periapical abscess, periodontal space widening, or root fractures.
+
+7. **Variables**:  
+   - **Independent Variable**: Time intervals (6 hours, 24 hours, 48 hours).  
+   - **Dependent Variable**: Pain levels measured using the Numerical Rating Scale (NRS).
+
+8. **Measurements**:  
+   - Pain levels assessed using NRS (0: no pain; 1–3: mild pain; 4–6: moderate pain; 7–10: severe pain).
+
+9. **Data Collection Methods**:  
+   - Patients were given the NRS scale to self-report pain at the specified time intervals.  
+   - Swelling was monitored, and patients were instructed to contact the operator if antibiotics or drainage were needed.
+
+10. **Procedures**:  
+    - Local anesthesia, rubber dam isolation, apex locator for working length determination, rotary file instrumentation, manual dynamic agitation of 2.5% sodium hypochlorite for 60 seconds, canal drying, lateral compaction obturation, and temporary filling placement.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Repeated Measures ANOVA  
+   - **Purpose**: To compare mean pain levels across the three time intervals (6, 24, and 48 hours).  
+   - **Why Appropriate**:  
+     1. Pain levels are measured repeatedly for the same participants at different time points.  
+     2. The study design involves within-subject comparisons.  
+   - **Why It May Not Be Appropriate**: Assumes normality and sphericity of data, which may not hold true for pain scores.  
+   - **When This Test Should NOT Be Used**: If the assumption of sphericity is violated or the data is not normally distributed.  
+   - **Alternative if Assumptions Are Violated**: Friedman test (non-parametric alternative).
+
+2. **Test Name**: Descriptive Statistics  
+   - **Purpose**: To summarize pain scores at each time interval (mean, standard deviation, median, range).  
+   - **Why Appropriate**:  
+     1. Provides an overview of the data distribution.  
+     2. Essential for understanding the central tendency and variability of pain scores.  
+   - **Why It May Not Be Appropriate**: Not a hypothesis test; does not infer statistical significance.  
+   - **When This Test Should NOT Be Used**: Always appropriate.  
+   - **Alternative if Assumptions Are Violated**: None; descriptive statistics are non-inferential.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Friedman Test  
+   - **Purpose**: To compare pain levels across the three time intervals when data is non-normally distributed.  
+   - **Why Appropriate**:  
+     1. Non-parametric test suitable for ordinal data (NRS pain scores).  
+     2. Does not assume normality or sphericity.  
+   - **Why It May Not Be Appropriate**: Less powerful than parametric tests when assumptions of normality are met.  
+   - **When This Test Should NOT Be Used**: If data is normally distributed and sphericity is satisfied.  
+   - **Alternative if Assumptions Are Violated**: Repeated Measures ANOVA.
+
+2. **Test Name**: Post-Hoc Pairwise Comparisons (Bonferroni or Dunn’s Test)  
+   - **Purpose**: To identify specific time intervals with significant differences in pain levels.  
+   - **Why Appropriate**:  
+     1. Provides detailed insights into which intervals differ significantly.  
+     2. Controls for Type I error in multiple comparisons.  
+   - **Why It May Not Be Appropriate**: May not be necessary if no significant differences are found in the overall test.  
+   - **When This Test Should NOT Be Used**: If the overall test (Repeated Measures ANOVA or Friedman) is not significant.  
+   - **Alternative if Assumptions Are Violated**: Use non-parametric post-hoc tests (e.g., Dunn’s test).
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Effect Size Calculation (e.g., Partial Eta Squared or Cohen’s d)  
+   - **Purpose**: To quantify the magnitude of differences in pain levels across time intervals.  
+   - **Why Appropriate**:  
+     1. Provides practical significance beyond p-values.  
+     2. Useful for interpreting clinical relevance.  
+   - **Why It May Not Be Appropriate**: Not mandatory for hypothesis testing; requires additional computation.  
+   - **When This Test Should NOT Be Used**: If the study is purely exploratory without a focus on clinical significance.  
+   - **Alternative if Assumptions Are Violated**: None; effect size is robust to violations of normality.
+
+2. **Test Name**: Trend Analysis  
+   - **Purpose**: To assess whether pain levels decrease linearly or follow another trend over time.  
+   - **Why Appropriate**:  
+     1. Provides insights into the pattern of pain reduction.  
+     2. Useful for understanding the trajectory of postoperative pain.  
+   - **Why It May Not Be Appropriate**: Requires sufficient sample size and evenly spaced time intervals.  
+   - **When This Test Should NOT Be Used**: If the sample size is too small or intervals are unevenly spaced.  
+   - **Alternative if Assumptions Are Violated**: Non-parametric trend tests.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent Samples t-Test**:  
+   - **Reason**: Pain levels are measured repeatedly for the same participants, not independent groups.  
+2. **Chi-Square Test**:  
+   - **Reason**: Pain scores are numerical/ordinal, not categorical.  
+3. **Pearson Correlation**:  
+   - **Reason**: Correlation is not relevant for comparing pain levels across time intervals.  
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach focuses on comparing pain levels across three time intervals using appropriate statistical tests for repeated measures. Repeated Measures ANOVA is the primary test, with the Friedman test as a non-parametric alternative if assumptions are violated. Descriptive statistics provide an overview of the data, while post-hoc tests and effect size calculations enhance interpretability. The plan avoids inappropriate tests and ensures robust, clinically relevant conclusions.

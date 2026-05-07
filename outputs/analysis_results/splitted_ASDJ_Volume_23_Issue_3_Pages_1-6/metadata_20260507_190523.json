@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_ASDJ_Volume_23_Issue_3_Pages_1-6.pdf",
+  "timestamp": "20260507_190523",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 13990
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 6951
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 28280
+    }
+  }
+}

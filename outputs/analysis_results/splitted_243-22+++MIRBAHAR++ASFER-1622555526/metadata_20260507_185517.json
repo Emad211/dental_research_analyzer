@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_243-22+++MIRBAHAR++ASFER-1622555526.pdf",
+  "timestamp": "20260507_185517",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 13149
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 5739
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 23724
+    }
+  }
+}

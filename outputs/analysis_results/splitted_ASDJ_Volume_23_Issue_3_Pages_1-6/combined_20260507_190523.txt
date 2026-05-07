@@ -1,0 +1,911 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_ASDJ_Volume_23_Issue_3_Pages_1-6.pdf
+Time : 20260507_190523
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study identification / design
+- **Type of study:** In vivo clinical study with **within-subject repeated measures** (pain measured at multiple time points after the same procedure).  
+- **Setting:** Postgraduate outpatient clinic, Endodontic Department, Faculty of Dentistry, Ain Shams University (Cairo, Egypt).
+- **Ethics:** Approved by Ethics Committee, Faculty of Dentistry, Ain Shams University.
+- **Objective:** Compare **post-operative pain levels** after **manual dynamic agitation (activation) of irrigation** at **three time intervals**: **6 h, 24 h, 48 h**.
+- **Null hypothesis:** No difference in post-operative pain level across the three time intervals.
+
+### Participants
+- **Sample size:** **22** patients.
+- **Population:** **Female** patients, **25–45 years**, medically free.
+- **Condition / tooth type:** **Symptomatic irreversible pulpitis** in **lower molars** with mature roots.
+
+### Eligibility criteria
+- **Inclusion:**
+  - Female, 25–45 years, medically free
+  - Symptomatic irreversible pulpitis in mandibular molars with mature roots
+  - No canal calcification
+  - Restorable (caries-free root), no internal/external resorption
+- **Exclusion:**
+  - Pregnant females; **male patients**
+  - Bruxism/clenching
+  - Previously endodontically treated teeth
+  - Periodontal disease, abnormal mobility
+  - Periapical abscess, PDL widening, root fracture
+  - (Resorption listed multiple times)
+
+### Clinical procedures / intervention (single arm)
+- **Anesthesia:** Nerve block local anesthesia (Art pharma).
+- **Access / isolation:** Round and Z bur; rubber dam.
+- **Working length:** Apex locator + periapical radiograph confirmation.
+- **Instrumentation:** Crown-down with Fanta rotary files; sequence described up to size 35 (multi-canal roots) or size 50 (single canal in root).
+- **Irrigation:** 5 ml **2.5% NaOCl** with 27G end-perforated beveled needle.
+- **Activation:** **Manual dynamic activation** for **60 seconds with a master cone for each canal**.
+- **Obturation:** Lateral compaction with gutta-percha + resin sealer; temporary filling; patient returns to complete treatment.
+
+### Outcomes / variables
+- **Primary outcome:** **Pain intensity** using **Numerical Rating Scale (NRS) 0–10**.
+  - Time points: **6 h**, **24 h**, **48 h** after visit.
+  - Also categorized: 0 none, 1–3 mild, 4–6 moderate, 7–10 severe (ordinal categories).
+- **Safety/clinical event monitoring:** **Swelling** recorded; patient instructed to contact operator (binary/clinical event; no systematic schedule described).
+
+### Data collection method
+- Patients given NRS scale to record pain at specified times (self-report).
+- Baseline history recorded (chief complaint, pain history), clinical/radiographic exams used for diagnosis (not stated as analytic covariates).
+
+---
+
+## TASK 2 — Statistical analysis plan
+
+### General analysis principles (apply to all)
+- **Analysis set:** All treated patients with any post-op pain data (define **modified ITT**). Also report **complete-case** as sensitivity.
+- **Unit of analysis:** Patient (each contributes repeated measures at 6/24/48 h).
+- **Outcome scale:** NRS is discrete 0–10; treat primarily as **ordinal / non-normal continuous**; confirm distribution.
+- **Descriptives:**
+  - NRS at each time point: median (IQR) and mean (SD) for context; min–max.
+  - Pain categories: n (%).
+  - Swelling: n (%), with timing if available.
+- **Multiplicity:** Primary comparison is across three times; if post-hoc pairwise tests are done, use multiplicity control (Holm or Bonferroni).
+- **Missing data:** Document missingness pattern by time. Prefer mixed models (recommended) to reduce bias vs complete-case.
+
+---
+
+# CATEGORY A — MANDATORY tests (core to answer the objective)
+
+## A1) Friedman test (repeated-measures nonparametric ANOVA)
+- **Purpose:** Test whether **pain differs across 6/24/48 h** within the same patients.
+- **Why appropriate:**
+  1. Designed for **≥3 related measurements** on the same individuals.
+  2. Does **not require normality**; appropriate for **ordinal/discrete NRS** and small n=22.
+- **Why it may not be appropriate:**
+  - Assumes **complete data** for all time points (standard Friedman); missing values reduce usable sample or require adaptation.
+- **When NOT to use:**
+  - If many observations are missing at some time points and you cannot justify complete-case analysis.
+- **Alternative if assumptions/conditions violated:**
+  - **Linear mixed-effects model** (if treating NRS approximately continuous) or **ordinal mixed model / GEE** (see recommended tests).
+
+## A2) Post-hoc paired comparisons with multiplicity control (e.g., Wilcoxon signed-rank + Holm adjustment)
+- **Purpose:** Identify **which time points differ** (6 vs 24, 6 vs 48, 24 vs 48) after a significant omnibus test.
+- **Why appropriate:**
+  1. Comparisons are **paired** (same patient at both times).
+  2. Wilcoxon is robust for **non-normal, ordinal/discrete** NRS values.
+- **Why it may not be appropriate:**
+  - With many ties/zeros, Wilcoxon may lose power and p-values can be less reliable.
+- **When NOT to use:**
+  - If the omnibus test is not significant *and* you are following a strictly hierarchical testing strategy (to control type I error).
+- **Alternative if assumptions/conditions violated:**
+  - **Exact Wilcoxon** (small sample / many ties) or **sign test** (very robust, less power); or use a **mixed model** with planned contrasts.
+
+## A3) Effect size for within-subject change (mandatory reporting)
+(Technically not a “test” but required for completeness in clinical inference.)
+- **Method:** Kendall’s W for Friedman; and/or matched-pairs effect size (e.g., rank-biserial correlation for Wilcoxon; median difference with CI).
+- **Purpose:** Quantify magnitude of pain change over time.
+- **Why appropriate:**
+  1. P-values alone do not convey clinical relevance.
+  2. Kendall’s W directly aligns with Friedman design.
+- **Why it may not be appropriate:**
+  - Some effect sizes are less interpretable clinically than raw differences.
+- **When NOT to use:**
+  - Do not report only standardized effects without **absolute changes** (e.g., median NRS decrease).
+- **Alternative if assumptions violated:**
+  - **Bootstrap CIs** for median change and pairwise differences.
+
+---
+
+# CATEGORY B — RECOMMENDED tests (increase rigor, handle missingness, model time)
+
+## B1) Linear mixed-effects model (LMM) for NRS over time (time as categorical factor)
+- **Purpose:** Model mean pain differences across time while accounting for **within-patient correlation**; enables contrasts (6 vs 24, etc.) and accommodates missing-at-random data.
+- **Why appropriate:**
+  1. Handles **repeated measures** via random intercept (and potentially random slope).
+  2. Can include covariates (e.g., tooth canal type if available) and uses all available data under MAR.
+- **Why it may not be appropriate:**
+  - NRS may be **non-normal** with ceiling/floor effects; LMM can be sensitive with small samples.
+- **When NOT to use:**
+  - If residuals are severely non-normal/heteroscedastic and transformation doesn’t help, or if outcome is clearly ordinal with few categories used.
+- **Alternative if assumptions violated:**
+  - **Ordinal mixed-effects model** (cumulative logit) or **GEE with ordinal link**; or keep Friedman/Wilcoxon as primary.
+
+## B2) Ordinal mixed-effects model (cumulative logit mixed model) OR GEE for ordinal outcomes
+- **Purpose:** Model the **ordinal nature** of NRS (or categorized pain) across time with correlated measurements.
+- **Why appropriate:**
+  1. Respects the **ordered** nature of pain scores without assuming equal intervals.
+  2. Provides **odds ratios** for higher pain over time (clinically interpretable).
+- **Why it may not be appropriate:**
+  - Requires adequate sample size; with n=22, convergence and wide CIs can occur.
+- **When NOT to use:**
+  - If proportional odds assumption is grossly violated and cannot be relaxed; or if sparse categories (e.g., very few severe pain scores).
+- **Alternative if assumptions violated:**
+  - **Partial proportional odds model** (if available), or analyze continuous NRS with robust methods, or collapse categories (carefully) and use binary mixed models.
+
+## B3) Assumption / distribution checks (diagnostics)
+- **Tests/graphics:** Shapiro–Wilk on residuals (not raw NRS), QQ plots, residual vs fitted plots.
+- **Purpose:** Decide whether parametric repeated-measures methods are defensible and assess model fit.
+- **Why appropriate:**
+  1. Prevents misuse of parametric tests.
+  2. Helps choose between Friedman vs LMM/ordinal models.
+- **Why it may not be appropriate:**
+  - Normality tests have low power in small samples and can mislead; rely more on plots.
+- **When NOT to use:**
+  - Do not use Shapiro–Wilk on discrete NRS to justify parametric testing.
+- **Alternative if assumptions violated:**
+  - Switch to **nonparametric** or **ordinal** modeling; use **robust SEs**.
+
+## B4) McNemar test / Cochran’s Q (if analyzing pain presence as binary across times)
+- **Outcome:** Pain present (NRS>0 yes/no) at 6/24/48.
+- **Purpose:** Compare **paired binary** outcomes across repeated times.
+- **Why appropriate:**
+  1. Appropriate for **within-subject** binary outcomes.
+  2. Clinically useful to report % with any pain over time.
+- **Why it may not be appropriate:**
+  - Dichotomizing loses information and power.
+- **When NOT to use:**
+  - If primary inference is about intensity; do not replace main analysis with binary analysis.
+- **Alternative if assumptions violated:**
+  - **Binary mixed-effects logistic regression** or **GEE logistic**.
+
+---
+
+# CATEGORY C — OPTIONAL tests (supplementary insights)
+
+## C1) Repeated-measures ANOVA (within-subject ANOVA)
+- **Purpose:** Compare mean NRS across time assuming approximate normality and sphericity.
+- **Why appropriate:**
+  1. Familiar framework; enables contrasts and CI estimation.
+  2. Can be efficient if assumptions truly hold.
+- **Why it may not be appropriate:**
+  - NRS is discrete/ordinal and often non-normal; sphericity is questionable with repeated measures.
+- **When NOT to use:**
+  - If Mauchly’s test suggests sphericity violation and corrections are not applied, or data are clearly non-normal/zero-inflated.
+- **Alternative if assumptions violated:**
+  - **Greenhouse–Geisser/Huynh–Feldt corrections**, or **LMM**, or **Friedman**.
+
+## C2) Trend test over time (monotonic change)
+- **Method:** In mixed model: treat time as numeric (6<24<48) and test linear trend; or use nonparametric trend across ordered repeated measures (less standard).
+- **Purpose:** Assess whether pain **decreases monotonically** over time.
+- **Why appropriate:**
+  1. Clinically plausible pattern post-operatively.
+  2. More parsimonious than three pairwise comparisons.
+- **Why it may not be appropriate:**
+  - Pain trajectory may be non-linear (e.g., peak at 24h).
+- **When NOT to use:**
+  - If descriptive plots show non-monotonic changes.
+- **Alternative if assumptions violated:**
+  - Keep time categorical; compare specific contrasts.
+
+## C3) Area-under-the-curve (AUC) for pain burden
+- **Purpose:** Summarize overall pain experience across 6–48 h into a single metric.
+- **Why appropriate:**
+  1. Captures both intensity and duration.
+  2. Useful for comparing interventions in future multi-arm trials.
+- **Why it may not be appropriate:**
+  - Requires complete/consistent timing and assumes linear interpolation; here only 3 points.
+- **When NOT to use:**
+  - If time reporting is inconsistent or missing heavily.
+- **Alternative if assumptions violated:**
+  - Use mixed-model estimated marginal means integrated over time (model-based AUC).
+
+## C4) Swelling analysis (descriptive ± Fisher’s exact if compared across subgroups)
+- **Purpose:** Report adverse event frequency; explore association with higher pain (optional).
+- **Why appropriate:**
+  1. Clinically relevant safety endpoint.
+  2. Fisher’s exact is valid with small samples.
+- **Why it may not be appropriate:**
+  - No comparison group; low event counts make inference unstable.
+- **When NOT to use:**
+  - If swelling is extremely rare (e.g., 0–1 events), stick to descriptive reporting.
+- **Alternative if assumptions violated:**
+  - Exact methods; or purely descriptive.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Independent-samples t-test / Mann–Whitney U** to compare 6 vs 24 vs 48  
+   - **Why inappropriate:** Measurements are **not independent**; they are repeated on the same patients.
+
+2. **One-way ANOVA (between-groups)** treating time points as separate groups  
+   - **Why inappropriate:** Violates independence; ignores within-subject correlation, inflates type I error.
+
+3. **Chi-square test of independence** on a 3×k table of pain categories by time (as if independent)  
+   - **Why inappropriate:** Repeated measures; also expected counts may be small.
+
+4. **Pearson correlation** between pain at 6h and 24h as the primary analysis  
+   - **Why inappropriate:** Correlation assesses association, not change over time; does not test mean/median differences.
+
+5. **Multiple unadjusted pairwise tests** (e.g., three Wilcoxon tests without multiplicity correction) as primary inference  
+   - **Why inappropriate:** Inflates family-wise type I error.
+
+---
+
+## TASK 4 — Summary justification of overall approach
+
+The study is a **single-arm repeated-measures** design where each of 22 patients provides NRS pain scores at **6, 24, and 48 hours**. The correct analysis must therefore use **within-subject methods**. A **Friedman omnibus test** with **paired post-hoc comparisons** (multiplicity-controlled) provides an assumption-lean primary analysis appropriate for ordinal/discrete pain scores and small samples. A **mixed-effects model (linear or ordinal)** is recommended to quantify time effects with CIs, accommodate missing data, and provide interpretable contrasts while correctly accounting for within-patient correlation.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Prospective, in vivo, clinical study.
+
+2. **Objective**:  
+   - To compare postoperative pain levels at three different time intervals (6 hours, 24 hours, and 48 hours) after manual dynamic agitation of irrigation during endodontic treatment.
+
+3. **Groups**:  
+   - Single group of patients undergoing manual dynamic agitation during endodontic treatment. Pain levels were assessed at three time intervals (6, 24, and 48 hours).
+
+4. **Sample Size**:  
+   - 22 female patients.
+
+5. **Inclusion Criteria**:  
+   - Female patients aged 25–45 years.  
+   - Medically free of systemic diseases.  
+   - Symptomatic irreversible pulpitis in lower molars with mature roots.  
+   - Teeth without calcified root canals, root caries, internal/external root resorption, or periodontal involvement.
+
+6. **Exclusion Criteria**:  
+   - Male patients.  
+   - Pregnant females.  
+   - Patients with bruxism/clenching.  
+   - Previously endodontically treated teeth.  
+   - Teeth with abnormal mobility, periapical abscess, periodontal space widening, or root fractures.
+
+7. **Variables**:  
+   - **Independent Variable**: Time intervals (6 hours, 24 hours, 48 hours).  
+   - **Dependent Variable**: Pain levels measured using the Numerical Rating Scale (NRS).
+
+8. **Measurements**:  
+   - Pain levels assessed using NRS (0: no pain; 1–3: mild pain; 4–6: moderate pain; 7–10: severe pain).
+
+9. **Data Collection Methods**:  
+   - Patients were given the NRS scale to self-report pain at the specified time intervals.  
+   - Swelling was monitored, and patients were instructed to contact the operator if antibiotics or drainage were needed.
+
+10. **Procedures**:  
+    - Local anesthesia, rubber dam isolation, apex locator for working length determination, rotary file instrumentation, manual dynamic agitation of 2.5% sodium hypochlorite for 60 seconds, canal drying, lateral compaction obturation, and temporary filling placement.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Repeated Measures ANOVA  
+   - **Purpose**: To compare mean pain levels across the three time intervals (6, 24, and 48 hours).  
+   - **Why Appropriate**:  
+     1. Pain levels are measured repeatedly for the same participants at different time points.  
+     2. The study design involves within-subject comparisons.  
+   - **Why It May Not Be Appropriate**: Assumes normality and sphericity of data, which may not hold true for pain scores.  
+   - **When This Test Should NOT Be Used**: If the assumption of sphericity is violated or the data is not normally distributed.  
+   - **Alternative if Assumptions Are Violated**: Friedman test (non-parametric alternative).
+
+2. **Test Name**: Descriptive Statistics  
+   - **Purpose**: To summarize pain scores at each time interval (mean, standard deviation, median, range).  
+   - **Why Appropriate**:  
+     1. Provides an overview of the data distribution.  
+     2. Essential for understanding the central tendency and variability of pain scores.  
+   - **Why It May Not Be Appropriate**: Not a hypothesis test; does not infer statistical significance.  
+   - **When This Test Should NOT Be Used**: Always appropriate.  
+   - **Alternative if Assumptions Are Violated**: None; descriptive statistics are non-inferential.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Friedman Test  
+   - **Purpose**: To compare pain levels across the three time intervals when data is non-normally distributed.  
+   - **Why Appropriate**:  
+     1. Non-parametric test suitable for ordinal data (NRS pain scores).  
+     2. Does not assume normality or sphericity.  
+   - **Why It May Not Be Appropriate**: Less powerful than parametric tests when assumptions of normality are met.  
+   - **When This Test Should NOT Be Used**: If data is normally distributed and sphericity is satisfied.  
+   - **Alternative if Assumptions Are Violated**: Repeated Measures ANOVA.
+
+2. **Test Name**: Post-Hoc Pairwise Comparisons (Bonferroni or Dunn’s Test)  
+   - **Purpose**: To identify specific time intervals with significant differences in pain levels.  
+   - **Why Appropriate**:  
+     1. Provides detailed insights into which intervals differ significantly.  
+     2. Controls for Type I error in multiple comparisons.  
+   - **Why It May Not Be Appropriate**: May not be necessary if no significant differences are found in the overall test.  
+   - **When This Test Should NOT Be Used**: If the overall test (Repeated Measures ANOVA or Friedman) is not significant.  
+   - **Alternative if Assumptions Are Violated**: Use non-parametric post-hoc tests (e.g., Dunn’s test).
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Effect Size Calculation (e.g., Partial Eta Squared or Cohen’s d)  
+   - **Purpose**: To quantify the magnitude of differences in pain levels across time intervals.  
+   - **Why Appropriate**:  
+     1. Provides practical significance beyond p-values.  
+     2. Useful for interpreting clinical relevance.  
+   - **Why It May Not Be Appropriate**: Not mandatory for hypothesis testing; requires additional computation.  
+   - **When This Test Should NOT Be Used**: If the study is purely exploratory without a focus on clinical significance.  
+   - **Alternative if Assumptions Are Violated**: None; effect size is robust to violations of normality.
+
+2. **Test Name**: Trend Analysis  
+   - **Purpose**: To assess whether pain levels decrease linearly or follow another trend over time.  
+   - **Why Appropriate**:  
+     1. Provides insights into the pattern of pain reduction.  
+     2. Useful for understanding the trajectory of postoperative pain.  
+   - **Why It May Not Be Appropriate**: Requires sufficient sample size and evenly spaced time intervals.  
+   - **When This Test Should NOT Be Used**: If the sample size is too small or intervals are unevenly spaced.  
+   - **Alternative if Assumptions Are Violated**: Non-parametric trend tests.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent Samples t-Test**:  
+   - **Reason**: Pain levels are measured repeatedly for the same participants, not independent groups.  
+2. **Chi-Square Test**:  
+   - **Reason**: Pain scores are numerical/ordinal, not categorical.  
+3. **Pearson Correlation**:  
+   - **Reason**: Correlation is not relevant for comparing pain levels across time intervals.  
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach focuses on comparing pain levels across three time intervals using appropriate statistical tests for repeated measures. Repeated Measures ANOVA is the primary test, with the Friedman test as a non-parametric alternative if assumptions are violated. Descriptive statistics provide an overview of the data, while post-hoc tests and effect size calculations enhance interpretability. The plan avoids inappropriate tests and ensures robust, clinically relevant conclusions.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1 – INFORMATION EXTRACTION  
+===============================  
+
+I’ll structure this as “study characteristics” → “variables & measurements” → “data collection”.
+
+1. STUDY CHARACTERISTICS  
+------------------------  
+
+**1.1. Study design**
+
+- Design: Prospective, single‑arm clinical study (in vivo).  
+- Not randomized between groups; there is only one intervention protocol (manual dynamic agitation of irrigant) applied to all patients.  
+- Repeated pain measurements over time: 6, 24, 48 hours post‑treatment.  
+- Objective:  
+  - “To make a comparison between levels of pain after manual dynamic activation of irrigation.”  
+  - Null hypothesis: no difference in the level of postoperative pain at different time intervals (6, 24, 48 hours) after manual dynamic agitation.
+
+**1.2. Setting and recruitment**
+
+- Setting: Postgraduate outpatient clinic, Endodontics Department, Faculty of Dentistry, Ain Shams University, Cairo, Egypt.  
+- Patients: “22 Patients were selected from the postgraduate outpatient clinic…”  
+
+**1.3. Population and eligibility**
+
+- Target population: Adult female patients requiring root canal treatment for symptomatic irreversible pulpitis in lower molars with mature roots.  
+
+- Inclusion criteria:  
+  - Female patients.  
+  - Medically free of systemic disease.  
+  - Age range 25–45 years.  
+  - Symptomatic irreversible pulpitis in lower molars with mature roots.  
+  - Teeth without calcified root canals.  
+  - Restorable teeth (root caries free).  
+  - Teeth without internal or external root resorption.
+
+- Exclusion criteria:  
+  - Pregnant females.  
+  - Male patients.  
+  - Patients with bruxism or clenching.  
+  - Previously endodontically treated teeth.  
+  - Periodontally affected teeth.  
+  - Presence of abnormal mobility.  
+  - Presence of resorption (repeated; presumably any radiographic resorption).  
+  - Periapical abscess.  
+  - Periodontal space widening.  
+  - Root fracture.  
+  - Teeth with internal or external root resorption (repeated).
+
+**1.4. Sample size**
+
+- N = 22 patients (each contributes one treated tooth; text implies one tooth per patient).  
+- No formal sample size / power calculation is reported.
+
+**1.5. Intervention**
+
+Single standardized endodontic protocol for all enrolled teeth:
+
+- **Anesthesia:** Nerve block with local anesthetic (Art Pharma anesthesia, ArtPharma Pharmaceuticals, Egypt).  
+- **Access:** Access cavity using Z and round burs (Dentsply Tulsa Dental Specialties, USA).  
+- **Isolation:** Rubber dam.  
+- **Working length determination:** Apex locator (E connect, Eighteeth, China), confirmed by periapical radiograph.  
+- **Cleaning and shaping:**  
+  - Crown-down technique using Fanta rotary files (Fanta Dental Materials Co., China).  
+  - Sequence: orifice opener → size 20 → 25 → 30 → 35 in roots with multiple canals; up to size 50 in single‑canal roots.  
+  - Endo motor with speed and torque according to manufacturer’s instructions.
+
+- **Irrigation and activation:**  
+  - 5 ml of 2.5% sodium hypochlorite per canal, delivered via syringe with end‑perforated beveled 27‑gauge needle.  
+  - Manual dynamic agitation for 60 seconds with a master gutta‑percha cone in each canal (this is the key tested technique).  
+
+- **Drying:** Sterile paper points corresponding to master cone size.  
+
+- **Obturation:**  
+  - Lateral compaction with gutta‑percha master cone equal to master apical file size (50 for single‑canal roots, 35 for teeth with >1 canal).  
+  - Spreader used 2 mm shorter than working length to create space for auxiliary cones (size 25, smaller than spreader).  
+  - Resin root canal sealer.  
+  - Temporary filling placed.  
+
+- **Follow‑up:** Patients asked to return to complete treatment; instructed to contact operator if swelling occurs for evaluation (antibiotics or drainage consideration).
+
+**1.6. Study groups**
+
+- There are **no parallel groups**. All 22 subjects receive the same treatment.  
+- The comparison is **within‑subject over time**: pain at 6 h vs 24 h vs 48 h.
+
+2. VARIABLES, MEASUREMENTS, DATA COLLECTION  
+-------------------------------------------  
+
+**2.1. Primary outcome**
+
+- **Postoperative pain intensity** after manual dynamic agitation.  
+- Measured at **three time points**:  
+  - 6 hours after treatment.  
+  - 24 hours after treatment.  
+  - 48 hours after treatment.
+
+- **Measurement instrument**: Numerical Rating Scale (NRS) for pain:  
+  - 0 = no pain.  
+  - 1–3 = mild (recognizable, not discomforting).  
+  - 4–6 = moderate (discomforting, but bearable).  
+  - 7–10 = severe (considerable discomfort, difficult to bear).  
+
+- The text does not explicitly state whether patients recorded a single number (0–10) or the categorical intensity (none/mild/moderate/severe), but the definition of NRS strongly suggests a **0–10 integer score**, with additional categorical grouping.
+
+- Data type:  
+  - NRS score: ordinal (0–10). Often treated as continuous in practice, but ordinal nature should be acknowledged.  
+  - Categorized pain intensity (none/mild/moderate/severe): ordered categorical.
+
+**2.2. Secondary outcomes / other recorded variables**
+
+Explicitly mentioned in methods:
+
+- **Swelling occurrence postoperatively**:
+  - Recorded by patient self‑report (“If swelling was recorded…”) followed by clinical assessment.
+  - Likely binary: swelling yes/no within the 48‑hour period or at specific time points (not fully specified).
+
+Pre‑treatment and background variables (some may be available but not necessarily analyzed):
+
+- **Demographics**:
+  - Age (25–45 years; exact ages could be recorded).  
+  - Sex: all females by design (no variation, not analyzable).  
+
+- **Tooth‑related clinical variables** (information recorded but not clearly intended for statistical analysis):
+  - Chief complaint and history of pain.  
+  - Extraoral exam: swelling, facial cellulitis (used for eligibility).  
+  - Intraoral exam: presence of large/old restorations, extensive caries, traumatic injuries, percussion and palpation (diagnosis, eligibility).  
+  - Radiographic findings: caries extent, root canal morphology, presence of periapical pathology (used to confirm inclusion/exclusion).  
+  - Tooth type: stated as lower molars, but not specified whether first vs second, single vs multiple canals; however, canal size and obturation size depend on number of canals.
+
+Given the text, the **only explicitly analyzed variable is postoperative pain over time**.
+
+**2.3. Data collection methods**
+
+- Face‑to‑face clinic visit for baseline assessment, diagnosis, treatment and immediate post‑operative instructions.  
+- Pain assessment tool (NRS sheet) given to patient to record pain at 6, 24, 48 hours after treatment. Method of retrieval (phone call vs physical sheet) is not stated, but patients had the scale.  
+- Swelling: patient‑initiated contact if swelling occurs; operator assesses clinically and decides on management.
+
+**2.4. Missing data / repeated measures structure**
+
+- 3 repeated pain measurements per patient (within‑subject correlation).  
+- No method for handling missing time points is described; for planning, we must anticipate possible missingness (e.g., missed 24 or 48 h recording).
+
+---
+
+TASK 2 – STATISTICAL ANALYSIS PLAN  
+==================================  
+
+Given: single‑arm, repeated measures of NRS pain at 3 time points, N=22.
+
+I’ll propose:
+
+- A. Mandatory tests: Essential to test the primary hypothesis (change in pain over time).  
+- B. Recommended: To better describe and analyze ordinal nature, effect sizes, and secondary outcomes.  
+- C. Optional: More advanced or exploratory analyses.
+
+For each test: name, purpose, appropriateness, limitations, when not to use, and an alternative.
+
+### CATEGORY A – MANDATORY ANALYSES  
+
+A1. Descriptive Statistics of Pain at Each Time Point  
+----------------------------------------------------  
+
+**Test/Procedure name**  
+- Descriptive statistics: median, interquartile range (IQR), minimum, maximum, possibly mean and SD; plus frequency distribution across categories (no/mild/moderate/severe) at 6, 24, 48 hours.
+
+**Purpose**  
+- To summarize the central tendency and dispersion of postoperative pain at each time point, and to show distributional shape and category frequencies.
+
+**Why appropriate (≥2 reasons)**  
+1. NRS is at least ordinal; descriptive measures (median, IQR) are assumption‑free and necessary before inferential tests.  
+2. Sample size is small (n=22); visual and tabular description (boxplots, bar charts of categories) helps understand skewness, ceiling/floor effects (e.g., many zeros at 48h).  
+
+**Why it may not be appropriate (≥1 reason)**  
+- If pain scores are severely clustered (e.g., all 0 at 48h), some summary statistics (like SD) become less informative.  
+
+**When this should NOT be used**  
+- This is fundamental; there is no scenario where descriptive statistics should be omitted. However, relying only on means when distribution is skewed is not advisable.
+
+**Alternative if assumptions are violated**  
+- Use nonparametric‑oriented summaries (median, IQR, empirical cumulative distribution plots) and avoid means/SD if distribution is very non‑normal.
+
+---
+
+A2. Test for Change in Pain Over Time (Primary Hypothesis)  
+----------------------------------------------------------  
+
+Given ordinal repeated data (3 time points, same subjects, small N), the **default primary test should be a nonparametric repeated‑measures test**.
+
+**Preferred primary test**
+
+**Test name**  
+- Friedman test (nonparametric repeated‑measures ANOVA for k related samples).
+
+**Purpose**  
+- To test whether the distribution of NRS scores differs across the three time points (6, 24, 48 hours), accounting for within‑patient pairing.
+
+**Why appropriate (≥2 reasons)**  
+1. Repeated measures within the same individuals (3 related samples); Friedman explicitly handles paired ordinal data.  
+2. NRS is ordinal and may be non‑normally distributed with potential floor effect at later timepoints; Friedman does not assume normality of differences.  
+
+**Why it may not be appropriate (≥1 reason)**  
+- Friedman assumes that observations are at least ordinal and that there are no missing data or that missingness is minimal and completely at random. If many subjects miss a time point, the test loses power or cannot be applied.  
+
+**When this test should NOT be used**  
+- When there is substantial missing data at any time point or when the repeated measures structure is irregular (e.g., different number of observations per subject).  
+- When group comparisons are needed between independent groups (not the case here).
+
+**Alternative if assumptions are violated**  
+- If we have substantial missing data or want to model time continuously:  
+  - Use a **linear mixed‑effects model** for NRS treated as continuous (with appropriate checks and robust SEs), or  
+  - Use a **generalized linear mixed model (GLMM)** with cumulative logit link for ordinal outcomes.  
+- If we desire a simpler, pairwise approach: use **Wilcoxon signed‑rank tests** between pairs (6 vs 24, 24 vs 48, 6 vs 48), with multiplicity adjustment.
+
+---
+
+A3. Post‑hoc Pairwise Comparisons Between Time Points  
+-----------------------------------------------------  
+
+If Friedman test is significant, perform pairwise comparisons to identify where differences lie.
+
+**Test name**  
+- Wilcoxon signed‑rank tests (paired, nonparametric) comparing:  
+  - 6 vs 24 hours  
+  - 24 vs 48 hours  
+  - 6 vs 48 hours  
+- With Bonferroni or Holm adjustment for multiple comparisons.
+
+**Purpose**  
+- To determine at which intervals pain significantly decreases (or changes).
+
+**Why appropriate (≥2 reasons)**  
+1. Data are paired and ordinal; Wilcoxon signed‑rank is appropriate for paired non‑normal data.  
+2. Small sample (n=22) and possible ceiling/floor effects make nonparametric tests more robust than paired t‑tests.  
+
+**Why it may not be appropriate (≥1 reason)**  
+- If many pairs have zero difference (e.g., identical scores at both times), Wilcoxon can lose power or become uninformative.  
+- Multiple comparisons increase type I error if not adjusted; with only 22 patients, type II error (false negatives) is also a concern after adjustment.
+
+**When this test should NOT be used**  
+- When outcome is highly discrete with limited variability and a very large number of ties, or when the measurement is purely categorical (e.g., only categories none/mild/moderate/severe without the 0–10 scale).  
+- When there is substantial missing data in a given pair.
+
+**Alternative if assumptions are violated**  
+- For many ties and purely ordered categories: use **Stuart–Maxwell test** for marginal homogeneity or **McNemar‑Bowker test** on categorical pain levels (none/mild/moderate/severe).  
+- For more complex modeling: **ordinal logistic mixed models**.
+
+---
+
+A4. Incidence of Swelling and Its Description  
+--------------------------------------------  
+
+Even if not the primary endpoint, swelling is clinically important.
+
+**Test/Procedure name**  
+- Descriptive analysis of postoperative swelling: number and proportion of patients with swelling within 48 hours.  
+- Optionally, tabulate by any time point if available.
+
+**Purpose**  
+- To report frequency of an important adverse outcome (swelling), as a safety indicator of the irrigation protocol.
+
+**Why appropriate (≥2 reasons)**  
+1. Swelling is binary; proportions and 95% confidence intervals summarize safety outcomes.  
+2. Essential for clinical interpretation even in a small, single‑arm study.
+
+**Why it may not be appropriate (≥1 reason)**  
+- N=22 is small, so estimate of swelling incidence will have a wide confidence interval; inferential comparison to other studies is limited.
+
+**When this test should NOT be used**  
+- Not applicable; simple reporting of incidence is always appropriate.
+
+**Alternative if assumptions are violated**  
+- If swelling has multiple levels (e.g., mild/moderate/severe), use ordinal descriptions or multinomial counts; with such a small N, formal modeling is generally not useful.
+
+---
+
+CATEGORY B – RECOMMENDED ANALYSES  
+==================================  
+
+These improve rigor and interpretability but are not strictly necessary to test the primary hypothesis.
+
+B1. Normality Assessment and Possible Parametric Repeated Measures ANOVA  
+-------------------------------------------------------------------------  
+
+**Test name**  
+- Shapiro–Wilk test for normality of residuals or differences, plus visual inspection (histograms, Q–Q plots).  
+- If approximately normal: Repeated Measures ANOVA (within‑subject factor: time with 3 levels).
+
+**Purpose**  
+- To assess whether the distribution of pain differences is sufficiently close to normal to justify parametric tests.  
+- If yes, to estimate means, confidence intervals, and time effect using repeated measures ANOVA.
+
+**Why appropriate (≥2 reasons)**  
+1. Repeated measures ANOVA uses the full covariance structure and can be more powerful than nonparametric tests if assumptions are met.  
+2. Provides effect size estimates (e.g., partial eta‑squared) and directly interpretable mean changes over time with confidence intervals.
+
+**Why it may not be appropriate (≥1 reason)**  
+- NRS is ordinal and often skewed, especially with many zeros at later time points; Shapiro–Wilk may indicate non‑normality.  
+- With n=22, the power to detect non‑normality is limited; parametric assumptions may still be questionable.  
+
+**When this test should NOT be used**  
+- When strong skewness or floor/ceiling effects are present or when sphericity is clearly violated and corrections (Greenhouse–Geisser) are unstable due to small sample.  
+- If Shapiro–Wilk and visual checks strongly suggest violates of normality and the outcome is clearly ordinal.
+
+**Alternative if assumptions are violated**  
+- Use **Friedman test** as primary (already in Category A).  
+- Use **linear mixed effects model** with robust SEs or **ordinal mixed model**.
+
+---
+
+B2. Effect Size Estimation for Changes in Pain  
+---------------------------------------------  
+
+**Test/Procedure name**  
+- For Friedman: Kendall’s W (coefficient of concordance) as an effect size.  
+- For pairwise comparisons: rank‑biserial correlation or Cohen’s d (if treating NRS as continuous) for each interval.
+
+**Purpose**  
+- To quantify the magnitude of change in pain over time, not just statistical significance.
+
+**Why appropriate (≥2 reasons)**  
+1. With a small sample, p‑values can be unstable; effect sizes describe practical/clinical importance.  
+2. Allows comparison with other studies and meta‑analytic integration.
+
+**Why it may not be appropriate (≥1 reason)**  
+- Effect size estimation can be unstable in small samples and may be sensitive to outliers or distribution shape.  
+
+**When this test should NOT be used**  
+- None strictly; but results should be interpreted cautiously when N is small.
+
+**Alternative if assumptions are violated**  
+- Report **median difference with Hodges–Lehmann confidence intervals** for paired differences, which are nonparametric and robust.
+
+---
+
+B3. Analysis of Pain as Categorical Outcome  
+-------------------------------------------  
+
+**Test name**  
+- Stuart–Maxwell test for marginal homogeneity or McNemar–Bowker test across more than 2 time points. Practical approach:  
+  - Build contingency tables of pain category (none/mild/moderate/severe) at 6 vs 24, 24 vs 48, 6 vs 48, and use McNemar‑Bowker for each pair.
+
+**Purpose**  
+- To test whether the distribution of pain categories changes over time (e.g., proportion of “severe” vs “mild” vs “none”).
+
+**Why appropriate (≥2 reasons)**  
+1. Pain categories are clinically meaningful (none/mild/moderate/severe) and explicitly defined in methods.  
+2. Categorical analysis respects the ordinal nature without assuming equal distances between adjacent NRS scores.
+
+**Why it may not be appropriate (≥1 reason)**  
+- N=22 may result in sparse cells (e.g., very few severe cases at 48h), which reduces validity of chi‑square‑based tests.  
+
+**When this test should NOT be used**  
+- When category counts are too small (e.g., many zero cells); in that case exact methods or category collapsing is needed (e.g., severe+moderate vs mild+none).  
+
+**Alternative if assumptions are violated**  
+- Use **exact tests** for paired categorical data (exact McNemar for dichotomized outcome: pain vs no pain).  
+- For multiple time points and small sample, descriptive transition matrices may be more informative than formal test.
+
+---
+
+B4. Association Between Swelling and Pain Levels  
+------------------------------------------------  
+
+**Test name**  
+- Mann–Whitney U test comparing pain scores between patients with and without swelling, at each time point, if any swelling occurs.  
+- Or exact Wilcoxon test given small N.  
+
+**Purpose**  
+- To explore whether patients who develop swelling report higher pain scores.
+
+**Why appropriate (≥2 reasons)**  
+1. Pain is ordinal; swelling is binary; Mann–Whitney compares distributions between two independent groups.  
+2. Swelling is clinically important and may correlate with pain severity; such analysis provides insight into the impact of complications.  
+
+**Why it may not be appropriate (≥1 reason)**  
+- If swelling is rare (e.g., 0–1 cases in 22 patients), there is insufficient data for meaningful statistical comparison.  
+
+**When this test should NOT be used**  
+- When the number of swelling cases is extremely small (<3–4), since any statistical test would be meaningless; report descriptive findings only.  
+
+**Alternative if assumptions are violated**  
+- If sample sizes permit and pain is dichotomized (e.g., moderate/severe vs none/mild): use **Fisher’s exact test** for association between swelling yes/no and high pain yes/no.
+
+---
+
+CATEGORY C – OPTIONAL / EXPLORATORY ANALYSES  
+=============================================  
+
+These add depth but are not required for a robust paper.
+
+C1. Longitudinal Modeling with Mixed Effects  
+--------------------------------------------  
+
+**Test name**  
+- Linear mixed‑effects model (LMM) for NRS (treated as continuous), with random intercept for patient and fixed effect of time (categorical).  
+
+**Purpose**  
+- To model trajectories of pain over time, accounting for within‑subject correlation and handling missing data more flexibly than Friedman/ANOVA.
+
+**Why appropriate (≥2 reasons)**  
+1. Repeated measures within individuals: mixed models are well‑suited.  
+2. Can handle unbalanced data (some patients missing a time point) under missing at random assumption, unlike Friedman which requires complete cases.  
+
+**Why it may not be appropriate (≥1 reason)**  
+- N=22 and only 3 time points: complex mixed models may overfit and be unstable; treating ordinal outcome as continuous may be questionable.  
+
+**When this test should NOT be used**  
+- When there are no missing data and the primary question is simple (are there differences at 3 pre‑specified times); Friedman or RM‑ANOVA suffices.  
+- When ordinal nature is paramount and distribution is clearly non‑normal; an ordinal mixed model would be more appropriate but requires more data.
+
+**Alternative if assumptions are violated**  
+- **Cumulative logit mixed model** (ordinal GLMM) for NRS categories.  
+- Or stay with **Friedman + Wilcoxon**.
+
+---
+
+C2. Responder Analysis (Clinically Significant Pain Reduction)  
+--------------------------------------------------------------  
+
+**Test name**  
+- Descriptive and inferential analysis of “responders,” e.g.:  
+  - ≥2‑point drop on NRS between 6 and 24 hours or between 24 and 48 hours.  
+  - Proportion achieving “no pain” (NRS=0) at 48 hours.  
+- Test with McNemar’s test (for paired binary outcomes).
+
+**Purpose**  
+- To present clinically interpretable outcomes (how many patients become essentially pain‑free, or achieve a meaningful reduction).
+
+**Why appropriate (≥2 reasons)**  
+1. NRS reductions of ≥2 points often considered clinically significant in pain research; such definitions are meaningful to clinicians.  
+2. McNemar test for paired binary data is appropriate for evaluating change in responder status over time.  
+
+**Why it may not be appropriate (≥1 reason)**  
+- Thresholds for clinically important difference may not be pre‑specified and can be somewhat arbitrary; this may be considered exploratory and hypothesis‑generating.  
+
+**When this test should NOT be used**  
+- If almost all patients are responders (ceiling effect) or none are responders (floor effect), McNemar test is not informative.  
+
+**Alternative if assumptions are violated**  
+- Report only descriptive responder rates without formal testing; or use exact McNemar test if cell counts are small.
+
+---
+
+C3. Exploratory Associations with Baseline Characteristics  
+---------------------------------------------------------  
+
+If detailed baseline information (age, tooth type, pre‑treatment pain severity) is available:
+
+**Test name**  
+- Spearman correlation between age and pain scores.  
+- Mann–Whitney or Kruskal–Wallis for differences in pain by tooth type or pre‑treatment pain category.
+
+**Purpose**  
+- To explore potential predictors of postoperative pain dynamics.
+
+**Why appropriate (≥2 reasons)**  
+1. Nonparametric tests respect ordinal nature and small sample.  
+2. Identifies possible factors that could be controlled for in future, larger studies.
+
+**Why it may not be appropriate (≥1 reason)**  
+- Very small sample and limited variability in baseline characteristics (e.g., only females, narrow age range, all lower molars) limit power and generalizability; results are highly exploratory.  
+
+**When this test should NOT be used**  
+- When baseline data are sparse or not systematically collected.  
+- If the study’s intention is strictly descriptive without exploratory hypotheses.
+
+**Alternative if assumptions are violated**  
+- Descriptive subgroup summaries only, without statistical tests.
+
+---
+
+TASK 3 – INAPPROPRIATE TESTS  
+=============================  
+
+Below are tests that **should NOT** be used, with reasons.
+
+1. **Independent‑samples t‑test / unpaired tests between time points**  
+   - Inappropriate because:  
+     - The same patients are measured at different times; data are **paired**, not independent.  
+     - Using unpaired tests ignores within‑subject correlation and reduces power while inflating type I error if misapplied.
+
+2. **One‑way ANOVA for independent groups across time points**  
+   - Inappropriate because:  
+     - Again, repeated measures on the same subjects; independence assumption violated.  
+     - Repeated measures ANOVA or Friedman is required.
+
+3. **Chi‑square test of independence treating time points as independent samples**  
+   - Inappropriate because:  
+     - Pain categories at different times come from the same subjects; using a standard chi‑square test for independent samples ignores pairing.  
+     - Pairwise McNemar or McNemar‑Bowker / Stuart–Maxwell tests for paired categorical data should be used instead.
+
+4. **Pearson correlation between time and pain ignoring repeated measures**  
+   - Inappropriate because:  
+     - Time is discrete and structured (3 fixed visits), not a continuous random variable; a correlation coefficient would ignore the within‑subject structure.  
+     - Longitudinal methods or repeated‑measures tests are more appropriate.
+
+5. **Multiple linear regression with pain at each time point as separate, independent outcomes**  
+   - Inappropriate because:  
+     - Fails to account for correlation of repeated measures within subjects.  
+     - Mixed‑effects models or repeated‑measures ANOVA are required for longitudinal data.
+
+6. **Parametric tests assuming interval scale without checks (e.g., paired t‑tests as primary)**  
+   - While sometimes acceptable in practice, using paired t‑tests as the **sole primary analysis** on small‑sample ordinal NRS data without verifying distribution or robustness is not recommended.  
+   - With n=22 and likely skewed NRS (especially at 48h), the assumptions (normality of differences) may be violated.
+
+7. **Survival analysis (Kaplan–Meier) for “time to no pain”**  
+   - Inappropriate here because:  
+     - Only 3 fixed, widely spaced measurement times; exact time of transition to “no pain” is unknown (interval censoring).  
+     - The study was not designed as a time‑to‑event study with continuous follow‑up.
+
+8. **Complex multivariable models (e.g., multivariate logistic regression with multiple predictors)**  
+   - With N=22, fitting multivariable models risks severe overfitting and unstable estimates; at most 1–2 predictors could be considered, but the study is not powered for that.
+
+---
+
+TASK 4 – SUMMARY OF ANALYTICAL APPROACH  
+=======================================  
+
+- The study is a single‑arm in vivo clinical investigation of postoperative pain after a standardized protocol of manual dynamic irrigation activation in 22 female patients with symptomatic irreversible pulpitis in lower molars.  
+- The primary endpoint is NRS pain at 6, 24, and 48 hours, measured on an ordinal 0–10 scale, within the same subjects.
+
+Given the small sample and ordinal repeated measures:
+
+- The **core analytic framework** should be **nonparametric repeated‑measures methods**, specifically:  
+  - Descriptive statistics of NRS and pain categories at each time point.  
+  - **Friedman test** to assess overall change in pain across 6, 24, and 48 hours.  
+  - **Wilcoxon signed‑rank post‑hoc comparisons** between time pairs with multiplicity adjustment.  
+  - Descriptive reporting of swelling incidence as a safety outcome.
+
+- Where distributions and assumptions permit, **parametric repeated‑measures ANOVA or mixed‑effects models** can complement the primary analysis, providing effect sizes and confidence intervals, but they should not replace the more robust nonparametric primary approach.
+
+- Additional categorical and responder analyses, and exploratory associations with swelling or baseline characteristics, are recommended to enhance clinical interpretability but should be clearly labeled as exploratory due to the limited sample size.
+
+This plan aligns with the study design, respects the ordinal nature of the pain scale, accounts for within‑subject correlation, and balances robustness with interpretability in a small clinical sample.

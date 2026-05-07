@@ -1,0 +1,457 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+F1000Research
+F1000Research 2021, 10:868 Last updated: 19 APR 2025
+
+Check for updates
+
+RESEARCH ARTICLE
+# Comparison of the effect on postoperative pain between instrumentation with and without connected electronic apex locator: a randomized clinical trial
+[version 1; peer review: 1 approved with reservations, 1 not approved]
+
+Khoa Van Pham ID, Cuong Hoang
+
+Department of Operative Dentistry and Endodontics, University of Medicine and Pharmacy at Ho Chi Minh City, Ho Chi Minh, 700000, Vietnam
+
+***
+
+**v1 First published:** 27 Aug 2021, **10**:868
+https://doi.org/10.12688/f1000research.70645.1
+
+**Latest published:** 27 Aug 2021, **10**:868
+https://doi.org/10.12688/f1000research.70645.1
+
+***
+
+**Open Peer Review**
+
+**Approval Status X ?**
+
+| | 1 | 2 |
+| :--- | :---: | :---: |
+| **version 1** | **X** | **?** |
+| 27 Aug 2021 | view | view |
+
+1. **Filipe Colombo Vitali** ID, Federal University of Santa Catarina, Florianópolis, Brazil
+2. **Gabriel Pereira Nunes**, São Paulo State University, Araçatuba, Brazil
+
+Any reports and responses or comments on the article can be found at the end of the article.
+
+***
+
+**Keywords**
+nickel-titanium, electronic apex locator, single-visit endodontic, postoperative pain
+
+***
+
+Page 1 of 13
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+F1000Research
+F1000Research 2021, 10:868 Last updated: 19 APR 2025
+
+Corresponding author: Khoa Van Pham (khoapv@ump.edu.vn)
+Author roles: Pham KV: Conceptualization, Data Curation, Formal Analysis, Investigation, Methodology, Supervision, Visualization, Writing – Original Draft Preparation, Writing – Review & Editing; Hoang C: Data Curation, Formal Analysis, Investigation
+Competing interests: No competing interests were disclosed.
+Grant information: The author(s) declared that no grants were involved in supporting this work.
+Copyright: © 2021 Pham KV and Hoang C. This is an open access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.
+How to cite this article: Pham KV and Hoang C. Comparison of the effect on postoperative pain between instrumentation with and without connected electronic apex locator: a randomized clinical trial [version 1; peer review: 1 approved with reservations, 1 not approved] F1000Research 2021, 10:868 https://doi.org/10.12688/f1000research.70645.1
+First published: 27 Aug 2021, 10:868 https://doi.org/10.12688/f1000research.70645.1
+
+Page 2 of 13
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+F1000Research 2021, 10:868 Last updated: 19 APR 2025
+
+**Introduction**
+One of the most important stages in endodontic therapy is root canal preparation, which required a working length (WL) determination.¹ Therefore, the measurement of root canal WL is one of the most important factors in root canal instrumentation and can affect the success of the endodontic treatment.¹ The complexity of the situation is that the WL is not constant, it changes during root canal preparation.² Because the root canal space cannot be shaped and cleaned appropriately if the WL is not exactly determined, this value must be controlled, measured, and adjusted continuously during the preparation. This task is time consuming and can cause procedural errors as it can produce more stress for the operator. Although the electronic apex locator (EAL), a device for WL determination, has shown high accuracy and facilitation,¹ such as ProPex PiXi (Dentsply Sirona, Ballaigues, Switzerland), it is still hard to satisfy the operator’s demand for continuous monitoring of the WL in root canal preparation. The E Connect S motor combined with E-Pex Pro EAL (Changzhou Eighteeth Medical Technology Co., China) is a solution for continuous control of WL. This motor offers very special function for the operator when the instrument reaches the WL, that is, the motor automatically decreases the speed of, stops and/or reverses the instrument. Using such strictly controlled WL, this is expected to reduce the postoperative pain caused by apical extrusion. Postoperative pain is one of the most sensitive consequence in root canal therapy and there are many efforts to reduce the postoperative pain to enhance the patient’s comfort, cooperation, and trust. The unremitting efforts of manufacturers and advancements in technology and materials have led to improved rotary nickel-titanium (NiTi) instruments.³,⁴ An offset cross-sectional design has become dominant in recent years because of its multi-advantages, such as larger envelope movement and good debris collection, facilitating its utilization.⁴ ProTaper Next (PTN, Dentsply Sirona, Maillefer, Ballaigues, Switzerland) possesses this offset design and is made of M-Wire.
+
+The aim of the present study was to evaluate the postoperative pain after root canal treatment between utilization of a traditional endodontic motor with unconnected EAL and the motor with connected EAL. The null hypothesis was that there would be no differences in pain intensities between the two experimental groups.
+
+**Methods**
+This trial was registered at Thai Clinical Trials Registry with identification number of TCTR20200118001. The trial was registered retrospectively, as the study was started directly after receiving ethical approval; application for registration occurred after the enrollment of the first participant. The design of this study was a parallel group randomized, controlled trial with two arms, from May 2019 to March 2020.
+
+**Sample size**
+According to the data of a previous study,⁵ the sample size was calculated as 36. The sample size was calculated as the following formula for comparison of means from two independent samples:
+
+$$n = \frac{\left(Z_{1-\beta} + Z_{1-\frac{\alpha}{2}}\right)^2 \left(\sigma_1^2 + \sigma_2^2\right)}{\left(\mu_1 - \mu_2\right)^2}$$
+
+With the power of 80%, significance of 0.05, the $Z_{1-\frac{\alpha}{2}} = 1.96$, $Z_{1-\beta} = 0.84$.
+
+Considering the number of lost patients during follow-up, 42 patients were aimed to be included in the study with allocation ratio of 1:1.
+
+**Participants**
+Subjects of the study were enlisted from patients sent to the Department of Operative Dentistry and Endodontics of the University of Medicine and Pharmacy at Ho Chi Minh City for endodontic treatment from May 2019 to March 2020. Patients were asked prior to making an appointment for taking part in the study. Every patient was thoroughly informed about the study by the investigators, and each patient signed an informed consent form. The patients were blind to the modalities used for the endodontic treatment.
+
+Patients were randomly distributed into two groups (n = 21 per group) using an online randomiser program (available at www.randomizer.org). Group 1 was treated using the traditional endodontic motor with unconnected EAL and group 2 was treated using the endodontic motor with connected EAL. In total, 26 women and 16 men with maxillary and mandibular molars indicated for endodontic therapy (as assessed with preoperative radiographs) were included in the present study. For each patient, one molar was treated for the study (a total of 42 molars for the study).
+
+Page 3 of 13
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+F1000Research 2021, 10:868 Last updated: 19 APR 2025
+
+Table 1. Criteria for inclusion or exclusion of patients.
+
+| Inclusion criteria | Exclusion criteria |
+| :--- | :--- |
+| Healthy patients without systemic diseases | Systematic diseases |
+| Healthy patients without allergic reactions | Sinus tract |
+| Symptomatic irreversible pulpitis | Swelling |
+| Symptomatic apical periodontitis | Clenching or bruxism |
+| First or second molar | Severely damaged tooth |
+| | Severe periodontal disease |
+| | Resorption in related tooth |
+| | Previously endodontic treated related tooth |
+| | Root crack |
+| | Taken analgesics during past 24 hours |
+| | Absence of opposing tooth to the related tooth |
+
+Eligibility criteria
+Criteria for subjects included in the present study were healthy patients without systemic diseases with symptomatic pulpal or periapical pathology of the first or second molar. Criteria for subjects excluded from the study were those with systematic diseases and other conditions, and those aged less than 18 years. The inclusion and exclusion criteria of patients for the present study were displayed in the Table 1.
+
+Data collection
+Patient preoperative pain was recorded using the Heft Parker visual analogue scale (VAS) of Heft & Parker.⁶ The VAS was 170 mm in length and divided into four categories: 0 mm, no pain; 0-54 mm, mild pain (within this category: faint pain = 23 mm; weak pain = 36 mm); 55-113 mm, moderate pain; 114-170, severe pain (within this category: strong pain = 114 mm; intense pain = 144 mm).⁷ The patients had the VAS explained to them so that they knew how to record their pain on the line without any numerical markings, but with various descriptive words. The patients could place a mark anywhere on the line and use the verbal descriptors as a guide. Each patient’s mark was assigned a value between 0 and 170 mm on the scale by measuring the distance from the left end to the mark with a ruler.
+
+The patients were required to record their own pain level at 6, 24, 48, 72 hours and one week after treatment was complete using the VAS. The patient was scheduled for an appointment at one week after treatment for recording the postoperative pain by percussion test and for collecting the VAS. The age, gender, number of teeth, diagnosis, preoperative and postoperative pain levels at 6, 24, 48, 72, one week, preoperative and postoperative pain levels at one week on percussion using the Heft & Parker VAS (HP-VAS), and the analgesic intake after procedure were recorded.
+
+Interventions
+All endodontic treatments were performed by one endodontist (C.M.H.). The indicated tooth was anesthetized using local anesthetic solution containing 2% lidocaine with 1:100,000 epinephrine (Lignospan Standard, Septodont, France). Inferior alveolar nerve block and buccal infiltration anesthesia technique were used for the mandibular molars and buccal and palatal infiltration anesthesia technique was used for the maxillary molars. After 10 minutes, the access cavity was prepared under the rubber dam and explored for all possible canal orifices. The canals were filled with 3% sodium hypochlorite (Canal Pro, Coltene Whaledent, Altstätten, Switzerland) and explored by the 10 ISO K-file (Dentsply Sirona, Maillefer, Ballaigues, Switzerland). The coronal third of the canals were pre-enlarged using the PTN X1 to the estimated lengths (determined by the preoperative digital X-ray images).
+
+For subjects of the group 1, group of instrumentation with unconnected EAL, the root canal lengths were measured using ProPex Pixi EAL and teeth were treated using WaveOne endodontic motor with Proglider and PTN instruments (Dentsply Sirona, Maillefer, Ballaigues, Switzerland). After WL was determined and confirmed radiographically (short of the apex from 0.5—1 mm), rubber stop on the shaft of the Proglider was set at the WL, then the instrument was inserted into the handpiece of the WaveOne motor (velocity: 300 rpm; torque: 2 N.cm) and used in slow in-and-out pecking motions inside the canal until it reached the determined working length. The Proglider was replaced by the PTN X1 with the rubber stop on the shaft at working length. The PTN X1 was used in slow in-and-out pecking motion inside the canal until reaching the determined WL. This same procedure was used for the next PTN X2 (upper buccal or lower mesial canals) and PTN X3 (upper palatal and lower distal canals).
+
+For subjects of the group 2, group of instrumentation with connected EAL, the teeth were treated using E Connect S endodontic motor combined with the E-Pex Pro EAL with Proglider and PTN instruments. The WL of each root canal was confirmed radiographically. The Proglider was inserted into the handpiece of the E Connect S motor (velocity: 300 rpm;
+
+Page 4 of 13
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+F1000Research 2021, 10:868 Last updated: 19 APR 2025
+
+torque: 2 N.cm) connected with the E-Pex Pro EAL (set at the apex, 0.0). The hook wire of the motor was hung into the corner of the patient’s mouth, and the preparation was started. The instrument was inserted into the canal and used in slow in-and-out motion toward the apex until it was automatically stopped and reversed from the apex. This same procedure was used for the next PTN X2 (upper buccal or lower mesial canals) and PTN X3 (upper palatal and lower distal canals).
+
+For the subjects of both groups, the 10 ISO K-file was used for patency file during the preparation after every instrument change. The file was inserted just past the apical foramen, with the amplitude of less than 0.5 mm.
+
+The root canals were irrigated a final time using 5 mL 3% sodium hypochlorite following 5 mL 17% EDTA solution, then dried using matched paper cones and obturated with matched single gutta percha cones with AH Plus (Dentsply Sirona, Maillefer, Ballaigues, Switzerland). Digital radiograph was taken to check the quality of obturation. If the root canal treatment acquired all requirements of good obturation, without extrusion of material, the tooth was treated for the next step. The access cavities were restored using SDR flowable composite and Ceram X SphereTec composite resin (Dentsply Sirona, Konstanz, Germany).
+
+A total of 400 mg ibuprofen (Stada, Vietnam) was prescribed for cases of unbearable pain.
+
+Ethical considerations
+This study was approved by the Research Ethics Committee of the University of Medicine and Pharmacy at Ho Chi Minh City with the approval number of 306/ĐHYD-HĐĐĐ. Written informed consent was obtained from all subjects involved in the study. Written informed consent was been obtained from the patients to publish the article.
+
+Page 5 of 13
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+F1000Research 2021, 10:868 Last updated: 19 APR 2025
+
+CONSORT
+TRANSPARENT REPORTING of TRIALS
+
+CONSORT 2010 Flow Diagram
+
+Enrollment
+Assessed for eligibility (n=100)
+
+Excluded (n=58)
+♦ Not meeting inclusion criteria (n=48)
+♦ Declined to participate (n=2)
+♦ Other reasons (n=8)
+
+Randomized (n=42)
+
+Allocation
+Allocated to intervention (n=21)
+♦ Received allocated intervention (n=21)
+♦ Did not receive allocated intervention (give reasons) (n=0)
+
+Allocated to intervention (n=21)
+♦ Received allocated intervention (n=21)
+♦ Did not receive allocated intervention (give reasons) (n=0)
+
+Follow-Up
+Lost to follow-up (give reasons) (n=0)
+Discontinued intervention (give reasons) (n=0)
+
+Lost to follow-up (give reasons) (n=0)
+Discontinued intervention (give reasons) (n=0)
+
+Figure 1. CONSORT flow diagram.
+
+Page 6 of 13
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+F1000Research 2021, 10:868 Last updated: 19 APR 2025
+
+Page 7 of 13
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+F1000Research 2021, 10:868 Last updated: 19 APR 2025
+
+**Conclusions**
+Within the limitations of the present study, endodontic therapy with the single-visit treatment brings the benefit to the patients without increasing the pain. Both groups using the endodontic motors with unconnected or connected electronic apex locator have a similar effect on reduction of the postoperative pain for endodontic patients.
+
+**Data availability**
+Underlying data
+Mendeley Data: Khoa Cuong PO Pain, https://doi.org/10.17632/48ytd79w39.1.33
+
+Reporting guidelines
+Mendeley Data: CONSORT checklist for ‘Comparison of the effect on postoperative pain between instrumentation with and without connected electronic apex locator: a randomized clinical trial’, https://doi.org/10.17632/48ytd79w39.1.33
+
+Data are available under the terms of the Creative Commons Attribution 4.0 International license (CC-BY 4.0).
+
+Page 8 of 13
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+F1000Research 2021, 10:868 Last updated: 19 APR 2025
+
+# References
+
+1. Pham KV, Khuc NK: **The Accuracy of Endodontic Length Measurement Using Cone-beam Computed Tomography in Comparison with Electronic Apex Locators.** *Iran Endod J.* 2020; **15(1)**: 12–17.
+[Publisher Full Text](https://example.com)
+
+2. Vasconcelos BC, Bastos LM, Oliveira AS, *et al.*: **Changes in Root Canal Length Determined during Mechanical Preparation Stages and Their Relationship with the Accuracy of Root ZX II.** *J Endod.* 2016; **42(11)**: 1683–1686. eng.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+3. Pham K, Nguyen N: **Cutting efficiency and dentinal defects using two single-file continuous rotary nickel-titanium instruments [Original Article].** *Saudi Endod J.* 2020; **10(1)**: 56–60.
+[Publisher Full Text](https://example.com)
+
+4. Pham K, Phan T: **Evaluation of root canal preparation using two nickel-titanium instrument systems via cone-beam computed tomography [Original Article].** *Saudi Endod J.* 2019; **9(3)**: 210–215.
+[Publisher Full Text](https://example.com)
+
+5. Arslan H, Güven Y, Karataş E, *et al.*: **Effect of the Simultaneous Working Length Control during Root Canal Preparation on Postoperative Pain.** *J Endod.* 2017; **43(9)**: 1422–1427. eng.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+6. Heft MW, Parker SR: **An experimental basis for revising the graphic rating scale for pain.** *Pain.* 1984; **19(2)**: 153–161.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+7. Nusstein J, Steinkruger G, Reader A, *et al.*: **The effects of a 2-stage injection technique on inferior alveolar nerve block injection pain.** *Anesth Prog.* 2006; **53(4)**: 126–130. eng.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com) | [Free Full Text](https://example.com)
+
+8. Van Pham K: **Endodontic length measurements using 3D Endo, cone-beam computed tomography, and electronic apex locator.** *BMC Oral Health.* 2021; **21(1)**: 271.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com) | [Free Full Text](https://example.com)
+
+9. Van Pham K: **Endodontic length measurements using cone beam computed tomography with dedicated or conventional software at different voxel sizes.** *Sci Rep.* 2021; **11(1)**: 9432.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com) | [Free Full Text](https://example.com)
+
+10. Nguyen P, Pham K: **Endodontic length measurements using different modalities: An in vitro study [Original Article].** *J Int Soc Prev Community Dent.* 2020; **10(6)**: 752–758.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com) | [Free Full Text](https://example.com)
+
+11. Oliveira PS, da Costa KNB, Carvalho CN, *et al.*: **Impact of root canal preparation performed by ProTaper Next or Reciproc on the quality of life of patients: a randomized clinical trial.** *Int Endod J.* 2019; **52(2)**: 139–148. eng.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+12. Pham KV: **A Comparison of Cone Beam Computed Tomography and Periapical Digital Radiography for Evaluation of Root Canal Preparation.** *Applied Sciences.* 2021; **11(14)**.
+[Publisher Full Text](https://example.com)
+
+13. Ozsu D, Karatas E, Arslan H, *et al.*: **Quantitative evaluation of apically extruded debris during root canal instrumentation with ProTaper Universal, ProTaper Next, WaveOne, and self-adjusting file systems.** *Eur J Dent.* 2014; **8(4)**: 504–508. eng.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com) | [Free Full Text](https://example.com)
+
+14. Koçak MM, Çiçek E, Koçak S, *et al.*: **Comparison of ProTaper Next and HyFlex instruments on apical debris extrusion in curved canals.** *Int Endod J.* 2016; **49(10)**: 996–1000. eng.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+15. Silva EJNL, Carapiá MF, Lopes RM, *et al.*: **Comparison of apically extruded debris after large apical preparations by full-sequence rotary and single-file reciprocating systems.** *Int Endod J.* 2016; **49(7)**: 700–705. eng.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+16. Bürklein S, Schäfer E: **Apically extruded debris with reciprocating single-file and full-sequence rotary instrumentation systems.** *J Endod.* 2012; **38(6)**: 850–852. eng.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+17. Relvas JBF, Bastos MMB, Marques AAF, *et al.*: **Assessment of postoperative pain after reciprocating or rotary NiTi instrumentation of root canals: a randomized, controlled clinical trial.** *Clin Oral Investig.* 2016; **20(8)**: 1987–1993.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+18. Pasqualini D, Corbella S, Alovisi M, *et al.*: **Postoperative quality of life following single-visit root canal treatment performed by rotary or reciprocating instrumentation: a randomized clinical trial.** *Int Endod J.* 2016; **49(11)**: 1030–1039.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+19. Nekoofar MH, Sheykhrezae MS, Meraji N, *et al.*: **Comparison of the Effect of Root Canal Preparation by Using WaveOne and ProTaper on Postoperative Pain: A Randomized Clinical Trial.** *J Endod.* 2015; **41(5)**: 575–578.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+20. Neelakantan P, Sharma S: **Pain after single-visit root canal treatment with two single-file systems based on different kinematics—a prospective randomized multicenter clinical study.** *Clin Oral Investig.* 2015; **19(9)**: 2211–2217.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+21. Kherlakian D, Cunha RS, Ehrhardt IC, *et al.*: **Comparison of the Incidence of Postoperative Pain after Using 2 Reciprocating Systems and a Continuous Rotary System: A Prospective Randomized Clinical Trial.** *J Endod.* 2016; **42(2)**: 171–176.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+22. Caviedes-Bucheli J, Castellanos F, Vasquez N, *et al.*: **The influence of two reciprocating single-file and two rotary-file systems on the apical extrusion of debris and its biological relationship with symptomatic apical periodontitis. A systematic review and meta-analysis.** *Int Endod J.* 2016; **49(3)**: 255–270.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+23. Mostafa M, El-Shrief YAI, Anous WIO, *et al.*: **Postoperative pain following endodontic irrigation using 1.3% versus 5.25% sodium hypochlorite in mandibular molars with necrotic pulps: a randomized double-blind clinical trial.** *Int Endod J.* 2020 Feb; **53(2)**: 154–166. eng.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+24. Farzaneh S, Parirokh M, Nakhaee N, *et al.*: **Effect of two different concentrations of sodium hypochlorite on postoperative pain following single-visit root canal treatment: a triple-blind randomized clinical trial.** *Int Endod J.* 2018; **51(S1)**: e2–e11.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+25. Demenech LS, de Freitas JV, Tomazinho FSF, *et al.*: **Postoperative Pain after Endodontic Treatment under Irrigation with 8.25% Sodium Hypochlorite and Other Solutions: A Randomized Clinical Trial.** *J Endod.* 2021 May; **47(5)**: 696–704. eng.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+26. Çiçek E, Koçak MM, Koçak S, *et al.*: **Postoperative pain intensity after using different instrumentation techniques: a randomized clinical study [Original Article].** *J Appl Oral Sci.* 2017; **25(1)**: 20–26.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com) | [Free Full Text](https://example.com)
+
+27. Ramamoorthi S, Nivedhitha MS, Divyanand MJ: **Comparative evaluation of postoperative pain after using endodontic needle and EndoActivator during root canal irrigation: A randomised controlled trial.** *Aust Endod J.* 2015; **41(2)**: 78–87.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+28. Pasqualini D, Mollo L, Scotti N, *et al.*: **Postoperative Pain after Manual and Mechanical Glide Path: A Randomized Clinical Trial.** *J Endod.* 2012; **38(1)**: 32–36.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+29. ElMubarak AHH, Abu-bakr NH, Ibrahim YE: **Postoperative Pain in Multiple-visit and Single-visit Root Canal Treatment.** *J Endod.* 2010 2010/01/01/; **36(1)**: 36–39.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+30. Price DD, Bush FM, Long S, *et al.*: **A comparison of pain measurement characteristics of mechanical visual analogue and simple numerical rating scales.** *Pain.* 1994; **56(2)**: 217–226.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+31. Kremer E, Atkinson HJ, Ignelzi RJ: **Measurement of pain: Patient preference does not confound pain measurement.** *Pain.* 1981; **10(2)**: 241–248.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+32. Jensen MP, Karoly P, Braver S: **The measurement of clinical pain intensity: a comparison of six methods.** *Pain.* 1986; **27(1)**: 117–126.
+[PubMed Abstract](https://example.com) | [Publisher Full Text](https://example.com)
+
+33. Pham K: **Khoa Cuong PO Pain and Consort Checklist.** *Mendeley Data, V1.* 2021.
+[Publisher Full Text](https://example.com)
+
+Page 9 of 13
+
+════════════════════════════════════════════════════════════
+PAGE 10
+════════════════════════════════════════════════════════════
+F1000Research
+F1000Research 2021, 10:868 Last updated: 19 APR 2025
+
+# Open Peer Review
+
+**Current Peer Review Status: ❌ ❓**
+
+**Version 1**
+
+Reviewer Report 24 May 2024
+
+https://doi.org/10.5256/f1000research.74247.r271593
+
+**© 2024 Nunes G.** This is an open access peer review report distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.
+
+**❓ Gabriel Pereira Nunes**
+Department Preventive and Restorative Dentistry, São Paulo State University, Araçatuba, São Paulo, Brazil
+
+The article is interesting, but there are points to be explained, improved and/or changed:
+\*Abstract
+Write a little background before the objective. Enter the Trial registration number.
+
+\*Introduction
+This section could have more quotes to support the statements made. In addition, report the prevalence of pain during endodontic treatment, as this is the main outcome of the study.
+
+\*Material and Methods
+The inclusion and exclusion criteria need to be written down. The fact, for example, of including patients without systemic diseases already implies that they would be excluded if they had systemic diseases.
+The VAS scale is considered the gold standard, so why has another scale been adopted as a method of evaluation?
+
+Did the prescription of analgesics as reported exclude the patient from the evaluations? It is not clear and the results table does not describe whether the patient took this medication (ibuprofen).
+
+\*Results
+Assign an acronym/abbreviation to groups 1 and 2; the reading will be more attractive and clearer for readers
+
+\*Discussion
+The discussion section is well written. However, the authors could comment on the subjective assessment of the pain outcome. In addition, endodontic treatment has several stages that can cause pain and are confounding factors for this outcome, such as: coronal opening/anesthesia, biomechanical preparation, root canal irrigation, obturation process, extrusion or not of the material.
+
+Page 10 of 13
+
+════════════════════════════════════════════════════════════
+PAGE 11
+════════════════════════════════════════════════════════════
+F1000Research
+F1000Research 2021, 10:868 Last updated: 19 APR 2025
+
+Several systematic reviews have confirmed this in the literature and should be cited.
+
+- Xiqian L et al (2024 [ref - 1])
+
+-- Seron MA et al (2023 [ref - 2])
+
+- Sabino-Silva R et al (2023 [ref - 3])
+
+- Rossi-Fedele G et al (2023 [ref - 4])
+
+- Chalub LO et al (2022 [ref - 5])
+
+References:
+In addition to the cited systematic reviews that can be incorporated into the text, I recommend a detailed review of the references (when possible) so that the majority of them are among the articles published in the last 5 years.
+
+**References**
+1. Xiqian L, Ying Z, Mian M: The effect of apical patency on postoperative pain following endodontic therapy: A systematic review and meta-analysis.*Eur J Oral Sci.* 2024; **132** (3): e12986 PubMed Abstract | Publisher Full Text
+2. Seron MA, Nunes GP, Ferrisse TM, Strazzi-Sahyon HB, et al.: Postoperative pain after root canal filling with bioceramic sealers: a systematic review and meta-analysis of randomized clinical trials. *Odontology.* 2023; **111** (4): 793-812 PubMed Abstract | Publisher Full Text
+3. Sabino-Silva R, Cardoso IV, Vitali FC, Alves AMH, et al.: Prevalence of postoperative pain after endodontic treatment using low and high concentrations of sodium hypochlorite: a systematic review and meta-analysis.*Clin Oral Investig.* 2023; **27** (8): 4157-4171 PubMed Abstract | Publisher Full Text
+4. Rossi-Fedele G, Rödig T: Effectiveness of root canal irrigation and dressing for the treatment of apical periodontitis: A systematic review and meta-analysis of clinical trials.*Int Endod J.* 2023; **56 Suppl 3**: 422-435 PubMed Abstract | Publisher Full Text
+5. Chalub LO, Nunes GP, Ferrisse TM, Strazzi-Sahyon HB, et al.: Postoperative pain in root canal treatment with ultrasonic versus conventional irrigation: a systematic review and meta-analysis of randomized controlled trials.*Clin Oral Investig.* 2022; **26** (4): 3343-3356 PubMed Abstract | Publisher Full Text
+
+**Is the work clearly and accurately presented and does it cite the current literature?**
+Yes
+
+**Is the study design appropriate and is the work technically sound?**
+Partly
+
+**Are sufficient details of methods and analysis provided to allow replication by others?**
+Yes
+
+**If applicable, is the statistical analysis and its interpretation appropriate?**
+
+Page 11 of 13
+
+════════════════════════════════════════════════════════════
+PAGE 12
+════════════════════════════════════════════════════════════
+F1000Research
+F1000Research 2021, 10:868 Last updated: 19 APR 2025
+
+Yes
+
+Are all the source data underlying the results available to ensure full reproducibility?
+Partly
+
+Are the conclusions drawn adequately supported by the results?
+Partly
+
+Competing Interests: No competing interests were disclosed.
+
+I confirm that I have read this submission and believe that I have an appropriate level of expertise to confirm that it is of an acceptable scientific standard, however I have significant reservations, as outlined above.
+
+Reviewer Report 02 March 2022
+
+https://doi.org/10.5256/f1000research.74247.r122430
+
+© 2022 Vitali F. This is an open access peer review report distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.
+
+X Filipe Colombo Vitali iD
+Department of Dentistry, Federal University of Santa Catarina, Florianópolis, Brazil
+
+The present study evaluated the occurrence of postoperative pain between instrumentation with and without connected electronic apex locator through a randomized clinical trial. In general, the article is well written with appropriate language use. However, important methodological flaws are not only a bias, but completely invalidates the results of the manuscript:
+1. the sample size calculation is not adequate;
+
+2. there was no standardization in the sampling of patients, pulp status (vital and necrotic were included) or teeth (maxillary and mandibular molars);
+
+3. the methodology applied for the chemical-mechanical preparation of root canals is weak and can lead to several biases in addition to the pain-causing factor evaluated;
+
+4. the statistical analysis of the data is incomplete and could be better explored;
+
+5. The conclusion is not supported by the results.
+My recommendation for this current version is 'not approved'.
+
+Is the work clearly and accurately presented and does it cite the current literature?
+Partly
+
+Is the study design appropriate and is the work technically sound?
+
+Page 12 of 13
+
+════════════════════════════════════════════════════════════
+PAGE 13
+════════════════════════════════════════════════════════════

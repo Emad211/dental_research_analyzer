@@ -1,0 +1,120 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_243-22+++MIRBAHAR++ASFER-1622555526.pdf
+Status : ok
+Time   : 20260507_185517
+══════════════════════════════════════════════════════════════════════
+
+The provided text appears incomplete and fragmented, making it challenging to extract all relevant methodological details. However, based on the available information, I will attempt to address the tasks as comprehensively as possible.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Retrospective comparative study.
+2. **Objective**: To compare the clinical outcomes of periapical surgery performed in endodontic and oral surgery units of a teaching dental hospital.
+3. **Groups**: Two groups:
+   - Group 1: Periapical surgery performed in endodontic units.
+   - Group 2: Periapical surgery performed in oral surgery units.
+4. **Sample Size**: Not explicitly mentioned in the provided text.
+5. **Variables**:
+   - **Independent Variables**: Type of surgical unit (endodontic vs. oral surgery).
+   - **Dependent Variables**: Clinical and radiographic success/failure rates.
+   - **Confounding Variables**: Quality of filling and filling material.
+6. **Measurements**:
+   - Clinical success/failure: Likely assessed based on postoperative symptoms and healing.
+   - Radiographic success/failure: Likely assessed using imaging techniques (e.g., periapical radiographs).
+7. **Data Collection Methods**: Retrospective review of patient records and radiographs.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Chi-Square Test (or Fisher’s Exact Test)**  
+   - **Purpose**: To compare categorical outcomes (success/failure) between the two groups.  
+   - **Why Appropriate**:  
+     1. The outcome variables (success/failure) are categorical.  
+     2. The study involves comparison between two independent groups.  
+   - **Why It May Not Be Appropriate**:  
+     - If the sample size is small, Fisher’s Exact Test may be preferred.  
+   - **When This Test Should NOT Be Used**:  
+     - If the expected frequency in any cell is less than 5.  
+   - **Alternative**: Fisher’s Exact Test.
+
+2. **Independent Samples t-Test (or Mann-Whitney U Test)**  
+   - **Purpose**: To compare continuous variables (e.g., healing time, radiographic scores) between the two groups.  
+   - **Why Appropriate**:  
+     1. If continuous data are normally distributed, the t-test is suitable.  
+     2. The study involves two independent groups.  
+   - **Why It May Not Be Appropriate**:  
+     - If data are not normally distributed.  
+   - **When This Test Should NOT Be Used**:  
+     - For non-normal data or unequal variances.  
+   - **Alternative**: Mann-Whitney U Test (for non-normal data).
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Logistic Regression**  
+   - **Purpose**: To assess the impact of confounding variables (e.g., filling quality, filling material) on the success/failure rates.  
+   - **Why Appropriate**:  
+     1. Allows adjustment for confounding factors.  
+     2. Suitable for binary outcome variables.  
+   - **Why It May Not Be Appropriate**:  
+     - Requires a sufficiently large sample size for reliable estimates.  
+   - **When This Test Should NOT Be Used**:  
+     - If sample size is too small or multicollinearity exists.  
+   - **Alternative**: Exact logistic regression (for small samples).
+
+2. **Kaplan-Meier Survival Analysis**  
+   - **Purpose**: To evaluate time-to-event data (e.g., time to failure or healing).  
+   - **Why Appropriate**:  
+     1. Suitable for censored data.  
+     2. Provides insights into survival rates over time.  
+   - **Why It May Not Be Appropriate**:  
+     - Requires accurate time-to-event data.  
+   - **When This Test Should NOT Be Used**:  
+     - If time-to-event data are unavailable.  
+   - **Alternative**: Cox proportional hazards regression (to adjust for covariates).
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **ANOVA (or Kruskal-Wallis Test)**  
+   - **Purpose**: To compare continuous variables across more than two subgroups (e.g., different filling materials).  
+   - **Why Appropriate**:  
+     1. Suitable for comparing means across multiple groups.  
+     2. Enhances understanding of subgroup differences.  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes normality and homogeneity of variances.  
+   - **When This Test Should NOT Be Used**:  
+     - For non-normal data or unequal variances.  
+   - **Alternative**: Kruskal-Wallis Test (for non-normal data).
+
+2. **Correlation Analysis (Pearson or Spearman)**  
+   - **Purpose**: To explore relationships between continuous variables (e.g., filling quality and radiographic scores).  
+   - **Why Appropriate**:  
+     1. Identifies potential associations between variables.  
+     2. Useful for exploratory analysis.  
+   - **Why It May Not Be Appropriate**:  
+     - Does not imply causation.  
+   - **When This Test Should NOT Be Used**:  
+     - For non-linear relationships.  
+   - **Alternative**: Spearman correlation (for non-normal data).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1. **Paired t-Test**  
+   - **Why Not Appropriate**: The study involves two independent groups, not paired data.
+
+2. **Repeated Measures ANOVA**  
+   - **Why Not Appropriate**: The study does not involve repeated measurements on the same subjects.
+
+3. **Chi-Square Test for Trend**  
+   - **Why Not Appropriate**: There is no ordinal or trend-based variable in the study.
+
+---
+
+### TASK 4: SUMMARY
+
+The analytical approach focuses on comparing clinical and radiographic outcomes between two independent groups while accounting for confounding factors. Mandatory tests ensure the primary objectives are addressed, while recommended and optional tests enhance the robustness and depth of the analysis. The plan emphasizes the use of appropriate statistical methods based on the nature of the data and study design, ensuring valid and reliable conclusions.
