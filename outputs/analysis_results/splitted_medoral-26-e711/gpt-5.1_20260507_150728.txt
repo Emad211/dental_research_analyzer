@@ -1,0 +1,493 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_medoral-26-e711.pdf
+Status : ok
+Time   : 20260507_150728
+══════════════════════════════════════════════════════════════════════
+
+Below is structured so you can almost “drop it into” a protocol or SAP.
+
+---
+
+## TASK 1 – INFORMATION EXTRACTION
+
+### 1. Study design and objectives
+
+- **Design**  
+  - Retrospective cohort, diagnostic accuracy (sensitivity) study.
+  - Within-subject comparison of imaging modalities.
+  - Cohort: patients who underwent **endodontic microsurgery** and had follow‑up imaging.
+
+- **Primary objective**  
+  - To evaluate whether follow-up with only two-dimensional radiographs (periapical and panoramic) is reliable for detecting periapical lesions after endodontic microsurgery, using CBCT as the **reference standard**.
+  - Operationally: estimate the **sensitivity** of periapical radiography and panoramic radiography vs CBCT at:
+    - Preoperative stage.
+    - Follow-up stage (6–48 months after surgery).
+
+- **Secondary objectives (implied)**  
+  - Quantify lesion **area** on 2D radiographs and **volume** on CBCT.
+  - Examine imaging measurement reliability (calibration and inter‑observer agreement).
+
+---
+
+### 2. Study population
+
+- **Source population**
+  - Patients treated with **endodontic microsurgery** at a university oral surgery service.
+  - All surgeries performed by the same oral surgeon (M.P.D.), using modern microsurgical techniques (rigid endoscope, ultrasonic preparation, MTA root-end filling).
+
+- **Inclusion criteria** (explicit/implicit from text):
+  - Patients who underwent endodontic microsurgery.
+  - Availability of:
+    - Preoperative CBCT.
+    - Preoperative periapical radiograph and/or panoramic radiograph of sufficient quality for linear measurement of periapical lesions.
+    - Follow-up imaging between **6 and 48 months postsurgery**:
+      - Follow-up periapical radiograph and/or panoramic radiograph.
+      - Follow-up CBCT.
+  - Image quality adequate for lesion delineation and measurements.
+
+- **Exclusion criteria**:
+  - Use of **regenerative procedures** (bone grafts, membranes) in the surgery.
+
+- **Unit of analysis**
+  - Likely **tooth** (or root) rather than patient:
+    - Lesion defined as periapical radiolucency at root apex.
+    - Multiple defects for multirooted teeth summed into a “total defect area”.
+
+- **Sample size**
+  - Not specified in the extract. The full article likely reports number of patients and number of teeth/lesions.
+
+---
+
+### 3. Groups and imaging modalities
+
+- **Index tests (2D radiographs)**:
+  1. **Periapical radiography**
+     - Equipment: Gendex expert D unit, phosphor‑plate system (VistaScan), parallel technique with film holder, exposure: 65 kV, 7 mA, 0.08–0.12 s, tube–sensor distance 30 cm.
+     - Processing software: DBSWIN.
+
+  2. **Panoramic radiography**
+     - Equipment: Planmeca ProMax 3D Classic CBCT unit used in panoramic mode.
+     - Exposure: 68 kV, 10 mA, 19 s.
+     - Processing software: Planmeca Romexis®.
+
+- **Reference standard**
+  - **CBCT** (cone-beam computed tomography)
+    - Planmeca ProMax 3D Classic, limited FOV 40×40 mm, 90 kV, 8 mA, 12 s, voxel size 0.15 mm.
+    - Processing software: Planmeca Romexis® Viewer.
+
+- **Imaging stages**
+  - **Preoperative**: before endodontic microsurgery.
+  - **Follow-up**: 6–48 months after surgery.
+
+---
+
+### 4. Variables and definitions
+
+#### 4.1. Diagnostic status (presence/absence of lesion)
+
+- **Outcome for diagnostic validity**:
+  - Binary variable per imaging modality and time point:
+    - Lesion: present / absent.
+- **Definition of periapical lesion** (for all modalities):
+  - Radiolucency in contact with apical part of root.
+  - Size > 2× width of periodontal ligament space.
+  - For CBCT: must be visible in at least **two planes** (axial, coronal, sagittal).
+
+- **Derived diagnostic parameters (per index test, per time point)**:
+  - True positive (TP): 2D test lesion present, CBCT lesion present.
+  - False negative (FN): 2D test lesion absent, CBCT lesion present.
+  - (False positives and specificity are not highlighted but may be derivable if CBCT negatives exist).
+
+#### 4.2. Quantitative lesion size
+
+- **Periapical radiograph (2D)**
+  - Measurement: **area** (mm²).
+  - Tool: ITK-SNAP software.
+  - Method:
+    - Manual freehand contour tracing of lesion after calibration to sensor size.
+    - For multirooted teeth: sum individual root lesion areas to get total area.
+
+- **Panoramic radiograph (2D)**
+  - Similar as above: lesion **area** (mm²) via ITK-SNAP.
+
+- **CBCT (3D)**
+  - Measurement: **volume** (mm³) using Planmeca Romexis®:
+    - Manual tracing on all relevant slices (axial, coronal, sagittal).
+    - Software computes total lesion volume (mm³).
+
+- **Time points for measurements**:
+  - Preoperative area (periapical & panoramic).
+  - Follow-up area (periapical & panoramic).
+  - Preoperative volume (CBCT).
+  - Follow-up volume (CBCT).
+
+- **Potential derived variables**:
+  - Change in area (follow-up – preoperative) for each 2D technique.
+  - Change in volume (follow-up – preoperative) for CBCT.
+  - Percent reduction in area/volume.
+
+#### 4.3. Reliability / calibration variables
+
+- **Calibration of examiners**:
+  - Two examiners (A.R.A. and D.P.O.) measured 10 images per radiographic technique (periapical, panoramic, CBCT) from patients not in the study, twice, 1‑week interval.
+  - Purpose: assess **inter-examiner** and/or **intra-examiner** reliability.
+- **Observer agreement on lesion presence**:
+  - Preoperative and follow‑up images independently assessed by first author and blinded assessor.
+  - Discrepancies resolved by third assessor.
+  - Standard reference for agreement (Landis & Koch 1977) suggests they likely computed **kappa** statistics.
+
+#### 4.4. Other variables (likely but not specified here)
+
+From context of such studies (may appear elsewhere in article):
+- Tooth type (incisor/canine/premolar/molar).
+- Jaw (maxilla/mandible).
+- Time since surgery (months).
+- Possibly baseline lesion size category.
+
+---
+
+### 5. Data collection and reading procedures
+
+- **Image acquisition**:
+  - Standardized equipment and exposure parameters.
+  - All CBCT with limited FOV to minimize radiation and improve resolution.
+- **Reading order**:
+  - Two-dimensional images (periapical and panoramic) evaluated **first**.
+  - CBCT evaluated at least **two weeks later** to reduce recall bias.
+- **Blinding**:
+  - At least one blinded assessor for lesion presence (index vs reference status not seen simultaneously).
+- **Standardization**:
+  - All evaluations on a 21.5″ iMac monitor (4096×2304 pixels) in a quiet room with subdued lighting.
+
+---
+
+## TASK 2 – STATISTICAL ANALYSIS PLAN
+
+### General structure
+
+- Analysis unit: tooth/root or lesion (as defined in the article).
+- Paired design: each unit has measurements from:
+  - Multiple imaging modalities (periapical, panoramic, CBCT).
+  - Multiple time points (preoperative, follow-up).
+- Primary focus: diagnostic **sensitivity** of 2D radiographs vs CBCT and measurement reliability.
+
+I’ll separate analyses by categories as you requested.
+
+---
+
+### CATEGORY A – MANDATORY ANALYSES
+
+#### A1. Descriptive statistics
+
+**Test/Method:** Descriptive statistics (counts, proportions, means/medians)
+
+- **Purpose**
+  - Summarize sample characteristics, number of lesions, distribution of imaging findings, lesion sizes, follow‑up times.
+- **Why appropriate**
+  1. Essential baseline description for any clinical study.
+  2. Allows assessment of representativeness and context for diagnostic metrics (e.g., prevalence of lesions on CBCT).
+- **Why it may not be appropriate**
+  - N/A in the sense of being “inappropriate”; but descriptive summaries alone cannot test hypotheses or infer diagnostic performance.
+- **When this should NOT be used**
+  - Never omitted; it’s always required but should not be misinterpreted as inferential analysis.
+- **Alternative if assumptions violated**
+  - Use nonparametric summaries (median, IQR) if distributions are skewed instead of mean/SD alone.
+
+---
+
+#### A2. Sensitivity estimation for periapical and panoramic radiographs vs CBCT
+
+**Test/Method:** Calculation of sensitivity and 95% confidence intervals (CIs) using binomial methods
+
+- **Purpose**
+  - Quantify the ability of periapical and panoramic radiographs to detect lesions that are present on CBCT (reference standard), separately for:
+    - Preoperative stage.
+    - Follow-up stage.
+- **Why appropriate**
+  1. The study’s explicit aim is to determine the **sensitivity** of 2D radiographs.
+  2. CBCT is treated as the diagnostic gold standard; sensitivity is defined relative to it.
+- **Why it may not be appropriate**
+  - If the reference standard (CBCT) is itself imperfect, sensitivity estimates may be biased.
+- **When this test should NOT be used**
+  - If CBCT is not consistently available for all units, or not clearly used as reference, or if verification bias exists (only some cases get CBCT based on 2D findings).
+- **Alternative if assumptions violated**
+  - If CBCT is not a perfect gold standard, consider **latent class models** for diagnostic accuracy without a gold standard, though this is more complex and requires additional assumptions.
+  - For small sample sizes, use **Clopper–Pearson** exact CIs instead of normal approximations.
+
+---
+
+#### A3. Comparison of sensitivity between periapical and panoramic radiographs (paired)
+
+**Test/Method:** McNemar’s test (for paired binary outcomes)
+
+- **Purpose**
+  - Compare sensitivity of periapical vs panoramic radiographs using paired data (same tooth imaged by both).
+  - Could be done separately at preoperative and follow-up stages.
+- **Why appropriate**
+  1. Each tooth has paired binary outcomes (detected vs not detected) by the two 2D modalities, conditional on CBCT being positive.
+  2. McNemar’s test is tailored for **paired nominal data**, focusing on discordant pairs.
+- **Why it may not be appropriate**
+  - Requires that each unit has both periapical and panoramic images; if many missing pairs, power and validity are reduced.
+- **When this test should NOT be used**
+  - If observations are independent between groups instead of paired (i.e., different teeth imaged with different modalities).
+  - If sample size is extremely small with very few discordant pairs; standard asymptotic McNemar might be unstable.
+- **Alternative if assumptions violated**
+  - Use **exact McNemar’s test** for small numbers of discordant pairs.
+  - If groups are independent rather than paired, use **chi‑square test** or **Fisher’s exact test** for sensitivity comparisons.
+
+---
+
+#### A4. Inter- and intra-examiner reliability for lesion presence (categorical)
+
+**Test/Method:** Cohen’s kappa (κ) or weighted kappa; 95% CIs
+
+- **Purpose**
+  - Assess agreement between examiners in:
+    - Presence/absence of lesions on each modality at each time point.
+  - Possibly also between repeated readings.
+- **Why appropriate**
+  1. Binary categorical outcome (lesion yes/no) analyzed between two readers fits Cohen’s kappa.
+  2. The text cites Landis & Koch; kappa is the standard for categorical inter-rater agreement, with interpretation thresholds from that reference.
+- **Why it may not be appropriate**
+  - Kappa depends on prevalence and may be low even when percentage agreement is high if prevalence is very high/low.
+- **When this test should NOT be used**
+  - When there are more than two observers and you want overall agreement; then use **Fleiss’ kappa** or other multirater statistics.
+  - When data are ordinal with clear ordering (though weighted kappa can handle this).
+- **Alternative if assumptions violated**
+  - Use **Gwet’s AC1** or **percentage agreement** when prevalence paradox compromises kappa interpretation.
+  - For multiple raters, use **Fleiss’ kappa** or **ICC** if treating ratings as continuous/ordinal.
+
+---
+
+#### A5. Reliability of lesion size measurements (continuous)
+
+**Test/Method:** Intraclass correlation coefficient (ICC) for continuous measurements (area and volume); Bland–Altman plots
+
+- **Purpose**
+  - Evaluate inter- and intra-examiner reliability of:
+    - Area measurements on periapical and panoramic radiographs.
+    - Volume measurements on CBCT.
+- **Why appropriate**
+  1. Measurements are continuous (mm², mm³), and ICC quantifies reproducibility between raters/measures.
+  2. The design uses repeated measurements on the same images; ICC accounts for within-image and between-image variance.
+- **Why it may not be appropriate**
+  - ICC assumes approximate normality and equal variance; outliers or strong skew can distort ICC.
+- **When this test should NOT be used**
+  - When data are strongly non-normal with many zero values (e.g., many healed lesions with area=0).
+  - If only one measurement per imaging modality per examiner is available.
+- **Alternative if assumptions violated**
+  - Use **Spearman’s rank correlation** for monotonic relationships, though it assesses association, not agreement.
+  - Use **Bland–Altman limits of agreement** alone without relying solely on ICC.
+
+---
+
+### CATEGORY B – RECOMMENDED ANALYSES
+
+#### B1. Specificity, predictive values, and overall diagnostic performance
+
+**Test/Method:** Specificity, positive predictive value (PPV), negative predictive value (NPV), and diagnostic odds ratio (DOR)
+
+- **Purpose**
+  - Assess not only sensitivity but **specificity** and predictive values of 2D radiographs vs CBCT (if data available).
+- **Why appropriate**
+  1. Gives a more complete diagnostic profile (ability to rule in and rule out disease).
+  2. Clinically, understanding false positives and false negatives is important for follow-up protocols.
+- **Why it may not be appropriate**
+  - If the study design includes only CBCT-positive cases (e.g., only teeth with lesions), specificity cannot be estimated.
+- **When this test should NOT be used**
+  - When no true negative cases with CBCT are present (i.e., spectrum of disease not represented).
+- **Alternative if assumptions violated**
+  - Focus on sensitivity alone, or broaden inclusion criteria to include negative CBCT cases to enable full metrics.
+  - If disease prevalence is biased (case–control sampling), interpret predictive values cautiously or compute **likelihood ratios** instead.
+
+---
+
+#### B2. Comparison of diagnostic performance between preoperative and follow-up stages
+
+**Test/Method:** McNemar’s test and/or generalized estimating equations (GEE) for repeated binary measures
+
+- **Purpose**
+  - Compare sensitivity (and possibly specificity) of each modality between preoperative and follow-up stages, accounting for the same tooth at two time points.
+- **Why appropriate**
+  1. Binary outcomes measured repeatedly in the same unit (tooth), so paired/repeated measures methods are needed.
+  2. GEE can handle correlation and adjust for covariates (e.g., tooth type, baseline lesion size).
+- **Why it may not be appropriate**
+  - Requires sufficient sample size with both time points available; missing data can bias results.
+- **When this test should NOT be used**
+  - If follow-up data are missing nonrandomly and not accounted for (e.g., only failures got CBCT).
+- **Alternative if assumptions violated**
+  - Use **McNemar’s test** separately for preoperative vs follow-up if there is full pairing.
+  - Use **mixed-effects logistic regression** for more flexible modeling of correlated binary data.
+
+---
+
+#### B3. Agreement between lesion size on 2D and 3D imaging
+
+**Test/Method:** Correlation analysis (Pearson or Spearman), regression modeling, Bland–Altman analysis
+
+- **Purpose**
+  - Explore how well 2D **area** measurements (periapical and panoramic) reflect 3D **volume** (CBCT) measurements both pre- and postoperatively.
+- **Why appropriate**
+  1. Provides quantitative linkage between the 2D and 3D metrics; helps interpret whether area can approximate volume.
+  2. Bland–Altman assesses agreement and potential systematic bias (e.g., 2D underestimation of large volumes).
+- **Why it may not be appropriate**
+  - Area and volume may not be linearly related; using Pearson correlation might be misleading if relationship is nonlinear.
+- **When this test should NOT be used**
+  - If large numbers of cases have zero values (complete healing) leading to highly skewed distributions.
+- **Alternative if assumptions violated**
+  - Use **Spearman’s rank correlation** for monotonic but non-linear relationships.
+  - Apply **log-transformation** on area and volume (after adding a small constant for zeros) before regression.
+
+---
+
+#### B4. Change in lesion size (healing) within modalities
+
+**Test/Method:** Paired t-test (if normal) or Wilcoxon signed-rank test (for non-normal) for pre- vs follow-up area/volume
+
+- **Purpose**
+  - Evaluate reduction in lesion size after surgery as measured by each modality (periapical area, panoramic area, CBCT volume).
+- **Why appropriate**
+  1. Pre- and post-op measurements on the same lesion are naturally paired.
+  2. Quantifies magnitude of healing, complementing binary healed/not healed assessments.
+- **Why it may not be appropriate**
+  - Distribution of changes may be skewed (e.g., many near-zero or negative values); t-test assumptions may not hold.
+- **When this test should NOT be used**
+  - If data are strongly non-normal with outliers and sample size is small.
+- **Alternative if assumptions violated**
+  - Use **Wilcoxon signed-rank test**.
+  - Use **mixed-effects models** if multiple lesions per patient or other clustering is substantial.
+
+---
+
+#### B5. Inter-rater reliability of continuous size measurements via agreement plots
+
+**Test/Method:** Bland–Altman plots with limits of agreement
+
+- **Purpose**
+  - Visualize agreement and systematic bias between examiners for area/volume measurements.
+- **Why appropriate**
+  1. Complements ICC by showing magnitude and direction of disagreement across measurement range.
+  2. Identifies any proportional bias (e.g., more discrepancy for larger lesions).
+- **Why it may not be appropriate**
+  - Requires a reasonable sample size (≥20–30 images) to produce stable limits; here they used only 10 images per technique for calibration.
+- **When this test should NOT be used**
+  - With very small n, interpretation of limits is unstable.
+- **Alternative if assumptions violated**
+  - Increase calibration sample size in future studies.
+  - Use summary statistics of differences (mean ± SD) as a simpler descriptive alternative.
+
+---
+
+### CATEGORY C – OPTIONAL ANALYSES
+
+#### C1. ROC analysis and AUC (if lesion status thresholds are variable)
+
+**Test/Method:** Receiver operating characteristic (ROC) curves, area under the curve (AUC)
+
+- **Purpose**
+  - If there are gradations of “suspicion” or lesion size thresholds for calling a lesion present, one could explore the trade-off between sensitivity and specificity.
+- **Why appropriate**
+  1. Allows evaluation of diagnostic performance across different decision thresholds.
+  2. AUC is a single summary measure of discriminatory ability.
+- **Why it may not be appropriate**
+  - In this study, lesion presence seems dichotomous and rigidly defined; no subjective grading scale is described.
+- **When this test should NOT be used**
+  - When the test output is strictly binary with no threshold variation; ROC degenerates to a point.
+- **Alternative if assumptions violated**
+  - Stick with sensitivity, specificity, and predictive values instead of AUC.
+
+---
+
+#### C2. Subgroup analyses
+
+**Test/Method:** Stratified analysis and interaction terms in regression models
+
+- **Purpose**
+  - Investigate whether sensitivity or lesion size relationships differ by:
+    - Tooth type (anterior vs premolar vs molar).
+    - Jaw (maxilla vs mandible).
+    - Time since surgery (e.g., 6–12 vs >12 months).
+- **Why appropriate**
+  1. Offers insight into clinical contexts where 2D radiographs may be more or less reliable.
+  2. May identify subgroups where CBCT follow-up is especially valuable.
+- **Why it may not be appropriate**
+  - Risk of multiple comparisons and spurious findings, especially with small sample sizes.
+- **When this test should NOT be used**
+  - If sample size in subgroups is very small, leading to unstable estimates and wide CIs.
+- **Alternative if assumptions violated**
+  - Pre-specify a limited number of clinically relevant subgroups.
+  - Use interaction terms in a **GEE or mixed-effects logistic regression** to test effect modification more formally.
+
+---
+
+#### C3. Modeling of factors associated with 2D false negatives
+
+**Test/Method:** Logistic regression (e.g., 2D false negative vs true positive, among CBCT‑positive lesions)
+
+- **Purpose**
+  - Identify predictors of undetected lesions by 2D imaging, such as lesion size, tooth location, or follow-up time.
+- **Why appropriate**
+  1. Helps understand when 2D imaging is likely to miss disease, informing selective CBCT use.
+  2. Can adjust for confounders and handle several covariates simultaneously.
+- **Why it may not be appropriate**
+  - Requires sufficient number of events (false negatives); risk of model overfitting if events are few.
+- **When this test should NOT be used**
+  - When the number of false negatives is small (<10–15) relative to covariates.
+- **Alternative if assumptions violated**
+  - Use **penalized logistic regression** (e.g., Firth correction) if separation occurs.
+  - Limit covariates, or perform univariable analyses only, treating them as exploratory.
+
+---
+
+## TASK 3 – INAPPROPRIATE TESTS AND WHY
+
+Below are tests that should **not** be used, or only with caution, in this study context.
+
+1. **Independent-samples t-test for comparing pre- vs follow-up lesion size**
+   - **Why inappropriate**
+     - Pre- and post-op measurements are paired on the same tooth/lesion; using an independent t-test ignores within-tooth correlation and inflates variance, reducing power.
+   - **Correct alternative**: Paired t-test or Wilcoxon signed-rank test.
+
+2. **Chi-square test of independence for comparing periapical vs panoramic sensitivity (unpaired)**
+   - **Why inappropriate**
+     - Sensitivity comparison is based on paired data (same tooth imaged with both modalities). Ignoring pairing violates independence and misestimates variance.
+   - **Correct alternative**: McNemar’s test (or exact McNemar).
+
+3. **Simple Pearson correlation alone to assess agreement between examiners**
+   - **Why inappropriate**
+     - Pearson correlation measures association, not absolute agreement; two examiners could be perfectly correlated but systematically biased.
+   - **Correct alternative**: ICC and Bland–Altman analysis.
+
+4. **Ordinary least squares (OLS) regression of 2D lesion presence (yes/no) on CBCT presence (yes/no) as continuous variables**
+   - **Why inappropriate**
+     - Binary outcomes violate OLS assumptions (normality, homoscedasticity) and yield predictions outside [0,1].
+   - **Correct alternative**: Logistic regression or direct calculation of sensitivity/specificity.
+
+5. **ANOVA for multiple comparisons of sensitivity across modalities without accounting for paired design**
+   - **Why inappropriate**
+     - Sensitivity is binary; ANOVA on proportions without appropriate pairing/weighting will mis-specify the model.
+   - **Correct alternative**: McNemar’s test, GEE, or logistic mixed models.
+
+6. **Parametric tests assuming normality of lesion size without checking distribution**
+   - **Why inappropriate**
+     - Lesion size distributions (area/volume) often skewed and may include many small or zero values.
+   - **Correct alternative**: Nonparametric tests (Wilcoxon), transformations, or robust statistics.
+
+---
+
+## TASK 4 – SUMMARY / JUSTIFICATION OF ANALYTICAL APPROACH
+
+The analytical approach is driven by:
+
+- A **diagnostic accuracy** design with CBCT as reference standard and two 2D index tests; therefore, sensitivity (and ideally specificity, PPV, NPV) must be explicitly estimated with CIs.
+- A **paired structure**: each tooth typically has multiple imaging modalities and time points; analyses must account for pairing (McNemar’s test, paired t-tests, GEE).
+- The need to establish **measurement reliability**, requiring kappa for categorical lesion presence and ICC/Bland–Altman for continuous area/volume measurements.
+- The clinical relevance of not just lesion detection but also **quantitative healing**, motivating change-in-size analyses within each modality and correlation/agreement assessment between 2D area and 3D volume.
+
+By combining:
+- Fundamental diagnostic metrics (sensitivity, specificity, McNemar),
+- Reliability analyses (kappa, ICC),
+- And quantitative lesion size and healing analyses (paired tests, correlation/regression),
+
+the plan adequately addresses the core question: whether follow-up using only periapical and panoramic radiographs provides reliable information about periapical lesion status compared with CBCT, and under what circumstances it may or may not be sufficient.

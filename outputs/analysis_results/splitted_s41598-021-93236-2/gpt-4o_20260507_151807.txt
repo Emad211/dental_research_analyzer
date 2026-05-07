@@ -1,0 +1,156 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_s41598-021-93236-2.pdf
+Status : ok
+Time   : 20260507_151807
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Prospective cohort study.
+
+2. **Objective**:  
+   - To evaluate the regenerative potential of scaffold implantation using platelet-rich fibrin (PRF) in non-vital immature permanent maxillary central incisors over a 2-year follow-up period.
+
+3. **Population**:  
+   - **Inclusion Criteria**:  
+     - Patients aged 9–25 years.  
+     - Immature, non-vital permanent maxillary central incisors with apical diameters >1.1 mm.  
+     - Teeth with or without periapical pathosis (PAI index ≤ 2).  
+     - Patients without allergies to required medicaments and antibiotics (ASA 1 or 2).  
+   - **Exclusion Criteria**:  
+     - Patients >25 years.  
+     - Teeth with periapical index >2, resorption, carious exposure, closed apex, apical diameter ≤1.1 mm, root fractures, or periodontally compromised teeth.  
+     - Medically compromised patients and non-restorable teeth.  
+     - Teeth other than maxillary central incisors.  
+
+4. **Sample Size**:  
+   - 19 patients (23 teeth).  
+
+5. **Groups**:  
+   - Single-arm cohort study (no control group).  
+
+6. **Variables**:  
+   - **Primary Outcomes**:  
+     - Elimination of symptoms (pain/swelling).  
+     - Evidence of bony healing and resolution of apical radiolucency (6–12 months).  
+   - **Secondary Outcomes**:  
+     - Increase in root length and dentin thickness.  
+     - Decrease in apical diameter (12–24 months).  
+   - **Tertiary Outcome**:  
+     - Positive pulp vitality response.  
+
+7. **Measurements**:  
+   - **Quantitative**:  
+     - Apical diameter (mm).  
+     - Root length (mm).  
+     - Thickness of mesial and distal dentinal walls in apical and middle thirds (mm).  
+   - **Qualitative**:  
+     - Clinical symptoms (pain, swelling).  
+     - Radiographic evidence of bony healing.  
+     - Pulp vitality testing (cold and heat tests).  
+
+8. **Data Collection Methods**:  
+   - Clinical and radiographic assessments at baseline and follow-ups (3, 6, 9, 12, 15, 18, and 24 months).  
+   - Quantitative measurements recorded as mean ± standard deviation.  
+   - Pulp vitality assessed using cold and heat tests.  
+
+9. **Intervention**:  
+   - PRF scaffold prepared from patient’s blood via centrifugation.  
+   - PRF placed into the root canal space, followed by MTA plug and composite restoration.  
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Paired t-test (or Wilcoxon signed-rank test if non-parametric).  
+   - **Purpose**: To compare pre- and post-operative measurements of apical diameter, root length, and dentin wall thickness.  
+   - **Why Appropriate**:  
+     1. The study involves repeated measurements of the same teeth over time.  
+     2. The outcomes are continuous variables (e.g., root length in mm).  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes normality of data distribution, which may not hold true for small sample sizes.  
+   - **When This Test Should NOT Be Used**:  
+     - If data are not normally distributed.  
+   - **Alternative if Assumptions Are Violated**: Wilcoxon signed-rank test (non-parametric equivalent).
+
+2. **Test Name**: Repeated Measures ANOVA (or Friedman test if non-parametric).  
+   - **Purpose**: To analyze changes in apical diameter, root length, and dentin wall thickness across multiple time points.  
+   - **Why Appropriate**:  
+     1. Accounts for within-subject correlations across time points.  
+     2. Suitable for continuous outcomes measured repeatedly.  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes sphericity (equal variance of differences between time points).  
+   - **When This Test Should NOT Be Used**:  
+     - If sphericity assumption is violated and corrections (e.g., Greenhouse-Geisser) are not applied.  
+   - **Alternative if Assumptions Are Violated**: Friedman test (non-parametric equivalent).
+
+3. **Test Name**: Chi-square test (or Fisher’s exact test).  
+   - **Purpose**: To evaluate categorical outcomes, such as the presence/absence of clinical symptoms (pain/swelling) and pulp vitality.  
+   - **Why Appropriate**:  
+     1. Suitable for binary categorical data.  
+     2. Allows comparison of proportions across time points.  
+   - **Why It May Not Be Appropriate**:  
+     - Limited power with small sample sizes.  
+   - **When This Test Should NOT Be Used**:  
+     - If expected cell counts are <5.  
+   - **Alternative if Assumptions Are Violated**: Fisher’s exact test.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Mixed-effects model.  
+   - **Purpose**: To model changes in outcomes (e.g., apical diameter) over time while accounting for patient-level clustering (e.g., multiple teeth per patient).  
+   - **Why Appropriate**:  
+     1. Accounts for both fixed effects (time) and random effects (patient variability).  
+     2. Handles missing data more robustly than repeated measures ANOVA.  
+   - **Why It May Not Be Appropriate**:  
+     - Requires advanced statistical software and expertise.  
+   - **When This Test Should NOT Be Used**:  
+     - If sample size is too small to estimate random effects reliably.  
+   - **Alternative if Assumptions Are Violated**: Repeated measures ANOVA.
+
+2. **Test Name**: Kaplan-Meier survival analysis.  
+   - **Purpose**: To analyze time-to-event data, such as time to resolution of symptoms or achievement of pulp vitality.  
+   - **Why Appropriate**:  
+     1. Accounts for censoring (e.g., patients lost to follow-up).  
+     2. Provides insights into the timing of clinical outcomes.  
+   - **Why It May Not Be Appropriate**:  
+     - Not suitable for continuous outcomes.  
+   - **When This Test Should NOT Be Used**:  
+     - If no censoring occurs or if all events occur at the same time.  
+   - **Alternative if Assumptions Are Violated**: Logistic regression for binary outcomes.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Correlation analysis (e.g., Pearson or Spearman).  
+   - **Purpose**: To explore relationships between quantitative outcomes (e.g., apical diameter and root length).  
+   - **Why Appropriate**:  
+     1. Identifies potential associations between variables.  
+     2. Useful for hypothesis generation.  
+   - **Why It May Not Be Appropriate**:  
+     - Does not imply causation.  
+   - **When This Test Should NOT Be Used**:  
+     - If variables are not linearly related.  
+   - **Alternative if Assumptions Are Violated**: Spearman correlation (non-parametric).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-test**:  
+   - **Reason**: The study involves repeated measures on the same teeth, not independent groups.  
+
+2. **One-way ANOVA**:  
+   - **Reason**: Does not account for within-subject correlations across time points.  
+
+3. **Logistic regression**:  
+   - **Reason**: Not suitable for continuous outcomes like root length or apical diameter.  
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical approach is designed to evaluate both within-subject changes over time and categorical outcomes. Mandatory tests focus on assessing primary and secondary outcomes, while recommended and optional tests provide additional insights into the data. The use of mixed-effects models and repeated measures ANOVA ensures robust analysis of longitudinal data, while non-parametric alternatives address potential violations of assumptions. This comprehensive plan ensures the study’s findings are statistically valid and clinically meaningful.

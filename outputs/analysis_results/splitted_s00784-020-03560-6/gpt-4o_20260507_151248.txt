@@ -1,0 +1,117 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_s00784-020-03560-6.pdf
+Status : ok
+Time   : 20260507_151248
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Retrospective pilot study.
+2. **Objective**: To evaluate the effect of sole endodontic treatment on periodontal healing in teeth diagnosed with combined endo-periodontal lesions without root damage (grade 3) in periodontally compromised patients.
+3. **Population**:
+   - **Sample Size**: 19 teeth from 13 periodontally compromised patients.
+   - **Inclusion Criteria**: Teeth diagnosed with combined endo-periodontal lesions without root damage (grade 3).
+   - **Exclusion Criteria**: Not explicitly mentioned but implied exclusion of teeth with subgingival instrumentation or root damage.
+4. **Groups**: Single group (no control group).
+5. **Variables**:
+   - **Primary Outcome**: Change in pocket probing depth (PPD).
+   - **Secondary Outcomes**: Change in periodontal apical index (PAI) and change in clinical attachment loss (CAL).
+   - **Other Variables**: Smoking status, antibiotic therapy, restorations, caries, and sensitivity.
+6. **Measurements**:
+   - **Clinical Parameters**: PPD, CAL, furcation involvement, tooth mobility.
+   - **Radiographic Parameters**: PAI score (5-point scale).
+   - **Root Canal Quality**: Length and density of root canal fillings (Farzaneh et al. scoring system).
+7. **Data Collection Methods**:
+   - Clinical examinations before and after treatment.
+   - Radiographic evaluations using periapical radiographs.
+   - Blinded assessment of PAI by a calibrated investigator.
+   - Root canal quality assessed by two independent investigators with consensus in case of disagreement.
+8. **Treatment Protocol**:
+   - Standardized endodontic treatment with rubber dam isolation.
+   - Instrumentation using hand and rotary files (Reciproc®).
+   - Irrigation with sodium hypochlorite, chlorhexidine, and ethyl alcohol.
+   - Calcium hydroxide dressing for at least 2 weeks.
+   - Obturation with thermoplastic filling or lateral condensation techniques.
+   - Teeth exempted from subgingival debridement during the study interval.
+9. **Follow-Up**:
+   - Clinical and radiographic reevaluation 6 to 17 months after treatment.
+   - Success defined as ≥50% improvement in PPD and CAL or improvement in PAI score.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Paired t-test (or Wilcoxon signed-rank test if non-parametric).
+   - **Purpose**: To compare pre- and post-treatment PPD, CAL, and PAI scores.
+   - **Why Appropriate**:
+     1. The study involves paired data (same teeth measured before and after treatment).
+     2. The primary and secondary outcomes are continuous variables.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normal distribution of differences; if violated, a non-parametric test is needed.
+   - **When This Test Should NOT Be Used**: If data are heavily skewed or sample size is too small for normality assumptions.
+   - **Alternative**: Wilcoxon signed-rank test.
+
+2. **Test Name**: Descriptive Statistics.
+   - **Purpose**: To summarize baseline characteristics (e.g., mean, median, standard deviation).
+   - **Why Appropriate**:
+     1. Provides a clear overview of the sample characteristics.
+     2. Necessary for reporting baseline comparability.
+   - **Why It May Not Be Appropriate**: Not applicable; descriptive statistics are always appropriate.
+   - **When This Test Should NOT Be Used**: N/A.
+   - **Alternative**: None.
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Chi-square test (or Fisher’s exact test for small sample sizes).
+   - **Purpose**: To compare success rates (binary outcomes) based on categorical variables (e.g., smoking status, antibiotic use).
+   - **Why Appropriate**:
+     1. Suitable for categorical data.
+     2. Helps identify potential predictors of success or failure.
+   - **Why It May Not Be Appropriate**: Small sample size may lead to low statistical power.
+   - **When This Test Should NOT Be Used**: When expected cell counts are <5.
+   - **Alternative**: Fisher’s exact test.
+
+2. **Test Name**: Logistic Regression.
+   - **Purpose**: To assess the association between predictors (e.g., smoking, antibiotic use) and binary outcomes (success/failure).
+   - **Why Appropriate**:
+     1. Allows adjustment for confounding variables.
+     2. Provides odds ratios for predictors.
+   - **Why It May Not Be Appropriate**: Small sample size may lead to overfitting.
+   - **When This Test Should NOT Be Used**: When the number of events is too low for reliable estimation.
+   - **Alternative**: Exact logistic regression.
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Repeated Measures ANOVA (or Friedman test for non-parametric data).
+   - **Purpose**: To analyze changes in PPD, CAL, and PAI over multiple time points (if available).
+   - **Why Appropriate**:
+     1. Accounts for within-subject correlations.
+     2. Useful for longitudinal data analysis.
+   - **Why It May Not Be Appropriate**: Limited by the small sample size and potential missing data.
+   - **When This Test Should NOT Be Used**: When data are only available at two time points.
+   - **Alternative**: Linear mixed-effects models.
+
+2. **Test Name**: Kaplan-Meier Survival Analysis.
+   - **Purpose**: To evaluate time to failure (if follow-up times vary significantly).
+   - **Why Appropriate**:
+     1. Accounts for varying follow-up durations.
+     2. Provides survival probabilities over time.
+   - **Why It May Not Be Appropriate**: Requires clearly defined failure events and follow-up times.
+   - **When This Test Should NOT Be Used**: When follow-up times are uniform.
+   - **Alternative**: Cox proportional hazards model.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-test**:
+   - **Reason**: The study involves paired data, not independent groups.
+2. **ANOVA**:
+   - **Reason**: Not suitable for pre- and post-treatment comparisons in the same group.
+3. **Pearson Correlation**:
+   - **Reason**: Not appropriate for assessing changes over time or success rates.
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan is designed to address the study’s primary and secondary objectives while accounting for the retrospective nature of the data and the small sample size. Paired tests (e.g., paired t-test or Wilcoxon signed-rank test) are essential for analyzing pre- and post-treatment changes. Logistic regression and chi-square tests are recommended to explore potential predictors of success. Optional analyses, such as survival analysis, could provide additional insights if follow-up data permit. The overall approach balances rigor with feasibility given the study’s limitations.

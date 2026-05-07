@@ -1,0 +1,135 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splittedSurvival_of_molar_teeth_in_need_of_complex_endodontic_treatment_Influence_of_the_endodontic_treatment_and_quality_of_the_restoration.pdf
+Status : ok
+Time   : 20260507_152150
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Retrospective cohort study.
+2. **Objective**: To evaluate the survival of molar teeth requiring complex endodontic treatment and assess the influence of endodontic treatment quality and restoration quality on outcomes.
+3. **Study Groups**:
+   - **Endodontic Treatment**: Initial treatment vs. retreatment.
+   - **Restoration Type**: Direct vs. indirect restorations.
+   - **Cusp Coverage**: Present vs. absent.
+   - **Coronal Seal**: Adequate vs. inadequate.
+4. **Sample Size**:
+   - Initial eligibility: 416 teeth.
+   - Final inclusion for tooth survival: 279 teeth.
+   - Final inclusion for endodontic healing: 268 teeth.
+   - Final inclusion for restorative success: 215 teeth.
+5. **Variables**:
+   - **Patient Variables**: Age, gender, caries risk (low/medium/high), parafunction (yes/no).
+   - **Endodontic Variables**:
+     - Pre-endodontic: DETI/ETC score (II/III), endodontic diagnosis (irreversible pulpitis/apical periodontitis), number of root canals treated (3/4), preoperative radiolucency (yes/no), preoperative complications (yes/no).
+     - Post-endodontic: Clinical symptoms, healing status (healed/healing/non-healed), postoperative radiolucency (Periapical Index ≥ 3), technical quality of treatment (adequate/inadequate).
+   - **Restorative Variables**: Jaw (upper/lower), restoration type (direct/indirect), cusp coverage (yes/no), coronal seal (adequate/inadequate), restoration quality (FDI criteria).
+6. **Outcome Measures**:
+   - **Tooth Survival**: Presence of the tooth at follow-up.
+   - **Endodontic Healing**: Assessed as healed, healing, or non-healed based on clinical and radiographic criteria.
+   - **Restorative Success**: Restoration quality assessed using FDI criteria.
+7. **Data Collection Methods**:
+   - Clinical and radiographic examinations.
+   - Periapical Index (PAI) for radiographic assessment.
+   - FDI criteria for restoration quality.
+   - Telephone anamnesis and general practitioner records for missing follow-up data.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Chi-Square Test of Independence**:
+   - **Purpose**: To assess the association between categorical variables (e.g., restoration type, cusp coverage, coronal seal) and outcomes (tooth survival, endodontic healing, restorative success).
+   - **Why Appropriate**:
+     1. Both independent and dependent variables are categorical.
+     2. Sample size is sufficient for expected frequencies in contingency tables.
+   - **Why It May Not Be Appropriate**: Small cell sizes in contingency tables may violate assumptions.
+   - **When NOT to Use**: If >20% of cells have expected frequencies <5.
+   - **Alternative**: Fisher’s Exact Test.
+
+2. **Logistic Regression**:
+   - **Purpose**: To evaluate the effect of multiple predictors (e.g., endodontic treatment type, restoration type, cusp coverage) on binary outcomes (e.g., tooth survival: yes/no).
+   - **Why Appropriate**:
+     1. Allows adjustment for confounding variables.
+     2. Provides odds ratios for interpretation of effect sizes.
+   - **Why It May Not Be Appropriate**: Multicollinearity among predictors.
+   - **When NOT to Use**: If predictor variables are highly correlated.
+   - **Alternative**: Ridge Regression or Principal Component Analysis.
+
+3. **Kaplan-Meier Survival Analysis**:
+   - **Purpose**: To estimate tooth survival over time and compare survival curves between groups (e.g., direct vs. indirect restorations).
+   - **Why Appropriate**:
+     1. Time-to-event data is available.
+     2. Censoring is present (e.g., loss to follow-up).
+   - **Why It May Not Be Appropriate**: Assumes non-informative censoring, which may not hold if loss to follow-up is related to outcomes.
+   - **When NOT to Use**: If censoring is informative.
+   - **Alternative**: Competing risks analysis.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Cox Proportional Hazards Regression**:
+   - **Purpose**: To assess the effect of multiple predictors on time-to-event outcomes (e.g., tooth survival).
+   - **Why Appropriate**:
+     1. Adjusts for covariates in survival analysis.
+     2. Handles censored data effectively.
+   - **Why It May Not Be Appropriate**: Assumes proportional hazards, which may not hold.
+   - **When NOT to Use**: If proportional hazards assumption is violated.
+   - **Alternative**: Stratified Cox Regression or Time-Dependent Covariates.
+
+2. **Multinomial Logistic Regression**:
+   - **Purpose**: To model outcomes with more than two categories (e.g., endodontic healing: healed, healing, non-healed).
+   - **Why Appropriate**:
+     1. Handles categorical dependent variables with >2 levels.
+     2. Provides relative risk ratios for interpretation.
+   - **Why It May Not Be Appropriate**: Requires large sample sizes for stable estimates.
+   - **When NOT to Use**: If sample size is insufficient for each outcome category.
+   - **Alternative**: Collapsing categories into binary outcomes.
+
+3. **Mixed-Effects Logistic Regression**:
+   - **Purpose**: To account for clustering (e.g., multiple teeth from the same patient).
+   - **Why Appropriate**:
+     1. Accounts for intra-patient correlation.
+     2. Provides robust estimates for hierarchical data.
+   - **Why It May Not Be Appropriate**: Computationally intensive for large datasets.
+   - **When NOT to Use**: If clustering effects are negligible.
+   - **Alternative**: Generalized Estimating Equations (GEE).
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Exploratory Factor Analysis (EFA)**:
+   - **Purpose**: To identify latent constructs (e.g., quality of restoration) from observed variables.
+   - **Why Appropriate**:
+     1. Reduces dimensionality of correlated variables.
+     2. Provides insights into underlying structures.
+   - **Why It May Not Be Appropriate**: Requires large sample sizes for stable factor solutions.
+   - **When NOT to Use**: If sample size is insufficient.
+   - **Alternative**: Principal Component Analysis (PCA).
+
+2. **Sensitivity Analysis**:
+   - **Purpose**: To assess the robustness of results to assumptions (e.g., handling of missing data).
+   - **Why Appropriate**:
+     1. Evaluates the impact of methodological choices.
+     2. Enhances the credibility of findings.
+   - **Why It May Not Be Appropriate**: Adds complexity to the analysis.
+   - **When NOT to Use**: If primary results are robust.
+   - **Alternative**: Multiple Imputation.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent Samples t-Test**:
+   - **Why Not Appropriate**: Outcomes and predictors are categorical, not continuous.
+2. **Pearson Correlation**:
+   - **Why Not Appropriate**: Assumes continuous variables, not suitable for categorical data.
+3. **ANOVA**:
+   - **Why Not Appropriate**: Assumes continuous dependent variables, whereas outcomes are categorical.
+
+---
+
+### TASK 4: SUMMARY
+The proposed analytical approach combines robust statistical methods to address the study's objectives while accounting for the hierarchical structure of the data and potential confounders. Mandatory tests ensure the primary research questions are answered, while recommended and optional tests enhance the depth and rigor of the analysis. Assumptions of each test will be carefully checked, and alternatives will be used if violations occur. This comprehensive plan ensures valid and interpretable results for the study.

@@ -1,0 +1,317 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_Int_Endodontic_J_-_2021_-_Wigsten_-_Patient_satisfaction_with_root_canal_treatment_and_outcomes_in_the_Swedish_public.pdf
+Status : ok
+Time   : 20260507_150502
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: INFORMATION EXTRACTION
+
+### Study identification
+- **Title:** Patient satisfaction with root canal treatment and outcomes in the Swedish public dental health service: A prospective cohort study
+- **Setting:** 20 public dental clinics, Västra Götaland county, Sweden
+- **Recruitment period (baseline):** May 2015–February 2017 (RCT initiation occurred during a defined 8-week period per clinic/network description)
+- **Follow-up data collection:** 1–3 years after initiation of RCT (mail survey September 2017–April 2018 with reminders)
+
+### Design
+- **Design:** Prospective observational cohort with **patient-reported follow-up** plus **test–retest reliability** sub-study.
+- **Unit of observation:** 1 tooth per patient (243 patients contributing 243 teeth at baseline).
+
+### Objectives (twofold)
+1. **Describe patient subjective evaluations** of root canal treatment (RCT) and outcomes **≥1 year after initiation** in general dental practice/public dental service.
+2. **Assess reliability** (test–retest) of questionnaire responses.
+
+### Participants and flow
+- **Baseline cohort:** 243 patients
+- **Not contactable:** 7 → **Questionnaire sent:** 236
+- **Declined:** 15
+- **No response/unknown reason:** 62
+- **Responded to questionnaire:** 159 (**67.4%** of 236)
+- **Reliability (test–retest) sample:** first 50 responders were re-mailed questionnaire
+  - **Responded to retest:** 44 (**88.0%** of 50)
+
+### Baseline characteristics collected (predictors / covariates)
+Patient-level:
+- **Gender:** male/female
+- **Age grouped:** <40, 40–60, >60
+
+Tooth-level:
+- **Jaw:** maxilla/mandible
+- **Tooth group:** incisor/premolar/molar
+- **Baseline symptoms:** asymptomatic vs pain (symptomatic)
+- **Baseline diagnosis:** from GDP registration (examples: pulpal necrosis with apical periodontitis; pulpitis)
+
+Other recorded:
+- **Time interval** baseline → first questionnaire response
+- For retest responders: **interval** first → second response
+
+### Outcomes / variables from questionnaire (follow-up)
+**Item 1 (binary):**
+- Tooth retained? (yes/no)
+- RCT completed with root filling? (yes/no)
+
+**Items with VAS (0–10 on 10 cm line; treated as continuous/approximately continuous):**
+- **Item 2:** current pain intensity (only if tooth retained)
+- **Item 4:** recalled pain during RCT session
+- **Item 5:** aesthetics (looks very good=0 → very bad=10)
+- **Item 6:** function (chewing unhindered=0 → impossible=10)
+- **Item 7:** worth the cost (absolutely worth=0 → absolutely not=10)
+
+**Categorical items:**
+- **Item 3:** symptom descriptors (12 options; multiple selections possible) if symptoms present
+- **Item 8:** would choose RCT again (yes/no/uncertain)
+- **Skip pattern:** If extracted → answer only Items 4 and 8
+
+### Data handling described
+- Responses linked via **unique ID** (anonymized)
+- Manual data entry to Excel
+- Missing baseline variables left empty and treated as **missing** in analyses (no imputation described)
+
+---
+
+## TASK 2: STATISTICAL ANALYSIS PLAN
+
+### General analysis principles (apply to all categories)
+- **Analysis populations**
+  - *Descriptive cohort:* all questionnaire responders (n=159), with denominators varying by skip pattern (e.g., pain intensity item only among retained teeth).
+  - *Reliability cohort:* retest responders (n=44).
+- **Significance & estimation**
+  - Prefer **effect sizes + 95% CIs** over sole p-values.
+  - Two-sided alpha 0.05 for primary inferential analyses; control multiplicity for secondary/exploratory comparisons (see Recommended).
+- **Data type notes**
+  - VAS often non-normal and bounded; plan to summarize with **median (IQR)** and also mean (SD) if distribution supports.
+- **Clustering**
+  - Patients treated at **20 clinics** → potential intra-clinic correlation; consider mixed models / cluster-robust SEs when modelling predictors (Recommended/Mandatory depending on objective).
+
+---
+
+# CATEGORY A – MANDATORY (core analyses)
+
+## A1. Descriptive statistics (including skip-pattern denominators)
+**Test/Method:** Descriptive summaries (no hypothesis test)  
+**Purpose:** Quantify tooth retention, treatment completion, pain/satisfaction distributions, and response patterns.  
+**Why appropriate (≥2):**
+1. Primary aim is to *elicit* patient evaluations—requires transparent distributional reporting.
+2. Many outcomes are bounded/ordinal-like (VAS); descriptive plots (histograms/boxplots) reveal skewness and floor effects.  
+**Why may not be appropriate (≥1):** Not inferential; cannot address associations or predictors.  
+**When NOT to use:** Never omit; but don’t use descriptives alone to claim differences/associations.  
+**Alternative if assumptions violated:** N/A (nonparametric summarization: medians/IQR).
+
+---
+
+## A2. Test–retest reliability for VAS items (continuous)
+**Test:** **Intraclass Correlation Coefficient (ICC)** (two-way mixed effects, absolute agreement; single-measure), with 95% CI  
+**Purpose:** Assess stability of repeated VAS responses (Items 2,4–7 as applicable per skip pattern).  
+**Why appropriate:**
+1. Test–retest reliability for continuous measures is best captured by agreement, not correlation alone.
+2. ICC quantifies proportion of variance attributable to between-subject differences vs measurement error.  
+**Why may not be appropriate:**
+- ICC can be distorted if between-subject variability is low (restricted range), yielding low ICC despite good agreement.  
+**When NOT to use:**
+- When retest timing is too long and true change is likely (violates “stable trait” assumption).  
+**Alternative if assumptions violated:**
+- **Bland–Altman analysis** (limits of agreement) as primary agreement metric; or **Lin’s concordance correlation**.
+
+---
+
+## A3. Test–retest agreement for categorical items
+**Test:** **Cohen’s kappa** (weighted kappa for ordinal; unweighted for nominal)  
+- Item 8 (yes/no/uncertain): **weighted kappa** (ordinal assumption plausible)  
+- Item 1 outcomes (retained yes/no; completed yes/no): **unweighted kappa**  
+**Purpose:** Quantify agreement beyond chance for categorical/ordinal responses.  
+**Why appropriate:**
+1. Specifically designed for categorical agreement beyond chance.
+2. Allows comparability with common reliability interpretation frameworks (e.g., Landis & Koch—though interpret cautiously).  
+**Why may not be appropriate:**
+- Kappa is sensitive to prevalence and marginal imbalance (“kappa paradox”).  
+**When NOT to use:**
+- When categories are extremely imbalanced or when multiple selections per item (Item 3) without adaptation.  
+**Alternative if assumptions violated:**
+- **Gwet’s AC1/AC2** for prevalence-robust agreement; for multi-label Item 3, use **percent agreement per option** and/or **Fleiss kappa per option** only if framed as separate yes/no items.
+
+---
+
+## A4. Compare respondents vs non-respondents on baseline characteristics (nonresponse bias check)
+**Tests:**
+- **Chi-square test** (or Fisher’s exact if sparse) for categorical baseline variables (gender, age group, jaw, tooth group, baseline symptoms, diagnosis categories)
+- **t-test / Mann–Whitney U** only if any continuous baseline variables exist (not clearly present here; age is categorized)  
+**Purpose:** Assess selection/nonresponse bias in who returned the questionnaire.  
+**Why appropriate:**
+1. Response rate is ~67%; nonresponse could bias patient-reported outcomes.
+2. Baseline data exist for the full contacted cohort (n=236), enabling comparison.  
+**Why may not be appropriate:**
+- Statistical significance can reflect sample size rather than meaningful imbalance; missing baseline data may complicate comparisons.  
+**When NOT to use:**
+- When baseline variables are heavily missing/non-comparable between groups.  
+**Alternative if assumptions violated:**
+- Use **exact tests** (Fisher/exact multinomial) or **standardized mean differences (SMDs)** as a non-p-value balance metric (Recommended).
+
+---
+
+# CATEGORY B – RECOMMENDED (improves rigor)
+
+## B1. Modelling predictors of key binary outcomes (retention; completion)
+**Test/Model:** **Logistic regression** with clinic-robust SEs or mixed-effects logistic regression (random intercept for clinic)  
+**Outcomes:**  
+- Tooth retained (yes/no)  
+- RCT completed with root filling (yes/no)  
+**Predictors (examples from baseline):** gender, age group, tooth group, jaw, baseline symptoms, diagnosis, time-to-questionnaire.  
+**Purpose:** Identify factors associated with retention/completion; adjust for confounding.  
+**Why appropriate:**
+1. Binary outcomes with multiple covariates → logistic regression is standard.
+2. Allows adjustment and quantification via adjusted ORs + CIs; accounts for clustering by clinic.  
+**Why may not be appropriate:**
+- If events are rare in one category (separation) or small cell counts for some diagnoses.  
+**When NOT to use:**
+- If outcome counts are too low for multivariable modelling (rule-of-thumb EPV issues) without penalization.  
+**Alternative if assumptions violated:**
+- **Firth penalized logistic regression** (reduces small-sample bias/separation) or **exact logistic regression**.
+
+---
+
+## B2. Modelling VAS outcomes vs baseline predictors
+**Test/Model options (choose based on distribution):**
+- **Linear regression / linear mixed model** (with clinic random intercept) if residuals acceptable
+- **Quantile regression (median regression)** if skewed/floor effects
+- **Beta regression** only if VAS is transformed to (0,1) and not piled at boundaries  
+**Purpose:** Evaluate which baseline factors relate to pain/satisfaction dimensions (Items 2,4–7).  
+**Why appropriate:**
+1. Moves beyond unadjusted comparisons; handles confounding.
+2. Mixed/robust approaches address clinic clustering and non-normality.  
+**Why may not be appropriate:**
+- VAS data often have heaping at 0 and non-constant variance; linear model may misfit.  
+**When NOT to use:**
+- Don’t use linear regression if diagnostics show severe non-normal residuals, strong heteroscedasticity, or heavy boundary mass.  
+**Alternative if assumptions violated:**
+- **Quantile regression**; or **ordinal regression** if VAS is categorized a priori (but avoid post hoc categorization).
+
+---
+
+## B3. Association between “would choose RCT again” (Item 8) and outcomes/experience
+**Test/Model:** **Ordinal logistic regression** (proportional odds) for Item 8 (yes / uncertain / no)  
+Predictors: pain now (Item 2), pain during RCT (Item 4), aesthetics, function, cost, plus baseline covariates.  
+**Purpose:** Identify which experience/outcome dimensions drive retrospective willingness.  
+**Why appropriate:**
+1. Item 8 is ordered; ordinal model uses ordering efficiently.
+2. Provides interpretable common OR for worse category.  
+**Why may not be appropriate:**
+- Proportional odds assumption may be violated; “uncertain” may not be strictly between yes/no conceptually.  
+**When NOT to use:**
+- If category counts are very small or if ordering is not defensible.  
+**Alternative if assumptions violated:**
+- **Multinomial logistic regression** (nominal); or partial proportional odds model.
+
+---
+
+## B4. Multiple testing control for secondary endpoints
+**Method:** Holm correction or False Discovery Rate (Benjamini–Hochberg) across families of comparisons  
+**Purpose:** Reduce false positives given multiple questionnaire items and predictors.  
+**Why appropriate:**
+1. Many outcomes (Items 2–7 plus binary endpoints) invite multiplicity.
+2. Clarifies which findings are robust vs exploratory.  
+**Why may not be appropriate:**
+- Can be overly conservative, increasing false negatives in modest samples.  
+**When NOT to use:**
+- For strictly pre-specified single primary endpoint analysis (then not needed).  
+**Alternative if assumptions violated:** Pre-specify a **primary endpoint** and treat others as exploratory with estimation focus.
+
+---
+
+## B5. Missing data evaluation (and handling)
+**Method:** Missingness tables + **Little’s MCAR test** (if feasible), and sensitivity analyses (complete case vs imputed)  
+**Purpose:** Understand and mitigate bias from missing baseline covariates and partial questionnaire responses.  
+**Why appropriate:**
+1. Methods explicitly state missing left empty; ignoring may bias associations.
+2. Sensitivity analyses strengthen credibility.  
+**Why may not be appropriate:**
+- Little’s test is sample-size sensitive and not definitive; missingness mechanisms rarely proven.  
+**When NOT to use:**
+- When missingness is trivial (<~5%) and clearly ignorable.  
+**Alternative if assumptions violated:**
+- **Multiple imputation by chained equations (MICE)** for covariates/outcomes where sensible; or inverse probability weighting for response.
+
+---
+
+# CATEGORY C – OPTIONAL (supplementary insights)
+
+## C1. Bland–Altman plots for VAS test–retest
+**Test/Method:** Bland–Altman mean-difference plots + limits of agreement  
+**Purpose:** Visualize systematic bias and heteroscedasticity between test and retest.  
+**Why appropriate:**
+1. Reveals whether disagreement increases at higher pain/satisfaction levels.
+2. Complements ICC by focusing on absolute agreement.  
+**Why may not be appropriate:**
+- Requires approximately stable measurement error structure; interpretation is descriptive.  
+**When NOT to use:**
+- If retest interval allows true clinical change.  
+**Alternative:** Plot paired differences vs time between tests; stratify by interval.
+
+---
+
+## C2. Internal consistency of “experience” items (if treated as a scale)
+**Test:** **Cronbach’s alpha** (and preferably McDonald’s omega) for Items 4–7 (and possibly 5–7)  
+**Purpose:** Evaluate whether items measure a common latent construct (overall satisfaction/experience).  
+**Why appropriate:**
+1. Supports creation of a composite score (if justified a priori).
+2. Identifies redundant or poorly correlating items.  
+**Why may not be appropriate:**
+- Items reflect distinct domains (pain, aesthetics, function, cost); high alpha is not required and may be misleading.  
+**When NOT to use:**
+- If you will not form/use a composite score or if dimensionality is clearly multidomain.  
+**Alternative:** **Exploratory factor analysis (EFA)** or report domain-specific results only.
+
+---
+
+## C3. Dimension reduction / construct exploration
+**Test:** Exploratory factor analysis or PCA on VAS items (4–7; possibly include 2)  
+**Purpose:** Explore underlying satisfaction domains in this population.  
+**Why appropriate:**
+1. May reveal clusters (e.g., “functional/aesthetic” vs “pain/cost”).
+2. Can inform future questionnaire refinement.  
+**Why may not be appropriate:**
+- Sample size may be borderline for stable factor solutions; VAS bounded/non-normal.  
+**When NOT to use:**
+- If primary goal is purely descriptive without instrument development.  
+**Alternative:** Spearman correlation matrix + hierarchical clustering of items.
+
+---
+
+## C4. Multi-label symptom item (Item 3) analyses
+**Test/Method:** Per-symptom prevalence with CIs; compare prevalence by baseline factors via chi-square/Fisher per symptom (exploratory)  
+**Purpose:** Characterize types of symptoms among those with current pain/discomfort.  
+**Why appropriate:**
+1. Item 3 is inherently multi-response; needs appropriate summarization.
+2. Helps interpret what “pain/discomfort” means clinically.  
+**Why may not be appropriate:**
+- Multiple comparisons across 12 symptoms inflate type I error; sparse counts.  
+**When NOT to use:**
+- If symptom selections are too rare for reliable inference.  
+**Alternative:** Collapse into clinically meaningful symptom groups or report descriptively only.
+
+---
+
+## TASK 3: INAPPROPRIATE TESTS (should NOT be used)
+
+1. **Paired t-test as the sole test–retest method for VAS reliability**
+   - Tests mean difference only (bias), not reliability/agreement; can show “no difference” even with poor reproducibility.
+
+2. **Pearson correlation for test–retest reliability (alone)**
+   - Measures association, not agreement; perfect correlation can occur with systematic shifts.
+
+3. **One-way ANOVA / multiple t-tests ignoring clinic clustering**
+   - Patients are nested within 20 clinics; ignoring clustering can underestimate SEs and inflate type I error in predictor analyses.
+
+4. **Linear regression on categorical outcomes (e.g., tooth retained yes/no)**
+   - Violates distributional assumptions; predicted probabilities can be outside [0,1].
+
+5. **Chi-square test for Item 3 without handling multi-response nature**
+   - Item 3 allows multiple selections; treating it as a single multinomial outcome is incorrect unless re-coded appropriately.
+
+6. **Post hoc dichotomization of VAS (e.g., “satisfied vs not” by arbitrary cutpoints) as primary analysis**
+   - Loses information, reduces power, creates cutpoint-dependent results; only consider if clinically pre-specified.
+
+---
+
+## TASK 4: SUMMARY (overall analytical approach)
+
+A complete analysis should (1) **describe** patient-centred outcomes 1–3 years after RCT initiation with correct denominators reflecting the questionnaire’s skip patterns, (2) formally quantify **test–retest reliability** using **ICC for VAS** and **(weighted) kappa for categorical items**, and (3) strengthen validity by checking **nonresponse bias** and, where inferential aims are pursued, using **multivariable models** that account for **clinic clustering**, report **effect sizes with CIs**, and apply **multiplicity control** for secondary/exploratory comparisons.

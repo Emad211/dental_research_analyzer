@@ -1,0 +1,129 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_FULLTEXT01.pdf
+Status : ok
+Time   : 20260507_150208
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Retrospective cohort study with a 10-year follow-up.
+
+2. **Study Objectives**:  
+   - **Primary Aim**: Evaluate the 10-year survival rate of root-filled teeth treated by general dental practitioners (GDPs) in Norrbotten, Sweden.  
+   - **Secondary Aim**: Identify prognostic factors affecting tooth survival.
+
+3. **Population and Sample**:  
+   - **Initial Cohort**: 3,676 individuals who received root canal treatment in 2006.  
+   - **Final Sample**: 280 individuals (randomly selected) treated by 102 GDPs across 28 clinics.  
+   - **Exclusions**: 331 deceased individuals, 19 declined participation, and others excluded for reasons such as specialist involvement or missing data.  
+   - **Demographics**: Mean age at baseline = 45 years (range: 10–80); 50% female.
+
+4. **Groups**:  
+   - No explicit intervention/control groups; survival analysis was conducted on a single cohort with stratification by independent variables.
+
+5. **Outcome Variable**:  
+   - **Primary Outcome**: Tooth survival (presence or absence of the root-filled tooth).  
+   - **Time-to-Event Data**: Time (in days) from root canal treatment completion to tooth extraction or censoring.
+
+6. **Independent Variables**:  
+   - **Preoperative Factors**: Tooth type, apical status, pulp necrosis, marginal bone level, etc.  
+   - **Intraoperative Factors**: Number of sessions, use of rubber dam, procedural accidents, etc.  
+   - **Postoperative Factors**: Coronal restoration type, use of posts, abutment status, etc.
+
+7. **Data Collection**:  
+   - Data were extracted from dental records (analogue and digital) and supplemented by patient follow-ups (phone, mail, or clinical examination).  
+   - Randomization was used to select patients and teeth for inclusion.  
+   - Missing data were addressed by contacting patients or estimating extraction dates based on available records.
+
+8. **Measurements**:  
+   - Survival was assessed via radiographs, dental records, or patient reports.  
+   - Independent variables were categorized and recorded (e.g., apical status, restoration type).  
+   - Inter- and intra-examiner reliability was assessed during data collection.
+
+9. **Statistical Methods Mentioned**:  
+   - Kaplan-Meier survival analysis (Figure 2).  
+   - Hazard ratios (HRs) for independent variables (Table 1).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Kaplan-Meier Survival Analysis**  
+   - **Purpose**: Estimate the survival probability of root-filled teeth over 10 years.  
+   - **Why Appropriate**:  
+     1. Time-to-event data is the primary outcome.  
+     2. Censoring is present (e.g., teeth still retained at the end of follow-up).  
+   - **Why It May Not Be Appropriate**: Assumes non-informative censoring, which may not hold if censored individuals differ systematically from those with observed events.  
+   - **When NOT to Use**: If time-to-event data is incomplete or unreliable.  
+   - **Alternative**: Life table analysis if survival times are grouped into intervals.
+
+2. **Cox Proportional Hazards Regression**  
+   - **Purpose**: Identify prognostic factors affecting tooth survival and estimate hazard ratios.  
+   - **Why Appropriate**:  
+     1. Allows for adjustment of multiple covariates.  
+     2. Handles censored data effectively.  
+   - **Why It May Not Be Appropriate**: Assumes proportional hazards, which may not hold for all variables.  
+   - **When NOT to Use**: If proportional hazards assumption is violated.  
+   - **Alternative**: Stratified Cox regression or time-varying covariates.
+
+#### CATEGORY B – RECOMMENDED
+3. **Log-Rank Test**  
+   - **Purpose**: Compare survival curves between groups (e.g., based on tooth type or restoration type).  
+   - **Why Appropriate**:  
+     1. Non-parametric test suitable for comparing survival distributions.  
+     2. Does not require proportional hazards assumption.  
+   - **Why It May Not Be Appropriate**: Sensitive to censoring patterns.  
+   - **When NOT to Use**: If sample sizes are very small in one or more groups.  
+   - **Alternative**: Breslow or Tarone-Ware tests for weighted comparisons.
+
+4. **Chi-Square Test or Fisher’s Exact Test** (for categorical variables)  
+   - **Purpose**: Assess associations between categorical independent variables and tooth survival.  
+   - **Why Appropriate**:  
+     1. Simple and intuitive for binary outcomes.  
+     2. Useful for exploratory analysis.  
+   - **Why It May Not Be Appropriate**: Does not account for time-to-event data.  
+   - **When NOT to Use**: If expected cell counts are very low.  
+   - **Alternative**: Logistic regression for binary outcomes.
+
+#### CATEGORY C – OPTIONAL
+5. **Multivariable Logistic Regression**  
+   - **Purpose**: Explore associations between independent variables and the binary outcome (tooth survival vs. extraction).  
+   - **Why Appropriate**:  
+     1. Adjusts for confounders.  
+     2. Provides odds ratios for interpretation.  
+   - **Why It May Not Be Appropriate**: Ignores time-to-event data.  
+   - **When NOT to Use**: If time-to-event data is critical.  
+   - **Alternative**: Cox regression.
+
+6. **Sensitivity Analysis**  
+   - **Purpose**: Assess robustness of findings (e.g., excluding individuals with missing data).  
+   - **Why Appropriate**:  
+     1. Addresses potential bias from missing data.  
+     2. Enhances credibility of results.  
+   - **Why It May Not Be Appropriate**: Requires additional assumptions about missing data mechanisms.  
+   - **When NOT to Use**: If missing data is minimal.  
+   - **Alternative**: Multiple imputation.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **T-Test or ANOVA**  
+   - **Why Not Appropriate**: These tests are designed for continuous outcomes and do not account for time-to-event data or censoring.  
+   - **Alternative**: Kaplan-Meier analysis or Cox regression.
+
+2. **Pearson Correlation**  
+   - **Why Not Appropriate**: Correlation does not account for survival data or the binary nature of the outcome.  
+   - **Alternative**: Cox regression or logistic regression.
+
+3. **Linear Regression**  
+   - **Why Not Appropriate**: Assumes a continuous outcome and does not handle censoring.  
+   - **Alternative**: Cox regression or logistic regression.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach focuses on survival analysis techniques, which are essential for time-to-event data with censoring. Kaplan-Meier analysis provides an overall survival estimate, while Cox regression identifies prognostic factors. Additional tests (e.g., log-rank test) enhance the rigor of group comparisons. Sensitivity analyses address missing data and potential biases. The approach is robust, aligns with the study design, and ensures valid and interpretable results.

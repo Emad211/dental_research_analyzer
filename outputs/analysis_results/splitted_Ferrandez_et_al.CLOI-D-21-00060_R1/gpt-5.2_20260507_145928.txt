@@ -1,0 +1,298 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_Ferrandez_et_al.CLOI-D-21-00060_R1.pdf
+Status : ok
+Time   : 20260507_145928
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design
+- **Design:** Historical controlled cohort study (retrospective cohort from records/radiographs of consecutive referrals).
+- **Setting:** Specialist endodontic practice / university-linked endodontology unit (UK).
+- **Follow-up window:** **Up to 2 years**; primary endpoint explicitly **2-year** radiographic healing.
+- **Assessment structure:** Radiographic outcome assessed by **independent assessor**, with **second observer on 30%** of sample (for assessment variability).
+
+### Objectives / hypotheses
+- **Primary aim:** Compare **2-year radiographic periapical healing** after NSRCT in teeth with **pre-operative periapical radiolucency**, between:
+  1) NSRCT **through existing full-coverage restoration**, vs  
+  2) NSRCT **after restoration removal**, followed by **new full-coverage restoration**.
+- **Null hypothesis:** No difference in periapical healing between those treated through an existing crown vs those treated after removal and re-crowning.
+- **Secondary aim:** Determine **complication rate** (specifically **porcelain fracture** and **de-cementation**) after accessing through existing extra-coronal restorations over up to 2 years.
+
+### Study groups (exposure categories)
+Table 2 indicates **three exposure groups**:
+1. **Crown retained** (access through existing crown): **106 teeth**
+2. **Crown removed** (existing crown removed before NSRCT; later new crown): **57 teeth**
+3. **Restoration removed** (non-crown restorations removed before NSRCT; later new crown): **82 teeth**
+
+Total analyzed from Table 2: **245 teeth**.
+
+### Inclusion / exclusion (from text + Table 1)
+- **Included:** Consecutive referred patients undergoing NSRCT; teeth had **pre-operative periapical radiolucency**; had **cuspal coverage** (since “absence of cuspal coverage” excluded 107).
+- **Patient exclusions:** Diabetes; corticosteroid history.
+- **Tooth exclusions (potential confounders / quality restrictions):**
+  - Inadequate radiograph quality
+  - Prior surgical treatment
+  - Periodontal defects **>5 mm**
+  - Coronal cracks into pulp chamber
+  - “NSRCT mishaps”
+  - Absence of apical patency
+  - Root filling material other than gutta-percha
+  - Suboptimal post-operative root filling
+  - Absence of cuspal coverage (largest exclusion)
+- **Table 1 total excluded:** 187 teeth (breakdown provided).
+
+### Outcomes (dependent variables)
+
+**Primary outcome: radiographic periapical healing at 2 years**
+- Healing categories (ordinal, 4-level):
+  1) Complete healing  
+  2) Incomplete healing (reduced lesion without normal PDL)
+  3) Uncertain
+  4) (Category 4 text not shown, but by convention in similar frameworks likely “unsatisfactory/no healing/worsened”; plan should accommodate 4-category ordinal outcome)
+
+**Secondary outcomes: restoration complications by 2 years**
+- **Porcelain fracture** (binary yes/no; likely only applicable to porcelain-containing crowns)
+- **De-cementation** (binary yes/no)
+- Conceptually also a **time-to-event** outcome (“up to 2 years”), if timing is available in records; if only presence/absence at 2y then binary.
+
+### Covariates / explanatory variables extracted
+From “Data collection” + Table 2:
+- **Demographics:** sex, age
+- **Tooth factors:** tooth type (arch and tooth class), function as FPD abutment (at review)
+- **Pre-operative disease:** size of periapical radiolucency (mm), presence of sinus tract, primary vs secondary treatment (previous RCT)
+- **Intra-operative:** permanent core material (GIC / amalgam / composite)
+- **Post-operative:** crown/restoration material (PFM/porcelain-bonded, full metal, full ceramic), **quality of final coverage restoration** (good/poor; dichotomized clinically+radiographically)
+
+### Measurements / data collection methods
+- **Radiographs:** periapicals using paralleling technique + holder; film digitized; calibrated in software.
+- **Radiographic reading conditions:** dim room; brightness/contrast adjustable; crown masked.
+- **Restoration quality:** explorer exam at 90° + radiographic margin assessment; dichotomized to good/poor based on specified criteria.
+
+### Unit of analysis and clustering risk
+- Unit presented is **tooth**; patients may contribute >1 tooth (not stated). This implies possible **within-patient clustering** that should be handled analytically.
+
+---
+
+## TASK 2 — Statistical analysis plan (tests)
+
+### Pre-analysis steps (applies to all categories)
+- **Define analysis sets:** analyzed teeth meeting inclusion criteria with 2-year radiograph available.
+- **Handle missingness:** document missing covariates/outcomes; if missing not negligible, use **multiple imputation** (see optional/recommended).
+- **Account for clustering:** if multiple teeth per patient, use **mixed effects** or **GEE**.
+- **Primary estimand:** adjusted association between treatment group and 2-year healing.
+- **Effect size reporting:** odds ratios (OR) with 95% CI (or relative risks if modeled), plus absolute outcome proportions.
+
+---
+
+# CATEGORY A — Mandatory (analysis incomplete without these)
+
+## A1. Descriptive statistics + baseline group comparisons
+- **Test name:**  
+  - Categorical: **Chi-square test** (or **Fisher’s exact** if sparse)  
+  - Continuous: **ANOVA** (or **Kruskal–Wallis** if non-normal/ordinal)
+- **Purpose:** Describe sample and check imbalance in prognostic factors across the 3 groups.
+- **Why appropriate (≥2):**
+  1) Exposure groups are non-randomized; imbalance is expected and must be characterized.  
+  2) Variables are a mix of categorical (sex, tooth type, prior treatment) and continuous (age, lesion size).
+- **Why may not be appropriate (≥1):**  
+  Baseline “significance testing” can be misleading; imbalance should be assessed via standardized differences rather than p-values alone.
+- **When NOT to use:**  
+  As the sole method to decide covariate adjustment or to claim “groups are similar” based on p>0.05.
+- **Alternative if assumptions violated:**  
+  - For continuous skewed outcomes: **Kruskal–Wallis** with Dunn-type post-hoc comparisons.  
+  - For sparse categorical tables: **Fisher’s exact** or exact multinomial methods.
+
+## A2. Primary outcome modeling: 2-year healing across groups (ordinal outcome)
+- **Test name:** **Ordinal logistic regression (proportional odds model)**, with clustering handled via **mixed-effects ordinal logistic** (random intercept for patient) or **GEE ordinal model**.
+- **Purpose:** Estimate association between treatment group and ordered healing categories at 2 years, adjusting for confounders.
+- **Why appropriate (≥2):**
+  1) Healing is explicitly categorical with natural ordering (complete → incomplete → uncertain → no healing).  
+  2) Allows **multivariable adjustment** for imbalances (age, lesion size, sinus tract, prior treatment, tooth type, restoration quality, abutment status, etc.).  
+  3) Can account for correlated teeth within patient (random effects / GEE).
+- **Why may not be appropriate (≥1):**
+  Proportional odds assumption may be violated (effect of group may differ across thresholds).
+- **When NOT to use:**  
+  If outcome is not truly ordinal (e.g., “uncertain” does not fit ordering) or if proportional odds is strongly violated without remedy.
+- **Alternative if assumptions violated:**  
+  - **Partial proportional odds model** (generalized ordered logit)  
+  - **Multinomial logistic regression** (treat categories as nominal)  
+  - Collapse outcome to clinically meaningful binary (e.g., complete vs not) and use binary models (but justify).
+
+## A3. Confounding-adjusted binary “success” analysis (clinically interpretable)
+- **Test name:** **Logistic regression** (mixed-effects or GEE), for a prespecified dichotomy such as:
+  - Success = complete healing (or complete+incomplete) vs others (uncertain/failure)
+- **Purpose:** Provide an interpretable “success rate” comparison aligned with clinical decision-making.
+- **Why appropriate (≥2):**
+  1) Clinicians often want success proportions; binary endpoints ease interpretation.  
+  2) Supports confounder adjustment and clustering control.
+- **Why may not be appropriate (≥1):**
+  Dichotomization loses information and can depend heavily on how “uncertain” is classified.
+- **When NOT to use:**  
+  If category frequencies allow robust ordinal modeling and no clear clinical justification for collapsing.
+- **Alternative if assumptions violated:**  
+  - **Log-binomial** or **Poisson regression with robust SE** to estimate **risk ratios** if outcome is common and OR would exaggerate.
+
+## A4. Secondary outcome: complication rates by group (binary)
+- **Test name:** **Logistic regression** (mixed-effects/GEE); plus unadjusted **Chi-square/Fisher** for simple comparisons.
+- **Purpose:** Compare 2-year complication occurrence (porcelain fracture; de-cementation) between relevant groups (especially “crown retained”).
+- **Why appropriate (≥2):**
+  1) Outcomes are binary and exposure groups are categorical.  
+  2) Regression enables adjustment for crown material, abutment function, restoration quality, etc., and clustering.
+- **Why may not be appropriate (≥1):**
+  Complications may be rare → separation/unstable estimates.
+- **When NOT to use:**  
+  If events are extremely sparse (e.g., <5–10 events total), standard logistic regression is unreliable.
+- **Alternative if assumptions violated:**  
+  - **Firth penalized logistic regression**  
+  - **Exact logistic regression** (very sparse)  
+  - Combine categories or focus on descriptive incidence only.
+
+## A5. Inter-/intra-observer agreement for radiographic outcomes
+- **Test name:** **Weighted Cohen’s kappa** (for ordinal categories) on the 30% double-read subset; optionally **percent agreement**.
+- **Purpose:** Quantify reliability of radiographic healing classification.
+- **Why appropriate (≥2):**
+  1) Outcome is observer-rated categorical with ordering; weighted kappa credits “near agreement.”  
+  2) Second observer assessed 30% explicitly to assess variability—must be analyzed.
+- **Why may not be appropriate (≥1):**
+  Kappa is sensitive to prevalence and marginal distributions (paradox: high agreement but low kappa).
+- **When NOT to use:**  
+  If categories are not ordinal (then use unweighted kappa) or if one category dominates heavily (report additional metrics).
+- **Alternative if assumptions violated:**  
+  - **Gwet’s AC2 (ordinal)** or **Krippendorff’s alpha** (robust to prevalence)  
+  - For binary collapsed outcome: standard Cohen’s kappa / AC1.
+
+---
+
+# CATEGORY B — Recommended (improves rigor)
+
+## B1. Multivariable model building with prespecified confounders + interaction checks
+- **Test name:**  
+  - **Likelihood ratio test (LRT)** / **Wald tests** for covariate blocks and interactions within regression models.
+- **Purpose:** Evaluate whether key covariates contribute and whether group effects differ by important modifiers (e.g., prior treatment primary vs secondary; restoration quality; lesion size).
+- **Why appropriate (≥2):**
+  1) Non-randomized design: effect modification is plausible and clinically relevant.  
+  2) Avoids overinterpretation of crude comparisons.
+- **Why may not be appropriate (≥1):**
+  Multiple testing increases false positives; underpowered interactions are unstable.
+- **When NOT to use:**  
+  Data are too small/sparse to support interaction terms (rule-of-thumb events-per-parameter).
+- **Alternative if assumptions violated:**  
+  Predefine a small number of interactions; use penalized regression or report stratified descriptives.
+
+## B2. Propensity score methods (to address confounding by indication)
+- **Test name:** **Propensity score weighting (IPTW)** or **propensity score matching**, followed by weighted outcome modeling.
+- **Purpose:** Reduce confounding because decision to keep/remove crown likely depends on prognosis (e.g., marginal fit, restorability).
+- **Why appropriate (≥2):**
+  1) Treatment assignment is clinician/patient-driven; PS methods can improve covariate balance.  
+  2) Provides a sensitivity check against regression-only adjustment.
+- **Why may not be appropriate (≥1):**
+  Requires measured confounders; unmeasured confounding remains; limited overlap across groups may occur.
+- **When NOT to use:**  
+  If poor common support/overlap (extreme weights) or key confounders are not recorded.
+- **Alternative if assumptions violated:**  
+  - Trimming/truncating weights; overlap weights  
+  - Doubly robust methods (IPTW + regression)  
+  - Conventional multivariable mixed models with careful covariate control.
+
+## B3. Time-to-event analysis for complications (if dates available)
+- **Test name:** **Kaplan–Meier curves + log-rank test**; **Cox proportional hazards model** (shared frailty for patient clustering).
+- **Purpose:** Use timing information (not just whether complication occurred) and handle variable follow-up.
+- **Why appropriate (≥2):**
+  1) Secondary aim says “up to 2 years” suggesting varying observation times/censoring.  
+  2) Cox model adjusts for covariates and accommodates censoring.
+- **Why may not be appropriate (≥1):**
+  Exact event times may be unavailable in retrospective records; proportional hazards may be violated.
+- **When NOT to use:**  
+  If only a fixed 2-year status is known (no time data), or follow-up is essentially uniform with no censoring.
+- **Alternative if assumptions violated:**  
+  - **Restricted mean survival time (RMST)** comparison  
+  - **Discrete-time survival models** if events recorded in intervals.
+
+## B4. Sensitivity analyses for “uncertain” healing category
+- **Test name:** Re-run primary model under different reclassifications:
+  - uncertain→success; uncertain→failure; exclude uncertain
+- **Purpose:** Assess robustness of conclusions to classification ambiguity.
+- **Why appropriate (≥2):**
+  1) “Uncertain” is inherently ambiguous and could bias results.  
+  2) Demonstrates stability (or fragility) of findings.
+- **Why may not be appropriate (≥1):**
+  Can appear data-driven if not prespecified.
+- **When NOT to use:**  
+  If “uncertain” frequency is negligible.
+- **Alternative if assumptions violated:**  
+  Keep ordinal model as primary; report predicted probabilities for each category.
+
+---
+
+# CATEGORY C — Optional (supplementary insights)
+
+## C1. Multilevel modeling of lesion size change (if measured longitudinally)
+- **Test name:** **Linear mixed model** (or **quantile regression**) for continuous change in lesion size from baseline to follow-up.
+- **Purpose:** Complement categorical healing with continuous radiographic change.
+- **Why appropriate (≥2):**
+  1) Lesion size (mm) is collected; change may be more sensitive than categories.  
+  2) Mixed models handle clustering and repeated measures if multiple timepoints exist.
+- **Why may not be appropriate (≥1):**
+  Lesion size at follow-up may not have been measured, only baseline.
+- **When NOT to use:**  
+  If only baseline lesion size exists or measurement error is too large/unstandardized.
+- **Alternative if assumptions violated:**  
+  **Robust regression**, **rank-based methods**, or model change as ordinal.
+
+## C2. Multiple imputation for missing covariates/outcomes
+- **Test name:** **Multiple imputation by chained equations (MICE)**.
+- **Purpose:** Reduce bias/inefficiency if missing data are non-trivial.
+- **Why appropriate (≥2):**
+  1) Retrospective datasets often have missing covariates.  
+  2) Preserves sample size and can reduce bias under MAR.
+- **Why may not be appropriate (≥1):**
+  If missing not at random (MNAR) is likely, MI may not fix bias.
+- **When NOT to use:**  
+  With extremely small sample sizes per variable pattern or near-complete separation.
+- **Alternative if assumptions violated:**  
+  Complete-case with sensitivity analyses; MNAR models (pattern-mixture) if feasible.
+
+## C3. Model diagnostics and calibration
+- **Test name:**  
+  - Ordinal model: proportional odds tests (Brant-type), residual checks  
+  - Binary model: calibration plot, Hosmer–Lemeshow (with caution), Brier score
+- **Purpose:** Validate model fit and predictive performance (secondary).
+- **Why appropriate (≥2):**
+  1) Ensures inferences aren’t driven by misfit.  
+  2) Helps justify reporting adjusted predictions.
+- **Why may not be appropriate (≥1):**
+  Some tests (e.g., Hosmer–Lemeshow) are sample-size sensitive.
+- **When NOT to use:**  
+  As the only evidence of fit; rely on multiple diagnostics.
+- **Alternative:**  
+  Bootstrap internal validation; cross-validation (if prediction is emphasized).
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Paired t-test / McNemar test**  
+   - Why not: groups are independent cohorts (not paired/matched at the tooth level).
+
+2. **Simple t-test for healing outcome**  
+   - Why not: healing is categorical/ordinal, not continuous.
+
+3. **Repeated-measures ANOVA** (for healing categories)  
+   - Why not: outcome is not continuous and repeated measures are not described; endpoint is 2-year status.
+
+4. **Ignoring clustering and using ordinary logistic/chi-square if multiple teeth per patient**  
+   - Why not: violates independence; SEs too small; inflated type I error.
+
+5. **Pearson correlation between group and healing**  
+   - Why not: group is nominal; healing is ordinal; correlation is not an appropriate primary association measure here.
+
+6. **One-way ANOVA on complication rates**  
+   - Why not: complication is binary; ANOVA assumptions violated.
+
+---
+
+## TASK 4 — Summary (overall analytical approach)
+
+A non-randomized, retrospective **3-group cohort** with an **ordinal radiographic healing endpoint** requires (i) clear descriptive summaries, (ii) a **confounding-adjusted ordinal regression model** (with clustering by patient if applicable) as the primary analysis, (iii) complementary clinically interpretable binary success models, and (iv) appropriate modeling of **binary complications**, supported by reliability statistics for radiographic readings and sensitivity analyses around ambiguous “uncertain” outcomes.

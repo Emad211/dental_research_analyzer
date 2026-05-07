@@ -1,0 +1,664 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_91fd82110fa9b156a47cd6aa50a0126d.pdf
+Status : ok
+Time   : 20260507_145654
+══════════════════════════════════════════════════════════════════════
+
+TASK 1: INFORMATION EXTRACTION  
+(Study characteristics, variables, measurements, data collection)
+
+1. Study design
+- Type: Prospective cohort study.
+- Setting: Department of Endodontics, School of Dentistry, Ege University, İzmir, Turkey.
+- Time frame:
+  - Recruitment: February 2016–December 2018.
+  - Follow-up: Minimum 2 years, up to 4 years, with scheduled recalls.
+- Design standards: Conducted according to STROBE and Preferred Reporting Items for Observational studies in Endodontics (PRIO-Endo 2020).
+- Ethical approval: Local Ethical Committee (no. 15-6.1/8), Helsinki 2008 compliant.
+
+2. Study objectives
+- Primary aim: To evaluate the influence of various predictors on the outcome of root canal retreatment in symptomatic mandibular first molars with periapical lesions after a minimum of 2 years.
+- Implicit primary outcome:
+  - Root canal retreatment outcome: success (healed + healing) vs failure (nonhealing).
+- Implicit secondary outcomes (from text):
+  - Distribution of healed/healing/failure categories.
+  - Influence of preoperative and intraoperative factors (“predictors”) on outcome.
+
+3. Population and sampling
+- Source population: Patients referred for root canal retreatment of mandibular molars.
+- Screening:
+  - Assessed: 420 mandibular molars referred for root canal retreatment.
+  - Eligible and included: 120 symptomatic mandibular first molars with periapical lesions (420 → 120).
+- Follow-up:
+  - Lost during follow-up:
+    - 2 teeth with vertical root fracture diagnosed at first-year follow-up.
+    - 15 patients not available for recall.
+  - Analysed: 103 patients (103 teeth); recall rate 85.3%.
+
+4. Inclusion criteria
+- Patients with:
+  - Noncontributory medical history.
+  - Age ≥18 (implied by exclusion of <18).
+- Teeth:
+  - Mandibular first molars only.
+  - Previously root canal treated, with mature roots.
+  - Symptomatic with:
+    - Preoperative pain and tenderness to percussion.
+  - At least one root with periapical lesion:
+    - PAI score 4 or 5 (periapical index, Ørstavik et al., 1986).
+    - Largest lesion diameter 3–10 mm on preoperative digital radiographs (paralleling technique, film holder).
+  - Diagnosed as:
+    - Symptomatic apical periodontitis OR
+    - Acute apical abscess with localized intraoral swelling.
+
+5. Exclusion criteria
+- Patient level:
+  - Age <18 years.
+  - Extra-oral swelling.
+  - Antibiotic intake within 2 weeks before start of retreatment.
+- Tooth level:
+  - Second and third molars.
+  - Teeth with asymptomatic apical periodontitis.
+  - Two adjacent teeth requiring retreatment (to avoid clustering).
+  - Advanced periodontal disease:
+    - Periodontal pocket depth >5 mm and/or attachment loss ≥3 mm.
+  - Nonrestorable loss of tooth structure.
+  - Vertical root fracture.
+  - External or internal root resorption.
+  - Complications related to primary root canal treatment such as:
+    - Broken instrument.
+    - Perforation.
+
+6. Treatment protocol and grouping
+- All treatments:
+  - Performed by one experienced endodontist (8 years experience).
+  - Magnification: 3.5× loupes; microscope used when needed.
+  - Anaesthesia: Ultracaine DS.
+  - Rubber dam isolation.
+  - Access cavity; removal of existing restoration/caries.
+  - Removal of gutta-percha:
+    - Mainly ProTaper Universal Retreatment files (PTU-R).
+    - Hedström files when necessary.
+    - No solvent used.
+  - Negotiation of canals: small K-files (sizes 06, 08, 10) where needed.
+  - Working length (WL): electronic apex locator (Raypex VI) + confirmatory periapical radiographs.
+  - Irrigants (during instrumentation): NaOCl and EDTA with side-vented 30G needle.
+  - Root canal preparation: ProTaper Universal (PTU) to sizes determined by canal anatomy.
+  - Intracanal medicament: Calcium hydroxide (CH) in most cases, except first visit in teeth with persistent exudate.
+  - Final irrigation protocol:
+    - 17% EDTA, 2.5% NaOCl, distilled water, then 2% chlorhexidine (CHX); manual dynamic agitation with gutta-percha.
+  - Obturation:
+    - Modified single-cone technique with PTU matched cones + AH Plus sealer; accessory cones if needed.
+  - Final restoration:
+    - Direct composite resin or core build-up + single porcelain crown.
+- Visit structure:
+  - All retreatments completed in 2–4 appointments:
+    - 2 appointments: 75 teeth without active exudate drainage.
+    - 3 appointments: 20 teeth with active exudate drainage.
+    - 4 appointments: 8 teeth (4 flare-ups, 4 exudate up to third appointment).
+
+7. Key exposure / predictor variables
+
+7.1 Preoperative predictors (recorded before retreatment)
+- Demographic:
+  - Age (continuous, in years).
+  - Gender (male/female).
+- Clinical:
+  - Soft tissue tenderness: present/absent.
+  - Intraoral swelling: present/absent.
+- Radiographic:
+  - Periapical lesion size: 3–10 mm (continuous; may also be categorized).
+  - PAI score: 4 vs 5.
+  - Apical level of pre-existing root canal filling: short/adequate/overfill.
+  - Density of existing root canal filling:
+    - Poor: visible voids within gutta-percha or between gutta-percha and canal walls.
+    - Good: homogeneous, no visible voids.
+    - Unfilled: no gutta-percha inside the canal.
+
+7.2 Intraoperative predictors (recorded during retreatment)
+- Active exudate drainage through the root canal: present/absent.
+- Apical level of root canal filling after retreatment (short/adequate/overfill – implied symmetry with pre-op).
+- Density/quality of root canal filling after retreatment: good/poor.
+- Procedural complications:
+  - Sealer and/or gutta-percha extrusion (yes/no).
+  - Broken instrument (yes/no).
+  - Perforation (yes/no).
+  - Flare-up (yes/no).
+- Restoration type after retreatment:
+  - Single crown vs direct composite.
+
+7.3 Follow-up / outcome variables
+
+a) Primary clinical/radiographic outcome categories  
+Definition based on modified PAI system (Holden et al., 2008):
+
+- Healed:
+  - Clinical: no signs or symptoms (no pain, no tenderness to percussion/palpation, no sinus tract, no swelling; normal mobility).
+  - Radiographic: complete resolution of periapical lesion, PAI 1 or 2.
+- Healing:
+  - Clinical: no signs or symptoms.
+  - Radiographic: reduction in lesion size; PAI 3 or 4 at follow-up.
+- Nonhealing:
+  - Clinical: symptomatic or asymptomatic.
+  - Radiographic:
+    - Lesion size unchanged or increased and PAI 4 or 5, or
+    - Previously normal ligament space developed into lesion, compared with baseline.
+
+b) Derived binary outcome
+- Failure: Nonhealing.
+- Success: Healed + Healing combined (primary binary outcome used for predictors).
+
+c) Longitudinal measurements
+- Repeated follow-up visits:
+  - 3, 6, 9, 12 months (year 1).
+  - Every 6 months in year 2.
+  - Then annually until study end (up to 4 years).
+- At each visit:
+  - Clinical exam: pain, tenderness to percussion/palpation, sinus tract, swelling, mobility.
+  - Quality of restoration: secondary caries, marginal integrity, discrepancy, decementation.
+  - Radiographs:
+    - Standardized long-cone paralleling technique with film holder, phosphor plates; beam alignment standardized by film holder and pre-op reference.
+
+d) Radiographic scoring protocol
+- PAI scoring:
+  - Two independent calibrated endodontists, using PAI on digital periapical radiographs.
+  - Calibration: 100 images unrelated to study.
+  - Evaluation: initial and final radiographs for each tooth independently.
+  - Disagreements:
+    - Discussed until consensus; if persistent disagreement, worst (higher) PAI score recorded.
+- Multiple lesions in same tooth:
+  - Worst PAI score across roots taken as tooth-level PAI.
+
+8. Sample size
+- Initially included: 120 teeth.
+- Analysed at final follow-up: 103 teeth.
+- No explicit a priori sample size calculation reported in text provided.
+
+9. Data structure
+- Unit of analysis: Tooth (one tooth per patient).
+- Design: Single cohort, no randomized groups; all treated with similar protocol, but differing in clinical/radiographic predictors.
+- Key analytic structure:
+  - Cross-sectional end point (final outcome vs predictors).
+  - Longitudinal outcome category at multiple time points (if used).
+  - Time-to-event (time to healing/success) is possible but not explicitly mentioned.
+
+---
+
+TASK 2: STATISTICAL ANALYSIS PLAN
+
+I will assume:
+- Primary outcome: binary success (healed + healing) vs failure at last follow-up.
+- Secondary outcome: three-category status (healed, healing, nonhealing) at last follow-up; time to success if data on timing of healing is available.
+- Predictors as listed above.
+
+For clarity, I separate tests into Category A (mandatory), B (recommended), C (optional).
+
+-------------------------------------------------------------
+CATEGORY A – MANDATORY ANALYSES
+-------------------------------------------------------------
+
+A1. Descriptive statistics
+
+- Test/Method:
+  - Descriptive statistics (no formal “test”): means/SD or medians/IQR, frequencies and percentages.
+
+- Purpose:
+  - To summarize baseline characteristics and intraoperative variables.
+  - To describe outcome distribution (healed, healing, nonhealing; success vs failure).
+
+- Why appropriate (≥2 reasons):
+  1) Essential to understand sample composition, prevalence of predictors, and outcome frequencies before any inferential analysis.
+  2) Needed to check plausibility, ranges, missing data, and to determine the feasibility and power of regression analyses (e.g., events per variable).
+
+- Why it may not be appropriate (≥1 reason):
+  - Not inappropriate per se; the concern is only choice of summary: mean/SD may be misleading for skewed data (e.g., lesion size).
+
+- When NOT to use:
+  - Means and SDs should not be used for heavily skewed continuous variables or those with outliers; prefer median/IQR.
+
+- Alternatives if assumptions violated:
+  - For skewed continuous variables: report medians, IQR, and possibly range.
+  - For small counts: report frequencies but consider collapsing categories.
+
+---
+
+A2. Comparison of baseline characteristics between included and lost-to-follow-up cases
+
+- Test name:
+  - Independent-samples t-test or Mann–Whitney U test for continuous variables.
+  - Chi-squared test or Fisher’s exact test for categorical variables.
+
+- Purpose:
+  - To assess whether patients lost to follow-up differ systematically from those retained, i.e., evaluate potential attrition bias.
+
+- Why appropriate:
+  1) Prospective cohort with 15/120 lost to recall plus 2 excluded for fractures; comparison helps quantify risk of selection bias at analysis.
+  2) Standard approach for assessing generalizability and whether missingness is likely MCAR/MAR vs MNAR.
+
+- Why it may not be appropriate:
+  - With very small number in the “lost” group, statistical tests may be underpowered and p-values misleading.
+
+- When NOT to use:
+  - When predictors are unknown for lost patients (if data not recorded at baseline) or when lost numbers are extremely small for any test to be meaningful.
+
+- Alternatives if assumptions violated:
+  - Descriptive comparison without formal testing.
+  - Standardized differences (effect sizes) instead of p-values to compare groups.
+
+---
+
+A3. Primary analysis: Association between predictors and binary outcome (success vs failure)
+
+- Test name:
+  1) Univariable logistic regression.
+  2) Multivariable logistic regression.
+
+- Purpose:
+  - To quantify the effect of preoperative and intraoperative predictors on odds of success vs failure at final follow-up, estimate adjusted odds ratios (ORs) with confidence intervals.
+
+- Why appropriate:
+  1) Outcome is binary (success/failure); logistic regression is the standard modelling approach.
+  2) Allows simultaneous adjustment of multiple predictors (e.g., age, gender, lesion size, PAI, exudate presence, quality of filling, restoration type), addressing confounding.
+  3) Can handle categorical predictors with multiple levels (e.g., apical level: short/adequate/overfill) via dummy variables.
+
+- Why it may not be appropriate:
+  - Number of failures is small (12 failures among 103 teeth), which limits the number of predictors in a multivariable model (events-per-variable rule). Overfitting and unstable estimates are risks.
+
+- When NOT to use:
+  - When outcome prevalence is extremely low with many predictors, and EPV < ~10 (or at least <5), standard logistic regression may be unreliable.
+  - If complete or quasi-complete separation occurs (e.g., a predictor perfectly predicts success/failure).
+
+- Alternatives if assumptions violated:
+  - Penalized logistic regression:
+    - Firth’s penalized likelihood.
+    - Ridge or LASSO (if variable selection is desired).
+  - Exact logistic regression for predictors with very sparse cells.
+  - Grouped modelling: reduce number of predictors, combine categories, or use hierarchical modelling to preserve EPV.
+
+---
+
+A4. Secondary categorical analysis: Association between predictors and three-category outcome
+
+- Test name:
+  - Multinomial logistic regression (healed vs healing vs nonhealing).
+
+- Purpose:
+  - To explore whether predictors differentially affect being healed vs healing vs nonhealing, not just success vs failure.
+
+- Why appropriate:
+  1) The outcome is nominal with three ordered states, but healing vs healed may have different clinical meaning; multinomial allows this without forcing order.
+  2) Provides more granular insight (e.g., certain factors might be associated with fully healed vs mid-term healing).
+
+- Why it may not be appropriate:
+  - Sample size: with 103 teeth, and only 12 failures, disaggregating into three categories further reduces events per cell, yielding unstable estimates.
+
+- When NOT to use:
+  - When any outcome category has very small counts (e.g., <10), leading to sparse cells and convergence issues.
+  - When interpretation becomes too complex relative to sample size and clinical relevance.
+
+- Alternatives if assumptions violated:
+  - Collapsing categories:
+    - Binary logistic regression (success vs failure) as primary.
+  - Ordinal logistic regression (proportional odds model) if the proportional odds assumption holds and sample size is adequate.
+  - Descriptive stratification (presenting percentages by predictor) without regression.
+
+---
+
+A5. Bivariate associations between categorical predictors and outcome
+
+- Test name:
+  - Chi-squared test of independence or Fisher’s exact test.
+
+- Purpose:
+  - To evaluate unadjusted associations between individual categorical predictors (e.g., apical level, exudate presence, restoration type, PAI 4 vs 5) and success vs failure.
+
+- Why appropriate:
+  1) Quick assessment of strong bivariate associations, helpful for model building and interpretation.
+  2) Appropriate for categorical variables with moderate sample sizes.
+
+- Why it may not be appropriate:
+  - Expected cell counts may be small due to low number of failures, violating chi-squared assumptions.
+
+- When NOT to use:
+  - When any expected cell frequency <5 in 20% or more of cells; the chi-squared approximation becomes unreliable.
+
+- Alternatives if assumptions violated:
+  - Fisher’s exact test (2×2 tables or small multiway tables).
+  - Collapsing categories (e.g., short + overfill vs adequate).
+
+---
+
+A6. Calibration/reliability of PAI scoring
+
+- Test name:
+  - Weighted kappa (for pre-study calibration).
+  - Simple/weighted kappa or intraclass correlation coefficient (ICC) for PAI scoring before consensus.
+
+- Purpose:
+  - To quantify interobserver agreement in PAI scoring (ordinal scale) before consensus, ensuring reliability of radiographic outcome classification.
+
+- Why appropriate:
+  1) PAI is ordinal (scores 1–5); weighted kappa accounts for ordered categories.
+  2) Inter-rater agreement is key given that outcome classification is based on PAI.
+
+- Why it may not be appropriate:
+  - If final analyses are conducted on consensus scores only, post-consensus kappa cannot be computed (no variability). Only pre-consensus scoring can be used.
+
+- When NOT to use:
+  - When ratings are not recorded separately per rater (only consensus score retained).
+  - When there are too few observations per category to compute stable kappa.
+
+- Alternatives if assumptions violated:
+  - Report percent agreement with caution.
+  - Use ICC for ordinal/continuous scoring if treating PAI as quasi-continuous (less ideal than weighted kappa).
+
+---
+
+CATEGORY B – RECOMMENDED ANALYSES
+(Enhance rigor and insight)
+
+B1. Modelling time to healing/success
+
+- Test name:
+  - Kaplan–Meier survival analysis (time-to-success).
+  - Log-rank test for comparing survival curves across predictor groups.
+  - Cox proportional hazards regression (if dates of healing known).
+
+- Purpose:
+  - To evaluate how quickly teeth reach success (healed or healing) and analyze predictors of time to success (or time to failure if defined).
+  - Use intermediate follow-up data (3, 6, 9, 12, 18, 24, etc.) rather than only last time point.
+
+- Why appropriate:
+  1) Follow-up schedule includes multiple time points and variable follow-up durations (2–4 years); time-to-event analysis appropriately incorporates censored observations.
+  2) Provides more nuanced picture than a simple end-point yes/no success.
+
+- Why it may not be appropriate:
+  - The exact time of transition from “healing” to “healed” may be interval-censored (only known within recall intervals), complicating standard Cox/Kaplan–Meier assumptions.
+
+- When NOT to use:
+  - If dates of healing or failure cannot be approximated (e.g., if only final status at last visit is recorded, with no intermediate classification).
+  - If the exact definition of event time is ambiguous (e.g., healing defined as a status category rather than a discrete event).
+
+- Alternatives if assumptions violated:
+  - Discrete-time survival analysis (e.g., complementary log–log model) treating follow-up intervals as discrete.
+  - Use the last follow-up outcome only and logistic regression as primary, acknowledging loss of timing information.
+
+---
+
+B2. Assessment of lesion size change as a continuous outcome
+
+- Test name:
+  - Paired t-test or Wilcoxon signed-rank test for change in lesion size (mm) from baseline to final.
+  - Linear regression modelling change in lesion size as dependent variable with predictors (or ANCOVA with final size adjusting for baseline).
+
+- Purpose:
+  - Quantify radiographic change in lesion size, not just categorical healing status.
+  - Evaluate predictors of greater or lesser reduction in lesion size.
+
+- Why appropriate:
+  1) Lesion size (3–10 mm) is measured on radiographs; change in mm can be informative, especially for cases classified as healing.
+  2) Continuous measures generally have more statistical power and can capture subtle improvements.
+
+- Why it may not be appropriate:
+  - Measurement error and radiographic distortion can limit precision; lesion size may be non-normal and bounded.
+
+- When NOT to use:
+  - If lesion size is not measured quantitatively (only categorized).
+  - If measurement methods are inconsistent across time points.
+
+- Alternatives if assumptions violated:
+  - Nonparametric tests (Wilcoxon signed-rank) for paired comparisons.
+  - Ordinal analysis of ordered categories of change (e.g., large reduction, small reduction, none).
+
+---
+
+B3. Model diagnostics and assumption checking for logistic regression
+
+- Test name:
+  - Hosmer–Lemeshow goodness-of-fit test, calibration plots.
+  - Assessment of multicollinearity (VIF).
+  - Influential observations (Cook’s distance, leverage).
+  - Linearity in the logit for continuous predictors (e.g., age, lesion size).
+
+- Purpose:
+  - To ensure logistic models fit the data adequately and assumptions are reasonably met.
+
+- Why appropriate:
+  1) Multivariable models with multiple predictors require checking for calibration and influential points, especially with small sample size.
+  2) Ensures transparency and robustness of inferential conclusions.
+
+- Why it may not be appropriate:
+  - Hosmer–Lemeshow test has low power with small n and can yield misleading p-values; VIFs might be unstable with small sample sizes.
+
+- When NOT to use:
+  - When sample size is too small for meaningful grouping in Hosmer–Lemeshow test (e.g., fewer than 8–10 groups or total N <100).
+
+- Alternatives if assumptions violated:
+  - Use AIC/BIC, pseudo R² and calibration plots instead of Hosmer–Lemeshow p-values.
+  - Simplify model by reducing predictors or combining categories.
+  - Use penalized regression or Bayesian approaches.
+
+---
+
+B4. Sensitivity analyses
+
+- Test name:
+  - Logistic regression restricted to teeth with complete follow-up ≥3 years vs ≥2 years.
+  - Analysis excluding teeth with complications (e.g., flare-ups, extrusions).
+  - Multiple imputation if small amount of missing predictor data (if present).
+
+- Purpose:
+  - Test robustness of primary results to different assumptions and subsets.
+
+- Why appropriate:
+  1) Prospective observational design is vulnerable to confounding and selection; sensitivity analysis helps gauge stability of results.
+  2) Complications could act as mediators or confounders; excluding them can show whether predictors are acting primarily via complications.
+
+- Why it may not be appropriate:
+  - With small numbers of failures or complications, restriction may further reduce power and yield unstable estimates.
+
+- When NOT to use:
+  - When subgroups become too small for meaningful inference.
+
+- Alternatives if assumptions violated:
+  - Descriptive sensitivity (compare effect sizes qualitatively) rather than fully adjusted models.
+
+---
+
+B5. Analysis of restoration quality vs outcome
+
+- Test name:
+  - Chi-squared or Fisher’s exact test (restoration type/quality vs success).
+  - Logistic regression including restoration type/quality as predictor.
+
+- Purpose:
+  - Evaluate whether restoration type (single crown vs composite) or quality at follow-up is associated with outcome.
+
+- Why appropriate:
+  1) Restoration quality is known to affect long-term endodontic outcomes.
+  2) Data on restoration type and quality is collected at follow-ups.
+
+- Why it may not be appropriate:
+  - Timing: restoration quality assessed at follow-up may be influenced by the outcome itself (reverse causality).
+
+- When NOT to use:
+  - When restoration quality data is only available at the same time as outcome assessment, making temporal direction unclear.
+
+- Alternatives if assumptions violated:
+  - Restrict analysis to restoration type (assigned at baseline after retreatment) rather than quality at follow-up.
+
+---
+
+B6. Ordinal analysis of PAI scores
+
+- Test name:
+  - Wilcoxon signed-rank test for paired PAI baseline vs final.
+  - Ordinal logistic regression (proportional odds) with final PAI as outcome, adjusting for baseline PAI and predictors.
+
+- Purpose:
+  - To exploit the full ordinal nature of PAI rather than collapsing into categories.
+
+- Why appropriate:
+  1) PAI 1–5 is ordered; ordinal models can efficiently use this structure.
+  2) May reveal factors associated with more substantial radiographic improvement, even within the “success” category.
+
+- Why it may not be appropriate:
+  - Proportional odds assumption (same effect across cutpoints) may not hold.
+  - Sparsity in some PAI categories, especially at follow-up (e.g., few PAI 5 after treatment).
+
+- When NOT to use:
+  - If there are too few observations per PAI level.
+  - If tests show clear violation of proportional odds.
+
+- Alternatives if assumptions violated:
+  - Partial proportional odds models.
+  - Collapsing PAI categories (e.g., 1–2 vs 3 vs 4–5) and using multinomial logistic regression.
+
+---
+
+CATEGORY C – OPTIONAL ANALYSES
+(Supplementary insights)
+
+C1. Exploring predictor interactions
+
+- Test name:
+  - Logistic regression with interaction terms (e.g., exudate presence × lesion size; apical level × density of filling).
+
+- Purpose:
+  - To investigate whether the effect of one predictor depends on the level of another.
+
+- Why appropriate:
+  1) The biology suggests possible interactions (e.g., effect of lesion size may differ depending on presence of exudate).
+  2) Can illuminate complex clinical patterns (e.g., poorer prognosis only when multiple risk factors co-occur).
+
+- Why it may not be appropriate:
+  - Sample size is limited; adding interaction terms further increases model complexity and risk of overfitting.
+
+- When NOT to use:
+  - When EPV is already low and main-effects model is borderline in terms of stability.
+
+- Alternatives if assumptions violated:
+  - Descriptive stratified analyses (e.g., show success rates stratified by exudate and lesion size categories).
+
+---
+
+C2. ROC curve analysis for continuous predictors
+
+- Test name:
+  - ROC curves and AUC for variables like lesion size, age.
+
+- Purpose:
+  - To evaluate the discriminatory ability of continuous predictors to classify success/failure and potentially identify cut-points.
+
+- Why appropriate:
+  1) Helps identify clinically relevant thresholds (e.g., lesion size above which prognosis significantly worsens).
+  2) Provides an intuitive measure of predictive performance (AUC).
+
+- Why it may not be appropriate:
+  - With only 12 failures, AUC estimates will have wide confidence intervals; cut-points may be unstable.
+
+- When NOT to use:
+  - When the outcome is rare and sample size small; risk of overinterpreting noisy AUC estimates.
+
+- Alternatives if assumptions violated:
+  - Present logistic regression coefficient and predicted probabilities instead of dichotomizing continuous predictors.
+
+---
+
+C3. Clustered/longitudinal modelling of repeated outcome status
+
+- Test name:
+  - Generalized estimating equations (GEE) or mixed-effects logistic regression for repeated categorical outcome (success vs not yet) across visits.
+
+- Purpose:
+  - To model progression of healing over time and effects of predictors over repeated measures.
+
+- Why appropriate:
+  1) Accounts for within-tooth correlation across multiple follow-up visits.
+  2) Uses all available data, not just final status.
+
+- Why it may not be appropriate:
+  - Modest sample size and limited number of events; repeated measures may lead to complex models with convergence issues.
+
+- When NOT to use:
+  - If outcome categories and sample are sparse at intermediate time points or if timing is inconsistent.
+
+- Alternatives if assumptions violated:
+  - Time-to-event analysis with Cox or discrete-time survival models, which may be simpler.
+
+---
+
+TASK 3: INAPPROPRIATE TESTS AND WHY
+
+Below are tests that should NOT be used for this study (or only with extreme caution), with justification.
+
+1. Student’s paired t-test for binary or ordinal outcomes
+- Inappropriate because:
+  - Outcome (success/failure or PAI categories) is categorical, not continuous; t-tests assume continuous, normally distributed variables.
+- Better alternatives:
+  - McNemar test (for paired binary, e.g., presence/absence of lesion at baseline vs follow-up).
+  - Wilcoxon signed-rank (for ordinal scores if treated as continuous-like).
+
+2. Independent-samples t-test for outcome vs categorical predictors when data are non-normal or ordinal
+- Inappropriate when:
+  - Outcome is binary (success/failure); t-tests are not designed for binary outcomes.
+  - PAI or ordered categories are analysed as means without justification.
+- Better alternatives:
+  - Logistic regression for binary outcomes.
+  - Ordinal logistic regression or nonparametric tests for ordered outcomes.
+
+3. Pearson correlation to assess association between predictors and binary outcome
+- Inappropriate because:
+  - Pearson correlation assumes two continuous variables; one variable here is binary.
+  - Interpretation is misleading; logistic regression or point-biserial correlation is more appropriate.
+
+4. Simple linear regression with binary outcome
+- Inappropriate because:
+  - Violates assumptions of linear regression (normal residuals, homoscedasticity).
+  - Predicted values can be outside [0,1]; logistic regression is the correct approach.
+
+5. Repeated-measures ANOVA for longitudinal categorical outcomes
+- Inappropriate because:
+  - Outcome over time is categorical, not continuous.
+  - Repeated-measures ANOVA assumes normally distributed continuous dependent variable and sphericity.
+
+6. One-way ANOVA to compare PAI categories as “means” across groups
+- Inappropriate when:
+  - PAI scores are ordinal, not interval-scaled.
+  - ANOVA assumes equal intervals between scores and normality of residuals.
+
+7. Multiple uncorrected pairwise chi-squared tests across many predictors without multivariable adjustment
+- Problematic because:
+  - High risk of type I error inflation; without adjustment or modelling, conclusions may be misleading.
+- Better alternative:
+  - Logistic regression with limited key predictors and possibly penalization.
+
+8. Stepwise variable selection (forward/backward stepwise logistic regression)
+- Inappropriate (or strongly discouraged):
+  - With small sample size and limited events, stepwise procedures are unstable, data-driven and produce biased coefficients and p-values.
+- Better alternative:
+  - Pre-specify predictors based on clinical reasoning; consider penalized regression.
+
+9. Parametric survival models requiring precise event times if only interval data exist
+- Inappropriate because:
+  - If event time (healing) is only known within follow-up intervals, ordinary continuous-time models may misrepresent timing unless interval-censored methods are used.
+
+---
+
+TASK 4: SUMMARY OF OVERALL ANALYTICAL APPROACH
+
+- Study type: Single-arm prospective cohort, 103 mandibular first molars followed for 2–4 years after standardized root canal retreatment.
+- Primary focus: Identify preoperative and intraoperative predictors of treatment success (healed + healing) vs failure (nonhealing), using tooth-level data.
+
+Proposed overall approach:
+
+1) Describe the cohort comprehensively (demographic, preoperative, intraoperative, outcome distribution).
+2) Check for attrition bias by comparing included vs lost-to-follow-up teeth.
+3) Use logistic regression (preferably penalized if needed due to small number of failures) to assess associations between carefully selected predictors and binary success/failure at final follow-up.
+4) Complement with bivariate analyses (chi-squared/Fisher, nonparametric tests) for exploratory understanding.
+5) Where data permit, exploit longitudinal structure via time-to-event analysis for time to success and analyze continuous/ordinal radiographic measures (lesion size, PAI change) for finer-grained insight.
+6) Document reliability of PAI scoring (weighted kappa) to support validity of radiographic outcomes.
+7) Conduct limited sensitivity analyses to assess robustness (e.g., excluding complications, varying follow-up thresholds).
+
+This approach aligns with the study’s prospective cohort design, respects the small number of failures by avoiding overparameterized models, and uses methods tailored to the binary/ordinal nature of the outcome and the predictors collected.

@@ -1,0 +1,984 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_s00784-020-03560-6.pdf
+Time : 20260507_151248
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study identification and design
+- **Title/topic:** Effect of *sole* endodontic treatment on periodontal healing of **grade 3 endo-periodontal lesions without root damage** in **periodontally compromised patients**.
+- **Design:** **Retrospective pilot** observational study with **within-tooth pre–post** comparisons (no parallel control group described).
+- **Setting:** University Hospital Heidelberg (Periodontology + Restorative Dentistry departments).
+- **Ethics:** Approved (S-312/2020).
+
+### Objective and hypothesis
+- **Aim:** Evaluate the effect of **sole endodontic treatment** on **periodontal healing** in the target lesion type.
+- **Hypothesis:** Sole endodontic treatment **facilitates periodontal healing**.
+
+### Population / sample
+- **Participants:** 13 **periodontally compromised** patients.
+- **Units analyzed:** 19 **teeth** (clustered within patients; some patients contribute >1 tooth).
+- **Key inclusion descriptor:** teeth initially diagnosed as **combined endo-periodontal lesions without root damage, grade 3**.
+- **Follow-up timing:**
+  - **Clinical reevaluation:** **≥ 6 months** after endodontic treatment (PPD/CAL assessed; additional assessments during supportive periodontal care).
+  - **Radiographs:** baseline; during; and **6–17 months** after endodontic treatment.
+
+### Interventions / exposure
+- **Endodontic protocol (standardized):**
+  - Rubber dam isolation
+  - Hand + rotary files (Reciproc®)
+  - Irrigation: ultrasonically activated **NaOCl 3%** and **CHX 2%**, with ethyl alcohol rinse between to avoid precipitate
+  - Intracanal medicament: **Ca(OH)₂ + CHX** paste at end of first visit
+  - Second visit **≥ 2 weeks** later: obturation (thermoplastic or lateral condensation) using gutta-percha
+- **Periodontitis therapy (systemic):**
+  - Systematic therapy including **full-mouth disinfection**
+  - **Adjunctive antibiotics if necessary**: van Winkelhoff regimen (amoxicillin 375 mg + metronidazole 250 mg, TID x 7 days)
+  - **Important protocol constraint:** the *affected teeth* were **exempted from subgingival debridement** and **never instrumented subgingivally** during the study interval (intended to isolate effect of endodontics on those teeth).
+
+### Outcomes and variables
+
+#### Primary outcome
+- **Change in pocket probing depth (PPD)** (continuous; mm), measured clinically **before** and **after** (timing: before and after active periodontal treatment; lesion teeth probed at ≥6 months post-endo).
+
+#### Secondary outcomes
+- **Change in PAI** (Periapical Index; ordinal 1–5 by Ørstavik) at apex on standardized periapical radiographs.
+- **Change in clinical attachment loss (CAL)** (continuous; mm).
+
+#### “Success/failure” derived outcomes
+- **Clinical success:** teeth with **PPD and CAL improvement ≥50%** classified “success”; otherwise “failure”.
+- **Radiographic success:** **PAI improvement** classified “successful”; otherwise “failure”.
+
+#### Additional recorded variables (potential predictors/confounders)
+- **Tooth-level:** restorations status, caries, sensitivity prior to endodontic treatment, furcation involvement, tooth mobility.
+- **Patient-level:** smoking status, whether **adjunctive antibiotics** were used during full-mouth disinfection.
+- **Endodontic quality variables (radiographic):** per Farzaneh scheme
+  - **Length:** adequate (0–2 mm short), short (≥2 mm short), long (beyond apex)
+  - **Density:** good vs poor
+  - **Missed canal:** ≥1 canal not filled
+- **Measurement/blinding:**
+  - **PAI** scored by **one calibrated investigator blinded to clinical outcome**.
+  - **Root filling quality** rated by **two investigators independently**; disagreements resolved by **consensus**.
+  - Radiographs evaluated with standardized conditions (parallel technique; same certified monitor; dark room; same software).
+
+---
+
+## TASK 2 — Statistical analysis plan (tests by category)
+
+### General analysis principles (apply throughout)
+- **Analysis unit:** tooth, but **teeth are clustered within patient** → use **cluster-robust methods** or **mixed models/GEE**.
+- **Two outcome scales:** continuous (PPD, CAL change) and ordinal (PAI, PAI change), plus binary “success/failure”.
+- **Effect sizes:** report mean/median change with **95% CI**; for binary outcomes report **risk/proportion** with CI; for models report β/OR with CI.
+- **Pilot study:** emphasize estimation (CIs) over hypothesis testing; avoid overfitting (rule of thumb: very limited predictors).
+
+---
+
+### CATEGORY A — MANDATORY (core tests/models)
+
+#### A1) Paired / within-tooth change in PPD and CAL using **linear mixed-effects model (LMM)** (or GEE)
+- **Purpose:** Test/estimate mean **pre–post change** in PPD (primary) and CAL while accounting for **multiple teeth per patient**.
+- **Why appropriate (≥2 reasons):**
+  1. Handles **correlated observations** (teeth nested within patients) via random intercept (LMM) or working correlation (GEE).
+  2. Directly models **change over time** (time indicator) and provides **CIs** for mean change.
+- **Why may not be appropriate (≥1 reason):**
+  - With only **13 patients**, random-effects variance estimation can be unstable; GEE small-sample SEs may also be biased.
+- **When NOT to use:**
+  - If there is effectively **one tooth per patient** (no clustering) and data are approximately normal—simpler paired methods suffice.
+- **Alternative if assumptions violated:**
+  - If residuals are strongly non-normal/outliers: **clustered bootstrap CI** for mean change; or **mixed-effects quantile regression**; or analyze **ranked changes** with cluster-robust SEs.
+
+*(If authors only have one post timepoint per tooth, model as outcome = change; or as repeated measure with time factor.)*
+
+#### A2) Change in PAI (ordinal) using **mixed-effects ordinal logistic regression** (cumulative link mixed model) *or* **GEE ordinal model**
+- **Purpose:** Evaluate whether PAI scores **improve after treatment** (shift toward lower scores) accounting for clustering.
+- **Why appropriate:**
+  1. PAI is a **5-level ordinal scale**; ordinal models respect ordering without assuming equal spacing.
+  2. Mixed/clustered approach accounts for **patient-level clustering**.
+- **Why may not be appropriate:**
+  - **Very small sample** can lead to separation or unstable threshold estimates; proportional odds assumption may fail.
+- **When NOT to use:**
+  - If PAI is collapsed to binary (improved vs not) and the ordinal information is no longer available/desired.
+- **Alternative if assumptions violated:**
+  - If proportional odds fails: **partial proportional odds** model.
+  - If ordinal model unstable: analyze **binary improvement** with clustered methods (see A3) or use **Wilcoxon signed-rank with clustered bootstrap** for paired ordinal change.
+
+#### A3) Proportion “success” (clinical and radiographic) with **cluster-adjusted estimation** (e.g., GEE logistic with intercept only, or cluster-robust binomial CI)
+- **Purpose:** Provide valid estimates and CIs for **success rates** (PPD/CAL ≥50% improvement; PAI improvement).
+- **Why appropriate:**
+  1. Outcomes are **binary** and clinically interpretable.
+  2. Clustering by patient affects variance; cluster-adjusted methods prevent overly narrow CIs.
+- **Why may not be appropriate:**
+  - With few clusters (13 patients), standard sandwich SEs can be biased downward.
+- **When NOT to use:**
+  - If you ignore clustering and treat 19 teeth as independent—this should not be done.
+- **Alternative if assumptions violated / small-cluster issue:**
+  - **Cluster bootstrap** CIs for proportions; or **mixed-effects logistic regression** with random patient intercept and penalization (Firth) if needed.
+
+---
+
+### CATEGORY B — RECOMMENDED (adds rigor/validity)
+
+#### B1) **Inter-rater reliability** for root filling quality ratings (two raters): **Cohen’s kappa** (weighted if ordinal) and/or **percent agreement**
+- **Purpose:** Quantify agreement between the two investigators rating radiographic quality (length, density, missed canal).
+- **Why appropriate:**
+  1. Ratings are **categorical/ordinal** and done by **two observers**.
+  2. Reliability affects credibility of associations using these ratings.
+- **Why may not be appropriate:**
+  - Kappa can be misleading with very high/low prevalence of categories in small samples.
+- **When NOT to use:**
+  - If final ratings were always made by consensus only and original independent ratings are unavailable.
+- **Alternative:**
+  - **Gwet’s AC1/AC2** (more stable with prevalence issues) or **bootstrap CI** for agreement.
+
+#### B2) Association of endodontic quality (length/density/missed canal) with success using **mixed-effects logistic regression** (or GEE logistic)
+- **Purpose:** Explore whether radiographic quality predicts **clinical success** and/or **PAI improvement**.
+- **Why appropriate:**
+  1. Predictor is categorical; outcome is binary; accounts for **clustering**.
+  2. Clinically important to link technical quality to healing.
+- **Why may not be appropriate:**
+  - Very small dataset → high risk of **overfitting** and separation (especially with rare categories like “missed canal”).
+- **When NOT to use:**
+  - When there are too few failures/successes per predictor level (sparse cells).
+- **Alternative if assumptions violated:**
+  - **Exact logistic regression** (limited with clustering), **Firth-penalized logistic** with cluster bootstrap, or simple **descriptive stratification** only.
+
+#### B3) Patient-level factors (smoking, antibiotic therapy) vs success using **mixed-effects logistic regression** (parsimonious)
+- **Purpose:** Assess whether smoking/antibiotics relate to outcomes (confounding/effect modification).
+- **Why appropriate:**
+  1. Variables were recorded and are biologically plausible modifiers of periodontal healing.
+  2. Mixed model accounts for multiple teeth per patient.
+- **Why may not be appropriate:**
+  - With only 13 patients, patient-level predictors can be underpowered and unstable.
+- **When NOT to use:**
+  - If nearly all patients fall into one category (e.g., almost all non-smokers), model is not estimable.
+- **Alternative:**
+  - **Fisher’s exact test at patient level** (one tooth per patient selected or aggregate per patient), or **descriptive** only.
+
+#### B4) **Sensitivity analysis for follow-up time** (6–17 months) using regression adjustment
+- **Test/model:** LMM (continuous change) / mixed ordinal model (PAI) including **follow-up duration** as covariate.
+- **Purpose:** Check whether heterogeneity in follow-up explains outcome variability.
+- **Why appropriate:**
+  1. Follow-up varies substantially; healing is time-dependent.
+  2. Helps reduce bias due to informative timing.
+- **Why may not be appropriate:**
+  - Follow-up time may be correlated with unmeasured clinical decisions (confounding by indication).
+- **When NOT to use:**
+  - If follow-up timing is missing/too coarsely recorded.
+- **Alternative:**
+  - Stratify descriptively (e.g., 6–9 vs ≥10 months) or use **Spearman correlation** with clustered bootstrap.
+
+---
+
+### CATEGORY C — OPTIONAL (supplementary insight)
+
+#### C1) Nonparametric paired change for PPD/CAL: **Wilcoxon signed-rank test** (with caution about clustering)
+- **Purpose:** Provide a robustness check for pre–post change without normality assumption.
+- **Why appropriate:**
+  1. Suitable for skewed changes/outliers common in clinical measures.
+  2. Works with small samples.
+- **Why may not be appropriate:**
+  - Assumes independent pairs; clustering (multiple teeth/patient) violates this.
+- **When NOT to use:**
+  - When >1 tooth per patient unless you do patient-level aggregation or cluster-resampling.
+- **Alternative:**
+  - **Clustered permutation test** or **cluster bootstrap** of median change.
+
+#### C2) Correlation between continuous changes and ordinal PAI change: **Spearman correlation** (cluster bootstrap CI)
+- **Purpose:** Evaluate whether radiographic improvement aligns with clinical improvement.
+- **Why appropriate:**
+  1. Handles non-normal/ordinal data.
+  2. Clinically interpretable concordance check.
+- **Why may not be appropriate:**
+  - Correlation ignores clustering unless adjusted.
+- **When NOT to use:**
+  - If multiple teeth per patient and no cluster adjustment.
+- **Alternative:**
+  - Mixed-effects models relating PAI change to PPD/CAL change.
+
+#### C3) Exploratory subgroup comparisons (e.g., furcation involvement/mobility categories): **descriptive + exact/penalized models**
+- **Purpose:** Hypothesis-generation about prognostic clinical factors.
+- **Why appropriate:**
+  1. Variables were measured (furcation, mobility).
+  2. May explain heterogeneity in response.
+- **Why may not be appropriate:**
+  - Sparse categories; very high false-positive risk.
+- **When NOT to use:**
+  - If subgroup sizes are tiny (e.g., n<5).
+- **Alternative:**
+  - Report **case-series style** summaries only.
+
+---
+
+## TASK 3 — Tests that should NOT be used (and why)
+
+1. **Independent-samples t-test / one-way ANOVA** comparing “before vs after” as if groups are independent  
+   - **Why inappropriate:** measurements are **paired within tooth**; violates independence; wrong SEs/p-values.
+
+2. **Chi-square test** for success rates treating 19 teeth as independent  
+   - **Why inappropriate:** ignores **patient clustering**; expected counts may be small → invalid approximation.
+
+3. **Pearson correlation** between outcomes without checking distribution and clustering  
+   - **Why inappropriate:** assumes linear relationship, approximate normality, and independence.
+
+4. **Linear regression on PAI as numeric (1–5) without ordinal methods**  
+   - **Why inappropriate:** assumes equal spacing and normal residuals; PAI is **ordinal**.
+
+5. **Repeated-measures ANOVA** at the tooth level without accommodating patient clustering (and with small N)  
+   - **Why inappropriate:** would still miss the **second-level clustering** (teeth within patient) and is fragile with missing/unequal timing.
+
+---
+
+## TASK 4 — Summary justification of overall approach
+
+A valid plan must (i) treat the study as a **retrospective pre–post** evaluation with no concurrent control, (ii) analyze **PPD change** as the primary endpoint and **PAI/CAL** as secondary, and—critically—(iii) account for **non-independence of teeth within patients**. Therefore, mixed-effects (or GEE with small-sample/cluster-bootstrap corrections) form the backbone for continuous (PPD/CAL) and ordinal (PAI) outcomes, complemented by cluster-adjusted estimates for clinically meaningful “success/failure” rates and reliability assessment of radiographic ratings.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Retrospective pilot study.
+2. **Objective**: To evaluate the effect of sole endodontic treatment on periodontal healing in teeth diagnosed with combined endo-periodontal lesions without root damage (grade 3) in periodontally compromised patients.
+3. **Population**:
+   - **Sample Size**: 19 teeth from 13 periodontally compromised patients.
+   - **Inclusion Criteria**: Teeth diagnosed with combined endo-periodontal lesions without root damage (grade 3).
+   - **Exclusion Criteria**: Not explicitly mentioned but implied exclusion of teeth with subgingival instrumentation or root damage.
+4. **Groups**: Single group (no control group).
+5. **Variables**:
+   - **Primary Outcome**: Change in pocket probing depth (PPD).
+   - **Secondary Outcomes**: Change in periodontal apical index (PAI) and change in clinical attachment loss (CAL).
+   - **Other Variables**: Smoking status, antibiotic therapy, restorations, caries, and sensitivity.
+6. **Measurements**:
+   - **Clinical Parameters**: PPD, CAL, furcation involvement, tooth mobility.
+   - **Radiographic Parameters**: PAI score (5-point scale).
+   - **Root Canal Quality**: Length and density of root canal fillings (Farzaneh et al. scoring system).
+7. **Data Collection Methods**:
+   - Clinical examinations before and after treatment.
+   - Radiographic evaluations using periapical radiographs.
+   - Blinded assessment of PAI by a calibrated investigator.
+   - Root canal quality assessed by two independent investigators with consensus in case of disagreement.
+8. **Treatment Protocol**:
+   - Standardized endodontic treatment with rubber dam isolation.
+   - Instrumentation using hand and rotary files (Reciproc®).
+   - Irrigation with sodium hypochlorite, chlorhexidine, and ethyl alcohol.
+   - Calcium hydroxide dressing for at least 2 weeks.
+   - Obturation with thermoplastic filling or lateral condensation techniques.
+   - Teeth exempted from subgingival debridement during the study interval.
+9. **Follow-Up**:
+   - Clinical and radiographic reevaluation 6 to 17 months after treatment.
+   - Success defined as ≥50% improvement in PPD and CAL or improvement in PAI score.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Paired t-test (or Wilcoxon signed-rank test if non-parametric).
+   - **Purpose**: To compare pre- and post-treatment PPD, CAL, and PAI scores.
+   - **Why Appropriate**:
+     1. The study involves paired data (same teeth measured before and after treatment).
+     2. The primary and secondary outcomes are continuous variables.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normal distribution of differences; if violated, a non-parametric test is needed.
+   - **When This Test Should NOT Be Used**: If data are heavily skewed or sample size is too small for normality assumptions.
+   - **Alternative**: Wilcoxon signed-rank test.
+
+2. **Test Name**: Descriptive Statistics.
+   - **Purpose**: To summarize baseline characteristics (e.g., mean, median, standard deviation).
+   - **Why Appropriate**:
+     1. Provides a clear overview of the sample characteristics.
+     2. Necessary for reporting baseline comparability.
+   - **Why It May Not Be Appropriate**: Not applicable; descriptive statistics are always appropriate.
+   - **When This Test Should NOT Be Used**: N/A.
+   - **Alternative**: None.
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Chi-square test (or Fisher’s exact test for small sample sizes).
+   - **Purpose**: To compare success rates (binary outcomes) based on categorical variables (e.g., smoking status, antibiotic use).
+   - **Why Appropriate**:
+     1. Suitable for categorical data.
+     2. Helps identify potential predictors of success or failure.
+   - **Why It May Not Be Appropriate**: Small sample size may lead to low statistical power.
+   - **When This Test Should NOT Be Used**: When expected cell counts are <5.
+   - **Alternative**: Fisher’s exact test.
+
+2. **Test Name**: Logistic Regression.
+   - **Purpose**: To assess the association between predictors (e.g., smoking, antibiotic use) and binary outcomes (success/failure).
+   - **Why Appropriate**:
+     1. Allows adjustment for confounding variables.
+     2. Provides odds ratios for predictors.
+   - **Why It May Not Be Appropriate**: Small sample size may lead to overfitting.
+   - **When This Test Should NOT Be Used**: When the number of events is too low for reliable estimation.
+   - **Alternative**: Exact logistic regression.
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Repeated Measures ANOVA (or Friedman test for non-parametric data).
+   - **Purpose**: To analyze changes in PPD, CAL, and PAI over multiple time points (if available).
+   - **Why Appropriate**:
+     1. Accounts for within-subject correlations.
+     2. Useful for longitudinal data analysis.
+   - **Why It May Not Be Appropriate**: Limited by the small sample size and potential missing data.
+   - **When This Test Should NOT Be Used**: When data are only available at two time points.
+   - **Alternative**: Linear mixed-effects models.
+
+2. **Test Name**: Kaplan-Meier Survival Analysis.
+   - **Purpose**: To evaluate time to failure (if follow-up times vary significantly).
+   - **Why Appropriate**:
+     1. Accounts for varying follow-up durations.
+     2. Provides survival probabilities over time.
+   - **Why It May Not Be Appropriate**: Requires clearly defined failure events and follow-up times.
+   - **When This Test Should NOT Be Used**: When follow-up times are uniform.
+   - **Alternative**: Cox proportional hazards model.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-test**:
+   - **Reason**: The study involves paired data, not independent groups.
+2. **ANOVA**:
+   - **Reason**: Not suitable for pre- and post-treatment comparisons in the same group.
+3. **Pearson Correlation**:
+   - **Reason**: Not appropriate for assessing changes over time or success rates.
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan is designed to address the study’s primary and secondary objectives while accounting for the retrospective nature of the data and the small sample size. Paired tests (e.g., paired t-test or Wilcoxon signed-rank test) are essential for analyzing pre- and post-treatment changes. Logistic regression and chi-square tests are recommended to explore potential predictors of success. Optional analyses, such as survival analysis, could provide additional insights if follow-up data permit. The overall approach balances rigor with feasibility given the study’s limitations.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1 – INFORMATION EXTRACTION  
+(Study characteristics, design, variables, measurements)
+
+1. Study design
+- Type: Retrospective pilot study.
+- Setting: Department of Restorative Dentistry / Section of Periodontology, University Hospital Heidelberg, Germany.
+- Unit of analysis: Tooth (19 teeth) nested within patients (13 patients).
+- Time frame:
+  - Endodontic treatment: standardized protocol, 2 appointments (2+ weeks apart).
+  - Clinical and radiographic follow-up: earliest 6 months after endodontic treatment; radiographic follow-up 6–17 months after endodontic treatment.
+- Ethical approval: Local ethics committee S-312/2020.
+
+2. Study objective and hypothesis
+- Aim: To evaluate the effect of sole endodontic treatment of teeth diagnosed with combined endo-periodontal lesions without root damage grade 3 (in periodontally compromised patients) on periodontal healing.
+- Hypothesis: Sole endodontic treatment facilitates periodontal healing.
+
+3. Population and sample
+- Population: Periodontally compromised patients with combined endo-periodontal lesions without root damage, grade 3 (according to 2017 World Workshop classification).
+- Sample:
+  - 13 patients.
+  - 19 teeth with diagnosis: “combined endo-periodontal lesions without root damage grade 3 in periodontally compromised patients.”
+- Inclusion (explicit and implied):
+  - Periodontally compromised patients undergoing systematic periodontitis therapy.
+  - Teeth with combined endo-periodontal lesion without root damage, grade 3.
+  - Teeth receiving standardized endodontic treatment protocol.
+  - Available baseline and follow-up clinical and radiographic data (≥6 months).
+- Exclusion (implied):
+  - Teeth with root damage (fractures, perforations, external root resorptions).
+  - Teeth that received subgingival debridement on the target tooth during the study interval.
+
+4. Treatment / interventions
+- Systematic periodontal therapy (patient-level):
+  - Full-mouth disinfection.
+  - Adjunctive antibiotic therapy when necessary (van Winkelhoff protocol: 375 mg amoxicillin + 250 mg metronidazole, TID for 7 days).
+  - Crucially: The study teeth were exempted from subgingival debridement and were never instrumented subgingivally during the study interval.
+- Endodontic treatment (tooth-level; standardized protocol):
+  - Rubber dam isolation.
+  - Instrumentation: hand files + rotary files (Reciproc®).
+  - Irrigation:
+    - Sodium hypochlorite 3% (ultrasonically activated).
+    - Chlorhexidine 2% (ultrasonically activated).
+    - Ethyl alcohol rinse between NaOCl and CHX to avoid parachloroaniline precipitate.
+  - Intracanal medication: calcium hydroxide powder mixed with chlorhexidine (pasty consistency) placed in canals at first appointment.
+  - Second appointment ≥2 weeks later:
+    - Obturation with gutta-percha:
+      - Either thermoplastic filling or lateral condensation.
+  - Radiographs taken before, during, and 6–17 months after treatment (parallel technique).
+
+5. Outcomes and variables
+
+5.1 Primary outcome
+- Pocket probing depth (PPD, mm) – change over time.
+  - Measurement:
+    - Periodontal assessment before and after active periodontal treatment (full mouth).
+    - For study teeth, PPD was recorded at reevaluation ≥6 months after endodontic treatment; further assessments during supportive periodontal care (intervals individualized).
+  - Tooth-level classification for “clinical success”:
+    - Teeth showing improvement (reduction) of PPD ≥ 50% were classified as “success.”
+    - Others as “failure.”
+
+5.2 Secondary outcomes
+a) Periapical Index (PAI) – change over time.
+   - Scale: ordinal, 1–5 (Orstavik 1986):
+     1 = normal periapical structures  
+     2 = small change in bone structure  
+     3 = changes in bone structure with some mineral loss  
+     4 = periodontitis with well-defined radiolucent area  
+     5 = severe periodontitis with exacerbating features
+   - Measurement:
+     - Periapical radiographs before treatment and ≥6 months after beginning endodontic treatment.
+     - Parallel technique; evaluated on standardized monitor in dark room.
+     - Evaluation at the apex by one calibrated investigator, blinded to clinical outcome.
+   - Tooth-level classification for “radiographic success”:
+     - Teeth with improvement (decrease) in PAI score classified as “successful.”
+     - Others as “failure.”
+
+b) Clinical attachment loss (CAL, mm) – change over time.
+   - Measurement:
+     - Recorded at dental checkup and periodontal assessment before and after active periodontal treatment.
+     - For the study teeth, CAL evaluated at reevaluation ≥6 months after endodontic treatment and during supportive care.
+   - Tooth-level classification (aligned with PPD):
+     - Teeth showing improvement (reduction) of CAL ≥ 50% classified as “success.”
+     - Others as “failure.”
+
+5.3 Other clinical variables
+- Furcation involvement (categorical/ordinal) – baseline and follow-up.
+- Tooth mobility (ordinal, e.g., Miller classification) – baseline and follow-up.
+- Sensitivity of included teeth before endodontic treatment (vitality tests: cold/electric) – baseline.
+- Restorative status and caries (baseline):
+  - Presence/type of restoration.
+  - Caries presence/absence.
+- Smoking status (patient-level: smoker/non-smoker, possibly number of cigarettes/day or pack-years if available).
+- Antibiotic therapy during full mouth disinfection (patient-level: yes/no, type – van Winkelhoff regimen).
+
+5.4 Radiographic treatment quality variables
+- Quality of root canal filling (Farzaneh et al. 2004):
+  - Length (categorical):
+    - Adequate: filling 0–2 mm short of root end.
+    - Short: >2 mm short of root end.
+    - Long: beyond root end.
+  - Density (categorical):
+    - Good: homogeneous, without voids.
+    - Poor: detectable voids.
+  - Missed canal (binary):
+    - ≥1 canal not filled vs all canals filled.
+  - Rating procedure:
+    - Two experienced investigators rated independently, blinded to each other.
+    - Disagreements resolved by consensus.
+- Software: Sidexis Next Generation 1.53 (Sirona).
+
+5.5 Derived/composite variables
+- Tooth-level combined “endodontic success” vs “failure” based on PAI change.
+- Tooth-level “periodontal success” vs “failure” based on ≥50% improvement in both PPD and CAL (as described).
+- Potential combination of success categories to explore agreement between radiographic and clinical success.
+
+6. Data structure
+- Hierarchical / clustered:
+  - Level 1: Tooth (n = 19).
+  - Level 2: Patient (n = 13; some patients contribute more than one tooth).
+- Longitudinal (repeated measures):
+  - Baseline vs follow-up (≥6 months) for PPD, CAL, PAI and possibly other clinical measures.
+  - Follow-up durations vary (6–17 months radiographically; clinical intervals individualized).
+
+7. Data collection methods
+- Clinical:
+  - Standard periodontal charting: PPD, CAL, furcation involvement, mobility.
+  - Vitality testing (cold, electric) pre-treatment.
+  - Documentation of restorations, caries, smoking status, antibiotic use.
+- Radiographic:
+  - Periapical radiographs with parallel technique.
+  - Standardized viewing conditions (same monitor, dark room).
+  - PAI scored by calibrated, blinded examiner.
+  - Root filling quality scored by two independent examiners; consensus for discrepancies.
+
+---
+
+TASK 2 – STATISTICAL ANALYSIS PLAN
+
+Because this is a small retrospective pilot with 19 teeth, emphasis should be on paired, within-tooth comparisons and descriptive analysis, with cautious inferential testing. Clustering within patients should be acknowledged; with only 13 patients, sophisticated multilevel models are exploratory at best.
+
+Below, tests are structured into three categories (Mandatory, Recommended, Optional), with details as requested.
+
+-----------------------------------
+CATEGORY A – MANDATORY ANALYSES
+-----------------------------------
+
+A1. Descriptive statistics
+
+Test / Method  
+- Descriptive statistics (no inferential test): means, medians, SDs, interquartile ranges; counts and percentages.
+
+Purpose  
+- Summarize baseline characteristics and outcome distributions:
+  - Patient-level: age (if available), sex, smoking status, antibiotic use.
+  - Tooth-level: tooth type, baseline PPD, CAL, PAI, furcation, mobility, vitality, restorative status, quality of root filling (length, density, missed canals).
+  - Outcome changes: ΔPPD, ΔCAL, ΔPAI; success/failure counts.
+
+Why appropriate (≥2 reasons)  
+1) Essential to describe the sample and assess plausibility of further analyses, especially in a pilot with small N.  
+2) Allows visual identification of outliers, skewness and potential ceiling/floor effects that inform choice of inferential tests.
+
+Why it may not be appropriate (≥1 reason)  
+- Not a stand-alone approach for hypothesis testing; does not provide p-values or confidence intervals.
+
+When not to use  
+- Never as the only analysis if inferential conclusions about change or effect are desired.
+
+Alternative if assumptions violated  
+- Not applicable (purely descriptive).
+
+---
+
+A2. Paired comparison of PPD (primary outcome)
+
+Depending on distribution, one of:
+
+A2a. Paired t-test (for mean PPD change per tooth)  
+A2b. Wilcoxon signed-rank test (for median PPD change per tooth)
+
+Purpose  
+- Test whether PPD significantly decreases from baseline to follow-up in the treated teeth.
+
+Why appropriate (≥2 reasons)  
+1) The same tooth is measured at two time points → paired/within-subject design.  
+2) PPD is a continuous (interval) variable; paired t-test is standard when differences are approximately normally distributed.  
+3) If normality of differences is questionable (small N, skew), Wilcoxon signed-rank is a robust non-parametric alternative for paired ordinal/continuous data.
+
+Why it may not be appropriate (≥1 reason)  
+- Paired t-test:
+  - May be inappropriate if the distribution of PPD change is highly skewed or heavily influenced by outliers in such a small sample.  
+- Wilcoxon signed-rank:
+  - Assumes symmetric distribution of differences around the median; performance can degrade if differences are extremely asymmetric.
+
+When this test should NOT be used  
+- Paired t-test:
+  - When the normality of differences is grossly violated and sample size is too small to rely on the central limit theorem.  
+- Both:
+  - When time points or measurements are not clearly matched (e.g., missing baseline or follow-up per tooth).
+
+Alternative if assumptions are violated  
+- Use exact Wilcoxon signed-rank test (exact p-values) or permutation test for paired differences.  
+- Report effect size with 95% CI using bootstrap methods.
+
+Implementation details  
+- Calculate PPD at tooth level as either:
+  - Mean PPD across all measured sites for that tooth, or  
+  - Maximum PPD per tooth.  
+- Then compute difference: follow-up – baseline, and apply paired test to these tooth-level summaries.
+
+---
+
+A3. Paired comparison of CAL (secondary outcome)
+
+Tests analogous to PPD:
+
+A3a. Paired t-test (for mean CAL change per tooth)  
+A3b. Wilcoxon signed-rank test (for median CAL change per tooth)
+
+Purpose  
+- Evaluate whether CAL significantly improves (decreases) from baseline to follow-up after sole endodontic treatment.
+
+Why appropriate  
+1) CAL is continuous, measured on same tooth at two time points → paired design.  
+2) Tests directly address the secondary hypothesis about periodontal attachment gain.
+
+Why it may not be appropriate  
+- Same reasons as for PPD: small sample, non-normal change distribution, outliers.
+
+When NOT to use  
+- As for PPD: non-matched observations, gross deviations from underlying assumptions for parametric/non-parametric test.
+
+Alternative if assumptions violated  
+- Exact Wilcoxon signed-rank or permutation-based paired test; bootstrap CI for median (or mean) change.
+
+---
+
+A4. Paired comparison of PAI score (ordinal secondary outcome)
+
+Primary candidate: Wilcoxon signed-rank test (or exact version).  
+
+Purpose  
+- Assess whether PAI scores (ordinal 1–5) significantly improve (decrease) from baseline to follow-up.
+
+Why appropriate (≥2 reasons)  
+1) PAI is an ordered categorical variable; Wilcoxon signed-rank tests median change for paired ordinal data.  
+2) Same tooth evaluated at baseline and follow-up → paired design fits Wilcoxon framework.  
+3) Small sample size; Wilcoxon is robust and doesn’t require normality.
+
+Why it may not be appropriate (≥1 reason)  
+- Assumes at least ordinal scale and that differences between paired observations can be ranked; if there are many ties or extremely few levels, power is limited, and assumptions may be strained.
+
+When NOT to use  
+- When the variable is nominal without meaningful order (not the case here).  
+- When changes are mostly ties (e.g. almost all PAI unchanged), limiting test informativeness.
+
+Alternative if assumptions violated  
+- Sign test for paired data, which only uses direction of change, not magnitude.  
+- Exact permutation tests for direction of change.
+
+---
+
+A5. Success vs failure proportions (pre-post change)
+
+Test candidate: McNemar test (if defined as paired binary state per tooth).  
+
+However, here success/failure is defined only at follow-up based on change from baseline, so the comparison is not pre vs post state but proportion of teeth meeting ≥50% improvement. For hypothesis testing:
+
+- One-sample binomial test on observed success rate vs a null hypothesis (e.g., 0.5), or report descriptive with CI.
+
+Purpose  
+- Quantify and inferentially assess the proportion of teeth achieving “periodontal success” (PPD/CAL ≥ 50% improvement) and “radiographic success” (PAI improvement).
+
+Why appropriate (≥2 reasons)  
+1) Outcome is binary at tooth-level (success/failure) → binomial framework is appropriate.  
+2) The sample size is small; exact binomial tests and exact CIs are suitable and do not rely on normal approximations.
+
+Why it may not be appropriate (≥1 reason)  
+- The choice of comparison value for the binomial test (e.g., 0.5) is somewhat arbitrary in absence of a control group; inferential testing may be of limited interpretability.
+
+When NOT to use  
+- When no meaningful reference proportion exists and the goal is descriptive; forcing a hypothesis test can be misleading.
+
+Alternative if assumptions are violated  
+- None needed (binomial assumptions are minimal: independent trials, identical success probability). Dependency of teeth within patients violates strict independence; this mainly affects precision, so interpret CIs cautiously.
+
+Implementation  
+- Provide success proportions with exact 95% CIs; optionally use binomial tests as exploratory.
+
+---
+
+A6. Agreement between clinical and radiographic success
+
+Test: Cohen’s kappa (for binary success/failure).  
+
+Purpose  
+- Quantify the agreement beyond chance between:
+  - Periodontal success (PPD/CAL-based) and  
+  - Radiographic success (PAI-based).
+
+Why appropriate (≥2 reasons)  
+1) Both variables are dichotomous (success/failure) for the same tooth.  
+2) Kappa accounts for agreement expected by chance, giving more informative assessment than percent agreement.
+
+Why it may not be appropriate (≥1 reason)  
+- Small sample and potentially imbalanced categories (e.g., many successes or many failures) can result in unstable or misleading kappa values.
+
+When NOT to use  
+- When one category is extremely rare (e.g., almost all successes), making kappa uninterpretable or very low despite high observed agreement.
+
+Alternative if assumptions violated  
+- Report raw agreement and simple cross-tabulation; use prevalence-adjusted bias-adjusted kappa (PABAK) as a sensitivity measure.
+
+---
+
+A7. Inter-rater agreement for root filling quality
+
+Test: Cohen’s kappa (binary categories) or weighted kappa (for ordinal categories) – prior to consensus.
+
+Purpose  
+- Quantify inter-examiner reliability for the quality ratings (length, density, missed canals).
+
+Why appropriate (≥2 reasons)  
+1) Two raters provided categorical ratings on the same teeth.  
+2) Kappa corrects for chance agreement and is standard in reliability assessment.
+
+Why it may not be appropriate (≥1 reason)  
+- Since final analysis uses consensus ratings, kappa is mainly descriptive; low kappa in a small sample can be unstable and may not meaningfully change analytic conclusions.
+
+When NOT to use  
+- If only consensus ratings are retained and individual ratings are not recorded or are incomplete.
+
+Alternative if assumptions violated  
+- For ordinal data, use weighted kappa with appropriate weighting; or report % agreement plus simple statistics.
+
+-----------------------------------
+CATEGORY B – RECOMMENDED ANALYSES
+-----------------------------------
+
+B1. Effect size estimation with confidence intervals
+
+Method  
+- For continuous outcomes (ΔPPD, ΔCAL):  
+  - Mean change ± SD and 95% CI;  
+  - Standardized effect size (Cohen’s d for paired data).  
+- For ordinal/scale outcomes (PAI change):  
+  - Median change with IQR and bootstrap 95% CI.  
+- For binary outcomes (success proportions):  
+  - Exact 95% CIs for proportions.
+
+Purpose  
+- Provide magnitude and precision of effects beyond p-values.
+
+Why appropriate (≥2 reasons)  
+1) Pilot studies are better interpreted in terms of effect size and uncertainty.  
+2) CIs are more informative than isolated p-values and align with best reporting practices.
+
+Why it may not be appropriate  
+- Small sample leads to wide CIs; they may be imprecise.
+
+When NOT to use  
+- Never strictly “not to use”; but interpretation should emphasize exploratory nature.
+
+Alternative if assumptions violated  
+- Use bootstrap CIs for non-normal or small-sample distributions.
+
+---
+
+B2. Exploratory association between endodontic quality and outcomes
+
+Tests  
+- Association of root filling length/density/missed canal with:
+  - ΔPPD, ΔCAL, ΔPAI (continuous/ordinal):  
+    - Mann–Whitney U test (two groups, e.g., adequate vs inadequate length, good vs poor density).  
+  - Success vs failure (binary):
+    - Fisher’s exact test for small counts.
+
+Purpose  
+- Explore whether quality of filling is associated with periodontal and radiographic healing.
+
+Why appropriate (≥2 reasons)  
+1) Root filling quality is categorical; success and healing measures are continuous/ordinal or binary, suitable for these tests.  
+2) Non-parametric methods (Mann–Whitney, Fisher) accommodate small sample and non-normality.
+
+Why it may not be appropriate  
+- Multiple testing with small N risks spurious associations (type I error); results should be viewed as exploratory, not confirmatory.
+
+When NOT to use  
+- When group sizes are extremely unbalanced (e.g., 1–2 teeth in one category), making tests uninformative.
+
+Alternative if assumptions violated  
+- Combine categories (e.g., “adequate or short” vs “long”) to ensure minimally adequate group sizes, or refrain from inferential testing and present descriptive comparisons only.
+
+---
+
+B3. Exploratory association with patient-level factors (smoking, antibiotic use)
+
+Tests  
+- Influence of smoking status and antibiotic therapy on:
+  - ΔPPD, ΔCAL, ΔPAI (tooth-level):
+    - Hierarchical/mixed models (exploratory, see B4), or  
+    - Simple two-group comparison with cluster-robust standard errors:  
+      - Mann–Whitney U or t-test with cluster-robust variance (if software allows).
+  - Success vs failure:
+    - Cluster-adjusted logistic regression (if feasible) or Fisher’s exact test with caution.
+
+Purpose  
+- Explore potential modifiers of healing at patient level.
+
+Why appropriate (≥2 reasons)  
+1) Smoking and antibiotic use are clinically relevant confounders/moderators of periodontal healing.  
+2) Even descriptive patterns can inform design and stratification in future larger studies.
+
+Why it may not be appropriate  
+- Very small number of patients and non-independent observations (multiple teeth per patient) make it easy to over-interpret associations.
+
+When NOT to use  
+- When group size is very small (e.g., only 1–2 patients in one level of a factor) or when such analysis would obviously overfit.
+
+Alternative if assumptions violated  
+- Restrict to descriptive stratification (e.g., mean ΔPPD by smoking status) without formal testing.
+
+---
+
+B4. Exploratory mixed-effects models for longitudinal change
+
+Model  
+- Linear mixed-effects model (LMM) for continuous outcomes (PPD, CAL):  
+  - Outcome: change (or follow-up value adjusted for baseline).  
+  - Random effect: patient (to account for clustering).  
+  - Fixed effects: baseline values, time (if multiple follow-up times), root filling quality, smoking, antibiotic use (very parsimonious!).
+
+For PAI (ordinal), consider exploratory cumulative link mixed model (CLMM).
+
+Purpose  
+- Account for non-independence of teeth within patients and explore multivariable predictors of change.
+
+Why appropriate (≥2 reasons)  
+1) Data are clustered; mixed models directly handle patient-level random effects.  
+2) Allows simultaneous adjustment for several predictors in an exploratory way.
+
+Why it may not be appropriate  
+- With only 13 patients and 19 teeth, these models will be largely underpowered and risk overfitting. Estimates may be unstable and sensitive to modeling choices.
+
+When NOT to use  
+- As primary confirmatory analysis; when you cannot specify a parsimonious model with very few predictors.
+
+Alternative if assumptions violated  
+- Use simpler approaches (paired tests, descriptive stratification); treat any regression modeling as sensitivity/exploratory analysis only.
+
+---
+
+B5. Time-to-event analyses (if variable follow-up times strongly differ)
+
+Optional but recommended if end points are clearly definable (e.g., time to achieve PAI improvement):
+
+Test  
+- Kaplan–Meier curves and log-rank test, if event timing is known and there is censoring.
+
+Given only 6–17 months follow-up with sparse time-point information, this may not be well-defined and is likely not feasible; therefore, treat as low-priority recommended only if date-level data exist.
+
+---
+
+B6. Graphical displays
+
+Methods  
+- Boxplots or violin plots for baseline vs follow-up PPD, CAL, PAI.  
+- Spaghetti plots (change trajectories per tooth).  
+- Scatter plots of baseline vs follow-up measures, with identity line.  
+- Bar charts for success/failure and root filling quality.
+
+Purpose  
+- Visual inspection of patterns, outliers, and general trends.
+
+Why appropriate  
+1) Enhance interpretability of small-sample data.  
+2) Provide intuitive evidence of improvement.
+
+Why it may not be appropriate  
+- With very small numbers, some graphs may be sparse or revealing of individuals; anonymization is required.
+
+When NOT to use  
+- If privacy cannot be preserved (e.g., more detailed identifiers or rare combinations).
+
+Alternative  
+- Summarize patterns in text or tables.
+
+-----------------------------------
+CATEGORY C – OPTIONAL ANALYSES
+-----------------------------------
+
+C1. Site-level analyses (within tooth)
+
+If site-level PPD/CAL data are available (e.g., 6 sites per tooth), additional paired analyses can be conducted.
+
+Test  
+- Mixed-effects models with sites nested in teeth nested in patients; or  
+- Paired tests at site-level with cluster adjustment (multi-level modeling).
+
+Purpose  
+- Investigate whether improvement varies by site (e.g., buccal vs lingual, proximal vs mid-facial).
+
+Why appropriate  
+1) Site-level data better reflect the grade 3 lesion morphology (more than one side).  
+2) May reveal differential healing patterns around the tooth.
+
+Why it may not be appropriate  
+- Extremely complex structure with very small numbers → overfitting and unstable estimates.
+
+When NOT to use  
+- If site-level data are incomplete, inconsistent, or when sample size is too small for multi-level modeling.
+
+Alternative  
+- Summarize site-level changes descriptively (e.g., mean change per site category).
+
+---
+
+C2. Ordinal regression for PAI change predictors
+
+Test  
+- Ordinal logistic regression (proportional odds model) or CLMM (if random effects included).
+
+Purpose  
+- Model the probability of being in better vs worse PAI categories at follow-up as a function of baseline PAI, root filling quality, and other covariates.
+
+Why appropriate  
+1) PAI is ordinal; ordinal regression directly models ordered categories.  
+2) Provides odds ratios for improving PAI with better root filling quality.
+
+Why it may not be appropriate  
+- Extremely limited sample and sparse distribution of PAI categories → unstable, possibly non-convergent models.
+
+When NOT to use  
+- When category counts are very small or if proportional odds assumption clearly fails.
+
+Alternative  
+- Collapse PAI into fewer categories (e.g., PAI ≤ 2 vs > 2; improvement yes/no) and use binary logistic regression or Fisher’s exact test descriptively.
+
+---
+
+C3. Sensitivity analyses for success thresholds
+
+Method  
+- Repeat success/failure classification using different improvement thresholds (e.g., ≥30% instead of ≥50% PPD/CAL improvement) to evaluate robustness of conclusions.
+
+Purpose  
+- Check how sensitive the findings are to the chosen 50% cut-off.
+
+Why appropriate  
+1) The 50% threshold is somewhat arbitrary; sensitivity analyses can show robustness.  
+2) Helpful for planning future trials and defining clinically meaningful endpoints.
+
+Why it may not be appropriate  
+- Multiple comparisons; may cause confusion in interpretation.
+
+When NOT to use  
+- If sample size is too small to support several reclassifications meaningfully.
+
+Alternative  
+- Present continuous changes (ΔPPD, ΔCAL) alongside single binary classification to avoid multiple thresholds.
+
+---
+
+C4. Bayesian analyses
+
+Method  
+- Bayesian paired models (for ΔPPD, ΔCAL, ΔPAI) using weakly informative priors.
+
+Purpose  
+- Provide posterior distributions for effect sizes in a small pilot, which may be more informative than frequentist p-values.
+
+Why appropriate  
+1) Naturally accommodates small samples with explicit prior uncertainty.  
+2) Yields probability statements about effects that may be more intuitive.
+
+Why it may not be appropriate  
+- Requires careful choice and justification of priors; may be unfamiliar to intended readership.
+
+When NOT to use  
+- When expertise, software, or space for explanation is limited.
+
+Alternative  
+- Stick with frequentist effect sizes and CIs.
+
+---
+
+TASK 3 – INAPPROPRIATE TESTS (AND WHY)
+
+1. Independent-samples t-test for pre vs post comparisons  
+- Why inappropriate: Pre and post measurements are on the same teeth; independence assumption is violated.  
+
+2. One-way ANOVA for pre vs post measurements  
+- Why inappropriate: Only two time points with paired measurements; ANOVA for independent groups is not suited; repeated-measures ANOVA would be more relevant (though overkill here).
+
+3. Chi-square test of independence for small 2×2 tables (e.g., success vs failure vs quality) without exact correction  
+- Why inappropriate: Very small cell counts and expected frequencies <5; Chi-square approximations are unreliable. Fisher’s exact test should be used instead.
+
+4. Pearson correlation between baseline and follow-up PPD/CAL to infer treatment effect  
+- Why inappropriate: High correlation between time points is expected regardless of treatment; correlation does not test change or treatment effect.
+
+5. Simple linear regression ignoring clustering (multiple teeth per patient) for predictors of change  
+- Why inappropriate: Assumes independent observations; multiple teeth in one patient introduce intra-patient correlation, leading to underestimated standard errors and inflated type I error.
+
+6. Parametric repeated-measures ANOVA with multiple within-tooth time points if only two time points exist  
+- Why inappropriate: Overly complex for two time points; paired t-test is the correct parametric method.
+
+7. Treating PAI as continuous and applying paired t-test without checking  
+- Why inappropriate: PAI is ordinal with 5 categories; equal-interval assumption is questionable. A non-parametric paired test (Wilcoxon) is more defensible.
+
+8. Kaplan–Meier survival analysis for radiographic success if only two time points with no actual time-to-event data  
+- Why inappropriate: Time-to-event methods require clear event times and censoring structure; with only baseline and single terminal follow-up, this is not true survival data.
+
+9. Logistic regression with many predictors relative to sample size (e.g., success vs failure modeled with >2–3 covariates)  
+- Why inappropriate: With 19 observations and limited events, such models will be overfitted and unreliable (rule of thumb: ≥10 events per predictor).
+
+---
+
+TASK 4 – SUMMARY / JUSTIFICATION OF OVERALL ANALYTICAL APPROACH
+
+- The study is a small retrospective pilot with hierarchical (teeth within patients) and paired (pre/post) structure.  
+- The primary scientific question concerns within-tooth change in periodontal parameters (PPD, CAL) and radiographic status (PAI) after standardized endodontic treatment, without concomitant instrumentation of the lesion teeth.  
+- Therefore, the core of the analysis must focus on:
+  - Paired comparisons of baseline vs follow-up outcomes (PPD, CAL, PAI), using non-parametric or simple parametric paired tests as appropriate;  
+  - Clear descriptive statistics and effect size estimates with confidence intervals;  
+  - Simple binary classifications of success/failure based on clinically meaningful thresholds, reported with proportions and exact CIs.  
+- The clustering of teeth within patients is acknowledged; due to small numbers, adjustment via mixed models can only be used in an exploratory manner and not as definitive confirmatory analysis.  
+- Additional exploratory analyses examine the influence of root canal treatment quality and patient-level factors (smoking, antibiotics) on outcomes, using robust small-sample tests (Mann–Whitney, Fisher’s exact) and carefully interpreting results as hypothesis-generating.  
+- This strategy optimally balances methodological rigor with the practical constraints of a small pilot dataset, while providing clinically relevant and statistically sound insights to inform future, larger studies.

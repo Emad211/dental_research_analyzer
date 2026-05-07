@@ -1,0 +1,144 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_medoral-26-e711.pdf
+Status : ok
+Time   : 20260507_150728
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:
+   - Retrospective cohort study.
+   - Sensitivity study comparing diagnostic validity of imaging techniques.
+
+2. **Objective**:
+   - To evaluate the diagnostic validity (sensitivity) of periapical and panoramic radiographs (index tests) compared to cone-beam computed tomography (CBCT, reference standard) in detecting periapical lesions during follow-up after endodontic microsurgery.
+
+3. **Groups**:
+   - Patients who underwent endodontic microsurgery and were followed up using periapical radiographs, panoramic radiographs, and CBCT.
+
+4. **Sample Size**:
+   - Not explicitly stated in the provided text. However, calibration was performed on 10 images per radiographic technique from patients not involved in the study.
+
+5. **Variables**:
+   - **Independent Variables**:
+     - Imaging technique (periapical radiographs, panoramic radiographs, CBCT).
+   - **Dependent Variables**:
+     - Sensitivity of lesion detection.
+     - Lesion area (measured in mm² for 2D radiographs).
+     - Lesion volume (measured in mm³ for CBCT).
+
+6. **Measurements**:
+   - **Periapical and Panoramic Radiographs**:
+     - Lesion area measured in square millimeters (mm²) using ITK-Snap software.
+   - **CBCT**:
+     - Lesion volume measured in cubic millimeters (mm³) using Planmeca Romexis software.
+   - Lesion definition: A periapical radiolucency in contact with the apical root part, exceeding twice the width of the periodontal ligament space. For CBCT, the lesion must also be visible in at least two planes.
+
+7. **Data Collection Methods**:
+   - Imaging performed preoperatively and at follow-up (6–48 months post-surgery).
+   - Radiographic images evaluated independently by two calibrated examiners, with disagreements resolved by a third advisor.
+   - Calibration of examiners performed using 10 images per technique not included in the study.
+   - Measurements conducted under standardized conditions (e.g., quiet room, subdued lighting, high-resolution monitor).
+
+8. **Exclusion Criteria**:
+   - Patients who underwent regenerative procedures (e.g., bone grafts, membranes).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Sensitivity Analysis
+   - **Purpose**: To assess the diagnostic sensitivity of periapical and panoramic radiographs compared to CBCT.
+   - **Why Appropriate**:
+     1. The study explicitly aims to evaluate sensitivity as the primary outcome.
+     2. Sensitivity is the correct measure for assessing the ability of a diagnostic test to identify true positives.
+   - **Why It May Not Be Appropriate**:
+     - Sensitivity alone does not provide a complete picture of diagnostic accuracy (e.g., specificity is not assessed).
+   - **When This Test Should NOT Be Used**:
+     - If the study population is not representative of the target population.
+   - **Alternative if Assumptions Are Violated**:
+     - Use area under the receiver operating characteristic (ROC) curve to assess overall diagnostic performance.
+
+2. **Test Name**: Inter-Examiner Reliability (e.g., Cohen's Kappa or Intraclass Correlation Coefficient)
+   - **Purpose**: To evaluate the consistency between examiners in lesion detection and measurement.
+   - **Why Appropriate**:
+     1. The study involves multiple examiners, and reliability is critical for ensuring valid results.
+     2. Calibration was performed, suggesting the need to quantify agreement.
+   - **Why It May Not Be Appropriate**:
+     - If the sample size for calibration is too small to provide reliable estimates.
+   - **When This Test Should NOT Be Used**:
+     - If only one examiner evaluates all images.
+   - **Alternative if Assumptions Are Violated**:
+     - Use weighted kappa or Bland-Altman plots for continuous variables.
+
+3. **Test Name**: Paired t-test or Wilcoxon Signed-Rank Test
+   - **Purpose**: To compare lesion area/volume measurements between preoperative and follow-up stages for each imaging technique.
+   - **Why Appropriate**:
+     1. The same patients are evaluated at two time points, making it a paired design.
+     2. The outcome variables (area and volume) are continuous.
+   - **Why It May Not Be Appropriate**:
+     - If the data are not normally distributed.
+   - **When This Test Should NOT Be Used**:
+     - If the sample size is too small for reliable parametric testing.
+   - **Alternative if Assumptions Are Violated**:
+     - Use the Wilcoxon Signed-Rank Test for non-parametric data.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Bland-Altman Analysis
+   - **Purpose**: To assess agreement between lesion measurements obtained using different imaging techniques.
+   - **Why Appropriate**:
+     1. Provides a visual and statistical assessment of agreement between two continuous measurement methods.
+     2. Helps identify systematic biases.
+   - **Why It May Not Be Appropriate**:
+     - If the sample size is too small to detect meaningful differences.
+   - **When This Test Should NOT Be Used**:
+     - If the measurement scales differ significantly between methods.
+   - **Alternative if Assumptions Are Violated**:
+     - Use correlation analysis as a supplementary measure.
+
+2. **Test Name**: Linear Regression
+   - **Purpose**: To model the relationship between lesion measurements (area/volume) and follow-up time.
+   - **Why Appropriate**:
+     1. Can identify trends in lesion size reduction over time.
+     2. Accounts for continuous outcome variables.
+   - **Why It May Not Be Appropriate**:
+     - If the relationship is non-linear.
+   - **When This Test Should NOT Be Used**:
+     - If follow-up times are not evenly distributed.
+   - **Alternative if Assumptions Are Violated**:
+     - Use non-linear regression or generalized additive models.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: ROC Curve Analysis
+   - **Purpose**: To evaluate the diagnostic accuracy of periapical and panoramic radiographs compared to CBCT.
+   - **Why Appropriate**:
+     1. Provides a comprehensive measure of diagnostic performance (sensitivity and specificity).
+     2. Useful for determining optimal cut-off points.
+   - **Why It May Not Be Appropriate**:
+     - Requires specificity data, which may not be available in this study.
+   - **When This Test Should NOT Be Used**:
+     - If the study design does not include true negatives.
+   - **Alternative if Assumptions Are Violated**:
+     - Use sensitivity analysis alone if specificity data are unavailable.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Chi-Square Test**:
+   - **Why Inappropriate**:
+     - The outcome variables (lesion area/volume) are continuous, not categorical.
+2. **Independent t-test**:
+   - **Why Inappropriate**:
+     - The study involves paired data (same patients at different time points), not independent groups.
+
+---
+
+### TASK 4: SUMMARY
+The proposed analytical approach focuses on sensitivity analysis, inter-examiner reliability, and paired comparisons of lesion measurements. These tests address the primary objective of evaluating diagnostic validity while ensuring methodological rigor. Recommended and optional tests provide additional insights into agreement and diagnostic performance, enhancing the study's value. The approach avoids inappropriate tests that do not align with the study design or data structure.

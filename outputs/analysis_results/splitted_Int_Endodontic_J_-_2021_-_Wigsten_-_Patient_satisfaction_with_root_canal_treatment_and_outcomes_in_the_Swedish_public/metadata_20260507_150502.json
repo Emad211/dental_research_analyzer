@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_Int_Endodontic_J_-_2021_-_Wigsten_-_Patient_satisfaction_with_root_canal_treatment_and_outcomes_in_the_Swedish_public.pdf",
+  "timestamp": "20260507_150502",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 17347
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 7903
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 35570
+    }
+  }
+}

@@ -1,0 +1,316 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_FULLTEXT01.pdf
+Status : ok
+Time   : 20260507_150208
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design & setting
+- **Design:** Historical (retrospective) cohort with **time-to-event** follow-up.
+- **Setting:** Public Dental Service, Norrbotten county, Sweden (29 general dental clinics; in 2006: 149 GDPs performed ≥1 RCT).
+- **Index period (baseline):** 1 Jan–31 Dec **2006**.
+- **Follow-up window:** Up to **10 years** (ascertainment mainly to 2016; data collection performed **Sep 2016–May 2018** using records + targeted patient follow-up).
+
+### Objectives
+- **Primary aim:** Estimate **10-year survival** of root-filled teeth treated by GDPs (survival defined as *tooth retained*, regardless of radiologic apical status/symptoms).
+- **Secondary aim:** Identify **prognostic factors** for tooth loss (extraction).
+
+### Study population and sampling
+- **Source cohort:** 3,676 individuals with ≥1 completed RCT in 2006 (3,925 teeth).
+- **Excluded:** 331 individuals who died during the 10-year period.
+- **Sampling method:** Random ordering in Excel using RAND; first **302** invited.
+- **Final included:** **280 individuals** (treated by 102 GDPs in 28 clinics).
+  - Exclusions among invited: 19 declined, 1 deceased, 1 no address, 1 specialist involved.
+- **Unit of analysis:** **One tooth per person** (if multiple treated in 2006, one tooth randomly selected).  
+  *This avoids within-person correlation but changes the estimand to “survival of a randomly selected treated tooth per treated patient.”*
+
+### Outcome (dependent variable)
+- **Event:** **Tooth extraction** (yes/no) with **event time** in days from **date of RCT completion** to extraction.
+- **Censoring:** Right-censor at **last known date the tooth was present** if no evidence of extraction.
+- **If extraction date unknown:** Event time estimated as midpoint between last date present and first date absent (interval-censoring approximated by midpoint imputation).
+- **Outcome definition explicitly ignores:** apical radiographic status and symptoms for survival endpoint.
+
+### Follow-up / outcome ascertainment
+- Records (analogue + digital) and radiographs retrieved from clinics.
+- Initial record screening established survival for **150/280** by 2016.
+- For remaining **130/280** without record evidence of survival/loss:
+  - Contacted by phone/mail for **basic dental exam** at nearest clinic (by author SK or local caregiver).
+  - If tooth missing and extracted elsewhere, attempted record retrieval with written consent.
+  - If exact extraction time unobtainable, midpoint date used.
+  - If patient did not attend follow-up, last known retained date used (censored).
+  - Five individuals were asked directly by phone if tooth retained.
+
+### Candidate prognostic factors (independent variables)
+The paper states independent variables are in Table 1; the excerpt shows many, grouped conceptually as baseline/intra-operative/postoperative. Variables visible include:
+
+**Patient factors**
+- Age (baseline; automatically registered)
+- Gender (automatically registered)
+
+**Tooth/anatomy & pre-op status**
+- Number of contact points (0 vs >0; radiographic)
+- Terminal arch location (yes/no; radiographic)
+- Presence of sinus tract (yes/no; record/radiographic tracing)
+- Apical status (normal vs abnormal; radiographic, Strindberg criteria)
+- Previous root filling (yes/no)
+- Marginal status / bone level (cervical 1/3 vs apical 2/3)
+
+**Intra-operative / treatment process**
+- Antibiotics during treatment (yes/no)
+- Intra-pulpal anaesthesia (yes/no)
+- Acute problems during treatment (≤1 vs ≥2)  *(flagged significant)*
+- Number of caregivers (1 vs ≥2)
+- Number of sessions (<5 vs >5) *(flagged significant)*
+- Elapsed time from access to root filling (days; continuous)
+- Rubber dam (yes/no; evidence)
+- Pulp bleeding (yes/no)
+- Pulp necrosis (yes/no) *(flagged “0.05–0.20”)*
+- Apical size (ISO; continuous)
+- Type of root canal filling material (sealer vs rosin-chloroform)
+- Root filling quality (adequate vs not; radiographic)
+- Procedural accidents (yes/no)
+
+**Postoperative / restorative**
+- Postoperative pain up to 4 weeks (yes/no) *(variable shown but truncated)*
+- Plug in orifice (yes/no)
+- Post placement (yes/no)
+- Abutment tooth for prosthesis (yes/no)
+- Type of final coronal restoration and timing from RCT completion to final restoration (described in Methods; not fully visible in excerpt)
+
+### Confounding structure (author-stated “important confounders”)
+- Group 1: tooth type + number of contact points + terminal arch location  
+- Group 2: sinus tract + apical status  
+- Group 3: acute problems + number of sessions  
+- Group 4: pulp bleeding + pulp necrosis
+
+### Data quality / reliability
+- Calibration: first 12 records jointly reviewed (most variables except age/gender, root filling quality, apical status).
+- Inter-examiner agreement: next 20 records independently scored by SK and FMA; another 15 records at end.
+- Intra-observer: SK rescored 10 records after 6-month washout.
+- (Appropriate reliability statistics not shown in excerpt; should be planned.)
+
+### Missing data
+- 110 analogue records not fully retrievable → missingness in some variables.
+- Outcome ascertainment missing in records for 130 individuals initially, addressed by exam/contact; still possible loss-to-follow-up.
+
+---
+
+## TASK 2 — Statistical Analysis Plan (SAP)
+
+### Overview of analysis principles
+- **Primary estimand:** 10-year **tooth survival probability** after GDP-performed RCT (one randomly selected tooth/patient), with time origin = **date of RCT completion**.
+- **Secondary estimand:** Association between prognostic factors and **hazard of extraction** over follow-up.
+- **Time scale:** days (report also in years).
+- **Significance:** two-sided α = 0.05; report 95% CIs. For prognostic modeling, emphasize effect sizes and CIs over p-values.
+- **Clustering:** one tooth/person removes within-person clustering; however, teeth are clustered within **GDP/clinic**. Consider robust variance or frailty (recommended).
+
+---
+
+# CATEGORY A — MANDATORY tests/analyses
+
+## A1) Kaplan–Meier (KM) survival estimation (with Greenwood 95% CI)
+- **Purpose:** Estimate survival function and **10-year survival probability**; display survival curve.
+- **Why appropriate:**
+  1. Outcome is **time-to-extraction** with **right censoring**.
+  2. Nonparametric; no need to assume a baseline hazard form.
+- **Why may not be appropriate:**
+  - If there is substantial **interval censoring** (unknown extraction dates) KM is not strictly correct (midpoint imputation approximates).
+- **When NOT to use:**
+  - If event times are largely interval-censored or only known at discrete assessment times without exact times.
+- **Alternative if assumptions violated:**
+  - **Turnbull estimator** for interval-censored survival; or parametric interval-censored models.
+
+## A2) Log-rank test (univariable time-to-event comparisons)
+- **Purpose:** Compare survival curves across categorical predictors (e.g., sessions >5 vs <5; acute problems ≥2 vs ≤1).
+- **Why appropriate:**
+  1. Standard test for differences in **survival distributions** under censoring.
+  2. Simple screening/description before multivariable modeling.
+- **Why may not be appropriate:**
+  - Low power and misleading inference if **non-proportional hazards** (curves cross) or if effects are early/late only.
+- **When NOT to use:**
+  - Clear evidence/expectation of non-PH; heavy ties with discrete-time recording where alternative tests may fit better.
+- **Alternative if assumptions violated:**
+  - **Weighted log-rank tests** (e.g., Fleming–Harrington), or compare **restricted mean survival time (RMST)**.
+
+## A3) Cox proportional hazards regression (multivariable)
+- **Purpose:** Estimate adjusted associations (hazard ratios) between prognostic factors and extraction.
+- **Why appropriate:**
+  1. Handles **right-censoring** and varying follow-up.
+  2. Provides **adjusted** effects for multiple confounders; does not require specifying baseline hazard.
+- **Why may not be appropriate:**
+  - If **proportional hazards (PH)** assumption is violated for key predictors and cannot be remedied.
+- **When NOT to use:**
+  - Severe PH violations without a workable extension (time-varying effects/stratification), or if event count is too low for stable multivariable modeling.
+- **Alternative if assumptions violated:**
+  - **Extended Cox** with time-varying coefficients; **stratified Cox**; **accelerated failure time (AFT)** models; or **RMST regression**.
+
+## A4) PH assumption diagnostics (Schoenfeld residuals + log(-log) plots)
+- **Purpose:** Verify the core Cox model assumption.
+- **Why appropriate:**
+  1. Cox inference relies on PH; diagnostics are required for validity.
+  2. Identifies predictors needing time-varying effects or stratification.
+- **Why may not be appropriate:**
+  - With few events, tests have low power and plots can be unstable.
+- **When NOT to use:**
+  - Never “not use” conceptually; but interpret cautiously with sparse events.
+- **Alternative if assumptions violated:**
+  - Time-varying coefficients, stratification, AFT/RMST approaches.
+
+## A5) Descriptive statistics + baseline comparability and missingness assessment
+- **Purpose:** Characterize sample, event counts, follow-up; quantify missing data by variable and by outcome status.
+- **Why appropriate:**
+  1. Observational cohort needs transparent description and missingness quantification.
+  2. Supports interpretation and informs imputation/sensitivity analyses.
+- **Why may not be appropriate:**
+  - “Significance testing” for baseline differences is often misused; focus should be descriptive.
+- **When NOT to use:**
+  - Do not use p-values to claim groups “balanced” (not a randomized study).
+- **Alternative if assumptions violated:**
+  - If distributions are skewed, use medians/IQR; for categorical sparse data, use exact counts/percentages.
+
+---
+
+# CATEGORY B — RECOMMENDED analyses
+
+## B1) Competing risks analysis (Fine–Gray or cause-specific Cox), if death during follow-up is relevant
+- **Purpose:** Account for **death** precluding extraction (competing event), especially because deaths occurred in the source cohort.
+- **Why appropriate:**
+  1. In older populations, death can meaningfully alter estimated cumulative incidence of extraction.
+  2. Provides clinically interpretable **cumulative incidence** of extraction in presence of competing mortality.
+- **Why may not be appropriate:**
+  - In the analyzed sample, deceased individuals were excluded; competing risk may be unobservable post-exclusion and can’t be fully addressed without including them.
+- **When NOT to use:**
+  - If death information after inclusion is unavailable or deaths are extremely rare.
+- **Alternative if assumptions violated / not feasible:**
+  - Sensitivity analysis assuming worst/best-case extraction among those who died; or include deaths with competing risk if data available.
+
+## B2) Robust variance / multilevel (frailty) survival model for clustering by GDP/clinic
+- **Purpose:** Adjust standard errors (and potentially effects) for correlation of outcomes within providers/clinics.
+- **Why appropriate:**
+  1. Teeth treated by same GDP/clinic may share unmeasured practice factors (rubber dam culture, restoration protocols).
+  2. Ignoring clustering can underestimate SEs → overconfident CIs.
+- **Why may not be appropriate:**
+  - If most GDPs contribute very few teeth (sparse clusters), frailty variance may be hard to estimate.
+- **When NOT to use:**
+  - Extremely sparse clusters with near-unique provider per tooth; robust sandwich may still be used cautiously.
+- **Alternative if assumptions violated:**
+  - **Cox with cluster-robust SEs** (sandwich) at GDP/clinic level; or fixed effects for clinic if feasible.
+
+## B3) Multiple imputation (MI) for missing covariates
+- **Purpose:** Reduce bias and improve efficiency versus complete-case analysis given missing analogue records/variables.
+- **Why appropriate:**
+  1. Many predictors likely missing not completely at random; MI can be better than dropping records.
+  2. Preserves sample size and event information for Cox modeling.
+- **Why may not be appropriate:**
+  - If missingness is extreme for key variables or not plausibly MAR (e.g., systematic loss of whole record types tied to outcome).
+- **When NOT to use:**
+  - When missingness mechanism is clearly MNAR without auxiliary variables; or too few events to support MI models.
+- **Alternative if assumptions violated:**
+  - Sensitivity analyses (pattern-mixture, best/worst case), or restrict to variables with acceptable completeness.
+
+## B4) Model building strategy with events-per-parameter control (penalization)
+- **Test/Method:** Penalized Cox regression (e.g., ridge, lasso, elastic net) or Firth-type penalization in survival context.
+- **Purpose:** Prevent overfitting and instability with limited extractions.
+- **Why appropriate:**
+  1. Dental survival studies often have modest events relative to candidate predictors.
+  2. Penalization improves predictive stability and shrinks exaggerated HRs.
+- **Why may not be appropriate:**
+  - Harder to interpret; requires careful tuning and validation.
+- **When NOT to use:**
+  - If primary goal is strictly causal inference with prespecified confounder adjustment only (then keep parsimonious standard Cox).
+- **Alternative if assumptions violated:**
+  - Pre-specify a small confounder set; use AIC/BIC cautiously; or use bootstrap shrinkage.
+
+## B5) Reliability statistics for calibration (inter-/intra-examiner agreement)
+- **Purpose:** Quantify measurement reproducibility for record-based assessments.
+- **Why appropriate:**
+  1. Many predictors are subjective (radiographic assessments, chart interpretation).
+  2. Supports credibility of prognostic factor analyses.
+- **Why may not be appropriate:**
+  - Small calibration samples yield wide uncertainty.
+- **When NOT to use:**
+  - Not applicable for automatically captured variables (age, sex).
+- **Alternative if assumptions violated:**
+  - If prevalence is extreme and kappa is unstable, report **percent agreement** and **Gwet’s AC1**; for ordinal variables use **weighted kappa**; for continuous use **ICC**.
+
+---
+
+# CATEGORY C — OPTIONAL analyses (supplementary insight)
+
+## C1) Restricted Mean Survival Time (RMST) comparison/regression to 10 years
+- **Purpose:** Quantify absolute time retained (mean survival time up to τ=10 years) and compare groups without PH assumption.
+- **Why appropriate:**
+  1. Clinically interpretable (“months of tooth retention gained/lost”).
+  2. Valid even when hazards are non-proportional.
+- **Why may not be appropriate:**
+  - Needs adequate follow-up coverage to τ; censoring before τ can inflate uncertainty.
+- **When NOT to use:**
+  - If few subjects are observed close to 10 years (heavy early censoring).
+- **Alternative if assumptions violated:**
+  - Use smaller τ (e.g., 5 years) or AFT models.
+
+## C2) Sensitivity analysis for unknown extraction dates (interval censoring)
+- **Purpose:** Assess impact of midpoint-imputed extraction times.
+- **Why appropriate:**
+  1. Midpoint imputation can bias hazards if intervals are long.
+  2. Demonstrates robustness of conclusions.
+- **Why may not be appropriate:**
+  - Requires access to interval bounds (last-present/first-absent dates).
+- **When NOT to use:**
+  - If interval bounds are unavailable for most cases.
+- **Alternative:**
+  - Proper **interval-censored survival models**; or repeat analyses using earliest/latest possible extraction times (bounds).
+
+## C3) Influence diagnostics / outlier checking in Cox (dfbetas, deviance residuals)
+- **Purpose:** Identify influential observations (e.g., very late/early extractions, unusual covariate patterns).
+- **Why appropriate:**
+  1. Small event counts can be dominated by a few cases.
+  2. Helps detect data errors and assess robustness.
+- **Why may not be appropriate:**
+  - Not definitive; can encourage over-interpretation.
+- **When NOT to use:**
+  - Don’t remove observations solely due to influence without clinical/data justification.
+- **Alternative:**
+  - Robust regression approaches; report analyses with/without influential points as sensitivity.
+
+## C4) Nonlinear effects for continuous predictors (restricted cubic splines)
+- **Purpose:** Model potential nonlinearity (e.g., elapsed days access→fill; apical size; age).
+- **Why appropriate:**
+  1. Clinical relationships are rarely strictly linear on log-hazard scale.
+  2. Reduces mis-specification bias vs linear term.
+- **Why may not be appropriate:**
+  - Requires sufficient events; otherwise unstable.
+- **When NOT to use:**
+  - Very low events or highly missing continuous covariates.
+- **Alternative:**
+  - Categorization using clinically meaningful cut-points (with caution), or fractional polynomials.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used) and why
+
+1. **Independent-samples t-test / one-way ANOVA on “survival time” ignoring censoring**
+   - Censoring makes observed times incomplete; mean time comparisons will be biased.
+
+2. **Chi-square test of extraction (yes/no) at 10 years without accounting for varying follow-up**
+   - Discards time information and mishandles censoring; misclassifies censored subjects as non-events.
+
+3. **Standard logistic regression for “extracted by 10 years” as primary analysis**
+   - Same issues: ignores censoring/time-to-event; only acceptable as a secondary analysis if everyone has uniform 10-year ascertainment (not the case here).
+
+4. **Paired tests (paired t-test, McNemar)**
+   - No paired/repeated measures design on the same unit across two conditions.
+
+5. **Pearson correlation between predictors and survival time**
+   - Not meaningful with censoring and mixed variable types; confounded associations.
+
+6. **Linear regression on time-to-extraction**
+   - Violates normality/heteroscedasticity and ignores censoring; predicted negative times possible.
+
+---
+
+## TASK 4 — Summary justification of analytical approach
+
+The endpoint is **time to extraction** with **right censoring**, so the core analysis must use **survival methods**: KM to estimate 10-year survival and Cox regression to evaluate prognostic factors while adjusting for confounding. Diagnostics (PH checks), handling of **missing covariate data**, and attention to **provider/clinic clustering** are necessary to make inferences credible. Sensitivity analyses for uncertain extraction timing and (if feasible) competing risks strengthen robustness and interpretability.

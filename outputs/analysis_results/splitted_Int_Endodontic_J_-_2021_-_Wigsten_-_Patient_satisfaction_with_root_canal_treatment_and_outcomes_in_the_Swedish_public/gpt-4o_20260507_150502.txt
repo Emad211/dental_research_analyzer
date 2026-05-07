@@ -1,0 +1,154 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_Int_Endodontic_J_-_2021_-_Wigsten_-_Patient_satisfaction_with_root_canal_treatment_and_outcomes_in_the_Swedish_public.pdf
+Status : ok
+Time   : 20260507_150502
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Prospective cohort study.
+
+2. **Study Objectives**:  
+   - To elicit patients’ subjective evaluations of root canal treatment (RCT) outcomes one year after initiation of treatment in general dental practice.  
+   - To assess the reliability of responses to the questionnaire.
+
+3. **Study Population**:  
+   - **Baseline Population**: 243 patients who started RCT during an 8-week period at 20 public dental clinics in Västra Götaland, Sweden.  
+   - **Respondents**: 159 patients (67.4%) responded to the first questionnaire, and 44 patients (88%) responded to the second questionnaire for reliability testing.  
+   - **Demographics**: 52.7% women, 47.3% men; mean age = 48.3 years (SD = 16.4).  
+   - **Tooth Characteristics**: 64.9% symptomatic teeth, main diagnoses: pulpal necrosis with apical periodontitis (38.1%) and pulpitis (37.7%), molars predominated (47.7%).
+
+4. **Variables**:  
+   - **Independent Variables**: Gender, age, jaw (maxilla/mandible), tooth group (incisor/premolar/molar), presence of symptoms (asymptomatic/pain), diagnosis at initiation of RCT.  
+   - **Dependent Variables**:  
+     - Tooth retention (yes/no).  
+     - Completion of RCT with root filling (yes/no).  
+     - Pain intensity (VAS scale, 0–10).  
+     - Recollection of pain during RCT (VAS scale, 0–10).  
+     - Post-operative aesthetics (VAS scale, 0–10).  
+     - Tooth function during chewing (VAS scale, 0–10).  
+     - Perceived cost-effectiveness of RCT (VAS scale, 0–10).  
+     - Retrospective decision to choose RCT again (yes/no/uncertain).  
+
+5. **Questionnaire and Data Collection**:  
+   - Questionnaire adapted from Dugas et al. (2002).  
+   - Visual Analogue Scale (VAS, 10 cm) used for subjective assessments.  
+   - First questionnaire sent 1–3 years after RCT initiation, with reminders and follow-up calls to improve response rates.  
+   - Second questionnaire sent to the first 50 respondents to assess test-retest reliability.  
+
+6. **Data Management**:  
+   - Data manually entered into Excel.  
+   - Missing data were left empty and designated as missing in the analysis.
+
+7. **Reliability Analysis**:  
+   - Test-retest reliability assessed using intraclass correlation coefficients (ICCs) for responses to the second questionnaire.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Descriptive Statistics**:  
+   - **Purpose**: Summarize demographic and baseline characteristics of the study population.  
+   - **Why Appropriate**:  
+     1. Provides an overview of the sample distribution (e.g., age, gender, tooth characteristics).  
+     2. Helps identify missing data patterns.  
+   - **Why It May Not Be Appropriate**: Not inferential; does not provide statistical comparisons.  
+   - **When NOT to Use**: N/A (always necessary).  
+   - **Alternative**: None.  
+
+2. **Chi-Square Test (or Fisher’s Exact Test)**:  
+   - **Purpose**: Compare categorical variables (e.g., tooth retention vs. gender).  
+   - **Why Appropriate**:  
+     1. Tests associations between independent and dependent categorical variables.  
+     2. Suitable for binary outcomes (e.g., tooth retention).  
+   - **Why It May Not Be Appropriate**: Requires sufficient sample size in each cell; not suitable for small expected frequencies.  
+   - **When NOT to Use**: If >20% of expected counts are <5.  
+   - **Alternative**: Fisher’s Exact Test for small sample sizes.  
+
+3. **Paired t-Test (or Wilcoxon Signed-Rank Test)**:  
+   - **Purpose**: Assess test-retest reliability of continuous variables (e.g., VAS scores).  
+   - **Why Appropriate**:  
+     1. Evaluates differences between paired responses.  
+     2. Suitable for continuous data with normal distribution.  
+   - **Why It May Not Be Appropriate**: Assumes normality of differences.  
+   - **When NOT to Use**: If data are not normally distributed.  
+   - **Alternative**: Wilcoxon Signed-Rank Test for non-normal data.  
+
+4. **Intraclass Correlation Coefficient (ICC)**:  
+   - **Purpose**: Assess test-retest reliability of questionnaire responses.  
+   - **Why Appropriate**:  
+     1. Measures consistency or agreement between repeated measures.  
+     2. Recommended for reliability studies.  
+   - **Why It May Not Be Appropriate**: Sensitive to sample size and variability.  
+   - **When NOT to Use**: If sample size is too small or data are highly inconsistent.  
+   - **Alternative**: Kappa statistic for categorical responses.  
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Independent t-Test (or Mann-Whitney U Test)**:  
+   - **Purpose**: Compare mean VAS scores between two independent groups (e.g., gender).  
+   - **Why Appropriate**:  
+     1. Tests differences in continuous outcomes between groups.  
+     2. Suitable for normally distributed data.  
+   - **Why It May Not Be Appropriate**: Assumes normality and equal variances.  
+   - **When NOT to Use**: If data are skewed or variances are unequal.  
+   - **Alternative**: Mann-Whitney U Test for non-normal data.  
+
+2. **ANOVA (or Kruskal-Wallis Test)**:  
+   - **Purpose**: Compare mean VAS scores across multiple groups (e.g., age categories).  
+   - **Why Appropriate**:  
+     1. Tests differences in continuous outcomes across >2 groups.  
+     2. Suitable for normally distributed data.  
+   - **Why It May Not Be Appropriate**: Assumes normality and homogeneity of variances.  
+   - **When NOT to Use**: If assumptions are violated.  
+   - **Alternative**: Kruskal-Wallis Test for non-normal data.  
+
+3. **Logistic Regression**:  
+   - **Purpose**: Identify predictors of binary outcomes (e.g., tooth retention).  
+   - **Why Appropriate**:  
+     1. Models relationships between predictors and binary outcomes.  
+     2. Adjusts for confounders.  
+   - **Why It May Not Be Appropriate**: Sensitive to small sample sizes and multicollinearity.  
+   - **When NOT to Use**: If sample size is insufficient for the number of predictors.  
+   - **Alternative**: Penalized logistic regression for small samples.  
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Exploratory Factor Analysis (EFA)**:  
+   - **Purpose**: Identify underlying dimensions of patient satisfaction from questionnaire items.  
+   - **Why Appropriate**:  
+     1. Reduces dimensionality of data.  
+     2. Explores latent constructs in satisfaction measures.  
+   - **Why It May Not Be Appropriate**: Requires large sample size and continuous data.  
+   - **When NOT to Use**: If sample size is too small or data are categorical.  
+   - **Alternative**: Principal Component Analysis (PCA).  
+
+2. **Correlation Analysis**:  
+   - **Purpose**: Assess relationships between continuous variables (e.g., pain intensity and aesthetics).  
+   - **Why Appropriate**:  
+     1. Identifies linear relationships.  
+     2. Useful for exploratory analysis.  
+   - **Why It May Not Be Appropriate**: Assumes linearity and normality.  
+   - **When NOT to Use**: If data are non-linear or non-normal.  
+   - **Alternative**: Spearman’s rank correlation for non-normal data.  
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Unpaired t-Test for Paired Data**:  
+   - Inappropriate because test-retest reliability involves paired responses.  
+2. **Linear Regression for Binary Outcomes**:  
+   - Inappropriate because binary outcomes require logistic regression.  
+3. **ANOVA for Non-Normal Data**:  
+   - Inappropriate without testing assumptions or applying transformations.  
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan aligns with the study’s objectives and data characteristics. Mandatory tests ensure the primary research questions are addressed, while recommended and optional tests enhance the depth and rigor of the analysis. Assumptions will be tested, and non-parametric alternatives will be applied as needed. This comprehensive approach ensures robust and reliable conclusions.

@@ -1,0 +1,948 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_s12903-021-01952-y.pdf
+Time : 20260507_151455
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design & setting
+- **Design:** Retrospective cohort study (record-based).
+- **Setting:** Boston University Henry M. Goldman School of Dental Medicine (BUGSDM).
+- **Study period (treatment window):** Jan 1, 2007 to Dec 31, 2015.
+- **Ethics:** IRB approval (H-34766). De-identified data with study IDs.
+
+### Objectives / hypotheses
+- **Primary objective:** Estimate **survival rates** of nonsurgical root canal treatment (NSRCT) in permanent teeth among children.
+- **Secondary objective:** Identify **predictors of failure** of endodontically treated teeth (ETT).
+- **Null hypothesis stated:** Age, gender, insurance type, tooth type, and jaw type have **no effect** on survival.
+
+### Participants and sampling
+- **Population screened:** 25,877 electronic dental records.
+- **Eligible treated:** 773 patients (931 teeth) received endodontic treatment in period.
+- **Inclusion criteria:**
+  - Age **6–18 years**.
+  - **Completed NSRCT** during study window.
+  - **≥1 post-treatment record** (follow-up available).
+- **Exclusion:** Lack of follow-up.
+- **Final analytic sample:** **341 patients, 424 teeth**.
+  - Excluded: 432 patients (507 teeth) due to no follow-up.
+
+### Unit of analysis / clustering
+- Outcomes recorded at **tooth level** (424 teeth), with **multiple teeth possibly per patient** → within-patient correlation is likely and should be handled analytically.
+
+### Exposure/covariates (predictors)
+Extracted from electronic dental records:
+- **Age at treatment** (categorical): **6–11**, **12–14**, **15–18**.
+- **Gender**.
+- **Insurance type:** **Medicaid (MassHealth)** vs **Private/self-paid** (proxy for SES).
+- **Tooth type:** **Posterior** vs **Anterior**.
+- **Jaw type:** **Maxillary** vs **Mandibular**.
+
+### Outcome definition and follow-up
+- **Primary outcome:** **Time-to-failure** (survival time).
+- **Failure event (composite):** If ETT was symptomatic **or** underwent any of:
+  - **Extraction**
+  - **Endodontic retreatment**
+  - **Apical surgery**
+- **Survival (non-failure):** No reported clinical signs/symptoms and **no intervention**, **regardless of radiographic interpretation**.
+- **Censoring:** Teeth without failure by last available record are **right-censored** at last follow-up date (implicit).
+- **Data source:** Electronic dental records; NSRCT mostly by endodontic residents under supervision (operator factor not explicitly modeled).
+
+---
+
+## TASK 2 — Statistical analysis plan (tests by category)
+
+### CATEGORY A — MANDATORY (analysis incomplete without these)
+
+#### A1) Kaplan–Meier (KM) survival estimation
+- **Purpose:** Estimate survival function and survival probabilities over time (overall and stratified by predictors such as age group).
+- **Why appropriate (≥2):**
+  1. Primary endpoint is **time-to-event** with **right-censoring**.
+  2. Provides clinically interpretable quantities (e.g., **5-year survival probability**).
+- **Why may not be appropriate (≥1):**
+  - Standard KM assumes **independent observations**; tooth-level data clustered within patient can mildly understate uncertainty.
+- **When NOT to use:**
+  - If event times are not known (no valid time origin/follow-up) or censoring mechanism is not interpretable.
+- **Alternative if assumptions violated:**
+  - KM with **cluster-robust Greenwood SEs** (patient-level clustering), or **marginal survival curves** from a frailty/mixed model.
+
+#### A2) Log-rank test (overall and pairwise as needed)
+- **Purpose:** Unadjusted comparison of survival curves between groups (e.g., age categories).
+- **Why appropriate:**
+  1. Directly tests differences in survival distributions under censoring.
+  2. Standard companion to KM plots for group comparisons.
+- **Why may not be appropriate:**
+  - Reduced validity if **non-proportional hazards** or heavy crossing of curves; also ignores clustering unless adapted.
+- **When NOT to use:**
+  - If hazards are clearly non-proportional and you need a test sensitive to early/late differences, or if there is strong within-patient clustering without robust methods.
+- **Alternative if assumptions violated:**
+  - **Weighted log-rank tests** (e.g., Fleming–Harrington) or **restricted mean survival time (RMST)** comparisons; use **cluster-robust** variance where possible.
+
+#### A3) Cox proportional hazards regression (multivariable)
+- **Purpose:** Estimate association between covariates and hazard of failure via **hazard ratios (HRs)**, adjusted for confounders.
+- **Why appropriate:**
+  1. Outcome is **time-to-failure** with censoring; Cox is standard and interpretable (HRs).
+  2. Allows adjustment for multiple predictors listed in the study question (age, gender, insurance, tooth type, jaw).
+- **Why may not be appropriate:**
+  - If **proportional hazards (PH)** assumption is violated for key predictors (e.g., age effect changes over time).
+- **When NOT to use:**
+  - When PH is strongly violated and cannot be remedied (time-varying effects), or when event counts are too low for model complexity (risk of overfitting).
+- **Alternative if assumptions violated:**
+  - **Extended Cox** with **time-varying coefficients**, or **stratified Cox** (stratify on violating covariate), or **parametric survival models** (Weibull/log-normal), or **RMST regression**.
+
+#### A4) Methods to address clustering (multiple teeth per child)
+You need *one* of the following in the primary model (or as sensitivity):
+- **Cox model with robust (sandwich) SEs clustered by patient**, *or*
+- **Shared frailty Cox model** (random effect for patient).
+- **Purpose:** Correct inference for within-patient correlation.
+- **Why appropriate:**
+  1. Teeth from the same patient are not independent (shared behaviors, caries risk, provider factors).
+  2. Prevents underestimation of standard errors and false-positive findings.
+- **Why may not be appropriate:**
+  - Frailty models require adequate clusters/events and can be sensitive to distributional assumptions for frailty.
+- **When NOT to use:**
+  - If analysis is strictly at **patient level** (one tooth per patient) or if clustering is impossible to identify.
+- **Alternatives:**
+  - Marginal Cox with **cluster-robust SEs** (less assumption-heavy) vs **frailty** (more modeling).
+
+---
+
+### CATEGORY B — RECOMMENDED (improves rigor)
+
+#### B1) Descriptive/bivariate baseline comparisons (categorical: χ²; sparse: Fisher’s exact)
+- **Purpose:** Describe cohort characteristics across key groups (e.g., age categories, insurance).
+- **Why appropriate:**
+  1. Covariates are categorical; facilitates understanding of sample composition and potential confounding.
+  2. Identifies sparse cells/data quality issues that impact modeling.
+- **Why may not be appropriate:**
+  - These tests ignore time-to-event and clustering; they are descriptive, not causal.
+- **When NOT to use:**
+  - To infer treatment effects or survival differences (that needs survival methods).
+- **Alternatives if assumptions violated:**
+  - Fisher’s exact (small expected counts) or Rao–Scott adjusted χ² for clustered data (if doing formal inference).
+
+#### B2) Check proportional hazards (PH) assumption (Schoenfeld residual test + plots)
+- **Purpose:** Validate key Cox model assumption.
+- **Why appropriate:**
+  1. Cox HRs are interpretable only under (approximate) PH.
+  2. Detects time-varying effects that could change conclusions (e.g., age effect stronger early).
+- **Why may not be appropriate:**
+  - Global tests can have low power with few events; may flag trivial deviations in large samples.
+- **When NOT to use:**
+  - Never “not use”—assumption checking is standard; interpret with context.
+- **Alternatives if violated:**
+  - Time-varying covariates/effects, stratified Cox, parametric models, RMST.
+
+#### B3) Model diagnostics and functional form checks
+- **Test/tools:** Martingale residuals (if any continuous covariates existed), influential observations (dfbeta), outlier assessment.
+- **Purpose:** Ensure no undue influence and correct model specification.
+- **Why appropriate:**
+  1. Retrospective EHR data can include miscoding/outliers.
+  2. Influential clusters (patients with multiple teeth) may drive results.
+- **Why may not be appropriate:**
+  - Some diagnostics are less straightforward with clustered robust SEs/frailty.
+- **When NOT to use:**
+  - If event times/covariates are too sparse to support stable diagnostics.
+- **Alternatives:**
+  - Sensitivity analyses excluding high-leverage patients; bootstrap.
+
+#### B4) Competing risks analysis (if “extraction” vs “retreatment/surgery” are meaningfully different)
+- **Test/model:** Cumulative incidence functions + Fine–Gray subdistribution hazards (or cause-specific Cox).
+- **Purpose:** Separate failure types if extraction precludes retreatment (true competing risks).
+- **Why appropriate:**
+  1. Composite failure combines distinct processes; competing risks can clarify mechanisms.
+  2. Avoids overestimating incidence of one event type when another precludes it.
+- **Why may not be appropriate:**
+  - If the study’s clinical question is explicitly **“any failure”**, composite is primary and competing risks is secondary.
+- **When NOT to use:**
+  - When event types are unreliable/misclassified or too few per category.
+- **Alternatives:**
+  - Keep composite endpoint; report event-type frequencies and perform cause-specific Cox as sensitivity.
+
+---
+
+### CATEGORY C — OPTIONAL (supplementary insights)
+
+#### C1) Restricted Mean Survival Time (RMST) comparison/regression (e.g., at 5 years)
+- **Purpose:** Provide absolute effect measure: mean event-free time up to τ (e.g., 5 years).
+- **Why appropriate:**
+  1. Interpretable clinically (“months of tooth survival gained”).
+  2. Does **not require PH** assumption.
+- **Why may not be appropriate:**
+  - Requires choosing truncation time τ with adequate follow-up support.
+- **When NOT to use:**
+  - If follow-up is too short/uneven such that many are censored before τ.
+- **Alternatives:**
+  - Time-specific survival probabilities from KM/Cox; parametric survival.
+
+#### C2) Sensitivity analysis for informative censoring
+- **Approach/tests:** Compare follow-up duration distributions across covariate strata; inverse probability of censoring weights (IPCW) if warranted.
+- **Purpose:** Assess whether censoring may depend on predictors (e.g., insurance) and bias results.
+- **Why appropriate:**
+  1. Large exclusions due to “no follow-up” suggest potential selection/censoring issues.
+  2. EHR follow-up can be strongly SES-related.
+- **Why may not be appropriate:**
+  - IPCW requires modeling censoring well; unmeasured reasons for loss to follow-up remain.
+- **When NOT to use:**
+  - If censoring is minimal or cannot be reasonably modeled.
+- **Alternatives:**
+  - Best/worst-case bounds; report limitation transparently.
+
+#### C3) Interaction testing (effect modification)
+- **Test:** Add interaction terms (e.g., age×tooth type, age×jaw, insurance×age) in Cox model.
+- **Purpose:** Identify subgroups where predictors behave differently.
+- **Why appropriate:**
+  1. Biological/clinical plausibility (posterior teeth may fail differently by age).
+  2. Can inform targeted prevention.
+- **Why may not be appropriate:**
+  - Inflates multiple testing and overfitting risk if events are limited.
+- **When NOT to use:**
+  - If event count is insufficient (rule-of-thumb: very limited events per parameter).
+- **Alternatives:**
+  - Pre-specify a small number of interactions; shrinkage/penalized Cox.
+
+---
+
+## TASK 3 — Tests that should NOT be used (and why)
+
+1. **t-tests/ANOVA on “time to failure” ignoring censoring**
+   - **Why not:** Censoring makes observed times incomplete; means/SDs are biased and group comparisons invalid.
+
+2. **Linear regression for time-to-event outcome**
+   - **Why not:** Violates normality/constant variance; cannot handle censoring; yields uninterpretable estimates.
+
+3. **Simple logistic regression of “failed vs not failed” without time**
+   - **Why not:** Discards follow-up time, misclassifies censored teeth as non-failures, and biases associations when follow-up differs between subjects.
+
+4. **Pearson correlation between predictors and survival time**
+   - **Why not:** Censoring and nonlinearity invalidate correlation-based inference.
+
+5. **Chi-square test as the primary method to compare failure across groups**
+   - **Why not:** Ignores censoring and time-at-risk; can reverse conclusions if follow-up differs by group.
+
+---
+
+## TASK 4 — Summary justification of overall analytical approach
+
+Because the endpoint is **time until NSRCT failure** with **right-censoring**, the core analysis must use **survival methods**: KM curves (with log-rank comparisons) to describe unadjusted survival, and a **multivariable Cox model** to estimate adjusted hazard ratios for the pre-specified predictors. Since multiple teeth can belong to the same child, inference should be corrected using **cluster-robust standard errors or a shared frailty** approach. Assumption checks (especially PH) and sensitivity analyses (event type/competing risks and censoring patterns) strengthen validity for this retrospective EHR cohort.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Retrospective cohort study.
+2. **Objective**: To examine the survival rates of nonsurgical root canal treatments (NSRCT) performed on permanent teeth of children aged 6–18 years and to assess predictors of failure for endodontically treated teeth (ETT).
+3. **Population**: 
+   - Age: 6–18 years.
+   - Setting: Boston University Henry M. Goldman School of Dental Medicine.
+   - Sample Size: 341 patients with 424 teeth.
+   - Inclusion Criteria: Patients who received NSRCT between January 1, 2007, and December 31, 2015, with at least one post-treatment follow-up record.
+   - Exclusion Criteria: Records without follow-up (432 patients, 507 teeth excluded).
+4. **Groups**: 
+   - Age groups: 6–11 years, 12–14 years, 15–18 years.
+   - Gender: Male and female.
+   - Insurance type: Medicaid (MassHealth) and private/self-paid.
+   - Tooth type: Posterior and anterior teeth.
+   - Jaw type: Maxillary and mandibular.
+5. **Outcome Variable**: Time-to-event (time until failure of ETT).
+   - Failure Definition: Symptomatic teeth or those requiring extraction, endodontic retreatment, or apical surgery.
+   - Survival Definition: Absence of clinical signs/symptoms and no treatment intervention.
+6. **Covariates**: Age, gender, insurance type (proxy for socioeconomic status), tooth type, and jaw type.
+7. **Data Collection**: Retrospective analysis of electronic dental records. Data were de-identified, and a study ID was used for recording findings.
+8. **Operators**: NSRCT was performed by endodontic residents under faculty supervision using evidence-based protocols and microscopic techniques.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Kaplan-Meier Survival Analysis
+   - **Purpose**: To estimate the survival probability of ETT over time.
+   - **Why Appropriate**:
+     1. The primary outcome is time-to-event data (time until failure).
+     2. Kaplan-Meier allows for censored data (patients lost to follow-up or teeth still surviving at the end of the study).
+   - **Why It May Not Be Appropriate**: Assumes independence of survival times, which may not hold if multiple teeth per patient are analyzed.
+   - **When This Test Should NOT Be Used**: If the assumptions of independence or proportional hazards are grossly violated.
+   - **Alternative if Assumptions Are Violated**: Stratified Kaplan-Meier or multilevel survival models.
+
+2. **Test Name**: Cox Proportional Hazards Regression
+   - **Purpose**: To identify predictors of ETT failure (e.g., age, gender, insurance type, tooth type, jaw type).
+   - **Why Appropriate**:
+     1. Suitable for time-to-event data with multiple covariates.
+     2. Provides hazard ratios to quantify the risk of failure associated with each predictor.
+   - **Why It May Not Be Appropriate**: Assumes proportional hazards, which may not hold for all predictors.
+   - **When This Test Should NOT Be Used**: If the proportional hazards assumption is violated.
+   - **Alternative if Assumptions Are Violated**: Time-varying covariates or stratified Cox models.
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Log-Rank Test
+   - **Purpose**: To compare survival distributions between groups (e.g., age groups, gender, insurance type).
+   - **Why Appropriate**:
+     1. Non-parametric test to compare survival curves.
+     2. Suitable for categorical predictors with two or more levels.
+   - **Why It May Not Be Appropriate**: Does not adjust for confounding variables.
+   - **When This Test Should NOT Be Used**: If adjusting for covariates is necessary.
+   - **Alternative if Assumptions Are Violated**: Cox regression with interaction terms.
+
+2. **Test Name**: Chi-Square Test (or Fisher’s Exact Test for small sample sizes)
+   - **Purpose**: To test the association between categorical variables (e.g., insurance type and failure rates).
+   - **Why Appropriate**:
+     1. Simple and effective for categorical data.
+     2. Provides insight into relationships between covariates and outcomes.
+   - **Why It May Not Be Appropriate**: Does not account for time-to-event data.
+   - **When This Test Should NOT Be Used**: For time-dependent outcomes.
+   - **Alternative if Assumptions Are Violated**: Logistic regression or survival analysis.
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Multilevel Survival Analysis (e.g., Shared Frailty Model)
+   - **Purpose**: To account for clustering of teeth within patients.
+   - **Why Appropriate**:
+     1. Accounts for non-independence of observations (multiple teeth per patient).
+     2. Provides robust estimates in hierarchical data.
+   - **Why It May Not Be Appropriate**: Computationally intensive and requires specialized software.
+   - **When This Test Should NOT Be Used**: If there is no evidence of clustering.
+   - **Alternative if Assumptions Are Violated**: Cox regression with robust standard errors.
+
+2. **Test Name**: Logistic Regression
+   - **Purpose**: To assess predictors of binary outcomes (e.g., failure vs. survival).
+   - **Why Appropriate**:
+     1. Useful for dichotomous outcomes.
+     2. Provides odds ratios for predictors.
+   - **Why It May Not Be Appropriate**: Does not account for time-to-event data.
+   - **When This Test Should NOT Be Used**: If time-to-event data is critical.
+   - **Alternative if Assumptions Are Violated**: Cox regression.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-Test or ANOVA**:
+   - **Why Not Appropriate**: These tests are designed for continuous outcomes, not time-to-event or categorical data.
+2. **Pearson Correlation**:
+   - **Why Not Appropriate**: Correlation measures linear relationships between continuous variables, which is not relevant for survival analysis.
+3. **Linear Regression**:
+   - **Why Not Appropriate**: Assumes a continuous outcome and does not handle censored data.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach focuses on survival analysis techniques, as the primary outcome is time-to-event data (ETT failure). Kaplan-Meier survival analysis and Cox proportional hazards regression are central to the analysis, as they address the time-dependent nature of the data and allow for the inclusion of covariates. Additional tests, such as the log-rank test and chi-square test, provide supplementary insights into group differences and associations. Multilevel survival analysis is recommended if clustering effects are significant. The overall approach ensures robust, valid, and interpretable results while addressing the study's objectives comprehensively.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1: INFORMATION EXTRACTION  
+===============================  
+
+I’ll structure the extracted methods information as “Study characteristics → Outcomes → Covariates → Data collection/measurement → Sample size/units.”
+
+1. Study design, setting, and timeframe
+--------------------------------------
+
+- Design: Retrospective cohort study using existing electronic dental records.  
+- Setting: Boston University Henry M. Goldman School of Dental Medicine (BUGSDM), Department of Endodontics (dental teaching hospital/graduate residency clinic).  
+- Timeframe for exposure (treatment):  
+  - NSRCTs performed between January 1st, 2007, and December 31st, 2015.  
+- Follow‑up period:  
+  - Implicitly: from date of NSRCT completion to date of failure event or last available post‑treatment record (censoring date).  
+- Ethical approval: Boston University Medical Center IRB, H‑34766.  
+
+2. Population, eligibility criteria and sampling
+-----------------------------------------------
+
+- Source population:  
+  - Children/adolescents aged 6–18 years who attended BUGSDM and had dental treatment recorded electronically.  
+  - Total records examined: 25,877 patient records.  
+
+- Inclusion criteria:  
+  - Age 6–18 years at time of NSRCT.  
+  - Underwent nonsurgical root canal treatment (NSRCT) on permanent teeth during 1 Jan 2007–31 Dec 2015.  
+  - NSRCT completed (i.e., not incomplete treatment).  
+  - At least one post‑treatment follow‑up record in the EHR.  
+
+- Exclusion criteria:  
+  - No follow‑up after NSRCT (no post‑treatment record).  
+  - This led to exclusion of 432 patients (507 teeth).  
+
+- Final analytic sample:  
+  - 341 patients.  
+  - 424 endodontically treated permanent teeth (ETT).  
+
+- Operators:  
+  - NSRCT performed mainly by endodontic residents using microscopes, evidence‑based protocols and techniques, with specialist faculty supervision.
+
+3. Outcome definition (primary endpoint)
+----------------------------------------
+
+- Main outcome variable:  
+  - “Time until failure of ETT” = time‑to‑event (survival) outcome measured at the tooth level.  
+
+- Event (failure) definition:  
+  - Tooth is considered a failure if it is symptomatic OR if any of the following interventions occur after NSRCT:  
+    - Extraction of the tooth.  
+    - Endodontic retreatment.  
+    - Apical surgery (periapical surgery).  
+
+- Survival definition:  
+  - Survival = absence of reported clinical signs or symptoms AND  
+  - No treatment intervention (no extraction, retreatment, apical surgery)  
+  - Radiographic status is ignored for survival definition (survival defined regardless of radiographic interpretation).  
+
+- Time origin:  
+  - Completion date of NSRCT.  
+
+- Time scale:  
+  - Likely time in years (or months) from NSRCT completion to event or censoring; 5‑year survival probabilities are reported in the article, so follow‑up is at least considered up to 5 years, with potentially longer maximum follow‑up.  
+
+- Censoring:  
+  - Teeth without failure by last recorded follow‑up are right‑censored at that time.  
+
+4. Study objectives and hypotheses
+----------------------------------
+
+- Objective 1:  
+  - Estimate survival rates of NSRCTs in permanent teeth of children aged 6–18 years treated at BUGSDM.  
+
+- Objective 2:  
+  - Assess predictors of failure of ETT (risk factors associated with time to failure).  
+
+- Null hypothesis (stated):  
+  - Age, gender, insurance type, tooth type, and jaw type have no effect on treatment outcome (survival) of ETT.  
+
+5. Covariates / predictors
+--------------------------
+
+All are extracted from EHR and used as categorical variables:
+
+- Age at time of treatment:  
+  - 6–11 years  
+  - 12–14 years  
+  - 15–18 years  
+
+- Gender:  
+  - Male  
+  - Female  
+
+- Insurance type (proxy for socioeconomic status):  
+  - Medicaid (MassHealth)  
+  - Private/self‑paid  
+
+- Tooth type:  
+  - Anterior  
+  - Posterior  
+
+- Jaw type:  
+  - Maxillary  
+  - Mandibular  
+
+6. Data structure and levels
+----------------------------
+
+- Unit of analysis:  
+  - Primary: tooth (ETT).  
+- Hierarchical structure:  
+  - Teeth nested within patients: some patients contributed more than one treated tooth (424 teeth from 341 patients).  
+  - This implies potential intra‑patient correlation (non‑independence of observations).  
+
+7. Data collection/measurement
+------------------------------
+
+- Data source:  
+  - Electronic dental records at BUGSDM.  
+
+- Data collection:  
+  - Manual review/scan of 25,877 records to identify patients aged 6–18 who had NSRCT during the specified years.  
+  - Data de‑identified and linked to study ID.  
+
+- Outcome ascertainment:  
+  - Based on clinical notes and procedure codes:  
+    - Symptoms documented (pain, signs).  
+    - Interventions documented (extraction, retreatment, apical surgery).  
+  - Survival determined from absence of failure criteria in follow‑up records.  
+
+- Covariates ascertainment:  
+  - Age at treatment = date of NSRCT completion – date of birth (categorized).  
+  - Gender from demographic profile.  
+  - Insurance type from billing information.  
+  - Tooth type and jaw type from tooth charting (e.g., which tooth number, then categorized as anterior/posterior and maxillary/mandibular).  
+
+8. Missing data, power, sample size calculations
+------------------------------------------------
+
+- No explicit mention of:  
+  - Formal a priori sample size or power calculation.  
+  - Detailed missing data description (aside from excluding 507 teeth for no follow‑up).  
+- For analysis, only teeth with ≥1 posttreatment record were included.  
+
+---
+
+TASK 2: STATISTICAL ANALYSIS PLAN  
+=================================
+
+I’ll assume we are redesigning the analysis plan from scratch, using best practices for survival analysis with clustered data (teeth within patients).
+
+Overview of proposed analysis:
+- Describe sample at tooth and patient level.  
+- Estimate overall and group‑specific survival (Kaplan–Meier).  
+- Compare survival curves (log‑rank).  
+- Model predictors of time to failure (Cox regression with robust or frailty terms to account for clustering).  
+- Check assumptions; consider flexible or alternative models if necessary.  
+
+I will group tests and methods into three categories as requested.
+
+---------------------------------
+CATEGORY A – MANDATORY ANALYSES
+---------------------------------
+
+A1. Descriptive statistics (non‑inferential)
+-------------------------------------------
+
+While not “tests,” these are essential; I include them for completeness of the plan.
+
+- Purpose:  
+  - Summarize distribution of covariates and follow‑up across teeth and patients.  
+
+- Methods:  
+  - Counts and percentages for categorical variables (age category, gender, insurance type, tooth type, jaw type).  
+  - Median and IQR (or mean and SD) for follow‑up time.  
+  - Number and proportion of failures vs censored teeth.  
+
+- Why appropriate:  
+  1. Provides context for interpreting survival rates and hazard ratios.  
+  2. Helps identify imbalances and possible confounding.  
+
+- When not needed:  
+  - Essentially always needed; no alternative.  
+
+A2. Kaplan–Meier (KM) survival analysis
+---------------------------------------
+
+- Test/method name:  
+  - Kaplan–Meier estimator of the survival function.  
+
+- Purpose:  
+  - Estimate the probability of tooth survival over time (overall and stratified by key covariates, particularly age categories).  
+  - Derive survival probabilities at specific time points (e.g., 1-, 3-, 5‑year survival).  
+
+- Why appropriate:  
+  1. Primary outcome is time‑to‑event with right‑censoring; KM is the standard nonparametric survival estimator in this setting.  
+  2. Accommodates varying follow‑up times and censoring without strong parametric assumptions about the shape of the hazard or survival function.  
+
+- Why it may not be appropriate:  
+  1. It does not directly adjust for multiple covariates; it gives unadjusted survival curves.  
+  2. KM assumes non‑informative censoring and independent observations; teeth from the same patient violate strict independence.  
+
+- When this method should NOT be used:  
+  - If there is heavy competing risk (e.g., if other causes of loss of tooth dominate and we specifically care about cause‑specific cumulative incidence), KM can overestimate event probability.  
+  - If time origin is ambiguous or not consistently defined across subjects.  
+
+- Alternative if assumptions are violated:  
+  - If independence of observations is a major concern and clustering is strong but number of teeth per patient is small, one can still use KM descriptively but supplement with:  
+    - Cluster‑bootstrap confidence intervals for survival estimates; or  
+    - A marginal model (e.g., Cox with robust variance) for covariate adjustment.  
+  - If there are clinically meaningful competing risks (e.g., tooth loss due to trauma unrelated to NSRCT outcome), use the cumulative incidence function (Fine–Gray model) instead of KM.  
+
+A3. Log‑rank test for comparing survival curves
+-----------------------------------------------
+
+- Test name:  
+  - Log‑rank test (Mantel–Cox test).  
+
+- Purpose:  
+  - Compare the survival experience of different groups (e.g., age categories, gender, insurance type, tooth type, jaw type) in an unadjusted manner.  
+
+- Why appropriate:  
+  1. Designed specifically to test equality of survival functions between two or more groups with censored data.  
+  2. Nonparametric and widely understood; useful for preliminary assessment of group differences before modeling.  
+
+- Why it may not be appropriate:  
+  1. Assumes proportional hazards between groups; if hazards cross strongly, the test’s power and interpretation are compromised.  
+  2. Treats each tooth as an independent observation; clustering within patients can inflate Type I error.  
+
+- When this test should NOT be used:  
+  - When sample size per group is very small (few events), especially if the event counts are <5 per group.  
+  - When there is strong violation of proportional hazards and pre‑specified time intervals or weighted tests would be more suitable.  
+
+- Alternative if assumptions are violated:  
+  - Use weighted log‑rank tests (e.g., Tarone–Ware, Peto–Peto) if early or late events are of primary interest and proportional hazard assumption is doubtful.  
+  - Use Cox regression (with robust sandwich standard errors or frailty terms) to compare hazards with adjustment for clustering and covariates.  
+
+A4. Cox proportional hazards regression (primary multivariable model)
+--------------------------------------------------------------------
+
+- Test/method name:  
+  - Cox proportional hazards (PH) regression model.  
+  - Model the hazard of ETT failure as a function of covariates.  
+
+- Purpose:  
+  - Quantify the association between age, gender, insurance type, tooth type, jaw type, and hazard of failure of ETT, adjusting for other covariates.  
+  - Provide adjusted hazard ratios (HRs) with 95% confidence intervals.  
+
+- Why appropriate:  
+  1. The objective explicitly involves estimating effect of predictors on time‑to‑event; Cox PH is the standard semi‑parametric method for this.  
+  2. Handles right‑censoring and does not require specifying baseline hazard.  
+  3. Well suited for categorical predictors and interpretation via hazard ratios.  
+
+- Why it may not be appropriate:  
+  1. Assumes proportional hazards (relative hazards constant over time) for each covariate; if this is strongly violated, estimates may be biased or hard to interpret.  
+  2. Standard Cox models assume independence of observations; teeth within the same patient may have correlated failure times, leading to underestimated standard errors if not addressed.  
+
+- When this test should NOT be used:  
+  - If there is severe violation of proportional hazards that cannot be remedied (e.g., non‑proportional and complex time‑varying effects) and flexible modeling is not considered.  
+  - If events are extremely sparse for some categories (e.g., very few failures in one age group), leading to unstable HR estimates.  
+
+- Alternatives if assumptions are violated:  
+  1. For non‑independence/clustering (teeth within patients):  
+     - Cox model with robust sandwich variance estimator clustered by patient ID (marginal model, same HR estimates but corrected SEs).  
+     - Shared frailty Cox model with a random effect (frailty term) for patient.  
+  2. For non‑proportional hazards:  
+     - Cox model with time‑varying coefficients (include interactions with log(time) or piecewise constant hazard).  
+     - Stratified Cox model (e.g., stratify by tooth type or age group when PH is violated for that factor but remains a potential confounder).  
+     - Flexible parametric survival models (e.g., Royston–Parmar models) or fully parametric models (Weibull, log‑normal) that allow non‑PH.  
+
+Recommendation:  
+- Use a Cox model with robust standard errors clustered by patient ID as default. Test PH assumption (see B1). If necessary, adopt time‑varying effects or stratified models.  
+
+------------------------------------
+CATEGORY B – RECOMMENDED ANALYSES
+------------------------------------
+
+These are not strictly necessary but substantially improve rigor and interpretability.
+
+B1. Diagnostics for proportional hazards (PH) assumption
+--------------------------------------------------------
+
+- Test/approach:  
+  - Schoenfeld residuals test and plots.  
+  - Log‑log survival plots by category.  
+
+- Purpose:  
+  - Assess whether PH assumption holds for each covariate in the Cox model.  
+
+- Why appropriate:  
+  1. Ensures validity of Cox model conclusions; if PH is violated, hazard ratios may vary over time and interpretation changes.  
+  2. Helps decide whether to modify the model (e.g., include time‑varying covariates or stratification).  
+
+- Why it may not be appropriate:  
+  1. With small numbers of events, tests can have low power; a “non‑significant” test may not guarantee PH holds.  
+  2. PH tests and plots are less informative for continuous covariates when modeled as categories with sparse groups.  
+
+- When NOT to use:  
+  - When using an explicitly non‑PH model (e.g., fully parametric model chosen for time‑varying hazards) as the primary analysis.  
+
+- Alternatives if assumptions are violated:  
+  - As above: time‑varying coefficients, stratified Cox, flexible parametric models.  
+
+B2. Model for clustering: robust variance or frailty model
+----------------------------------------------------------
+
+- Method names:  
+  1. Cox model with robust (sandwich) variance estimates clustered by patient.  
+  2. Shared frailty Cox model (e.g., gamma frailty on patient ID).  
+
+- Purpose:  
+  - Address non‑independence of teeth within patients, improving standard error and confidence interval estimates, and optionally modeling between‑patient heterogeneity.  
+
+- Why appropriate:  
+  1. Data structure has multiple teeth per patient; ignoring clustering can underestimate SEs, leading to inflated Type I error.  
+  2. Frailty models can provide insight into unobserved patient‑level factors influencing risk of failure (random effect variance).  
+
+- Why it may not be appropriate:  
+  1. With very few clustered units (i.e., if most patients have only one tooth), the gain in robustness may be minimal and frailty variance poorly estimated.  
+  2. Frailty models make additional distributional assumptions (e.g., gamma frailty); misspecification can mislead.  
+
+- When NOT to use:  
+  - Frailty model:  
+    - If nearly all patients contribute only one tooth or there are too few clusters; model may be unstable or non‑identifiable.  
+  - Cluster‑robust variance:  
+    - If number of clusters (patients) is extremely small (<30); robust SEs become unreliable. Here, we have ~341 patients, so it is appropriate.  
+
+- Alternatives if assumptions are violated:  
+  - Use marginal models with generalized estimating equations (GEE) for discrete‑time survival (if time is grouped into intervals) with robust SEs.  
+  - Conduct sensitivity analyses treating one tooth per patient (random selection or first treated) to assess influence of clustering.  
+
+B3. Multivariable model building and assessment
+-----------------------------------------------
+
+- Methods:  
+  - Include all covariates a priori (age group, gender, insurance type, tooth type, jaw type) in the Cox model, based on clinical rationale.  
+  - Optionally explore interactions, particularly:  
+    - Age × tooth type  
+    - Age × jaw type  
+    - Insurance × tooth type  
+
+- Purpose:  
+  - Obtain adjusted effects; explore whether some associations differ by strata.  
+
+- Why appropriate:  
+  1. Reduces confounding compared with univariate models or crude survival curves.  
+  2. Identification of effect modification can provide clinically relevant insights (e.g., whether young age is particularly detrimental for posterior teeth).  
+
+- Why it may not be appropriate:  
+  1. With limited events, including too many parameters (especially interactions) risks overfitting.  
+  2. Data‑driven variable selection (stepwise methods) can produce unstable estimates and biased p‑values.  
+
+- When NOT to use:  
+  - Do not fit complex interaction models when total number of events is small or distribution of covariates across events is highly imbalanced.  
+
+- Alternatives if assumptions are violated:  
+  - Use penalized Cox regression (e.g., Firth penalized likelihood or ridge) to reduce small‑sample bias.  
+  - Pre‑specify a limited set of interactions and test them one at a time, rather than exhaustive stepwise exploration.  
+
+B4. Check of influential observations and model fit
+---------------------------------------------------
+
+- Methods:  
+  - Deviance residuals, Martingale residuals.  
+  - DFBETAs to detect influential teeth/patients.  
+  - Compare observed versus predicted survival in key strata.  
+
+- Purpose:  
+  - Identify outliers or influential observations that unduly affect hazard ratio estimates.  
+
+- Why appropriate:  
+  1. Ensures that a few extreme cases (e.g., very early failures or very long‑term survivors) are not distorting overall results.  
+  2. Supports robustness of conclusions.  
+
+- Why it may not be appropriate:  
+  1. With relatively small datasets and few covariates, complex diagnostics may not change conclusions and may be overkill.  
+
+- When NOT to use:  
+  - May not be needed when the model is very simple and results are robust in sensitivity checks.  
+
+- Alternatives if assumptions/fit issues are found:  
+  - Refit the model excluding influential observations as a sensitivity analysis.  
+  - Consider transformation or recategorization of problematic covariates.  
+
+B5. Presentation of adjusted survival curves
+--------------------------------------------
+
+- Method:  
+  - Use Cox model to derive covariate‑adjusted survival curves (e.g., via “direct adjusted” or “marginal” survival curves for each age group, with other covariates held at observed mix).  
+
+- Purpose:  
+  - Present survival probabilities for age groups adjusted for other covariates, enhancing interpretability (beyond raw KM).  
+
+- Why appropriate:  
+  1. Helps clinicians understand expected survival for a “typical” child in each age group.  
+  2. Bridges the gap between crude KM plots and abstract HRs.  
+
+- Why it may not be appropriate:  
+  1. Requires a correctly specified Cox model; mis‑specification affects curves.  
+  2. Might be confusing if unadjusted and adjusted curves differ markedly without clear explanation.  
+
+- When NOT to use:  
+  - If the multivariable model is not reliable (e.g., severe non‑PH, major misspecification).  
+
+- Alternatives:  
+  - Provide stratified KM curves and describe adjustment in text using HRs.  
+
+--------------------------------
+CATEGORY C – OPTIONAL ANALYSES
+--------------------------------
+
+These are supplementary, for additional insights.
+
+C1. Competing risks analysis (if applicable)
+-------------------------------------------
+
+- Method:  
+  - Cumulative incidence function and Fine–Gray subdistribution hazard model.  
+
+- Purpose:  
+  - If there are clearly distinct types of failure that may preclude each other (e.g., tooth extraction due to orthodontic reasons, trauma unrelated to NSRCT), assess cause‑specific probabilities.  
+
+- Why appropriate:  
+  1. Provides more nuanced understanding when different types of events are possible and some are not directly attributable to NSRCT quality.  
+  2. Avoids overestimation of event probabilities for specific causes when competing risks are common.  
+
+- Why it may not be appropriate:  
+  1. The current outcome definition already lumps extraction, retreatment, apical surgery, and symptoms into a single composite failure; competing risks are not distinguished.  
+  2. Requires detailed reason‑for‑extraction/retreatment data, which may not be consistently recorded in this retrospective dataset.  
+
+- When NOT to use:  
+  - When causes of failure are not reliably distinguishable or sample size per cause is too small.  
+
+- Alternatives:  
+  - Maintain composite endpoint and perform sensitivity analysis excluding events that are clearly unrelated to NSRCT (if identifiable).  
+
+C2. Parametric survival models (Weibull, log‑normal, etc.)
+----------------------------------------------------------
+
+- Method:  
+  - Fit parametric models (e.g., Weibull, log‑logistic, log‑normal) for time to failure.  
+
+- Purpose:  
+  - Provide an alternative modeling approach that can yield estimates of absolute risks, median survival times, and be more efficient if the parametric assumptions are reasonable.  
+
+- Why appropriate:  
+  1. Can model non‑PH relationships (e.g., via shape parameter) and provide extrapolation beyond observed follow‑up.  
+  2. May provide smoother, more interpretable survival curves and hazard functions.  
+
+- Why it may not be appropriate:  
+  1. Requires correct model choice; misspecification of distribution leads to biased estimates.  
+  2. Interpretability of model parameters may be less familiar to clinicians compared to Cox model HRs.  
+
+- When NOT to use:  
+  - If data do not fit any common parametric distribution reasonably (assessed via plots, AIC/BIC, etc.).  
+
+- Alternatives:  
+  - Flexible parametric models (splines for log cumulative hazard), or stick to Cox PH as primary.  
+
+C3. Subgroup or stratified analyses
+-----------------------------------
+
+- Examples:  
+  - Stratify by tooth type (posterior vs anterior) to see if age effects differ.  
+  - Stratify by insurance type (proxy for SES) to explore effect modification.  
+
+- Purpose:  
+  - Provide clinical insight on whether certain groups have particularly poor outcomes.  
+
+- Why appropriate:  
+  1. Age × tooth type interaction is clinically plausible (posterior permanent molars in younger children may be at particularly high risk).  
+  2. Can guide targeted prevention or treatment strategies.  
+
+- Why it may not be appropriate:  
+  1. Multiple subgroup analyses inflate Type I error and may produce spurious findings.  
+  2. Sample sizes per subgroup may be small, leading to unstable estimates.  
+
+- When NOT to use:  
+  - When event counts in subgroups are insufficient.  
+
+- Alternatives:  
+  - Focus on a small number of pre‑specified subgroup analyses with strong biological rationale and interpret as exploratory.  
+
+C4. Sensitivity analyses related to outcome definition
+------------------------------------------------------
+
+- Ideas:  
+  - Redefine failure to require both symptoms AND intervention (more specific endpoint) and re‑estimate HRs.  
+  - Alternative definition that considers radiographic evidence (if available in raw data) for a “clinical + radiographic” failure.  
+
+- Purpose:  
+  - Assess robustness of findings to alternative failure definitions.  
+
+- Why appropriate:  
+  1. Outcome definitions in endodontic survival studies vary; exploring alternatives helps compare results to other literature.  
+  2. May show whether conclusions depend heavily on how failure is defined.  
+
+- Why it may not be appropriate:  
+  1. Requires additional data abstraction (radiographic data) that may not have been systematically collected.  
+  2. Multiple endpoints complicate interpretation.  
+
+- When NOT to use:  
+  - If radiographic assessments are inconsistent or missing for many teeth.  
+
+- Alternatives:  
+  - Keep original definition as primary; describe potential impact of different definitions in discussion without re‑analyzing.  
+
+---
+
+TASK 3: INAPPROPRIATE TESTS AND WHY
+===================================
+
+Below are tests that should NOT be used for this study’s primary objectives, with reasons.
+
+1. Simple t‑tests or ANOVA on “time to failure” without censoring
+-----------------------------------------------------------------
+
+- Why inappropriate:  
+  - Time‑to‑event data are right‑censored; many teeth have not failed by last follow‑up. Treating survival time as a complete continuous outcome (and ignoring censoring) biases estimates and invalidates standard errors.  
+  - Survival distributions are typically skewed, not normal.  
+
+- When might they be used incorrectly:  
+  - Comparing mean follow‑up time or mean time‑to‑failure between age groups using t‑test or ANOVA.  
+
+- Proper alternative:  
+  - Kaplan–Meier survival analysis and log‑rank test; Cox regression for covariate adjustment.  
+
+2. Standard logistic regression on “failure yes/no” ignoring time
+-----------------------------------------------------------------
+
+- Why inappropriate for the main analysis:  
+  - Dichotomizing into “ever failed vs never failed” discards timing information and treats all censored cases as “survivors,” leading to bias, especially when follow‑up duration differs substantially between teeth.  
+  - Does not handle right‑censoring appropriately.  
+
+- When might it be used incorrectly:  
+  - Modeling risk of failure at last follow‑up using simple logistic regression, ignoring varying follow‑up times.  
+
+- Proper alternative:  
+  - Cox regression (time‑to‑event).  
+  - If one is interested in risk at a fixed time point (e.g., 5‑year failure), use time‑to‑event methods and then derive risk estimates at 5 years.  
+
+3. Chi‑square tests of “failure proportion” without accounting for time and censoring
+-------------------------------------------------------------------------------------
+
+- Why inappropriate:  
+  - Comparing crude failure proportions across groups using chi‑square ignores the fact that some groups may have shorter follow‑up and more censoring.  
+  - Over‑ or underestimates differences in survival.  
+
+- When might they be used incorrectly:  
+  - Testing association between age group and failure using only a 2×3 contingency table of failure yes/no.  
+
+- Proper alternative:  
+  - Log‑rank test for survival curves; Cox regression for adjusted comparisons.  
+
+4. Paired tests (paired t‑test, McNemar’s test) treating multiple teeth per patient as paired data
+-------------------------------------------------------------------------------------------------
+
+- Why inappropriate:  
+  - Teeth within a patient are not “paired measurements” of the same variable over time; they are multiple units of analysis with possibly correlated outcomes.  
+  - Paired designs assume specific within‑pair structure (e.g., before/after on same tooth); that is not the case here.  
+
+- Proper alternative:  
+  - Clustered Cox models (robust SEs or frailty).  
+
+5. Ordinary least squares (OLS) regression on survival time
+-----------------------------------------------------------
+
+- Why inappropriate:  
+  - OLS cannot handle censoring; censored observations would need to be dropped or artificially assigned times, leading to bias.  
+  - Survival times are typically non‑normal and heteroscedastic; OLS assumptions are violated.  
+
+- Proper alternative:  
+  - Cox or parametric survival models that handle censoring.  
+
+6. Repeated‑measures ANOVA or linear mixed models for survival outcome
+-----------------------------------------------------------------------
+
+- Why inappropriate:  
+  - Repeated measures ANOVA is for continuous outcomes measured repeatedly in the same unit; here the primary outcome is time‑to‑single event per tooth.  
+  - Mixed models time structure is not aligned with event‑time data, and censoring is not properly treated.  
+
+- Proper alternative:  
+  - Cox model with frailty (random effects at patient level) if one wants to account for between‑patient variability.  
+
+7. Non‑survival nonparametric tests (Mann–Whitney U, Kruskal–Wallis) on survival times
+---------------------------------------------------------------------------------------
+
+- Why inappropriate:  
+  - Similar to t‑tests, these tests do not handle censoring; restricting analysis to uncensored observations introduces bias.  
+
+- Proper alternative:  
+  - Log‑rank test for comparison across groups.  
+
+---
+
+TASK 4: SUMMARY / JUSTIFICATION OF OVERALL ANALYTICAL APPROACH
+==============================================================
+
+- The study’s primary endpoint is time until failure of an endodontically treated tooth, with variable follow‑up and right‑censoring.  
+- The key scientific questions concern (1) survival probabilities over time and (2) the association of age, gender, insurance type (SES), tooth type, and jaw type with risk of failure.  
+- Survival analysis methods are therefore essential:  
+  - Kaplan–Meier curves and log‑rank tests provide nonparametric, unadjusted descriptions and comparisons of survival.  
+  - Cox proportional hazards regression (with robust variance clustered by patient, or frailty) allows multivariable modeling of hazard of failure, adjusting for covariates and accounting for within‑patient clustering.  
+- Diagnostic checks (PH assumption, influential observations, clustering) improve validity and inform model refinement.  
+- Optional methods (competing risks, parametric survival models, sensitivity analyses on outcome definition) can deepen understanding but are secondary to the core KM and Cox analyses.
+
+This approach aligns with standard practice in clinical and dental epidemiology for time‑to‑event data and directly addresses the investigators’ stated objectives and null hypothesis.

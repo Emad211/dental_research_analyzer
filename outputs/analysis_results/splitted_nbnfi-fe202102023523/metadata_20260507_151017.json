@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_nbnfi-fe202102023523.pdf",
+  "timestamp": "20260507_151017",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 18970
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 7446
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 32459
+    }
+  }
+}

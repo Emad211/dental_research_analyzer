@@ -1,0 +1,304 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_s41598-021-93236-2.pdf
+Status : ok
+Time   : 20260507_151807
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design and setting
+- **Design:** In vivo **prospective cohort** (single-arm; no comparator/control group described).
+- **Framework:** Longitudinal repeated-measures follow-up over **2 years**; reporting aligned with **STROBE** flowchart.
+- **Ethics/registration:** IRB approval (SRMDC/IRB/2014/MDS/No.304); registered (CTRI/2017/10/010,246).
+
+### Objective(s) and outcomes (AAE-aligned goals)
+- **Aim:** Evaluate regenerative potential of **platelet-rich fibrin (PRF) scaffold implantation** in non-vital immature permanent maxillary central incisors over 2 years.
+- **Primary goal (clinical/radiographic healing):**
+  - Elimination of **pain/swelling** (pre-procedure symptoms).
+  - Evidence of **bony healing / resolution of apical radiolucency** (expected 6–12 months).
+- **Secondary goals (root maturation):** (expected 12–24 months)
+  - **Increase in root length**
+  - **Increase in root dentin thickness**
+  - **Decrease in apical diameter**
+- **Tertiary goal:**
+  - **Positive pulp vitality response**.
+
+### Participants and units of analysis
+- **Participants:** 19 patients (age **9–25** years).
+- **Teeth:** **23** immature, non-vital **permanent maxillary central incisors**.
+  - Note: **4 patients contributed 2 teeth each** → clustering within patient.
+- **Eligibility criteria:**
+  - Inclusion: open apex (**apical diameter > 1.1 mm**), PAI up to **2** (small changes), with/without symptoms; ASA 1–2; not allergic to required antibiotics.
+  - Exclusion: age >25; PAI >2; resorption; carious exposure; closed apex; apical diameter <1.1 mm; root fracture; medically/periodontally compromised; non-restorable; non-central incisors.
+- **Attrition:** **None** (lost to follow-up = nil).
+
+### Intervention / clinical protocol (all teeth received)
+- **Appointment 1:**
+  - LA: 2% lignocaine **without vasoconstrictor**
+  - Minimal instrumentation; irrigation: **10 mL 1% NaOCl** (2 min)
+  - Triple antibiotic paste (TAP): ciprofloxacin + metronidazole + amoxicillin (1:1:1), final concentration **0.12 mg/mL**, placed in coronal third
+  - Temporary restoration; recall at 3 weeks
+- **Appointment 2:**
+  - **PRF preparation:** 10 mL venous blood; centrifuge **3300 rpm, 12 min, 400 g**; compress to membrane/strands
+  - Irrigation: saline to remove TAP; **10 mL 1% NaOCl**, final rinse **5 mL 17% EDTA**
+  - PRF placement: into canal **1 mm beyond WL** to just below CEJ
+  - Coronal plug: **3 mm MTA**, then GIC + composite; digital radiograph
+
+### Follow-up schedule and measurements
+- **Time points:** Pre-op, and at **3, 6, 9, 12, 15, 18, 24 months** (routine follow-up stated).
+- **Clinical outcomes:**
+  - Pain/swelling/sinus (implied, not fully operationalized in excerpt)
+  - **Pulp sensibility/vitality tests:** cold (ethyl chloride) and heat (hot water) **at each interval**
+- **Radiographic outcomes (digital radiographs):**
+  - **Apical diameter (mm)**
+  - **Root length (mm)**
+  - **Dentin wall thickness (mm)** at:
+    - Mesial & distal **apical third**
+    - Mesial & distal **middle third**
+  - **Periapical status** mentioned via PAI/radiolucency resolution (but not fully specified how quantified longitudinally)
+- **Data structure:** repeated measurements per tooth over time; teeth nested within patient (non-independence).
+
+---
+
+## TASK 2 — Statistical analysis plan
+
+### General principles (apply to all analyses)
+- **Analysis population:** all treated teeth with follow-up (here, n=23; no missing follow-up per text).
+- **Unit of inference:** ideally **tooth-level**, with **patient-level clustering** handled explicitly.
+- **Descriptives:**
+  - Continuous: mean(SD) and/or median(IQR); plots over time (spaghetti plots).
+  - Binary: counts (%).
+- **Primary estimands (examples):**
+  - Mean change in apical diameter / root length / dentin thickness over time.
+  - Proportion with radiographic healing (e.g., PAI improvement/resolution) by 6–12 months.
+  - Proportion with positive sensibility at each timepoint.
+- **Multiplicity:** multiple outcomes and timepoints → control family-wise error (Holm) or use model-based contrasts with adjustment (e.g., Tukey/Šidák).
+- **Assumption checks:** residual diagnostics for models; distribution checks for continuous outcomes; evaluate outliers/leverage.
+- **Software:** R/SAS/SPSS; ensure methods support clustered longitudinal data.
+
+---
+
+# CATEGORY A — MANDATORY tests/models
+
+## A1) Linear mixed-effects model (LMM) for continuous repeated measures (with patient random effect; optional tooth random effect)
+**Purpose:** Test and estimate **change over time** in continuous outcomes (apical diameter, root length, dentin thickness measures).
+
+**Why appropriate (≥2):**
+1. Handles **repeated measures** across 8 timepoints while accounting for **within-tooth correlation**.
+2. Can incorporate **clustering of teeth within patient** via random effects (important because 4 patients have 2 teeth).
+3. Uses all timepoints simultaneously and supports **post-hoc contrasts** (e.g., pre-op vs 12m, 24m).
+
+**Why it may not be appropriate (≥1):**
+- With **small sample size** (23 teeth; only 19 patients), complex random-effects structures may be unstable.
+
+**When NOT to use:**
+- If outcome is not approximately continuous (e.g., heavily bounded/ordinal) and residuals remain non-normal/heteroscedastic despite transformation.
+- If only two timepoints exist (then simpler paired methods suffice).
+
+**Alternative if assumptions are violated:**
+- **Generalized linear mixed model (GLMM)** with appropriate distribution (e.g., Gamma/log for positive skew).
+- **Rank-based mixed models** or **GEE with robust SE**.
+- **Friedman test** (nonparametric), noting it ignores patient clustering unless adapted.
+
+**Implementation notes (recommended):**
+- Fixed effect: **time** (categorical, not necessarily linear).
+- Random effects: patient intercept; consider tooth-within-patient intercept if identifiable.
+- Covariance structure: start with random intercept + time as fixed; add correlation structure only if supported.
+
+---
+
+## A2) Generalized linear mixed model (logistic) for binary repeated measures (sensibility response; presence/absence of symptoms)
+**Purpose:** Model probability of **positive vitality response** over time (and/or symptom resolution).
+
+**Why appropriate:**
+1. Binary outcome with repeated follow-ups requires modeling correlated responses.
+2. Can include **random patient effects** to address two teeth per patient.
+
+**Why it may not be appropriate:**
+- If events are extremely rare/common at most timepoints, model separation/instability can occur.
+
+**When NOT to use:**
+- When there is no longitudinal structure (single post-treatment assessment only).
+- When the outcome is ordinal/multinomial unless expanded accordingly.
+
+**Alternative if assumptions are violated / model fails:**
+- **GEE logistic** with robust sandwich SE (population-average).
+- **Exact logistic regression** (limited longitudinal capability).
+- Aggregate to a single endpoint (e.g., “ever positive by 24 months”) and use clustered methods.
+
+---
+
+## A3) Model-based post-hoc contrasts with multiplicity control (e.g., estimated marginal means + Holm adjustment)
+**Purpose:** Identify **which timepoints differ** (e.g., pre-op vs 12m, 24m) after an overall time effect.
+
+**Why appropriate:**
+1. The clinical questions are inherently **time-anchored** (6–12m healing; 12–24m maturation).
+2. Controls inflation of Type I error from multiple comparisons across timepoints/outcomes.
+
+**Why it may not be appropriate:**
+- With very small samples, adjusted post-hoc tests may be underpowered and yield wide CIs.
+
+**When NOT to use:**
+- When only a single pre-specified contrast exists (then adjustment may be unnecessary).
+
+**Alternative if assumptions are violated:**
+- **Bootstrap CIs** for contrasts.
+- Use **pre-specified key timepoints only** (e.g., baseline vs 12m vs 24m) to reduce multiplicity burden.
+
+---
+
+# CATEGORY B — RECOMMENDED
+
+## B1) Intraclass correlation / clustering assessment (ICC) for teeth within patient
+**Purpose:** Quantify degree of **non-independence** for outcomes due to multiple teeth per patient.
+
+**Why appropriate:**
+1. Justifies need for mixed models/cluster-robust SE.
+2. Provides transparency about how much patient-level factors influence outcomes.
+
+**Why it may not be appropriate:**
+- With only 4 multi-tooth patients, ICC estimates can be imprecise.
+
+**When NOT to use:**
+- If every patient contributes exactly one tooth (no clustering).
+
+**Alternative:**
+- Use **cluster-robust SE** without estimating ICC; or sensitivity analysis excluding second tooth.
+
+---
+
+## B2) Sensitivity analysis: GEE (continuous and binary) with robust sandwich SE
+**Purpose:** Provide population-average estimates robust to some covariance mis-specification.
+
+**Why appropriate:**
+1. Less sensitive to random-effects distribution assumptions than mixed models.
+2. Robust SE can be helpful with mild model misspecification.
+
+**Why it may not be appropriate:**
+- Small number of clusters (19 patients) can make sandwich SE biased downward.
+
+**When NOT to use:**
+- When cluster count is too small for reliable robust SE without small-sample corrections.
+
+**Alternative:**
+- Mixed models with careful random-effects structure; or **cluster wild bootstrap** SE.
+
+---
+
+## B3) Reliability analysis for radiographic measurements (if ≥2 raters or repeated measures)
+**Test(s):** ICC (continuous), weighted kappa (ordinal PAI)
+**Purpose:** Ensure measurement reproducibility for radiographic outcomes.
+
+**Why appropriate:**
+1. Radiographic measurements (mm) can be rater- and calibration-dependent.
+2. Strengthens credibility of longitudinal change.
+
+**Why it may not be appropriate:**
+- If only one calibrated examiner measured once and no repeat measurements exist.
+
+**When NOT to use:**
+- When no replicate ratings are available.
+
+**Alternative:**
+- Conduct duplicate readings on a subset and compute **Bland–Altman** agreement.
+
+---
+
+## B4) Effect size estimation with confidence intervals (standardized and absolute)
+**Purpose:** Quantify magnitude of change (clinical relevance), not just p-values.
+
+**Why appropriate:**
+1. Clinical interpretation: mm changes in root length/thickness matter.
+2. Small-sample studies benefit from estimation emphasis.
+
+**Why it may not be appropriate:**
+- Standardized effect sizes can be misleading if SD changes markedly across time.
+
+**When NOT to use:**
+- When outcome scale is not meaningful or distribution is highly irregular without transformation.
+
+**Alternative:**
+- Report **median change** with **bootstrap CI**; or model-based marginal mean differences with CI.
+
+---
+
+# CATEGORY C — OPTIONAL (supplementary)
+
+## C1) Time-to-event analysis (Kaplan–Meier / Cox) for “time to healing” (if healing time is definable)
+**Purpose:** Estimate distribution of time until radiographic healing/symptom resolution.
+
+**Why appropriate:**
+1. Uses timing information (e.g., first visit when radiolucency resolved).
+2. Handles censoring if some teeth never heal by 24 months (not the case here, but applicable generally).
+
+**Why it may not be appropriate:**
+- Healing is assessed only at discrete scheduled visits; exact time is interval-censored.
+
+**When NOT to use:**
+- When all teeth heal by the first follow-up or when event time is not measurable.
+
+**Alternative:**
+- **Discrete-time survival model** or **interval-censored survival models**.
+
+---
+
+## C2) Correlation analysis between baseline severity (e.g., baseline apical diameter/PAI) and amount of maturation
+**Test:** Spearman correlation (or regression within mixed model framework)
+**Purpose:** Explore whether baseline status predicts change.
+
+**Why appropriate:**
+1. Clinically plausible effect modification.
+2. Generates hypotheses for future trials.
+
+**Why it may not be appropriate:**
+- Baseline apical diameter inclusion threshold may truncate range; small n.
+
+**When NOT to use:**
+- When baseline variables have minimal variability.
+
+**Alternative:**
+- Mixed model with baseline-by-time interaction; bootstrap inference.
+
+---
+
+## C3) Graphical longitudinal diagnostics and trajectory clustering (exploratory)
+**Purpose:** Identify heterogeneous response patterns across teeth.
+
+**Why appropriate:**
+1. May reveal subgroups (fast vs slow maturation).
+2. Supports future stratification.
+
+**Why it may not be appropriate:**
+- Underpowered; risk of overinterpretation.
+
+**When NOT to use:**
+- When sample too small for clustering stability.
+
+**Alternative:**
+- Descriptive spaghetti plots + individual change scores.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Independent-samples t-test / one-way ANOVA (between-groups)**  
+   - No independent groups; repeated measures violate independence.
+
+2. **Multiple paired t-tests at each follow-up without multiplicity adjustment**  
+   - Inflates Type I error dramatically across many timepoints/outcomes.
+
+3. **Simple linear regression ignoring clustering and repeated measures**  
+   - Underestimates SE (pseudo-replication), invalid p-values/CIs.
+
+4. **Chi-square tests treating repeated binary outcomes as independent observations**  
+   - Violates independence; repeated measures within tooth and clustering within patient.
+
+5. **Standard repeated-measures ANOVA (RM-ANOVA) without accounting for teeth-within-patient clustering**  
+   - Even if it addresses within-tooth correlation, it still assumes one observation unit per subject; here, some subjects contribute 2 teeth.
+
+---
+
+## TASK 4 — Summary justification of overall approach
+
+A single-arm prospective cohort with **longitudinal tooth-level outcomes** requires methods that (1) test **within-tooth change over time**, and (2) respect **correlation** from repeated measurements and **clustering** of teeth within some patients. Mixed-effects models (and/or GEE as sensitivity) provide valid inference, allow clinically relevant timepoint contrasts (6–12 months for healing; 12–24 months for maturation), and support estimation with confidence intervals rather than relying on numerous unadjusted pairwise tests.

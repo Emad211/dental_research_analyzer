@@ -1,0 +1,710 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_s41598-021-93236-2.pdf
+Status : ok
+Time   : 20260507_151807
+══════════════════════════════════════════════════════════════════════
+
+TASK 1 – INFORMATION EXTRACTION  
+===============================  
+
+1. STUDY DESIGN  
+----------------  
+
+- Type: Prospective cohort study (single-arm, no comparator group).  
+- Setting: Department of Conservative Dentistry and Endodontics, SRM Dental College, India.  
+- Time frame: 2-year follow-up per tooth.  
+- Unit of analysis: Tooth (maxillary permanent central incisor); 23 teeth in 19 patients.  
+- Recruitment: Consecutive/eligibility-based screening of 25 patients (30 teeth); 7 teeth excluded.  
+- Follow-up: 23 teeth followed for full 24 months; no loss to follow-up.  
+
+2. OBJECTIVES / OUTCOMES  
+-------------------------  
+
+Aim: Evaluate regenerative potential of PRF scaffold implantation in non-vital immature permanent maxillary central incisors over 2 years.
+
+Pre-specified endpoints (as per AAE guidelines, 2014):
+
+- Primary outcomes  
+  - Clinical: Elimination of symptoms of pain/swelling (before scaffold implantation).  
+  - Radiographic: Evidence of bony healing and resolution of apical radiolucency (6–12 months after treatment).  
+
+- Secondary outcomes  
+  - Radiographic morphometric changes (evaluated 12–24 months after treatment):  
+    - Increase in root length.  
+    - Increase in root dentin thickness.  
+    - Decrease in apical diameter.  
+
+- Tertiary outcome  
+  - Pulp vitality response (cold and heat tests); positive response indicating potential organized vital pulp tissue.
+
+3. STUDY POPULATION  
+--------------------  
+
+- Sample size:  
+  - 25 patients (30 teeth) screened.  
+  - 19 patients included; 23 teeth included and analyzed.  
+  - Some patients contributed multiple teeth: 4 patients with 2 teeth each (clustered data).  
+
+- Age: 9–25 years.  
+- Tooth type: Immature, non-vital permanent maxillary central incisors (teeth #11 and/or #21).  
+
+- Inclusion criteria (tooth-level):  
+  - Age 9–25 years.  
+  - Apical diameter > 1.1 mm (open apex).  
+  - Teeth with or without periapical pathosis: PAI index up to scale 2 (small changes in bone structure).  
+  - Teeth with pain, swelling, sinus opening allowed.  
+  - Patients ASA I or II and not allergic to medicaments/antibiotics needed.  
+
+- Exclusion criteria:  
+  - Age > 25 years.  
+  - Teeth with periapical index > 2.  
+  - Teeth with resorption, carious exposure, closed apex, apical diameter < 1.1 mm, root fractures.  
+  - Medically compromised patients.  
+  - Periodontally compromised teeth.  
+  - Non-restorable teeth.  
+  - Teeth other than maxillary central incisors.
+
+4. INTERVENTION PROTOCOL  
+-------------------------  
+
+- Appointment 1:  
+  - Local anesthesia: 2% lignocaine without vasoconstrictor.  
+  - Rubber dam, aseptic conditions.  
+  - Access cavity preparation (Endo access and Endo Z bur).  
+  - Working length determination; minimal instrumentation.  
+  - Irrigation: 10 mL of 1% NaOCl for 2 min with side-vented needle, 1 mm short of WL.  
+  - Dry canal with paper points (2 mm short of WL).  
+  - Intracanal medicament: triple antibiotic paste (TAP)  
+    - Composition: ciprofloxacin, metronidazole, amoxicillin, 0.02 mg each in 0.5 mL propylene glycol (1:1:1) → final concentration 0.12 mg/mL.  
+    - Placement: coronal third of root canal.  
+  - Temporary restoration: Cavit G.  
+  - Radiograph taken.  
+  - Recall at 3 weeks.
+
+- Appointment 2: PRF preparation and placement  
+  - Systemic blood collection: 10 mL venous blood from median cubital vein.  
+  - Centrifugation: 3300 rpm, 12 min, ~400 g, glass tube → PRF membrane formed and compressed.  
+  - Local anesthesia: 3% mepivacaine without vasoconstrictor.  
+  - Rubber dam and aseptic protocol.  
+  - Removal of temporary restoration and flushing out TAP with saline.  
+  - Irrigation: 10 mL of 1% NaOCl, followed by 5 mL of 17% EDTA (final rinse).  
+  - Dry canal with paper points.  
+  - PRF placement: thin strands cut and placed into canal with Buchanan hand pluggers:  
+    - Apically: 1 mm beyond working length.  
+    - Coronally: up to just below CEJ.  
+  - Coronal seal: 3-mm MTA plug over PRF scaffold.  
+  - Canal orifice sealed with Type II glass ionomer cement.  
+  - Final restoration: composite resin.  
+  - Digital radiograph taken.
+
+5. FOLLOW-UP AND DATA COLLECTION  
+---------------------------------  
+
+- Follow-up time points (per tooth):  
+  - Baseline (pre-op: before treatment).  
+  - Post-op specified radiographic/clinical assessments at: 3, 6, 9, 12, 15, 18, and 24 months.  
+
+- Clinical assessments:  
+  - Symptoms: presence/absence of pain, swelling, sinus tract; timing not detailed but implied at each follow-up.  
+  - Pulp vitality:  
+    - Cold test: ethyl chloride spray.  
+    - Heat test: hot water.  
+    - Performed at each time interval. Response likely recorded as positive/negative.  
+
+- Radiographic assessments:  
+  - Imaging: digital periapical radiographs; radiographic examples given in Figures 2–4.  
+  - The morphological parameters appear to be measured and compared across time; Table 1 shows mean difference vs baseline (pre-op) with SDs.  
+
+  Parameters in Table 1 (per tooth, repeated measures):
+
+  1. Apical Diameter (mm)  
+     - Variable: change from baseline at each time point.  
+     - Values in Table 1 are mean (SD) of difference between pre- and post-op values.  
+     - From table: no change (0) at baseline, 3, 6 months, then increases in “difference” values at later times:
+       - 9 months: 0.300 (0.47)  
+       - 12 months: 0.83 (0.38)  
+       - 15 months: 1.09 (0.288)  
+       - 18 months: 1.35 (0.487)  
+       - 24 months: 1.83 (0.388)  
+     - Footnote: different superscripts (a,b) across time indicate statistical significant difference (p<0.05).  
+
+  2. Root Length (mm)  
+     - Similar structure: difference from pre-op at each time point.  
+     - 0 at baseline/3/6 months; then increases over time.  
+
+  3. Thickness of mesial dentinal wall – apical third (mm)  
+  4. Thickness of distal dentinal wall – apical third (mm)  
+  5. Thickness of mesial dentinal wall – middle third (mm)  
+  6. Thickness of distal dentinal wall – middle third (mm)  
+     - All reported as mean (SD) differences from baseline at each time point.  
+     - Some time points have 0 difference (no measurable change), then progressive increases.  
+     - Superscripts: a, b marking groups of time points that do or do not differ statistically.  
+
+- Interpretive note:  
+  - There is likely some confusion in the table between “decrease in apical diameter” (stated secondary goal) and increasing “difference” values (which appear positive). Most likely: source table is “change in radiographic measurements from pre-op” where larger positive difference in root length/dentin thickness and larger negative change in apical diameter translate to magnitude of change; the sign may have been omitted (presented as absolute magnitude). For planning, treat apical diameter as continuous, with expected decrease versus baseline.  
+
+6. VARIABLES SUMMARY  
+---------------------  
+
+Per tooth:
+
+- ID variables:  
+  - Patient ID (19 levels).  
+  - Tooth ID (23 teeth, some nested in patients).
+
+- Baseline variables:  
+  - Age (years).  
+  - Sex (not reported but typical).  
+  - PAI index (ordinal 0–2 for inclusion; actual baseline values presumably recorded).  
+  - Baseline root length (mm).  
+  - Baseline apical diameter (mm).  
+  - Baseline mesial/distal dentinal wall thickness in apical and middle thirds (mm).  
+  - Baseline symptoms: pain (yes/no), swelling (yes/no), sinus tract (yes/no).  
+  - Tooth number: 11 vs 21.  
+
+- Follow-up variables (per scheduled time point):  
+  - Clinical:  
+    - Pain/swelling/sinus (yes/no).  
+    - Pulp vitality test results (cold: positive/negative; heat: positive/negative; possibly response latency).  
+
+  - Radiographic continuous measures:  
+    - Root length (mm).  
+    - Apical diameter (mm).  
+    - Dentinal wall thickness (mm) at:  
+      - Mesial apical third.  
+      - Distal apical third.  
+      - Mesial middle third.  
+      - Distal middle third.  
+    - Periapical status (e.g., PAI ordinal score, or binary healing yes/no).  
+
+  - Derived variables:  
+    - Change from baseline at each time point for each radiographic measure (as in Table 1).  
+    - Success composite: absence of symptoms + radiographic healing + favorable root development ± positive vitality.  
+
+7. DATA STRUCTURE  
+------------------  
+
+- Longitudinal, repeated measures per tooth (7 post-treatment time points + baseline).  
+- Correlated data:  
+  - Within-tooth over time.  
+  - Within-patient for patients contributing >1 tooth.  
+
+- Sample size is small (n=23 teeth); normality of change scores may be uncertain; nonparametric or robust methods should be considered.
+
+---
+
+TASK 2 – STATISTICAL ANALYSIS PLAN  
+===================================  
+
+I’ll propose a full plan, assuming we have raw longitudinal data (not just Table 1). Tests are grouped into mandatory, recommended, and optional, as requested.
+
+GENERAL PRINCIPLES  
+-------------------  
+
+- Analysis population: all 23 treated teeth (full cohort, no dropouts).  
+- Significance level: α = 0.05 (two-sided).  
+- No multiplicity adjustment is strictly necessary for a single-arm exploratory study, but we should be cautious in interpreting multiple time-based comparisons (discuss in limitations).  
+- Distribution checks: for continuous variables at each time point and for change scores; use normality diagnostics and visual plots.  
+- Handling repeated measures: prefer methods that handle within-tooth correlation (repeated-measures ANOVA or linear mixed models).  
+- Clustered teeth within patients: adjust in sensitivity analyses (e.g., mixed models with random patient effect, or cluster-robust SEs).
+
+--------------------------------------  
+CATEGORY A – MANDATORY ANALYSES  
+--------------------------------------  
+
+A1. Descriptive statistics  
+---------------------------  
+
+- Purpose: Characterize the cohort and summarize all outcomes at each time point.  
+- Methods:  
+  - Continuous variables: mean, SD, median, IQR, min, max at each time point (root length, apical diameter, dentin thickness).  
+  - Categorical variables: counts and percentages (e.g., presence of symptoms, vitality test results, periapical healing).  
+  - Graphs: line plots of mean ± SE over time; spaghetti plots of individual trajectories; histograms/boxplots of key variables.
+
+Why appropriate (≥2 reasons):  
+1. Essential to understand data distributions and baseline characteristics, and to interpret subsequent inferential statistics.  
+2. Allows visual assessment of treatment effect over time and possible non-linear trajectories.  
+
+Why it may not be appropriate:  
+- Not a test; descriptive statistics alone don’t provide inferential evidence or account for within-tooth correlation.  
+
+When NOT to use:  
+- N/A as a test; but one should not rely on descriptive summaries alone to claim efficacy.  
+
+Alternative if assumptions violated:  
+- Use median/IQR instead of mean/SD if distributions are highly skewed; use robust summaries.
+
+---
+
+A2. Within-tooth longitudinal comparison for continuous radiographic outcomes  
+(Repeated-measures ANOVA or Linear Mixed-Effects Model)  
+--------------------------------------------------------------------------  
+
+Test names:  
+- Primary option (simple): Repeated-measures ANOVA (RM-ANOVA) on change-from-baseline.  
+- More robust option: Linear mixed-effects model (LMM) with random intercept for tooth (and possibly patient).
+
+Outcomes:  
+- Continuous:  
+  - Apical diameter (mm) or its change from baseline.  
+  - Root length (mm) or its change from baseline.  
+  - Dentinal wall thickness measures (mm) at 4 locations.  
+
+Purpose:  
+- To evaluate whether there is a statistically significant change over time in each morphological parameter after PRF treatment, and to identify at which time points changes become significant relative to baseline or earlier time points.
+
+Why appropriate (≥2 reasons):  
+1. Same teeth measured at multiple time points → RM-ANOVA/LMM explicitly models within-tooth correlation.  
+2. Continuous outcomes with roughly interval-scale measurement lend themselves to parametric models; RM-ANOVA/LMM can assess overall time effect and pairwise comparisons between time points.  
+3. Mixed models can handle unbalanced or missing data (though here follow-up is complete).  
+
+Why it may not be appropriate:  
+- RM-ANOVA assumptions:  
+  - Normally distributed residuals.  
+  - Sphericity (equal variances of differences between time points).  
+  - No serious outliers.  
+- For small n (23), normality may be questionable; sphericity is often violated; teeth nested within patients introduce an extra correlation layer not handled by simple RM-ANOVA.  
+
+When this test should NOT be used:  
+- RM-ANOVA should not be used when:  
+  - Data are clearly non-normal and robust transformations do not help.  
+  - There are substantial missing values with non-random patterns.  
+  - Sphericity is severely violated and corrections (Greenhouse–Geisser, Huynh–Feldt) are unreliable due to small sample size.  
+
+Alternatives if assumptions are violated:  
+- For non-normal continuous outcomes:  
+  - Friedman test (nonparametric repeated-measures test) for overall time effect, followed by post-hoc Wilcoxon signed-rank tests with multiple comparison adjustment.  
+- For complex correlation (teeth within patients, non-sphericity):  
+  - Linear mixed-effects model (LMM) with:  
+    - Random intercept for tooth; optional random intercept for patient if convergence allows.  
+    - Time as categorical fixed effect.  
+    - Robust (sandwich) standard errors if distributional assumptions are questionable.  
+- If change is essentially monotonic and linear: simple repeated-measures regression with time as continuous predictor (LMM).
+
+Implementation detail (plan):  
+- For each continuous outcome:  
+  - Start with LMM: outcome_ij = β0 + β1*time_ij + u_tooth + ε_ij (time as categorical).  
+  - If necessary, add random intercept for patient.  
+  - For reporting: estimate mean difference from baseline at each time and 95% CI; test overall time effect (likelihood ratio test or F test).  
+  - Use RM-ANOVA only if mixed modelling is unavailable.
+
+---
+
+A3. Pre-post comparison for key time points using paired tests  
+--------------------------------------------------------------  
+
+Test names:  
+- Paired t-test (for normally distributed changes).  
+- Wilcoxon signed-rank test (nonparametric alternative).
+
+Primary contrasts:  
+- Pre-op vs 12 months.  
+- Pre-op vs 24 months.  
+
+Outcomes:  
+- Apical diameter (mm).  
+- Root length (mm).  
+- Dentinal wall thickness at 4 locations (mm).  
+
+Purpose:  
+- To quantify magnitude and significance of change at clinically relevant follow-up times (12 and 24 months) relative to baseline.
+
+Why appropriate (≥2 reasons):  
+1. Pairs are clearly defined (same tooth before and after treatment); paired tests control for tooth-level baseline heterogeneity.  
+2. Continuous data with small sample size: paired t/Wilcoxon give straightforward effect estimates and p-values; clinically easy to interpret.  
+
+Why it may not be appropriate:  
+- Paired t-test assumes approximately normal distribution of within-tooth differences; with n=23 this may not hold.  
+- Does not use intermediate time points or longitudinal structure; may ignore patterns like early vs late change.  
+
+When NOT to use:  
+- Do not use paired t-test when change scores are severely skewed or contain strong outliers; in that case use Wilcoxon signed-rank.  
+- Do not use multiple uncorrected paired tests across many time points to make strong inferential claims, due to multiplicity.  
+
+Alternative if assumptions violated:  
+- Wilcoxon signed-rank test for non-normal change scores.  
+- For more complex temporal structure, rely on LMM / Friedman as primary analysis.
+
+---
+
+A4. Categorical clinical outcomes over time (symptoms, vitality, radiographic healing)  
+--------------------------------------------------------------------------------------  
+
+Test names:  
+- McNemar’s test (for paired binary baseline vs follow-up).  
+- Cochran’s Q test (for binary outcome measured at multiple time points).  
+
+Outcomes:  
+- Presence of pain/swelling: yes/no at each visit.  
+- Presence of sinus tract: yes/no at each visit.  
+- Pulp vitality: positive vs negative at each follow-up.  
+- Periapical healing: healed vs not healed (if defined; e.g., PAI ≤ a threshold).  
+
+Purpose:  
+- To test whether the proportion of teeth with symptoms or with positive vitality changes significantly over time, and to quantify these changes at key time points.
+
+Why appropriate (≥2 reasons):  
+1. Outcomes are binary, measured repeatedly on the same tooth; McNemar and Cochran’s Q specifically account for within-tooth pairing.  
+2. Provide straightforward tests of improvement (e.g., proportion pain-free, proportion with positive vitality).  
+
+Why it may not be appropriate:  
+- For small sample sizes with rare events, asymptotic approximations may be poor (expected counts <5).  
+- Does not model trend or incorporate covariates; only tested as simple repeated-proportion comparisons.  
+
+When NOT to use:  
+- When more than 2 categories (e.g., ordinal PAI scale) without collapsing; in that case use ordinal methods.  
+- When time is high and sample small, Cochran’s Q may have limited power and interpretability.  
+
+Alternative if assumptions violated:  
+- Exact McNemar test for small/imbalanced tables.  
+- Generalized linear mixed model (GLMM) with logit link (binary outcome, random intercept for tooth) to model probability of healing or vitality over time and adjust for covariates or clustering by patient.
+
+---
+
+A5. Summary success rate analysis  
+----------------------------------  
+
+Test:  
+- Exact binomial test or binomial proportion CI, not strictly a “test” but classification with inference.
+
+Outcome:  
+- Overall treatment success at 24 months (composite): absence of clinical symptoms + radiographic healing + favorable root development; optionally positive vitality.
+
+Purpose:  
+- To estimate and report the success proportion and its 95% confidence interval.
+
+Why appropriate (≥2 reasons):  
+1. Single-arm cohort; primary clinically relevant message is the proportion of teeth achieving predefined success criteria.  
+2. Binomial CI (e.g., Clopper–Pearson or Wilson) gives a better sense of precision than just reporting “23/23 succeeded” (if that is the case).  
+
+Why it may not be appropriate:  
+- If success definition is not clearly documented or is post hoc, interpretation becomes subjective.  
+- Does not compare with any control group, so effect size is not comparative.  
+
+When NOT to use:  
+- N/A; estimating success rates is always reasonable.  
+
+Alternative if assumptions violated:  
+- If multiple correlated teeth per patient matter, consider cluster-adjusted CI (e.g., via GEE or bootstrap).  
+
+--------------------------------------  
+CATEGORY B – RECOMMENDED ANALYSES  
+--------------------------------------  
+
+B1. Linear mixed-effects models accounting for clustering by patient  
+-------------------------------------------------------------------  
+
+Test:  
+- Linear mixed-effects model (LMM) with random intercepts for tooth nested within patient.
+
+Purpose:  
+- To refine analysis of continuous outcomes (root length, apical diameter, dentin thickness) by explicitly modelling correlation:  
+  - Repeated measures within teeth.  
+  - Multiple teeth within some patients.
+
+Why appropriate (≥2 reasons):  
+1. Teeth from the same patient are not independent; ignoring this clustering slightly underestimates standard errors. LMM can include random effects for patient and tooth.  
+2. LMM allows modeling of time as continuous or categorical, tests for linear/nonlinear trends, and can incorporate baseline covariates (age, baseline PAI, initial apical diameter).  
+
+Why it may not be appropriate:  
+- Small sample: only 19 patients (4 with 2 teeth) may limit the reliability of random patient effects; convergence issues possible.  
+
+When NOT to use:  
+- When model fails to converge or variance components cannot be reliably estimated (e.g., random patient effect variance ~0).  
+- When there’s only one observation per cluster.  
+
+Alternative if assumptions violated:  
+- RM-ANOVA with Greenhouse–Geisser correction considering tooth as independent unit, and mention limitation.  
+- Use robust cluster-robust SEs for tooth-level analyses clustered by patient (e.g., via GEE with independent working correlation).  
+
+---
+
+B2. Nonparametric repeated measures for continuous outcomes  
+-----------------------------------------------------------  
+
+Test:  
+- Friedman test for each continuous parameter, across time points.  
+
+Purpose:  
+- To provide assumption-free confirmation of time effects when parametric assumptions for RM-ANOVA/LMM are questionable.
+
+Why appropriate (≥2 reasons):  
+1. Repeated measurements on the same tooth, but without assuming normality; Friedman uses rank-based method.  
+2. Particularly suitable for small samples with potential skewness and outliers, common with radiographic measurements.  
+
+Why it may not be appropriate:  
+- Friedman requires complete data across all time points; missing values (if any) cause casewise deletion.  
+- It cannot adjust for clustering by patient or covariates; only tests global time effect.  
+
+When NOT to use:  
+- When missingness is non-trivial or unbalanced follow-up schedules exist.  
+- When interest is in modeling effect modifiers or covariates.  
+
+Alternative if assumptions violated:  
+- Use LMM with robust SEs; or reduce number of time points (e.g., focus on 0, 12, 24 months) so nonparametric methods are more manageable.  
+
+---
+
+B3. Trends in binary outcomes: GLMM or GEE for vitality/healing  
+----------------------------------------------------------------  
+
+Test:  
+- Generalized linear mixed model (logistic) or generalized estimating equations (GEE).  
+
+Outcome examples:  
+- Probability of positive vitality test over time.  
+- Probability of radiographic healing (e.g., PAI ≤1) over time.  
+
+Purpose:  
+- To model the trajectory of binary outcomes and identify at what times they change significantly; to adjust for covariates (e.g., age, initial apical diameter).  
+
+Why appropriate (≥2 reasons):  
+1. Binary longitudinal outcomes with within-tooth correlation; GLMM/GEE are designed for such data.  
+2. Can handle uneven numbers of observations and adjust for clustering by patient if needed.  
+
+Why it may not be appropriate:  
+- Small sample size and possibly complete separation (if all cases become healed) can cause convergence or instability in logistic models.  
+
+When NOT to use:  
+- When event counts are too small (e.g., 23/23 healed at all later time points → no variability).  
+- When modeling complexity doesn’t add value beyond simple proportion summaries.  
+
+Alternative if assumptions violated:  
+- Use descriptive proportions and exact tests (McNemar/Cochran’s Q) only.  
+- Collapse time points (e.g., early vs late) to increase variability if modeling is still desired.
+
+---
+
+B4. Effect size reporting and confidence intervals  
+--------------------------------------------------  
+
+Test/metric:  
+- Cohen’s d for standardized mean changes, or simple mean change with 95% CI.  
+- Risk difference / risk ratio for binary outcomes with 95% CI.
+
+Purpose:  
+- To quantify magnitude of change in clinically interpretable metrics, not just p-values.
+
+Why appropriate (≥2 reasons):  
+1. Enhances clinical interpretation (e.g., mm of root growth, mm of apical closure).  
+2. Allows comparison with other studies and supports meta-analyses.  
+
+Why it may not be appropriate:  
+- Standardized effect sizes (Cohen’s d) can be unstable with small samples; 95% CIs may be wide.  
+
+When NOT to use:  
+- Do not over-interpret standardized effect sizes in very small samples.  
+
+Alternative if assumptions violated:  
+- Use nonparametric effect-size metrics (e.g., Hodges–Lehmann median difference) with CIs.
+
+---
+
+B5. Sensitivity analyses using absolute vs relative change, and time windows  
+---------------------------------------------------------------------------  
+
+Analyses:  
+- Compare results using absolute change (mm) vs percentage change from baseline.  
+- Compare early (0–12 months) vs late (12–24 months) intervals.
+
+Purpose:  
+- To investigate robustness of conclusions to different ways of expressing change; to characterize the time pattern (e.g., most change after 12 months).
+
+Why appropriate (≥2 reasons):  
+1. Radiographic measurement errors may scale with baseline size; percentage change can be more meaningful.  
+2. Clinical interpretation sometimes depends on whether early or late changes are more pronounced.  
+
+Why it may not be appropriate:  
+- Percentage change unstable when baseline values are small (e.g., small initial root length).  
+- Multiple additional analyses raise multiplicity concerns.  
+
+When NOT to use:  
+- If baseline measure can be zero; percentage change undefined.  
+
+Alternative if assumptions violated:  
+- Use mixed models including baseline value as a covariate, rather than percentage changes.
+
+--------------------------------------  
+CATEGORY C – OPTIONAL ANALYSES  
+--------------------------------------  
+
+C1. Time-to-event analysis (if partial successes exist)  
+------------------------------------------------------  
+
+Test:  
+- Kaplan–Meier survival analysis and log-rank test (no comparator here; so KM only).  
+
+Outcome:  
+- Time to clinical resolution of pain/swelling.  
+- Time to radiographic healing (first visit at which healing criteria met).  
+
+Purpose:  
+- To describe distribution of times until clinical/radiographic success (e.g., median time to healing).  
+
+Why appropriate (≥2 reasons):  
+1. If some teeth heal earlier than others, time-to-event analysis gives richer information than binary status at fixed time.  
+2. Can handle right-censoring if some teeth do not heal by 24 months (which may not be the case here).  
+
+Why it may not be appropriate:  
+- With only 23 teeth and possibly universal healing, survival methods may be trivial (all events, almost same timing).  
+
+When NOT to use:  
+- When nearly all teeth reach the event at the same visit and there is no censoring; KM curves add no information.  
+
+Alternative:  
+- Report time distribution descriptively (e.g., counts healed by each visit).
+
+---
+
+C2. Correlation analyses between baseline variables and magnitude of change  
+---------------------------------------------------------------------------  
+
+Test:  
+- Pearson or Spearman correlation; simple linear regression.  
+
+Purpose:  
+- To explore whether baseline factors (age, initial apical diameter, baseline PAI) predict the magnitude of root length increase or apical closure.  
+
+Why appropriate (≥2 reasons):  
+1. May inform which cases benefit most from PRF (e.g., younger patients).  
+2. Hypothesis-generating analyses for future studies.  
+
+Why it may not be appropriate:  
+- Small sample size limits power and reliability; strong conclusions cannot be drawn.  
+
+When NOT to use:  
+- When the sample is too small to detect anything but large effects, or baseline variables have little variability.  
+
+Alternative:  
+- Qualitative subgroup comparisons or descriptive plots only.
+
+---
+
+C3. Analysis of concordance between cold/heat test and clinical/radiographic success  
+------------------------------------------------------------------------------------  
+
+Test:  
+- Cohen’s kappa to assess agreement between vitality tests and radiographic healing at 24 months.  
+
+Purpose:  
+- To see whether a positive vitality response corresponds well to radiographic healing or clinical success.  
+
+Why appropriate (≥2 reasons):  
+1. Multiple diagnostic indicators are used; kappa quantifies agreement beyond chance.  
+2. May inform the value of vitality testing as a surrogate of actual pulp regeneration.  
+
+Why it may not be appropriate:  
+- Small sample and potentially high prevalence of positives can produce misleading kappa values.  
+
+When NOT to use:  
+- When one category is nearly universal (e.g., 22/23 positive), yielding low variability.  
+
+Alternative:  
+- Report simple cross-tabulations and discuss qualitatively.
+
+---
+
+C4. Measurement reliability assessment (if repeated readings available)  
+---------------------------------------------------------------------  
+
+Test:  
+- Intraclass correlation coefficient (ICC) for intra- and inter-examiner reliability on radiographic measurements.  
+
+Purpose:  
+- To demonstrate that radiographic measurements (root length, apical diameter, dentin thickness) are reproducible.  
+
+Why appropriate (≥2 reasons):  
+1. Morphometric changes are often small (fractions of a mm); reliability is critical to interpret changes as real.  
+2. ICC provides quantitative evidence on methodological quality.  
+
+Why it may not be appropriate:  
+- Requires repeated measurements on a subset of radiographs; if not done, cannot be retroactively applied.  
+
+When NOT to use:  
+- When only single measurements are available per examiner per image.  
+
+Alternative:  
+- Repeat measurements on a subset and then compute ICC.
+
+---
+
+TASK 3 – INAPPROPRIATE TESTS  
+=============================  
+
+List of tests/methods that should NOT be used for this study, with rationale:
+
+1. Independent-samples t-test or unpaired tests between time points  
+---------------------------------------------------------------  
+- Why inappropriate:  
+  - Measurements at different time points are on the same teeth (paired, correlated), not independent samples. Using unpaired t-tests or Mann–Whitney tests for pre vs post would ignore pairing and inflate standard errors or misrepresent variance.  
+- Proper alternative:  
+  - Paired t-test, Wilcoxon signed-rank, RM-ANOVA, or LMM.
+
+2. One-way ANOVA treating all measurements across time as independent  
+---------------------------------------------------------------------  
+- Why inappropriate:  
+  - Repeated measures violate independence assumption; error term would be incorrect, leading to invalid p-values.  
+- Proper alternative:  
+  - Repeated-measures ANOVA or mixed-effects model.
+
+3. Chi-square test of independence for repeated binary outcomes over time  
+-------------------------------------------------------------------------  
+- Why inappropriate:  
+  - Multiple measurements from the same teeth; chi-square assumes independence of observations.  
+- Proper alternative:  
+  - McNemar’s test, Cochran’s Q, or GLMM/GEE for binary longitudinal data.
+
+4. Simple linear regression treating all longitudinal observations as independent  
+---------------------------------------------------------------------------------  
+- Why inappropriate:  
+  - Ignoring within-tooth correlation and clustering by patient leads to overly narrow confidence intervals.  
+- Proper alternative:  
+  - Linear mixed-effects regression.
+
+5. Pearson correlation between time point and outcome using pooled data without accounting for repeated measures  
+----------------------------------------------------------------------------------------------------------------  
+- Why inappropriate:  
+  - Each tooth contributes multiple data points; standard Pearson correlation would treat them as independent.  
+- Proper alternative:  
+  - Mixed-effects regression with time as predictor.
+
+6. Survival/event analyses comparing PRF to “control” within this dataset  
+-------------------------------------------------------------------------  
+- Why inappropriate:  
+  - This is a single-arm cohort—no control group (e.g., blood clot, calcium hydroxide). Any “comparison” would be artificial unless external controls are used formally (which would require different methods, e.g., propensity-score matching with external data).  
+
+7. Parametric tests assuming normality without any assessment or with clearly non-normal data  
+---------------------------------------------------------------------------------------------  
+- Example: Paired t-test on extremely skewed differences with n=23 and strong outliers.  
+- Why inappropriate:  
+  - May produce invalid inference; small sample size makes normal approximation fragile.  
+- Proper alternative:  
+  - Nonparametric tests, transformations, or robust regression methods.
+
+8. Complex multivariable models with many predictors (e.g., multiple regression with >3 predictors)  
+--------------------------------------------------------------------------------------------------  
+- Why inappropriate:  
+  - With n=23 teeth, including many predictors violates events-per-variable rules and risks severe overfitting.  
+- Proper alternative:  
+  - Limit any exploratory modeling to 1–2 predictors or rely primarily on univariable analyses.
+
+---
+
+TASK 4 – SUMMARY OF ANALYTICAL APPROACH  
+========================================  
+
+- The study is a small, single-arm prospective cohort examining longitudinal changes in teeth treated with PRF. There is no control group, so the analysis focuses on within-tooth changes over time and the proportion of teeth meeting predefined clinical and radiographic success criteria.  
+
+- The core (mandatory) analyses:  
+  - Descriptive summaries of radiographic and clinical outcomes at each time point.  
+  - Longitudinal analysis of continuous morphometric measures (root length, apical diameter, dentin thickness) using repeated-measures methods (preferably mixed-effects models, with RM-ANOVA/Friedman as simpler alternatives).  
+  - Paired comparisons of baseline vs key follow-up times (12 and 24 months).  
+  - Repeated binary outcome analyses (Cochran’s Q / McNemar) for clinical symptoms and vitality.  
+  - Estimation of overall success proportion at 24 months with confidence intervals.
+
+- Recommended analyses refine this by properly handling correlated data (teeth within patients) using mixed-effects models and by providing effect sizes and robustness/sensitivity checks.  
+
+- Optional analyses (time-to-event, predictors of response, agreement measures, reliability) can provide additional, but non-essential, insights if data permit.
+
+Overall, the proposed plan respects the small sample size and repeated-measures nature, avoids inappropriate independence assumptions, and provides a clear, clinically interpretable picture of the treatment’s radiographic and clinical effects over the 2-year follow-up.

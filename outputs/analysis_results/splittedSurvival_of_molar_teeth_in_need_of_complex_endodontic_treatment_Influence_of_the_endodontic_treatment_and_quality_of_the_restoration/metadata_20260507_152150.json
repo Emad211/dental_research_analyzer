@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splittedSurvival_of_molar_teeth_in_need_of_complex_endodontic_treatment_Influence_of_the_endodontic_treatment_and_quality_of_the_restoration.pdf",
+  "timestamp": "20260507_152150",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 16108
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 7394
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 31215
+    }
+  }
+}

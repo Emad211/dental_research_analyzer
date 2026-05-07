@@ -1,0 +1,150 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_91fd82110fa9b156a47cd6aa50a0126d.pdf
+Status : ok
+Time   : 20260507_145654
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics
+1. **Study Design**:  
+   - Prospective cohort study.
+
+2. **Study Objective**:  
+   - To evaluate the influence of various predictors on the outcome of root canal retreatment in symptomatic mandibular first molars with periapical lesions after a minimum of 2 years.
+
+3. **Study Population**:  
+   - **Initial Pool**: 420 mandibular molars referred for root canal retreatment between February 2016 and December 2018.  
+   - **Final Sample**: 120 symptomatic mandibular first molars with periapical lesions included.  
+   - **Follow-Up Sample**: 103 molars (85.3% recall rate).  
+
+4. **Inclusion Criteria**:  
+   - Non-contributory medical history.  
+   - Previously root canal treated mature mandibular first molars with clinical signs and symptoms (e.g., preoperative pain, tenderness to percussion).  
+   - At least one root with periapical lesions scored as PAI 4 or 5.  
+   - Lesion size between 3–10 mm on preoperative radiographs.  
+   - Diagnosed as symptomatic apical periodontitis or acute apical abscess with localized intraoral swelling.
+
+5. **Exclusion Criteria**:  
+   - Patients <18 years of age.  
+   - Extra-oral swelling.  
+   - Antibiotic intake within 2 weeks prior to treatment.  
+   - Second and third molars.  
+   - Teeth with asymptomatic apical periodontitis.  
+   - Advanced periodontal disease, non-restorable teeth, vertical root fractures, resorption, or complications from primary root canal treatment.
+
+6. **Groups**:  
+   - **Exudate Group**: Teeth with active exudate drainage through the root canal.  
+   - **Non-Exudate Group**: Teeth without active exudate drainage.
+
+7. **Sample Size**:  
+   - 103 teeth evaluated at follow-up.
+
+8. **Variables**:  
+   - **Predictors**:  
+     - Patient demographics (age, gender).  
+     - Preoperative factors: soft tissue tenderness, intraoral swelling, lesion size, PAI score, apical level, density of root canal filling.  
+     - Intraoperative factors: active exudate drainage, complications (e.g., sealer extrusion, broken instruments), restoration type.  
+   - **Outcome**:  
+     - Healed (PAI 1–2), Healing (PAI 3–4), Non-Healing/Failure (PAI 4–5 or worse).
+
+9. **Measurements and Data Collection**:  
+   - Preoperative and follow-up radiographs using the paralleling technique.  
+   - PAI scoring system (Ørstavik et al., 1986).  
+   - Clinical examination for pain, tenderness, swelling, and mobility.  
+   - Radiographic assessment for lesion size and healing status.  
+   - Two independent calibrated endodontists scored radiographs, with disagreements resolved by consensus.
+
+10. **Follow-Up Schedule**:  
+    - Clinical and radiographic examinations at 3, 6, 9, and 12 months in the first year, every 6 months in the second year, and annually thereafter (minimum 2 years, up to 4 years).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Descriptive Statistics**:  
+   - **Purpose**: Summarize baseline characteristics (e.g., age, gender, lesion size, PAI scores).  
+   - **Why Appropriate**:  
+     1. Provides a clear understanding of the study population.  
+     2. Helps identify potential confounders.  
+   - **Why It May Not Be Appropriate**: Not inferential; cannot establish relationships.  
+   - **When NOT to Use**: N/A (always required).  
+   - **Alternative**: None.
+
+2. **Chi-Square Test (or Fisher’s Exact Test)**:  
+   - **Purpose**: Compare categorical variables (e.g., success rates between exudate and non-exudate groups).  
+   - **Why Appropriate**:  
+     1. Tests associations between categorical predictors and outcomes.  
+     2. Suitable for binary or ordinal data (e.g., healed vs. non-healed).  
+   - **Why It May Not Be Appropriate**: Requires sufficient sample size in each category.  
+   - **When NOT to Use**: Small expected frequencies (<5).  
+   - **Alternative**: Fisher’s Exact Test.
+
+3. **Logistic Regression**:  
+   - **Purpose**: Identify predictors of treatment success (healed/healing vs. failure).  
+   - **Why Appropriate**:  
+     1. Accounts for multiple predictors simultaneously.  
+     2. Provides odds ratios for risk factors.  
+   - **Why It May Not Be Appropriate**: Assumes linearity in log-odds.  
+   - **When NOT to Use**: When sample size is too small for the number of predictors.  
+   - **Alternative**: Penalized regression (e.g., LASSO).
+
+#### CATEGORY B – RECOMMENDED
+1. **Kaplan-Meier Survival Analysis**:  
+   - **Purpose**: Assess time to healing or failure.  
+   - **Why Appropriate**:  
+     1. Accounts for varying follow-up durations.  
+     2. Handles censored data (e.g., lost to follow-up).  
+   - **Why It May Not Be Appropriate**: Assumes non-informative censoring.  
+   - **When NOT to Use**: When time-to-event data is unavailable.  
+   - **Alternative**: Cox proportional hazards model.
+
+2. **Cox Proportional Hazards Regression**:  
+   - **Purpose**: Identify predictors of time to healing or failure.  
+   - **Why Appropriate**:  
+     1. Adjusts for multiple covariates.  
+     2. Provides hazard ratios for predictors.  
+   - **Why It May Not Be Appropriate**: Assumes proportional hazards.  
+   - **When NOT to Use**: Violations of proportional hazards assumption.  
+   - **Alternative**: Stratified Cox model.
+
+#### CATEGORY C – OPTIONAL
+1. **Repeated Measures ANOVA (or Mixed-Effects Model)**:  
+   - **Purpose**: Analyze changes in PAI scores over time.  
+   - **Why Appropriate**:  
+     1. Accounts for within-subject correlations.  
+     2. Suitable for longitudinal data.  
+   - **Why It May Not Be Appropriate**: Assumes normality of residuals.  
+   - **When NOT to Use**: Non-normal data or unequal variances.  
+   - **Alternative**: Non-parametric tests (e.g., Friedman test).
+
+2. **Subgroup Analysis**:  
+   - **Purpose**: Explore differences in outcomes by subgroups (e.g., gender, lesion size).  
+   - **Why Appropriate**:  
+     1. Identifies effect modifiers.  
+     2. Provides additional clinical insights.  
+   - **Why It May Not Be Appropriate**: Risk of type I error due to multiple comparisons.  
+   - **When NOT to Use**: Small sample sizes in subgroups.  
+   - **Alternative**: Adjusted analyses with interaction terms.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-test**:  
+   - **Why Not Appropriate**: Outcome is categorical, not continuous.  
+   - **Alternative**: Chi-square test or logistic regression.
+
+2. **Pearson Correlation**:  
+   - **Why Not Appropriate**: Assumes continuous, normally distributed variables.  
+   - **Alternative**: Spearman correlation for ordinal predictors.
+
+3. **Linear Regression**:  
+   - **Why Not Appropriate**: Outcome is not continuous.  
+   - **Alternative**: Logistic regression.
+
+---
+
+### TASK 4: SUMMARY
+The proposed analytical approach combines descriptive, inferential, and predictive methods to comprehensively evaluate the predictors and outcomes of root canal retreatment. Logistic regression and survival analyses are central to understanding success rates and time-to-healing, while subgroup analyses and mixed-effects models provide additional insights. This approach ensures robust and clinically meaningful results while addressing potential confounders and biases.

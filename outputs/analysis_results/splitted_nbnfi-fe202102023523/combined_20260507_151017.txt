@@ -1,0 +1,1188 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_nbnfi-fe202102023523.pdf
+Time : 20260507_151017
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study design and setting
+- **Parent cohort:** Corogene (prospective cohort of symptomatic Finnish patients undergoing coronary angiography).
+- **Substudy:** Parogene (random ~10% subpopulation invited for oral exam).
+- **Design components:**
+  - **Cross-sectional** analysis at oral/radiographic exam (exposures and CAC; CAC and CAD).
+  - **Longitudinal** analysis for **10-year follow-up** (CAC and mortality).
+- **Timeline:**
+  - Coronary angiography: **Jun 2006–Mar 2008**
+  - Oral exam + panoramic radiograph: **Oct 2007–May 2008**, performed **≥6 weeks and ≤5 months after angiography**
+  - Follow-up: **10 years or until death**; median **9.9 years** (IQR 0.45; range 0.21–10.4)
+
+### Objectives / hypotheses
+1. **Cross-sectional:** CAC is associated with **oral infections/inflammations**, **dysbiotic oral bacteria**, and **immune response** to them.
+2. **Cross-sectional:** CAC is associated with **CAD diagnosis** and **CAD severity**.
+3. **Longitudinal:** CAC is associated with **mortality** (all-cause and CVD mortality) during 10 years.
+
+### Study population, grouping, sample size
+- **Parogene examined:** **508**
+- **CAC technically readable on panoramic radiographs:** **492 (96.8%)** → main analytic sample.
+- **CAC categories (exposure/outcome depending on model):**
+  - **No CAC:** n=390
+  - **Moderate CAC:** n=81
+  - **Severe CAC:** n=21
+  - CAC definition: radiopaque nodular mass adjacent to/below **C3–C4** carotid area; graded moderate vs severe (masses >10 mm = severe).
+- **CAD groups (from angiography + symptoms + biomarkers):**
+  - **Chronic CAD:** n=181
+  - **ACS:** n=164
+  - **No significant CAD:** n=147
+- **CAD severity:** number of arteries with **≥50% stenosis** (0/none-mild, 1, 2, 3).
+
+### Outcomes
+- **Primary radiographic outcome (cross-sectional):** CAC presence/grade on panoramic radiograph.
+- **CAD outcomes (cross-sectional):**
+  - CAD diagnosis (3-level)
+  - CAD severity (# stenosed arteries; ordinal)
+- **Longitudinal outcomes:**
+  - **All-cause mortality**
+  - **CVD mortality**: ICD-10 **I00–I99** as underlying/direct/contributing cause.
+
+### Exposures / predictors (oral, microbiology, immunology)
+**Clinical periodontal measures**
+- Periodontal probing depth (PPD) at **6 sites/tooth**; counts of pockets **4–5 mm** and **≥6 mm**
+- **PPD and BOP calculated as proportions** of sites examined
+- **Bleeding on probing (BOP)** (4 sites/tooth), suppuration recorded
+- **PIBI** (Periodontal Inflammation Burden Index):  
+  \[ (# pockets 4–5 mm) + 2 × (# pockets ≥6 mm) \]  
+  Used as **quartiles** (low/mild/moderate/severe)
+
+**Radiographic oral measures**
+- **Alveolar bone loss (ABL)**: for each dentate sextant, select tooth with worst attachment loss; sextant mean categorized:
+  - none / mild (cervical third) / moderate (middle third) / severe-to-total (apical third to total)
+- Endodontic findings:
+  - **Root canal fillings (RCF)** (count)
+  - **Widened periapical space** (count)
+  - **Apical rarefactions / apical periodontitis lesions** (count)
+  - **Endodontic lesion score (severity of apical periodontitis)** in dentate:
+    - none
+    - moderate: ≥1 widened periapical space and/or 1 tooth with apical periodontitis
+    - severe: ≥2 teeth with apical periodontitis
+  - **Treatment grouping**:
+    - no endodontic lesions
+    - all lesions in teeth with RCF
+    - untreated apical periodontitis
+
+**Microbiology**
+- Dentate only: pooled subgingival samples from deepest pocket per quadrant (or deepest/inflamed site if no pockets >3 mm).
+- **Checkerboard DNA–DNA hybridization** for **78 bacterial species**
+- Species grouped: **gram-positive (45)**, **gram-negative (33)**
+- Bacterial levels **log-transformed and summed**, then categorized (reported as **below vs above median**).
+
+**Serology/saliva immunology**
+- **Serum and saliva IgA and IgG** against periodontitis-associated dysbiotic species, by **ELISA**
+- 13 strains representing 5 species used as antigens
+- Units: saliva in rlu/100 ms /10^5; serum in EU (as reported)
+
+### Covariates/confounders (available and used)
+- **Age**, **sex**
+- **BMI**
+- **Hypertension, dyslipidemia, diabetes** (defined via medication use)
+- **Smoking** (questionnaire; categorized as never/ever)
+- **hs-CRP** measured (distribution skewed; reported median/IQR)
+
+### Data collection / measurement reliability
+- Clinical periodontal exam by **two calibrated periodontists**
+- Radiographic assessment by **one specialist in dental radiology**
+- Mortality via **National Causes-of-Death Register** linkage
+
+---
+
+## TASK 2: Statistical analysis plan (SAP)
+
+### General principles (apply to all analyses)
+- **Analysis set:** primary = n=492 with readable CAC; secondary = dentate-only subsets for subgingival sampling and some endodontic/periodontal metrics (explicitly report n per model).
+- **Key variable handling**
+  - CAC: analyze both as **3-level ordinal** (none/moderate/severe) and as **binary** (any CAC vs none) depending on event counts.
+  - CAD severity: ordinal 0/1/2/3 arteries.
+  - Skewed biomarkers (e.g., hs-CRP, summed bacterial burdens, antibody titers): consider **log transform** or use **nonparametric**/robust models.
+- **Missing data:** describe amount/pattern; if >5–10% in key covariates, use **multiple imputation** (recommended below).
+- **Multiplicity:** pre-specify primary hypotheses; otherwise control false discoveries for many microbial/immune markers (if testing species-level measures).
+- **Report:** effect sizes with **95% CI** (OR/HR/mean differences), not only p-values.
+
+---
+
+# CATEGORY A – MANDATORY tests/models
+
+### A1. Descriptive statistics + group comparisons across CAC categories
+- **Test/model:**  
+  - Continuous ~ normal: **ANOVA with linear trend** (or regression with CAC as ordinal predictor)  
+  - Continuous skewed: **Jonckheere–Terpstra trend test**  
+  - Categorical: **Chi-square test** (linear-by-linear association for ordered CAC)
+- **Purpose:** Describe baseline and oral/microbial/immune characteristics by CAC severity and assess unadjusted trends.
+- **Why appropriate (≥2):**
+  1. CAC has an inherent **ordering** (none→moderate→severe), so trend tests are efficient.
+  2. Variables include a mix of **continuous, skewed, and categorical** outcomes.
+- **Why may not be appropriate (≥1):** Unadjusted comparisons ignore confounding (age, smoking, etc.).
+- **When NOT to use:** When expected cell counts are too small (e.g., severe CAC n=21 with multi-level exposures).
+- **Alternatives if assumptions violated:**
+  - ANOVA → **Kruskal–Wallis** (and **Cuzick trend**), or **robust regression**
+  - Chi-square → **Fisher’s exact** (or exact trend test)
+
+### A2. Multivariable logistic regression: CAC presence (any vs none)
+- **Test/model:** **Binary logistic regression**
+- **Purpose:** Test cross-sectional associations between oral parameters (ABL, PIBI, endodontic variables, bacterial burden, antibodies) and **presence of CAC**, adjusted for confounders.
+- **Why appropriate:**
+  1. CAC presence is **binary** and common enough (~21%) to model with logistic regression.
+  2. Allows adjustment for key confounders (age, sex, HTN, dyslipidemia, DM, smoking).
+- **Why may not be appropriate:** If outcome is common, OR can overstate RR; also separation possible with rare predictors.
+- **When NOT to use:** If there is quasi-complete separation or very sparse cells for key predictors.
+- **Alternatives if assumptions violated:**
+  - For common outcome: **log-binomial** or **modified Poisson with robust SE** (RR)
+  - For separation/small samples: **Firth penalized logistic regression**
+
+### A3. Ordinal logistic regression: CAC severity (none/moderate/severe)
+- **Test/model:** **Proportional odds (ordinal) logistic regression**
+- **Purpose:** Use full CAC grading to assess dose–response with predictors.
+- **Why appropriate:**
+  1. Outcome has **ordered categories**; ordinal model gains power vs binary.
+  2. Estimates a single effect representing a shift toward more severe CAC.
+- **Why may not be appropriate:** Proportional odds assumption may fail; severe CAC group is small (n=21).
+- **When NOT to use:** If proportional odds is strongly violated and partial proportional odds is not feasible; or if sparse data yields unstable estimates.
+- **Alternatives if assumptions violated:**
+  - **Partial proportional odds model**
+  - **Multinomial logistic regression** (non-ordered)
+  - Collapse to **binary CAC** (any vs none)
+
+### A4. Association of CAC with CAD (cross-sectional)
+Two complementary models are mandatory because CAD is represented in two ways.
+
+**A4a. Multinomial logistic regression: CAD diagnosis (no CAD / chronic CAD / ACS)**
+- **Purpose:** Evaluate whether CAC category predicts CAD clinical grouping.
+- **Why appropriate:**
+  1. Outcome is **3-category nominal**.
+  2. Can adjust for shared cardiovascular confounders.
+- **Why may not be appropriate:** If CAD diagnosis is inherently ordered (arguable), multinomial ignores ordering.
+- **When NOT to use:** If sample size per category becomes too small after stratification.
+- **Alternatives:** **Ordinal logistic regression** if a clinically justified ordering is defined; otherwise multinomial remains appropriate.
+
+**A4b. Ordinal logistic regression (or Poisson/negative binomial): CAD severity (# stenosed arteries 0–3)**
+- **Purpose:** Test hypothesis that CAC is associated with angiographic stenosis burden.
+- **Why appropriate:**
+  1. Severity is **ordinal count with small range**.
+  2. Provides interpretable association with increasing stenosis categories.
+- **Why may not be appropriate:** Distribution may not satisfy proportional odds; count model might fit poorly with bounded 0–3.
+- **When NOT to use:** If assumptions fail and categories are sparse.
+- **Alternatives:** **Multinomial logistic** on the 4-level outcome; or treat as count with **Poisson/neg-bin** (with caution).
+
+### A5. Survival analysis: Cox proportional hazards models for mortality
+- **Test/model:** **Cox regression** for:
+  - all-cause mortality
+  - CVD mortality (cause-specific Cox)
+- **Purpose:** Estimate HRs for death comparing CAC grades, adjusted for confounders (age, sex, HTN, dyslipidemia, DM, smoking).
+- **Why appropriate:**
+  1. Time-to-event data with censoring and variable follow-up length.
+  2. Produces adjusted HRs and allows covariates.
+- **Why may not be appropriate:** Proportional hazards may be violated; CVD death has competing risk from non-CVD death.
+- **When NOT to use:** For CVD death if competing risks are substantial and the aim is cumulative incidence (not instantaneous hazard).
+- **Alternatives if assumptions violated:**
+  - PH violation: **time-varying coefficients**, stratified Cox, or **accelerated failure time** models
+  - Competing risks: **Fine–Gray subdistribution hazards** (for cumulative incidence) in addition to cause-specific Cox
+
+---
+
+# CATEGORY B – RECOMMENDED tests/models
+
+### B1. Model diagnostics and assumption checks
+- **Tests/tools:**
+  - Logistic: **linearity in the logit** (splines), **influence/dfbeta**, calibration plots, **Hosmer–Lemeshow** (cautiously)
+  - Ordinal: **Brant test** / score tests for proportional odds
+  - Cox: **Schoenfeld residual test**, log-minus-log plots
+- **Purpose:** Ensure validity of regression inference.
+- **Why appropriate:**
+  1. Assumptions (PH, proportional odds, linearity) directly affect bias.
+  2. Improves reproducibility and interpretability.
+- **Why may not be appropriate:** Some tests are sample-size sensitive (HL test) and can mislead.
+- **When NOT to use:** HL test as the sole calibration assessment.
+- **Alternatives:** Graphical diagnostics; **bootstrapped calibration**.
+
+### B2. Competing risks analysis for CVD mortality
+- **Test/model:** **Fine–Gray regression** + cumulative incidence curves
+- **Purpose:** Quantify CAC association with **probability** of CVD death accounting for non-CVD death.
+- **Why appropriate:**
+  1. Non-CVD deaths are competing events.
+  2. Complements cause-specific Cox with a clinically intuitive estimand.
+- **Why may not be appropriate:** If research question is etiologic (instantaneous hazard) rather than prediction of incidence.
+- **When NOT to use:** When interpreting Fine–Gray HR as causal hazard ratio (it is not).
+- **Alternative:** Stay with **cause-specific Cox** and report cumulative incidence nonparametrically.
+
+### B3. Multiple imputation for missing covariates/exposures
+- **Test/model:** **Multiple imputation by chained equations (MICE)** with Rubin’s rules
+- **Purpose:** Reduce bias and inefficiency vs complete-case analysis.
+- **Why appropriate:**
+  1. Oral/microbial labs often have missingness; complete-case can distort associations.
+  2. Preserves uncertainty due to missingness.
+- **Why may not be appropriate:** If missing not at random (MNAR) without auxiliary variables.
+- **When NOT to use:** When missingness is structural (e.g., edentulous cannot have subgingival sampling)—handle via stratification/subcohort models instead.
+- **Alternatives:** Inverse probability weighting; sensitivity analyses for MNAR.
+
+### B4. Robust modeling for skewed/count oral variables
+- **Test/model:** **Negative binomial regression** (or Poisson with robust SE) for counts (RCF, lesions), or **zero-inflated** variants if many zeros.
+- **Purpose:** Model counts without forcing normality.
+- **Why appropriate:**
+  1. Endodontic findings are **counts** with likely overdispersion.
+  2. Avoids information loss from categorization.
+- **Why may not be appropriate:** Some counts are bounded by number of teeth; may require offsets or tooth count adjustment.
+- **When NOT to use:** If outcome is heavily bounded and better treated as proportion/rate with denominator.
+- **Alternatives:** Model as **rate per tooth** with offset(log(teeth)); or **beta regression** for proportions.
+
+### B5. Effect modification (interaction) analyses
+- **Test/model:** Add interaction terms (e.g., CAC×sex, CAC×smoking, CAC×diabetes) in regression/Cox.
+- **Purpose:** Assess whether associations differ in key risk strata.
+- **Why appropriate:**
+  1. Biological plausibility (smoking/diabetes modify periodontal–vascular links).
+  2. Supports targeted clinical interpretation.
+- **Why may not be appropriate:** Limited power, especially with severe CAC (n=21).
+- **When NOT to use:** When subgroup sizes are too small → unstable estimates.
+- **Alternatives:** Pre-specified stratified analyses with caution; combine CAC categories.
+
+### B6. Multiple-testing control for microbiology/immune markers
+- **Test/model:** **Benjamini–Hochberg FDR** (or Bonferroni for few tests)
+- **Purpose:** Control false positives if many markers/species are tested.
+- **Why appropriate:**
+  1. 78 bacterial species (if analyzed individually) creates multiplicity.
+  2. FDR maintains power while limiting false discoveries.
+- **Why may not be appropriate:** If only pre-specified aggregated measures (gram± sums) are tested, multiplicity burden is small.
+- **When NOT to use:** For a single/few pre-registered primary outcomes (don’t over-correct).
+- **Alternatives:** Pre-specify a small number of primary biomarkers; hierarchical testing.
+
+---
+
+# CATEGORY C – OPTIONAL (supplementary insight)
+
+### C1. Mediation analysis (exploratory)
+- **Test/model:** Counterfactual-based mediation (e.g., CAC → mortality mediated by CAD severity or inflammation markers)
+- **Purpose:** Explore pathways.
+- **Why appropriate:**
+  1. Mechanistic hypotheses (oral inflammation ↔ atherosclerosis).
+  2. Separates direct vs indirect effects (exploratory).
+- **Why may not be appropriate:** Cross-sectional mediator/outcome timing ambiguity; strong assumptions.
+- **When NOT to use:** To make causal claims without temporal ordering and adequate confounder control.
+- **Alternatives:** Path analysis/SEM as descriptive; longitudinal mediation if repeated measures existed (not here).
+
+### C2. Predictive performance / risk stratification
+- **Test/model:** C-statistic/AUC for CAC→mortality models; **Net Reclassification Improvement (NRI)** (cautious)
+- **Purpose:** Assess whether CAC grading adds prognostic value beyond standard risk factors.
+- **Why appropriate:**
+  1. CAC on panoramic radiographs could be a screening tool.
+  2. Clinically interpretable.
+- **Why may not be appropriate:** Requires careful validation; cohort is symptomatic angiography patients (not screening population).
+- **When NOT to use:** Without internal validation (bootstrap/cv) and clear prediction target.
+- **Alternatives:** Bootstrap optimism-corrected AUC; calibration slope.
+
+### C3. Sensitivity analyses for CAC definition
+- **Test/model:** Re-run models with CAC as:
+  - binary (any vs none),
+  - exclude severe (small n),
+  - side-specific (left/right/bilateral) if available.
+- **Purpose:** Robustness to outcome definition.
+- **Why appropriate:** Severe group small; grading subjectivity.
+- **Why may not be appropriate:** Multiple comparisons; may be underpowered.
+- **When NOT to use:** If not pre-specified and results are over-interpreted.
+- **Alternatives:** Penalized models; Bayesian shrinkage.
+
+---
+
+## TASK 3: Inappropriate tests (should NOT be used) and why
+
+1. **Paired t-test / Wilcoxon signed-rank**  
+   - Data are not paired/repeated within subject across CAC groups.
+
+2. **Pearson correlation as main analysis for CAC associations**  
+   - CAC is categorical/ordinal; confounding is substantial; correlation ignores covariates and nonlinearity.
+
+3. **Simple linear regression treating CAC category as continuous numeric outcome (0/1/2) without ordinal methods**  
+   - Assumes equal spacing and normal residuals; not justified for ordered categories with small severe group.
+
+4. **Kaplan–Meier with log-rank test as the only survival analysis**  
+   - Unadjusted; confounding (age, smoking, HTN etc.) is central here.
+
+5. **Standard ANOVA/t-test for highly skewed variables (hs-CRP, antibody titers, bacterial burden) without transformation/robust methods**  
+   - Violates normality/variance assumptions; misleading inference.
+
+6. **Chi-square tests with sparse expected counts (e.g., multi-level predictors × severe CAC)**  
+   - Inflated type I error; use Fisher/exact or collapse categories.
+
+7. **Stepwise variable selection as primary modeling strategy**  
+   - Unstable estimates, biased p-values/CI; confounders should be chosen a priori.
+
+---
+
+## TASK 4: Summary justification of overall approach
+
+The analysis should combine: (1) **trend-aware unadjusted comparisons** across CAC severity; (2) **multivariable regression** (binary/ordinal logistic, multinomial/ordinal for CAD) to address cross-sectional hypotheses while controlling key cardiovascular confounders; and (3) **time-to-event modeling (Cox)** for 10-year mortality, supplemented by **competing risk methods** for CVD death. This matches the data structure (mixed outcome types, ordered CAC grading, and censored follow-up) and aligns with the study’s etiologic and prognostic aims.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:
+   - Prospective cohort study (Parogene, a subpopulation of Corogene cohort).
+   - Cross-sectional and longitudinal components.
+   - 10-year follow-up for mortality outcomes.
+
+2. **Study Objectives**:
+   - Investigate the prevalence of carotid artery calcification (CAC) visible on panoramic radiographs in patients undergoing coronary angiography.
+   - Assess associations between CAC and:
+     - Oral infections/inflammations, dysbiotic oral bacteria, and immune responses.
+     - Coronary artery disease (CAD) diagnosis and severity.
+     - Mortality over a 10-year follow-up.
+
+3. **Study Population**:
+   - Symptomatic Finnish patients (n=5,788) who underwent coronary angiography between June 2006 and March 2008.
+   - Subsample (Parogene cohort): 508 patients invited for clinical and radiographic oral examinations.
+   - CAC was technically registered in 492 patients (96.8%).
+
+4. **Groups**:
+   - Based on CAC severity: No CAC, Moderate CAC, Severe CAC.
+   - Based on CAD diagnosis: No significant CAD, Chronic CAD, Acute Coronary Syndrome (ACS).
+   - Based on CAD severity: None/mild, 1 stenosed artery, 2 stenosed arteries, 3 stenosed arteries.
+
+5. **Sample Size**:
+   - Total: 492 patients with CAC data.
+   - Subgroups: No CAC (n=390), Moderate CAC (n=81), Severe CAC (n=21).
+
+6. **Variables**:
+   - **Independent Variables**:
+     - CAC severity (No, Moderate, Severe).
+     - Oral health parameters: periodontal pocket depth (PPD), bleeding on probing (BOP), alveolar bone loss (ABL), apical periodontitis severity, root canal fillings (RCF), subgingival bacterial levels, serum/saliva antibody levels.
+     - CAD diagnosis and severity.
+     - Demographics and comorbidities: age, gender, hypertension, dyslipidemia, diabetes, smoking.
+   - **Dependent Variables**:
+     - Prevalence of CAC.
+     - CAD diagnosis and severity.
+     - Mortality (all-cause and CVD-specific).
+
+7. **Measurements**:
+   - **Oral Health**:
+     - Periodontal probing depths (PPD) and bleeding on probing (BOP) recorded as percentages.
+     - Alveolar bone loss (ABL) graded (none, mild, moderate, severe/total).
+     - Apical periodontitis severity scored (none, moderate, severe).
+     - Root canal fillings (RCF) and untreated apical periodontitis recorded.
+   - **Radiographic**:
+     - CAC identified and graded on panoramic radiographs (none, moderate, severe).
+   - **Microbiological and Serological**:
+     - Subgingival bacterial levels (gram-positive/negative species).
+     - Serum and saliva IgA/IgG antibody levels against dysbiotic species.
+   - **Clinical and Demographic**:
+     - Age, gender, BMI, hypertension, dyslipidemia, diabetes, smoking.
+
+8. **Data Collection Methods**:
+   - Clinical oral examinations by calibrated periodontologists.
+   - Radiographic analysis by a dental radiology specialist.
+   - Subgingival bacterial sampling and checkerboard DNA-DNA hybridization assay.
+   - Serum and saliva antibody analysis using ELISA.
+   - Mortality data from the National Causes-of-Death Register.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Chi-Square Test**:
+   - **Purpose**: Assess associations between categorical variables (e.g., CAC severity and CAD diagnosis).
+   - **Appropriate**:
+     - Both variables are categorical.
+     - Data includes frequencies for subgroups.
+   - **Not Appropriate**:
+     - Small cell sizes in contingency tables.
+   - **When NOT to Use**: If expected frequencies in any cell are <5.
+   - **Alternative**: Fisher’s Exact Test.
+
+2. **ANOVA (or Kruskal-Wallis Test)**:
+   - **Purpose**: Compare means of continuous variables (e.g., age, PPD, antibody levels) across CAC severity groups.
+   - **Appropriate**:
+     - Continuous outcome variables.
+     - Multiple groups (No CAC, Moderate CAC, Severe CAC).
+   - **Not Appropriate**:
+     - If data are not normally distributed or variances are unequal.
+   - **When NOT to Use**: If normality or homogeneity of variance assumptions are violated.
+   - **Alternative**: Kruskal-Wallis Test (non-parametric).
+
+3. **Cox Proportional Hazards Regression**:
+   - **Purpose**: Analyze time-to-event data (e.g., survival over 10 years).
+   - **Appropriate**:
+     - Longitudinal follow-up data.
+     - Adjusts for confounders (age, gender, hypertension, etc.).
+   - **Not Appropriate**:
+     - If proportional hazards assumption is violated.
+   - **When NOT to Use**: If hazard ratios vary over time.
+   - **Alternative**: Stratified Cox model or time-varying covariates.
+
+4. **Logistic Regression**:
+   - **Purpose**: Assess associations between CAC presence and risk factors (e.g., oral health, CAD severity).
+   - **Appropriate**:
+     - Binary or ordinal outcome (e.g., CAC severity).
+     - Adjusts for confounders.
+   - **Not Appropriate**:
+     - If multicollinearity exists among predictors.
+   - **When NOT to Use**: If outcome variable is not binary or ordinal.
+   - **Alternative**: Multinomial logistic regression.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Spearman’s Rank Correlation**:
+   - **Purpose**: Assess correlations between non-normally distributed variables (e.g., antibody levels and CAC severity).
+   - **Appropriate**:
+     - Non-parametric data.
+     - Continuous or ordinal variables.
+   - **Not Appropriate**:
+     - If variables are not monotonic.
+   - **When NOT to Use**: If data are normally distributed.
+   - **Alternative**: Pearson’s correlation.
+
+2. **Multivariate Linear Regression**:
+   - **Purpose**: Assess relationships between continuous outcomes (e.g., PPD, BOP) and multiple predictors.
+   - **Appropriate**:
+     - Continuous outcome variable.
+     - Multiple predictors.
+   - **Not Appropriate**:
+     - If assumptions (normality, homoscedasticity) are violated.
+   - **When NOT to Use**: If outcome is not continuous.
+   - **Alternative**: Generalized linear models (GLMs).
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Kaplan-Meier Survival Analysis**:
+   - **Purpose**: Visualize survival differences across CAC severity groups.
+   - **Appropriate**:
+     - Time-to-event data.
+     - Categorical grouping variable.
+   - **Not Appropriate**:
+     - If censoring is non-random.
+   - **When NOT to Use**: If proportional hazards assumption is required.
+   - **Alternative**: Cox regression.
+
+2. **Principal Component Analysis (PCA)**:
+   - **Purpose**: Reduce dimensionality of microbiological/serological data.
+   - **Appropriate**:
+     - High-dimensional data (e.g., bacterial species).
+   - **Not Appropriate**:
+     - If sample size is insufficient.
+   - **When NOT to Use**: If interpretability is a priority.
+   - **Alternative**: Factor analysis.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Paired t-test**:
+   - Not suitable as there are no paired observations.
+2. **Independent t-test**:
+   - Not appropriate for comparing more than two groups.
+3. **Repeated Measures ANOVA**:
+   - Not applicable as there are no repeated measures.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach leverages a combination of descriptive, inferential, and multivariate techniques to address the study’s objectives. Mandatory tests ensure core hypotheses are addressed, while recommended and optional tests enhance rigor and exploratory insights. Assumptions will be checked, and non-parametric alternatives will be employed as needed. This comprehensive plan aligns with the study’s design and data structure.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1 – INFORMATION EXTRACTION  
+===============================  
+
+1. STUDY DESIGN & OBJECTIVES  
+----------------------------  
+
+- **Parent cohort:**  
+  - Corogene cohort: prospective cohort of **symptomatic Finnish patients** undergoing coronary angiography (n = 5,788) in Helsinki University Hospital, June 2006–March 2008.  
+  - Data: previous medical conditions, cardiovascular risk factors, medications, and angiography results.
+
+- **Sub-study (Parogene):**  
+  - Nested, **prospective cohort with cross-sectional baseline oral/radiographic exam and 10‑year mortality follow-up**.  
+  - Sample: ~10% random subpopulation of Corogene invited to dental exam.  
+  - **Parogene sample:** 508 patients examined at Institute of Dentistry, University of Helsinki, between Oct 2007–May 2008.  
+  - CAC assessable in **492/508 (96.8%)**; these constitute the analytic sample for CAC analyses.
+
+- **Timing:**  
+  - Oral clinical and radiographic exams performed ≥6 weeks and ≤5 months after coronary angiography.  
+  - Follow-up for mortality: up to 10 years or until death (median 9.9 years; IQR 0.45; range 0.21–10.4).
+
+- **Ethics:**  
+  - Helsinki University Hospital ethics committee (Dnro 106/2007); written informed consent; STROBE compliant.
+
+- **Main aims / hypotheses:**  
+  i) Cross-sectional: CAC (on panoramic radiographs) is associated with:
+     - Oral infections/inflammations (periodontitis, apical periodontitis, caries, etc.),  
+     - Dysbiotic oral microbiota (subgingival),  
+     - Immune response (salivary and serum antibodies) against dysbiotic oral bacterial species.  
+
+  ii) Cross-sectional: CAC is associated with **diagnosis and severity of coronary artery disease (CAD)**.  
+
+  iii) Longitudinal: CAC is associated with **all-cause and CVD mortality** over ~10-year follow-up.
+
+2. STUDY POPULATION & GROUPS  
+----------------------------  
+
+- **Base analytic sample for CAC analyses:**  
+  - n = 492 with technically evaluable CAC from panoramic radiographs (out of 508 who underwent oral exam).  
+
+- **CAC categories (primary exposure variable):**  
+  - **No CAC**  
+  - **Moderate CAC** – heterogeneous radiopaque areas in carotid region  
+  - **Severe CAC** – masses >10 mm  
+  - CAC defined as radiopaque nodular mass adjacent to or below C3–C4 intervertebral space in carotid artery area.  
+  - Later analyses often use **presence vs absence** (binary) of CAC, and sometimes ordered categories (no / moderate / severe).
+
+- **CAD diagnostic groups (baseline, from angiography + clinical data):**  
+  - **Chronic CAD** (n = 181; 36.8%)  
+  - **Acute coronary syndrome (ACS)** (n = 164; 33.3%)  
+  - **No significant CAD** (n = 147; 29.9%)
+
+- **CAD severity (baseline angiography):**  
+  - Number of coronary arteries with ≥50% stenosis:  
+    - None/mild  
+    - 1 stenosed artery  
+    - 2 stenosed arteries  
+    - 3 stenosed arteries
+
+- **Cardiometabolic / CVD risk factor status:**  
+  - Hypertension, dyslipidemia, diabetes defined by current **medication use**.  
+  - Smoking: **never vs ever** (questionnaire at oral exam).  
+  - BMI, age, sex.  
+  - hs-CRP (mg/L) from blood.
+
+3. ORAL & RADIOGRAPHIC MEASURES  
+--------------------------------  
+
+3.1 Clinical periodontal/oral examination  
+
+- Setting: standard dental office; two calibrated periodontists performed exams.  
+- **Measurements:**
+  - **Periodontal probing depth (PPD)**:  
+    - 6 sites per tooth (manual probe)  
+    - Outcomes recorded:  
+      - Number/proportion (%) of sites with PPD 4–5 mm  
+      - Number/proportion (%) of sites with PPD ≥ 6 mm  
+  - **Bleeding on probing (BOP)**:  
+    - 4 sites per tooth  
+    - Proportion (%) of sites with BOP.  
+  - **Suppuration:** presence/absence (per site or tooth; not tabulated but measured).  
+  - **Number of teeth** present.  
+  - **Number of carious teeth.**  
+  - **Periodontal inflammation burden index (PIBI):**  
+    - PIBI = [number of 4–5 mm pockets + 2 × (number of ≥ 6 mm pockets)].  
+    - Later categorised into **quartiles** (low, mild, moderate, severe).
+
+3.2 Radiographic dental assessment  
+
+- Imaging: Digital panoramic radiographs obtained with **ProOne unit (Planmeca, Helsinki)**.  
+- Interpretation: Single dental radiologist, blinded to some clinical data (not specified) but responsible for:  
+  - CAC presence/side/severity (as described above).  
+  - **Horizontal alveolar bone loss (ABL):**  
+    - The tooth with the most severe attachment loss in each dentate sextant selected.  
+    - Mean per sextant used to classify:  
+      - No ABL  
+      - Mild (ABL in cervical third of root)  
+      - Moderate (ABL in middle third)  
+      - Severe to total (ABL from apical third to complete loss).  
+    - In analysis, often collapsed into:  
+      - None  
+      - Mild  
+      - Moderate to total (moderate + severe/total).  
+  - **Endodontic lesions / apical periodontitis:**  
+    - Root canal fillings (RCF): count per patient.  
+    - Widened periapical spaces (irreversible pulpitis / precursors) – count per patient.  
+    - Apical rarefactions / apical periodontitis (periradicular destruction at root tip) – count per patient.  
+    - **Endodontic lesion score (severity of apical periodontitis) – per patient (dentate):**  
+      - No endodontic lesions  
+      - Moderate AP: ≥1 widened periapical space and/or 1 tooth with apical periodontitis  
+      - Severe AP: ≥2 teeth with apical periodontitis  
+  - **Treatment status of apical periodontitis – per patient:**  
+    - No endodontic lesions  
+    - All endodontic lesions in teeth with root canal filling (i.e. treated AP)  
+    - Untreated apical periodontitis (AP in teeth without RCF).
+
+3.3 Microbiological measures (subgingival plaque)  
+
+- Sample: dentate subjects only.  
+- **Sampling strategy:**  
+  - Pooled subgingival samples from **deepest pathological pocket** in each dentate quadrant.  
+  - If no pockets >3 mm: sample from site with deepest pocket or most visible inflammation.  
+
+- **Microbial assay:**  
+  - Checkerboard DNA–DNA hybridization for **78 oral bacterial species** (per standard Socransky protocol).  
+  - Species classified as:  
+    - Gram-positive: n = 45  
+    - Gram-negative: n = 33  
+  - Bacterial levels:  
+    - Quantitative counts per species, **log-transformed**;  
+    - Sums of log-transformed counts used for overall Gram-positive and Gram-negative burdens.  
+  - In Table 2: Gram-positive and Gram-negative subgingival levels categorized as **above vs below median** per patient.
+
+3.4 Immunological measures (serum and saliva)  
+
+- **Antibody assays:** ELISA (per Pussinen et al. 2002, 2011; Akhi et al. 2017; Liljestrand et al. 2018).  
+  - 13 strains from 5 species characteristic of periodontitis-associated dysbiosis used as antigens.  
+
+- **Outcome variables:**
+  - Saliva IgA against dysbiotic species – measured in rlu/100 ms; scaled /10⁵.  
+  - Saliva IgG against dysbiotic species – rlu/100 ms /10⁵.  
+  - Serum IgA against dysbiotic species – expressed in ELISA units (EU).  
+  - Serum IgG against dysbiotic species – EU.  
+  - For some regression models, antibody responses combined across species (e.g., weighted or summed, as typical in this group’s work).
+
+4. OUTCOMES – CAD & MORTALITY  
+-------------------------------  
+
+4.1 CAD-related outcomes (cross-sectional)  
+
+- **CAD diagnosis (categorical, nominal):**  
+  - No significant CAD (reference)  
+  - Chronic CAD  
+  - ACS.  
+
+- **CAD severity (ordered categorical):**  
+  - None/mild stenosis  
+  - 1 artery with ≥50% stenosis  
+  - 2 arteries with ≥50% stenosis  
+  - 3 arteries with ≥50% stenosis.
+
+4.2 Mortality (longitudinal)  
+
+- Follow-up via probabilistic record linkage to **National Causes-of-Death Register**.  
+- Deaths classified by ICD-10; CVD deaths defined as underlying, direct, or contributing cause codes **I00–I99**.  
+
+- **Outcomes:**  
+  - **All-cause mortality** (time-to-event; from baseline oral exam or CAC assessment to death/administrative censoring).  
+  - **Cardiovascular (CVD) mortality** (time-to-event, CVD-specific).  
+
+- **Survival analyses:**  
+  - Cox regression models with CAC categories (no, moderate, severe) and covariate adjustment.  
+  - Survival curves: predicted cumulative survival for CAC categories.  
+  - Reported hazard ratios (HRs) with p-values, adjusted for:  
+    - Age  
+    - Gender  
+    - Hypertension  
+    - Dyslipidemia  
+    - Diabetes  
+    - Smoking (never vs ever).
+
+5. COVARIATES / CONFOUNDERS USED IN REGRESSION MODELS  
+------------------------------------------------------  
+
+- Age (continuous, years).  
+- Sex (male vs female).  
+- Dyslipidemia (yes/no; medication-based).  
+- Hypertension (yes/no; medication-based).  
+- Diabetes (yes/no; medication-based).  
+- Smoking (ever vs never).  
+- In some descriptive tables:  
+  - BMI (kg/m²; continuous)  
+  - hs-CRP (mg/L; continuous, skewed – reported as median [IQR]).
+
+6. STATISTICAL METHODS REPORTED IN ARTICLE  
+------------------------------------------  
+
+- Cross-sectional comparisons across 3 CAC groups (no / moderate / severe):  
+  - Continuous variables (approx. normal, or summarised as mean (SD) or mean (95% CI)):  
+    - **ANOVA with linear contrast** / linear trend for mean comparisons (e.g., age, BMI; Table 1; parametric).  
+  - Continuous skewed variables:  
+    - **Jonckheere–Terpstra test for ordered trend** (e.g., hs-CRP, and periodontal/bacterial/antibody parameters in Table 2).  
+  - Categorical variables:  
+    - **Chi-square test with linear-by-linear association** (e.g., hypertension, smoking, ABL, PIBI categories, AP severity, Gram-negative level high vs low, CAD categories).
+
+- Multivariable cross-sectional association with CAC presence:  
+  - **Logistic regression models** (12 separate models) with CAC presence (binary outcome) as dependent variable.  
+  - Each model includes: confounders (age, sex, dyslipidemia, diabetes, hypertension, ever smoking) plus one oral or systemic exposure (e.g., ABL, PIBI, Gram-negative levels, antibody levels, CAD severity, CAD diagnosis).  
+  - Output: adjusted odds ratios (ORs) with 95% CI; significant effects highlighted.
+
+- Cross-sectional association between CAC category and CAD diagnosis/severity, mortality status:  
+  - **Chi-square tests** for p-values (Figure 1A–C).
+
+- Longitudinal analyses:  
+  - **Cox proportional hazards regression** for time-to-death (all-cause and CVD).  
+  - Adjusted for age, gender, hypertension, dyslipidemia, diabetes, smoking.  
+  - HRs for moderate and severe CAC vs no CAC.  
+  - Cumulative survival curves generated from Cox models (Figure 2).
+
+---
+
+TASK 2 – STATISTICAL ANALYSIS PLAN  
+==================================  
+
+Below I propose a complete plan structured by outcome and then by test. Tests are allocated to categories A (mandatory), B (recommended), C (optional).  
+
+A. GENERAL PRINCIPLES  
+----------------------  
+
+- **Analysis population:**  
+  - Primary: 492 participants with evaluable CAC.  
+  - For subgingival, antibody, and AP measures, analyses restricted to dentate subjects and those with valid data.  
+
+- **Data structure:**  
+  - Mostly patient-level aggregate variables (counts, percentages per subject).  
+  - Repeated measures (e.g., site-level) have already been summarized into subject-level indices.
+
+- **CAC variables to be used in analyses:**  
+  - Three-level ordinal variable: no CAC / moderate CAC / severe CAC.  
+  - Binary variable: presence (moderate or severe) vs absence (no CAC).  
+  - For some analyses, treat as ordinal (0,1,2) for trend testing.
+
+- **Covariate adjustment strategy:**  
+  - Core confounders: age, sex, BMI, smoking, diabetes, hypertension, dyslipidemia.  
+  - For CAD outcomes: additional adjustment for conventional risk factors as appropriate (e.g., hs-CRP).  
+  - For mortality outcomes: adjust at minimum for age, sex, smoking, diabetes, hypertension, dyslipidemia; optionally BMI, CAD severity.
+
+- **Multiple testing:**  
+  - Large number of oral/microbiological/antibody variables → strong risk of type I error.  
+  - Pre-specify primary exposures (e.g., ABL, PIBI, AP severity, Gram-negative burden, key antibody composite indices) and control family-wise error or FDR for secondary analyses.
+
+- **Assumption checks:**  
+  - Normality of continuous variables (histograms, Q-Q plots, Shapiro–Wilk).  
+  - Homoscedasticity (plots of residuals vs fitted).  
+  - Linearity in logit or log-hazard for continuous predictors (use splines or categorization if violated).  
+  - Proportional hazards for Cox models (Schoenfeld residuals).
+
+---
+
+B. SPECIFIC TESTS AND MODELS  
+
+### CATEGORY A – MANDATORY TESTS  
+
+These are essential to address the stated hypotheses.
+
+---
+
+### A1. Descriptive statistics & group comparisons by CAC category
+
+**A1.1 ANOVA or Kruskal–Wallis for continuous variables across CAC categories**  
+
+- **Purpose:**  
+  - Compare demographic and systemic characteristics across CAC categories (no / moderate / severe).  
+- **Application:**  
+  - Variables: age, BMI, number of teeth, counts of endodontic lesions, etc.  
+
+- **Why appropriate:**  
+  1) Outcome is continuous with roughly symmetric distribution (or can be transformed).  
+  2) CAC categories are independent groups.  
+
+- **Why it may not be appropriate:**  
+  - If residuals are heavily non-normal or variances unequal and transformation fails.  
+
+- **When NOT to use:**  
+  - When sample sizes are small and distributions are extremely skewed (e.g., count data with many zeros).  
+
+- **Alternative if assumptions violated:**  
+  - **Kruskal–Wallis test** for 3-group comparison; for trend across ordered CAC categories use **Jonckheere–Terpstra**.
+
+---
+
+**A1.2 Chi-square tests for categorical variables across CAC categories**  
+
+- **Purpose:**  
+  - Compare proportions (e.g., sex, presence of hypertension/diabetes, categories of ABL, AP severity, PIBI quartiles, Gram-negative level above/below median) across CAC categories.  
+- **Why appropriate:**  
+  1) Categorical data with independent groups and reasonably large cell counts.  
+  2) CAC groups are mutually exclusive; counts measured at patient level.  
+
+- **Why it may not be appropriate:**  
+  - Expected cell counts <5 for some combinations (e.g., severe CAC x rare category).  
+
+- **When NOT to use:**  
+  - When >20% of cells have expected counts <5 or any cell <1.  
+
+- **Alternative if assumptions violated:**  
+  - **Fisher’s exact test** (for 2×k tables, or exact tests for R×C where feasible).  
+  - For trend across ordered CAC or exposure categories: **Chi-square test for linear-by-linear association** or **Cochran–Armitage trend test**.
+
+---
+
+### A2. Association between CAC presence and oral / microbiological / antibody parameters (cross-sectional)
+
+Here CAC presence (yes/no) is the main dependent variable, following the article’s logistic models.
+
+**A2.1 Binary logistic regression: CAC presence vs absence**  
+
+- **Purpose:**  
+  - Estimate adjusted associations between CAC presence and specific exposures:  
+    - ABL categories  
+    - PIBI categories (periodontal inflammation burden)  
+    - Endodontic parameters (RCF count, AP severity, AP treatment status)  
+    - Levels of Gram-negative and Gram-positive subgingival bacteria  
+    - Salivary and serum IgA/IgG against dysbiotic species  
+    - CAD severity categories  
+    - CAD diagnosis categories.  
+
+- **Model specification:**  
+  - Outcome: CAC presence (0 = none; 1 = moderate/severe).  
+  - Predictors: each exposure variable in separate models (to reduce multicollinearity), plus confounders (age, sex, dyslipidemia, diabetes, hypertension, ever smoking; optionally BMI).  
+  - Use **dummy variables** for categorical exposures; for ordered categories, test linear trend.  
+
+- **Why appropriate:**  
+  1) Binary outcome with logistic model giving ORs that are interpretable for risk contrasts.  
+  2) Allows adjustment for multiple confounders.  
+
+- **Why it may not be appropriate:**  
+  - If CAC prevalence is high, the OR may overestimate the RR.  
+  - Small cell counts in some categories may lead to unstable estimates.  
+
+- **When NOT to use:**  
+  - When outcome or predictors are extremely sparse (e.g., severe CAC with rare exposures) leading to complete separation.  
+
+- **Alternative if assumptions violated:**  
+  - **Penalized logistic regression (Firth’s correction)** if separation or small-sample bias.  
+  - **Log-binomial** or **Poisson with robust variance** if one wishes to estimate risk ratios instead of odds ratios (though more relevant in prospective designs).
+
+---
+
+**A2.2 Ordinal logistic regression (proportional odds) with 3-level CAC**  
+
+- **Purpose:**  
+  - Model ordered CAC severity (0=no; 1=moderate; 2=severe) in relation to exposures (e.g., ABL, AP severity, Gram-negative burden).  
+- **Why appropriate:**  
+  1) CAC severity is an ordinal variable; ordinal logistic regression exploits ordering and potentially more efficient than binary.  
+  2) Provides single effect estimate under proportional odds assumption.  
+
+- **Why it may not be appropriate:**  
+  - Proportional odds assumption may be violated (effect differs across cut-points).  
+
+- **When NOT to use:**  
+  - When the proportional odds assumption is strongly violated (tested by Brant test or score test).  
+  - When sample size in severe CAC group is very small (n=21; may limit reliability).  
+
+- **Alternative if assumptions violated:**  
+  - **Partial proportional odds model** or **multinomial logistic regression** (treat CAC categories as nominal).  
+
+---
+
+### A3. Association between CAC and CAD diagnosis / CAD severity (cross-sectional)
+
+**A3.1 Multinomial logistic regression: CAD diagnosis as outcome**  
+
+- **Purpose:**  
+  - Assess association of CAC presence/severity with **CAD diagnostic category** (no significant CAD, chronic CAD, ACS), controlling for confounders.  
+
+- **Model specification:**  
+  - Outcome: 3-level CAD diagnosis (reference: no significant CAD).  
+  - Predictor: CAC presence/ordinal CAC (0/1/2).  
+  - Adjust: age, sex, BMI, hypertension, diabetes, dyslipidemia, smoking; possibly periodontal variables to test mediation.  
+
+- **Why appropriate:**  
+  1) CAD diagnosis is nominal with >2 categories.  
+  2) Allows estimation of separate ORs for chronic CAD vs no CAD and ACS vs no CAD.  
+
+- **Why it may not be appropriate:**  
+  - If some CAD-CAC category combinations have small numbers.  
+
+- **When NOT to use:**  
+  - When common support between predictive covariates and CAD categories is poor (extreme imbalance).  
+
+- **Alternative if assumptions violated:**  
+  - Collapse CAD categories into binary outcomes (e.g., any significant CAD vs none; ACS vs non-ACS) and use binary logistic regression.
+
+---
+
+**A3.2 Ordinal logistic regression: CAD severity (0/1/2/3 affected arteries)**  
+
+- **Purpose:**  
+  - Evaluate association between CAC and increasing angiographic CAD severity.  
+
+- **Why appropriate:**  
+  1) CAD severity is inherently ordinal.  
+  2) More powerful than separate binary comparisons.  
+
+- **Why it may not be appropriate:**  
+  - Non-proportional odds.  
+
+- **When NOT to use:**  
+  - If proportional odds assumption fails or distribution of categories is extremely imbalanced (few in some severity levels).  
+
+- **Alternative if assumptions violated:**  
+  - **Generalized ordered logit** or **multinomial logistic regression**.  
+  - Or treat CAD severity as numeric (0–3) in a **linear regression** or **Poisson/negative binomial** (count of stenosed arteries), using robust SEs.
+
+---
+
+### A4. Association between CAC and mortality (longitudinal)
+
+**A4.1 Cox proportional hazards regression – all-cause mortality**  
+
+- **Purpose:**  
+  - Evaluate whether CAC presence/severity predicts time to death from any cause over follow-up.  
+
+- **Model specification:**  
+  - Outcome: time from baseline oral exam to death or censoring (administrative censoring at 10 years).  
+  - Event indicator: death from any cause (1) vs alive/censored (0).  
+  - Main exposure: CAC categories (no / moderate / severe); test both binary and ordinal.  
+  - Covariates: age, sex, BMI, smoking, hypertension, dyslipidemia, diabetes; optionally baseline CAD severity, hs-CRP.  
+  - Report HRs with 95% CIs and p-values.  
+
+- **Why appropriate:**  
+  1) Data are right-censored time-to-event, with varying follow-up times.  
+  2) Cox model does not assume specific baseline hazard and is standard in survival analysis.  
+
+- **Why it may not be appropriate:**  
+  - Proportional hazards assumption may be violated (hazard ratio changes over time).  
+
+- **When NOT to use:**  
+  - When PH assumption is clearly violated or if sample size is too small for complex multivariable models (few events relative to predictors).  
+
+- **Alternative if assumptions violated:**  
+  - **Time-varying coefficient Cox model** (interactions between CAC and log(time)).  
+  - **Flexible parametric survival models** (Royston–Parmar).  
+  - **Stratified Cox model** if PH holds within strata.  
+
+---
+
+**A4.2 Cox proportional hazards regression – CVD mortality**  
+
+- **Purpose:**  
+  - Investigate association between CAC and time to **CVD-specific death**.  
+
+- **Model specification:**  
+  - Outcome: time to CVD death (ICD-10 I00–I99 codes) or censoring; treat deaths from other causes as censored.  
+  - Exposure & covariates as above.  
+
+- **Why appropriate:**  
+  1) Same reasoning as for all-cause mortality, focusing on CVD events.  
+  2) Clinically relevant because CAC is a vascular phenomenon.  
+
+- **Why it may not be appropriate:**  
+  - If number of CVD deaths is low, leading to sparse events per covariate.  
+  - Treating non-CVD death as censored may introduce competing risks bias.  
+
+- **When NOT to use:**  
+  - When competing risk of non-CVD death is substantial, and cause-specific hazard is not the target estimand.  
+
+- **Alternative if assumptions violated:**  
+  - **Competing risks models** (e.g., Fine–Gray subdistribution hazard model) to estimate effect on CVD death while accounting for non-CVD death as a competing event.
+
+---
+
+### CATEGORY B – RECOMMENDED TESTS  
+
+These strengthen the analysis and interpretation.
+
+---
+
+### B1. Trend tests for ordered categories
+
+**B1.1 Jonckheere–Terpstra tests for continuous outcomes vs ordered CAC**  
+
+- **Purpose:**  
+  - Evaluate monotonic trends in continuous variables (e.g., number of teeth, endodontic lesion counts, antibody levels) across increasing CAC categories.  
+
+- **Why appropriate:**  
+  1) CAC severity is ordinal; Jonckheere–Terpstra is more powerful than Kruskal–Wallis when a priori order exists.  
+  2) Handles non-normal or skewed data.  
+
+- **Why it may not be appropriate:**  
+  - Requires ordinal grouping and independence; does not adjust for covariates.  
+
+- **When NOT to use:**  
+  - When exposure categories are not ordered or interest lies mainly in adjusted relationships.  
+
+- **Alternative if assumptions violated:**  
+  - Trend tests in regression (e.g., include CAC category as numeric predictor in linear/logistic models).
+
+---
+
+### B2. Multivariable models of oral variables as outcomes
+
+**B2.1 Linear or generalized linear regression: oral/inflammatory variables vs CAC**  
+
+- **Purpose:**  
+  - Quantify how CAC is associated with continuous oral and systemic measures after adjustment (e.g., number of RCF, number of teeth, PPD %).  
+
+- **Why appropriate:**  
+  1) Allows adjustment for age and other confounders in interpreting differences in oral health by CAC status.  
+  2) Regression-based estimates (e.g., mean difference) are more informative than unadjusted p-values.  
+
+- **Why it may not be appropriate:**  
+  - Many oral variables are counts with overdispersion and zero inflation; normal linear model may be inadequate.  
+
+- **When NOT to use:**  
+  - When the residual distribution is far from normal even after transformation.  
+
+- **Alternative if assumptions violated:**  
+  - **Poisson or negative binomial regression** for counts (e.g., number of apical rarefactions, RCF).  
+  - **Beta regression** for proportions (PPD%, BOP%) after transforming to (0,1) scale.  
+
+---
+
+### B3. Mediation/interaction analyses
+
+**B3.1 Exploration of mediation by oral infections in CAC–mortality association**  
+
+- **Purpose:**  
+  - Investigate whether the association between CAC and mortality is partly mediated by oral infection burden (e.g., PIBI, ABL, AP severity).  
+
+- **Why appropriate:**  
+  1) Directly addresses the biological hypothesis linking oral disease → systemic inflammation → vascular calcification → mortality.  
+  2) May reveal whether CAC is simply a marker or a mediator of oral disease effects.  
+
+- **Why it may not be appropriate:**  
+  - Cross-sectional baseline oral measures and CAC measured roughly concurrently; temporal order between oral disease and CAC is unclear, complicating causal mediation.  
+
+- **When NOT to use:**  
+  - When presenting results as causal mediation without the necessary temporal and identifiability conditions.  
+
+- **Alternative if assumptions violated:**  
+  - Restrict analysis to a **descriptive comparison** of HRs with and without oral variables (exploratory).  
+
+---
+
+### B4. Model diagnostics and robustness checks
+
+**B4.1 Diagnostics for logistic and Cox models**  
+
+- **Purpose:**  
+  - Confirm that model assumptions and fit are adequate (linearity, influential points, PH assumption).  
+
+- **Why appropriate:**  
+  1) Ensures validity of estimated ORs and HRs.  
+  2) Helps identify variables needing transformation or categorization.  
+
+- **Why it may not be appropriate:**  
+  - None: diagnostics are always recommended; limitation is available sample size.  
+
+- **When NOT to use:**  
+  - n/a; though formal tests may have low power in small samples, visual inspection should still be done.  
+
+- **Alternatives if issues detected:**  
+  - Non-linear terms (splines, polynomials), robust standard errors, or alternative models as mentioned above.
+
+---
+
+### CATEGORY C – OPTIONAL TESTS  
+
+These provide additional insight but are not essential to address primary hypotheses.
+
+---
+
+### C1. ROC curve analysis
+
+**C1.1 ROC/AUC for CAC in predicting mortality or CAD severity**  
+
+- **Purpose:**  
+  - Quantify discriminative ability of CAC (presence/ordinal) for:  
+    - Significant CAD (any ≥50% stenosis) at baseline.  
+    - 10-year all-cause or CVD mortality.  
+
+- **Why appropriate:**  
+  1) Gives clinically interpretable metric (AUC) of predictive utility of CAC.  
+  2) Supports recommendations about screening value of CAC on dental panoramics.  
+
+- **Why it may not be appropriate:**  
+  - ROC for time-to-event outcomes requires time-dependent ROC methods; standard ROC ignores censoring.  
+
+- **When NOT to use:**  
+  - When event incidence is too low or follow-up incomplete.  
+
+- **Alternative if assumptions violated:**  
+  - **Time-dependent ROC curves** for survival outcomes (e.g., using cumulative/dynamic AUC estimators).
+
+---
+
+### C2. Cluster/latent class analysis of microbiological and antibody profiles
+
+**C2.1 Latent class analysis / cluster analysis**  
+
+- **Purpose:**  
+  - Identify subgroups of patients with distinct microbial/antibody profiles and examine their association with CAC and CAD/mortality.  
+
+- **Why appropriate:**  
+  1) High-dimensional bacterial/antibody data may capture complex dysbiosis patterns beyond simple Gram-negative sums.  
+  2) May reveal clinically distinct phenotypes (e.g., high-dysbiosis/high-antibody vs low-dysbiosis/low-antibody) associated with CAC.  
+
+- **Why it may not be appropriate:**  
+  - Requires large samples and careful model selection; risk of overfitting and results may be exploratory rather than confirmatory.  
+
+- **When NOT to use:**  
+  - When sample size is insufficient (especially with many indicators) or when aim is hypothesis testing rather than discovery.  
+
+- **Alternative if assumptions violated:**  
+  - Use pre-specified composite indices of dysbiosis and immune response (e.g., weighted sum scores), as partly done.
+
+---
+
+### C3. Sensitivity analyses
+
+**C3.1 Sensitivity analyses excluding edentulous patients or those with severe systemic disease**  
+
+- **Purpose:**  
+  - Assess robustness of associations to inclusion of participants with extreme oral status or comorbidities.  
+
+- **Why appropriate:**  
+  1) Edentulism may modify relationships between periodontal measures and CAC.  
+  2) Severe comorbidities could confound mortality associations.  
+
+- **Why it may not be appropriate:**  
+  - Reduces sample size and may introduce selection bias if not carefully interpreted.  
+
+- **When NOT to use:**  
+  - When deletions profoundly reduce power or change underlying target population.  
+
+- **Alternative if assumptions violated:**  
+  - Include edentulous status as covariate or stratify analyses.
+
+---
+
+TASK 3 – INAPPROPRIATE TESTS  
+=============================  
+
+Tests that should generally NOT be used for this study, with reasons:
+
+1. **Paired t-tests or McNemar’s tests**  
+   - Not appropriate because there is no within-person pre–post or paired measurement structure; groups are independent.
+
+2. **Repeated-measures ANOVA**  
+   - No repeated measurements over time at the level of oral or CAC measures; all oral and CAC data are cross-sectional.
+
+3. **Simple linear regression of mortality status (dead/alive) as a continuous outcome**  
+   - Mortality is binary/time-to-event, not continuous; using linear regression violates distributional assumptions and yields invalid inferences for binary outcomes with censoring.
+
+4. **Kaplan–Meier curves without covariate adjustment as the main inferential tool**  
+   - KM curves are useful descriptively, but the key questions involve adjustment for multiple confounders (age, CVD risk factors), which KM cannot provide. Inferential conclusions should rely on Cox models.
+
+5. **Chi-square tests to compare mean survival times across CAC groups**  
+   - Mean survival can be heavily influenced by censoring; standard ANOVA/chi-square on mean survival times is not appropriate for right-censored time-to-event data.
+
+6. **Correlation tests (Pearson/Spearman) treating categorical CAC and CAD variables as continuous without respecting their nature**  
+   - Simplistic correlation would ignore confounding and the discrete/ordinal nature of variables; logistic/ordinal regression is more appropriate.
+
+7. **Student’s t-test for heavily skewed count data (e.g., number of apical rarefactions) without transformation or distribution-aware modeling**  
+   - Count data are typically non-normal and heteroscedastic; Poisson/negative binomial models or non-parametric tests are preferable.
+
+8. **Stepwise variable selection procedures for multivariable models (forward/backward based purely on p-values)**  
+   - Prone to overfitting and unstable model selection, especially with modest sample size and correlated predictors; pre-specification and clinical/statistical reasoning should guide model building.
+
+---
+
+TASK 4 – SUMMARY OF ANALYTICAL APPROACH  
+========================================  
+
+The study is a nested, prospective cohort with a cross-sectional baseline oral/CAC assessment and 10-year mortality follow-up. CAC on panoramic radiographs is the central exposure of interest; outcomes include:
+
+- cross-sectional oral disease burden, microbial/antibody profiles, and CAD diagnosis/severity;  
+- longitudinal all-cause and CVD mortality.
+
+The core analytical framework therefore combines:
+
+1. **Descriptive analyses** to characterize the distribution of CAC and potential confounders (ANOVA/Kruskal–Wallis and chi-square).  
+2. **Cross-sectional multivariable logistic/ordinal regression** to relate CAC presence/severity to oral infection/inflammation measures, microbiological dysbiosis, antibody profiles, and CAD severity/diagnosis, adjusting for standard cardiovascular risk factors.  
+3. **Time-to-event models (Cox regression)** to estimate the independent association of CAC (and, secondarily, oral disease) with all-cause and CVD mortality over 10 years, accounting for confounding and right-censoring.  
+4. **Trend tests and model diagnostics** to validate assumptions (e.g., proportional odds, proportional hazards, linearity), plus sensitivity analyses and more advanced models (e.g., competing risks) as needed.
+
+This integrated approach is aligned with the study’s hypotheses on the links between oral infections, vascular calcification, CAD, and mortality, while respecting the observational nature of the data and methodological constraints.

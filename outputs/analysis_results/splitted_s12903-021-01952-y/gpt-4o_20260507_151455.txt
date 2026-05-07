@@ -1,0 +1,106 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_s12903-021-01952-y.pdf
+Status : ok
+Time   : 20260507_151455
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Retrospective cohort study.
+2. **Objective**: To examine the survival rates of nonsurgical root canal treatments (NSRCT) performed on permanent teeth of children aged 6–18 years and to assess predictors of failure for endodontically treated teeth (ETT).
+3. **Population**: 
+   - Age: 6–18 years.
+   - Setting: Boston University Henry M. Goldman School of Dental Medicine.
+   - Sample Size: 341 patients with 424 teeth.
+   - Inclusion Criteria: Patients who received NSRCT between January 1, 2007, and December 31, 2015, with at least one post-treatment follow-up record.
+   - Exclusion Criteria: Records without follow-up (432 patients, 507 teeth excluded).
+4. **Groups**: 
+   - Age groups: 6–11 years, 12–14 years, 15–18 years.
+   - Gender: Male and female.
+   - Insurance type: Medicaid (MassHealth) and private/self-paid.
+   - Tooth type: Posterior and anterior teeth.
+   - Jaw type: Maxillary and mandibular.
+5. **Outcome Variable**: Time-to-event (time until failure of ETT).
+   - Failure Definition: Symptomatic teeth or those requiring extraction, endodontic retreatment, or apical surgery.
+   - Survival Definition: Absence of clinical signs/symptoms and no treatment intervention.
+6. **Covariates**: Age, gender, insurance type (proxy for socioeconomic status), tooth type, and jaw type.
+7. **Data Collection**: Retrospective analysis of electronic dental records. Data were de-identified, and a study ID was used for recording findings.
+8. **Operators**: NSRCT was performed by endodontic residents under faculty supervision using evidence-based protocols and microscopic techniques.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Kaplan-Meier Survival Analysis
+   - **Purpose**: To estimate the survival probability of ETT over time.
+   - **Why Appropriate**:
+     1. The primary outcome is time-to-event data (time until failure).
+     2. Kaplan-Meier allows for censored data (patients lost to follow-up or teeth still surviving at the end of the study).
+   - **Why It May Not Be Appropriate**: Assumes independence of survival times, which may not hold if multiple teeth per patient are analyzed.
+   - **When This Test Should NOT Be Used**: If the assumptions of independence or proportional hazards are grossly violated.
+   - **Alternative if Assumptions Are Violated**: Stratified Kaplan-Meier or multilevel survival models.
+
+2. **Test Name**: Cox Proportional Hazards Regression
+   - **Purpose**: To identify predictors of ETT failure (e.g., age, gender, insurance type, tooth type, jaw type).
+   - **Why Appropriate**:
+     1. Suitable for time-to-event data with multiple covariates.
+     2. Provides hazard ratios to quantify the risk of failure associated with each predictor.
+   - **Why It May Not Be Appropriate**: Assumes proportional hazards, which may not hold for all predictors.
+   - **When This Test Should NOT Be Used**: If the proportional hazards assumption is violated.
+   - **Alternative if Assumptions Are Violated**: Time-varying covariates or stratified Cox models.
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Log-Rank Test
+   - **Purpose**: To compare survival distributions between groups (e.g., age groups, gender, insurance type).
+   - **Why Appropriate**:
+     1. Non-parametric test to compare survival curves.
+     2. Suitable for categorical predictors with two or more levels.
+   - **Why It May Not Be Appropriate**: Does not adjust for confounding variables.
+   - **When This Test Should NOT Be Used**: If adjusting for covariates is necessary.
+   - **Alternative if Assumptions Are Violated**: Cox regression with interaction terms.
+
+2. **Test Name**: Chi-Square Test (or Fisher’s Exact Test for small sample sizes)
+   - **Purpose**: To test the association between categorical variables (e.g., insurance type and failure rates).
+   - **Why Appropriate**:
+     1. Simple and effective for categorical data.
+     2. Provides insight into relationships between covariates and outcomes.
+   - **Why It May Not Be Appropriate**: Does not account for time-to-event data.
+   - **When This Test Should NOT Be Used**: For time-dependent outcomes.
+   - **Alternative if Assumptions Are Violated**: Logistic regression or survival analysis.
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Multilevel Survival Analysis (e.g., Shared Frailty Model)
+   - **Purpose**: To account for clustering of teeth within patients.
+   - **Why Appropriate**:
+     1. Accounts for non-independence of observations (multiple teeth per patient).
+     2. Provides robust estimates in hierarchical data.
+   - **Why It May Not Be Appropriate**: Computationally intensive and requires specialized software.
+   - **When This Test Should NOT Be Used**: If there is no evidence of clustering.
+   - **Alternative if Assumptions Are Violated**: Cox regression with robust standard errors.
+
+2. **Test Name**: Logistic Regression
+   - **Purpose**: To assess predictors of binary outcomes (e.g., failure vs. survival).
+   - **Why Appropriate**:
+     1. Useful for dichotomous outcomes.
+     2. Provides odds ratios for predictors.
+   - **Why It May Not Be Appropriate**: Does not account for time-to-event data.
+   - **When This Test Should NOT Be Used**: If time-to-event data is critical.
+   - **Alternative if Assumptions Are Violated**: Cox regression.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-Test or ANOVA**:
+   - **Why Not Appropriate**: These tests are designed for continuous outcomes, not time-to-event or categorical data.
+2. **Pearson Correlation**:
+   - **Why Not Appropriate**: Correlation measures linear relationships between continuous variables, which is not relevant for survival analysis.
+3. **Linear Regression**:
+   - **Why Not Appropriate**: Assumes a continuous outcome and does not handle censored data.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach focuses on survival analysis techniques, as the primary outcome is time-to-event data (ETT failure). Kaplan-Meier survival analysis and Cox proportional hazards regression are central to the analysis, as they address the time-dependent nature of the data and allow for the inclusion of covariates. Additional tests, such as the log-rank test and chi-square test, provide supplementary insights into group differences and associations. Multilevel survival analysis is recommended if clustering effects are significant. The overall approach ensures robust, valid, and interpretable results while addressing the study's objectives comprehensively.

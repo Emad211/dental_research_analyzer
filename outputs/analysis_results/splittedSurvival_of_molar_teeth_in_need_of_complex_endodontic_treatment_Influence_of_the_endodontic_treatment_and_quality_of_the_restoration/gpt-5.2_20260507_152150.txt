@@ -1,0 +1,265 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splittedSurvival_of_molar_teeth_in_need_of_complex_endodontic_treatment_Influence_of_the_endodontic_treatment_and_quality_of_the_restoration.pdf
+Status : ok
+Time   : 20260507_152150
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design / setting
+- **Design:** Observational **retrospective cohort** with **cross-sectional recall** assessment (chart review + recall visit/phone + radiographs) of previously treated teeth.
+- **Setting:** Specialist endodontic care (operators are **endodontic specialists**; 2 operators).
+- **Unit of analysis:** **Molar tooth** (endodontically treated molars).
+- **Eligibility (from flowchart):**
+  - Included: molars treated by endodontic specialist; adults (≥18); ASA ≤2; ETC score not 1 (so ETC II–III).
+  - Excluded: non-specialist operator, open apices, combined surgical treatment, age <18, ASA >2, ETC=1.
+
+### Objectives (from title/introduction)
+- Evaluate **survival of molar teeth** needing complex endodontic treatment and the **influence of**:
+  1) **Type/quality of endodontic treatment** (initial vs retreatment; technical quality), and  
+  2) **Quality/type of coronal restoration** (restoration type, cusp coverage, coronal seal, FDI quality)  
+  on tooth survival and healing.
+
+### Sample sizes and follow-up completeness (from flowchart)
+- Assessed: **n=416**; Eligible: **n=358**.
+- **Tooth survival analysis:** Included **n=279** teeth (lost to follow-up n=79; reasons given).
+- **Endodontic “success/healing” analysis:** Included **n=268** (11 excluded: no follow-up x-ray).
+- **Restorative success analysis:** Included **n=215** (53 excluded; includes 18 “failure before recall” and 35 unwilling).
+
+### Outcomes (dependent variables)
+1. **Tooth survival** (time-to-event implied; extraction/failure vs retained; follow-up time not provided in excerpt).
+2. **Endodontic healing status** (3-level ordinal/nominal outcome):
+   - **Healed:** no clinical symptoms + no periapical radiolucency.
+   - **Healing:** no clinical symptoms + radiolucency reduced vs baseline.
+   - **Nonhealed:** symptoms and/or radiolucency not reduced/increased and/or intervention (extraction, nonsurgical/surgical re-treatment).
+3. **Postoperative radiolucency** (binary): **PAI ≥ 3**.
+4. **Restorative success / restoration quality** using **FDI criteria** (multi-level ordinal; “clinically excellent/sufficient/unsatisfactory/poor”). (Exact dichotomization not shown, but clinical meaning described.)
+5. **Clinical symptoms** (binary presence/absence; measured by anamnesis + percussion/palpation/probing).
+
+### Exposures / predictors (independent variables)
+**Patient-level**
+- Age (continuous)
+- Gender (male/female)
+- Caries risk (low/medium/high/unknown; defined by new caries lesions in last 2 years)
+- Parafunction (yes/no/unknown)
+
+**Endodontic / tooth-level (pre- and post-)**
+- Operator (1 vs 2)
+- Jaw (upper/lower)
+- Endodontic diagnosis (irreversible pulpitis / apical periodontitis)
+- ETC/DETI score (II vs III)
+- Number of canals treated (3 vs 4)
+- Preoperative complications (yes/no; broken instrument/perforation/obliteration)
+- Preoperative radiolucency (yes/no)
+- Type of endodontic treatment: **first vs retreatment**
+- Technical quality of endodontic treatment (adequate/inadequate on radiograph; criteria described)
+
+**Restorative factors**
+- Restoration type at follow-up: direct/indirect/unknown
+- Cusp coverage at follow-up (yes/no/unknown; “all remaining cusps”)
+- Coronal seal at follow-up: adequate/inadequate/unknown
+- Adjacent teeth presence (mentioned)
+- Restoration surfaces (mentioned)
+- Restoration material: composite/amalgam/glass ceramic/PFM/zirconia (mentioned)
+- Restoration quality: FDI criteria (ordinal)
+
+### Measurements / data collection
+- **Recall appointment:** clinical exam by two observers (one consistent observer across all cases); joint consensus decision on findings.
+- **Radiographs:** existing radiographs used; **new radiograph** taken if old >2 years or symptoms/radiolucency/compromised coronal seal.
+- If patient could not attend: **phone anamnesis**; permission to contact general dentist; use latest available radiograph date/status.
+- **Calibration:** observers calibrated for **FDI criteria** via online tool.
+
+---
+
+## TASK 2 — Statistical analysis plan (tests)
+
+### General analysis principles (apply across outcomes)
+- **Descriptives:** counts/percentages for categorical; mean(SD) or median(IQR) for continuous (age, follow-up time).
+- **Clustering:** potential non-independence if multiple teeth per patient (not clarified). Plan for **cluster-robust SE** or **frailty/mixed models** if applicable.
+- **Missing data:** “unknown” categories exist; radiograph missingness affects healing outcome. Prefer **multiple imputation** (MI) for covariates; for outcomes, use appropriate censoring/exclusion with sensitivity analyses.
+- **Effect sizes:** report HR/OR/RR with 95% CI; avoid reliance on p-values alone.
+- **Confounding control:** multivariable modeling including patient + endodontic + restorative variables; consider DAG-driven covariate set (a priori).
+
+---
+
+# CATEGORY A — MANDATORY (analysis incomplete without these)
+
+## A1. Kaplan–Meier survival analysis + log-rank test
+- **Purpose:** Estimate and compare **tooth survival over time** between groups (e.g., initial vs retreatment; adequate vs inadequate coronal seal; direct vs indirect).
+- **Why appropriate (≥2):**
+  1) Outcome is **time-to-event** (extraction/failure) with likely **censoring** (teeth still present at last follow-up).
+  2) Provides **nonparametric** survival estimates and visual comparison across clinically meaningful strata.
+- **Why may not be appropriate (≥1):**
+  - If **event times** (dates) are not reliably available or follow-up time is uniform/unknown, KM becomes unreliable.
+- **When NOT to use:**
+  - When only a binary “survived yes/no” at one fixed time point is available without valid time information.
+- **Alternative if assumptions violated / not feasible:**
+  - If no time-to-event: use **risk comparison at fixed time** via **log-binomial/Poisson** or **logistic regression** (with careful interpretation).
+
+## A2. Cox proportional hazards regression (multivariable)
+- **Purpose:** Quantify associations between predictors (endodontic + restorative quality) and **hazard of tooth loss**, adjusted for confounders.
+- **Why appropriate (≥2):**
+  1) Handles **censoring** and varying follow-up.
+  2) Produces interpretable **hazard ratios** while adjusting for multiple covariates (caries risk, parafunction, operator, jaw, etc.).
+- **Why may not be appropriate (≥1):**
+  - **Non-proportional hazards** (PH) for key predictors (e.g., effect of restoration may vary over time).
+- **When NOT to use:**
+  - If PH assumption is strongly violated and cannot be remedied; or if events are too few for the number of predictors (overfitting).
+- **Alternative if assumptions violated:**
+  - **Time-varying coefficients** in Cox; **stratified Cox**; or **accelerated failure time (AFT)** models (Weibull/log-normal). If clustering by patient: **shared frailty Cox** or **robust sandwich SE**.
+
+## A3. Multivariable model for endodontic healing (3-category outcome): ordinal logistic regression (proportional odds) *with checks*
+- **Purpose:** Assess how endodontic/restorative factors relate to ordered healing status: **nonhealed < healing < healed**.
+- **Why appropriate (≥2):**
+  1) Outcome has **natural ordering** and using that order improves efficiency vs multinomial.
+  2) Allows **adjustment** for confounding (pre-op radiolucency, retreatment, technical quality, coronal seal, etc.).
+- **Why may not be appropriate (≥1):**
+  - The **proportional odds assumption** may be violated (effect differs across cutpoints).
+- **When NOT to use:**
+  - When ordering is clinically questionable (e.g., “healing” not consistently intermediate), or proportional odds clearly fails and partial models aren’t available.
+- **Alternative if assumptions violated:**
+  - **Partial proportional odds model**; or **multinomial logistic regression** (nominal). If simplifying is clinically defensible: dichotomize to **healed/healing vs nonhealed** and use binary logistic (not preferred, but sometimes pragmatic).
+
+## A4. Binary logistic regression for postoperative radiolucency (PAI ≥3)
+- **Purpose:** Identify predictors of **persistent/incident radiolucency** at follow-up.
+- **Why appropriate (≥2):**
+  1) Outcome is **binary** (PAI≥3 yes/no).
+  2) Supports multivariable adjustment and interaction assessment (e.g., coronal seal × endodontic technical quality).
+- **Why may not be appropriate (≥1):**
+  - If outcome is common, OR can materially overstate RR; also ignores timing if radiolucency resolution is time-dependent.
+- **When NOT to use:**
+  - When a direct **risk ratio** is required for interpretation and model convergence permits RR modeling; or if repeated radiographs over time are analyzed (longitudinal).
+- **Alternative if assumptions violated / interpretation concerns:**
+  - **Modified Poisson regression with robust SE** (RR); or **log-binomial** (RR). If clustering: GEE with robust SE.
+
+---
+
+# CATEGORY B — RECOMMENDED (adds rigor)
+
+## B1. Assumption diagnostics: PH test (Schoenfeld residuals) + visual checks
+- **Purpose:** Verify Cox **proportional hazards** assumption.
+- **Why appropriate (≥2):**
+  1) Prevents misleading HRs if effects vary over time.
+  2) Guides correct remedial modeling (stratification/time-varying effects).
+- **Why may not be appropriate (≥1):**
+  - Low event counts reduce power; tests can be unstable.
+- **When NOT to use:**
+  - When not using Cox/time-to-event models.
+- **Alternative:**
+  - Visual log(-log) plots; time-interaction terms.
+
+## B2. Clustered-data methods (if multiple teeth per patient): robust sandwich SE / GEE / frailty
+- **Purpose:** Correct inference for **within-patient correlation**.
+- **Why appropriate (≥2):**
+  1) Tooth-level outcomes may not be independent within the same patient (shared behaviors/caries risk/parafunction).
+  2) Prevents underestimated SE and inflated Type I error.
+- **Why may not be appropriate (≥1):**
+  - If truly one tooth per patient (or negligible clustering), these methods add complexity with minimal benefit.
+- **When NOT to use:**
+  - When patient ID is unavailable and clustering cannot be identified.
+- **Alternative:**
+  - Restrict to one tooth per patient (random selection) as sensitivity analysis.
+
+## B3. Multiple imputation (MI) for missing covariates / “unknown” categories (sensitivity vs main)
+- **Purpose:** Reduce bias and improve precision due to missing predictors (e.g., parafunction unknown, caries risk unknown, restoration unknown).
+- **Why appropriate (≥2):**
+  1) Complete-case analysis can bias estimates if missingness relates to outcomes/exposures.
+  2) MI preserves sample size and uncertainty.
+- **Why may not be appropriate (≥1):**
+  - If missingness is very low or mechanism is MNAR and cannot be modeled credibly.
+- **When NOT to use:**
+  - When outcome is missing not at random and no auxiliary variables exist; or when the imputation model is untenable.
+- **Alternative:**
+  - Missing-indicator approach (less ideal), or pattern-mixture sensitivity analyses.
+
+## B4. Model building & overfitting control: penalized regression (LASSO / ridge) or shrinkage
+- **Purpose:** Stabilize multivariable estimates given many predictors and limited events.
+- **Why appropriate (≥2):**
+  1) Many candidate predictors (patient + endodontic + restorative) risk overfitting.
+  2) Improves out-of-sample validity; supports parsimonious models.
+- **Why may not be appropriate (≥1):**
+  - Penalized estimates can be harder to interpret clinically; inference (CIs) is less straightforward.
+- **When NOT to use:**
+  - When the primary goal is classical inference on a small set of prespecified predictors and events are ample.
+- **Alternative:**
+  - Pre-specify limited covariates; use rule-of-thumb events-per-parameter with shrinkage via bootstrap.
+
+## B5. Interaction testing (effect modification)
+- **Purpose:** Test whether restoration quality modifies effect of endodontic technical quality (and vice versa).
+- **Why appropriate (≥2):**
+  1) Clinically plausible synergy: poor coronal seal may negate good endodontics.
+  2) Helps tailor clinical recommendations (which factor matters most under which conditions).
+- **Why may not be appropriate (≥1):**
+  - Underpowered; multiple testing risk.
+- **When NOT to use:**
+  - When sample size/events are insufficient for stable interaction estimates.
+- **Alternative:**
+  - Stratified analyses with cautious interpretation; Bayesian shrinkage for interactions.
+
+---
+
+# CATEGORY C — OPTIONAL (supplementary insight)
+
+## C1. Competing risks analysis (Fine–Gray) for tooth loss (if “retreatment/surgery” competes with extraction)
+- **Purpose:** If extraction is not the only terminal event and other interventions preclude observation of extraction, estimate subdistribution hazards.
+- **Why appropriate (≥2):**
+  1) “Intervention necessary (re-treatment/surgery)” is part of nonhealed definition and may preclude extraction observation.
+  2) Competing risks can change absolute failure estimates.
+- **Why may not be appropriate (≥1):**
+  - Requires clear definition and recording of competing events with dates.
+- **When NOT to use:**
+  - When only extraction is considered event and other procedures are not competing endpoints.
+- **Alternative:**
+  - Cause-specific Cox models.
+
+## C2. Agreement/reliability: Cohen’s kappa / weighted kappa; ICC (as appropriate)
+- **Purpose:** Quantify interobserver reliability for radiographic/FDI scores (even if consensus used clinically).
+- **Why appropriate (≥2):**
+  1) Validates measurement consistency for subjective ratings (PAI, FDI, technical quality).
+  2) Enhances credibility of outcomes/predictors.
+- **Why may not be appropriate (≥1):**
+  - If only consensus scores recorded and no independent duplicate ratings retained.
+- **When NOT to use:**
+  - When there are no paired ratings per observer.
+- **Alternative:**
+  - Percentage agreement (inferior), or conduct a reliability sub-study.
+
+## C3. Mediation analysis (e.g., restoration → coronal seal → healing/survival)
+- **Purpose:** Explore whether coronal seal mediates association between restoration type and outcomes.
+- **Why appropriate (≥2):**
+  1) Mechanistically plausible pathway.
+  2) Provides actionable insight (target seal rather than type).
+- **Why may not be appropriate (≥1):**
+  - Strong assumptions; retrospective design; unmeasured confounding likely.
+- **When NOT to use:**
+  - When temporality between mediator and outcome is unclear or mediator measured only at follow-up.
+- **Alternative:**
+  - Stratified analysis by seal quality; causal modeling only if timing supports it.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Paired t-test / repeated-measures ANOVA**  
+   - Not a pre/post continuous repeated-measures design; primary outcomes are survival and categorical healing/restoration ratings.
+
+2. **Simple chi-square tests as the sole analysis for survival**  
+   - Collapses time and censoring; can misclassify risk when follow-up differs.
+
+3. **Using multiple independent t-tests for FDI or PAI scores**  
+   - These are ordinal/categorical; t-tests assume interval scale and normality.
+
+4. **Pearson correlation for associations between categorical predictors and outcomes**  
+   - Not appropriate for nominal/ordinal outcomes; ignores confounding and nonlinearity.
+
+5. **One-way ANOVA to compare “healed/healing/nonhealed” across groups**  
+   - Outcome is not continuous; violates distributional assumptions and discards ordinal nature.
+
+---
+
+## TASK 4 — Summary justification of overall approach
+
+- Use **time-to-event methods (KM + Cox)** for tooth survival because extraction risk depends on **follow-up duration** and censoring is expected.  
+- Use **multivariable categorical/ordinal regression** for healing and radiographic outcomes to respect outcome scale and adjust for **key confounders** (patient risk, baseline radiolucency, retreatment status, technical quality, and restorative quality).  
+- Strengthen validity via **assumption checks**, **handling missing data**, and **accounting for clustering** when multiple teeth belong to the same patient.

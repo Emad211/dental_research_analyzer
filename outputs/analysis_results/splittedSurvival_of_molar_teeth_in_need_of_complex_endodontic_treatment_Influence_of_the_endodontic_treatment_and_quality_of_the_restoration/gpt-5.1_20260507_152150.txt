@@ -1,0 +1,542 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splittedSurvival_of_molar_teeth_in_need_of_complex_endodontic_treatment_Influence_of_the_endodontic_treatment_and_quality_of_the_restoration.pdf
+Status : ok
+Time   : 20260507_152150
+══════════════════════════════════════════════════════════════════════
+
+TASK 1 – INFORMATION EXTRACTION  
+(Study characteristics, variables, measurements, data collection)
+
+1. Study design  
+- Type: Retrospective cohort (historical cohort) with clinical and radiographic recall examination.  
+- Setting: Specialist endodontic clinic / university hospital (endodontic treatments performed by endodontic specialists; restorative follow‑up partly at general practitioners or hospital).  
+- Time frame: Not fully stated in excerpt, but:  
+  - Initial cohort: 416 endodontically treated molars assessed for eligibility.  
+  - Endodontic outcomes assessed with minimum follow‑up compatible with ESE consensus (≥4 years for post‑treatment disease recommended; they use latest radiograph if not recalled).  
+- Unit of analysis: Individual molar tooth (endodontically treated).  
+- Population: Adult patients (≥18 years), ASA ≤2, molar teeth requiring complex endodontic treatment.  
+
+2. Eligibility and flow  
+- Assessed for eligibility: n = 416 molars.  
+- Exclusions (n = 58):  
+  - Operator not endodontic specialist (n=4)  
+  - Open apices (n=17)  
+  - Combined surgical treatment (n=10)  
+  - Age <18 years (n=4)  
+  - ASA-score >2 (n=20)  
+  - ETC-score = 1 (n=3)  
+- Eligible: n=358 molars.  
+- Loss to follow-up for tooth survival: n=79 (diseased n=3, unreachable n=42, unwilling n=34).  
+- Included for tooth survival outcome: n=279.  
+- Loss to follow-up for endodontic success: n=11 (no follow-up x‑ray).  
+- Included for endodontic healing outcome: n=268.  
+- Loss to follow-up for restorative success: n=53 (unwilling n=35, failure before recall n=18).  
+- Included for restorative success analysis: n=215.  
+
+Thus, there are three overlapping analytical subsets:
+- Tooth survival: 279 molars  
+- Endodontic healing: 268 molars  
+- Restorative success: 215 molars  
+
+3. Objectives (inferred from title and variables)  
+- Primary:  
+  - To evaluate survival of molar teeth in need of complex endodontic treatment.  
+  - To assess influence of endodontic treatment characteristics (complexity, technical quality, pre‑/post‑operative radiolucency, type of treatment) and restorative quality (type, cusp coverage, coronal seal, FDI quality) on:  
+    - Tooth survival (retention vs extraction)  
+    - Endodontic healing (healed/healing/non‑healed; PAI‑based radiographic outcome)  
+    - Restorative success (based on FDI criteria).  
+- Secondary:  
+  - To describe distribution of patient, endodontic and restorative variables in this cohort.  
+  - Possibly to estimate survival / success probabilities over time (if time‑to‑event data are available in full paper).  
+
+4. Outcomes and definitions  
+
+4.1 Tooth survival  
+- Outcome: Survival vs failure (extraction, perhaps endodontic retreatment/surgery as failure, though full definition of survival not fully visible).  
+- Data: Derived from chart/radiographic records and recall. If patient could not attend, phone interview + contact with general practitioner.  
+- Time variable: Not explicitly stated in excerpts, but for proper survival analysis: date of endodontic treatment and date of failure/last follow‑up should be available (likely recorded).  
+
+4.2 Endodontic healing (radiographic/clinical outcome)  
+- Outcome categories:  
+  - Healed  
+  - Healing  
+  - Nonhealed  
+- Clinical criteria (Glossary of Endodontic Terms, AAE):  
+  - Healed: No clinical symptoms (pain, palpation/percussion sensitivity, pockets, sinus tract, mobility) AND no periapical radiolucency.  
+  - Healing: No clinical symptoms AND reduction in size of radiolucency compared to baseline.  
+  - Nonhealed: Clinical symptoms present OR radiolucency unchanged/increased OR need for intervention (extraction, non‑surgical or surgical (re)treatment).  
+- Radiographic evaluation:  
+  - Periapical Index (PAI): PAI ≥ 3 = radiolucency.  
+  - Pre‑operative radiolucency: Yes/No (from baseline radiograph).  
+  - Post‑operative radiolucency: Yes/No (PAI ≥3 vs <3).  
+
+4.3 Restorative success  
+- Evaluated only in subset with clinical recall (n=215).  
+- Outcome:  
+  - Restoration quality scored with FDI criteria (direct and indirect restorations).  
+  - FDI categories: “clinically excellent”, “clinically good”, “clinically sufficient”, “clinically unsatisfactory”, “clinically poor” (wording may slightly vary but essentially 5‑point ordinal).  
+  - For analysis: likely dichotomised into “acceptable” (excellent / good / sufficient) vs “unacceptable” (unsatisfactory / poor), or multi‑category ordinal outcome.  
+- Additional restorative failure definition: failure before recall (n=18) – these may be counted as failed restorations.  
+- Dimensions: Aesthetic, functional, biological domains, each scored; could be combined into overall rating (as they imply).  
+
+5. Explanatory variables (Table 1 and text)
+
+5.1 Patient variables  
+- Age (continuous; not shown in table but mentioned).  
+- Gender (Male/Female).  
+- Caries risk (categorical, 3 levels + unknown):  
+  - Low: no caries in last 2 years.  
+  - Medium: one caries lesion in last 2 years.  
+  - High: ≥2 lesions in last 2 years.  
+- Parafunction (Yes/No/Unknown) – likely bruxism or similar habits.  
+
+5.2 Endodontic variables  
+Pre‑endodontic  
+- DETI / ETC score (I/II/III). Only ETC II and III included (ETC 1 excluded); in data:  
+  - ETC II: 49 (18%)  
+  - ETC III: 230 (82%)  
+  → reflects complexity of endodontic case.  
+- Endodontic diagnosis:  
+  - Irreversible pulpitis  
+  - Apical periodontitis  
+- Number of root canals treated: 3 vs 4.  
+- Preoperative radiolucency: Yes vs No (85% vs 15%).  
+- Preoperative complicating factor (Yes/No):  
+  - Broken instrument, perforation, obliteration.  
+
+Intra‑/post‑endodontic  
+- Type of endodontic treatment:  
+  - First (initial) vs Retreatment (54% retreatments).  
+- Technical quality of endodontic treatment (radiographic):  
+  - Adequate: obturation compact, follows original morphology, ending 0–2 mm from radiographic apex.  
+  - Inadequate: if any criterion inadequate.  
+- Post‑endodontic clinical symptoms: from anamnesis + percussion, palpation, probing.  
+- Post‑operative radiolucency (PAI‑based Yes/No).  
+- Endodontic healing (Healed, Healing, Nonhealed; as above).  
+
+5.3 Restorative variables  
+- Jaw: Upper vs Lower.  
+- Presence of adjacent teeth (Left/Right neighbours; not fully detailed in table but mentioned).  
+- Restoration type at follow‑up:  
+  - Direct (e.g., composite/amalgam) vs Indirect (ceramic, metal, PFM, zirconia).  
+  - Restoration material (composite, amalgam, glass ceramic, PFM, zirconia).  
+- Cusp coverage at follow‑up: Yes vs No vs Unknown – coverage of all remaining cusps.  
+- Coronal seal at follow‑up: Adequate vs Inadequate vs Unknown.  
+- Restoration quality (FDI criteria; ordinal outcome).  
+- Restoration surfaces number (extent of restoration; not detailed but mentioned).  
+
+5.4 Operator variable  
+- Operator: two specialist endodontists  
+  - Operator 1: 238 (85%)  
+  - Operator 2: 41 (15%)  
+→ Potential clustering by operator (though only two operators).  
+
+6. Data collection methods  
+
+- Radiographs:  
+  - Baseline and follow‑up periapical radiographs; new radiograph taken if:  
+    - Previous radiograph >2 years old, OR  
+    - Patient had clinical symptoms, OR  
+    - Radiolucency present on latest radiograph, OR  
+    - Coronal seal compromised.  
+  - Standardised technique not fully described here, but likely with dental x‑ray unit and digital sensor.  
+
+- Clinical examination at recall:  
+  - Two observers present, one fixed (M.K.) for all cases.  
+  - Joint decision on clinical findings (consensus method).  
+  - Assess: symptoms, palpation/percussion sensitivity, probing, sinus tracts, mobility, quality of restoration, coronal seal.  
+
+- Telephone / GP data:  
+  - For non‑attendees: history by phone + permission to contact general practitioner.  
+  - For endodontic healing, date and result of latest radiograph from GP/hospital chart recorded.  
+
+- Observer calibration:  
+  - FDI criteria: observers calibrated using online tool (www.e‑calib.info).  
+
+- Handling of unknowns:  
+  - Some variables include “Unknown” category (caries risk n=2, parafunction n=4, restoration type n=5, cusp coverage n=13, coronal seal n=14).  
+
+7. Structure of the datasets (implied)  
+
+Three analytic datasets:  
+- Dataset 1: Tooth survival (n=279); includes patient, endodontic, and restorative variables; survival status; follow‑up time (if available).  
+- Dataset 2: Endodontic healing (n=268); includes patient variables, pre‑ and post‑endodontic variables (including technical quality, radiolucencies).  
+- Dataset 3: Restorative success (n=215); includes patient variables, endodontic variables, detailed restorative variables (FDI, coronal seal, cusp coverage, type, material).  
+
+Outcomes in these datasets may overlap but are not identical.
+
+---
+
+TASK 2 – STATISTICAL ANALYSIS PLAN
+
+I will structure the SAP by outcome domain (tooth survival, endodontic healing, restorative success), then list tests under the required categories (Mandatory, Recommended, Optional). For each test: purpose, why appropriate, when not appropriate, and alternatives.
+
+A. GENERAL PRINCIPLES
+
+- Statistical significance: α = 0.05 (two‑sided).  
+- Descriptive statistics:  
+  - Categorical variables: n (%)  
+  - Continuous variables: mean (SD) if approximately normal; otherwise median (IQR).  
+- Missing data:  
+  - Treat explicit “Unknown” as its own category for descriptive tables.  
+  - For inferential models: preferable to exclude “Unknown” categories from primary models or combine if small; use sensitivity analyses (e.g., multiple imputation) if missingness is non‑trivial.  
+- Clustering:  
+  - Each patient likely contributed only one molar for this study (not stated, but common in such designs). If multiple molars per patient exist, use cluster‑robust standard errors or multilevel models; in absence of that information, assume 1 tooth per patient.  
+- Model building:  
+  - Univariate screening then multivariable models, with clinical reasoning guiding final variable selection.  
+  - Consider potential collinearity (e.g., restoration type vs cusp coverage vs material; pre‑operative radiolucency vs diagnosis).  
+
+B. OUTCOME 1 – TOOTH SURVIVAL
+
+Here I assume tooth survival is measured as:  
+- Binary status at recall (survived vs extracted) and  
+- Ideally, time from completion of endodontic treatment to failure or last follow‑up (time‑to‑event variable).
+
+CATEGORY A – MANDATORY
+
+1) Descriptive analyses  
+   - Test: Descriptive summaries (no inferential test)  
+   - Purpose:  
+     - Characterize the cohort: distributions of patient, endodontic, and restorative variables; rates of survival vs extraction.  
+   - Why appropriate:  
+     1. Fundamental to understand sample composition and outcome frequencies.  
+     2. Helps identify sparse categories, outliers, and informs choice of later models.  
+   - Not appropriate when: Not an “inferential test”; but always necessary.  
+   - Alternatives: None; this is standard.
+
+2) Kaplan–Meier survival analysis + Log-rank test  
+   - Purpose:  
+     - Estimate tooth survival over time.  
+     - Compare survival curves between key groups (e.g., adequate vs inadequate endodontic quality; direct vs indirect restoration; adequate vs inadequate coronal seal; initial vs retreatment; cusp coverage yes/no).  
+   - Why appropriate:  
+     1. Time‑to‑event nature of tooth survival with right‑censoring (patients not failing by last follow‑up) is best analysed with survival methods.  
+     2. Kaplan–Meier is non‑parametric and does not assume a particular survival distribution; log‑rank compares curves across groups.  
+   - Why it may not be appropriate:  
+     - If precise dates for endodontic completion and failure/last follow‑up are not available (only status at one time), survival times cannot be computed. Then only cross‑sectional analysis is possible.  
+   - When this test should NOT be used:  
+     - If only a fixed follow‑up time with no variability and no censoring exists; then it adds no information beyond proportions.  
+   - Alternative if assumptions violated or time missing:  
+     - If no time data: logistic regression for failure (yes/no) at recall.  
+     - For non‑proportional hazards across groups: use stratified Cox models or flexible parametric survival models.
+
+3) Cox proportional hazards regression  
+   - Purpose:  
+     - Assess the association between multiple predictors and time to tooth failure while adjusting for confounders.  
+   - Why appropriate:  
+     1. Handles right‑censored survival data and allows estimating hazard ratios for each factor (e.g., cusp coverage, coronal seal, technical quality, caries risk).  
+     2. Accommodates both categorical and continuous predictors and is standard for prognostic studies of tooth survival.  
+   - Why it may not be appropriate:  
+     - Proportional hazards assumption may be violated for some predictors (e.g., effect of coronal seal may differ early vs late).  
+   - When this test should NOT be used:  
+     - If the event times are not known or are interval‑censored without appropriate extension.  
+     - If events are extremely rare (very few failures), leading to model instability.  
+   - Alternatives if assumptions violated:  
+     - Test PH assumption using Schoenfeld residuals.  
+     - If PH violated: use time‑varying covariates, stratified Cox, or parametric survival models (Weibull, log‑logistic) or flexible Royston–Parmar models.  
+     - If only binary status at a fixed follow‑up time is available: logistic regression.
+
+4) Multivariable logistic regression for tooth failure (if survival times not available)  
+   - Purpose:  
+     - Model probability of tooth failure (extraction) at follow‑up as a function of endodontic and restorative variables.  
+   - Why appropriate:  
+     1. Binary outcome (survival vs failure) with multiple predictors is classic use case for logistic regression.  
+     2. Produces odds ratios interpretable as relative odds of failure, controlling for confounders like age, caries risk, operator.  
+   - Why it may not be appropriate:  
+     - If failure rate is low and sample size limited, many predictors could cause overfitting.  
+   - When this test should NOT be used:  
+     - If interest is time‑to‑event with varying follow‑up and censoring, survival models are more appropriate.  
+   - Alternatives if assumptions violated or events rare:  
+     - Penalised logistic regression (e.g., Firth’s method) or exact logistic regression if events <10 per predictor.  
+     - For common outcomes and interest in risk ratios rather than odds ratios: Poisson regression with robust variance or log‑binomial models.
+
+CATEGORY B – RECOMMENDED
+
+5) Univariable comparisons (Chi‑square / Fisher’s exact / t‑test / Mann–Whitney)  
+   - Purpose:  
+     - Explore associations between each predictor and tooth survival before multivariable modelling.  
+   - Why appropriate:  
+     1. Helps to identify potentially important predictors (e.g., caries risk vs survival, cusp coverage vs survival) and interactions.  
+     2. Guides variable selection and informs about crude effect sizes.  
+   - Why it may not be appropriate:  
+     - Multiple testing leads to inflated type I error; univariable results may be misleading without adjustment.  
+   - When this test should NOT be used:  
+     - As sole basis for final conclusions; must be complemented by adjusted models.  
+   - Alternatives:  
+     - Use effect sizes and confidence intervals rather than focusing on p‑values.  
+     - Use false discovery rate control if many comparisons.
+
+6) Sensitivity analysis excluding “Unknown” categories  
+   - Test/approach: repeat key models excluding observations with Unknown covariates.  
+   - Purpose:  
+     - Assess robustness of results to missing data handling.  
+   - Why appropriate:  
+     1. Unknown categories might bias parameter estimates if they group heterogeneous patterns of missingness.  
+     2. Strengthens confidence in findings if estimates remain similar.  
+   - Why it may not be appropriate:  
+     - If many observations are lost, power decreases and selection bias may be introduced.  
+   - When NOT to use:  
+     - When unknown proportion is large and missing not at random; better use multiple imputation.  
+   - Alternative:  
+     - Multiple imputation using chained equations.
+
+CATEGORY C – OPTIONAL
+
+7) Competing risks analysis  
+   - Purpose:  
+     - If different types of failure events are recorded (e.g., extraction due to fracture vs due to persistent infection vs prosthetic reason), competing risks models (Fine‑Gray) estimate cause‑specific incidence.  
+   - Why appropriate:  
+     1. Tooth loss due to different causes may have different determinants.  
+     2. Standard Kaplan–Meier may overestimate risk of specific cause‑failure in presence of competing causes.  
+   - Why it may not be appropriate:  
+     - Requires detailed, reliably coded cause of failure and adequate numbers per cause.  
+   - When NOT to use:  
+     - If cause of failure is unknown or reliability is poor.  
+   - Alternatives:  
+     - Standard survival analysis for overall failure.
+
+8) Multilevel survival model (frailty model)  
+   - Purpose:  
+     - If multiple teeth per patient or clustering by operator is important, incorporate random effects.  
+   - Why appropriate:  
+     1. Adjusts for within‑cluster correlation, which can otherwise bias standard errors.  
+     2. Provides insight into between‑operator or between‑patient variability.  
+   - Why it may not be appropriate:  
+     - With only two operators and likely one tooth per patient, multilevel modelling might be overkill or unstable.  
+   - When NOT to use:  
+     - Very small number of clusters or cluster sizes too small.  
+   - Alternatives:  
+     - Robust standard errors clustered by patient or operator.
+
+---
+
+C. OUTCOME 2 – ENDODONTIC HEALING (Healed / Healing / Nonhealed)
+
+Outcome is nominal or ordered categorical with 3 levels in n=268 molars.
+
+CATEGORY A – MANDATORY
+
+9) Descriptive analysis of healing categories  
+   - Purpose:  
+     - Present counts and percentages of Healed, Healing, Nonhealed overall and by key predictors (e.g., technical quality, preoperative radiolucency, type of treatment).  
+   - Appropriateness considerations as in A1.
+
+10) Ordinal logistic regression (proportional odds model)  
+   - Purpose:  
+     - Model the probability of being in better vs worse healing category as a function of predictors.  
+   - Why appropriate:  
+     1. Healing status is inherently ordered (Healed > Healing > Nonhealed) and proportional odds model efficiently uses that ordering.  
+     2. Allows simultaneous adjustment for multiple variables (technical quality, preoperative radiolucency, diagnosis, retreatment vs initial, caries risk, etc.).  
+   - Why it may not be appropriate:  
+     - Proportional odds assumption may be violated (effect of predictor may differ for thresholds Healed vs others and Healed+Healing vs Nonhealed).  
+   - When NOT to use:  
+     - If model diagnostics indicate strong violation of proportional odds and simple remedies fail.  
+   - Alternatives if assumptions violated:  
+     - Partial proportional odds model (generalised ordered logit).  
+     - Multinomial logistic regression (see below) if ordering assumption not tenable.
+
+CATEGORY B – RECOMMENDED
+
+11) Multinomial logistic regression  
+   - Purpose:  
+     - Model relative odds of each healing category (e.g., Nonhealed vs Healed, Healing vs Healed) given predictors.  
+   - Why appropriate:  
+     1. Does not rely on proportional odds assumption; flexible for modelling different effects for each outcome.  
+     2. Suitable if the “healing” category is conceptually different rather than ordered.  
+   - Why it may not be appropriate:  
+     - Less efficient than ordinal model when ordering is valid; more parameters → risk of overfitting.  
+   - When NOT to use:  
+     - Very small numbers in one category (e.g., if few Nonhealed or few Healing cases) leading to unstable estimates.  
+   - Alternatives:  
+     - Collapse categories into binary outcome: Healed vs Nonhealed/Healing or Healed+Healing vs Nonhealed, then use logistic regression.
+
+12) Univariable tests for associations with healing  
+   - Tests: Chi‑square test or Fisher’s exact (for 2×k tables), Mantel–Haenszel trend test if predictors ordered.  
+   - Purpose:  
+     - Explore crude associations (e.g., proportion healed by technical quality adequate vs inadequate).  
+   - Why appropriate:  
+     1. Simple and interpretable; good for tables and preliminary analysis.  
+     2. Helps identify likely prognostic factors to enter in multivariable models.  
+   - Why it may not be appropriate:  
+     - Ignores confounding and interactions; multiple testing.  
+   - When NOT to use:  
+     - Very sparse tables (expected cell counts <5) – in that case use Fisher’s exact test.  
+   - Alternatives:  
+     - Exact tests for small samples; combine levels of predictor.
+
+CATEGORY C – OPTIONAL
+
+13) Binary logistic regression for “success” vs “failure”  
+   - Purpose:  
+     - Create a binary outcome such as Healed vs Nonhealed (excluding or merging Healing) and model odds of “success”.  
+   - Why appropriate:  
+     1. Many endodontic studies use a binary definition (success/failure); easily comparable to literature.  
+     2. Simpler models, requiring fewer parameters and events.  
+   - Why it may not be appropriate:  
+     - Loss of information; “Healing” cases are intermediate and misclassification may bias results.  
+   - When NOT to use:  
+     - If “Healing” constitutes a substantial fraction and differs systematically from both Healed and Nonhealed.  
+   - Alternatives:  
+     - Full ordinal or multinomial models as above.
+
+14) Time‑to‑healing analysis  
+   - Purpose:  
+     - If dates of radiographic exams allow approximate time to resolution/re‑treatment, survival analysis of healing could be done.  
+   - Why appropriate:  
+     1. Accounts for variable follow‑up durations; some lesions take longer to resolve.  
+     2. Censoring when healing not observed yet.  
+   - Why it may not be appropriate:  
+     - Data appear cross‑sectional at latest follow‑up rather than continuous time; interval‑censoring not easily resolved.  
+   - When NOT to use:  
+     - When time of healing/failure is unknown; only status at a single examination.  
+   - Alternatives:  
+     - Use current status models (interval‑censored survival) if more detailed data exist; otherwise stick to logistic/ordinal models.
+
+---
+
+D. OUTCOME 3 – RESTORATIVE SUCCESS (FDI‑based)
+
+Outcome: FDI rating per restoration (ordinal, 5 levels) or dichotomised as acceptable vs unacceptable in n=215 molars.
+
+CATEGORY A – MANDATORY
+
+15) Descriptive statistics of restoration quality  
+   - Purpose:  
+     - Describe distribution of FDI categories overall and by key variables (direct vs indirect, cusp coverage, coronal seal, material, jaw).  
+   - Appropriateness as per earlier descriptive sections.
+
+16) Ordinal logistic regression (FDI outcome)  
+   - Purpose:  
+     - Model association between predictors (restoration type, cusp coverage, coronal seal, material, caries risk, parafunction) and better vs worse FDI ratings.  
+   - Why appropriate:  
+     1. FDI criteria are ordered categories; proportional odds model aligns with this nature.  
+     2. Adjusts for confounding factors and yields odds ratios summarising overall shift toward worse ratings.  
+   - Why it may not be appropriate:  
+     - Proportional odds assumption may not hold (e.g., predictors affect extreme FDI categories more than mid‑categories).  
+   - When NOT to use:  
+     - Strong violation of proportional odds; sample size insufficient to support alternative complex models.  
+   - Alternatives:  
+     - Collapsing FDI into fewer categories and using ordinal/binary logistic;  
+     - Partial proportional odds models;  
+     - Multinomial logistic regression if treating FDI as nominal.
+
+CATEGORY B – RECOMMENDED
+
+17) Binary logistic regression for “acceptable vs unacceptable” restoration  
+   - Definition: Acceptable = “clinically excellent/good/sufficient”; Unacceptable = “clinically unsatisfactory/poor” plus “failures before recall” if treated as failures.  
+   - Purpose:  
+     - Estimate odds of unacceptable restoration quality given design factors (indirect vs direct, cusp coverage, coronal seal, jaw, material, caries risk, parafunction).  
+   - Why appropriate:  
+     1. Clinically interpretable dichotomy with direct implications for need of replacement.  
+     2. Fewer outcome categories → better power and more stable estimates with n=215.  
+   - Why it may not be appropriate:  
+     - Collapsing categories can mask gradations of quality and reduce nuance.  
+   - When NOT to use:  
+     - If “unacceptable” category is very small; risk of sparse-data bias.  
+   - Alternatives:  
+     - Penalised logistic regression.  
+     - Maintain ordinal outcome, as in 16.
+
+18) Univariable tests (Chi‑square / Fisher)  
+   - Purpose:  
+     - Assess crude association between each restorative factor and unacceptable vs acceptable quality (or ordinal grade).  
+   - Appropriateness and caveats as previously described.
+
+CATEGORY C – OPTIONAL
+
+19) Agreement analysis between observers  
+   - Test: Weighted kappa coefficient for FDI ratings.  
+   - Purpose:  
+     - Quantify inter‑observer reliability for categorical FDI ratings (though consensus scoring was used; if raw separate scores retained, this is possible).  
+   - Why appropriate:  
+     1. FDI is subjective; reliability is important for validity.  
+     2. Weighted kappa respects ordering of categories.  
+   - Why it may not be appropriate:  
+     - Observers scored by consensus; individual ratings may not be available.  
+   - When NOT to use:  
+     - If only consensus ratings exist.  
+   - Alternatives:  
+     - Report calibration results from e‑calib tool if available.
+
+20) Time‑to‑restorative failure  
+   - Purpose:  
+     - If date of initial restoration and date of failure (e.g., replacement, fracture) are available: survival analysis of restorations by type/material.  
+   - Why appropriate:  
+     1. Mirrors prosthodontic survival studies; uses full longitudinal data.  
+     2. Accounts for censoring (no failure at last exam).  
+   - Why it may not be appropriate:  
+     - Data likely cross‑sectional; many restorations already present at endodontic treatment or placed over wide time spans without precise dates.  
+   - When NOT to use:  
+     - If time of restorative placement and failure is missing or inconsistent.  
+   - Alternatives:  
+     - Cross‑sectional logistic/ordinal models as above.
+
+---
+
+TASK 3 – INAPPROPRIATE TESTS
+
+Below are tests that should not be used and why:
+
+1) Student’s t‑test / ANOVA on FDI or healing categories treated as continuous  
+   - Why inappropriate:  
+     - FDI and healing outcomes are ordinal categorical, not interval‑scaled; spacing between categories is not equal.  
+     - Mean and SD of coded categories are hard to interpret; t‑test assumes normally distributed continuous outcome.  
+   - Preferred alternatives:  
+     - Ordinal logistic regression; non‑parametric tests (e.g., Mann–Whitney) for simple two‑group comparisons.
+
+2) Linear regression with binary or categorical outcome (survival, healed)  
+   - Why inappropriate:  
+     - Linear regression assumes continuous, normally distributed residuals; binary outcomes violate these assumptions.  
+     - Predicted values can fall outside [0,1].  
+   - Preferred alternatives:  
+     - Logistic regression; survival models.
+
+3) Parametric tests ignoring censoring (e.g., comparing mean “follow‑up time” only among failures)  
+   - Why inappropriate:  
+     - Excluding survivors (censored observations) causes serious bias in estimates of time to event.  
+   - Alternative:  
+     - Kaplan–Meier, Cox regression.
+
+4) Repeated-measures ANOVA  
+   - Why inappropriate:  
+     - Data appear to have a single post‑treatment examination; there is no repeated measurement series per tooth (longitudinal).  
+   - Alternative:  
+     - Cross‑sectional models (logistic/ordinal/survival) with single outcome.
+
+5) Multiple independent t‑tests to compare every pair of groups (e.g., comparing mean age in many subgroups)  
+   - Why inappropriate:  
+     - Inflates type I error; lacks multiplicity control.  
+   - Alternative:  
+     - ANOVA (when continuous outcome appropriate) or regression with multiple categories; adjust for multiple comparisons if necessary.
+
+6) Correlation coefficients (Pearson/Spearman) as a primary analysis for outcome vs predictors  
+   - Why inappropriate:  
+     - Outcomes are categorical; correlation coefficients are not appropriate for modelling categorical outcomes, especially with covariate adjustment.  
+   - Alternative:  
+     - Logistic / ordinal logistic regression, chi‑square tests.
+
+7) McNemar test  
+   - Why inappropriate:  
+     - Requires paired binary data (before/after on same units). This study uses single post‑treatment evaluation per tooth.  
+   - Alternative:  
+     - Regular chi‑square or logistic regression for unpaired data.
+
+8) Linear mixed models for continuous outcomes  
+   - Why inappropriate:  
+     - Outcomes (survival, healing, FDI rating) are not continuous, repeated measures per tooth are not present.  
+   - Alternative:  
+     - Mixed‑effects logistic/ordinal models only if clustering by patient/operator necessitates it; not linear mixed models.
+
+---
+
+TASK 4 – SUMMARY OF OVERALL ANALYTICAL APPROACH
+
+The study is a retrospective cohort of endodontically treated molars with three main outcomes: tooth survival (time‑to‑event / binary), endodontic healing (3‑category ordinal), and restorative success (FDI‑based ordinal or binary). The recommended analytical strategy is:
+
+1. Start with descriptive statistics for all variables and outcomes across the three analytic cohorts (survival, healing, restorative).  
+2. For tooth survival, use survival analysis (Kaplan–Meier, log‑rank, Cox regression) if dates are available; otherwise use logistic regression for failure status at recall, adjusting for key patient, endodontic, and restorative factors.  
+3. For endodontic healing, treat healing as ordered outcome and fit an ordinal logistic model; if assumptions fail, switch to multinomial logistic or binary logistic with clinically justified dichotomisation.  
+4. For restorative success, analyse FDI ratings with ordinal logistic models and/or binary logistic models for acceptable vs unacceptable, integrating restorative design variables (direct vs indirect, cusp coverage, coronal seal, material) and patient factors (caries risk, parafunction).  
+5. Supplement with univariable comparisons, sensitivity analyses for missing/unknown categories, and, where relevant, clustering adjustments.  
+
+This combination of survival models for tooth retention and ordinal/binary regression for healing and restoration quality is well aligned with the study design, the nature of the outcomes, and the clinical questions about how endodontic and restorative factors influence long‑term prognosis of complex molar endodontic treatment.

@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_Ferrandez_et_al.CLOI-D-21-00060_R1.pdf",
+  "timestamp": "20260507_145928",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 17988
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 6805
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 30030
+    }
+  }
+}

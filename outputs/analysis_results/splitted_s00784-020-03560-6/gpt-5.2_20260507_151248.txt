@@ -1,0 +1,234 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_s00784-020-03560-6.pdf
+Status : ok
+Time   : 20260507_151248
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study identification and design
+- **Title/topic:** Effect of *sole* endodontic treatment on periodontal healing of **grade 3 endo-periodontal lesions without root damage** in **periodontally compromised patients**.
+- **Design:** **Retrospective pilot** observational study with **within-tooth pre–post** comparisons (no parallel control group described).
+- **Setting:** University Hospital Heidelberg (Periodontology + Restorative Dentistry departments).
+- **Ethics:** Approved (S-312/2020).
+
+### Objective and hypothesis
+- **Aim:** Evaluate the effect of **sole endodontic treatment** on **periodontal healing** in the target lesion type.
+- **Hypothesis:** Sole endodontic treatment **facilitates periodontal healing**.
+
+### Population / sample
+- **Participants:** 13 **periodontally compromised** patients.
+- **Units analyzed:** 19 **teeth** (clustered within patients; some patients contribute >1 tooth).
+- **Key inclusion descriptor:** teeth initially diagnosed as **combined endo-periodontal lesions without root damage, grade 3**.
+- **Follow-up timing:**
+  - **Clinical reevaluation:** **≥ 6 months** after endodontic treatment (PPD/CAL assessed; additional assessments during supportive periodontal care).
+  - **Radiographs:** baseline; during; and **6–17 months** after endodontic treatment.
+
+### Interventions / exposure
+- **Endodontic protocol (standardized):**
+  - Rubber dam isolation
+  - Hand + rotary files (Reciproc®)
+  - Irrigation: ultrasonically activated **NaOCl 3%** and **CHX 2%**, with ethyl alcohol rinse between to avoid precipitate
+  - Intracanal medicament: **Ca(OH)₂ + CHX** paste at end of first visit
+  - Second visit **≥ 2 weeks** later: obturation (thermoplastic or lateral condensation) using gutta-percha
+- **Periodontitis therapy (systemic):**
+  - Systematic therapy including **full-mouth disinfection**
+  - **Adjunctive antibiotics if necessary**: van Winkelhoff regimen (amoxicillin 375 mg + metronidazole 250 mg, TID x 7 days)
+  - **Important protocol constraint:** the *affected teeth* were **exempted from subgingival debridement** and **never instrumented subgingivally** during the study interval (intended to isolate effect of endodontics on those teeth).
+
+### Outcomes and variables
+
+#### Primary outcome
+- **Change in pocket probing depth (PPD)** (continuous; mm), measured clinically **before** and **after** (timing: before and after active periodontal treatment; lesion teeth probed at ≥6 months post-endo).
+
+#### Secondary outcomes
+- **Change in PAI** (Periapical Index; ordinal 1–5 by Ørstavik) at apex on standardized periapical radiographs.
+- **Change in clinical attachment loss (CAL)** (continuous; mm).
+
+#### “Success/failure” derived outcomes
+- **Clinical success:** teeth with **PPD and CAL improvement ≥50%** classified “success”; otherwise “failure”.
+- **Radiographic success:** **PAI improvement** classified “successful”; otherwise “failure”.
+
+#### Additional recorded variables (potential predictors/confounders)
+- **Tooth-level:** restorations status, caries, sensitivity prior to endodontic treatment, furcation involvement, tooth mobility.
+- **Patient-level:** smoking status, whether **adjunctive antibiotics** were used during full-mouth disinfection.
+- **Endodontic quality variables (radiographic):** per Farzaneh scheme
+  - **Length:** adequate (0–2 mm short), short (≥2 mm short), long (beyond apex)
+  - **Density:** good vs poor
+  - **Missed canal:** ≥1 canal not filled
+- **Measurement/blinding:**
+  - **PAI** scored by **one calibrated investigator blinded to clinical outcome**.
+  - **Root filling quality** rated by **two investigators independently**; disagreements resolved by **consensus**.
+  - Radiographs evaluated with standardized conditions (parallel technique; same certified monitor; dark room; same software).
+
+---
+
+## TASK 2 — Statistical analysis plan (tests by category)
+
+### General analysis principles (apply throughout)
+- **Analysis unit:** tooth, but **teeth are clustered within patient** → use **cluster-robust methods** or **mixed models/GEE**.
+- **Two outcome scales:** continuous (PPD, CAL change) and ordinal (PAI, PAI change), plus binary “success/failure”.
+- **Effect sizes:** report mean/median change with **95% CI**; for binary outcomes report **risk/proportion** with CI; for models report β/OR with CI.
+- **Pilot study:** emphasize estimation (CIs) over hypothesis testing; avoid overfitting (rule of thumb: very limited predictors).
+
+---
+
+### CATEGORY A — MANDATORY (core tests/models)
+
+#### A1) Paired / within-tooth change in PPD and CAL using **linear mixed-effects model (LMM)** (or GEE)
+- **Purpose:** Test/estimate mean **pre–post change** in PPD (primary) and CAL while accounting for **multiple teeth per patient**.
+- **Why appropriate (≥2 reasons):**
+  1. Handles **correlated observations** (teeth nested within patients) via random intercept (LMM) or working correlation (GEE).
+  2. Directly models **change over time** (time indicator) and provides **CIs** for mean change.
+- **Why may not be appropriate (≥1 reason):**
+  - With only **13 patients**, random-effects variance estimation can be unstable; GEE small-sample SEs may also be biased.
+- **When NOT to use:**
+  - If there is effectively **one tooth per patient** (no clustering) and data are approximately normal—simpler paired methods suffice.
+- **Alternative if assumptions violated:**
+  - If residuals are strongly non-normal/outliers: **clustered bootstrap CI** for mean change; or **mixed-effects quantile regression**; or analyze **ranked changes** with cluster-robust SEs.
+
+*(If authors only have one post timepoint per tooth, model as outcome = change; or as repeated measure with time factor.)*
+
+#### A2) Change in PAI (ordinal) using **mixed-effects ordinal logistic regression** (cumulative link mixed model) *or* **GEE ordinal model**
+- **Purpose:** Evaluate whether PAI scores **improve after treatment** (shift toward lower scores) accounting for clustering.
+- **Why appropriate:**
+  1. PAI is a **5-level ordinal scale**; ordinal models respect ordering without assuming equal spacing.
+  2. Mixed/clustered approach accounts for **patient-level clustering**.
+- **Why may not be appropriate:**
+  - **Very small sample** can lead to separation or unstable threshold estimates; proportional odds assumption may fail.
+- **When NOT to use:**
+  - If PAI is collapsed to binary (improved vs not) and the ordinal information is no longer available/desired.
+- **Alternative if assumptions violated:**
+  - If proportional odds fails: **partial proportional odds** model.
+  - If ordinal model unstable: analyze **binary improvement** with clustered methods (see A3) or use **Wilcoxon signed-rank with clustered bootstrap** for paired ordinal change.
+
+#### A3) Proportion “success” (clinical and radiographic) with **cluster-adjusted estimation** (e.g., GEE logistic with intercept only, or cluster-robust binomial CI)
+- **Purpose:** Provide valid estimates and CIs for **success rates** (PPD/CAL ≥50% improvement; PAI improvement).
+- **Why appropriate:**
+  1. Outcomes are **binary** and clinically interpretable.
+  2. Clustering by patient affects variance; cluster-adjusted methods prevent overly narrow CIs.
+- **Why may not be appropriate:**
+  - With few clusters (13 patients), standard sandwich SEs can be biased downward.
+- **When NOT to use:**
+  - If you ignore clustering and treat 19 teeth as independent—this should not be done.
+- **Alternative if assumptions violated / small-cluster issue:**
+  - **Cluster bootstrap** CIs for proportions; or **mixed-effects logistic regression** with random patient intercept and penalization (Firth) if needed.
+
+---
+
+### CATEGORY B — RECOMMENDED (adds rigor/validity)
+
+#### B1) **Inter-rater reliability** for root filling quality ratings (two raters): **Cohen’s kappa** (weighted if ordinal) and/or **percent agreement**
+- **Purpose:** Quantify agreement between the two investigators rating radiographic quality (length, density, missed canal).
+- **Why appropriate:**
+  1. Ratings are **categorical/ordinal** and done by **two observers**.
+  2. Reliability affects credibility of associations using these ratings.
+- **Why may not be appropriate:**
+  - Kappa can be misleading with very high/low prevalence of categories in small samples.
+- **When NOT to use:**
+  - If final ratings were always made by consensus only and original independent ratings are unavailable.
+- **Alternative:**
+  - **Gwet’s AC1/AC2** (more stable with prevalence issues) or **bootstrap CI** for agreement.
+
+#### B2) Association of endodontic quality (length/density/missed canal) with success using **mixed-effects logistic regression** (or GEE logistic)
+- **Purpose:** Explore whether radiographic quality predicts **clinical success** and/or **PAI improvement**.
+- **Why appropriate:**
+  1. Predictor is categorical; outcome is binary; accounts for **clustering**.
+  2. Clinically important to link technical quality to healing.
+- **Why may not be appropriate:**
+  - Very small dataset → high risk of **overfitting** and separation (especially with rare categories like “missed canal”).
+- **When NOT to use:**
+  - When there are too few failures/successes per predictor level (sparse cells).
+- **Alternative if assumptions violated:**
+  - **Exact logistic regression** (limited with clustering), **Firth-penalized logistic** with cluster bootstrap, or simple **descriptive stratification** only.
+
+#### B3) Patient-level factors (smoking, antibiotic therapy) vs success using **mixed-effects logistic regression** (parsimonious)
+- **Purpose:** Assess whether smoking/antibiotics relate to outcomes (confounding/effect modification).
+- **Why appropriate:**
+  1. Variables were recorded and are biologically plausible modifiers of periodontal healing.
+  2. Mixed model accounts for multiple teeth per patient.
+- **Why may not be appropriate:**
+  - With only 13 patients, patient-level predictors can be underpowered and unstable.
+- **When NOT to use:**
+  - If nearly all patients fall into one category (e.g., almost all non-smokers), model is not estimable.
+- **Alternative:**
+  - **Fisher’s exact test at patient level** (one tooth per patient selected or aggregate per patient), or **descriptive** only.
+
+#### B4) **Sensitivity analysis for follow-up time** (6–17 months) using regression adjustment
+- **Test/model:** LMM (continuous change) / mixed ordinal model (PAI) including **follow-up duration** as covariate.
+- **Purpose:** Check whether heterogeneity in follow-up explains outcome variability.
+- **Why appropriate:**
+  1. Follow-up varies substantially; healing is time-dependent.
+  2. Helps reduce bias due to informative timing.
+- **Why may not be appropriate:**
+  - Follow-up time may be correlated with unmeasured clinical decisions (confounding by indication).
+- **When NOT to use:**
+  - If follow-up timing is missing/too coarsely recorded.
+- **Alternative:**
+  - Stratify descriptively (e.g., 6–9 vs ≥10 months) or use **Spearman correlation** with clustered bootstrap.
+
+---
+
+### CATEGORY C — OPTIONAL (supplementary insight)
+
+#### C1) Nonparametric paired change for PPD/CAL: **Wilcoxon signed-rank test** (with caution about clustering)
+- **Purpose:** Provide a robustness check for pre–post change without normality assumption.
+- **Why appropriate:**
+  1. Suitable for skewed changes/outliers common in clinical measures.
+  2. Works with small samples.
+- **Why may not be appropriate:**
+  - Assumes independent pairs; clustering (multiple teeth/patient) violates this.
+- **When NOT to use:**
+  - When >1 tooth per patient unless you do patient-level aggregation or cluster-resampling.
+- **Alternative:**
+  - **Clustered permutation test** or **cluster bootstrap** of median change.
+
+#### C2) Correlation between continuous changes and ordinal PAI change: **Spearman correlation** (cluster bootstrap CI)
+- **Purpose:** Evaluate whether radiographic improvement aligns with clinical improvement.
+- **Why appropriate:**
+  1. Handles non-normal/ordinal data.
+  2. Clinically interpretable concordance check.
+- **Why may not be appropriate:**
+  - Correlation ignores clustering unless adjusted.
+- **When NOT to use:**
+  - If multiple teeth per patient and no cluster adjustment.
+- **Alternative:**
+  - Mixed-effects models relating PAI change to PPD/CAL change.
+
+#### C3) Exploratory subgroup comparisons (e.g., furcation involvement/mobility categories): **descriptive + exact/penalized models**
+- **Purpose:** Hypothesis-generation about prognostic clinical factors.
+- **Why appropriate:**
+  1. Variables were measured (furcation, mobility).
+  2. May explain heterogeneity in response.
+- **Why may not be appropriate:**
+  - Sparse categories; very high false-positive risk.
+- **When NOT to use:**
+  - If subgroup sizes are tiny (e.g., n<5).
+- **Alternative:**
+  - Report **case-series style** summaries only.
+
+---
+
+## TASK 3 — Tests that should NOT be used (and why)
+
+1. **Independent-samples t-test / one-way ANOVA** comparing “before vs after” as if groups are independent  
+   - **Why inappropriate:** measurements are **paired within tooth**; violates independence; wrong SEs/p-values.
+
+2. **Chi-square test** for success rates treating 19 teeth as independent  
+   - **Why inappropriate:** ignores **patient clustering**; expected counts may be small → invalid approximation.
+
+3. **Pearson correlation** between outcomes without checking distribution and clustering  
+   - **Why inappropriate:** assumes linear relationship, approximate normality, and independence.
+
+4. **Linear regression on PAI as numeric (1–5) without ordinal methods**  
+   - **Why inappropriate:** assumes equal spacing and normal residuals; PAI is **ordinal**.
+
+5. **Repeated-measures ANOVA** at the tooth level without accommodating patient clustering (and with small N)  
+   - **Why inappropriate:** would still miss the **second-level clustering** (teeth within patient) and is fragile with missing/unequal timing.
+
+---
+
+## TASK 4 — Summary justification of overall approach
+
+A valid plan must (i) treat the study as a **retrospective pre–post** evaluation with no concurrent control, (ii) analyze **PPD change** as the primary endpoint and **PAI/CAL** as secondary, and—critically—(iii) account for **non-independence of teeth within patients**. Therefore, mixed-effects (or GEE with small-sample/cluster-bootstrap corrections) form the backbone for continuous (PPD/CAL) and ordinal (PAI) outcomes, complemented by cluster-adjusted estimates for clinically meaningful “success/failure” rates and reliability assessment of radiographic ratings.

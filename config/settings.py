@@ -45,11 +45,7 @@ OCR_MODEL = "gemini-3-flash-preview"
 # مدل‌های تحلیل آماری
 # ============================================================
 ANALYSIS_MODELS = [
-    {
-        "key":      "gemini-3.1-pro-preview",
-        "name":     "gemini-3.1-pro-preview",
-        "provider": "Google",
-    },
+
     {
         "key":      "gpt-5.2",
         "name":     "gpt-5.2",
