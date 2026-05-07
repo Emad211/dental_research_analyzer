@@ -1,8 +1,9 @@
 import time
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict
 
 from openai import OpenAI
+from google.genai import types, Client as GeminiClient
 
 from config.settings import (
     API_KEY,
@@ -15,41 +16,75 @@ from src.utils import setup_logger, save_text, save_json, timestamp
 
 logger = setup_logger("StatisticalAnalyzer")
 
+_SYSTEM_PROMPT = (
+    "You are an expert biostatistician specializing "
+    "in dental and clinical research methodology."
+)
+
 
 class StatisticalAnalyzer:
     """
-    تحلیل آماری متن OCR‌شده با چند مدل هوش مصنوعی
-    از طریق یک کلاینت OpenAI-compatible واحد.
+    Statistical analysis using multiple AI models.
+    - Gemini models  → Google Gemini SDK (direct)
+    - All other models → OpenAI-compatible SDK
     """
 
     def __init__(self):
-        self.client = OpenAI(api_key=API_KEY, base_url=BASE_URL)
+        # OpenAI-compatible client (for non-Gemini models)
+        self.openai_client = OpenAI(api_key=API_KEY, base_url=BASE_URL)
+
+        # Google Gemini client (for Gemini models)
+        self.gemini_client = GeminiClient(
+            api_key=API_KEY,
+            http_options=types.HttpOptions(base_url="https://api.gapgpt.app/")
+        )
+
         logger.info(
-            f"StatisticalAnalyzer آماده — {len(ANALYSIS_MODELS)} مدل تعریف شده"
+            f"StatisticalAnalyzer ready — {len(ANALYSIS_MODELS)} models configured"
         )
 
     # ------------------------------------------------------------------
-    def _call_model(self, model_name: str, prompt: str) -> str:
-        """ارسال درخواست به یک مدل و دریافت پاسخ."""
-        response = self.client.chat.completions.create(
+    def _is_gemini(self, model_name: str) -> bool:
+        """Check if a model should use the Gemini SDK."""
+        return model_name.lower().startswith("gemini")
+
+    # ------------------------------------------------------------------
+    def _call_gemini(self, model_name: str, prompt: str) -> str:
+        """Send request using Google Gemini SDK."""
+        response = self.gemini_client.models.generate_content(
+            model=model_name,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                system_instruction=_SYSTEM_PROMPT,
+                temperature=0.3,
+                max_output_tokens=8192,
+            )
+        )
+        return response.text.strip()
+
+    # ------------------------------------------------------------------
+    def _call_openai(self, model_name: str, prompt: str) -> str:
+        """Send request using OpenAI-compatible SDK."""
+        response = self.openai_client.chat.completions.create(
             model=model_name,
             temperature=0.3,
             max_tokens=8192,
             messages=[
-                {
-                    "role": "system",
-                    "content": (
-                        "You are an expert biostatistician specializing "
-                        "in dental and clinical research methodology."
-                    ),
-                },
-                {
-                    "role": "user",
-                    "content": prompt,
-                },
+                {"role": "system", "content": _SYSTEM_PROMPT},
+                {"role": "user",   "content": prompt},
             ],
         )
         return response.choices[0].message.content.strip()
+
+    # ------------------------------------------------------------------
+    def _call_model(self, model_name: str, prompt: str) -> str:
+        """Route request to the correct SDK based on model name."""
+        if self._is_gemini(model_name):
+            logger.info(f"    → Using Google Gemini SDK")
+            return self._call_gemini(model_name, prompt)
+        else:
+            logger.info(f"    → Using OpenAI-compatible SDK")
+            return self._call_openai(model_name, prompt)
 
     # ------------------------------------------------------------------
     def run(
@@ -59,20 +94,20 @@ class StatisticalAnalyzer:
         delay: float = 3.0,
     ) -> Dict:
         """
-        اجرای تحلیل آماری با تمام مدل‌های تعریف‌شده.
+        Run statistical analysis with all configured models.
 
         Args:
-            ocr_text: متن استخراج‌شده توسط OCR
-            pdf_name: نام فایل PDF (برای نام‌گذاری خروجی)
-            delay:    تاخیر بین درخواست‌ها (ثانیه)
+            ocr_text: OCR-extracted text
+            pdf_name: Original PDF filename
+            delay:    Delay between API calls (seconds)
 
         Returns:
-            دیکشنری شامل نتیجه هر مدل
+            Dictionary with results from each model
         """
         prompt  = STATISTICAL_PROMPT.format(ocr_text=ocr_text)
         results: Dict[str, Dict] = {}
 
-        logger.info(f"شروع تحلیل آماری — {len(ANALYSIS_MODELS)} مدل")
+        logger.info(f"Starting statistical analysis — {len(ANALYSIS_MODELS)} models")
         logger.info("─" * 60)
 
         for idx, model_cfg in enumerate(ANALYSIS_MODELS):
@@ -87,11 +122,12 @@ class StatisticalAnalyzer:
             try:
                 answer = self._call_model(name, prompt)
                 status = "ok"
-                logger.info(f"  ✓ دریافت شد: {len(answer)} کاراکتر")
+                logger.info(f"  ✓ Received: {len(answer):,} characters")
+
             except Exception as exc:
-                answer = f"[خطا: {exc}]"
+                answer = f"[Error: {exc}]"
                 status = "error"
-                logger.error(f"  ✗ خطا: {exc}")
+                logger.error(f"  ✗ Error: {exc}")
 
             results[key] = {
                 "provider": provider,
@@ -103,37 +139,34 @@ class StatisticalAnalyzer:
             if idx < len(ANALYSIS_MODELS) - 1:
                 time.sleep(delay)
 
-        # ── ذخیره ──────────────────────────────────────────────────────
         self._save(results, pdf_name)
 
         logger.info("─" * 60)
-        logger.info("تمام تحلیل‌ها کامل شدند.")
+        logger.info("All analyses completed.")
         return results
 
     # ------------------------------------------------------------------
     def _save(self, results: Dict, pdf_name: str) -> None:
-        """ذخیره نتایج هر مدل + گزارش ترکیبی."""
-        ts       = timestamp()
-        stem     = Path(pdf_name).stem
-        out_dir  = ANALYSIS_RESULTS_DIR / stem
+        """Save each model's result + combined report."""
+        ts      = timestamp()
+        stem    = Path(pdf_name).stem
+        out_dir = ANALYSIS_RESULTS_DIR / stem
         out_dir.mkdir(parents=True, exist_ok=True)
 
-        # فایل جداگانه برای هر مدل
         for key, data in results.items():
             header = (
                 f"{'═'*70}\n"
                 f"STATISTICAL ANALYSIS — {data['provider']} / {data['model']}\n"
-                f"PDF : {pdf_name}\n"
-                f"Time: {ts}\n"
+                f"PDF    : {pdf_name}\n"
+                f"Status : {data['status']}\n"
+                f"Time   : {ts}\n"
                 f"{'═'*70}\n\n"
             )
             save_text(out_dir / f"{key}_{ts}.txt", header + data["text"])
 
-        # گزارش ترکیبی
-        combined = self._build_combined(results, pdf_name, ts)
-        save_text(out_dir / f"combined_{ts}.txt", combined)
+        save_text(out_dir / f"combined_{ts}.txt",
+                  self._build_combined(results, pdf_name, ts))
 
-        # متادیتا JSON
         save_json(
             out_dir / f"metadata_{ts}.json",
             {
@@ -151,25 +184,26 @@ class StatisticalAnalyzer:
             },
         )
 
-        logger.info(f"نتایج ذخیره شدند → {out_dir}")
+        logger.info(f"Results saved → {out_dir}")
 
     # ------------------------------------------------------------------
     @staticmethod
     def _build_combined(results: Dict, pdf_name: str, ts: str) -> str:
-        """ساخت گزارش یکپارچه از تمام مدل‌ها."""
-        sep = "═" * 70
+        """Build a single combined report from all models."""
+        sep   = "═" * 70
         parts = [
             sep,
             "COMBINED STATISTICAL ANALYSIS REPORT",
-            f"PDF : {pdf_name}",
-            f"Time: {ts}",
+            f"PDF  : {pdf_name}",
+            f"Time : {ts}",
             f"Models: {len(results)}",
             sep,
         ]
         for i, (key, data) in enumerate(results.items(), start=1):
+            sdk = "Gemini SDK" if data["model"].lower().startswith("gemini") else "OpenAI SDK"
             parts += [
                 f"\n{'─'*70}",
-                f"MODEL {i}: {data['provider']} — {data['model']}",
+                f"MODEL {i}: {data['provider']} — {data['model']}  [{sdk}]",
                 f"{'─'*70}\n",
                 data["text"],
             ]
