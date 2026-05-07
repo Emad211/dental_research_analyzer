@@ -1,0 +1,171 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+Bufersen et al. BMC Oral Health (2021) 21:589
+https://doi.org/10.1186/s12903-021-01952-y
+
+BMC Oral Health
+
+RESEARCH Open Access
+
+Survival of endodontically treated permanent teeth among children: a retrospective cohort study
+
+Saitah Bufersen¹*, Judith Jones¹,², Jayapriyaa Shanmugham¹, Tun-Yi Hsu¹, Sharron Rich¹, Ali H. Ziyab³ and Sami Chogle¹
+
+Check for updates
+
+Background
+In the general population, multiple outcome studies have been performed regarding nonsurgical root canal treatment (NSRCT) with varying results. A number of factors influence this variation including the outcome measured, the study design, follow-up duration and operator skill and experience. The success rate of NSRCT ranges from 75 to 85%, depending on the strictness of the criteria used [1]. The percentage of healed teeth ranges from 73 to 97%, while functional teeth range between 88 and 97% [2].
+
+Few studies have investigated endodontic involvement and NSRCT in the permanent teeth of children. In a Turkish population, evaluation of panoramic radiographs and charts of 6- to 12-year-olds showed that 0.47% of permanent first molars were endodontically treated, while 4% required NSRCT [3]. In 13- to 16-year-olds, 4.28% of permanent first molars were endodontically treated and 6.09% required NSRCT [3]. Another study also examined patient charts in a Saudi population and
+
+*Correspondence: S.bufersen@gmail.com
+¹ Department of Endodontics, Boston University Henry M Goldman School of Dental Medicine, 635 Albany St, G200, Boston, MA 02118, USA
+Full list of author information is available at the end of the article
+
+BMC
+
+© The Author(s) 2021. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third party material in this article are included in the article's Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the article's Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/. The Creative Commons Public Domain Dedication waiver (http://creativecommons.org/publicdomain/zero/1.0/) applies to the data made available in this article, unless otherwise stated in a credit line to the data.
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+Bufersen et al. BMC Oral Health          (2021) 21:589          Page 2 of 9
+
+reported that 35.8% of permanent teeth in 6- to 18-year-olds were pulpally involved [4].
+Reports on the NSRCT outcomes in permanent teeth of this younger population are rare [5]. The technical quality of NSRCT was satisfactory in only 42–61% of cases, with a mean age of 12–16 years at treatment time [6–8]. Radiographic exams of endodontically treated teeth (ETT) showed healthy periapical tissue in 48–75% of teeth [6, 8]. Moreover, successful NSRCT was reported in 36–86% of teeth in 8- to 20-year-olds after clinical and radiographic exams [5, 9]. The marked difference in the previous studies’ results could be attributed to differences in design and the criteria used to measure the outcome. The purpose of this study was to examine the survival rates of NSRCTs performed on permanent teeth of 6- to 18-year-olds at Boston University Henry M. Goldman School of Dental Medicine (BUGSDM). Predictors of failure of ETT were also assessed. Our null hypothesis was that age, gender, insurance type, tooth type and jaw type have no effect on treatment outcome (survival).
+
+**Methods**
+**Study design, setting, and participants**
+In this retrospective analysis of electronic dental records of 6- to 18-year-olds, patients were selected after ethical approval was obtained from the Medical Center Institutional Review Board (IRB Number: H-34766). A total of 25,877 records were scanned to identify 773 patients (931 teeth) who received endodontic treatment between January 1st, 2007, and December 31st, 2015. Subjects with completed NSRCTs during the study period and at least one posttreatment record were included in the analysis. Hence, records of 432 patients (507 teeth) were excluded due to lack of follow-up, leaving a sample size of 341 patients with 424 teeth (Fig. 1). The patient data were deidentified and a study ID was used to record the findings. The NSRCT was mainly performed by endodontic residents who were trained to perform microscopic endodontic therapy using evidence-based protocols and techniques with specialist faculty supervision for uniform results.
+
+**Study outcome ascertainment**
+The main outcome variable was time until failure of ETT, i.e., time-to-event or time until a participant has the event of interest. If the ETT was symptomatic or subjected to any of the following interventions: extraction, endodontic retreatment, or apical surgery, it was deemed a failure. Otherwise, survival was defined as the absence of reported clinical signs or symptoms and the absence of a treatment intervention regardless of the radiographic interpretation.
+
+**Covariates**
+Data on the following covariates were extracted from the electronic dental records: age at time of treatment (6–11, 12–14, and 15–18 years), gender, insurance type (Medicaid [MassHealth] and private/self-paid), tooth type (posterior and anterior), and jaw type (maxillary and mandibular). Insurance type was used to reflect on the patient socioeconomic status (SES).
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+Bufersen et al. BMC Oral Health      (2021) 21:589      Page 3 of 9
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+Bufersen et al. BMC Oral Health          (2021) 21:589          Page 4 of 9
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+Bufersen et al. BMC Oral Health          (2021) 21:589                                                                                             Page 5 of 9
+
+
+3
+]
+s
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+Bufersen et al. BMC Oral Health          (2021) 21:589                                                                                             Page 6 of 9
+
+
+
+
+
+
+
+
+
+
+ᵃ Hazard ratios adjusted for all variables shown in the table
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+Bufersen et al. BMC Oral Health (2021) 21:589 Page 7 of 9
+
+tors that may influence the outcome of NSRCTs, such tomatic teeth with periapical radiolucency in the failure
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+Bufersen et al. BMC Oral Health (2021) 21:589 Page 8 of 9
+
+Conclusions
+Age at treatment was a significant factor in determining the risk of ETT failure among children aged 6–18 years. The 5-year survival probability of ETT was 80.0% for 15- to 18-year-olds, 64.8% for 12- to 14-year-olds, and 46.4% for 6- to 11-year-olds. The average 5-year survival of ETT for all age groups was 69.1%. Our results suggest that the longer NSRCT is prevented, through proper oral hygiene measures, preventive dental care and less invasive procedures, the better the likelihood of survival of ETT in children. Vital pulp therapy should be considered over NSRCT when possible in younger children.
+
+Abbreviations
+NSRCT: Nonsurgical root canal treatment; ETT: Endodontically treated teeth; BUGSDM: Boston University Henry M. Goldman School of Dental Medicine; HR: Hazard ratio; CI: Confidence interval; KM: Kaplan–Meier.
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+Bufersen et al. BMC Oral Health (2021) 21:589 Page 9 of 9
+
+**Acknowledgements**
+Not applicable.
+
+**Authors’ contributions**
+SB: Conceptualization, Investigation, Data curation, Writing—Original draft, Writing—Review and editing, Visualization. JJ: Conceptualization, Methodology, Writing—review and editing, Supervision, Project administration. JS: Writing—Review and editing, Supervision. TH: Writing—Review and editing. SR: Methodology, Software, Formal analysis, Data curation. AHZ: Writing—Methodology, Conducting statistical analysis and data interpretation, Original draft, Writing—Review and editing. SC: Conceptualization, Methodology, Writing—Review and editing, Supervision. All authors read and approved the final manuscript.
+
+**Funding**
+None.
+
+**Availability of data and materials**
+The datasets used and/or analyzed during the current study are available from the corresponding author on reasonable request.
+
+**Declarations**
+
+**Ethics approval and consent to participate**
+Ethical approval was obtained from Boston University Medical Center Institutional Review Board (IRB Number: H-34766).
+
+**Consent for publication**
+Not applicable.
+
+**Competing interests**
+The authors declare that they have no competing interests.
+
+**Author details**
+¹Department of Endodontics, Boston University Henry M Goldman School of Dental Medicine, 635 Albany St, G200, Boston, MA 02118, USA. ²University of Detroit Mercy School of Dentistry, Detroit, MI, USA. ³Department of Community Medicine and Behavioral Sciences, Faculty of Medicine, Kuwait University, Kuwait City, Kuwait.
+
+**Received: 26 August 2021 Accepted: 3 November 2021**
+**Published online: 19 November 2021**
+
+**References**
+1. Ng YL, Mann V, Rahbaran S, et al. Outcome of primary root canal treatment: systematic review of the literature: part 1. Effects of study characteristics on probability of success. Int Endod J. 2007;40:921–39.
+2. Friedman S, Mor C. The success of endodontic therapy-healing and functionality. J Calif Dent Assoc. 2004;32(6):493–503.
+3. Demirbuga S, Tuncay O, Cantekin K, et al. Frequency and distribution of early tooth loss and endodontic treatment needs of permanent first molars in a Turkish pediatric population. Eur J Dent. 2013;7(Suppl 1):S99–104.
+4. Al-Madi EM. Prevalence of pulpally involved permanent teeth in Saudi schoolchildren. Int Dent J. 2004;54(4):206–10.
+5. Vojinović J, Čupić S, Dolić O, et al. Success rate of the endodontic treatment of young permanent teeth with calcium hydroxide. Contemp Mater. 2010;I(2):163–7.
+6. Jordal K, Valen A, Ostravik D. Periapical status of root-filled teeth in Norwegian children and adolescents. Acta Odontol Scand. 2014;72:801–5.
+7. Clarke P, Jones AD, Jarad F, et al. Technical outcome of root canal treatment on permanent teeth in children: a retrospective study. Eur Arch Paediatr Dent. 2015;16(5):409–15.
+8. Ridell K, Petersson A, Matsson L, et al. Periapical status and technical quality of root filled teeth in Swedish adolescents and young adults. A retrospective study. Acta Odontol Scand. 2006;64:104–10.
+9. Peretz B, Yakir O, Fuks AB. Follow up after root canal treatment of young permanent molars. J Clin Pediatr Dent. 1997;21(3):237–40.
+10. Ng YL, Mann V, Rahbarab S, et al. Outcome of primary root canal treatment: systematic review of the literature: part 2. Influence of clinical factors. Int Endod J. 2008;41:6–31.
+11. Dammaschke T, Steven D, Kaup M, et al. Long-term survival of root-canal-treated teeth: a retrospective study over 10 years. J Endod. 2003;29(10):638–43.
+12. Mareschi P, Silvio T, Stefano C. Long-term follow-up of non-surgical endodontic treatments performed by one specialist: a retrospective cohort study about tooth survival and treatment success. Int J Dent. 2020;2020:1–8.
+13. Kwak Y, Choi J, Kim K, et al. The 5-year survival rate of nonsurgical endodontic treatment: a population-based cohort study in Korea. J Endod. 2019;45(10):1192–9.
+14. Raittio E, Huumonen S, Suominen AL. Is the technical quality of root fillings associated with socioeconomic status? A cross-sectional study among Finnish adults. Eur J Oral Sci. 2020;128:415–22.
+15. Cheung GS. Survival of first-time nonsurgical root canal treatment performed in a dental teaching hospital. Oral Surg Oral Med Oral Pathol Oral Radiol Endod. 2002;93(5):596–604.
+16. Lee A, Cheung G, Wong M. Long-term outcome of primary non-surgical root canal treatment. Clin Oral Investig. 2012;16(6):1607–17.
+17. Iqbal A. The factors responsible for endodontic treatment failure in the permanent dentitions of the patients reported to the College of Dentistry, the University of Aljouf, Kingdom of Saudi Arabia. J Clin Diagn Res. 2016;10(5):ZC146–8.
+18. Cheung GSP, Chan TK. Long-term survival of primary root canal treatment carried out in a dental teaching hospital. Int Endod J. 2003;36:117–28.
+19. Lazarski MP, Walker WA, Flores CM, et al. Epidemiological evaluation of the outcomes of nonsurgical root canal treatment in a large cohort of insured dental patients. J Endod. 2001;27(12):791–6.
+20. Caplan DJ, Weintraub JA. Factors related to loss of root canal filled teeth. J Public Health Dent. 1997;57(1):31–9.
+21. The AAE Position Statement on Vital Pulp Therapy (2021). https://f3f142zs0k2w1kg84k5p9i1o-wpengine.netdna-ssl.com/wp-content/uploads/2021/05/VitalPulpTherapyPositionStatement_v2.pdf. Accessed 28 July 2021.
+22. Swartz D, Skidmore A, Griffin J. Twenty years of endodontic success and failure. J Endod. 1983;9(5):198–202.
+23. Raedel M, Hartmann A, Bohm S, et al. Three-year outcome of root canal treatment: mining an insurance database. J Dent. 2015;43(4):412–7.
+24. Chen SC, Chueh LH, Hsiao CK, et al. An epidemiologic study of tooth retention after nonsurgical endodontic treatment in a large population in Taiwan. J Endod. 2007;33(3):226–9.
+25. Salehrabi R, Rotstein I. Endodontic treatment outcomes in a large patient population in the USA: an epidemiological study. J Endod. 2004;30(12):846–50.
+26. Mindiola MJ, Mickel AK, Sami C, et al. Endodontic treatment in an American Indian population: a 10-year retrospective study. J Endod. 2006;32(9):828–32.
+27. Fransson H, Dawson VS, Frisk F, et al. Survival of root-filled teeth in the Swedish adult population. J Endod. 2016;42:216–20.
+28. Fonzar F, Fonzar A, Buttolo P, et al. The prognosis of root canal therapy: a 10-year retrospective cohort study on 411 painets with 1175 endodontically treated teeth. Eur J Oral Implantol. 2009;2(3):201–8.
+29. Marquis VL, Dao T, Farzaneh M, et al. Treatment outcome in endodontics: the Toronto study. Phase III: initial treatment. J Endod. 2006;32(4):299–306.
+30. Heling B, Tamshe A. Evaluation of the success of endodontically treated teeth. Oral Surg. 1970;30(4):533–6.
+31. Friedman S, Abitbol S, Lawrence HP. Treatment outcome in endodontics: the Toronto study. Phase 1: initial treatment. J Endod. 2003;29(12):287–93.
+
+**Publisher’s Note**
+Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.

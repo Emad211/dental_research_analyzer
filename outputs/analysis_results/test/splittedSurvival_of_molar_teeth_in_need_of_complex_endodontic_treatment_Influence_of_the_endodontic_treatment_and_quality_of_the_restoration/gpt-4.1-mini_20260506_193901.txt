@@ -1,0 +1,315 @@
+══════════════════════════════════════════════════════════════════════
+TEST STATISTICAL ANALYSIS
+Model   : gpt-4.1-mini (OpenAI)
+PDF     : splittedSurvival_of_molar_teeth_in_need_of_complex_endodontic_treatment_Influence_of_the_endodontic_treatment_and_quality_of_the_restoration.pdf
+Status  : Success
+Time    : 20260506_193901
+══════════════════════════════════════════════════════════════════════
+
+Below is a detailed response addressing each task based on the provided Introduction and Methods sections of the dental research article.
+
+---
+
+## TASK 1: INFORMATION EXTRACTION
+
+### Study Characteristics
+
+**Study Design:**  
+- Retrospective practice-based cohort study.
+
+**Study Setting:**  
+- Referral dental clinic specialized in endodontics at Martini Hospital Groningen, the Netherlands.
+
+**Study Period:**  
+- January 2011 to October 2017.
+
+**Study Population:**  
+- Adult patients (≥18 years) with molar teeth (maxillary and mandibular first and second molars) undergoing primary or secondary (retreatment) root canal treatment by two specialist endodontists.
+
+**Inclusion Criteria:**  
+- Molar teeth with primary or secondary root canal treatment.  
+- Patients aged ≥18 years.  
+- ASA score ≤ 2.  
+- ETC score II or III (moderate to high difficulty endodontic cases).
+
+**Exclusion Criteria:**  
+- Teeth with open apices.  
+- Combined non-surgical and surgical treatment.  
+- ETC score I cases.  
+- Patients <18 years or ASA score >2.  
+- Operator not an endodontic specialist.
+
+**Sample Size:**  
+- Initially assessed: 416 treatments.  
+- After exclusions: 358 eligible.  
+- Final included for tooth survival analysis: 279.  
+- Final included for endodontic success analysis: 268.  
+- Final included for restorative success analysis: 215.
+
+**Objectives:**  
+- Primary: Evaluate survival of molar teeth with ETC scores II and III after at least 12 months post-treatment.  
+- Secondary: Evaluate quality of coronal seal, restoration, and endodontic treatment.  
+- Test null hypotheses regarding influence of type of endodontic treatment, ETC score, and coronal seal quality on tooth survival; and difference in restoration quality between direct and indirect restorations.
+
+---
+
+### Groups / Comparison Factors
+
+- **ETC Score:** II vs III.  
+- **Type of Endodontic Treatment:** Primary vs Retreatment.  
+- **Technical Quality of Endodontic Treatment:** Adequate vs Inadequate.  
+- **Quality of Coronal Seal:** Adequate vs Inadequate.  
+- **Restoration Type:** Direct vs Indirect.  
+- **Cusp Coverage:** Yes vs No.  
+- **Other Patient Factors:** Caries risk (low/medium/high), parafunction (yes/no), gender, jaw (upper/lower).
+
+---
+
+### Variables and Measurements
+
+**Patient Variables:**  
+- Age (continuous).  
+- Caries risk (categorical: low, medium, high).  
+- Parafunction (binary: yes/no).  
+- Gender (male/female).
+
+**Endodontic Variables:**  
+- ETC score (II/III).  
+- Type of treatment (primary/retreatment).  
+- Number of canals treated (3 or 4).  
+- Preoperative radiolucency (yes/no).  
+- Preoperative complications (broken instrument, perforation, obliteration; yes/no).  
+- Technical quality of root canal filling (adequate/inadequate) assessed radiographically based on compactness, length (0–2 mm from apex), and morphology preservation.  
+- Endodontic healing status at follow-up (healed, healing, nonhealed) based on clinical symptoms and radiographic evaluation (Periapical Index - PAI).  
+- Presence of postoperative radiolucency (PAI ≥ 3).
+
+**Restorative Variables:**  
+- Restoration type (direct/indirect/unknown).  
+- Cusp coverage (yes/no/unknown).  
+- Quality of coronal seal (adequate/inadequate/unknown).  
+- Restoration quality scored by FDI criteria (graded as clinically excellent/sufficient/unsatisfactory/poor).  
+- Restoration surfaces and materials (composite, amalgam, glass ceramic, PFM, zirconia).
+
+---
+
+### Data Collection Methods
+
+- Endodontic procedures performed under microscope and rubber dam by two specialists.  
+- Radiographs taken postoperatively and at recall (9–12 months post-treatment). Additional radiographs taken if clinical symptoms or compromised coronal seal.  
+- Clinical examination at recall: percussion, palpation, probing, patient symptom anamnesis.  
+- Restoration quality assessed by calibrated observers using FDI criteria and photographic documentation.  
+- Endodontic healing assessed by four calibrated observers using clinical and radiographic criteria (PAI).  
+- Patient follow-up data supplemented by contacting general practitioners when patients unable to attend.
+
+---
+
+## TASK 2: STATISTICAL ANALYSIS PLAN
+
+### CATEGORY A – MANDATORY TESTS
+
+1. **Kaplan-Meier Survival Analysis**  
+   - **Purpose:** Estimate cumulative survival probability of molar teeth over time post-endodontic treatment.  
+   - **Why appropriate:**  
+     - Accounts for censored data (loss to follow-up).  
+     - Provides survival curves for time-to-event (tooth loss).  
+   - **Why it may not be appropriate:**  
+     - Assumes independent censoring; if censoring related to prognosis, bias may occur.  
+   - **When NOT to use:**  
+     - If exact time-to-event data unavailable or if follow-up times are uniform and short.  
+   - **Alternative:**  
+     - Life-table (actuarial) method if exact event times unavailable.
+
+2. **Log-Rank Test**  
+   - **Purpose:** Compare survival curves between groups (e.g., ETC II vs III, primary vs retreatment).  
+   - **Why appropriate:**  
+     - Non-parametric test for equality of survival distributions.  
+     - Suitable for censored survival data.  
+   - **Why it may not be appropriate:**  
+     - Sensitive to proportional hazards assumption; differences in hazard rates over time may affect results.  
+   - **When NOT to use:**  
+     - If hazards cross or proportional hazards assumption violated.  
+   - **Alternative:**  
+     - Wilcoxon (Breslow) test or stratified tests.
+
+3. **Cox Proportional Hazards Regression**  
+   - **Purpose:** Assess effect of multiple covariates (ETC score, treatment type, coronal seal quality, technical quality, patient factors) on hazard of tooth loss.  
+   - **Why appropriate:**  
+     - Handles censored survival data.  
+     - Allows adjustment for confounders.  
+   - **Why it may not be appropriate:**  
+     - Requires proportional hazards assumption.  
+   - **When NOT to use:**  
+     - If proportional hazards assumption violated.  
+   - **Alternative:**  
+     - Time-dependent Cox models or parametric survival models (e.g., Weibull).
+
+4. **Chi-Square Test of Independence**  
+   - **Purpose:** Test associations between categorical variables (e.g., healing status vs type of treatment, restoration type vs restoration quality).  
+   - **Why appropriate:**  
+     - Suitable for categorical data with adequate cell counts.  
+     - Simple and widely used.  
+   - **Why it may not be appropriate:**  
+     - Expected cell counts <5 violate assumptions.  
+   - **When NOT to use:**  
+     - Small sample sizes or sparse data.  
+   - **Alternative:**  
+     - Fisher’s exact test.
+
+5. **Descriptive Statistics**  
+   - **Purpose:** Summarize baseline characteristics, frequencies, means, medians, standard deviations.  
+   - **Why appropriate:**  
+     - Essential for understanding sample and variables distribution.  
+   - **Why it may not be appropriate:**  
+     - None; always appropriate.  
+   - **When NOT to use:**  
+     - N/A.
+
+---
+
+### CATEGORY B – RECOMMENDED TESTS
+
+1. **Multivariable Logistic Regression**  
+   - **Purpose:** Model binary outcomes such as endodontic healing (healed vs non-healed) or restoration success (clinically sufficient vs unsatisfactory/poor) adjusting for multiple predictors.  
+   - **Why appropriate:**  
+     - Adjusts for confounders.  
+     - Estimates odds ratios for predictors.  
+   - **Why it may not be appropriate:**  
+     - Requires sufficient events per predictor variable to avoid overfitting.  
+   - **When NOT to use:**  
+     - Small sample size or rare outcomes.  
+   - **Alternative:**  
+     - Penalized logistic regression or exact logistic regression.
+
+2. **Ordinal Logistic Regression**  
+   - **Purpose:** Analyze ordered categorical outcomes such as restoration quality graded by FDI criteria (excellent, sufficient, unsatisfactory, poor).  
+   - **Why appropriate:**  
+     - Accounts for ordinal nature of data.  
+     - More informative than collapsing categories.  
+   - **Why it may not be appropriate:**  
+     - Assumes proportional odds (parallel lines) assumption.  
+   - **When NOT to use:**  
+     - If proportional odds assumption violated.  
+   - **Alternative:**  
+     - Partial proportional odds model or multinomial logistic regression.
+
+3. **Interobserver Reliability Analysis (e.g., Cohen’s Kappa or Weighted Kappa)**  
+   - **Purpose:** Assess agreement between observers on categorical ratings (e.g., endodontic healing, restoration quality).  
+   - **Why appropriate:**  
+     - Ensures calibration and reliability of subjective assessments.  
+   - **Why it may not be appropriate:**  
+     - Requires paired ratings on same subjects.  
+   - **When NOT to use:**  
+     - If only one observer or no paired ratings.  
+   - **Alternative:**  
+     - Intraclass correlation coefficient (ICC) for continuous ratings.
+
+4. **Mann-Whitney U Test or Wilcoxon Rank-Sum Test**  
+   - **Purpose:** Compare continuous or ordinal variables between two independent groups when normality is questionable (e.g., comparing restoration quality scores between direct and indirect restorations).  
+   - **Why appropriate:**  
+     - Non-parametric, no normality assumption.  
+     - Suitable for ordinal data.  
+   - **Why it may not be appropriate:**  
+     - Less powerful than parametric tests if normality holds.  
+   - **When NOT to use:**  
+     - If data are normally distributed and interval scale.  
+   - **Alternative:**  
+     - Independent samples t-test.
+
+5. **Kaplan-Meier Curves Stratified by Key Covariates**  
+   - **Purpose:** Visualize survival differences across subgroups (e.g., by restoration type, coronal seal quality).  
+   - **Why appropriate:**  
+     - Provides intuitive graphical representation.  
+   - **Why it may not be appropriate:**  
+     - Does not adjust for confounders.  
+   - **When NOT to use:**  
+     - When multivariable adjustment needed.  
+   - **Alternative:**  
+     - Adjusted survival curves from Cox model.
+
+---
+
+### CATEGORY C – OPTIONAL TESTS
+
+1. **Competing Risks Analysis**  
+   - **Purpose:** Account for competing events (e.g., extraction vs retreatment) that preclude the event of interest (tooth survival).  
+   - **Why appropriate:**  
+     - Provides more accurate risk estimates when competing events present.  
+   - **Why it may not be appropriate:**  
+     - Requires detailed cause-specific event data.  
+   - **When NOT to use:**  
+     - If competing events not recorded or rare.  
+   - **Alternative:**  
+     - Standard survival analysis with caution.
+
+2. **Sensitivity Analysis**  
+   - **Purpose:** Assess robustness of results to assumptions, e.g., excluding patients lost to follow-up or imputing missing data.  
+   - **Why appropriate:**  
+     - Enhances credibility of findings.  
+   - **Why it may not be appropriate:**  
+     - Requires additional assumptions.  
+   - **When NOT to use:**  
+     - If missing data minimal or completely at random.  
+   - **Alternative:**  
+     - Multiple imputation.
+
+3. **Subgroup Analysis**  
+   - **Purpose:** Explore effect modification by variables such as jaw (maxillary vs mandibular), caries risk, or parafunction.  
+   - **Why appropriate:**  
+     - Identifies groups with differential outcomes.  
+   - **Why it may not be appropriate:**  
+     - Risk of multiple testing and reduced power.  
+   - **When NOT to use:**  
+     - If sample size too small for subgroups.  
+   - **Alternative:**  
+     - Interaction terms in regression models.
+
+4. **Correlation Analysis (e.g., Spearman’s rho)**  
+   - **Purpose:** Explore associations between continuous or ordinal variables (e.g., age and restoration quality).  
+   - **Why appropriate:**  
+     - Non-parametric, no normality assumption.  
+   - **Why it may not be appropriate:**  
+     - Does not imply causation.  
+   - **When NOT to use:**  
+     - If variables are nominal.  
+   - **Alternative:**  
+     - Point-biserial correlation for binary variables.
+
+---
+
+## TASK 3: INAPPROPRIATE TESTS
+
+1. **Paired t-test or Repeated Measures ANOVA**  
+   - **Why inappropriate:**  
+     - No repeated measures on the same teeth over time reported beyond baseline and one recall; data are mostly cross-sectional or survival times, not repeated continuous measures.
+
+2. **Independent Samples t-test for Non-Normally Distributed Ordinal Data**  
+   - **Why inappropriate:**  
+     - Restoration quality and healing status are ordinal or categorical, violating t-test assumptions.
+
+3. **Simple Linear Regression for Binary or Ordinal Outcomes**  
+   - **Why inappropriate:**  
+     - Outcomes like healing status and restoration quality are categorical; linear regression assumptions violated.
+
+4. **Chi-Square Test with Small Cell Counts Without Correction**  
+   - **Why inappropriate:**  
+     - Some categories have small sample sizes; Fisher’s exact test preferred.
+
+5. **Ignoring Censoring in Survival Data (e.g., using only proportions or logistic regression for survival)**  
+   - **Why inappropriate:**  
+     - Survival data require time-to-event analysis methods that account for censoring.
+
+---
+
+## TASK 4: SUMMARY
+
+The analytical approach for this retrospective cohort study should primarily focus on survival analysis techniques to evaluate tooth survival over time, accounting for censoring due to loss to follow-up or study end. Kaplan-Meier curves and Cox proportional hazards models are essential to assess the influence of clinical and treatment-related factors on tooth survival.
+
+Secondary analyses should evaluate endodontic healing and restoration quality using appropriate categorical data methods, including chi-square tests and logistic regression to adjust for confounders. Observer reliability assessments are crucial given the subjective nature of healing and restoration quality evaluations.
+
+Non-parametric tests are recommended for ordinal or non-normally distributed data, and sensitivity analyses should be performed to assess the impact of missing data and loss to follow-up.
+
+Tests inappropriate for the data structure or outcome types should be avoided to prevent invalid conclusions. Overall, the plan balances mandatory survival analysis with recommended multivariable modeling and reliability assessments, supplemented by optional exploratory analyses to provide a comprehensive understanding of factors influencing molar tooth survival after complex endodontic treatment.
+
+---
+
+Please let me know if you need a formal statistical analysis protocol document or further elaboration on any part.

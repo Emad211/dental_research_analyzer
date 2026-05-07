@@ -1,0 +1,678 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+Accepted Article
+
+DR. JOHN M. LILJESTRAND (Orcid ID : 0000-0001-6562-2458)
+
+PROF. PIRKKO J. PUSSINEN (Orcid ID : 0000-0003-3563-1876)
+
+
+Article type : Original Scientific Article
+
+
+Carotid artery calcification in panoramic radiographs associates with oral infections and mortality
+
+
+S. Paju¹, M. Pietiäinen¹, J.M. Liljestrand¹, L. Lahdentausta¹, A. Salminen¹, E. Kopra¹, P. Mäntylä², K. Buhlin¹, ³, S. Hörkkö⁴, ⁵, J. Sinisalo⁶, and P.J. Pussinen¹
+
+
+¹Department of Oral and Maxillofacial Diseases, University of Helsinki and Helsinki University Hospital, Helsinki, Finland; ²Institute of Dentistry, University of Eastern Finland and Kuopio University Hospital, Oral and Maxillofacial Diseases, Kuopio, Finland; ³Division of Periodontology, Department of Dental Medicine, Division of Oral Diseases, Karolinska Institutet, Huddinge, Sweden; ⁴Research Unit of Biomedicine, Medical Microbiology and Immunology, Faculty of Medicine, University of Oulu, Oulu, Finland; ⁵Medical Research Center and Nordlab Oulu, University Hospital and University of Oulu, Oulu, Finland; ⁶Heart and Lung Center, Helsinki University Hospital and Helsinki University, Helsinki, Finland.
+
+
+Running title: CAC and apical periodontitis
+
+
+Keywords: antibodies; cardiovascular diseases; oral microbiota; panoramic tomography; saliva; subgingival plaque
+
+
+Corresponding author:
+
+
+This article has been accepted for publication and undergone full peer review but has not been through the copyediting, typesetting, pagination and proofreading process, which may lead to differences between this version and the Version of Record. Please cite this article as doi: 10.1111/IEJ.13394
+
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+Accepted Article
+P. Pussinen
+Department of Oral and Maxillofacial Diseases, P.O. Box 63, FI-00014 University of Helsinki,
+Helsinki, Finland.
+Email: pirkko.pussinen@helsinki.fi
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+Accepted Article
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+**Introduction**
+
+Carotid artery calcification (CAC) can be identified and even graded on panoramic dental radiographs of the maxilla and mandible (Friedlander 1995). Just as with increased carotid artery intima-media thickness, CAC may be a sign of the broader condition of atherosclerosis. In case-control studies, patients with CAC were more likely to demonstrate extended calcifications in abdominal aorta (Friedlander *et al.* 2015), aortic arch (Friedlander *et al.* 2014), and kidneys (Yeluri et al. 2015). Furthermore, patients with CAC suffer more often from stroke and ischemic heart disease (Bengtsson *et al.* 2019). According to a meta-analysis, calcifications observed with CT-scans, plain radiography, or ultrasound predict cardiovascular events and mortality (Rennenberg *et al.* 2009). In literature reviews, panoramic radiographs had a variable sensitivity, but acceptable specificity for detecting CAC (Khosropanah *et al.* 2009, Alves *et al.* 2014, Bengtsson *et al.* 2014). Therefore, the patients with CAC on dental radiographs should be referred for cardiovascular evaluation (Friedlander & Cohen 2007, Gustafsson *et al.* 2018, Bengtsson *et al.* 2019).
+
+The association of marginal periodontitis with several systemic conditions, such as cardiovascular diseases (CVD), is well-established (Lockhard *et al.* 2012). Apical periodontitis has also been regarded as a CVD risk factor (Liljestrand *et al.* 2016, Khalighinejad *et al.* 2016, Berlin-Broner *et al.* 2017). These two oral diseases share inflammatory, immunological, and microbiological profiles (Gomes *et al.* 2015, Pietiäinen *et al.* 2019) which link them to atherosclerosis through systemic inflammation (Hansson *et al.* 2015).
+
+Marginal periodontitis has been associated with CAC in multiple studies (Ravon *et al.* 2003, Beckström *et al.* 2007, Kamak *et al.* 2015, Bengtsson *et al.* 2016, Gustafsson *et al.* 2020), while some studies suggest no significant association (Nakib *et al.* 2004). No studies regarding putative association between CAC and dysbiotic oral bacterial species or immune responses against them have been published. In addition, studies investigating the association between CAC and apical periodontitis or follow-up studies of patients with or without CAC in dental radiographs are scarce.
+
+The aim of the study was to investigate the prevalence of CAC visible on panoramic radiographs in a random cohort of patients undergoing coronary angiography. The following hypotheses were investigated: i) In a cross-sectional setting, CAC is associated with oral infections/inflammations, dysbiotic oral bacteria and immune response against them. ii) CAC is associated with diagnosis and severity of coronary artery disease (CAD). iii) In a longitudinal setting, CAC and mortality are associated in a 10-year follow up.
+
+**Materials and Methods**
+**Study design**
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+Parogene, is a subpopulation of the prospective Corogene cohort which aims to identify coronary disease risk factors and genetics. The study is based on symptomatic Finnish patients (n=5,788), who underwent a coronary angiography for any reason in Helsinki University Hospital between June 2006 and March 2008 (Vaara et al. 2012). The data includes information on previous medical conditions, CVD risk factors, medications, and coronary angiogram results. A random subpopulation of approximately 10% of the cohort, forming the Parogene sample, was invited to a clinical and radiographic oral examination.
+
+The cohort has been followed-up for 10 years or until death (median 9.9, IQR 0.45, range 0.21-10.4 years) with data on deaths being obtained through record linkage to the National Causes-of-Death Register. Death due CVD was defined based on ICD-10 codes with the underlying, direct, or contributing cause of death as I00-I99. This research has been conducted in full accordance with ethical principles including the Declaration of Helsinki. The Helsinki University Hospital ethics committee approved the study protocol (Dnro 106/2007), and all patients signed an informed consent. The study complies with 'strengthening the reporting of observational studies in Epidemiology' (STROBE) guidelines.
+
+**Study population**
+
+The Parogene study included 508 patients who were examined at the Institute of Dentistry, University of Helsinki, between October 2007 and May 2008 (Buhlin et al. 2011). Clinical and radiographical oral examinations were performed at least 6 weeks but no later than 5 months after the angiography. Presence or absence of carotid artery calcification (CAC) could be technically registered from 492 (96.8% of the entire population) patients. Based on the angiography, symptoms and cardiac biomarkers, patients were assigned to groups of chronic CAD (n=181, 36.8%), acute coronary syndrome (ACS) (n=164, 33.3%), and no significant CAD (n=147, 29.9%). Severity of CAD was defined as a number of arteries with ≥50% stenosis. The patients were considered to have hypertension, dyslipidemia or diabetes, if they had medications for these disorders. Information on smoking habits were collected by a questionnaire before the oral examination.
+
+**Clinical oral examinations**
+
+Clinical examination for detailed oral and periodontal status was performed in a standard dental office setting by two specialists in periodontology (P. M. and K. B.) (Buhlin et al. 2011). They had been inter-individually calibrated before the study. Extra oral and intra oral palpation was done to detect swelling or firmness, and oral structures were viewed for any abnormal findings, such as sinus tracts. Periodontal probing depths (PPD) were measured from six sites around each tooth with a manual periodontal probe and numbers of deepened periodontal pockets of 4-5 mm and ≥6 mm were recorded. Periodontal inflammation burden index (PIBI) was calculated as [number
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+of 4-5 mm pockets + 2*(≥6 mm pockets)] (Lindy et al. 2008). Bleeding on probing (BOP) and possible suppuration were recorded from four sites of each tooth. PPD and BOP were calculated as proportions of sites examined.
+
+**Radiographic oral examination**
+Digital panoramic tomographs were taken after the clinical oral examination using ProOne unit (Planmeca Co., Helsinki, Finland). A single specialist of dental radiology analyzed the radiologic data including the prevalence of carotid artery calcification (CAC). CAC was differentiated from other calcified soft tissues and cartilage as reported earlier (Carter 2000). Calcification of any size and shape as a radiopaque nodular mass adjacent to or just below the intervertebral space between C3 and C4 in the carotid artery area was registered as CAC. Calcification could be present in left, right or both sides simultaneously and appear single or scattered (Friedlander 1995, Garoff et al. 2016). Heterogeneous areas of radiopacities on either side were graded as 'moderate CAC' and masses exceeding 10 mm as 'severe CAC' (Ravon et al. 2003).
+The tooth with the most severe attachment loss was chosen from each dentate sextant for calculations of horizontal alveolar bone loss (ABL). According to the mean of each sextant, ABL was graded: i) no ABL; ii) mild, ABL in cervical third of the root; iii) moderate, ABL in the middle third of the root; and iv) from severe to total loss, ABL from the apical third of the root to total ABL. Endodontic lesions were diagnosed from the radiographs as described in detail earlier (Liljestrand et al. 2016). The recorded findings included root canal fillings, widened periapical space indicating irreversible pulpitis or precursors for endodontic lesions (Carrotte 2004), and apical periodontitis seen as periradicular destruction in the tip of the root. An endodontic lesion score was defined to describe the severity of apical periodontitis in dentate patients (Liljestrand et al. 2016): i) no endodontic lesions; ii) moderate apical periodontitis, if ≥1 widened periapical space (Huumonen et al. 2017) and/or 1 tooth with apical periodontitis was present; and iii) severe apical periodontitis in patients with ≥2 teeth with apical periodontitis. Treatment of apical periodontitis was considered by dividing the patients in groups: i) no endodontic lesions; ii) all endodontic lesions in teeth with root canal filling; and iii) untreated apical periodontitis (Liljestrand et al. 2016).
+
+**Subgingival bacterial sampling, and bacterial and antibody analyses**
+Pooled subgingival samples were taken from dentate subjects from the deepest pathologic periodontal pocket in each dentate quadrant as previously described (Mäntylä et al. 2013, Pradhan-Palikhe et al. 2013). In patients with no pockets exceeding 3 mm depth, the deepest possible site or site with most visible inflammation was selected for sampling. The checkerboard DNA–DNA hybridization assay for 78 oral bacterial species was performed as previously reported
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+- "The serum and saliva Igal and IgG-class antibody levels against periodontitis-associated"
+- "supplementary table (Table S1). The species were divided into gram-positive (n=45) and gram-"
+- "negative (n=33) (Pietiäinen et al. 2019). The bacterial levels were logarithmically transformed and"
+- "summed up."
+- "The serum and saliva IgA- and IgG-class antibody levels against periodontitis-associated"
+- "dysbiotic species were determined by ELISA and as described previously (Pussinen et al."
+- "2002,2011, Akhi et al. 2017, Liljestrand et al. 2018). All together, 13 strains representing five"
+- "species were used as antigens. The strains and the laboratory quality information are presented"
+- "in Table S2."
+- "e"
+- "e"
+- "d"
+- "c"
+- "g"
+- "e"
+- "e"
+- "g"
+- ")"
+- "s"
+- "า"
+- "ว"
+- "d"
+- "d"
+- ".."
+- ")"
+- "g"
+- "3"
+- "ว"
+- "s"
+- "This article is protected by copyright. All rights reserved"
+- "Accepted Article" (vertical watermark
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+Accepted Article
+
+า
+e
+l
+e
+d
+
+s
+;
+,
+e
+.
+
+l
+f
+s
+r
+)
+
+g
+o
+า
+า
+า
+k
+า
+o
+)
+,
+d
+f
+t
+l
+e
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+Accepted Article
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 10
+════════════════════════════════════════════════════════════
+Accepted Article
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 11
+════════════════════════════════════════════════════════════
+Accepted Article
+,
+the
+
+this
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 12
+════════════════════════════════════════════════════════════
+**References**
+
+Akhi R, Wang C, Kyrklund M *et al.* (2017) Cross-reactive saliva IgA antibodies to oxidized LDL and periodontal pathogens in humans. *Journal of Clinical Periodontology* **44**, 682-91.
+
+Alves N, Deana NF, Garay I (2014) Detection of common carotid artery calcifications on panoramic radiographs: prevalence and reliability. *International Journal of Clinical and Experimental Medicine* **7**, 1931-39.
+
+Aminoshariae A, Kulild JC, Fouad AF (2018) The Impact of Endodontic Infections on the Pathogenesis of Cardiovascular Disease(s): A Systematic Review with Meta-analysis Using GRADE. *Journal of Endodontics* **44**, 1361-6.
+
+Beckstrom BW, Horsley SH, Scheetz JP *et al.* (2007) Correlation between carotid area calcifications and periodontitis: a retrospective study of digital panoramic radiographic findings in pretreatment cancer patients. *Oral Surgery, Oral Medicine, Oral Pathology, Oral Radiology and Endodontics* **103**, 359-66.
+
+Bengtsson VW, Persson GR, Renvert S (2014) Assessment of carotid calcifications on panoramic radiographs in relation to other used methods and relationship to periodontitis and stroke: a literature review. *Acta Odontologica Scandinavica* **76**, 401-12.
+
+Bengtsson VW, Persson GR, Berglund J, Renvert S (2016) A cross-sectional study of the associations between periodontitis and carotid arterial calcifications in an elderly population. *Acta Odontologica Scandinavica* **74**, 115-20.
+
+Bengtsson VW, Persson GR, Berglund J, Renvert S (2019) Carotid calcifications in panoramic radiographs are associated with future stroke or ischemic heart diseases: a long-term follow-up study. *Clinical Oral Investigations* **23**, 1171-9.
+
+Berlin-Broner Y, Febbraio M, Levin L (2017) Association between apical periodontitis and cardiovascular diseases: a systematic review of the literature. *International Endodontic Journal* **50**, 847-59.
+
+Buhlin K, Mäntylä P, Paju S *et al.* (2011) Periodontitis is associated with angiographically verified coronary artery disease. *Journal of Clinical Periodontology* **38**, 1007-14.
+
+Caplan DJ, Chasen JB, Krall EA *et al.* (2006) Lesions of endodontic origin and risk of coronary heart disease. *Journal of Dental Research* **85**, 996-1000.
+
+Carrotte P (2004) Endodontics: Part 3. Treatment of endodontic emergencies. *British Dental Journal* **197**, 299-305.
+
+Carter LC (2000) Discrimination between calcified triticeous cartilage and calcified carotid atheroma on panoramic radiography. *Oral Surgery, Oral Medicine, Oral Pathology, Oral Radiology and Endodontics* **90**, 108-10.
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 13
+════════════════════════════════════════════════════════════
+Chauhan N, Mittal S, Tewari S, Sen J, Laller K (2019) Association of Apical Periodontitis with Cardiovascular Disease via Noninvasive Assessment of Endothelial Function and Subclinical Atherosclerosis. Journal of Endodontics 45, 681-90.
+
+Costa TH, de Figueiredo Neto JA, de Oliveira AE, Lopes e Maia Mde F, de Almeida AL (2014) Association between chronic apical periodontitis and coronaryartery disease. Journal of Endodontics 40, 164-7.
+
+Desvarieux M, Demmer RT, Rundek T, Boden-Albala B, Jacobs DRJR, Sacco RI, Papapanou PN (2005) Periodontal microbiota and carotid intima-media thickness: the Oral Infections and Vascular Disease Epidemiology Study (INVEST). Circulation 111, 576–82.
+
+Dingsdag S, Nelson S, Coleman NV (2016) Bacterial communities associated with apical periodontitis and dental implant failure. Microbial Ecology in Health and Disease 27, 31307.
+
+Friedlander AH, Manesh F, Wasterlain CG (1994) Prevalence of detectable carotid artery calcifications on panoramic radiographs of recent stroke victims. Oral Surgery, Oral Medicine, Oral Pathology 77, 669-73.
+
+Friedlander AH (1995) Panoramic radiography: the differential diagnosis of carotid artery atheromas. Special Care in Dentistry 15, 223-7.
+
+Friedlander AH, Maeder LA (2000) The prevalence of calcified carotid artery atheromas on the panoramic radiographs of patients with type 2 diabetes mellitus. Oral Surgery, Oral Medicine, Oral Pathology, Oral Radiology and Endodontics 89, 420-4.
+
+Friedlander AH, Golub MS (2006) The significance of carotid artery atheromas on panoramic radiographs in the diagnosis of occult metabolic syndrome. Oral Surgery, Oral Medicine, Oral Pathology, Oral Radiology and Endodontics 101, 95-101.
+
+Friedlander AH, Cohen SN (2007) Panoramic radiographic atheromas portend adverse vascular events. Oral Surgery, Oral Medicine, Oral Pathology, Oral Radiology and Endodontics 103, 830-
+5.
+
+Friedlander AH, Sung EC, Chung EM, Garrett NR (2010) Radiographic quantification of chronic dental infection and its relationship to the atherosclerotic process in the carotid arteries. Oral Surgery, Oral Medicine, Oral Pathology, Oral Radiology and Endodontics 109, 615-21.
+
+Friedlander AH, El-Saden SM, Aghazadehsanai N, Chang TI, Harada ND, Garrett NR (2014) Association of calcified carotid atheromas visualized on panoramic images and aortic arch calcifications seen on chest radiographs of postmenopausal women. Journal of the American Dental Association 145, 345-51.
+
+Friedlander AH, El Saden SM, Hazboun RC, Chang TI, Wong WK, Garrett NR (2015) Detection of carotid artery calcification on the panoramic images of post-menopausal females is significantly
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 14
+════════════════════════════════════════════════════════════
+associated with severe abdominal aortic calcification: a risk indicator of future adverse vascular
+events. Dentomaxillofacial Radiology 44, 20150094
+Garoff M, Ahlqvist J, Levring Jäghagen E, Johansson E, Wester P (2016) Carotid calcification in
+panoramic radiographs: radiographic appearance and the degree of carotid stenosis.
+Dentomaxillofacial Radiology 45, 20160147.
+Garrido M, Cárdenas AM, Astorga, J et al. (2019) Elevated Systemic Inflammatory Burden and
+Cardiovascular Risk in Young Adults with Endodontic Apical Lesions. Journal of Endodontics 45,
+111–5.
+Gomes MS, Blattner TC, Sant’Ana Filho M et al. (2013) Can apical periodontitis modify systemic
+levels of inflammatory markers? A systematic review and meta-analysis. Journal of
+Endodontics 39, 1205–17.
+Gomes BP, Berber VB, Kokaras AS, Chen T, Paster BJ (2015) Microbiomes of Endodontic-
+Periodontal Lesions before and after Chemomechanical Preparation. Journal of Endodontics 41,
+1975-84.
+Greening AB, Schönfeld SE (1980) Apical lesions contain elevated immunoglobulin G levels.
+Journal of Endodontics 12, 867–9.
+Gustafsson N, Ahlqvist JB, Näslund U et al. (2018) Calcified carotid artery atheromas in
+panoramic radiographs are associated with a first myocardial infarction: a case-control study. Oral
+Surgery, Oral Medicine, Oral Pathology and Oral Radiology 125, 199-204.
+Gustafsson N, Ahlqvist J, Näslund U et al. (2020) Associations among Periodontitis, Calcified
+Carotid Artery Atheromas, and Risk of Myocardial Infarction. Journal of Dental Research 99, 60-
+8.
+Hansson GK, Libby P, Tabas I (2015) Inflammation and plaque vulnerability. Journal of Internal
+Medicine 278, 483-93.
+Hernández-Ríos P, Pussinen PJ, Vernal R, Hernández M (2017) Oxidative Stress in the Local
+and Systemic Events of Apical Periodontitis. Frontiers in Physiology 8, 869.
+Huumonen S, Suominen AL, Vehkalahti MM (2017) Prevalence of apical periodontitis in root filled
+teeth: findings from a nationwide survey in Finland. International Endodontic Journal 50, 229-36.
+Kamak G, Yildirim E,Rencber E (2015) Evaluation of the relationship between periodontal risk
+and carotid artery calcifications on panoramic radiographs. European Journal of Dentistry 9, 483-
+9.
+Kansu O, Ozbek M, Avcu N, Gençtoy G, Kansu H, Turgan C (2005) The prevalence of carotid
+artery calcification on the panoramic radiographs of patients with renal disease.
+Dentomaxillofacial Radiology 34,16-9.
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 15
+════════════════════════════════════════════════════════════
+Khalighinejad N, Aminoshariae MR, Aminoshariae A, Kulild JC, Mickel A, Fouad AF (2016)
+Association between Systemic Diseases and Apical Periodontitis. Journal of Endodontics 42,
+1427-34.
+Khosropanah SH, Shahidi SH, Bronoosh P, Rasekhi A (2009) Evaluation of carotid calcification
+detected using panoramic radiography and carotid Doppler sonography in patients with and
+without coronary artery disease. British Dental Journal 207, discussion 162-3.
+Lindy O, Suomalainen K, Mäkelä M, Lindy S (2008) Statin use is associated with fewer
+periodontal lesions: A retrospective study. BMC Oral Health 8, 16.
+Liljestrand JM, Mäntylä P, Paju S et al. (2016) Association of Endodontic Lesions with Coronary
+Artery Disease. Journal of Dental Research 95, 1358-65.
+Liljestrand JM, Paju S, Pietiäinen M et al. (2018) Immunologic burden links periodontitis to acute
+coronary syndrome. Atherosclerosis 268, 177–84.
+Lockhart PB, Bolger AF, Papapanou PN et al. (2012) Periodontal disease and atherosclerotic
+vascular disease: Does the evidence support an independent association?: A scientific statement
+from the American Heart Association. Circulation 125, 2520-44.
+Mupparapu M, Kim IH (2007) Calcified carotid artery atheroma and stroke: a systematic review.
+Journal of the American Dental Association 138, 483-92.
+Mäntylä P, Buhlin K, Paju S et al. (2013) Subgingival Aggregatibacter actinomycetemcomitans
+associates with the risk of coronary artery disease. Journal of Clinical Periodontology 40, 583-90.
+Nakib SA, Pankow JS, Beck JD et al. (2004) Periodontitis and coronary artery calcification: the
+Atherosclerosis Risk in Communities (ARIC) study. Journal of Periodontology 75, 505-10.
+Pasqualini D, Bergandi L, Palumbo L et al. (2012) Association among oral health, apical
+periodontitis, CD14 polymorphisms, and coronary heart disease in middle-aged adults. Journal of
+Endodontics 38, 1570-77.
+Petersen J, Glaßl EM, Nasseri P et al. (2014) The association of chronic apical periodontitis and
+endodontic therapy with atherosclerosis. Clinical Oral Investigations 18, 1813-23.
+Pietiäinen M, Liljestrand JM, Akhi R (2019) Saliva and Serum Immune Responses in Apical
+Periodontitis. Journal of Clinical Medicine 8, 889
+Pietiäinen M, Liljestrand JM, Kopra E, Pussinen PJ (2018) Mediators between oral dysbiosis and
+cardiovascular diseases. European Journal of Oral Sciences 126, 26–36.
+Pradhan-Palikhe P, Mäntylä P, Paju S et al. (2013) Subgingival bacterial burden in relation to
+clinical and radiographic periodontal parameters. Journal of Periodontology 84, 1809-17.
+Pussinen PJ, Vilkuna-Rautiainen T, Alfthan G, Mattila K, Asikainen S (2002) Multiserotype
+enzyme-linked immunosorbent assay as a diagnostic aid for periodontitis in large-scale studies.
+Journal of Clinical Microbiology 40, 512-8.
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 16
+════════════════════════════════════════════════════════════
+Accepted Article
+
+Pussinen PJ, Nyyssönen K, Alfthan G, Salonen R, Laukkanen JA, Salonen JT (2005) Serum
+antibody levels to Actinobacillus actinomycetemcomitans predict the risk for coronary heart
+disease. Arteriosclerosis, Thrombosis & Vascular Biology 25, 833-8.
+Pussinen PJ, Könönen E, Paju S et al. (2011) Periodontal pathogen carriage, rather than
+periodontitis, determines the serum antibody levels. Journal of Clinical Periodontology 38, 405-
+11.
+Qian W, Ma T, Ye M, Li Z, Liu Y, Hao P (2019) Microbiota in the apical root canal system of tooth
+with apical periodontitis. BMC Genomics 20,189.
+Ravon NA, Hollender LG, McDonald V, Persson GR (2003) Signs of carotid calcification from
+dental panoramic radiographs are in agreement with Doppler sonography results. Journal of
+Clinical Periodontology 30, 1084-90.
+Rennenberg RJ, Kessels AG, Schurgers LJ, van Engelshoven JM, de Leeuw PW, Kroon AA
+(2009) Vascular calcifications as a marker of increased cardiovascular risk: a meta-analysis.
+Vascular Health and Risk Management 5, 185-97.
+Shin JM, Luo T, Lee KH (2018) Deciphering Endodontic Microbial Communities by Next-
+generation Sequencing. Journal of Endodontics 44, 1080-7.
+Siqueira JF Jr, Rôças IN (2009) Diversity of endodontic microbiota revisited. Journal of Dental
+Research 88, 969-81.
+Socransky SS, Haffajee AD, Smith C (2004) Use of checkerboard DNA-DNA hybridization to
+study complex microbial ecosystems. Oral Microbiology and Immunology 19, 352-62.
+Sung EC, Friedlander AH, Kobashigawa JA (2004) The prevalence of calcified carotid atheromas
+on the panoramic radiographs of patients with dilated cardiomyopathy. Oral Surgery, Oral
+Medicine, Oral Pathology, Oral Radiology and Endodontics 97, 404-7.
+Torres JO, Torabinejad M, Matiz RAR, Mantilla EG (1994) Presence of secretory IgA in human
+periapical lesions. Journal of Endodontics 20, 87–9.
+Vaara S, Nieminen MS, Lokki ML et al. (2012) Cohort Profile: the Corogene study. International
+Journal of Epidemiology 41, 1265-71.
+Yeluri G, Kumar CA, Raghav N (2015) Correlation of dental pulp stones, carotid artery and renal
+calcifications using digital panoramic radiography and ultrasonography. Contemporary Clinical
+Dentistry 6, S147-1.
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 17
+════════════════════════════════════════════════════════════
+Accepted Article
+Figure legends
+Figure 1 Frequencies of carotid artery calcification (CAC) according to A) CAD diagnosis, B) CAD severity in coronary angiography, and C) death in the follow-up. The p-values are calculated by Chi-square test.
+Figure 2 Predicted cumulative survival of the patients from A) all-cause and B) CVD death in the follow-up of 10 years (median 9.9, IQR 0.45, range 0.21-10.4). The survival curves are produced by Cox regression models adjusted for age, gender, hypertension, dyslipidemia, diabetes, and smoking (never/ever) and the HR with p-value is shown for patients with moderate and severe CAC compared to those without.
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 18
+════════════════════════════════════════════════════════════
+Accepted Article
+
+Table 1 Characteristics of subjects with and without carotid artery calcification (CAC).
+
+Variable                No CAC          Moderate CAC    Severe CAC
+                        N=390           N=81            N=21
+--------------------------------------------------------------------------------
+                        Mean (SD)                       p-value ¹
+Age (years)             62.6 (9.4)      66.7 (7.3)      66.5 (7.5)      <0.001
+BMI (kg/m²)             27.8 (5.0)      28.1 (5.3)      29.0 (4.9)      0.298
+--------------------------------------------------------------------------------
+                        Median (IQR)                    p-value ²
+hs-CRP
+(mg/l)³                 2.09 (5.74)     2.70 (8.95)     3.00 (14.2)     0.432
+--------------------------------------------------------------------------------
+                        N (%)                           p-value ⁴
+Gender          Males   260 (66.2)      53 (65.4)       11 (52.4)       0.318
+Dyslipidemia            313 (80.7)      65 (80.2)       18 (85.7)       0.727
+Hypertension            237 (60.8)      62 (77.5)       16 (76.2)       0.005
+Diabetes                90 (23.2)       19 (24.1)       6 (28.6)        0.612
+Smoking         Ever    195 (49.6)      49 (60.5)       14 (66.7)       0.026
+
+¹ ANOVA, weighted linear terms; ² Jonckheere-Terpstra test; ³ high-sensitivity C-reactive protein;
+⁴ Chi-square test, linear-by-linear association
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 19
+════════════════════════════════════════════════════════════
+**Table 2** Clinical, radiographic, and laboratory results of patients with and without carotid artery calcification (CAC).
+
+| Variable | No CAC N=390 | Moderate CAC N=81 | Severe CAC N=21 | p-value¹ |
+| :--- | :---: | :---: | :---: | :---: |
+| | **Mean (95% CI)** | | | |
+| Number of teeth | 21.5 (20.8-22.3) | 20.8 (19.2-22.4) | 18.6 (15.4-21.7) | **0.005** |
+| PPD 4-5 mm (%) | 12.9 (11.6-14.3) | 15.1 (11.8-18.3) | 14.7 (7.7-21.7) | 0.178 |
+| PPD ≥ 6 mm (%) | 3.24 (2.42-4.06) | 3.48 (1.61-5.35) | 7.15 (0.33-14.0) | 0.357 |
+| BOP (%) | 37.5 (35.5-39.4) | 37.3 (33.0-41.5) | 41.4 (32.2-50.5) | 0.602 |
+| Carious teeth | 1.01 (0.84-1.18) | 0.97 (0.58-1.36) | 1.06 (0.27-1.85) | 0.884 |
+| Widened periapical space | 0.71 (0.62-0.79) | 1.10 (0.83-1.37) | 1.30 (0.79-1.81) | **<0.001** |
+| Apical rarefactions | 0.34 (0.24-0.43) | 0.48 (0.27-0.69) | 0.50 (0.03-0.97) | **0.048** |
+| Root canal fillings (RCF) | 2.02 (1.81-2.24) | 2.99 (2.30-3.67) | 2.35 (1.49-3.21) | **0.022** |
+| Saliva IgA against dysbiotic species (rlu/100 ms / 10⁵) | 3.48 (3.23-3.72) | 4.16 (3.32-5.00) | 3.75 (2.42-5.08) | 0.200 |
+| Saliva IgG against dysbiotic species (rlu/100 ms / 10⁵) | 4.12 (3.57-4.66) | 5.58 (3.95-7.22) | 6.09 (3.79-8.36) | 0.296 |
+| Serum IgA against dysbiotic species (EU) | 3.24 (3.02-3.47) | 3.51 (2.99-4.03) | 3.29 (2.46-4.12) | 0.365 |
+| Serum IgG against dysbiotic species (EU) | 4.47 (4.23-4.71) | 4.66 (4.09-5.22) | 4.53 (3.50-5.55) | 0.601 |
+| | **N (%)** | | | **p-value²** |
+| Alveolar bone loss | None | 103 (27.5) | 8 (10.8) | 0 (0) | **0.001** |
+| | Mild | 160 (42.7) | 41 (55.4) | 10 (50.0) | |
+| | Moderate to total | 112 (29.9) | 25 (33.8) | 10 (50.0) | |
+| Periodontal inflammation³ | Low | 95 (24.9) | 13 (17.3) | 4 (20.0) | 0.127 |
+| | Mild | 100 (26.2) | 20 (26.7) | 5 (25.0) | |
+| | Moderate | 95 (24.9) | 18 (24.0) | 5 (25.0) | |
+| | Severe | 91 (23.9) | 24 (32.0) | 6 (30.0) | |
+| Severity of apical periodontitis | No endodontic lesions | 147 (42.0) | 27 (38.0) | 6 (30.0) | **0.048** |
+| | Moderate | 158 (45.1) | 26 (36.6) | 10 (50.0) | |
+| | Severe | 45 (12.9) | 18 (25.4) | 4 (20.0) | |
+| Treatment of apical periodontitis | No endodontic lesions | 281 (80.3) | 38 (10.9) | 31 (8.9) | 0.060 |
+| | All with RCF | 50 (70.4) | 12 (16.9) | 9 (12.7) | |
+| | Untreated apical periodontitis | 15 (75.0) | 1 (5.0) | 4 (20.0) | |
+| Level of gram-positive subgingival species | Below median | 171 (51.4) | 28 (43.1) | 9 (47.4) | 0.318 |
+| | Above median | 162 (48.6) | 37 (56.9) | 10 (52.6) | |
+| Level of gram-negative subgingival species | Below median | 175 (52.7) | 25 (38.5) | 6 (31.6) | **0.009** |
+| | Above median | 157 (47.3) | 40 (61.5) | 13 (68.4) | |
+
+¹Jonckheere-Terpstra test for linear trend; ²Chi-square test, linear-by-linear association; ³PIBI (periodontal inflammatory burden index) divided into quartiles
+
+Accepted Article
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 20
+════════════════════════════════════════════════════════════
+Accepted Article
+
+Table 3 Association between presence of carotid artery calcification (CAC) and periodontal, microbiological, and serological parameters.
+
+Logistic regression model                                   Odds ratio (95% CI)
+_______________________________________________________________________________
+Confounders
+Age (years)                                                 1.06 (1.030-1.091)
+Male gender                                                 0.82 (0.502-1.334)
+Dyslipidemia                                                0.76 (0.411-1.419)
+DM                                                          0.84 (0.485-1.451)
+Hypertension                                                2.28 (1.315-3.963)
+Smoking (ever)                                              1.92 (1.179-3.121)
+_______________________________________________________________________________
+Model 1
+Alveolar bone loss
+None                                                        1.00
+Mild                                                        2.81 (1.251-6.305)
+Moderate to total                                           2.44 (1.043-5.708)
+_______________________________________________________________________________
+Model 2
+Root canal fillings                                         1.15 (1.042-1.262)
+_______________________________________________________________________________
+Model 3
+Periodontal inflammation (PIBI)
+Low                                                         1.00
+Mild                                                        1.69 (0.832-3.424)
+Moderate                                                    1.53 (0.745-3.155)
+Severe                                                      2.23 (1.110-4.473)
+_______________________________________________________________________________
+Model 4
+
+════════════════════════════════════════════════════════════
+PAGE 21
+════════════════════════════════════════════════════════════
+Accepted Article
+
+Saliva IgA against dysbiotic species (rlu/100 ms / 10⁵)    1.05 (0.963-1.152)
+________________________________________________________________________________
+**Model 8**
+Saliva IgG against dysbiotic species (rlu/100 ms / 10⁵)    **1.05 (1.005-1.096)**
+________________________________________________________________________________
+**Model 9**
+Serum IgA against dysbiotic species (EU)                  0.98 (0.871-1.108)
+________________________________________________________________________________
+**Model 10**
+Serum IgG against dysbiotic species (EU)                  0.99 (0.883-1.103)
+________________________________________________________________________________
+**Model 11**
+CAD severity in angiography
+None/mild                                                 1.00
+1 stenosed artery                                         1.45 (0.718-2.918)
+2 stenosed arteries                                       1.72 (0.850-3.471)
+3 stenosed arteries                                       **2.58 (1.356-4.902)**
+________________________________________________________________________________
+**Model 12**
+CAD diagnosis
+No significant CAD                                        1.00
+Chronic CAD                                               **2.13 (1.153-3.930)**
+ACS                                                       1.68 (0.893-3.177)
+________________________________________________________________________________
+The twelve logistic regression models were adjusted for the covariates above (confounders).
+Significant effect sizes are bolded.
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 22
+════════════════════════════════════════════════════════════
+Accepted Article
+
+A
+
+Frequency (%)
+100
+90
+80
+70
+60
+50
+40
+30
+20
+10
+0
+
+p = 0.022
+
+No CAC
+Moderate CAC
+Severe CAC
+
+No CAD Chronic CAD ACS
+CAD diagnosis
+
+iej_13394_f1a.tif
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 23
+════════════════════════════════════════════════════════════
+Accepted Article
+
+B
+
+Frequency (%)
+100
+90
+80
+70
+60
+50
+40
+30
+20
+10
+0
+
+p = 0.001
+
+No CAC
+Moderate CAC
+Severe CAC
+
+None 1 artery 2 arteries 3 arteries
+CAD severity
+
+iej_13394_f1b.tif
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 24
+════════════════════════════════════════════════════════════
+Accepted Article
+
+C
+
+Frequency (%)
+90
+80
+70
+60
+50
+40
+30
+20
+10
+0
+
+p = 0.003
+
+No CAC
+Moderate CAC
+Severe CAC
+
+Survived
+Death, other cause
+Death, CVD cause
+
+iej_13394_f1c.tif
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 25
+════════════════════════════════════════════════════════════
+Accepted Article
+
+A
+Cumulative survival, death
+1.0
+0.9
+0.8
+0.7
+----- no CAC
+....... moderate CAC
+_____ severe CAC
+0.6
+0.5
+0 1 2 3 4 5 6 7 8 9 10 11
+Follow-up (years)
+1.52 (0.097)
+3.08 (0.001)
+
+B
+Cumulative survival, CVD death
+1.0
+0.9
+0.8
+0.7
+----- no CAC
+....... moderate CAC
+_____ severe CAC
+0.6
+0.5
+0 1 2 3 4 5 6 7 8 9 10 11
+Follow-up (years)
+1.55 (0.187)
+3.43 (0.006)
+
+iej_13394_f2.tif
+
+This article is protected by copyright. All rights reserved

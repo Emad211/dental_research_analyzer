@@ -1,0 +1,278 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+Received: 19 February 2021 | Accepted: 6 May 2021
+DOI: 10.1111/iej.13548
+
+ORIGINAL SCIENTIFIC ARTICLE
+INTERNATIONAL ENDODONTIC JOURNAL | WILEY
+
+# Patient satisfaction with root canal treatment and outcomes in the Swedish public dental health service: A prospective cohort study
+
+Emma Wigsten 🆔 | Amenah Al Hajj | Peter Jonasson | EndoReCo | Thomas Kvist 🆔
+
+Department of Endodontology, Institute of Odontology, The Sahlgrenska Academy, University of Gothenburg, Gothenburg, Sweden
+
+**Correspondence**
+Emma Wigsten, Department of Endodontology, Box 7163, SE-402 33 Göteborg, Sweden.
+Email: emma.wigsten@gu.se
+
+**Funding information**
+Göteborgs Tandläkare-Sällskap; Folktandvården Västra Götaland; the Institute of Odontology; The Sahlgrenska Academy; University of Gothenburg, Gothenburg, Sweden
+
+---
+*The following researchers within the Endodontic Research Collaboration in Scandinavia contributed to this study: L Bjørndal, VS Dawson, H Fransson, F Frisk, P Jonasson, T Kvist, M Markvart, M Pigg, E Wolf.
+
+This is an open access article under the terms of the Creative Commons Attribution-NonCommercial License, which permits use, distribution and reproduction in any medium, provided the original work is properly cited and is not used for commercial purposes.
+© 2021 The Authors. *International Endodontic Journal* published by John Wiley & Sons Ltd on behalf of British Endodontic Society
+
+**1462** | wileyonlinelibrary.com/journal/iej
+*Int Endod J.* 2021;54:1462–1472.
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+WIGSTEN ET AL. | INTERNATIONAL ENDODONTIC JOURNAL | WILEY | 1463
+
+**Conclusions:** The results indicate a need for further clinical observational studies of RCTs undertaken in general dental practice, with special reference to patient-centred outcomes.
+
+**KEYWORDS**
+endodontics, general dental care, pain intensity, patient-centred outcomes, questionnaire, test-retest reliability analysis
+
+**INTRODUCTION**
+
+The success of a therapy is determined by its defined goal(s) (Bergenholtz & Spångberg, 2004; Friedman & Mor, 2004). For root canal treatment (RCT), the ultimate goal is to retain the tooth and to establish or maintain healthy periradicular tissues. The outcome is evaluated by clinical and radiological examination. For this purpose, two basic sets of criteria have been applied extensively: Strindberg’s dichotomous system of ‘success’ or ‘failure’ (Strindberg, 1956) and the five-degree ordinal periapical index scale, introduced by Ørstavik et al. (1986). On this basis, RCT outcome is reported to be highly successful (Ng et al., 2007, 2011a, 2011b).
+
+The individual patient, who is generally unaware of the status of the periradicular tissues of their root-filled tooth, does not necessarily agree with the criteria established for successful treatment by the profession. Although periapical health is the ultimate goal, subjectively the treatment may still be considered successful if the tooth has remained asymptomatic after RCT, despite radiographic evidence of persistent periapical pathology (Bergenholtz & Spångberg, 2004; Friedman & Mor, 2004). On the other hand, the patient may be dissatisfied with the treatment outcome even when there are no objective signs of periradicular disease since pain or altered sensation may still be present (Polycarpou et al., 2005). A comprehensive system for assessing the outcome of a therapy or clinical procedure such as RCT should therefore ideally include a set of criteria which evaluates the patient’s perspective of the outcome (Bergenholtz & Spångberg, 2004).
+
+In recent years, there has been an increasing focus on patient-centred care. RCT outcomes can be studied by having patients assess the impact on their oral health and oral health-related quality of life (Leong & Yap, 2020; Neelakantan et al., 2020). Treatment can also be assessed with reference to the patients’ perception of the care they have received, by studying patient satisfaction (Newsome and Wright, 1999a, 1999b; Sitzia & Wood, 1997). Thus, the outcomes not only provide feedback on the quality of care, but also provide an opportunity to study how different diseases and their treatment and the outcomes of therapies affect the patient. Patient satisfaction is usually measured by means of a questionnaire (Kingsley & Patel, 2017).
+
+With reference to RCT and its outcomes, there are few studies of patient satisfaction. The focus has been on factors considered to cause the greatest dissatisfaction, namely costs, duration of treatment, pain, aesthetics, function and pleasantness (Dugas et al., 2002). Patients generally appear to be satisfied with the outcome of their RCTs (Gatten et al., 2011; Torabinejad et al., 2014), especially when treated by a specialist (Dugas et al., 2002; Hamasha & Hatiwsh, 2013). However, factors such as high costs, poor post-operative aesthetics and duration of treatment seem to reduce their satisfaction (Dugas et al., 2002; Gatten et al., 2011; Hamasha & Hatiwsh, 2013).
+
+A limitation of most available studies is that the results represent responses from selected patients, treated in controlled settings such as hospitals, universities, or specialist clinics. However, as most treatment is undertaken by general dental practitioners (GDP) (Fransson et al., 2016), it is also important to study satisfaction with RCTs provided in general dental practice. High patient satisfaction one month after initiation of RCT in a general dental care setting has been reported by Wigsten et al. (2020). However, longer follow-up periods are required for a more comprehensive picture of patients’ perceptions of RCTs and outcomes.
+
+Most follow-up studies on RCT use the point of completed root filling as the baseline for included teeth. This may result in systematic bias in evaluation of results, because the material excludes teeth in which RCT was started, but for various reasons, was never completed. Ideally, the baseline in a follow-up study of a treatment should be the point of diagnosis of the disease and initiation of therapy: in this case, when the tooth is diagnosed with pulpal and periradicular disease and RCT is started.
+
+Another cause for concern is the reliability of elicited subjective evaluation of therapy or treatment. Few studies in the field of Endodontics have assessed the reliability of the responses to questionnaires, and these have been conducted by different dental care professionals (McBride et al., 2013; Yi et al., 2013). There are no studies which measure the reliability of the responses to questions about patient satisfaction with RCT and its outcomes.
+
+The aims of the study were therefore twofold: firstly, to elicit, by means of a questionnaire, patients’ subjective
+
+***
+
+13652591, 2021, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/iej.13548, Wiley Online Library on [10/02/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+1464
+WILEY INTERNATIONAL ENDODONTIC JOURNAL
+PATIENT SATISFACTION WITH ROOT CANAL TREATMENT
+
+evaluations of RCT one year after initiation of treatment in general dental practice and secondly, to assess the reliability of the responses.
+
+**MATERIALS AND METHODS**
+
+**Ethical approval**
+
+The study was outlined according to the STROBEs’ cohort checklist and statement. The authors deny any conflict of interests. Written informed consent was obtained from all the participating patients. The study was approved by the Regional Ethical Committee in Gothenburg, Sweden, 2015 (dnr: 857–14).
+
+**Study population**
+
+The population has been described previously in Wigsten et al. (2019), comprising 243 patients who began RCT during a designated period of 8 weeks, at 20 public dental clinics in the county of Västra Götaland, Sweden. The patients were recruited between May 2015 and February 2017. This baseline population comprised 128 (52.7%) women and 115 (47.3%) men, with a mean age of 48.3 years (*SD* = 16.4). Most of the teeth (*n* = 152, 64.9%) were symptomatic at baseline. The main diagnoses were pulpal necrosis with apical periodontitis (*n* = 90, 38.1%) or pulpitis (*n* = 89, 37.7%). Molar teeth predominated (*n* = 116, 47.7%).
+
+**The questionnaire**
+
+The questionnaire was designed to elicit patient perspectives on RCT outcome ≥1 year after baseline. Initially (Item 1), the participants were asked to state whether the tooth had been retained (yes/no), and whether the RCT had been completed with a root filling (yes/no). The remainder of the questionnaire, adapted from Dugas et al. (2002), comprised seven items.
+The visual analogue scale (VAS, 10 centimetres) was used for items 2 and 4–7, whereby the respondents entered their assessments on each line. Item 2 assessed current intensity of pain in those who had retained their tooth. The range was from ‘no pain or discomfort’ (score 0) and ‘pain as bad as it could be’ (score 10). If there were symptoms, the patients were asked to select, from 12 predetermined options, the one (or those) which most closely described their symptoms (Item 3).
+The patients’ experience of RCT was evaluated in the following items. The patient’s recollection of pain during the RCT session (Item 4) was assessed on the basis of the VAS, ranging from ‘not at all painful’ (score 0) to ‘very painful’ (score 10). This was followed by post-operative aesthetics, Item 5: ‘the root filled tooth looks very good’ (score 0) – ‘the root filled tooth looks very bad’ (score 10), function, Item 6: ‘chewing on the tooth is unhindered’ (score 0) – ‘chewing on the tooth is impossible’ (score 10) and Item 7, whether the RCT was worth the cost (‘absolutely worth the cost’ (score 0) – ‘absolutely not worth the cost’ (score 10). Finally, the patients were asked to assess whether in retrospect they would have chosen RCT (Item 8). The predetermined responses were ‘yes’, ‘no’ and ‘uncertain’.
+Patients who responded that their tooth had been extracted (Item 1) were instructed to respond only to items ‘4’ and ‘8’.
+Attached to the questionnaire was a cover letter, with a brief reminder about the study and information as to which tooth is concerned. All material was in the Swedish language.
+To enhance the response rate, between September 2017 and April 2018, a reminder was sent 3 weeks later, followed by an additional telephone call.
+A flow chart of the study design is presented in Figure 1.
+
+**Analysis of the reliability of responses**
+
+In order to evaluate the reliability of responses, the same questionnaire was sent out once again to the 50 responders who first replied (Figure 1). In the absence of a response, no reminder was sent.
+
+**Analysis of the study population**
+
+The questionnaires were labelled with the patients’ unique identification number, allocated in a previous study (Wigsten et al., 2019) to ensure that the responses would be anonymous. All data were manually entered into an Excel datasheet (Microsoft Corp, Redmond, WA, USA). Pre-operative patient-based characteristics such as gender (male, female), age (<40, 40–60, >60) and tooth-specifics such as jaw (maxilla, mandible), tooth group (incisor, premolar, molar) and presence of symptoms (asymptomatic, pain) were registered for each participant. The diagnosis at the initiation of RCT was retrieved from the GDPs’ baseline registration (Wigsten et al., 2019). When data for a variable were absent, the data sheet cells were left empty and designated in the analysis as missing.
+The interval between baseline and answering the first questionnaire was registered. For the respondents who received the questionnaire twice, the interval between the first and second responses was recorded.
+
+13652591, 2021, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/iej.13548, Wiley Online Library on [10/02/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+WIGSTEN ET AL. | INTERNATIONAL ENDODONTIC JOURNAL | WILEY | 1465
+
+Baseline: diagnosis and start of root canal treatment (2015-2017)
+Study population 243 patients, contributing 243 teeth
+|
+|--- Exclusion: could not be contacted (n=7)
+|
+1-3 years after initiated root canal treatment (2017-2018)
+Questionnaire sent (n=236)
+|
+|--- Declined to participate (n=15)
+|
+|--- Reason for not participating unknown (n=62)
+|
+159 patients (67.4%) responded to questionnaire --- Second questionnaire sent (n=50)
+|
+44 patients (88.0%) responded to questionnaire
+
+FIGURE 1 Flow chart of the study population. 243 patients started a root canal treatment during a designated 8-week period at 20 different public dental clinics in Sweden. The patient- and tooth-specific characteristics were described in a previous study (Wigsten et al., 2019). The questionnaire was sent 1–3 years after the root canal treatment was initiated. In order to assess the test-retest reliability of their responses to questions about their experiences of the root canal treatment, the first 50 respondents were sent the questionnaire again
+
+13652591, 2021, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/iej.13548, Wiley Online Library on [10/02/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+1466 | WILEY INTERNATIONAL
+PATIENT SATISFACTION WITH ROOT CANAL TREATMENT
+13652591, 2021, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/iej.13548, Wiley Online Library on [10/02/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+_
+S
+)
+-
+y
+f
+,
+)
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+WIGSTEN ET AL.
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+1468 WILEY INTERNATIONAL PATIENT SATISFACTION WITH ROOT CANAL TREATMENT
+
+7
+-
+-
+
+-
+H
+A
+a
+a
+b
+a
+
+s
+c
+v
+t
+s
+
+c
+i
+r
+c
+t
+I
+
+13652591, 2021, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/iej.13548, Wiley Online Library on [10/02/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+WIGSTEN ET AL.
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+```
+1472
+
+════════════════════════════════════════════════════════════
+PAGE 10
+════════════════════════════════════════════════════════════
+WIGSTEN ET AL.
+INTERNATIONAL ENDODONTIC JOURNAL — WILEY — 1471
+
+13652591, 2021, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/iej.13548, Wiley Online Library on [10/02/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+**CONCLUSION**
+
+The findings of this study highlight the need for further clinical observational studies of RCTs undertaken in general dental practice, with special reference to patient-centred outcomes.
+
+**ETHICAL STATEMENT**
+
+Authors affirm that this is an original work, which has not been previously published elsewhere. Furthermore, the paper reflects the authors’ research and analysis wholly and truthfully. All sources used are appropriately disclosed and cited. We also affirm that authors have been personally and actively involved in substantial word leading to the paper and will take public responsibility for its content.
+
+**AUTHOR CONTRIBUTION**
+
+All authors have contributed to the development of this original research. In addition, all authors have read, revised, and approved the manuscript. The authors Emma Wigsten, Amenah Al Haijj, Peter Jonasson and Thomas Kvist have also contributed to: the original study design, construction of the questionnaire, mailings and reminders, interpretation of data and preparation of text and manuscript. The Statistiska Konsultgruppen in Gothenburg was used for the statistical analysis.
+
+**ACKNOWLEDGEMENTS**
+
+This study was supported by Folktandvården Västra Götaland; Göteborgs Tandläkare-Sällskap and the Institute of Odontology, The Sahlgrenska Academy, University of Gothenburg, Gothenburg, Sweden.
+
+**CONFLICT OF INTEREST**
+
+The authors have stated explicitly that there are no conflicts of interest in connection with this article.
+
+**ORCID**
+
+Emma Wigsten https://orcid.org/0000-0001-9914-8205
+Thomas Kvist https://orcid.org/0000-0002-2685-3656
+
+**REFERENCES**
+
+Althubaiti, A. (2016) Information bias in health research: definition, pitfalls, and adjustment methods. *Journal of Multidisciplinary Healthcare*, 9, 211–217.
+Azarpazhooh, A., Dao, T., Ungar, W.J., Da Costa, J., Figueiredo, R., Krahn, M. & Friedman, S. (2016) Patients’ values related to treatment options for teeth with apical periodontitis. *Journal of Endodontics*, 42, 365–370.
+Baruch, Y. (2016) Response rate in academic studies-a comparative analysis. *Human Relations*, 52, 421–438.
+Bergenholtz, G. & Spångberg, L. (2004) Controversies in endodontics. *Critical Reviews in Oral Biology and Medicine*, 15, 99–114.
+Dahlström, L., Lindwall, O., Rystedt, H. & Reit, C. (2017) ‘Working in the dark’: Swedish general dental practitioners on the complexity of root canal treatment. *International Endodontic Journal*, 50, 636–645.
+Dugas, N.N., Lawrence, H.P., Teplitsky, P. & Friedman, S. (2002) Quality of life and satisfaction outcomes of endodontic treatment. *Journal of Endodontics*, 28, 819–827.
+Fransson, H., Bjørndal, L., Frisk, F., Dawson, V.S., Landt, K., Isberg, P.-E. et al. (2021) Factors associated with extraction following root canal filling in adults. *Journal of Dental Research*, 22034520982962.
+Fransson, H., Dawson, V.S., Frisk, F., Bjørndal, L., Kvist, T., Bjørndal, L. et al. (2016) Survival of root-filled teeth in the swedish adult population. *Journal of Endodontics*, 42, 216–220.
+Friedman, S. & Mor, C. (2004) The success of endodontic therapy–healing and functionality. *Journal California Dental Association*, 32, 493–503.
+Gatten, D.L., Riedy, C.A., Hong, S.K., Johnson, J.D. & Cohenca, N. (2011) Quality of life of endodontically treated versus implant treated patients: a University-based qualitative research study. *Journal of Endodontics*, 37, 903–909.
+Hamasha, A.A. & Hatiwsh, A. (2013) Quality of life and satisfaction of patients after nonsurgical primary root canal treatment provided by undergraduate students, graduate students and endodontic specialists. *International Endodontic Journal*, 46, 1131–1139.
+Jonsson Sjögren, J., Kvist, T., Eliasson, A. & EndoReCo, P.M. (2019) The frequency and characteristics of pain and discomfort associated with root filled teeth: a practice-based study. *International Endodontic Journal*, 52, 1264–1273.
+
+════════════════════════════════════════════════════════════
+PAGE 11
+════════════════════════════════════════════════════════════
+1472
+WILEY INTERNATIONAL ENDODONTIC JOURNAL
+PATIENT SATISFACTION WITH ROOT CANAL TREATMENT
+
+Kaplowitz, M.D., Hadlock, T.D. & Levine, R. (2004) A comparison of web and mail survey response rates. Public Opinion Quarterly, 68, 94–101.
+Kingsley, C. & Patel, S. (2017) Patient-reported outcome measures and patient-reported experience measures. British Journal of Anaesthesia Education, 17, 137–144.
+Koo, T.K. & Li, M.Y. (2016) A guideline of selecting and reporting intraclass correlation coefficients for reliability research. Journal of Chiropractic Medicine, 15, 155–163.
+Landis, J.R. & Koch, G.G. (1977) The measurement of observer agreement for categorical data. Biometrics, 33, 159–174.
+Laukkanen, E., Vehkalahti, M.M. & Kotiranta, A.K. (2021) Radiographic outcome of root canal treatment in general dental practice: tooth type and quality of root filling as prognostic factors. Acta Odontologica Scandinavica, 79, 37–42.
+Leong, D.J.X. & Yap, A.U. (2020) Quality of life of patients with endodontically treated teeth: a systematic review. Australian Endodontic Journal, 46, 130–139.
+Lobb, W.K., Zakariasen, K. & McGrath, C. (1996) Endodontic treatment outcomes: do patients perceive problems? Journal of the American Dental Association, 127, 597–600.
+McBride, R., Leroux, B., Lindblad, A., Williams, O.D., Lehmann, M., Rindal, D.B. et al. (2013) Measuring the impact of practice-based research networks on member dentists in the Collaboration on Networked Dental and Oral Health Research, CONDOR. Journal of Dentistry, 41, 393–403.
+Neelakantan, P., Liu, P., Dummer, P.M.H. & McGrath, C. (2020) Oral health-related quality of life (OHRQoL) before and after endodontic treatment: a systematic review. Clinical Oral Investigations, 24, 25–36.
+Newsome, P.R. & Wright, G.H. (1999) A review of patient satisfaction: 1. Concepts of satisfaction. British Dental Journal, 186, 161–165.
+Newsome, P.R. & Wright, G.H. (1999) A review of patient satisfaction: 2. Dental patient satisfaction: an appraisal of recent literature. British Dental Journal, 186, 166–170.
+Ng, Y.L., Mann, V., Rahbaran, S., Lewsey, J. & Gulabivala, K. (2007) Outcome of primary root canal treatment: systematic review of the literature - part 1. Effects of study characteristics on probability of success. International Endodontic Journal, 40, 921–939.
+Ng, Y.L., Mann, V. & Gulabivala, K. (2011a) A prospective study of the factors affecting outcomes of nonsurgical root canal treatment: part 1: periapical health. International Endodontic Journal, 44, 583–609.
+Ng, Y.L., Mann, V. & Gulabivala, K. (2011b) A prospective study of the factors affecting outcomes of non-surgical root canal treatment: part 2: tooth survival. International Endodontic Journal, 44, 610–625.
+Nixdorf, D.R., Moana-Filho, E.J., Law, A.S., McGuire, L.A., Hodges, J.S. & John, M.T. (2010) Frequency of persistent tooth pain after root canal therapy: a systematic review and meta-analysis. Journal of Endodontics, 36, 224–230.
+Ørstavik, D., Kerekes, K. & Eriksen, H.M. (1986) The periapical index: a scoring system for radiographic assessment of apical periodontitis. Endodontics and Dental Traumatology, 2, 20–34.
+Polycarpou, N., Ng, Y.L., Canavan, D., Moles, D.R. & Gulabivala, K. (2005) Prevalence of persistent pain after endodontic treatment and factors affecting its occurrence in cases with complete radiographic healing. International Endodontic Journal, 38, 169–178.
+Shrout, P.E. & Fleiss, J.L. (1979) Intraclass correlations: uses in assessing rater reliability. Psychological Bulletin, 86, 420–428.
+Sitzia, J. & Wood, N. (1997) Patient satisfaction: a review of issues and concepts. Social Science and Medicine, 45, 1829–1843.
+Strindberg, L. (1956) The dependence of the results of pulp therapy on certain factors (PhD Thesis). Acta Odontologica Scandinavica, 14, 41–44.
+Torabinejad, M., Salha, W., Lozada, J.L., Hung, Y.L. & Garbacea, A. (2014) Degree of patient pain, complications, and satisfaction after root canal treatment or a single implant: a preliminary prospective investigation. Journal of Endodontics, 40, 1940–1945.
+Wigsten, E., Jonasson, P. & EndoReCo, K.T. (2019) Indications for root canal treatment in a Swedish county dental service: patient- and tooth-specific characteristics. International Endodontic Journal, 52, 158–168.
+Wigsten, E., Kvist, T., Jonasson, P., Davidson, T., Bjørndal, L., Dawson, V.S. et al. (2020) Comparing quality of life of patients undergoing root canal treatment or tooth extraction. Journal of Endodontics, 46, 19–28.
+Yi, J., Hu, X., Yan, B., Zheng, W., Li, Y. & Zhao, Z. (2013) High and specialty-related musculoskeletal disorders afflict dental professionals even since early training years. Journal of Applied Oral Science, 21, 376–382.
+
+SUPPORTING INFORMATION
+Additional supporting information may be found online in the Supporting Information section.
+
+How to cite this article: Wigsten E, Al Hajj A, Jonasson P, EndoReCo, Kvist T. Patient satisfaction with root canal treatment and outcomes in the Swedish public dental health service: A prospective cohort study. Int Endod J. 2021;54:1462–1472. https://doi.org/10.1111/iej.13548
+
+13652591, 2021, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/iej.13548, Wiley Online Library on [10/02/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

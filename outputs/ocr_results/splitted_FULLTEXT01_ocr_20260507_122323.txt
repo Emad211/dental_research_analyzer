@@ -1,0 +1,407 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+MR. STEPHEN KEBKE (Orcid ID : 0000-0002-4526-2165)
+
+DR. FERNANDO JOSÉ MOTA DE ALMEIDA (Orcid ID : 0000-0003-3388-9451)
+
+Article type : Original Scientific Article
+
+Tooth survival following root canal treatment by general dental practitioners in a Swedish county – a 10-year follow-up study of a historical cohort
+
+S. Kebke¹, H. Fransson²,³, M. Brundin⁴ & F.J. Mota de Almeida⁵
+
+¹Piteå Hospital, Norrbotten Public Dental Service, Piteå, ²Department of Endodontics, Faculty of Odontology, Malmö University, Malmö, ³Department of Endodontology, Institute of Odontology, The Sahlgrenska Academy, University of Gothenburg, Gothenburg, ⁴Department of Odontology/Endodontics, Faculty of Medicine, Umeå University, Umeå, ⁵Tandvårdens Kompetenscentrum, Norrbotten Public Dental Service, Luleå, Sweden
+
+Running title: 10-year tooth survival
+
+Key words: Root Canal Therapy, Analysis, Survival, General Practice, Dental, Prognosis, Endodontics, Kaplan-Meier Estimate, Public Health, Tooth Extraction, Treatment Outcome
+
+Corresponding author:
+Fernando José Mota de Almeida
+Tandvårdens Kompetenscentrum, Vuxenspecialiteter, Skeppsbrogatan 22, Box 922, SE-971 28 Luleå, Sweden
+Email: fernando.mota-de-almeida@norrbotten.se
+Telephone: 0046-(0)920-71926
+
+This article has been accepted for publication and undergone full peer review but has not been through the copyediting, typesetting, pagination and proofreading process, which may lead to differences between this version and the Version of Record. Please cite this article as doi: 10.1111/IEJ.13392
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+Accepted Article
+ABSTRACT
+                                                                                                                                                           Ps),
+                                                                                                                                                           en
+                                                                                                                                                           om
+                                                                                                                                                           ct
+                                                                                                                                                           ere
+                                                                                                                                                           ;
+                                                                                                                                                           )
+                                                                                                                                                           d.
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+INTRODUCTION
+
+Strindberg (1956) suggested that a successful root canal treatment is established by the absence of apical periodontitis, where clinical and radiographic normalcy is maintained or re-established. A systematic review of the literature reported that the success rate of primary root canal treatment completed at least one year previously ranged from 68% to 85% when this strict criterion was applied, figures that have not improved in recent decades (Ng et al. 2007). However, less strict criteria for the outcome of root canal treatment have been proposed, where success is defined by the fact that the apical radiolucency is reduced or unchanged in size and the patient has no symptoms (Bender et al. 1966). Thus, a successful treatment could also be defined by tooth survival; that is, an asymptomatic and functional tooth regardless of its radiologic appearance (Friedman & Mor 2004). Tooth survival instead of absence of the disease may be regarded as an insufficient biological goal, but for the individual this may be an acceptable result of the treatment, as the tooth is functioning normally in daily life. Root filled teeth may be lost for various reasons with prosthetic, caries, and periodontal reasons being reported as common reasons for extraction (Vire 1991, Toure et al. 2011, Tzimpoulas et al. 2012). Normally, a root filled tooth is extensively restored, and the root canal treatment may further weaken the tooth. For this reason, the results of studies surveying tooth survival may be of interest for prognostic purposes and therapy planning.
+
+In a systematic review of the literature, almost all published in the 2000s, the pooled probability of tooth survival for 2–10 years ranged from 86% to 93% after primary root canal treatment (Ng et al. 2010). Since then, additional studies from several geographical areas have been published with survival rates after root canal treatment ranging from 79% to 95% with follow-up times of 3–20 years (Chen et al. 2008, Lumley et al. 2008, Ng et al. 2011, Bernstein et al. 2012, Lin et al. 2014, Landys Boren et al. 2015, Raedel et al. 2015, Fransson et al. 2016, Pratt et al. 2016, Skupien et al. 2016, Fernandez et al. 2017, Khalighinejad et al. 2017, Prati et al. 2018, Kwak et al. 2019, Vahdati et al. 2019).
+
+Few studies focus on tooth survival following root canal treatment performed by general dental practitioners (GDPs), even though these are the dentists who perform the vast majority of root canal treatments (Chen et al. 2008, Lumley et al. 2008, Bernstein et al. 2012, Raedel et al. 2015, Fransson et al. 2016). Moreover, those studies that do exist usually use data from health insurance databases, where information about potentially interesting variables that could predict treatment outcome is more likely to be absent, and where drop-outs, discontinuers, and reliability of data are not well controlled. This suggests a need to study the survival of root canal treated teeth performed by GDPs and possibly to identify prognostic factors not necessarily accessible from insurance data.
+
+The primary aim of this study was to evaluate the long term (10-year) survival rate of root filled teeth treated by GDPs working in the Public Dental Service of the county of Norrbotten (also known as North Bothnia), Sweden. The secondary aim was to identify possible prognostic factors that affected that outcome.
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+Accepted Article
+
+MATERIAL AND METHODS
+A historic cohort of individuals who had undergone completed root canal treatment by GDPs in Norrbotten was randomly chosen and followed for a period of 10 years.
+Context
+When the study began in 2006, Norrbotten, the northernmost county in Sweden, had a total population of 251 886 (www.statistikdatabasen.scb.se) and 29 general dental clinics within the Public Dental Service. These clinics were located throughout the entire county, with at least one clinic in each municipality, and served approximately 70% of the population in Norrbotten including children and adolescents. In 2006, 149 GDPs in the county reported that they completed at least one root canal treatment (range: 1–256 treatments). The GDPs had varying degrees of experience. Most of them had their undergraduate training in Sweden, but some had studied in Belgium, Germany, or Portugal.
+Cohort
+All individuals with at least one root canal treatment performed by GDPs in the Norrbotten Public Dental Service between 1 January and 31 December 2006 were identified via the county’s electronic administrative dental records. There were 3 676 such individuals, with a total of 3 925 root filled teeth (range: 1–5 teeth). Of these, 331 individuals died during the following 10 years and were therefore excluded. The remaining 3 345 dental records were arranged in random order using Microsoft Excel (version 14, 32-bit option, 2010, Redmond, WA, USA). All dental records had a corresponding personal identity number to the treated patient. These numbers were entered in a column in a Microsoft Excel sheet. In a new column, the programme’s RAND function was used for all patients that randomly attributed a 10 digit number between 0 and 1 to each entry. The columns were rearranged in numerical order of the generated random values, thus creating a randomised list of patients. The first 302 individuals on the randomised list were contacted by letter in order to obtain their passive consent to participate in the study. A total of 280 individuals treated by 102 GDPs in 28 clinics were included. Reasons for exclusion along with demographic data (gender and age) are given in Figure 1. If an individual had several teeth treated in 2006, one of these teeth was randomly chosen for inclusion in the analysis by randomising a list of their teeth in the similar way as described above for randomising patients, and then choosing the first tooth on the list.
+Data collection
+Analogue and digital dental records including dental radiographs were retrieved from the clinics; 110 of the analogue records could not be fully retrieved, which prevented the collection of some variables. The collection period lasted from September 2016 to May 2018. Initially, the dental records were screened for survival of the root filled tooth to 2016. This was either assessed by presence or absence of tooth in existing radiographs, or from the dental record with a specific
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+treatment or diagnosis of the tooth of interest. The date of any data indicative of the root filled tooth being present or extracted was recorded. At this stage it was possible to collect data on 150 of 280 root filled teeth as of 2016. For the remaining 130 individuals there were no available data indicating either survival or loss of the root filled tooth. These 130 individuals were contacted by telephone or mail for a voluntary basic dental examination at the nearest public dental clinic in order to establish whether or not the tooth was retained in the mouth. The examination was performed either by one of the authors (SK) or by a caregiver at the nearest dental clinic. If the root filled tooth was missing without a record of extraction in the dental records, due to extraction at a private clinic or outside the county, the individuals were asked to give a written consent to retrieve the records from that particular caregiver. If the exact time of the extraction was impossible to retrieve, an estimation of the timing of the extraction was calculated as the mean between the last date of the tooth being retained and the first date of the tooth being absent in the dental records. For individuals not attending the clinical follow-up, the last known date of the retained tooth was used. Five individuals were asked over the telephone whether the tooth was retained or not. Exclusions and drop-outs were recorded (Figure 1), and dental records were reviewed thoroughly for relevant variables (Table 1) such as pulp and periapical status. The type of final coronal restoration was also registered by referring to the records and categorised as following: any type of restoration in the orifice, placement of a post upon root-filling completion, and the extent of the final restoration (partial or full coverage). The elapsed time between the completion of the root filling and final restoration was recorded.
+
+The outcome measure was tooth extraction over time. The recorded date of the event of interest (that is, tooth extraction) was used to calculate the elapsed time in days since the date of completion of root canal treatment. If there were no data suggesting that tooth extraction had taken place, the last known date for observation of presence of the tooth, disregarding the apical status or symptoms, was used for (right) censoring. The independent variables are shown in Table 1. Of these, the most important possible confounders (that is, variables for which it is difficult to separate their effects on the response variable) were tooth type, number of contact points, and terminal arch location in one group; presence of sinus tract and apical status in another group; acute problems and number of sessions in another group; and finally pulp bleeding and pulp necrosis.
+
+**Assessments and calibration**
+
+The first 12 dental records used for data collection were reviewed by two authors (SK, FMA) for calibration purposes. All variables were assessed for this purpose except age and gender (which were automatically registered), root filling quality, and apical status. The next 20 dental records were assessed independently by the same authors to assess the inter-examiner agreement. SK reviewed the rest of the records alone. A second inter-examiner agreement (SK, FMA) was performed at the end of the collection process, with 15 new patient records. If there was disagreement, discussion took place until consensus was
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+```
+Accepted Article
+achieved. SK reviewed an additional 10 dental records after a wash-out period of 6 months, to assess intra-
+observer agreement.
+Statistical analysis, reporting, and ethics
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+Accepted Article
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+Accepted Article
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+Accepted Article
+
+1
+
+,
+
+,
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 10
+════════════════════════════════════════════════════════════
+Accepted Article
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 11
+════════════════════════════════════════════════════════════
+Accepted Article
+
+REFERENCES
+
+Al-Nuaimi N, Ciapryna S, Chia M, Patel S, Mannocci F (2020) A prospective study on the effect of coronal tooth structure loss on the 4-year clinical survival of root canal retreated teeth, and retrospective validation of the Dental Practicality Index. International Endodontic Journal doi:10.1111/iej.13322
+
+Bender IB, Seltzer S, Soltanoff W (1966) Endodontic success--a reappraisal of criteria. Part II. Oral Surgery, Oral Medicine, and Oral Pathology 22, 790-802.
+
+Bernstein SD, Horowitz AJ, Man M, et al. (2012) Outcomes of endodontic therapy in general practice: a study by the Practitioners Engaged in Applied Research and Learning Network. Journal of the American Dental Association 143, 478-87.
+
+Chen SC, Chueh LH, Hsiao CK, Wu HP, Chiang CP (2008) First untoward events and reasons for tooth extraction after nonsurgical endodontic treatment in Taiwan. Journal of Endodontics 34, 671-4.
+
+Cheung GS (2002) Survival of first-time nonsurgical root canal treatment performed in a dental teaching hospital. Oral Surgery, Oral Medicine, Oral Pathology, Oral Radiology, and Endodontics 93, 596-604.
+
+Dawson V (2020) Coronal restoration in root-filled and non root-filled teeth: studies on periapical status, tooth survival, subsequent treatments and treatment decisions (PhD Thesis). Malmö, Sweden: Malmö University.
+
+Fernandez R, Cardona JA, Cadavid D, Alvarez LG, Restrepo FA (2017) Survival of endodontically treated roots/teeth based on periapical health and retention: a 10-year retrospective cohort study. Journal of Endodontics 43, 2001-8.
+
+Fransson H, Dawson VS, Frisk F, Bjorndal L, EndoReCo, Kvist T (2016) Survival of root-filled teeth in the Swedish adult population. Journal of Endodontics 42, 216-20.
+
+Friedman S, Mor C (2004) The success of endodontic therapy — healing and functionality. Journal of the California Dental Association 32, 493-503.
+
+Hannigan A, Lynch CD (2013) Statistical methodology in oral and dental research: pitfalls and recommendations. Journal of Dentistry 41, 385-92
+
+Khalighinejad N, Aminoshariae A, Kulild JC, Wang J, Mickel A (2017) The influence of periodontal status on endodontically treated teeth: 9-year survival analysis. Journal of Endodontics 43, 1781-5.
+
+Kirkevang L, Vaeth M (2019) Epidemiology, treatment outcome, and risk factors for apical periodontitis. In: Ørstavik D, ed. Essential Endodontology: Prevention and Treatment of Apical Periodontitis, 3rd edn; pp. 143-177. Hoboken, NJ: Wiley-Blackwell.
+
+Kwak Y, Choi J, Kim K, Shin SJ, Kim S, Kim E (2019) The 5-year survival rate of nonsurgical endodontic treatment: a population-based cohort study in Korea. Journal of Endodontics 45, 1192-9.
+
+Landys Boren D, Jonasson P, Kvist T (2015) Long-term survival of endodontically treated teeth at a public dental specialist clinic. Journal of Endodontics 41, 176-81.
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 12
+════════════════════════════════════════════════════════════
+Lin PY, Huang SH, Chang HJ, Chi LY (2014) The effect of rubber dam usage on the survival rate of teeth
+receiving initial root canal treatment: a nationwide population-based study. Journal of Endodontics 40,
+1733-7.
+Lumley PJ, Lucarotti PS, Burke FJ (2008) Ten-year outcome of root fillings in the General Dental Services
+in England and Wales. International Endodontic Journal 41, 577-85.
+Ng YL, Mann V, Gulabivala K (2010) Tooth survival following non-surgical root canal treatment: a
+systematic review of the literature. International Endodontic Journal 43, 171-89.
+Ng YL, Mann V, Gulabivala K (2011) A prospective study of the factors affecting outcomes of non-
+surgical root canal treatment: part 2: tooth survival. International Endodontic Journal 44, 610-25.
+Ng YL, Mann V, Rahbaran S, Lewsey J, Gulabivala K (2007) Outcome of primary root canal treatment:
+systematic review of the literature – part 1. Effects of study characteristics on probability of success.
+International Endodontic Journal 40, 921-39.
+Prati C, Pirani C, Zamparini F, Gatto MR, Gandolfi MG (2018) A 20-year historical prospective cohort
+study of root canal treatments. A multilevel analysis. International Endodontic Journal 51, 955-68.
+Pratt I, Aminoshariae A, Montagnese TA, Williams KA, Khalighinejad N, Mickel A (2016) Eight-year
+retrospective study of the critical time lapse between root canal completion and crown placement: its
+influence on the survival of endodontically treated teeth. Journal of Endodontics 42, 1598-603.
+Raedel M, Hartmann A, Bohm S, Walter MH (2015) Three-year outcomes of root canal treatment: mining
+an insurance database. Journal of Dentistry 43, 412-7.
+Skupien JA, Opdam NJ, Winnen R, et al. (2016) Survival of restored endodontically treated teeth in
+relation to periodontal status. Brazilian Dental Journal 27, 37-40.
+Sedgwick P (2014) Retrospective cohort studies: advantages and disadvantages. British Medical Journal
+348, g1072.
+Strindberg LZ (1956) The dependence of the results of pulp therapy on certain factors: an analytic study
+based on radiographic and clinical follow-up examinations (PhD Thesis). Stockholm, Sweden.
+Toure B, Faye B, Kane AW, Lo CM, Niang B, Boucher Y (2011) Analysis of reasons for extraction of
+endodontically treated teeth: a prospective study. Journal of Endodontics 37, 1512-5.
+Tzimpoulas NE, Alisafis MG, Tzanetakis GN, Kontakiotis EG (2012) A prospective study of the extraction
+and retention incidence of endodontically treated teeth with uncertain prognosis after endodontic referral.
+Journal of Endodontics 38, 1326-9.
+Vahdati SA, Torabinejad M, Handysides R, Lozada J (2019) A retrospective comparison of outcome in
+patients who received both nonsurgical root canal treatment and single-tooth implants. Journal of
+Endodontics 45, 99-103.
+Vire DE (1991) Failure of endodontically treated teeth: classification and evaluation. Journal of
+Endodontics 17, 338-42.
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 13
+════════════════════════════════════════════════════════════
+von Elm E, Altman DG, Egger M, et al. (2014) The Strengthening the Reporting of Observational Studies
+in Epidemiology (STROBE) Statement: guidelines for reporting observational studies. International
+Journal of Surgery 12, 1495-9.
+Wigsten E, Jonasson P, EndoReCo, Kvist T (2019) Indications for root canal treatment in a Swedish county
+dental service: patient- and tooth-specific characteristics. International Endodontic Journal 52, 158-68.
+
+Accepted Article
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 14
+════════════════════════════════════════════════════════════
+| Variable | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+
+════════════════════════════════════════════════════════════
+PAGE 15
+════════════════════════════════════════════════════════════
+Accepted Article
+
+| | | | | | |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Number of contact points * (assessed by radiographs; at baseline, or after if assessment could reflect the situation at baseline) | 0 (0) | 7 | 3 | 0.406 | 0.134 |
+| | more than 0 (1) | 237 | 36 | (0.125-1.319) | |
+| | | | | | |
+| Terminal arch location (assessed by radiographs) | no (0) | 228 | 37 | 0.417 | 0.228 |
+| | yes (1) | 27 | 2 | (0.100-1.729) | |
+| | | | | | |
+| Presence of sinus tract (reported or radiographic signs of tracing sinus tract) | no (0) | 199 | 30 | 0.900 | 0.862 |
+| | yes (1) | 23 | 3 | (0.274-2.952) | |
+| | | | | | |
+| Apical status (assessed by radiographs, according to Strindberg’s criteria [Strindberg 1956]) | normal status (0) | 61 | 3 | 1.779 | 0.265 |
+| | abnormal status (1) | 69 | 10 | (0.646-4.90) | |
+| | | | | | |
+| Previous root filling (reported or assessed by radiographs; signs of presence of any filling material in pulp space before treatment) | no (0) | 222 | 33 | 1.798 | 0.420 |
+| | yes (1) | 8 | 2 | (0.431-7.499) | |
+| | | | | | |
+| Marginal status (assessed by radiographs; estimation of bone level in relation to root length) | cervical 1/3 (0) | 230 | 21 | 2.033 | 0.241 |
+| | apical 2/3 (1) | 11 | 3 | (0.621-6.653) | |
+| | | | | | |
+| **Intra-operative factors** | | | | | |
+| Antibiotics (reported during treatment) | no (0) | 173 | 28 | 0.733 | 0.492 |
+| | yes (1) | 44 | 6 | (0.303-1.774) | |
+| | | | | | |
+| Intra-pulpal anaesthesia (reported upon access) | no (0) | 208 | 34 | 0.048 | 0.525 |
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 16
+════════════════════════════════════════════════════════════
+Accepted Article
+
+                                                                                yes (1)             5           0       (0.000-
+                                                                                                                        571.504)
+
+Acute problems ˠ (presenting with acute problems at start and during treatment) once or less (0)    203         26      3.879           0.001
+                                                                                twice or more (1)   15          7       (1.682-8.943)
+
+Caregivers (number of caregivers involved from access to completion of root canal one (0)           159         25      0.917           0.808
+treatment)                                                                      two or more (1)     73          11      (0.458-1.837)
+
+Number of sessions ˠ (to complete treatment)                                    less than five (0)  202         25      2.930           0.003
+                                                                                more than five (1)  31          11      (1.441-5.955)
+
+Elapsed time between access preparation and root filling                        Days                mean 118 (range 33      1.001           0.233
+                                                                                                    0–1697, SD 176)         (0.999-1.003)
+                                                                                                    n=216                   for each
+                                                                                                                            additional day
+
+Rubber dam (evidence of use of rubber dam; i.e., clamp seen in radiograph or notation in no (0)      19          2       1.040           0.958
+journal)                                                                        yes (1)             109         18      (0.241-4.497)
+
+Pulp bleeding (reporting of bleeding pulp in all canals upon access)            no (0)              177         27      1.239           0.635
+                                                                                yes (1)             33          6       (0.511-3.004)
+
+Pulp necrosis * (reporting pulp necrosis in at least one canal upon access)      no (0)              130         24      0.539           0.114
+                                                                                yes (1)             80          9       (0.250-1.160)
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 17
+════════════════════════════════════════════════════════════
+Accepted Article
+
+Apical size (reporting maximal apical size preparation in smallest canal) (ISO) 208 (range #10 – #80) 33 0.993 0.582
+(0.969-1-018)
+
+Type of root canal filling (reporting gutta percha in combination with) sealer (0) 152 25 0.767 0.479
+rosin-chloroform 77 0 (0.368-1.597)
+(1)
+
+Root-filling quality (assessed on radiograph: good if length approximately 0–2mm from adequate (0) 116 17 0.997 0.953
+apex and no voids) not adequate (1) 69 10 (0.447-2.134)
+
+Procedural accidents (assessed on radiographs, or reporting of file fractures or iatrogenic no (0) 170 24 1.834 0.553
+perforations) yes (1) 4 1 (0.247-13.588)
+
+Postoperative factors
+
+Postoperative pain (reporting of care-seeking for postoperative pain up to 4 weeks after no (0) 222 36 0.858 0.880
+completed treatment) yes (
+
+════════════════════════════════════════════════════════════
+PAGE 18
+════════════════════════════════════════════════════════════
+Accepted Article
+
+Use of plug in the orifice of the root canal coronal to the root-filling	no (0)	164	29	0.916	0.774
+	yes (1)	105	17	(0.503-1.667)	
+
+Post (placement of post after completed treatment)	no (0)	211	35	0.759	0.505
+	yes (1)	52	7	(0.337-1.709)	
+
+Abutment (tooth used as an abutment for fixed [n=2] or removable prosthesis [n=4] after completed treatment)	no (0)	253	40	1.45	0.714
+	yes (1)	6	1	(0.199-10.586)	
+
+95% CI – 95% confidence interval; NOE – number of events (i.e. extractions); SD – standard deviation ˠ variables with p<0.05; * variables with 0.05>p<0.20
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 19
+════════════════════════════════════════════════════════════
+Accepted Article
+FIGURE LEGENDS
+Figure 1 Flow chart of included and excluded individuals from the total cohort of patients receiving a non-surgical root canal treatment performed by GDPs in Norrbotten during 2006.
+Figure 2 Kaplan-Meier survival curve for teeth with completed non-surgical root canal treatments performed by GDPs Norrbotten during 2006.
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 20
+════════════════════════════════════════════════════════════
+Accepted Article
+
+2006
+(baseline)
+
+3 676 individuals
+mean age 49; range 9-94
+♀ 49%
+
+↓
+excluded 331 deceased
+
+2016
+
+3 345 individuals
+mean age at baseline 48; range 9-94
+♀ 49%
+
+↓
+
+302 randomised individuals invited
+to participate
+
+↓
+19 declined to participate
+1 deceased
+1 with no address
+1 where specialist was involved in
+treatment
+
+280 individuals included
+Mean age at baseline 45; range 10-80
+♀ 50%
+
+iej_13392_f1.tif
+
+This article is protected by copyright. All rights reserved
+
+════════════════════════════════════════════════════════════
+PAGE 21
+════════════════════════════════════════════════════════════
+Accepted Article
+
+Survival Function
+
+Cumulative Survival
+1,00
+0,95
+0,90
+0,85
+0,80
+0,75
+0,70
+0 2 4 6 8 10 12
+Time (years)
+
+iej_13392_f2.tif
+
+This article is protected by copyright. All rights reserved

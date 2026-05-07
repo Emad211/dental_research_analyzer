@@ -1,0 +1,141 @@
+══════════════════════════════════════════════════════════════════════
+TEST STATISTICAL ANALYSIS
+Model   : gemini-3.1-pro-preview (Google)
+PDF     : splittedSurvival_of_molar_teeth_in_need_of_complex_endodontic_treatment_Influence_of_the_endodontic_treatment_and_quality_of_the_restoration.pdf
+Status  : Success
+Time    : 20260506_201105
+══════════════════════════════════════════════════════════════════════
+
+Here is a comprehensive data extraction and statistical analysis plan based on the provided dental research article.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Retrospective practice-based cohort study.
+*   **Primary Objective:** To evaluate the survival of molar teeth with Endodontic Treatment Classification (ETC) scores of II and III in a referral setting (minimum service time of 12 months).
+*   **Secondary Objectives:** To evaluate the quality of the coronal seal, the restoration, and the endodontic treatment.
+*   **Hypotheses:** 
+    *   *Primary Null:* Type of endodontic treatment, ETC score, and quality of coronal seal have no influence on tooth survival.
+    *   *Secondary Null:* There is no difference in restoration quality between direct and indirect restorations.
+*   **Sample Size:** 416 assessed $\rightarrow$ 358 eligible $\rightarrow$ 279 included for tooth survival $\rightarrow$ 268 for endodontic success $\rightarrow$ 215 for restorative success. (Note: A priori power calculation required 362 teeth, which was not met due to loss to follow-up).
+*   **Follow-up:** Recall appointment at 9–12 months, with some data extracted from general practitioner charts for longer-term survival.
+
+**Variables & Measurements:**
+*   **Dependent/Outcome Variables:**
+    1.  *Tooth Survival:* Binary/Time-to-event (Retained vs. Extracted/Lost).
+    2.  *Endodontic Healing:* Categorical/Ordinal (Healed, Healing, Nonhealed) based on clinical symptoms and Periapical Index (PAI).
+    3.  *Restoration Quality:* Ordinal (FDI criteria: clinically excellent to clinically poor).
+*   **Independent/Predictor Variables:**
+    *   *Patient:* Age (Continuous), Gender (Male/Female), Caries risk (Low/Medium/High), Parafunction (Yes/No).
+    *   *Tooth/Restorative:* Jaw (Upper/Lower), Number of canals (3/4), Restoration type (Direct/Indirect), Cusp coverage (Yes/No), Coronal seal (Adequate/Inadequate).
+    *   *Endodontic:* Operator (1/2), ETC score (II/III), Preoperative radiolucency (Yes/No), Preoperative complications (Yes/No), Treatment type (First/Retreatment), Technical quality (Adequate/Inadequate).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Core to answering hypotheses)
+
+**1. Kaplan-Meier Survival Analysis**
+*   **Purpose:** To estimate the cumulative survival probability of the endodontically treated molars over time.
+*   **Why appropriate:** 
+    1) The primary outcome is "tooth survival," which involves time-to-event data. 
+    2) It effectively handles right-censored data (patients lost to follow-up or teeth still surviving at the end of the study period).
+*   **Why it may not be appropriate:** It cannot adjust for multiple confounding variables simultaneously.
+*   **When NOT to use:** If all patients have the exact same follow-up time (making it a simple binary outcome rather than time-to-event).
+*   **Alternative:** Life Table analysis.
+
+**2. Cox Proportional Hazards Regression**
+*   **Purpose:** To test the primary null hypothesis by evaluating the influence of multiple predictors (treatment type, ETC score, coronal seal) on tooth survival.
+*   **Why appropriate:** 
+    1) Allows for multivariable adjustment of confounders (e.g., age, caries risk) while analyzing time-to-event data. 
+    2) Provides Hazard Ratios (HR) to quantify the risk of tooth loss associated with each predictor.
+*   **Why it may not be appropriate:** The assumption of proportional hazards over time might be violated.
+*   **When NOT to use:** If the proportional hazards assumption fails (e.g., the risk of failure for retreatment vs. initial treatment changes drastically over time).
+*   **Alternative:** Extended Cox model (with time-dependent covariates) or Parametric survival models (e.g., Weibull).
+
+**3. Mann-Whitney U Test (or Wilcoxon Rank-Sum Test)**
+*   **Purpose:** To test the secondary hypothesis comparing restoration quality between direct and indirect restorations.
+*   **Why appropriate:** 
+    1) The outcome variable (FDI criteria) is ordinal (excellent, sufficient, unsatisfactory, poor). 
+    2) It does not assume a normal distribution, which is appropriate for ranked categorical data.
+*   **Why it may not be appropriate:** It does not account for potential confounders (e.g., caries risk or parafunction) that might dictate why a direct vs. indirect restoration was chosen.
+*   **When NOT to use:** If the outcome variable is strictly nominal or continuous and normally distributed.
+*   **Alternative:** Ordinal Logistic Regression.
+
+**4. Chi-Square Test of Independence (or Fisher’s Exact Test)**
+*   **Purpose:** To compare categorical outcomes (e.g., Endodontic healing: Healed/Healing/Nonhealed) across binary predictors (e.g., Adequate vs. Inadequate coronal seal).
+*   **Why appropriate:** 
+    1) Both independent and dependent variables are categorical. 
+    2) It provides a straightforward assessment of crude associations before multivariable modeling.
+*   **Why it may not be appropriate:** It cannot adjust for covariates.
+*   **When NOT to use:** If expected cell counts are less than 5 (use Fisher's Exact Test instead).
+*   **Alternative:** Fisher's Exact Test.
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Fleiss’ Kappa or Cohen’s Kappa**
+*   **Purpose:** To measure inter-rater reliability among the four calibrated observers.
+*   **Why appropriate:** 
+    1) The study relies on subjective radiographic and clinical assessments (PAI, FDI criteria) by multiple observers. 
+    2) Validates the calibration process mentioned in the methods.
+*   **Why it may not be appropriate:** Kappa can be paradoxically low if the prevalence of a specific finding is extremely high or low, even with high absolute agreement.
+*   **When NOT to use:** If only one observer evaluated all cases.
+*   **Alternative:** Gwet’s AC1 statistic (more robust to the prevalence paradox).
+
+**2. Generalized Estimating Equations (GEE) or Mixed-Effects Models**
+*   **Purpose:** To account for clustering effects if multiple teeth were treated within the same patient.
+*   **Why appropriate:** 
+    1) The sample size refers to "416 root canal treatments," implying some patients may have contributed more than one tooth. 
+    2) Teeth within the same mouth share systemic risk factors (caries risk, parafunction), violating the assumption of independent observations.
+*   **Why it may not be appropriate:** If every single tooth in the dataset belongs to a unique patient, the model becomes unnecessarily complex.
+*   **When NOT to use:** When there is strictly one observation (tooth) per patient.
+*   **Alternative:** Standard multivariable logistic/Cox regression with robust standard errors.
+
+**3. Ordinal Logistic Regression**
+*   **Purpose:** To model the predictors of Endodontic Healing (Healed $\rightarrow$ Healing $\rightarrow$ Nonhealed) or FDI restoration scores.
+*   **Why appropriate:** 
+    1) Respects the natural ordering of the outcome variables without assuming equal spacing between categories. 
+    2) Allows for multivariable adjustment.
+*   **Why it may not be appropriate:** The assumption of proportional odds (that the effect of the predictor is the same across all threshold levels of the outcome) may be violated.
+*   **When NOT to use:** If the proportional odds assumption is violated.
+*   **Alternative:** Multinomial Logistic Regression.
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Multiple Imputation by Chained Equations (MICE)**
+*   **Purpose:** To handle missing data (noted as "Unknown" in Table 1 for caries risk, parafunction, and restoration type).
+*   **Why appropriate:** 
+    1) Prevents the loss of statistical power associated with listwise deletion. 
+    2) Reduces bias if the data is Missing at Random (MAR).
+*   **Why it may not be appropriate:** The percentage of missing data in Table 1 is very low (1-5%); imputation may overcomplicate the analysis for minimal gain.
+*   **When NOT to use:** If data is Missing Not At Random (MNAR) or if missingness exceeds acceptable thresholds without reliable auxiliary variables.
+*   **Alternative:** Complete case analysis (listwise deletion).
+
+**2. Propensity Score Matching (PSM)**
+*   **Purpose:** To balance baseline characteristics between teeth receiving direct vs. indirect restorations.
+*   **Why appropriate:** 
+    1) Treatment assignment was not randomized; dentists likely chose indirect restorations for more severely damaged teeth. 
+    2) Mimics a randomized control trial by comparing "apples to apples."
+*   **Why it may not be appropriate:** Reduces the effective sample size, which is already diminished due to loss to follow-up.
+*   **When NOT to use:** When the sample size is too small to find suitable matches.
+*   **Alternative:** Inverse Probability of Treatment Weighting (IPTW).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test / ANOVA:** Inappropriate because the primary outcomes (survival, healing status, FDI criteria) are categorical, ordinal, or time-to-event, not continuous.
+*   **Pearson Correlation:** Inappropriate because the variables are predominantly categorical or ordinal. Pearson requires two continuous, normally distributed variables.
+*   **Paired t-test / Wilcoxon Signed-Rank Test:** Inappropriate because the study does not compare pre- and post-treatment continuous/ordinal scores on the same teeth; it compares outcomes across different groups (e.g., direct vs. indirect).
+*   **Linear Regression:** Inappropriate because the dependent variables are not continuous.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must transition from validating the data collection to addressing the specific hypotheses while respecting the data types. First, **inter-rater reliability (Kappa)** must be established to validate the subjective scoring (FDI and PAI). Because the primary outcome is tooth survival over varying lengths of time, **Kaplan-Meier curves and Cox Proportional Hazards regression** are the optimal choices to test the primary hypothesis, allowing for the adjustment of clinical confounders. 
+
+For the secondary hypothesis regarding restoration quality, the data is ordinal (FDI criteria); therefore, non-parametric tests like the **Mann-Whitney U test** or **Ordinal Logistic Regression** are required. Finally, because this is a clinical dental study where patients may contribute multiple molars to the dataset, the biostatistical approach must verify if clustering exists. If multiple teeth belong to single patients, **Mixed-effects models or GEE** must be utilized to prevent artificially deflated p-values caused by violating the assumption of independence.

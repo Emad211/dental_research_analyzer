@@ -1,0 +1,186 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+Clinical Oral Investigations (2021) 25:2373–2380
+https://doi.org/10.1007/s00784-020-03560-6
+
+ORIGINAL ARTICLE
+
+# Effect of endodontic treatment on periodontal healing of grade 3 endo-periodontal lesions without root damage in periodontally compromised patients—a retrospective pilot study
+
+Maurice Ruetters¹ 🆔 · Ti-Sun Kim¹ · Johannes Krisam² · Shirin El-Sayed¹ · Nihad ElSayed¹ 🆔
+
+Received: 27 May 2020 / Accepted: 27 August 2020 / Published online: 19 September 2020
+© The Author(s) 2020
+
+Check for updates
+
+---
+
+✉ Nihad ElSayed
+nihad.elsayed@med.uni-heidelberg.de
+
+Maurice Ruetters
+Maurice.ruetters@med.uni-heidelberg.de
+
+Ti-Sun Kim
+ji-sun.kim@med.uni-heidelberg.de
+
+Johannes Krisam
+krisam@imbi.uni-heidelberg.de
+
+Shirin El-Sayed
+shirin.el-sayed@med.uni-heidelberg.de
+
+¹ Section of Periodontology, Clinic for Conservative Dentistry, University Hospital Heidelberg, Im Neuenheimer Feld 400, 69120 Heidelberg, Germany
+
+² Institute of Medical Biometry and Informatics, University Hospital Heidelberg, Im Neuenheimer Feld 130.3, 69120 Heidelberg, Germany
+
+---
+
+### Introduction
+
+Combined periodontal endodontic lesions can be of different origins. They can either be of endodontic origin, of periodontal origin, or of both. There are different kinds of pathways that might cause such a lesion, anatomical pathways and non-physiological pathways. Anatomical pathways connecting the tissues are the apical foramina and the branches of the root canal system, also named accessory canals, which can communicate with the periodontal ligament. Most of them are located in the apical third [1]. Another possible pathway are the dentine tubules, which can mostly be found at the cervical region [2]. Non-physiological pathways can be created by iatrogenic perforations and vertical root fractures for example. Similarities of the endodontic bacterial flora and the flora of periodontal pockets suggest that cross-infections are possible. However, research showed that the flora of periodontal
+
+Springer
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+2374
+Clin Oral Invest (2021) 25:2373–2380
+
+ligament appears to be much more complex than the flora of the root canal [3]. Primary endodontic lesions can cause secondary periodontal lesions. An infected pulp will always lead to a periapical reaction if no root canal treatment is performed [4]. It cannot always be forecasted if this reaction leads to a periodontal lesion, as this depends on the individual situation. Reactions can also occur at accessory root canals in the furcation or the middle part of the root. Sometimes these lesions mimic early stages of periodontitis.
+
+Whether primary periodontal lesions cause secondary endodontic lesions is subject to discussion. It is known that a pulpal involvement can happen if a periodontal lesion reaches the apex of a tooth. However, a marginally located periodontitis is unlikely to cause endodontic inflammation through the infection of dentine tubules [5]. One theory states that this is almost not possible due to the outward directed flow in the dentinal tubules of vital teeth [6]. If the teeth are still vital and the defect is solely of periodontal nature, root canal treatment should be avoided. It is important to note that a sensitivity response to a cold test represents vitality in 90%, and to an electric test in 84% [7]. Moreover, partial pulp necrosis is common in multi-rooted teeth. Therefore, one cannot always assume vitality of the pulp by sensitivity testing.
+
+Combined lesions are hard to tackle. Once an endodontic and periodontal lesion communicate, a true combined lesion exists. It is currently recommended to first treat the endodontic lesion with a root canal treatment, and wait for 3 months before reevaluation. If the lesion still persists, an additional periodontal treatment of the lesion may be necessary. This treatment recommendation is based on the assumption that infected root canal areas can be sealed and prior scaling may inhibit reattachment [8].
+
+Several classification systems have been established to categorize those lesions. The most widely known might be the one of Simon and Glick [9]. He classified five different types of lesions from class I to V. More recently the new classification by workgroup 2 of the 2017 World Workshop on the Classification of Periodontal and Peri-Implant Diseases and Conditions was published [10]. In this classification, combined lesions were categorized into two groups: those teeth with damage of the roots and those without damage of the roots. The three subgroups of those with damage of the roots are root fractures, perforation of the roots, and external root resorptions. Those without damage of the roots are divided into two subgroups of which each has three different severity codes. The first subgroup includes combined lesions of patients with periodontitis. The second subgroup represents combined lesions of patients without periodontitis. The severity codes are grades 1, 2, and 3 and give information of the anatomical morphology of the defect. Grade 1 includes narrow, deep pockets at one site of a tooth, while grade 2 includes wide, deep pockets at one site of a tooth and grade 3 includes deep pockets at more than one side of a tooth [10].
+
+To date, there is little evidence about the effect of different treatment protocols for true combined endo-periodontal lesions, especially not for the new classification. Therefore, this study aims to evaluate the effect of sole endodontic treatment of teeth diagnosed with combined endo-periodontal lesions without root damage grade 3 in periodontally compromised patients on periodontal healing.
+
+# Material and methods
+
+The hypothesis was that sole endodontic treatment had facilitated periodontal healing. The primary outcome measure was the change of pocket probing depth, and secondary outcomes were change of PAI (periodontal apical index) and change of attachment loss (Tables 1 and 2).
+
+Nineteen teeth with the initial diagnosis combined endo-periodontal lesions without root damage grade 3 from 13 periodontally compromised patients were included in the study. All teeth were treated with a standardized endodontic treatment protocol and were analyzed retrospectively. All patients underwent a systematic periodontitis therapy which included a full mouth disinfection and, if necessary, adjunctive antibiotic therapy according to van Winkelhoff (375 mg amoxicillin and 250 mg metronidazole, three times daily for a period of 7 days) [13, 14]. The affected teeth with combined endo-periodontal lesion were exempted from subgingival debridement. They had never been instrumented subgingivally during the study interval. All endodontic treatments were performed at the Department of Restorative Dentistry at the University Hospital Heidelberg.
+
+The study was approved by the local ethics committee (S-312/2020).
+
+## Endodontic treatment protocol
+
+All treatments were performed with the application of rubber dam. Instrumentation was performed with hand and rotary files (Reciproc®). All root canals were irrigated intermittently
+
+**Table 1** Quality score proposed by Farzaneh et al. 2004 [11]
+
+| | Description |
+| :--- | :--- |
+| Length | |
+| Adequate | Filling 0–2 mm short of the root end |
+| Short | Filling 2 mm short of the root end |
+| Long | Filling of the root end |
+| Density | |
+| Good | Homogenous appearance, without voids |
+| Poor | Detectable voids |
+| Missed canal | ≥ 1 canal not filled |
+
+Springer
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+Clin Oral Invest (2021) 25:2373–2380
+2375
+
+Table 2 PAI score by Orstavik [12]
+Score Description
+1 Normal periapical structures
+2 Small change in bone structure
+3 Changes in bone structure with some mineral loss
+4 Periodontitis with well-defined radiolucent area
+5 Severe periodontitis with exacerbating features
+
+with ultrasonically activated sodium hypochlorite (3%) and chlorhexidine (2%). To avoid the formation of precipitates of parachloraniline in between the sodium hypochlorite and chlorhexidine irrigations, the canals were rinsed with ethyl alcohol. At the end of the first appointment, calcium hydrox- ide powder was mixed with chlorhexidine to form a pasty consistency, and the paste was applied into all canals. A sec- ond appointment was set at least 2 weeks later for obturation of the root canals. The obturation was performed with either thermoplastic filling or lateral condensing techniques using gutta-percha.
+Periapical radiographs were taken before, during, and 6 to 17 months after endodontic treatment.
+
+Clinical examination
+
+All patients received a dental checkup and a periodontal as- sessment recording PPD, CAL, furcation involvement, and tooth mobility before and after active periodontal treatment. The probing of the teeth with combined endo-periodontal le- sions was performed at reevaluation 6 months after endodon- tic treatment at the earliest. Further assessment of periodontal parameters was made at the appointments of supportive peri- odontal care, with intervals adjusted at individual risk. For a better correlation of results to clinical practice, teeth showing improvement of PPD and CAL of ≥ 50% were classified as “success,” others as “failure.”
+Restorations, caries, and sensitivity of the included teeth before endodontic treatment were recorded as well as smoking status and antibiotic therapy during full mouth disinfection.
+
+Radiographic examination
+
+Periapical radiographs were taken before treatment and earli- est 6 months after beginning of the endodontic treatment using parallel technique to ensure high reproducibility. The PAI was analyzed at the apex of the root in each periapical radiograph by one calibrated investigator blinded to the clinical outcome [12]. The characterization of the PAI is shown in Table 2. It consists of a 5-point scale and is designed to evaluate the apical situation of a tooth. Five radiographs served as a reference. The scores correlate with confirmed histology. It was used to quantify radiographic changes only at the apex of the treated teeth.
+The quality of the root canal filling was rated radiograph- ically according to a scheme used by Farzaneh et al. [11]. Two investigators (MR and SE), both with 8 years of experience in clinical and radiographic diagnostics, rated independently of each other. If ratings differed, a consensus was made. Length and density were rated separately. A precise characterization of the rating scores is shown in Table 1.
+The software application used was Sidexis Next Generation 1.53 (Sirona dental systems, Bensheim, Germany). Radiographic evaluations were all performed on a certified monitor (EIZO, RadiForce RS 210) in the same dark room. Teeth with improvement of the PAI score were classified as “successful,” others as “failure.” Fig. 1.
+
+Springer
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+Fig. 2 Flow chart of the study
+
+Springer
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+*   Top left: Clin Oral Invest (2021) 25:2373–2380
+    *   Top right: 2377
+    *   Bottom right: Springer logo Springer
+
+    Wait, the Springer logo is a graphic. Rule 1 says "Extract ALL visible text". The logo contains text "Springer".
+
+    Let's format it as it appears on the page.
+
+    Clin Oral Invest (2021) 25:2373–2380
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+Springer
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+Clin Oral Invest (2021) 25:2373–2380
+2379
+
+Springer
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+2380
+Clin Oral Invest (2021) 25:2373–2380
+
+2. Carrigan PJ, Morse DR, Furst ML, Sinai IH (1984) A scanning electron microscopic evaluation of human dentinal tubules according to age and location. J Endod 10(8):359–363
+3. Kurihara H et al (1995) A microbiological and immunological study of endodontic-periodontic lesions. J Endod 21(12):617–621
+4. Moller AJ et al (1981) Influence on periapical tissues of indigenous oral bacteria and necrotic pulp tissue in monkeys. Scand J Dent Res 89(6):475–484
+5. Langeland K, Rodrigues H, Dowden W (1974) Periodontal disease, bacteria, and pulpal histopathology. Oral Surg Oral Med Oral Pathol 37(2):257–270
+6. Vongsavan N, Matthews B (1991) The permeability of cat dentine in vivo and in vitro. Arch Oral Biol 36(9):641–646
+7. Petersson K et al (1999) Evaluation of the ability of thermal and electrical tests to register pulp vitality. Endod Dent Traumatol 15(3):127–131
+8. Zehnder M, Gold SI, Hasselgren G (2002) Pathologic interactions in pulpal and periodontal tissues. J Clin Periodontol 29(8):663–671
+9. Simon JH, Glick DH, Frank AL (1972) The relationship of endodontic-periodontic lesions. J Periodontol 43(4):202–208
+10. Papapanou PN, Sanz M, Buduneli N, Dietrich T, Feres M, Fine DH, Flemmig TF, Garcia R, Giannobile WV, Graziani F, Greenwell H, Herrera D, Kao RT, Kebschull M, Kinane DF, Kirkwood KL, Kocher T, Kornman KS, Kumar PS, Loos BG, Machtei E, Meng H, Mombelli A, Needleman I, Offenbacher S, Seymour GJ, Teles R, Tonetti MS (2018) Periodontitis: consensus report of workgroup 2 of the 2017 world workshop on the classification of periodontal and peri-implant diseases and conditions. J Periodontol 89(Suppl 1):S173–S182
+11. Farzaneh M, Abitbol S, Friedman S (2004) Treatment outcome in endodontics: the Toronto study. Phases I and II: Orthograde retreatment. J Endod 30(9):627–633
+12. Orstavik D, Kerekes K, Eriksen HM (1986) The periapical index: a scoring system for radiographic assessment of apical periodontitis. Endod Dent Traumatol 2(1):20–34
+13. Quirynen M, Bollen CML, Vandekerckhove BNA, Dekeyser C, Papaioannou W, Eyssen H (1995) Full- vs. partial-mouth disinfection in the treatment of periodontal infections: short-term clinical and microbiological observations. J Dent Res 74(8):1459–1467
+14. van Winkelhoff AJ et al (1989) Metronidazole plus amoxicillin in the treatment of Actinobacillus actinomycetemcomitans associated periodontitis. J Clin Periodontol 16(2):128–131
+15. Cujé J (2009) Treatment of a large combined endo-perio-lesion - a case report. Endodontie 18(1):63–72
+16. Fahmy MD et al (2016) Treatment of a periodic-endodontic lesion in a patient with aggressive periodontitis. Case Rep Dent 2016:7080781
+17. Katwal D et al (2019) Successful multidisciplinary management of an endodontic-periodontal lesion associated with a palato-radicular groove: a case report. Clin Adv Periodontics. https://doi.org/10.1002/cap.10079
+18. Pico-Blanco A, Castelo-Baz P, Caneiro-Queija L, Liñares-González A, Martin-Lancharro P, Blanco-Carrión J (2016) Saving single-rooted teeth with combined endodontic-periodontal lesions. J Endod 42(12):1859–1864
+19. Roth P (2011) Therapie einer ausgedehnten Endo-Paro-Läsion. Endodontie 20:75–81
+20. Sanz M et al (2015) Clinical concepts for regenerative therapy in furcations. Periodontol 68(1):308–332
+21. Imura N, Pinheiro ET, Gomes BPFA, Zaia AA, Ferraz CCR, Souza-Filho FJ (2007) The outcome of endodontic treatment: a retrospective study of 2000 cases performed by a specialist. J Endod 33(11):1278–1282
+22. Graves DT, Ding Z, Yang Y (2020) The impact of diabetes on periodontal diseases. Periodontol 82(1):214–224
+23. Knight ET et al (2016) Risk factors that may modify the innate and adaptive immune responses in periodontal diseases. Periodontol 71(1):22–51
+24. Koch M, Wolf E, Tegelberg Å, Petersson K (2015) Effect of education intervention on the quality and long-term outcomes of root canal treatment in general practice. Int Endod J 48(7):680–689
+
+**Publisher’s note** Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+Springer

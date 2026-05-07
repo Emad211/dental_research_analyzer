@@ -1,0 +1,145 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF : splitted_91fd82110fa9b156a47cd6aa50a0126d.pdf
+Time: 20260507_130441
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Prospective cohort study.
+
+2. **Objective**:  
+   - To evaluate the influence of various predictors on the outcome of root canal retreatment in symptomatic mandibular first molars with periapical lesions after a minimum of 2 years.
+
+3. **Population and Sample Size**:  
+   - Initial sample: 420 mandibular molars referred for root canal retreatment.  
+   - Final included sample: 120 symptomatic mandibular first molars with periapical lesions.  
+   - Follow-up sample: 103 teeth (recall rate: 85.3%).
+
+4. **Groups**:  
+   - Grouping based on treatment outcomes:  
+     - Healed (PAI 1 or 2).  
+     - Healing (PAI 3 or 4).  
+     - Nonhealing/Failure (PAI 4 or 5 with unchanged or increased lesion size).
+
+5. **Variables**:  
+   - **Predictor Variables**:  
+     - Preoperative predictors: Age, gender, soft tissue tenderness, intraoral swelling, periapical lesion size (3–10 mm), PAI score (4 or 5), apical level, and density of root canal filling.  
+     - Intraoperative predictors: Active exudate drainage, apical level and density of root canal filling after retreatment, complications (e.g., sealer extrusion, broken instruments, perforations, flare-ups), and restoration type (single crown/composite).  
+   - **Outcome Variables**:  
+     - Treatment success (healed + healing) vs. failure (nonhealing).  
+     - PAI score changes over time.  
+     - Clinical symptoms (pain, tenderness, swelling, sinus tract, mobility).  
+     - Radiographic resolution of periapical lesions.
+
+6. **Measurements**:  
+   - **Primary Outcome**:  
+     - PAI score (Ørstavik et al., 1986) assessed by two calibrated endodontists.  
+   - **Secondary Outcomes**:  
+     - Clinical signs and symptoms (pain, tenderness, swelling, etc.).  
+     - Radiographic lesion size reduction or resolution.  
+
+7. **Data Collection Methods**:  
+   - Preoperative and follow-up digital radiographs using the paralleling technique.  
+   - Clinical examinations at multiple follow-up intervals (3, 6, 9, and 12 months, then every 6 months for 2 years, and annually thereafter).  
+   - Calibration of evaluators for PAI scoring.  
+   - Standardized treatment protocol for root canal retreatment.
+
+8. **Follow-up Duration**:  
+   - Minimum of 2 years, with some cases followed up to 4 years.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Chi-Square Test (or Fisher’s Exact Test if needed).  
+   - **Purpose**: To compare categorical variables (e.g., success vs. failure rates across groups).  
+   - **Why Appropriate**:  
+     1. The outcome variable (success vs. failure) is categorical.  
+     2. Predictor variables like gender, presence of swelling, and restoration type are also categorical.  
+   - **Why It May Not Be Appropriate**: Small sample sizes in subgroups may violate assumptions.  
+   - **When NOT to Use**: If expected cell counts are <5 in >20% of cells.  
+   - **Alternative**: Fisher’s Exact Test.
+
+2. **Test Name**: Logistic Regression.  
+   - **Purpose**: To assess the influence of multiple predictors on binary outcomes (e.g., success vs. failure).  
+   - **Why Appropriate**:  
+     1. Allows for adjustment of multiple confounders (e.g., age, lesion size).  
+     2. Outcome variable is binary (success vs. failure).  
+   - **Why It May Not Be Appropriate**: If multicollinearity exists among predictors.  
+   - **When NOT to Use**: If sample size is insufficient for the number of predictors.  
+   - **Alternative**: Penalized regression methods (e.g., LASSO).
+
+3. **Test Name**: Paired t-test (or Wilcoxon Signed-Rank Test).  
+   - **Purpose**: To compare preoperative and postoperative PAI scores.  
+   - **Why Appropriate**:  
+     1. PAI scores are ordinal but can be treated as continuous for parametric tests.  
+     2. Pre- and postoperative scores are paired within subjects.  
+   - **Why It May Not Be Appropriate**: If PAI scores are not normally distributed.  
+   - **When NOT to Use**: If normality assumption is violated.  
+   - **Alternative**: Wilcoxon Signed-Rank Test.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Kaplan-Meier Survival Analysis.  
+   - **Purpose**: To evaluate time-to-event data (e.g., time to healing or failure).  
+   - **Why Appropriate**:  
+     1. Accounts for varying follow-up durations.  
+     2. Provides survival probabilities over time.  
+   - **Why It May Not Be Appropriate**: Assumes independent censoring.  
+   - **When NOT to Use**: If censoring is not random.  
+   - **Alternative**: Cox Proportional Hazards Model.
+
+2. **Test Name**: Cox Proportional Hazards Regression.  
+   - **Purpose**: To identify predictors of time to healing or failure.  
+   - **Why Appropriate**:  
+     1. Adjusts for multiple predictors.  
+     2. Handles censored data.  
+   - **Why It May Not Be Appropriate**: Assumes proportional hazards.  
+   - **When NOT to Use**: If proportional hazards assumption is violated.  
+   - **Alternative**: Stratified Cox model or time-varying covariates.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Repeated Measures ANOVA (or Linear Mixed Model).  
+   - **Purpose**: To analyze changes in PAI scores over multiple follow-up time points.  
+   - **Why Appropriate**:  
+     1. Accounts for within-subject correlation over time.  
+     2. Handles repeated measures data.  
+   - **Why It May Not Be Appropriate**: Assumes normality of residuals.  
+   - **When NOT to Use**: If data are highly skewed or missing at random.  
+   - **Alternative**: Generalized Estimating Equations (GEE).
+
+2. **Test Name**: Subgroup Analysis (e.g., stratified by exudate presence).  
+   - **Purpose**: To explore differences in outcomes between subgroups.  
+   - **Why Appropriate**:  
+     1. Provides insights into effect modification.  
+     2. Useful for hypothesis generation.  
+   - **Why It May Not Be Appropriate**: Risk of Type I error due to multiple comparisons.  
+   - **When NOT to Use**: If subgroup sizes are too small.  
+   - **Alternative**: Interaction terms in regression models.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-test**:  
+   - **Why Not Appropriate**: The data are paired (pre- and postoperative PAI scores).  
+   - **Alternative**: Paired t-test or Wilcoxon Signed-Rank Test.
+
+2. **ANOVA**:  
+   - **Why Not Appropriate**: Does not account for repeated measures or within-subject correlation.  
+   - **Alternative**: Repeated Measures ANOVA or Linear Mixed Model.
+
+3. **Pearson Correlation**:  
+   - **Why Not Appropriate**: Does not account for categorical or time-to-event outcomes.  
+   - **Alternative**: Logistic regression or Cox regression.
+
+---
+
+### TASK 4: SUMMARY
+The proposed analytical approach is comprehensive and tailored to the study design and objectives. It incorporates mandatory tests to address the primary research questions, recommended tests to enhance rigor, and optional tests for supplementary insights. The use of regression models ensures adjustment for confounders, while survival analysis accounts for varying follow-up durations. The plan avoids inappropriate tests and provides alternatives for assumption violations, ensuring robust and valid conclusions.
