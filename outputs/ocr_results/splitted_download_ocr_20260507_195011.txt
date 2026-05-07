@@ -1,0 +1,279 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+Original Article
+http://dx.doi.org/10.1590/1678-7757-2020-0998
+
+JAOS
+JOURNAL OF APPLIED ORAL SCIENCE
+
+The effect of solution and gel forms of sodium hypochlorite on postoperative pain: a randomized clinical trial
+
+Esin OZLEK¹ ID
+Hüseyin GUNDUZ¹ ID
+Gizem KADI¹ ID
+Ahmet TAŞAN¹ ID
+Elif AKKOL² ID
+
+Keywords: Postoperative pain. Root canal irrigants. Root canal preparation. Sodium hypochlorite gel. Sodium hypochlorite solution.
+
+Submitted: December 1, 2020
+Modification: April 19, 2021
+Accepted: April 21, 2021
+
+Corresponding address:
+Esin Ozlek
+The University of Van Yuzuncu Yıl - Faculty of
+Dentistry - Department of Endodontics - Van - Turkey.
+Phone: +905305200059
+e-mail address: e.ozlek@yyu.edu.tr
+
+¹The University of Van Yuzuncu Yıl, Faculty of Dentistry, Department of Endodontics, Van, Turkey.
+²Medicadent Oral and Dental Health Clinic, Istanbul, Turkey.
+
+CC BY
+
+J Appl Oral Sci. 1/9 2021;29:e20200998
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+The effect of solution and gel forms of sodium hypochlorite on postoperative pain: a randomized clinical trial
+
+**Introduction**
+
+Postoperative pain is a widespread complication after root canal treatments, which is undesirable for patients and physicians.¹ The incidence of postoperative pain stated in cases is 39% after endodontic treatment and in the first 24 hours, this rate can even be up to 65% and above.² Many mechanical, chemical and microbiological factors play a role in the occurrence of postoperative pain.³ It especially appears as a result of extrusion of noninfected debris and solutions into periradicular tissues.⁴ Many studies about this subject exists in the literature.¹ These studies have focused on different irrigation solutions and activation systems in addition to the mechanical preparation procedures of the root canal.⁵,⁶
+
+Sodium hypochlorite (NaOCl) is the most widely used irrigation solution during root canal treatment.³ In addition to its advantages such as antimicrobial activity and organic tissue solvency, however, it also has cytotoxic effects on periradicular tissues. When it is extruded from apical to periradicular tissues during root canal treatment, it damages endothelial cells and fibroblasts, facial nerve palsy, allergic reaction and necrosis may develop.⁷ In a retrospective study conducted by members of the American Association of Endodontists, 42% of clinicians reported that using NaOCl causes postoperative pain or serious complications at least once a year.⁸ That’s why, researchers are in search of a more biocompatible irrigant.
+
+It has been suggested currently that the use of the gel form of NaOCl is a potential option.⁹,¹⁰ Studies have reported that the solution and gel forms of NaOCl have a similar effect on dentin. In the study of Zand, et al.¹⁰ (2010) evaluating the smear layer removal activity of the solution and gel forms of NaOCl, and the study of Garcia, et al.⁹ (2013) evaluating the effects of both forms on dentin microhardness, it has been reported that they have similar effects.
+
+The effect of the gel form of NaOCl on postoperative pain has not been studied; therefore, this study compared the effects of using gel and solution forms of 5.25% NaOCl in mandibular molar teeth with symptomatic irreversible pulpitis on postoperative pain. The null hypothesis was that there would be no difference between the gel and solution forms of NaOCl.
+
+**Methodology**
+
+**Study design, setting and sampling**
+
+Ethical approval for the study was obtained from the Institutional Review Board and the Ethics Committee of the University. In this clinical trial, Consolidated Standards of Reporting Trials guidelines were followed (Figure 1) and the study protocol was registered on www.clinicaltrial.gov (Identifier: NCT04190355). Participation in the study was voluntary. All patients signed an informed consent form after aims, procedures, benefits and potential risks of the study were explained. The study was conducted by 4 postgraduate students with the same level of experience, trained in endodontic procedures (using rotary instruments, irrigation and canal filling). Power and Sample Size Calculation software version 3.1.2 was used to calculate sample size. With 95% confidence, 95.1% test power and d=0.1121 effect size, the total sample size was determined to be 114.
+
+**Eligibility criteria**
+
+The inclusion criteria were as follows:
+
+Healthy individuals aged 18-45 without any systemic disease;
+
+Mandibular molar teeth that were diagnosed with symptomatic irreversible pulpitis that showed prolonged response in the tooth even after the removal of the thermal and electric pulp test;
+
+Teeth with all root canals inclined up to 25° according to Schneider¹¹ (1971) method, with two canals in the mesial root and a single canal in the distal root;
+
+Patients with preoperative pain scores between moderate and severe (VAS, 4-10) according to the VAS scale.
+
+The exclusion criteria were the following:
+
+Patients having taken analgesics or anti-inflammatory drugs in the past 12 hours;
+
+Pregnant and lactating patients;
+
+Teeth with radiologically proven periapical lesion;
+
+Teeth that are too damaged to apply rubber dam;
+
+Teeth with resorption, radiological evidence of calcification or open apices;
+
+Patients with traumatic malocclusion;
+
+Patients without occlusal contact.
+
+114 patients were randomized into 2 groups based on the irrigation type during root canal preparation, using a computer program (available at
+
+J Appl Oral Sci. **2/9** 2021;29:e20200998
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+OZLEK E, GUNDUZ H, KADI G, TAŞAN A, AKKOL E
+
+CONSORT 2010 checklist of information to include when reporting a randomised trial*
+
+| Section/Topic | Item No | Checklist item | Reported on page No |
+| :--- | :--- | :--- | :--- |
+| **Title and abstract** | | | |
+| | 1a | Identification as a randomised trial in the title | Title page |
+| | 1b | Structured summary of trial design, methods, results, and conclusions (for specific guidance see CONSORT for abstracts) | 1 |
+| **Introduction** | | | |
+| Background and objectives | 2a | Scientific background and explanation of rationale | 2 |
+| | 2b | Specific objectives or hypotheses | 2 |
+| **Methods** | | | |
+| Trial design | 3a | Description of trial design (such as parallel, factorial) including allocation ratio | 3 |
+| | 3b | Important changes to methods after trial commencement (such as eligibility criteria), with reasons | 3 |
+| Participants | 4a | Eligibility criteria for participants | 3 |
+| | 4b | Settings and locations where the data were collected | 3 |
+| Interventions | 5 | The interventions for each group with sufficient details to allow replication, including how and when they were actually administered | 3-5 |
+| Outcomes | 6a | Completely defined pre-specified primary and secondary outcome measures, including how and when they were assessed | 5 |
+| | 6b | Any changes to trial outcomes after the trial commenced, with reasons | 5 |
+| Sample size | 7a | How sample size was determined | 3 |
+| | 7b | When applicable, explanation of any interim analyses and stopping guideline | - |
+| Randomisation: | | | |
+| Sequence generation | 8a | Method used to generate the random allocation sequence | 3-4 |
+| | 8b | Type of randomisation; details of any restriction (such as blocking and block size) | 3-4 |
+| Allocation concealment mechanism | 9 | Mechanism used to implement the random allocation sequence (such as sequentially numbered containers), describe in g any steps taken to conceal the sequence until interventions were assigned | 4 |
+| Implementation | 10 | Who generated the random allocation sequence, who enrolled participants, and who assigned participants to interventions | 4 |
+| Blinding | 11a | If done, who was blinded after assignment to interventions (for example, participants, care providers, those assessing outcomes) and how<br>3 | 3 |
+| | 11b | If relevant, description of the similarity of interventions | 4 |
+| Statistical methods | 12a | Statistical methods used to compare groups for primary and secondary outcomes | 5 |
+| | 12b | Methods for additional analyses, such as subgroup analyses and adjusted analyses | 5 |
+| **Results** | | | |
+| Participant flow (a diagram is strongly recommended) | 13a | For each group, the numbers of participants who were randomly assigned, received intended treatment, and were analysed for the primary outcome | 5 |
+| | 13b | For each group, losses and exclusions after randomisation, together with reasons | 5 |
+| Recruitment | 14a | Dates defining the periods of recruitment and follow-up | 5 |
+| | 14b | Why the trial ended or was stopped | - |
+| Baseline data | 15 | A table showing baseline demographic and clinical characteristics for each group | 11 |
+| Numbers analysed | 16 | For each group, number of participants (denominator) included in each analysis and whether the analysis was by original assigned groups | 12 |
+| Outcomes and estimation | 17a | For each primary and secondary outcome, results for each group, and the estimated effect size and its precision (such as 95% confidence interval) | 3-5 |
+| | 17b | For binary outcomes, presentation of both absolute and relative effect sizes is recommended | - |
+| Ancillary analyses | 18 | Results of any other analyses performed, including subgroup analyses and adjusted analyses, distinguishing pre-specified from exploratory<br>5 | 5 |
+| Harms | 19 | All important harms or unintended effects in each group (for specific guidance see CONSORT for harms42) | - |
+| **Discussion** | | | |
+| Limitations | 20 | Trial limitations, addressing sources of potential bias, imprecision, and, if relevant, multiplicity of analyses | 8 |
+| Generalisability | 21 | Generalisability (external validity, applicability) of the trial findings | 8 |
+| Interpretation | 22 | Interpretation consistent with results, balancing benefits and harms, and considering other relevant evidence | 8 |
+| **Other information** | | | |
+| Registration | 23 | Registration number and name of trial registry | - |
+| Protocol | 24 | Where the full trial protocol can be accessed, if available | - |
+| Funding | 25 | Sources of funding and other support (such as supply of drugs), role of funders | - |
+
+*We strongly recommend reading this statement in conjunction with the CONSORT 2010 Explanation and Elaboration for important clarifications on all the items. If relevant, we also recommend reading CONSORT extensions for cluster randomised trials, non-inferiority and equivalence trials, non-pharmacological treatments, herbal interventions, and pragmatic trials. Additional extensions are forthcoming: for those and for up to date references relevant to this checklist, see www.consort-statement.org.
+
+**Figure 1-** The Consolidated Standards of Reporting Trials checklist
+
+www.randomizer.org). Each group was randomly and equally divided. The allocation ratio was 1:1. In the study, patients were not informed about the division and they were blinded. However, the clinicians could not be blinded due to the nature of the study.
+
+**Treatment procedure**
+
+Root canal treatments of all patients were performed in a single session. Dental anesthesia was achieved using local anesthetic solution (Ultracain DS Fort, Hoechst-Marian Russel, Frankfurt, Germany) containing 4% articaine and 1:200000 epinephrine
+
+J Appl Oral Sci. **3/9** 2021;29:e20200998
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+The effect of solution and gel forms of sodium hypochlorite on postoperative pain: a randomized clinical trial
+
+for inferior alveolar nerve blockade. After rubber dam isolation, endodontic access cavity was prepared using high-speed burs (Dentsply Maillefer, Ballaigues, Switzerland). The working length (WL) was determined using apex locator (Propex Pixi, Dentsply Maillefer) and confirmed to be 0.5-1 mm shorter than the “radiographic apex” by periapical radiographs. The root canals were mechanically prepared using ProTaper Next (Dentsply, Maillefer, Ballaigues, Switzerland) up to X3. All ProTaper Next files were used with an endodontic engine (X-Smart, Dentsply Sirona) at the torque and speed values recommended by the manufacturer. After reaching the WL with size-15 K-type hand file, shaping was continued with brushing motion until the canal length was achieved with X1, X2 and X3 files, respectively. The files were withdrawn at the point where resistance was met before torsional overload occurred and the work continued after the apical opening was checked with size-10 K-type hand file. All patients were divided into two groups based on irrigant used during root canal preparation (n = 57): Group 1, 5.25% NaOCI solution (Imicrly, Konya, Turkey), Group 2, 5.25% Chloraxid gel.
+
+Group 1 (NaOCI solution): The root canals were irrigated with 5 mL of 5.25% NaOCI.
+
+Group 2 (NaOCI gel): Gel form of 5.25% NaOCI (Chloraxid gel, Cercamed, Stalowo Wolo, Poland) was used. After covering the root canal files with NaOCI gel, they were placed in the root canal. During instrumentation canals were irrigated with 5 mL saline.
+
+The irrigation procedure in all groups was performed with a NaviTip irrigation needle (30-G; Ultradent Products Inc, South Jordan, UT), placed 2 mm short of the working length. Once the shaping of the root canals was completed, according to the final irrigation procedure, all canals were irrigated with 5 mL of 17% EDTA solution (Imicryl, Konya, Turkey), 5 mL of 5.25% NaOCI solution and 5 mL of saline, respectively. Root canals were dried with absorbent paper points (Denstply Maillefer, Baillagues, Switzerland). All groups were filled with gutta-percha (Denstply Maillefer, Baillagues, Switzerland) and AH Plus Sealer (Denstply Maillefer, Baillagues, Switzerland) root canal paste in the same session using the single-cone technique. After the quality of obturation was ensured with radiographs, coronal seal was provided with glass ionomer cement (Amalgomer, AHL, Kent, UK). The teeth was restored with composite resin (Filtek Z250, 3M ESPE, St. Paul, Minnesota, USA) and, then, occlusal contacts was checked and relieved where necessary. Each patient was prescribed 400 mg of Ibuprofen and was instructed to take it every 8 hours when felt too severe and extremely unbearable pain to perform his daily activities.
+
+Postoperative pain assessment
+
+Visual analogue scale (VAS) was used for postoperative pain assessment. After endodontic treatment, all patients were given a detailed form to record their postoperative pain levels at the 6th, 24th, 48th, 72nd hours, and 1 week later. VAS assessment in this form was explained to the patients in detail, and they were asked to mark on the form the pain they felt at the 6th, 24th, 48th, 72nd hours, and 1 week later. One week after the treatment, patients were called by phone. The pain scores that the patients marked on the pain assessment form were learned and recorded in the patient file. According to the values recorded on the VAS, the pain levels were classified as no pain (0), mild pain (1-3), moderate pain (4-6) and severe pain (7-10).
+
+J Appl Oral Sci. 4/9 2021;29:e20200998
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+OZLEK E, GUNDUZ H, KADI G, TAŞAN A, AKKOL E
+
+Assessed for eligibility (n=210)
+
+Excluded (n=96)
+Not meeting inclusion criteria
+(n=26)
+
+Randomized (n=114)
+
+Allocation
+
+Allocated to intervention
+NaOCl solution group (n= 57)
+Received to intervention (n=57)
+
+Allocated to intervention
+NaOCl gel group (n= 57)
+Received to intervention (n=57)
+
+Follow up
+
+Lost to follow up (n=3)
+Discontinued intervention (n=2)
+(File seperation)
+
+Lost to follow up (n=4)
+Discontinued intervention (n=1)
+(File seperation)
+
+J Appl Oral Sci. 5/9 2021;29:e20200998
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+J Appl Oral Sci. 6/9 2021;29:e20200998
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+OZLEK E, GUNDUZ H, KADI G, TAŞAN A, AKKOL E
+
+J Appl Oral Sci. 7/9 2021;29:e20200998
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+The effect of solution and gel forms of sodium hypochlorite on postoperative pain: a randomized clinical trial
+
+# Conclusion
+
+Within the limitations of the study, using gel or solution forms of NaOCl during chemomechanical preparation of root canals, resulted in similar postoperative pain. For both formulations, pain level decreased over time.
+
+# Conflict of interest
+
+The authors deny any conflicts of interest related to this study.
+
+# Authors’ contributions
+
+**Özlek, Esin:** Conceptualization (Lead); Formal analysis (Lead); Investigation (Equal); Methodology (Equal); Project administration (Lead); Writing-original draft (Lead). **GÜNDÜZ, Hüseyin:** Conceptualization (Supporting); Data curation (Equal); Investigation (Equal); Methodology (Equal). **Kadi, Gizem:** Data curation (Equal); Investigation (Equal). **Tasan, Ahmet:** Data curation (Equal). **Akkol, Elif:** Data curation (Supporting); Formal analysis (Supporting).
+
+# References
+
+1- Neelakantan P, Sharma S. Pain after single-visit root canal treatment with two single-file systems based on different kinematics--a prospective randomized multicenter clinical study. Clin Oral Investig. 2015;19(9):2211-7. doi:10.1007/s00784-015-1448-x
+2- Wang C, Xu P, Ren L, Dong G, Ye L. Comparison of post-obturation pain experience following one-visit and two-visit root canal treatment on teeth with vital pulps: a randomized controlled trial. Int Endod J. 2010;43(8):692-7. doi:10.1111/j.1365-2591.2010.01748.x
+3- Ulin C, Magunacelaya-Barria M, Dahlén G, Kvist T. Immediate clinical and microbiological evaluation of the effectiveness of 0.5% versus 3% sodium hypochlorite in root canal treatment: a quasi-randomized controlled trial. Int Endod J. 2020;53(5):591-603. doi:10.1111/iej.13258
+4- Seltzer S, Naidorf IJ. Flare-ups in endodontics: I. etiological factors. 1985. J Endod. 2004;30(7):476-81; discussion 475. doi:10.1097/00004770-200407000-00005
+5- Topçuoğlu HS, Topçuoğlu G, Arslan H. The effect of different iIrrigation agitation techniques on postoperative pain in mandibular molar teeth with symptomatic irreversible pulpitis: a randomized clinical trial. J Endod. 2018;44(10):1451-6. doi:10.1016/j.joen.2018.06.008
+6- Yılmaz K, Tüfenkçi P, Adıgüzel M. The effects of QMix and EndoActivator on postoperative pain in mandibular molars with nonvital pulps: a randomized clinical trial. Clin Oral Investig. 2019;23(11):4173-80. doi:10.1007/s00784-019-02856-6
+7- Pontes F, Pontes H, Adachi P, Rodini C, Almeida D, Pinto D Jr. Gingival and bone necrosis caused by accidental sodium hypochlorite injection instead of anaesthetic solution. Int Endod J. 2008;41(3):267-70. doi:10.1111/j.1365-2591.2007.01340.x
+8- Kleier DJ, Averbach RE, Mehdipour O. The sodium hypochlorite accident: experience of diplomates of the American Board of Endodontics. J Endod. 2008;34(11):1346-50. doi:10.1016/j.joen.2008.07.021
+9- Garcia AJ, Kuga MC, Palma-Dibb RG, Só MV, Matsumoto MA, Faria G, et al. Effect of sodium hypochlorite under several formulations on root canal dentin microhardness. J Investig Clin Dent. 2013;4(4):229-32. doi:10.1111/j.2041-1626.2012.00158.x
+10- Zand V, Lotfi M, Rahimi S, Mokhtari H, Kazemi A, Sakhamanesh V. A comparative scanning electron microscopic investigation of the smear layer after the use of sodium hypochlorite gel and solution forms as root canal irrigants. J Endod. 2010;36(7):1234-7. doi:10.1016/j.joen.2010.02.033
+11- Schneider SW. A comparison of canal preparations in straight and curved root canals. Oral Surg Oral Med Oral Pathol. 1971;32(2):271-5. doi:10.1016/0030-4220(71)90230-1
+12- Haupt F, Meinel M, Gunawardana A, Hülsmann M. Effectiveness of different activated irrigation techniques on debris and smear layer removal from curved root canals: a SEM evaluation. Aust Endod J. 2020;46(1):40-6. doi: 10.1111/aej.12342
+13- Pinheiro SL, Silva CC, Silva LA, Cicotti MP, Bueno CE, Fontana CE, et al. Antimicrobial efficacy of 2.5% sodium hypochlorite, 2% chlorhexidine, and ozonated water as irrigants in mesiobuccal root canals with severe curvature of mandibular molars. Eur J Dent. 2018;12(1):94-9. doi: 10.4103/ejd.ejd_324_17
+14- Faria G, Viola KS, Coaguila-Llerena H, Oliveira LR, Leonardo RT, Aranda-García AJ, et al. Penetration of sodium hypochlorite into root canal dentine: effect of surfactants, gel form and passive ultrasonic irrigation. Int Endod J. 2019;52(3):385-92. doi:10.1111/iej.13015
+15- Nekoofar MH, Sheykhrezae MS, Meraji N, Jamee A, Shirvani A, Jamee J, et al. Comparison of the effect of root canal preparation by using WaveOne and ProTaper on postoperative pain: a randomized clinical trial. J Endod. 2015;41(5):575-8. doi:10.1016/j.joen.2014.12.026
+16- Verma N, Sangwan P, Tewari S, Duhan J. Effect of different concentrations of sodium hypochlorite on outcome of primary root canal treatment: a randomized controlled trial. J Endod. 2019;45(4):357- 63. doi:10.1016/j.joen.2019.01.003
+17- Topçuoğlu G, Topçuoğlu HS, Delikan E, Aydınbelge M, Dogan S. Postoperative pain after root canal preparation with hand and rotary files in primary molar teeth. Pediatr Dent. 2017;39(3):192-6.
+18- Nair M, Jeevanandan G, Vignesh R, Subramanian EM. Comparative evaluation of post-operative pain after pulpectomy with K-files, Kedo-S files and MTwo files in deciduous molars -a randomized clinical trial. Braz Dent Sci. 2018;21:411-7. doi:10.14295/bds.2018.v21i4.1617
+19- Saba K, Maxood A, Abdullah S, Riaz A, Uddin S. Comparison of frequency of pain in root canal treatment using sodium hypochlorite and chlorhexidine as root canal irrigants. J Pak Med Assoc. 2018;68(9):1334-8.
+
+J Appl Oral Sci. 8/9 2021;29:e20200998
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+```json
+[
+  {
+    "text": "OZLEK E, GUNDUZ H, KADI G, TAŞAN A, AKKOL E",
+    "location": [48, 381, 53, 618]
+  },
+  {
+    "text": "20- Farzaneh S, Pairokh M, Nakhaee N, Abbott PV. Effect of two\ndifferent concentrations of sodium hypochlorite on postoperative pain\nfollowing single-visit root canal treatment: a triple-blind randomized\nclinical trial. Int Endod J. 2018;51 Suppl 1:e2-e11. doi:10.1111/\niej.12749",
+    "location": [71, 95, 137, 478]
+  },
+  {
+    "text": "21- Mostafa M, El-Shrief YAI, Anous WI, Hassan MW, Salamah FT, El\nBoghdadi RM, et al. Postoperative pain following endodontic irrigation\nusing 1.3% versus 5.25% sodium hypochlorite in mandibular molars\nwith necrotic pulps: a randomized double-blind clinical trial. Int Endod\nJ. 2020;53(2):154-66. doi:10.1111/iej.13

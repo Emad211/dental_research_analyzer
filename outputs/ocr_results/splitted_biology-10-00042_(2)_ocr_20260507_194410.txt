@@ -1,0 +1,349 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+biology
+MDPI
+
+Article
+**Effect of Adaptive, Rotary, and Manual Root Canal Instrumentation in Primary Molars: A Triple-Armed, Randomized Controlled Clinical Trial**
+
+**Bhaggyashri A. Pawar ¹, Ajinkya M. Pawar ², Anuj Bhardwaj ³, Dian Agustin Wahjuningrum ³,*, Amelia Kristanti Rahardjo ³, Alexander Maniangat Luke ⁴, Zvi Metzger ⁵ and Anda Kfir ⁵**
+
+¹ Department of Oral Health and Advanced Dentistry, Sir H N Reliance Foundation Hospital and Research Center, Mumbai 400004, Maharashtra, India; bhaggyashripawaar@gmail.com
+² Department of Conservative Dentistry and Endodontics, Nair Hospital Dental College, Mumbai 400034, Maharashtra, India; ajinkya@drpawars.com
+³ Department of Conservative Dentistry, Faculty of Dental Medicine, Universitas Airlangga, Surabaya City, East Java 60132, Indonesia; dranuj_84@yahoo.co.in (A.B.); ameliakristanti94@yahoo.com (A.K.R.)
+⁴ Department of Clinical Sciences, Ajman University, College of Dentistry, Ajman 346, UAE; a.luke@ajman.ac.ae
+⁵ Department of Endodontology, The Goldschleger School of Dental Medicine, Tel Aviv University, Tel Aviv 69978, Israel; metzger@post.tau.ac.il (Z.M.); andak@post.tau.ac.il (A.K.)
+* Correspondence: dian-agustin-w@fkg.unair.ac.id; Tel.: +62-87831977619
+
+**check for updates**
+
+**Citation:** Pawar, B.A.; Pawar, A.M.; Bhardwaj, A.; Wahjuningrum, D.A.; Rahardjo, A.K.; Luke, A.M.; Metzger, Z.; Kfir, A. Effect of Adaptive, Rotary, and Manual Root Canal Instrumentation in Primary Molars: A Triple-Armed, Randomized Controlled Clinical Trial. *Biology* **2021**, *10*, 42. https://doi.org/10.3390/biology10010042
+
+Received: 30 November 2020
+Accepted: 5 January 2021
+Published: 10 January 2021
+
+**Publisher’s Note:** MDPI stays neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+**Copyright:** © 2021 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (https://creativecommons.org/licenses/by/4.0/).
+
+*Biology* **2021**, *10*, 42. https://doi.org/10.3390/biology10010042
+https://www.mdpi.com/journal/biology
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+Biology 2021, 10, 42
+2 of 11
+
+1. Introduction
+
+A current trend in pediatric dentistry is to perform pulpectomy procedures on necrotic primary teeth to maintain their function and avoid extraction and space loss [1]. The aim of root canal instrumentation in primary teeth is the mechanical shaping of the entire root canal space, chemical cleansing (using a desired root canal irrigant to the apex), and subsequent obturation (to the apex), which must all take place in a short duration of time [2,3]. Root canal instrumentation should result in the removal of vital and necrotic pulp tissue, infected dentine, and debris from the root canal system and its irregularities [2,3].
+
+Conventionally, pulpectomy procedures were carried out using hand instrumentation (reamers, K-files, or H-files). Barr et al. introduced the use of rotary file instrumentation for this procedure, and the motorized instrumentation was found to be an efficient technique [4]. With the use of rotary files, instrumentation time decreased, increasing children’s cooperation during treatment [5]. In spite of the fact that rotary files have been widely used for root canal treatments of permanent teeth, their use for primary dentition is still emerging.
+
+Nickel-titanium (NiTi) rotary instruments are quick, safer, and precision-aligned, with a minimized risk of procedural errors. They also provide a good taper, thus aiding to achieve better obturation quality [6]. Several rotary files have been introduced and clinically evaluated for use in pediatric endodontics [7–13]. Rotary files have a solid central metal core with a rotating blade and flutes. Considering that canals are simple, straight, and narrow, with a round cross-section, these endodontic files may effectively achieve the goals of root canal shaping. However, in cases where the root canal is large and/or irregularly shaped, these files may become inadequate. They may leave most of the root canal space unaltered, thereby potentially leaving behind infected tissue [14,15]. Primary molars often exhibit ovoid- or ribbon-shaped root canals in their coronal part and oval shapes toward the apex [16]. Such canals constitute a crucial challenge for adequate root canal cleaning, shaping, and disinfection, chiefly when rotary instruments are used for shaping [17].
+
+Recently, a new concept of an adaptive mechanized file was developed: the snake-shaped XP-endo Shaper file (FKG Dentaire, La Chaux-de-Fonds, Switzerland). It is manufactured from an innovative, thermomechanically treated NiTi alloy (Max-Wire, Martensite-Austenite Electropolished File). The wire has a size/taper of 30/0.01, which, according to the manufacturer, makes it more flexible and resistant to cyclic fatigue. Its booster tip features six cutting edges and a smooth transition from the base of the tip to the helical shaft [18]. The shape of this snake-shaped file is temperature-dependent; it is relatively straight at room temperature (M-phase) and transforms to a more “snake-like” shape when exposed to root canal temperature (A-phase) (Figure 1). When rotated at body temperature, the “envelope of motion” of the file results in a final canal preparation of a minimum of 30/0.04. These features enable the instrument to enlarge a canal from an apical size of #15 to #30 with a single instrument, without the need for long-established incremental instrument sizes.
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+Biology 2021, 10, 42 3 of 11
+
+A B
+
+Figure 1. Temperature-dependent shape transition of the XP-endo Shaper. (A) XP-endo Shaper file at room temperature (20 °C); (B) the same file at body temperature (35 °C). The extremely flexible file will push itself into canal recesses not reachable by rotary NiTi files.
+
+The file was specifically designed to adapt to the 3D morphology of root canal systems, including those with an oval cross-section. The file’s “envelope of motion” is flexible and may contract and expand as it is moved along the length of the root canal, which results in asymmetrical motion. This asymmetrical motion of the file results in reaching canal irregularities and addressing most of the root canal space [19]. It has been reported as being more effective compared to solid metal-cored rotary files when used in nonround root canals [20].
+
+To the best of the authors’ knowledge, there is no report on the use of this adaptive endodontic instrumentation technology in primary dentition to date. Thus, it was important to a conduct systematic clinical trial to arrive at a definitive and conclusive outcome for this approach. The current clinical study aimed to respond to this gap in knowledge and compare the instrumentation time and obturation quality of the XP-endo Shaper adaptive system with those of the pediatric rotary file Kedo-S and the manual hand K-files instrumentation serving as the control.
+
+2. Materials and Methods
+
+The current investigation consisted of a triple-armed, single-blinded, randomized clinical trial following Ethical Committee approval from the College of Dental Sciences and Hospital, Rau, Indore, India (CDSH/IEC/2018-19/004.
+
+The means of instrumentation times in minutes (min) from the previous studies
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+Biology 2021, 10, 42
+4 of 11
+
+were 3.4827 ± 0.48657 and 6.2167 ± 0.30978 for the Kedo-S and hand files, respectively. The allocation ratio used was 1:1. With the above parameters, the target sample size was derived to 15 samples per group, but we increased it to 25 samples per group, 75 patients total for the current randomized clinical trial.
+
+2.1. Patient Recruitment and Allocation
+
+The current study was executed following the guidelines of the Consolidated Standards of Reporting Trials (CONSORT) group for planning and reporting clinical trials (Figure 2). Patients in need of pulpectomy in primary molars (first and second, maxillary and mandibular) were included in the current study. A total of 90 patients were recruited after obtaining informed consent from the parents. Patients of both genders and betwixt the age group of 4 and 9 years were included in the study.
+
+Experiment
+Assessed for eligibility (n=90)
+Exclusion Criteria met (n=5)
+Denied to participate (n=4)
+Teeth with more than 3 canals (n=6)
+Randomised Primary molars (n=75)
+
+Allocation
+Allocation of teeth with 3 canals to group 1 for instrumentation with XP-Endo Shaper (n=25)
+Allocation of teeth with 3 canals to group 2 for instrumentation with Kedo-S rotary (n=25)
+Allocation of teeth with 3 canals to group 3 for instrumentation with Hand k-files (n=25)
+
+Pulpectomy of primary molars (n=75)
+
+Assessment
+1. Instrumentation time (Stop watch)
+2. Quality of obturation (Radiographically)
+
+Follow up
+Follow up lost (n=0)
+Discontinued the treatment (n=0)
+
+Follow up lost (n=0)
+Discontinued the treatment (n=0)
+
+Follow up lost (n=0)
+Discontinued the treatment (n=0)
+
+Analysis
+Analysed (n=25)
+Analysed (n=25)
+Analysed (n=25)
+
+Figure 2. CONSORT flow chart complied during the different stages of this triple-armed, randomized clinical trial.
+
+The inclusion criteria were patients with necrotic posterior teeth containing at least one necrotic pulp canal, abscess, or sinus tract or radiolucency in the furcation or periapical area and presenting a behavior rating of 4 (+) or 5 (++), according to the modified Frankl scale of behavior assessment proposed by Wright [22]. Only teeth with a minimum of 2/3 root structures remaining (confirmed radiographically) and ample crown structure for rubber dam clamp placement and crown placement were included. After access cavity, teeth with 3 canals were included in the present study for the standardization of instrumentation time, treating the same number of canals for the 3 groups.
+
+The exclusion criteria were patients who failed to provide informed consent, presenting a Frankl scale of behavior assessment of less than 4, with any history of systemic
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+Biology 2021, 10, 42
+5 of 11
+
+illness, nonrestorable teeth, perforated pulpal floor, imprudent mobility, or pathological root resorption, as well as teeth with more than 3 canal orifices.
+Following the abovementioned criteria, a total of 75 patients were recruited for the study, which included the following teeth; #54 (n = 12), #55 (09), #64 (12), #65 (n = 12), #74 (n = 12), #75 (n = 3), #84 (n = 12), and #85 (n = 3). Each set of primary molars was assigned sequential numbers in the order in which they were enrolled and divided into 3 groups of treatment (n = 25 per group) for the root canal instrumentation of primary molar teeth, using adaptive XP-endo Shaper rotary files, Kedo-S pediatric rotary files, and hand K-files, according to computer-generated randomization that was prepared before starting the study. Each group consisted of the same number of each type of maxillary and mandibular first and second primary molars for standardization.
+All root canal treatments were accomplished in a single visit by the same operator. In the present study, the evaluating observer and the analyst were blinded to the treatment protocol for the three groups. However, as the instrumentation files have recognizable characteristics, they were potentially unable to be blinded from the operator who performed the root canal treatment.
+
+2.2. Root Canal Instrumentation
+Pulpectomy was performed on the selected molars in a single visit, after administration of local anesthesia (XICAINE 2% adrenaline I.P. 1:80,000, ICPA Health Products Ltd., Mumbai, India). Following the subjective and objective signs of the local anesthesia, rubber dam (GDC Marketing, Hoshiarpur, Punjab, India) isolation was performed. The decayed substance was excavated, and an access opening was gained employing a #4 round carbide bur (Dentsply Maillefer, Tulsa, OK, USA) at elevated speed. The roof of the pulp chamber was removed using an EndoZ bur (Dentsply Maillefer), and the canal orifices were located using a DG-16 explorer (Hu-Friedy, Chicago, IL, USA). The length of each of the three root canals was determined radiographically by placing the #15 K-file (Dentsply Maillefer) into each canal. The working length (WL) was established as 1 mm short of the apex.
+The type of instrumentation for the particular tooth was chosen based on the randomization protocol. In Group 1, root canal instrumentations were carried out using the adaptive XP-endo Shaper (FKG Dentaire, La Chaux-de-Fonds, Switzerland); for Groups 2 and 3, Kedo-S pediatric rotary files (D1 and E1; Reeganz Dental Care Private Limited, Chennai, India) and a hand K-file (Dentsply Maillefer, Tulsa, OK, USA) up to #30 were used, respectively.
+The mechanized files were operated using the X-smart Plus endo-motor (Dentsply Maillefer). The setting for the XP-endo Shaper was 800 rpm and 1 Ncm torque, and for the Kedo-S files, a setting of 250 rpm and 2.2 Ncm torque was used. Between each file, irrigation was performed using 2.5% sodium hypochlorite (NaOCl; Prime Dental, Mumbai, India), and EDTA gel (RC Help; Prime Dental, Mumbai, India) was used as a lubricant. A final irrigation regime was performed utilizing 2 mL of 17% aqueous EDTA (DentWash; Prime Dental, Mumbai, India) and 4 mL of normal saline for all the groups.
+
+2.2.1. XP-endo Shaper Instrumentation
+The allocated patients underwent root canal instrumentation using 21 mm XP-endo Shaper files. Following access cavity preparation, the canal patency was checked with a #10 K-file, and a glide path until #15 K-file was created if needed. The root canals were flooded with 2 mL of warm 2.5% NaOCl, and the XP-endo Shaper file was first placed passively until it met resistance. The tip was then retracted coronally, the endomotor was activated at a speed of 800 rpm and 1 Ncm torque, and the file was reintroduced. The file was used with light vertical strokes 4–5 times toward the WL. Once the WL was reached, the file was retracted and cleaned, apical patency was verified with the #15 K-file, the canal was irrigated again with 4 mL of warm NaOCl, and the file was used again for additional 15 strokes to the WL deeming completion of instrumentation, followed by irrigating the
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+Biology 2021, 10, 42
+
+6 of 11
+
+canal by 4 mL of warm NaOCl, according to manufacturer’s instruction. The final regime
+of irrigation with 17% EDTA and normal saline was performed, as mentioned earlier.
+
+2.2.2. Kedo-S Instrumentation
+For the patients in this group, root canal instrumentation was carried out utilizing
+Kedo-S E1 files (16 mm), according to the manufacturer’s instructions. A tender in-and-out
+motion was used until the WL was reached. If the file met resistance before reaching the WL,
+it was retracted and cleaned, the canal was irrigated (2 mL of NaOCl), canal patency was
+confirmed (using a #15 K-file), and the file was reintroduced. Once the WL was reached, the
+file was retracted, and the was canal irrigated with 4 mL of NaOCl. The file was introduced
+in a vertical pecking motion until the WL was reached for an additional 5 strokes, deeming
+the completion of instrumentation, as stated by the manufacturer. The canals were irrigated
+again with 4 mL of NaOCl, and the final irrigation regime was performed.
+
+2.2.3. Hand Instrumentation
+The root canal instrumentation for the participants in this group was performed using
+the quarter-turn-and-pull motion. Stainless steel K-files were maneuvered in a sequence of
+#15/0.02, #20/0.02, #25/0.02, and #30/0.02 hand K-files (Mani, Tokyo, Japan). Between
+each file, the canal was irrigated by 2 mL of NaOCl. After the last file, the canal was
+irrigated by an additional 2 mL of NaOCl, and the final irrigation regime was performed.
+
+2.3. Root Canal Obturation
+Post root canal instrumentation and final irrigation, the canals were dried with #30
+paper points, a 0.04 taper for Groups 1 and 2, and a 0.02 taper for Group 3. The root canals
+were then filled with an iodoform-based calcium hydroxide paste (Metapex, META Biomed,
+Colmar, PA, USA), utilizing the pressure syringe with a needle. Furthermore, the hand file
+was used to push the paste to just short of the apex. The coronal surplus of the paste was
+excavated, and the coronal cavity was filled with glass ionomer cement (Vitrebond, 3M
+ESPE, St Paul, MN, USA). Finally, a preformed metallic crown (3M ESPE) was adapted and
+cemented (PCA, SS White, Gloucester, UK) in the same visit.
+
+2.3.1. Instrumentation Time
+The total instrumentation time was measured using a digital stopwatch. The time
+measurement started with the introduction of the first file into the first canal and stopped
+after the final saline irrigation. The corresponding instrumentation time was noted for each
+tooth by the operator.
+
+2.3.2. Quality of Obturation
+A postobturation radiograph was taken for further evaluation and comparison of
+the quality of obturation between the groups. The quality of the root canal obturation
+was recorded, according to O’Riordan and Coll [23] as optimal (1 mm short of the apex),
+underfilled (2 mm short of the apex), or overfilled (beyond the apex) (Figure 3).
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+Biology 2021, 10, 42
+7 of 11
+
+Optimal
+Under-filled
+Over-filled
+
+Figure 3. Representative radiographs for the quality of obturation.
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+2021_10_42
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+```
+
+In []:
+```python
+# check the shape of the data
+print(f"The shape of the data is: {df.shape}")
+
+```
+
+Out []:
+```output
+The shape of the data is: (1000, 14)
+```
+
+In []:
+```python
+# check the data types of the columns
+print(f"The data types of the columns are: \n{df.dtypes}")
+
+```
+
+Out []:
+```output
+The data types of the columns are: 
+gender                          object
+race/ethnicity                  object
+parental level of education     object
+lunch                           object
+test preparation course         object
+math score                       int64
+reading score                    int64
+writing score                    int64
+Total Score                      int64
+Average Score                  float64
+Math_PassStatus                 object
+Reading_PassStatus              object
+Writing_PassStatus              object
+OverAll_PassStatus              object
+dtype: object
+```
+
+In []:
+```python
+# check for missing values
+print(f"The number of missing values in each column is: \n{df.isnull().sum()}")
+
+```
+
+Out []:
+```output
+The number of missing values in each column is: 
+gender                         0
+race/ethnicity                 0
+parental level of education    0
+lunch                          0
+test preparation course        0
+math score                     0
+reading score                  0
+writing score                  0
+Total Score                    0
+Average Score                  0
+
+════════════════════════════════════════════════════════════
+PAGE 10
+════════════════════════════════════════════════════════════
+Biology 2021, 10, 42
+10 of 11
+
+**Author Contributions:** Conceptualization, B.A.P. and A.M.P.; methodology, B.A.P., A.M.P. and A.B.; software, A.M.P.; validation, D.A.W., A.K.R., A.M.L., Z.M. and A.K.; formal analysis, B.A.P. and A.M.P.; investigation, B.A.P.; resources, A.B.; data curation, B.A.P. and A.M.P.; writing—original draft preparation, A.M.P.; writing—review and editing, Z.M. and A.K.; supervision, A.M.P. and A.K.; project administration, B.A.P., A.M.P. and A.B. All authors have read and agreed to the published version of the manuscript.
+
+**Funding:** This research received no external funding.
+
+**Institutional Review Board Statement:** The study was conducted according to the guidelines of the Declaration of Helsinki, and approved by the Institutional Review Board of College of Dental Science and Hospital, Rau, Indore (CDSH/IEC/2018-2019/004 dated 31/12/2019).
+
+**Informed Consent Statement:** Informed consent was obtained from the parents of all subjects involved in the study.
+
+**Data Availability Statement:** The current manuscript has been registered with the Clinical Trial Registry of India (CTRI/2019/12/022370) and no other data sharing is not applicable to this article.
+
+**Conflicts of Interest:** The authors declare no conflict of interest.
+
+**References**
+1. Pinkham, J.R.; Casamassimo, P.S. *Pediatric Dentistry. Infancy through Adolescence*, 4th ed.; WB Saunders Co.: Philadelphia, PA, USA, 2005; p. 390.
+2. George, S.; Anandaraj, S.; Issac, J.S.; John, S.A.; Harris, A. Rotary endodontics in primary teeth—A review. *Saudi Dent. J.* **2016**, *28*, 12–17. [CrossRef]
+3. Kuo, C.; Wang, Y.; Chang, H.; Huang, G.; Lin, C.; Li, U.; Guo, M.K. Application of Ni-Ti rotary files for pulpectomy in primary molars. *J. Dent. Sci.* **2006**, *1*, 10–15.
+4. Barr, E.S.; Kleier, D.J.; Barr, N.V. Use of nickel-titanium rotary files for root canal preparation in primary teeth. *Pediatr. Dent.* **2000**, *22*, 77–78. [PubMed]
+5. Crespo, S.; Cortes, O.; Garcia, C.; Perez, L. Comparison between rotary and manual instrumentation in primary teeth. *J. Clin. Pediatr. Dent.* **2008**, *32*, 295–298. [CrossRef] [PubMed]
+6. Hulsmann, M.; Schade, M.; Schäfers, F. A comparative study of root canal preparation with HERO 642 and Quantec SC rotary Ni-Ti instruments. *Int. Endod. J.* **2001**, *34*, 538–546. [CrossRef] [PubMed]
+7. Silva, L.A.B.; Leonardo, M.R.; Nelson-Filho, P.; Tanomaru, J.M.G. Comparison of rotary and manual instrumentation techniques on cleaning capacity and instrumentation time in deciduous molars. *J. Dent. Child.* **2004**, *71*, 45–47.
+8. Jeevanandan, G. Kedo-S paediatric rotary files for root canal preparation in primary teeth—Case report. *J. Clin. Diagn. Res.* **2017**, *11*, ZR03–ZR05. [CrossRef] [PubMed]
+9. Nagaratna, P.J.; Shashikiran, N.D.; Subbareddy, V.V. In vitro comparison of Ni-Ti rotary instruments and stainless steel hand instruments in root canal preparations of primary and permanent molar. *J. Indian Soc. Pedod. Prev. Dent.* **2006**, *24*, 186–191.
+10. Sleiman, F.; Abou-Jaoude, S.; Berberi, R. The use of the K3 orifice openers in primary teeth preparation. *Oral Health* **2007**, *97*, 17–18.
+11. Azar, M.R.; Nikaein, A.; Safi, L. Comparison of the cleaning capacity of Mtwo and ProTaper rotary systems and manual instruments in primary teeth. *Dent. Res. J.* **2012**, *9*, 146–151. [CrossRef]
+12. Kummer, T.R.; Calvo, M.C.; Cordeiro, M.M.R.; Vieira, R.D.S.; Rocha, M.J.D.C. Ex vivo study of manual and rotary instrumentation techniques in human primary teeth. *Oral Surg. Oral Med. Oral Pathol. Oral Radiol. Endod.* **2008**, *105*, e84–e92. [CrossRef] [PubMed]
+13. Musale, P.K.; Mujawar, S.A.V. Evaluation of the efficacy of rotary vs. hand files in root canal preparation of primary teeth in vitro using CBCT. *Eur. Arch. Paediatr. Dent.* **2014**, *15*, 113–120. [CrossRef] [PubMed]
+14. Metzger, Z. The self-adjusting file (SAF) system: An evidence-based update. *J. Conserv. Dent.* **2014**, *17*, 401–419. [CrossRef] [PubMed]
+15. Drukteinis, S.; Balciuniene, I. A scanning electron microscopic study of debris and smear layer remaining following use of AET instruments and K-flexofiles. *Stomatolgia* **2006**, *8*, 70–75.
+16. Jou, Y.T.; Karabucak, B.; Levin, J.; Liu, D. Endodontic working width: Current concepts and techniques. *Dent. Clin. N. Am.* **2004**, *48*, 323–335. [CrossRef]
+17. Wang, Y.L.; Chang, H.H.; Kuo, C.I.; Chen, S.K.; Guo, M.K.; Huang, G.F.; Lin, C.P. A study on the root canal morphology of primary molars by high-resolution computed tomography. *J. Dent. Sci.* **2013**, *8*, 321–327. [CrossRef]
+18. Carvalho, M.C.; Zuolo, M.L.; Arruda-Vasconcelos, R.; Marinho, A.C.S.; Louzada, L.M.; Francisco, P.A.; Pecorari, V.G.A.; Gomes, B.P.F.A. Effectiveness of XP-Endo Finisher in the reduction of bacterial load in oval-shaped root canals. *Braz. Oral Res.* **2019**, *33*, e021. [CrossRef]
+19. Azim, A.A.; Piasecki, L.; Neto, U.X.D.S.; Cruz, A.T.G.; Azim, K.A. XP Shaper, a novel adaptive core rotary instrument: Micro–computed tomographic analysis of its shaping abilities. *J. Endod.* **2017**, *43*, 1532–1538. [CrossRef]
+
+════════════════════════════════════════════════════════════
+PAGE 11
+════════════════════════════════════════════════════════════
+Biology 2021, 10, 42
+
+11 of 11
+
+20. Velozo, C.; Albuquerque, D.S. Microcomputed tomography studies of the effectiveness of XP-endo shaper in root canal prepara-
+tion: A review of the literature. Sci. World J. 2019, 19, 3570870. [CrossRef]
+21. Priyadarshini, P.; Jeevanandan, G.; Govindaraju, L.; Subramanian, E.M.G. Clinical evaluation of instrumentation time and quality
+of obturation using paediatric hand and rotary file systems with conventional hand K-files for pulpectomy in primary mandibular
+molars: A double-blinded randomized controlled trial. Eur. Arch. Paediatr. Dent. 2020, 17, 1–9. [CrossRef]
+22. Wright, G.Z.; Kupietzky, A. Behavior Management in Dentistry for Children, 2nd ed.; John Wiley & Sons: Ames, IA, USA, 2014.
+23. O’Riordan, M.W.; Coll, J. Pulpectomy procedure for deciduous teeth with severe pulpal necrosis. J. Am. Dent. Assoc. 1979, 99,
+480–482. [CrossRef] [PubMed]
+24. Ochoa-Romero, T.; Mendez-Gonzalez, V.; Flores-Reyes, H.; Pozos-Guillen, A.J. Comparison between rotary and manual techniques
+on duration of instrumentation and obturation times in primary teeth. J. Clin. Pediatr. Dent. 2011, 35, 359–363. [CrossRef]
+[PubMed]
+25. Paqué, F.; Ballmer, M.; Attin, T.; Peters, O.A. Preparation of oval-shaped root canals in mandibular molars using nickel- tita-nium
+rotary instruments: A micro-computed tomography study. J. Endod. 2010, 36, 703–707. [CrossRef] [PubMed]
+26. De-Deus, G.; Barino, B.; Marins, J.; Magalhães, K.; Thuanne, E.; Kfir, A. Self-adjusting file cleaning-shaping-irrigation system
+optimizes the filling of oval-shaped canals with thermoplasticized gutta-percha. J. Endod. 2012, 38, 846–849. [CrossRef]
+27. Shaheen, N.A. The efficacy of different single file systems in cleaning oval shaped root canal. Tanta Dent. J. 2019, 16, 73–79.
+[CrossRef]
+28. Fumes, A.C.; Sousa-Neto, M.D.; Leoni, G.B.; Versiani, M.A.; Da Silva, L.A.B.; Da Silva, R.A.B.; Consolaro, A. Root canal
+morphology of primary molars: A micro-computed tomography study. Eur. Arch. Paediatr. Dent. 2014, 15, 317–326. [CrossRef]
+29. Nurko, C.; Ranly, D.M.; García-Godoy, F.; Lakshmya, K.N. Resorption of a calcium hydroxide/iodoform paste (Vitapex) in root
+canal therapy for primary teeth: A case reort. Pediatr. Dent. 2000, 22, 517–520.
+30. Brar, G.S.; Bajaj, N.; Bhola, M.; Brar, J.K. Clinical evaluation of root resorption and its correlation with obturation quality in
+pulpectomized deciduous teeth with different obturating materials: An in vivo study. Contemp. Clin. Dent. 2019, 10, 243–248.
+31. Bedier, M.M.; Hashem, A.Y.; Hassan, Y.M. Improved dentin disinfection by combining different-geometry rotary nick-el-titanium
+files in preparing root canals. Restor. Dent. Endod. 2018, 43, e46. [CrossRef]
+32. Zhao, Y.; Fan, W.; Xu, T.; Tay, F.R.; Gutmann, J.L.; Fan, B. Evaluation of several instrumentation techniques and irrigation methods
+on the percentage of untouched canal wall and accumulated dentine debris in C-shaped canals. Int. Endod. J. 2019, 52, 1354–1365.
+[CrossRef]
+33. Nair, M.; Jeevanandan, G.; Vignesh, R.; Subramanian, E.M.G. Comparative evaluation of post-operative pain after pulpectomy
+with k-files, kedo-s files and mtwo files in deciduous molars-a randomized clinical trial. Braz. Dent. Sci. 2018, 21, 411–417.
+[CrossRef]
+34. Setty, J.V.; Srinivasan, I. Knowledge and Awareness of Primary Teeth and Their Importance among Parents in Bengaluru City,
+India. Int. J. Clin. Pediatr. Dent. 2016, 9, 56–61. [CrossRef] [PubMed]
