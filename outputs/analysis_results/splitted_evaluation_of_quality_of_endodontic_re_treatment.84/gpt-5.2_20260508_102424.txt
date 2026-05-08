@@ -1,0 +1,234 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_evaluation_of_quality_of_endodontic_re_treatment.84.pdf
+Status : ok
+Time   : 20260508_102424
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design and setting
+- **Design:** Retrospective radiographic record review with **paired before–after** comparison.
+- **Setting:** Department of Endodontics (University of Sharjah, UAE).
+- **Ethics:** Institutional ethical approval obtained.
+
+### Objective
+- To **assess the quality of root canal (RC) filling before and after endodontic re-treatment** and evaluate **changes in periapical status** over follow-up.
+
+### Study material / sample
+- **Sampling unit:** Radiographs of **failed endodontic treatment** cases.
+- **Number of radiographs:** **238** (“238 radiographs of failed endodontic treatment”).
+- **Timepoints:** 
+  - **Baseline** (pre–re-treatment)
+  - **Follow-up at 6 months** (post–re-treatment)
+- **Exclusions:** Radiographs of **poor quality**, **non-diagnostic**, or with **radiographic errors**.
+
+> Ambiguity to resolve in analysis: whether 238 refers to baseline only or complete paired baseline+6-month sets for the same teeth/patients. The methods imply paired comparison (“Baseline and follow-up radiographs at 6 months were compared”), so the analysis should assume **paired data** and report how many had complete follow-up.
+
+### Imaging / data collection
+- **Radiograph type:** Digital intraoral periapical radiographs (**IOPARs**).
+- **Sensor:** Schick sensor.
+- **X-ray unit:** Gnatus intraoral radiographic unit.
+  - 72 kVp, 8 mA, exposure time 0.30–0.50 sec
+- **Positioning:** Rinn XCP paralleling holder.
+
+### Outcomes / variables (as described)
+1. **Periapical status**
+   - Assessed via **Periapical Index (PAI)** scoring system.
+   - Stated as “scoring ranged from 1 to 5,” but also references **0/1** for absence/presence; and uses cutoffs:
+     - **PAI < 3:** absence of periapical lesion
+     - **PAI > 3:** presence of periapical lesion  
+   - Therefore, PAI is intended as an **ordinal** score, plus a derived **binary** outcome (lesion present/absent).
+
+2. **Quality of root canal filling**
+   - Based on:
+     - **Density/voids/homogeneity** (“absence of voids” and “condensation”)
+     - **Filling length**: distance between end of filling and radiographic apex
+   - **Scoring:** **1 to 6** using criteria from Unal et al.
+   - Derived classification:
+     - **Adequate RCT:** acceptable filling length **and** homogeneous filling (binary adequate vs inadequate).
+
+### Other variables not explicitly provided but typically needed (not in text)
+- Tooth type, number of roots/canals, operator level, retreatment technique, patient demographics, clustering by patient (multiple teeth), etc. None are described in the provided methods.
+
+---
+
+## TASK 2 — Statistical analysis plan (tests)
+
+### Data structure and general principles (applies to all categories)
+- **Primary comparisons are paired** (baseline vs 6-month for the same tooth).
+- Use **two-sided tests**, pre-specify **α = 0.05**.
+- Report **effect sizes with 95% CIs** (not only p-values).
+- Handle **missing follow-up** explicitly (flow diagram: baseline eligible → complete pairs analyzed).
+- If multiple teeth per patient exist, observations may be **clustered**; consider methods robust to clustering (recommended below).
+
+---
+
+# CATEGORY A — MANDATORY (core analyses)
+
+## A1) Descriptive statistics (with paired reporting)
+- **Purpose:** Summarize baseline and follow-up distributions of PAI and quality scores; quantify improvement/worsening.
+- **Why appropriate (≥2):**
+  1. Necessary for transparency and clinical interpretation (e.g., % adequate at baseline and 6 months).
+  2. Informs choice of inferential tests (ordinal vs binary; skewness).
+- **Why may not be appropriate (≥1):** If the dataset lacks paired IDs, “paired change” summaries cannot be computed.
+- **When NOT to use:** Never omit descriptive statistics; but do not present means/SD for clearly ordinal scores as the only summary.
+- **Alternative if assumptions violated:** Use medians/IQRs and distribution plots instead of means/SD.
+
+Minimum recommended outputs:
+- PAI (ordinal): median (IQR) at baseline and 6 months; and % above lesion threshold.
+- Adequate RCT (%).
+- Change table: improved/unchanged/worsened.
+
+---
+
+## A2) McNemar test (paired binary outcome)
+- **Test name:** McNemar’s test (exact version if sparse)
+- **Purpose:** Test whether the **proportion** with a condition changes from baseline to 6 months:
+  - e.g., **PAI lesion present vs absent** (based on pre-specified cutoff), and/or **adequate vs inadequate RCT**.
+- **Why appropriate (≥2):**
+  1. Designed for **paired dichotomous** data (same tooth measured twice).
+  2. Tests change using only **discordant pairs**, matching the clinical “conversion” question (e.g., lesion resolved).
+- **Why may not be appropriate (≥1):** If observations are not paired (different teeth at baseline and follow-up) or if clustering by patient is substantial and unaddressed.
+- **When NOT to use:** When outcome has >2 categories (use ordinal methods) or when pairing is absent.
+- **Alternative if assumptions violated:**
+  - If clustering or covariate adjustment is needed: **GEE logistic regression** with time indicator.
+  - If very small discordant counts: **Exact McNemar**.
+
+Report:
+- Discordant pair counts, **paired risk difference** and/or **paired odds ratio** (with CI).
+
+---
+
+## A3) Wilcoxon signed-rank test (paired ordinal score)
+- **Test name:** Wilcoxon signed-rank test
+- **Purpose:** Compare **paired ordinal** scores (baseline vs 6 months), e.g.:
+  - PAI score (ordinal)
+  - Quality score 1–6 (ordinal)
+- **Why appropriate (≥2):**
+  1. Suitable for **paired** measurements without assuming normality.
+  2. Appropriate for **ordinal** scales where equal-interval assumptions are doubtful.
+- **Why may not be appropriate (≥1):** If there are many ties/zero differences (common with ordinal scales), power and interpretation can be limited.
+- **When NOT to use:** When data are unpaired; or when you need to model covariates, clustering, or non-monotone change patterns.
+- **Alternative if assumptions violated:**
+  - For many ties: **sign test** (less power but fewer assumptions).
+  - For covariate adjustment/clustering: **ordinal mixed model** or **GEE ordinal model**.
+
+Report:
+- Median paired change and Hodges–Lehmann estimate (if computed) with CI.
+
+---
+
+# CATEGORY B — RECOMMENDED (improves rigor/interpretability)
+
+## B1) Inter-/intra-examiner reliability for scoring (kappa / weighted kappa / ICC)
+- **Test name:** Cohen’s kappa (binary), **weighted kappa** (ordinal), or ICC (if treated quasi-continuous)
+- **Purpose:** Quantify reliability of PAI and quality scoring from radiographs.
+- **Why appropriate (≥2):**
+  1. Outcomes are **rater-dependent**; reliability affects validity.
+  2. Strengthens credibility of retrospective radiographic assessments.
+- **Why may not be appropriate (≥1):** If only one scorer and no re-reading subset exists; then reliability cannot be estimated.
+- **When NOT to use:** Do not report kappa if categories are extremely imbalanced without also reporting prevalence-adjusted interpretation (kappa paradox).
+- **Alternative if assumptions violated:** Use **Gwet’s AC1/AC2** when kappa is unstable under imbalance.
+
+---
+
+## B2) Paired effect sizes with confidence intervals
+- **Test name:** Estimation-focused analysis (e.g., paired risk difference/ratio; Hodges–Lehmann median difference)
+- **Purpose:** Provide magnitude of improvement, not only significance.
+- **Why appropriate (≥2):**
+  1. Clinically meaningful interpretation (e.g., % lesions resolved).
+  2. CI conveys precision and is robust to sample size issues.
+- **Why may not be appropriate (≥1):** If the sample is not truly paired or follow-up is incomplete and biased.
+- **When NOT to use:** Avoid naive CI calculations that ignore pairing.
+- **Alternative if assumptions violated:** **Bootstrap CIs** (cluster bootstrap if multiple teeth per patient).
+
+---
+
+## B3) Regression modeling to adjust for confounding and clustering (GEE or mixed effects)
+- **Test name:**  
+  - **GEE logistic regression** for binary outcomes (lesion present, adequate RCT)  
+  - **Ordinal mixed-effects model** (cumulative logit) for PAI/quality scores  
+- **Purpose:** Estimate the association of **time (baseline vs 6 months)** with outcomes while accounting for:
+  - repeated measures (time)
+  - possible **multiple teeth per patient** (clustering)
+  - additional covariates (if available)
+- **Why appropriate (≥2):**
+  1. Handles **correlated observations** (within tooth over time; within patient if multiple teeth).
+  2. Allows **adjustment** and yields interpretable parameters (ORs) with CIs.
+- **Why may not be appropriate (≥1):** If covariates and patient/tooth identifiers are unavailable; model may be over-parameterized given available information.
+- **When NOT to use:** If sample size is too small for model complexity or if the proportional odds assumption is badly violated (for ordinal models).
+- **Alternative if assumptions violated:**
+  - For proportional odds violation: **partial proportional odds model** or treat as binary (pre-specified clinically meaningful cut).
+  - For small samples/separation: **Firth penalized logistic regression**.
+
+---
+
+## B4) Sensitivity analysis for the PAI cutoff definition
+- **Test name:** Sensitivity analysis using alternative dichotomizations (e.g., PAI ≥3 vs <3; PAI ≥4 vs ≤3), plus ordinal analysis
+- **Purpose:** Address ambiguity/inconsistency in the text regarding PAI scale and threshold.
+- **Why appropriate (≥2):**
+  1. Cutoff choice can materially change “lesion present” prevalence and McNemar results.
+  2. Improves robustness and transparency.
+- **Why may not be appropriate (≥1):** If the original dataset coding cannot support reclassification (e.g., only stored as binary).
+- **When NOT to use:** If it becomes data-driven fishing; must be pre-specified as sensitivity, not primary.
+- **Alternative if assumptions violated:** Use **ordinal-only** approach (Wilcoxon/ordinal model) as primary.
+
+---
+
+# CATEGORY C — OPTIONAL (supplementary insights)
+
+## C1) Transition matrices and Bowker’s test of symmetry (multi-category paired)
+- **Test name:** Bowker’s test of symmetry (generalized McNemar)
+- **Purpose:** Evaluate whether changes across **multiple ordinal categories** are symmetric (e.g., 1–5 PAI transitions).
+- **Why appropriate (≥2):**
+  1. Uses the full categorical scale rather than dichotomizing.
+  2. Highlights where changes occur (e.g., mostly from 4→2).
+- **Why may not be appropriate (≥1):** Requires adequate counts in off-diagonal cells; sparse tables reduce validity.
+- **When NOT to use:** When categories are sparse or heavily tied.
+- **Alternative if assumptions violated:** Collapse categories or use **ordinal mixed models**.
+
+---
+
+## C2) Time-to-event analysis (only if additional follow-ups exist)
+- **Test name:** Kaplan–Meier / Cox model
+- **Purpose:** Evaluate time to healing/failure if multiple follow-up times are present.
+- **Why appropriate (≥2):**
+  1. Accounts for variable follow-up duration and censoring.
+  2. Clinically relevant for healing trajectory.
+- **Why may not be appropriate (≥1):** Provided text includes only **one** follow-up at 6 months, so time-to-event is not supported.
+- **When NOT to use:** When there are only two timepoints and no event times.
+- **Alternative if assumptions violated:** Use paired binary/ordinal analyses at 6 months.
+
+---
+
+## C3) Agreement between “adequate RCT” and periapical healing at 6 months
+- **Test name:** Chi-square/Fisher (cross-sectional) or logistic regression at follow-up
+- **Purpose:** Explore whether adequate filling quality is associated with lesion absence at 6 months.
+- **Why appropriate (≥2):**
+  1. Addresses clinically meaningful linkage between technical quality and outcome.
+  2. Can guide hypotheses for future prospective work.
+- **Why may not be appropriate (≥1):** Retrospective design and confounding; causality cannot be inferred.
+- **When NOT to use:** If both are derived from the same scoring process with shared rater bias, interpret cautiously.
+- **Alternative if assumptions violated:** Fisher’s exact test or penalized logistic regression.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Independent-samples t-test / one-way ANOVA** (baseline vs follow-up)
+   - **Why inappropriate:** Measurements are **paired** on the same tooth; violates independence. Also outcomes are ordinal.
+2. **Paired t-test** on PAI or 1–6 quality score (as primary)
+   - **Why inappropriate:** Treats ordinal scores as continuous with equal intervals and normal differences; often unjustified.
+3. **Pearson correlation** between baseline and follow-up as evidence of “improvement”
+   - **Why inappropriate:** Correlation measures association, not change; high correlation can occur despite no improvement.
+4. **Simple chi-square test of proportions** ignoring pairing (baseline vs follow-up lesion prevalence)
+   - **Why inappropriate:** Ignores within-tooth pairing; p-values and CIs will be wrong.
+5. **Linear regression** on ordinal outcomes without justification
+   - **Why inappropriate:** Assumes interval scale and normal residuals; may produce misleading estimates.
+
+---
+
+## TASK 4 — Summary justification of the analytical approach
+
+The study compares **radiographic outcomes before and after re-treatment** at a **6-month paired follow-up**. Therefore, the core analysis should use **paired methods**: (i) **McNemar** for dichotomized clinical endpoints (lesion present/absent; adequate/inadequate), and (ii) **Wilcoxon signed-rank** (or ordinal models) for the original **ordinal scores** (PAI; 1–6 quality). Rigor is improved by reporting **effect sizes with CIs**, evaluating **scoring reliability**, and—if multiple teeth per patient are included—using **GEE/mixed models** to account for **clustering** and allow adjustment.

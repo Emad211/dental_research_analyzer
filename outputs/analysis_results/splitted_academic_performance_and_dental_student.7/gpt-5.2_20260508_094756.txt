@@ -1,0 +1,254 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_academic_performance_and_dental_student.7.pdf
+Status : ok
+Time   : 20260508_094756
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study design, setting, ethics
+- **Design:** Retrospective cohort study (two consecutive academic-year cohorts compared).
+- **Setting:** Princess Nourah Bint Abdulrahman University, College of Dentistry (PNU-CD), Riyadh, Saudi Arabia.
+- **Ethics:** PNU IRB approval **#20-0293**.
+
+### Objectives (as stated)
+1. **Evaluate** consequences of online modalities used in **emergency remote teaching (ERT)** on **students’ learning satisfaction**.
+2. **Compare academic performance** (summative exam scores) of ERT cohort vs **prepandemic face-to-face cohort**.
+
+### Study populations / groups
+- **Cohort 1 (ERT, pandemic year 2019–2020):**  
+  - **N = 39** undergraduate **3rd-year dental students** enrolled in the preclinical endodontic course.
+  - Didactic lectures delivered in three formats:
+    - **Face-to-face:** 4 lectures
+    - **Online-synchronized (live virtual):** 11 lectures (Microsoft Teams)
+    - **Online-asynchronized (recorded):** 4 lectures (Blackboard LMS)
+- **Cohort 2 (prepandemic face-to-face, previous academic year):**
+  - **N = 37** students enrolled in the same course the prior year.
+  - “Lectures and lecturers … identical”; all students “successfully passed.”
+
+### Outcomes / variables and measurements
+
+#### A) Student satisfaction (ERT cohort only)
+- **Instrument:** Online questionnaire emailed to students **after lecture delivery and before summative assessments**.
+- **Response scale:** **3-level ordinal**: *satisfied / neutral / unsatisfied*.
+- **Items:**
+  - Q1: overall satisfaction with online teaching during the course.
+  - Q2: preferred/best method of lecture delivery.
+  - Additional **18 items** rating satisfaction with each modality (face-to-face, synchronized online, asynchronized online) regarding:
+    - comprehension & retention
+    - communication with lecturer
+    - stress-free learning
+    - time convenience
+    - internet/technical support (online)
+    - transportation (face-to-face)
+- **Data type:** mostly **ordinal categorical** per item; “preference” is **nominal categorical**.
+
+#### B) Academic performance (both cohorts)
+- **Assessments:** two **summative examinations** consisting of **MCQs**, blueprint-fixed questions per lecture; monitored by Assessment Unit.
+- **Platform:** ExamSoft; allows **item analysis**.
+- **Primary performance variable:** **overall exam score(s)** (unclear if per exam or combined course score; text implies “overall scores” after completion of the exams).
+- **Comparison:** ERT cohort scores vs prepandemic cohort scores.
+
+### Timing and data collection modes
+- Satisfaction survey: **prospective within the ERT cohort** (though study overall retrospective cohort); administered **online via email link** before exams.
+- Performance: extracted from ExamSoft records for both cohorts; item analysis possible.
+
+### Key design features/limitations implied
+- **Non-randomized** comparison between academic-year cohorts (potential confounding by cohort differences).
+- Satisfaction comparisons across lecture modalities are **within-student repeated measures** (each student experienced all three modalities across the course).
+- No mention of covariates (e.g., GPA), missing data handling, or questionnaire validation/reliability.
+
+---
+
+## TASK 2: Statistical analysis plan (SAP)
+
+### 1) General principles (applies to all analyses)
+- **Analysis set:**
+  - Performance: all enrolled students with available exam score(s) in each cohort.
+  - Satisfaction: all ERT students who responded to the survey; report response rate.
+- **Descriptives:**
+  - Continuous (scores): mean±SD and median (IQR); min–max.
+  - Categorical/ordinal (survey): counts and percentages per response category.
+- **Assumption checks:**
+  - Normality of scores: histogram/Q–Q plot + Shapiro–Wilk (not as a sole decision rule).
+  - Variance homogeneity (two-sample comparisons): Levene or Brown–Forsythe.
+- **Effect sizes + uncertainty:**
+  - For mean differences: mean difference with **95% CI** (and Cohen’s d/Hedges g).
+  - For ordinal outcomes: odds ratios (ordinal models) or paired effect sizes (e.g., matched OR) with 95% CI.
+- **Multiplicity control:**
+  - For the 18 survey items (and multiple modality comparisons), control familywise error (Holm) or false discovery rate (Benjamini–Hochberg), pre-specified.
+- **Missing data:**
+  - Describe patterns; for survey items consider complete-case per item; for modeling consider multiple imputation only if missingness is meaningful and plausibly MAR.
+
+---
+
+## CATEGORY A – MANDATORY tests
+
+### A1) Independent-samples t-test (or Welch t-test) for cohort performance
+- **Purpose:** Compare mean exam score (or combined score) between **ERT (N=39)** and **prepandemic (N=37)** cohorts.
+- **Why appropriate (≥2):**
+  1. Primary research question is a **between-cohort difference** in a (typically) **continuous** outcome (score).
+  2. With moderate sample sizes, t-based inference is robust, especially with Welch for unequal variances.
+- **Why may not be appropriate (≥1):**
+  - If score distribution is strongly non-normal with outliers/ceiling effects, mean comparison may be misleading.
+- **When NOT to use:**
+  - When outcome is not continuous/approximately interval (e.g., pass/fail only) or distributions are extremely skewed with heavy ties.
+- **Alternative if assumptions violated:**
+  - **Welch t-test** (if unequal variances); **Mann–Whitney U** (if severe non-normality/outliers); or **robust Yuen trimmed-mean test**.
+
+### A2) Paired comparison across lecture modalities for satisfaction (within ERT cohort): Friedman test
+- **Purpose:** Test whether satisfaction ratings differ across **three modalities** (face-to-face vs synchronized vs asynchronized) for each item (and/or composite, if created).
+- **Why appropriate (≥2):**
+  1. Satisfaction responses are **ordinal** (3 levels).
+  2. Same students rate multiple modalities → **paired/repeated-measures** with 3 conditions.
+- **Why may not be appropriate (≥1):**
+  - If a given item is not truly measured for all modalities (e.g., “transportation” may apply only to face-to-face), the repeated-measures structure may be invalid.
+- **When NOT to use:**
+  - When the three modality ratings are not available per subject (non-comparable items) or data are not paired.
+- **Alternative if assumptions violated / not applicable:**
+  - **Cochran’s Q** (if dichotomized satisfied vs not), or **ordinal mixed-effects model / GEE** (preferred when adding covariates and handling missingness).
+
+### A3) Post-hoc paired comparisons after Friedman: Wilcoxon signed-rank with multiplicity adjustment
+- **Purpose:** Identify which modality pairs differ (sync vs async, sync vs F2F, async vs F2F).
+- **Why appropriate (≥2):**
+  1. Ordinal paired data with potential non-normality.
+  2. Complements Friedman to provide actionable modality differences.
+- **Why may not be appropriate (≥1):**
+  - Many ties with 3-level scale can reduce power and make rank-based tests less informative.
+- **When NOT to use:**
+  - If the analysis plan uses an ordinal mixed model as the primary approach (then contrasts from the model are preferable).
+- **Alternative if assumptions violated:**
+  - **Sign test** (very tied data), or **ordinal mixed model contrasts** with robust SEs.
+
+### A4) Chi-square goodness-of-fit (or exact multinomial) for “best method preference”
+- **Purpose:** Describe and test whether one lecture method is preferred more than others in the ERT cohort.
+- **Why appropriate (≥2):**
+  1. Preference is **nominal categorical** (3 options).
+  2. Simple one-sample distribution question (are preferences equally distributed?).
+- **Why may not be appropriate (≥1):**
+  - If expected counts are small in any category, chi-square approximation may be poor.
+- **When NOT to use:**
+  - If preference allows multiple selections (not stated) or if sample is too small for chi-square assumptions.
+- **Alternative if assumptions violated:**
+  - **Exact multinomial test** or **Fisher–Freeman–Halton** approach (for small counts).
+
+---
+
+## CATEGORY B – RECOMMENDED tests (enhance rigor)
+
+### B1) Linear regression (or ANCOVA) for cohort performance with adjustment (if covariates available)
+- **Purpose:** Estimate cohort difference in exam score adjusted for potential confounders (e.g., prior GPA, age, baseline academic indicators—*not provided but recommended if obtainable*).
+- **Why appropriate (≥2):**
+  1. Cohort comparison is **non-randomized**; adjustment improves internal validity.
+  2. Produces interpretable adjusted mean difference and CI; allows checking interactions (e.g., exam 1 vs exam 2).
+- **Why may not be appropriate (≥1):**
+  - No covariates measured; then regression provides no advantage over t-test and may overfit.
+- **When NOT to use:**
+  - When key confounders are unavailable and model becomes misleadingly “adjusted.”
+- **Alternative if assumptions violated:**
+  - **Robust regression** (Huber/biweight) or **quantile regression** (median difference).
+
+### B2) Mixed-effects model for performance if two exam scores per student are analyzed
+- **Purpose:** Model repeated performance (Exam 1 and Exam 2) within students and compare cohorts while accounting for within-student correlation.
+- **Why appropriate (≥2):**
+  1. Exams are **repeated measures**; mixed models properly handle correlation.
+  2. Can test **cohort × exam** interaction (did ERT affect one exam more than the other?).
+- **Why may not be appropriate (≥1):**
+  - If only a single combined score is available, repeated-measures modeling is unnecessary.
+- **When NOT to use:**
+  - When exam structure differs across cohorts (not indicated; blueprint suggests similarity).
+- **Alternative if assumptions violated:**
+  - **GEE** with robust SEs; or analyze each exam separately with multiplicity control.
+
+### B3) Ordinal logistic regression (cumulative logit) or ordinal mixed model for satisfaction
+- **Purpose:** Model satisfaction (3-level ordinal) as outcome with **modality** as predictor; optionally include item domain and student-level random effects.
+- **Why appropriate (≥2):**
+  1. Uses the **ordinal nature** of satisfaction without collapsing categories.
+  2. Handles **repeated measures** (multiple modalities per student; multiple items) via random effects/GEE and yields interpretable odds ratios.
+- **Why may not be appropriate (≥1):**
+  - Proportional odds assumption may be violated; with only 3 categories, diagnostics can be limited.
+- **When NOT to use:**
+  - If sample size is too small for the complexity (e.g., sparse cells across modality×category).
+- **Alternative if assumptions violated:**
+  - **Partial proportional odds model**, **multinomial logistic regression**, or **GEE with multinomial link**.
+
+### B4) Reliability/internal consistency of the satisfaction questionnaire (if items intended as a scale)
+- **Test/metric:** **Cronbach’s alpha** (and preferably **McDonald’s omega**) per domain or overall, if a composite score is created.
+- **Purpose:** Assess whether combining items into a total/domain satisfaction score is psychometrically defensible.
+- **Why appropriate (≥2):**
+  1. There are **18 items** likely measuring overlapping constructs.
+  2. Supports validity of any composite used for inferential testing.
+- **Why may not be appropriate (≥1):**
+  - If items measure distinct constructs (comprehension, stress, technical support), a single alpha may be inappropriate.
+- **When NOT to use:**
+  - When items are not intended to form a unidimensional scale.
+- **Alternative if assumptions violated:**
+  - **Factor analysis** (EFA/CFA) to identify domains; compute subscale reliabilities.
+
+---
+
+## CATEGORY C – OPTIONAL tests (supplementary insights)
+
+### C1) Equivalence or non-inferiority testing for performance (ERT vs prepandemic)
+- **Test:** **TOST equivalence test** (requires pre-specified equivalence margin).
+- **Purpose:** Support the claim “did not affect” performance by testing whether differences are within a practically negligible margin.
+- **Why appropriate (≥2):**
+  1. A non-significant difference is not evidence of no effect; equivalence directly addresses “no meaningful difference.”
+  2. Provides decision-making aligned with educational relevance.
+- **Why may not be appropriate (≥1):**
+  - No agreed-upon educational equivalence margin; margin choice can be subjective post hoc.
+- **When NOT to use:**
+  - If equivalence margin cannot be justified a priori.
+- **Alternative if assumptions violated:**
+  - **TOST on robust/bootstrapped CI** or equivalence on standardized effect (d) with CI.
+
+### C2) Item analysis comparisons between cohorts (ExamSoft outputs)
+- **Tests/metrics:** item difficulty (p-value), discrimination (point-biserial), reliability (KR-20), differential item functioning (DIF) screening.
+- **Purpose:** Determine whether exam items functioned similarly across cohorts (supporting fairness/comparability).
+- **Why appropriate (≥2):**
+  1. Exams administered via ExamSoft with item analysis capability.
+  2. Cohort comparisons can be confounded if items behaved differently under remote conditions.
+- **Why may not be appropriate (≥1):**
+  - Requires item-level data and consistent items across years.
+- **When NOT to use:**
+  - If exams differed materially or item mapping is unavailable.
+- **Alternative if assumptions violated:**
+  - Focus on test-level metrics (KR-20, score distributions) and blueprint comparability narrative.
+
+### C3) Sensitivity analysis using nonparametric/robust methods for score comparison
+- **Purpose:** Confirm findings are not driven by outliers or distributional assumptions.
+- **Why appropriate (≥2):**
+  1. Educational scores may show ceiling effects.
+  2. Adds robustness to primary inference.
+- **Why may not be appropriate (≥1):**
+  - Can complicate interpretation if results diverge without clear reason.
+- **When NOT to use:**
+  - If sample is extremely small and nonparametrics become too underpowered.
+- **Alternative:**
+  - Bootstrap CI for mean/median difference.
+
+---
+
+## TASK 3: Inappropriate tests (should NOT be used)
+
+1. **Paired t-test** for comparing cohorts’ exam scores  
+   - **Why wrong:** cohorts are independent groups (different students/years), not paired observations.
+
+2. **One-way ANOVA treating the three satisfaction modalities as independent groups**  
+   - **Why wrong:** same students rate multiple modalities → violates independence; would underestimate SEs and inflate Type I error.
+
+3. **Multiple separate chi-square tests on satisfaction items ignoring ordinality and pairing**  
+   - **Why wrong:** satisfaction is ordinal and paired across modalities; chi-square also ignores within-subject correlation and creates major multiplicity problems.
+
+4. **Simple correlation (Pearson/Spearman) between “lecture modality” and satisfaction**  
+   - **Why wrong:** modality is categorical (3-level) and repeated within subject; correlation is not the right framework.
+
+5. **“No effect because P>0.05” conclusion without effect size/CI (and ideally equivalence framework)**  
+   - **Why wrong:** absence of evidence is not evidence of absence; must report estimated differences with uncertainty.
+
+---
+
+## TASK 4: Summary justification of analytical approach
+
+The analysis should (1) compare **academic performance** between two **independent year-cohorts** using mean-difference inference with appropriate robustness/adjustment, and (2) analyze **student satisfaction** as **within-student ordinal repeated measures** across three lecture modalities, using paired nonparametric tests or (preferably, if feasible) ordinal mixed/GEEs. This aligns the statistical methods with the measurement scales (continuous scores; ordinal satisfaction), the dependence structure (paired modality ratings), and the non-randomized cohort design (need for effect sizes, CIs, and—when possible—confounder adjustment and equivalence-style interpretation).

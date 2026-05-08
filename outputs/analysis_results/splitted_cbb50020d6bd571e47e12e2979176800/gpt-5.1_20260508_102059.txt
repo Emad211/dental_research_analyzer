@@ -1,0 +1,595 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_cbb50020d6bd571e47e12e2979176800.pdf
+Status : ok
+Time   : 20260508_102059
+══════════════════════════════════════════════════════════════════════
+
+Below is organized by task.
+
+---
+
+## TASK 1 – INFORMATION EXTRACTION
+
+### 1. Study design and setting
+- **Design:** Prospective observational cohort study.
+- **Guideline used for reporting:** STROBE.
+- **Setting:** Department of Endodontics, Stomatology Hospital, School of Stomatology, Zhejiang University School of Medicine, China.
+- **Ethics/registration:** Approved by local Ethics Committee; Chinese Trials Registry No. ChiCTR2100044580.
+- **Time frame:** Not explicitly stated, but follow-up 6–36 months.
+
+### 2. Population, eligibility, and sampling
+
+**Target population**
+- Patients aged **6–20 years** with posterior permanent teeth diagnosed clinically as irreversible pulpitis caused by caries.
+
+**Inclusion criteria (tooth level; one tooth per patient)**
+1. Posterior teeth with **deep caries exposing the pulp**.
+2. Preoperative symptoms such as **referred pain, spontaneous pain, or pain induced by thermal/cold tests** lasting from seconds to hours compared to control teeth (criteria consistent with irreversible pulpitis per AAE).
+3. No **prominent radiolucency** at periapical or furcation regions.
+4. **One tooth per participant** to ensure independence; priority for selection among multiple teeth: first premolar > second premolar > second molar > first molar.
+
+**Exclusion criteria**
+1. General contraindications to dental treatment.
+2. Teeth with completed **RCT** or previous **VPT**.
+3. Teeth with **external/internal resorption**, or **prominent periapical/furcation radiolucency**.
+4. Pulpitis caused by **wedge-shaped defects, cracking, periodontitis, or tooth fracture** (i.e., non-carious causes).
+5. Teeth **non-responsive** to vitality tests.
+
+**Flow of participants**
+- Assessed for eligibility: n = 382.
+  - Excluded: n = 310 (not meeting inclusion criteria n = 305; refused n = 5).
+- Included for treatment: n = 72.
+  - Excluded after intraoperative pulpal assessment: n = 13  
+    - After removal of all crown pulp, hemostasis >5 min: n = 10  
+    - Pulp color indicating necrosis: n = 3  
+    → Treated instead with RCT or revascularization.
+- Teeth treated with VPT using iRoot BP Plus: 59.
+- Lost to follow-up: n = 2 (1 FP, 1 PP).
+- **Analyzed:** 57 teeth in 57 patients (27 males, 30 females).
+- Follow-up periods available:
+  - ≥6 months: n = 57
+  - ≥12 months: n = 42
+  - ≥24 months: n = 11
+  - ≥36 months: n = 1
+- **Follow-up rate:** 96.6%.
+- **Mean age:** 11.75 ± 3.81 years.
+- **Mean follow-up time:** 16.0 ± 6.58 months.
+
+### 3. Interventions / Groups
+
+All included teeth received vital pulp therapy (VPT) with **iRoot BP Plus** as the pulp-capping material. The type of VPT was determined **intraoperatively** based on hemostasis time after caries removal and staged pulp removal:
+
+**Decision algorithm (group definition):**
+- After caries excavation and pulp exposure, bleeding was assessed under magnification:
+  - If **hemostasis within 5 min** using cotton pellet moistened with 1% NaOCl directly on exposed pulp → **Direct Pulp Capping (DPC)**.
+  - If **hemostasis >5 min**, remove 2–3 mm (or more) of affected coronal pulp:
+    - If then **hemostasis within 5 min** → **Partial Pulpotomy (PP)**.
+    - If still **>5 min**, remove all coronal pulp to canal orifices:
+      - If then **hemostasis within 5 min** → **Full Pulpotomy (FP)**.
+      - If still **>5 min** → tooth excluded and treated with RCT or revascularization.
+
+**Groups and realized sample sizes (among analyzed 57):**
+- DPC: n = 22 (success 21/22).
+- PP: n = 22 (success 20/22; note text summary says 23 initially; final analyzed 22).
+- FP: n = 13 (success 11/13).
+
+Each tooth:
+- Anesthetized (4% articaine with 1:100,000 epinephrine).
+- Isolated with dental dam.
+- Caries removed with sterile high-speed diamond under water cooling.
+- Surface disinfected with 5% NaOCl; cavity rinsed with 2.5% NaOCl.
+- Pulp exposed; bleeding evaluated.
+- Pulp-capping:
+  - **iRoot BP Plus** placed as ~3 mm layer on remaining pulp.
+  - Covered with cotton pellet, then resin-modified glass ionomer (Vitrebond) as base.
+  - Final restoration: resin composite or stainless-steel crown depending on remaining tooth structure.
+
+### 4. Outcomes and follow-up
+
+**Primary outcome:**  
+Binary treatment outcome of VPT (per tooth): **success vs failure** at follow-up.
+
+**Definition of “success” (all must be present):**
+1. No history of **spontaneous discomfort or pain**.
+2. No tenderness to **percussion, palpation, cold/heat stimuli**.
+3. **Mobility ≤ grade I**.
+4. Normal surrounding soft tissues: **no swelling or sinus tract**.
+5. Restorations intact, normal function.
+6. Radiographically:
+   - No **periradicular tissue pathosis**.
+   - No **external resorption**.
+7. No **intraradicular pathosis**; no **internal resorption**.
+8. For immature roots: evidence of **continued root development** radiographically.
+
+**Failure** = not fulfilling one or more of the above criteria (exact operationalization not described but implied).
+
+**Pain outcomes:**
+- Verbal Numerical Rating Scale (vNRS) used to record postoperative pain intensity, validated in children ≥6 years; details of timing and analysis not provided in Methods but could be available in full article.
+
+**Radiographic assessment:**
+- Periapical radiographs taken preoperatively, postoperatively, and at 3, 6, 12 months, then yearly.
+- Root development in immature teeth evaluated qualitatively (non-standardized films).
+
+**Observer reliability:**
+- Intra- and inter-observer agreement for radiographic/clinical outcome scoring assessed with **Cohen’s kappa**; k = 0.75–0.85 (good agreement).
+
+### 5. Candidate prognostic variables (for logistic regression)
+
+From Table 1 (all treated as categorical, recoded as numeric):
+
+1. **Sex:** Male = 1; Female = 2.
+2. **Age group:** 5–10 = 1; 10–15 = 2; 15–16 = 3 (note actual age range 6–20; table suggests slightly different inclusion; may be a typo).
+3. **Root maturation:** Open apex = 0; Closed apex = 1.
+4. **Cavity shape (cave shape):** Occlusal surface only = 1; Proximal surface involved = 2.
+5. **Spontaneous pain:** No = 0; Yes = 1.
+6. **Nocturnal pain:** No = 0; Yes = 1.
+7. **Referred pain:** No = 0; Yes = 1.
+8. **Cold test:**  
+   - Tenderness without delayed pain = 0  
+   - Tenderness with delayed pain <30 s = 1  
+   - Tenderness with delayed pain ≥30 s = 2
+9. **Pain level in cold test (vNRS):** <5 = 0; ≥5 = 1.
+10. **Heat test:**  
+    - Tenderness without delayed pain = 0  
+    - Tenderness with delayed pain <30 s = 1  
+    - Tenderness with delayed pain ≥30 s = 2  
+    - Normal = 3
+11. **Pain level in heat test (vNRS):** <5 = 0; ≥5 = 1.
+12. **Electrical vitality test difference** (affected vs control tooth): <10 = 0; ≥10 = 1.
+13. **Percussion sensitivity:** negative = 0; positive = 1.
+14. **VPT type:** PP = 1; FP = 2; DPC = 3.
+
+**Dependent variable:**
+- Prognosis (success vs failure) – binary.
+
+### 6. Statistical methods reported
+
+- Software: **SPSS 25.0**.
+- Main inferential analysis: **Binary logistic regression** with prognosis (success/failure) as dependent variable and the 14 variables above as independent variables.
+- Multicollinearity check: Regression coefficient variance decomposition (RVCD); variance inflation factors (VIF) <5, one condition index >15 but variance proportion <0.9 for all variables in that dimension; concluded no problematic collinearity.
+- Model fit: Hosmer–Lemeshow test p > 0.05 (considered good fit).
+- Significance level: α = 0.05.
+- All predictors had p > 0.05 (no significant association with prognosis).
+
+---
+
+## TASK 2 – STATISTICAL ANALYSIS PLAN
+
+Below: a comprehensive plan if we were to re-analyze or plan a similar prospective cohort study. I will distinguish between:
+
+- **Unit of analysis:** Tooth/patient (one tooth per patient).
+- **Primary comparison:** Prognosis across VPT types and prognostic factors.
+- **Scope:** Cross-sectional analysis at latest follow-up; plus options to exploit time-to-event and repeated-measures structure.
+
+### A. MANDATORY ANALYSES
+
+These are essential to answer the stated aims:
+1. “Evaluate the clinical and radiographic outcomes of VPT using iRoot BP Plus.”
+2. “Analyze the preoperative factors affecting VPT prognosis.”
+
+---
+
+#### 1. Descriptive statistics (overall and by VPT type)
+
+**Purpose:**  
+Summarize sample characteristics and outcomes; establish baseline comparability of groups (DPC, PP, FP).
+
+**Tests/Methods:**
+- Continuous variables (e.g., age, follow-up time):
+  - Mean ± SD; median (IQR); minimum–maximum.
+- Categorical variables:
+  - Frequencies and percentages.
+
+**Why appropriate (at least 2 reasons):**
+1. Required for understanding the cohort and potential selection biases.
+2. Essential to interpret any logistic regression or group comparisons (e.g., distribution of open vs closed apices across VPT types).
+
+**Why may not be appropriate:**
+- Not a “test”; descriptive only; but incomplete if used without inferential comparisons.
+
+**When NOT to use:**
+- NA for descriptive summaries.
+
+**Alternatives if assumptions violated:**
+- For skewed continuous variables, emphasize medians and IQR; consider transformation or nonparametric tests in subsequent analyses.
+
+---
+
+#### 2. Group comparisons of baseline characteristics (DPC vs PP vs FP)
+
+**Primary tests:**
+- **Chi-square test** (or Fisher’s exact) for categorical variables.
+- **ANOVA** or **Kruskal–Wallis** for continuous variables.
+
+**Purpose:**  
+Assess whether preoperative characteristics differ systematically by VPT type (since allocation is based on hemostasis time and clinical judgement, we expect differences).
+
+**Why appropriate:**
+1. Helps reveal confounding across treatment types when evaluating prognosis.
+2. Justifies or informs multivariable modeling strategy (e.g., need to adjust for variables imbalanced between groups).
+
+**Why may not be appropriate:**
+- Small cell counts (e.g., FP n=13) may violate chi-square assumptions.
+
+**When NOT to use:**
+- Chi-square: if any expected cell count <5; then use **Fisher’s exact**.
+- ANOVA: when sample sizes per group are very small and normality clearly violated.
+
+**Alternatives if assumptions are violated:**
+- Use **Fisher’s exact test** for categorical comparisons.
+- Use **Kruskal–Wallis** for non-normal continuous variables or small sample sizes.
+
+---
+
+#### 3. Estimation of success rates and confidence intervals
+
+**Test/method:**
+- **Exact binomial 95% CIs** for success proportions overall and within each VPT type.
+
+**Purpose:**
+- Quantify precision of success estimates: overall and DPC/PP/FP-specific.
+
+**Why appropriate:**
+1. Proportions with CIs are the fundamental outcome measure in this cohort.
+2. Exact binomial is well-suited to relatively small n (e.g., FP n=13).
+
+**Why may not be appropriate:**
+- None; but wide CIs will occur with very small n.
+
+**When NOT to use:**
+- For extremely large samples one might use normal-approximation; here exact methods are preferable.
+
+**Alternatives if assumptions violated:**
+- Wilson score intervals; Clopper–Pearson exact; both robust for small n.
+
+---
+
+#### 4. Comparison of success rates between VPT types
+
+**Primary tests:**
+- **Chi-square test** or **Fisher’s exact test** (2-sided).
+- Optionally, **Cochran–Mantel–Haenszel test** if stratifying (e.g., by root maturation).
+
+**Purpose:**
+- Evaluate whether success rate differs among DPC, PP, FP.
+
+**Why appropriate:**
+1. Outcome is binary; VPT type is categorical with 3 levels.
+2. Directly addresses whether hemostasis-based treatment allocation yields different prognosis.
+
+**Why may not be appropriate:**
+- With small counts in failure cells (especially FP), chi-square large-sample approximation may be inaccurate.
+
+**When NOT to use:**
+- Chi-square when any expected count <5; use **Fisher’s exact** instead.
+
+**Alternatives if assumptions violated:**
+- **Fisher’s exact test** for 3×2 table (VPT type × success), or collapse categories if clinically justifiable (e.g., DPC/PP vs FP), though that loses granularity.
+
+---
+
+#### 5. Multivariable binary logistic regression for prognostic analysis (primary model)
+
+**Test:**
+- **Binary logistic regression**.
+
+**Outcome:**
+- Success (1) vs failure (0) at last follow-up.
+
+**Predictors:**
+- Pre-specified candidate predictors (as in Table 1):
+  - Sex, age group, root maturation, cavity shape, spontaneous pain, nocturnal pain, referred pain, cold test, cold pain level, heat test, heat pain level, electrical vitality test difference, percussion sensitivity, VPT type.
+
+Given n=57 and only 5 failures, the number of predictors in any single model must be heavily restricted (rule-of-thumb: ≥10 events per parameter; here we have ~5 events). Therefore, a revised plan is needed:
+
+**Recommended primary model:**
+- Use **penalized logistic regression** or reduce model to a **small number of clinically prioritized predictors** (e.g., VPT type, root maturation, age, initial percussion sensitivity).
+
+**Purpose:**
+- Estimate adjusted association of VPT type and preoperative factors with prognosis (odds ratios with CIs).
+
+**Why appropriate:**
+1. Outcome is binary; logistic regression is standard and matches the reported methods.
+2. Allows adjustment for confounding (e.g., age, root maturation) in the association between VPT type and success.
+
+**Why may not be appropriate:**
+- With very few failures, standard maximum-likelihood logistic regression is unstable; large SE, separation problems, unreliable p-values (already hinted by some extreme coefficients/Exp(B) in Table 2).
+
+**When NOT to use standard logistic regression:**
+- When events (failures) are sparse relative to number of predictor parameters; when quasi- or complete separation present.
+
+**Alternatives if assumptions violated:**
+- **Firth penalized logistic regression** or exact logistic regression to reduce small-sample bias.
+- Alternatively, build **univariable** models for each predictor and interpret cautiously; or reduce predictors to 1–2 key variables.
+
+---
+
+#### 6. Model diagnostics and reporting
+
+**Tests/methods:**
+- Hosmer–Lemeshow goodness-of-fit test (already used).
+- Pseudo-R² measures (Nagelkerke, Cox–Snell).
+- Check multicollinearity (VIF or RVCD; already done).
+- Assess influence/leverage (Cook’s distance, dfbetas).
+
+**Purpose:**
+- Verify logistic model adequacy and stability; identify influential observations.
+
+**Why appropriate:**
+1. Logistic regression validity depends on correct model specification and absence of influential outliers.
+2. Given small n, a few influential points can distort coefficients.
+
+**Why may not be appropriate:**
+- Hosmer–Lemeshow has low power for small samples; p>0.05 does not guarantee good fit.
+
+**When NOT to use:**
+- HL test not useful with very small n and multiple covariates.
+
+**Alternatives if assumptions violated:**
+- Simplify model; consider **exact logistic regression**; use graphical assessment of predicted vs observed outcomes.
+
+---
+
+### B. RECOMMENDED ANALYSES (to improve rigor)
+
+---
+
+#### 7. Time-to-failure analysis (if failure timing is known)
+
+**Test:**
+- **Kaplan–Meier survival analysis**.
+- **Log-rank test** to compare survival curves among DPC, PP, FP.
+- **Cox proportional hazards model** for adjusted analysis (if events are sufficient).
+
+**Purpose:**
+- Use full information on variable follow-up durations (6–36 months); estimate survival function and hazard of failure over time.
+
+**Why appropriate:**
+1. Prospective cohort with variable follow-up; time-to-event methods avoid bias from ignoring follow-up length.
+2. Allows estimation of e.g., 12- and 24-month survival probabilities with CIs.
+
+**Why may not be appropriate:**
+- Very small number of failures reduces power; survival curves may be unstable.
+
+**When NOT to use:**
+- If exact timing of failure (date of event) cannot be reconstructed; or if virtually all events occur at the same time-point.
+
+**Alternatives if assumptions violated:**
+- Use **life-table** methods with coarse intervals.
+- If proportional hazards assumption fails, consider **parametric survival models** (Weibull) or stratified models; though sample size is limiting.
+
+---
+
+#### 8. Longitudinal analysis of pain scores (vNRS)
+
+If vNRS was recorded at multiple postoperative time points:
+
+**Tests:**
+- **Linear mixed-effects model** (pain as continuous outcome) with random intercept for subject and fixed effects for time, VPT type, and their interaction.
+- If distribution skewed or ordinal, **generalized linear mixed models** with appropriate link (e.g., cumulative logit).
+
+**Purpose:**
+- Evaluate trajectories of postoperative pain over time and differences among DPC, PP, FP.
+
+**Why appropriate:**
+1. Pain is repeated-measures outcome; mixed models account for within-patient correlation and missing data.
+2. Can handle unequal time intervals and follow-up durations.
+
+**Why may not be appropriate:**
+- Pain data may be sparse or only recorded at few time points.
+
+**When NOT to use:**
+- If pain was only measured once per patient.
+
+**Alternatives if assumptions violated:**
+- Nonparametric **Friedman test** or **Wilcoxon signed-rank** for within-subject changes; **Kruskal–Wallis** for cross-sectional comparisons at fixed time points.
+
+---
+
+#### 9. Inter- and intra-observer agreement
+
+Already done using **Cohen’s kappa**; recommended details:
+
+**Test:**
+- Cohen’s kappa with 95% CIs for each observer pair and for intraobserver repeat readings.
+
+**Purpose:**
+- Quantify reproducibility of outcome classification (success vs failure, radiographic findings).
+
+**Why appropriate:**
+1. Outcome includes radiographic interpretation; reliability is crucial.
+2. Kappa adjusts for chance agreement.
+
+**Why may not be appropriate:**
+- Kappa can be misleading when prevalence of one category is very high (here success 91%); may underestimate real agreement.
+
+**When NOT to use:**
+- When categories are ordered; **weighted kappa** is then preferable.
+
+**Alternatives:**
+- **Weighted kappa** for ordinal scales.
+- **Intraclass correlation coefficient** for continuous or more complex ratings.
+
+---
+
+#### 10. Sensitivity analyses
+
+Examples:
+- Exclude teeth with <12 months follow-up and recalculate success rates (12-month success).
+- Stratify by root maturation (open vs closed) and re-estimate effect of VPT type.
+
+**Purpose:**
+- Assess robustness of conclusions to follow-up duration and key subgroups.
+
+**Why appropriate:**
+1. Outcome may change over time; early failures vs late failures.
+2. Biological plausibility different in immature vs mature teeth.
+
+**Why may not be appropriate:**
+- Subgroup sample sizes become very small; results mainly descriptive.
+
+**Alternatives:**
+- Present subgroup results descriptively with exact CIs; avoid inferential claims.
+
+---
+
+### C. OPTIONAL ANALYSES (supplementary insights)
+
+---
+
+#### 11. Exploratory univariable associations with prognosis
+
+**Tests:**
+- For each binary/ordinal predictor (e.g., spontaneous pain): **Fisher’s exact test** comparing success vs failure.
+- For ordinal predictors (e.g., cold test categories): **Cochran–Armitage trend test** if monotonic trend clinically expected.
+
+**Purpose:**
+- Informally assess which preoperative variables may be associated with success/failure, acknowledging low power.
+
+**Why appropriate:**
+1. Useful screening before or instead of multivariable modeling given low events.
+2. Provides simple, transparent effect size estimates (risk difference, odds ratio with CIs).
+
+**Why may not be appropriate:**
+- Multiple testing inflates type I error; risk of spurious findings.
+
+**When NOT to use:**
+- If authors want purely hypothesis-driven modeling with no exploratory component.
+
+**Alternatives:**
+- Report only effect sizes and CIs without formal p-values to avoid overemphasis on significance.
+
+---
+
+#### 12. Evaluation of continuous age and follow-up time
+
+Given age and follow-up time are continuous:
+
+**Tests:**
+- **Mann–Whitney U test** or **t-test** comparing ages of success vs failure cases.
+- Same for follow-up duration.
+
+**Purpose:**
+- Determine whether failures are clustered in older patients or shorter follow-up.
+
+**Why appropriate:**
+1. Can highlight whether lack of failure in older ages is due to fewer older participants.
+2. Helps interpret external generalizability.
+
+**Why may not be appropriate:**
+- Only 5 failures; any statistical test has low power and unstable results.
+
+**Alternatives:**
+- Report descriptive statistics only and interpret qualitatively.
+
+---
+
+#### 13. Effect of operator
+
+Three postgraduate operators performed all procedures. If operator ID is available:
+
+**Tests:**
+- **Fisher’s exact test** for success vs failure across operators.
+- Optionally, include operator as a categorical predictor in sensitivity logistic regression (if events permit).
+
+**Purpose:**
+- Assess operator-related variability in success rates.
+
+**Why appropriate:**
+1. Operator skill/protocol adherence may influence outcomes.
+2. Helps distinguish material/procedure effect from operator effect.
+
+**Why may not be appropriate:**
+- Very small numbers per operator and per failure; unstable.
+
+**Alternatives:**
+- Descriptive success percentages per operator with exact CIs; comment qualitatively.
+
+---
+
+#### 14. Correlation between hemostasis time (continuous) and prognosis
+
+If precise hemostasis times (in minutes) were recorded:
+
+**Tests:**
+- **Logistic regression** with hemostasis time as predictor (continuous or categorized).
+- **ROC analysis** to explore optimal cutoff for hemostasis time predicting success.
+
+**Purpose:**
+- Investigate directly the hypothesized relationship between hemostasis time (inflammation severity) and prognosis.
+
+**Why appropriate:**
+1. Core pathophysiologic question in VPT.
+2. May refine clinical decision thresholds beyond current 5-min rule.
+
+**Why may not be appropriate:**
+- Within this dataset, all included cases had hemostasis ≤5 min by definition at the level that determined treatment; range may be too narrow.
+
+**Alternatives:**
+- Use composite measure (e.g., hemostasis time at each stage) if available; otherwise, question cannot be answered in this dataset.
+
+---
+
+## TASK 3 – INAPPROPRIATE TESTS FOR THIS STUDY
+
+Below are common tests that should **not** be used in this context and why:
+
+1. **Independent-samples t-test / ANOVA on binary outcomes**
+   - Example: Using t-test to compare success (0/1) between groups.
+   - **Why inappropriate:**
+     - Binary outcomes violate normality and homoscedasticity assumptions.
+     - Logistic or exact tests are more appropriate.
+   - **Alternative:** Chi-square/Fisher’s exact; logistic regression.
+
+2. **Paired t-test for pre–post pain or outcomes**
+   - **Why inappropriate:**
+     - There are no pre–post continuous measures on the same scale suited to paired t-test in the design as described.  
+     - Pain, if ordinal and not normal, better treated with nonparametric or mixed models.
+   - **Alternative:** Wilcoxon signed-rank or mixed models for repeated vNRS if applicable.
+
+3. **Repeated-measures ANOVA with listwise deletion for pain**
+   - **Why inappropriate:**
+     - Repeated-measures ANOVA requires complete data or strict assumptions; in longitudinal clinical cohorts, missingness is common.
+   - **Alternative:** Linear mixed-effects models.
+
+4. **Multiple linear regression with success (binary) as outcome**
+   - **Why inappropriate:**
+     - Linear regression assumptions violated with binary outcome; can predict values outside [0,1]; heteroscedastic residuals.
+   - **Alternative:** Logistic regression (penalized where needed).
+
+5. **Parametric correlation (Pearson) between ordinal scales (e.g., pain categories) and binary outcomes**
+   - **Why inappropriate:**
+     - Ordinal or binary variables violate Pearson’s correlation assumptions.
+   - **Alternative:** Spearman’s rho or point-biserial correlation; but logistic regression is more interpretable.
+
+6. **McNemar test**
+   - **Why inappropriate:**
+     - Used for paired binary data (e.g., same tooth before and after).  
+     - Here each tooth contributes a single outcome; no paired binary comparison.
+   - **Alternative:** Chi-square / Fisher’s exact as appropriate.
+
+7. **Complex multivariable models with many predictors given only 5 failures**
+   - E.g., full 14-variable logistic regression, random forest, etc.
+   - **Why inappropriate:**
+     - Massive overfitting; unstable estimates; inflated type I error.
+   - **Alternative:** Penalized regression or focus on a small set of key predictors.
+
+8. **Standard parametric survival models (e.g., Cox regression with many covariates)**
+   - **Why inappropriate:**
+     - Very small number of events cannot support multivariable Cox models.
+   - **Alternative:** Descriptive Kaplan–Meier and possibly univariable Cox, if event timing known.
+
+---
+
+## TASK 4 – SUMMARY OF OVERALL ANALYTICAL APPROACH
+
+- The study is a **small prospective cohort** with **high success rate (91%)** and **few failures (n≈5)**.  
+- The primary goal is to **estimate success rates and explore prognostic factors**, not to build a complex predictive model.
+- The analytical strategy must therefore:
+  - Focus on **simple, robust methods** (exact binomial CIs, Fisher’s exact tests).
+  - Use **logistic regression cautiously**, preferably **penalized** or with **very few predictors**, given sparse events.
+  - Acknowledge **limited power** for detecting associations and avoid overfitting.
+  - Where possible, exploit **time-to-event** information to account for varying follow-up, but interpret survival models cautiously due to low event counts.
+
+The core mandatory analyses (descriptive statistics, success proportions with CIs, group comparison of success, and carefully specified logistic regression) provide the necessary evidence on VPT outcomes and potential prognostic factors. Recommended and optional analyses (survival, pain trajectory, sensitivity, and reliability analyses) deepen understanding without overextending the data beyond what it can support.

@@ -1,0 +1,440 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+# materials
+MDPI
+
+Article
+# Effect of Core Mass and Alloy on Cyclic Fatigue Resistance of Different Nickel-Titanium Endodontic Instruments in Matching Artificial Canals
+
+Sebastian Bürklein 1,*, Lennart Zupanc 2, David Donnermeyer 3, Karsten Tegtmeyer 3 and Edgar Schäfer 1
+
+1 Albert-Schweitzer-Campus 1, Central Interdisciplinary Ambulance in the School of Dentistry, Westphalian Wilhelms-University, Building W 30, 48149 Münster, Germany; eschaef@uni-muenster.de
+2 Private Office, Markt 4, 48291 Telgte, Germany; L.Zupanc@gmx.de
+3 Albert-Schweitzer-Campus 1, Department of Periodontology and Operative Dentistry, Westphalian Wilhelms-University, Building W 30, 48149 Münster, Germany; David.Donnermeyer@ukmuenster.de (D.D.); Karsten.Tegtmeyer@ukmuenster.de (K.T.)
+* Correspondence: sebastian.buerklein@ukmuenster.de; Tel.: +49-251-834-7051; Fax: +49-251-834-7894
+
+check for updates
+
+**Citation:** Bürklein, S.; Zupanc, L.; Donnermeyer, D.; Tegtmeyer, K.; Schäfer, E. Effect of Core Mass and Alloy on Cyclic Fatigue Resistance of Different Nickel-Titanium Endodontic Instruments in Matching Artificial Canals. *Materials* **2021**, *14*, 5734. https://doi.org/10.3390/ma14195734
+
+Academic Editor: Marco Cicciù
+
+Received: 23 August 2021
+Accepted: 28 September 2021
+Published: 1 October 2021
+
+**Publisher’s Note:** MDPI stays neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+**Copyright:** © 2021 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (https://creativecommons.org/licenses/by/4.0/).
+
+fatigue tests, fracture resistance, heat treatment, martensitic NiTi, R-phase NiTi, SE NiTi
+
+### 1. Introduction
+The steadily growing number of publications concerning cyclic fatigue resistance of nickel-titanium (NiTi) endodontic root canal instruments indicates that this topic is of
+
+*Materials* **2021**, *14*, 5734. https://doi.org/10.3390/ma14195734
+https://www.mdpi.com/journal/materials
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Materials 2021, 14, 5734
+2 of 14
+
+interest among endodontists. Although the prevalence of instrument fracture is relatively
+low, it is an adverse event for both the patient and the practitioner [1–6]. The prevalence
+for instrument fracture depends on study design and instruments, and varies between 0.3
+and about 7% of cases, and ranges below 1–2% for the instruments used [1–6].
+Many reasons can promote a fracture of NiTi instruments. Tooth anatomy and root
+canal morphology with the associated angles and radii of curvatures are known as influenc-
+ing factors [7]. Furthermore, instrument-associated parameters such as alloy, manufactur-
+ing process, cross-sectional design, taper and core mass are also important parameters [8].
+Concomitant factors, such as the number of uses and the number of sterilization pro-
+cesses [9], the irrigation solutions used [10], and the kind of movement (reciprocal vs.
+rotary), vertical amplitude, axial forces and rotational speed [11,12], are also discussed.
+Instruments are stressed during active root canal preparation and may fracture due to
+cyclic fatigue, torsional load, or due to a combination of both [13,14]. However, cyclic
+fatigue is claimed to be the main cause for failure of endodontic engine-driven NiTi instru-
+ments [15,16].
+Fracture of an endodontic instrument may exert an impact on the prognosis of root
+canal treatment when infected root canal areas are no longer accessible and maintain per-
+sistent inflammation [17,18]. Hence, when an accidental fracture occurs or is occasionally
+detected on a routine radiograph, the patient should be informed [19]. Treatment options
+are limited to retaining the fragment inside the root canal as a metallic obstruction/root
+canal filling, bypassing or removing it. The decision making process should be based
+on (i) the stage of the root canal treatment procedure at which the instrument fractured,
+(ii) the clinician’s skills and equipment, (iii) the potential risks of iatrogenic damage of
+tooth structure when removing the fractured instrument, (iv) the length and the location
+of the fractured fragment in the root canal, and (v) the presence or absence of apical
+periodontitis [20]
+Although cyclic fatigue is not currently included in ISO-specification 3630-1 [21],
+instrument resistance has some clinical relevance, as instruments working time may rep-
+resent an important parameter. One major limitation of laboratory studies is the lack of
+standardization, and many studies do not mention all relevant details of experimental
+settings [22]. Hence, results differ widely and are hardly comparable [22]. A crucial aspect
+seems to be the congruence between the artificial canal wall and the dimensions of the
+instrument [23]. A recent publication elucidated the influence of artificial root canal size
+that should be as close as possible to the size of the instrument within the manufacturer’s
+tolerance—meaning a matching size [24]. Apart from that, dynamic testing at body tem-
+perature with a vertical amplitude of 3 mm and a frequency of 0.5 Hz may be regarded as a
+kind of standard performing dynamic cyclic fatigue test [22].
+Currently, no studies on cyclic fatigue resistance are available investigating the param-
+eters core mass and alloy in matching artificial root canals. Thus, the aim of this study was
+to investigate the impact of core mass and alloy of different endodontic NiTi instruments
+with the same outer diameter and different cross-sectional designs on cyclic fatigue using
+matching artificial tubes. The null hypothesis (H0) tested was that the two parameters
+have no impact on the fracture resistance of the tested instruments.
+
+2. Materials and Methods
+The experimental setup presented in the following aimed to evaluate cyclic fatigue
+of different engine-driven NiTi instruments with different designs, tapers and sizes using
+standardized matching artificial root canals guaranteeing same trajectories.
+
+2.1. Sample Size Calculation
+Prior to the evaluation of the main study, a preliminary investigation under identical
+conditions was performed using five instruments in each group. Mean values and standard
+deviations revealed an effect size of >1.0. A markedly lower effect size of 0.4 served for
+calculation using G*Power 3.1 (Heinrich Heine University, Düsseldorf, Germany). Using
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Materials 2021, 14, 5734 3 of 14
+
+the parameters of an alpha (α) level of 0.05 (5%) and a (β) beta level of 0.20 (20%) (i.e., power = 80% at a 5% significance level) and an effect size of 0.4, the sample size was 19 in each group. Thus, 20 instruments in each group were used (total = 120).
+
+2.2. Artificial Canals
+According to a previous study, artificial root canals matching the dimensions of the instruments investigated were designed using Geomagic Freeform software (3D Systems, McLean, VA, USA) [24].
+Four different canals with instrument size plus 0.02 mm in diameter served as simulated root canals. The artificial canal size 27/0.04 was used to test all instruments having a size of 25/0.04: F360 (Komet, Lemgo, Germany), Twisted file (Sybron Endo, Glendora, CA, USA) (=TF), JIZAI (Mani, Tochigi, Japan) (=J_04). The TruNatomy (Dentsply, Ballaigues, Switzerland) (=TN) instrument has a variable taper over its working part and starts with a size of 26/100 mm (Figure 1). The artificial canal was made using the instrument parameters specified by the manufacturer, which were additionally checked millimetre by millimetre several times using a digital calliper by adding 0.02 mm. Hence TN started at 0.28 mm. In the group with taper 0.06 the artificial canal offered a size of #27/0.06 for Mtwo and JIZAI (=J_06), whereas for the variable tapered Hyflex (=HF) the artificial canal was prepared in the same manner as described for TN.
+
+Figure 1. Artificial root canals produced in an additive laser melting process from the left to the right—Hyflex OneFile tube (25/~ variable tapered), TruNatomy (26/0.04 variable tapered), 25/0.04, 25/0.06. All tubes had a diameter corresponding to the instrument +0.02 mm to guarantee a friction-free free rotation without any additional heat development.
+
+All artificial canals had a 60° curvature and a 5 mm radius, with the centre of curvature at 5 mm from the apex and were 16 mm long, corresponding to the working part of the instruments. Canals terminated in a circle at their end simulating an open system and allowing a kind of reservoir and refreshing of the lubricant used. The designed STL data of artificial canals were transferred into a CoCr model using a special digital metal laser sintering (DMLS) method (Infinident Solutions, Darmstadt, Germany). This is a unique additive manufacturing process based on a cobalt-based metal ceramic alloy. The material (fine-grain powder) was applied on a panel by a so-called re-coater, and a 200 W Yb (ytterbium) fibre laser melted the material layer by layer using shielding gas (nitrogen (N2)). The whole process was repeated by a predefined layer thickness of 20–40 µm that was established by lowering the panel accordingly. A thermal post-processing procedure served for stress-relief annealing. Finally, the material was cleaned by sandblasting. The size of the artificial canals was measured by a laser scanning microscope (Keyence VK-X1000, Keyence Corporation, Osaka, Japan) to verify the agreement between the actual and the target sizes.
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Materials 2021, 14, 5734
+4 of 14
+
+2.3. Cyclic Fatigue Testing
+The complete experimental setup was placed in an incubator (SFM500, Memmert, Schwabach, Germany) (Figure 2) guaranteeing maintenance of body temperature (37 ± 1 °C) throughout the entire procedure. Additionally, the temperature inside the artificial canal was checked permanently using thermo-K couples (GHM, Messtechnik, Regenstauf, Germany) with a frequency of 50 Hz (Figure 2).
+
+rotary drive disk
+height adjustable motion module
+lifting linkage
+3D-printed handpiece holder
+handpiece
+artificial root canals
+2-axis locking for the arificial root canals
+Typ-K thermo-couple
+microscopic camera
+Placement in an incubator at 37 (± 1)°C
+
+Figure 2. Setup of the cyclic fatigue testing device placed in an incubator. Tests were recorded with a microscopic camera.
+
+The artificial canals were covered with tempered glass to prevent the instruments from slipping out of the tube [24]. Glycerin oil warmed to body temperature served as a lubricant and was continuously refreshed during the tests to avoid any friction. It was applied through a small window in a Plexiglas plate that served as the door of the incubator.
+All instruments were tested according to manufacturer’s instructions—rotational speed and torque settings were set to the demanded values using a torque controlled endodontic motor (VDW silver, VDW, Munich, Germany):
+F360 (25/0.04) = 300 rpm, 1.8 Ncm
+Twisted file (25/0.04) = 500 rpm, 2.5 Ncm
+JIZAI (J_04) (25/0.04) = 500 rpm, 3.0 Ncm
+TruNatomy (26/0.04; variable tapered; 0.04 in average) = 500 rpm, 1.5 Ncm
+Mtwo (25/0.06) = 280 rpm, 2.3 Ncm
+JIZAI (J_06) (25/0.06) = 500 rpm, 3.0 Ncm
+Hyflex Onefile (25/~; variable tapered; not specified) = 400 rpm, 2.5 Ncm
+To simulate the dynamic up and down movements (picking movement, stroking) during root canal treatment, an eccentric mount 1.5 mm from the central axis (total amplitude = 3 mm) was used, which was fixed on a continuously rotating drive disk (Figure 2). The speed was set to 1 cycle/2 s (=0.5 Hz).
+A 3D printed and assembled handpiece holder, especially fabricated for the present study served for a correct positioning of the handpiece (Figure 2). The test machine allowed a free adjustment of the different components to each other.
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Materials 2021, 14, 5734                                                                                                                              5 of 14
+
+The tests were recorded with a microscopic camera using the AMcap software (AMcap, version 3.0.1.7; NCH Software, Greenwood, CO, USA). The automatic lifting device and the endodontic motor were started simultaneously. When an instrument fractured, the testing machine and then the video were stopped. The final temperature was noted in the experimental protocol and the video was saved.
+The start and end time of the experiment were determined based on the video recording (Movies and TV App, Microsoft Corporation, Redmond, WA, USA, version 10.20112.10111.0). The start time was defined as the moment when the endodontic instrument first reaches the working length. The end time was defined as the time at which the instrument fractured. The tests were limited to 600 s. Unless a cyclic fatigue fracture occurred within 600 s., the test was terminated with a buffer time of 30 s.
+The cycles to fracture were determined based on the time of instrument failure:
+
+                                            time to fracture
+                                    NCF = ------------------ × rpm                                                               (1)
+                                                   60
+
+NCF = number of cycles to fracture; rpm = rotations per minute
+
+2.4. Analysis of the Fractured Instruments
+The lengths of the fractured fragments were measured with a digital calliper (Mitutoyo 500-196-30 Absolute AOS Digimatic; Mitutoyo Corporation, Kawasaki, Japan) and the values were noted.
+To check the fracture mode, five randomly selected fragment surfaces in each group, if available, were examined using a laser scanning microscope (Keyence VK-X1000, Keyence Corporation, Osaka, Japan) at a 500-fold magnification to exclude a torsional fracture. For the examination, the fracture surfaces were cleaned with 70% alcohol and embedded in a silicone block.
+
+                                                                                                                                                            ,
+                                                                                                                                                            r
+                                                                                                                                                            k
+                                                                                                                                                            l
+                                                                                                                                                            e
+
+                                                                                                                                                            ;
+                                                                                                                                                            ;
+                                                                                                                                                            ;
+
+                                                                                                                                                            .
+                                                                                                                                                            l
+                                                                                                                                                            l
+                                                                                                                                                            ,
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+```iranpaper Downloaded from https://iranpaper.ir
+Materials 2021, 14, 5734
+6 of 14
+[REDACTED]
+—
+[REDACTED]
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+F360
+Mtwo
+JIZAI_06
+JIZAI_04
+
+0.1 mm
+
+Hyflex OneFile
+TruNatomy
+Twisted File
+
+Figure 2. Comparison of the different endodontic instruments... the instruments
+cross-sectional
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+[...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...] [...]
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Materials 2021, 14, 5734 9 of 14
+
+════════════════════════════════════════════════════════════
+PAGE 10
+════════════════════════════════════════════════════════════
+```
+iranpaper Downloaded from https://iranpaper.ir
+
+Materials 2021, 14, 5734
+
+════════════════════════════════════════════════════════════
+PAGE 11
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Materials 2021, 14, 5734                                                                                                                                  11 of 14
+
+════════════════════════════════════════════════════════════
+PAGE 12
+════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+PAGE 13
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Materials 2021, 14, 5734
+13 of 14
+
+19. McGuigan, M.B.; Louca, C.; Duncan, H.F. Clinical decision-making after endodontic instrument fracture. Br. Dent. J. 2013, 214, 395–400. [CrossRef]
+20. Madarati, A.A.; Hunter, M.J.; Dummer, P. Management of Intracanal Separated Instruments. J. Endod. 2013, 39, 569–581. [CrossRef]
+21. International Organization for Standardization. International Standard ISO 3630-1:2019(E): Dentistry—Endodontic Instruments—Part 1: General Requirements, 3rd ed.; International Organization for Standardization: Geneva, Switzerland, 2019.
+22. Hülsmann, M.; Donnermeyer, D.; Schäfer, E. A critical appraisal of studies on cyclic fatigue resistance of engine-driven endodontic instruments. Int. Endod. J. 2019, 52, 1427–1445. [CrossRef]
+23. Plotino, G.; Grande, N.M.; Cordaro, M.; Testarelli, L.; Gambarini, G. Influence of the shape of artificial canals on the fatigue resistance of NiTi rotary instruments. Int. Endod. J. 2010, 43, 69–75. [CrossRef]
+24. Bürklein, S.; Maßmann, P.; Donnermeyer, D.; Tegtmeyer, K.; Schäfer, E. Need for Standardization: Influence of Artificial Canal Size on Cyclic Fatigue Tests of Endodontic Instruments. Appl. Sci. 2021, 11, 4950. [CrossRef]
+25. Grande, N.M.; Plotino, G.; Pecci, R.; Bedini, R.; Malagnino, V.A.; Somma, F. Cyclic fatigue resistance and three-dimensional analysis of instruments from two nickel?titanium rotary systems. Int. Endod. J. 2006, 39, 755–763. [CrossRef] [PubMed]
+26. Pedullà, E.; Plotino, G.; Scibilia, M.; Grande, N.M.; De Santis, D.; Pardo, A.; Testarelli, L.; Gambarini, G. Cyclic fatigue comparison among endodontic instruments with similar cross section and different surface coating. Minerva Stomatol. 2019, 68, 67–73. [CrossRef] [PubMed]
+27. Di Nardo, D.; Gambarini, G.; Seracchiani, M.; Mazzoni, A.; Zanza, A.; Giudice, A.D.; D’Angelo, M.; Testarelli, L. Influence of different cross-section on cyclic fatigue resistance of two nickel–titanium rotary instruments with same heat treatment: An in vitro study. Saudi Endod. J. 2020, 10, 221–225. [CrossRef]
+28. Galal, M.; Hamdy, T.M. Evaluation of stress distribution in nickel-titanium rotary instruments with different geometrical designs subjected to bending and torsional load: A finite element study. Bull. Natl. Res. Cent. 2020, 44, 1–11. [CrossRef]
+29. Zhang, E.-W.; Cheung, G.S.; Zheng, Y.-F. Influence of Cross-sectional Design and Dimension on Mechanical Behavior of Nickel-Titanium Instruments under Torsion and Bending: A Numerical Analysis. J. Endod. 2010, 36, 1394–1398. [CrossRef]
+30. Gambarini, G.; Miccoli, G.; Seracchiani, M.; Khrenova, T.; Donfrancesco, O.; D’Angelo, M.; Galli, M.; Di Nardo, D.; Testarelli, L. Role of the Flat-Designed Surface in Improving the Cyclic Fatigue Resistance of Endodontic NiTi Rotary Instruments. Materials 2019, 12, 2523. [CrossRef]
+31. Kwak, S.W.; Lee, C.-J.; Kim, S.K.; Kim, H.-C.; Ha, J.-H. Comparison of Screw-In Forces during Movement of Endodontic Files with Different Geometries, Alloys, and Kinetics. Materials 2019, 12, 1506. [CrossRef] [PubMed]
+32. Ha, J.-H.; Cheung, G.S.P.; Versluis, A.; Lee, C.J.; Kwak, S.W.; Kim, H.C. ‘Screw-in’ tendency of rotary nickel-titanium files due to design geometry. Int. Endod. J. 2014, 48, 666–672. [CrossRef]
+33. Ha, J.-H.; Kwak, S.W.; Kim, S.-K.; Kim, H.-C. Screw-in forces during instrumentation by various file systems. Restor. Dent. Endod. 2016, 41, 304–309. [CrossRef]
+34. Kuhn, G.; Jordan, L. Fatigue and Mechanical Properties of Nickel-Titanium Endodontic Instruments. J. Endod. 2002, 28, 716–720. [CrossRef] [PubMed]
+35. Keskin, C.; Yilmaz, Ö.S.; Keleş, A.; Inan, U. Comparison of cyclic fatigue resistance of Rotate instrument with reciprocating and continuous rotary nickel–titanium instruments at body temperature in relation to their transformation temperatures. Clin. Oral Investig. 2021, 25, 151–157. [CrossRef] [PubMed]
+36. Kaval, M.E.; Çapar, I.D.; Ertas, H. Evaluation of the Cyclic Fatigue and Torsional Resistance of Novel Nickel-Titanium Rotary Files with Various Alloy Properties. J. Endod. 2016, 42, 1840–1843. [CrossRef]
+37. Adigüzel, M.; Turgay, B. Comparison of the Cyclic Fatigue Resistance of Reciproc and Reciproc Blue Nickel-Titanium Instruments in Artificial Canals with Single and Double (S-shaped) Curvatures. Eur. Endod. J. 2017, 2, 1–4. [CrossRef] [PubMed]
+38. Kim, H.-C.; Yum, J.; Hur, B.; Cheung, G.S.-P. Cyclic Fatigue and Fracture Characteristics of Ground and Twisted Nickel-Titanium Rotary Files. J. Endod. 2010, 36, 147–152. [CrossRef] [PubMed]
+39. Pérez-Higueras, J.J.; Arias, A.; de la Macorra, J.C. Cyclic Fatigue Resistance of K3, K3XF, and Twisted File Nickel-Titanium Files under Continuous Rotation or Reciprocating Motion. J. Endod. 2013, 39, 1585–1588. [CrossRef] [PubMed]
+40. Martín, B.; Zelada, G.; Varela, P.; Bahillo, J.G.; Magán, F.; Ahn, S.; Rodríguez, C. Factors influencing the fracture of nickel-titanium rotary instruments. Int. Endod. J. 2003, 36, 262–266. [CrossRef] [PubMed]
+41. Lopes, H.P.; Ferreira, A.A.; Elias, C.N.; Moreira, E.J.; de Oliveira, J.C.M.; Siqueira, J.F. Influence of Rotational Speed on the Cyclic Fatigue of Rotary Nickel-Titanium Endodontic Instruments. J. Endod. 2009, 35, 1013–1016. [CrossRef]
+42. Gao, Y.; Shotton, V.; Wilkinson, K.; Phillips, G.; Johnson, W. Effects of Raw Material and Rotational Speed on the Cyclic Fatigue of ProFile Vortex Rotary Instruments. J. Endod. 2010, 36, 1205–1209. [CrossRef] [PubMed]
+43. Plotino, G.; Grande, N.M.; Cordaro, M.; Testarelli, L.; Gambarini, G. Measurement of the trajectory of different NiTi rotary instruments in an artificial canal specifically designed for cyclic fatigue tests. Oral Surg. Oral Med. Oral Pathol. Oral Radiol. Endodontol. 2009, 108, e152–e156. [CrossRef]
+44. Plotino, G.; Grande, N.M.; Mazza, C.; Petrovic, R.; Testarelli, L.; Gambarini, G. Influence of size and taper of artificial canals on the trajectory of NiTi rotary instruments in cyclic fatigue studies. Oral Surg. Oral Med. Oral Pathol. Oral Radiol. Endodontol. 2010, 109, e60–e66. [CrossRef] [PubMed]
+
+════════════════════════════════════════════════════════════
+PAGE 14
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Materials 2021, 14, 5734                                                                                                                                                           14 of 14
+
+45. de Hemptinne, F.; Slaus, G.; Vandendael, M.; Jacquet, W.; De Moor, R.J.; Bottenberg, P. In Vivo Intracanal Temperature Evolution during Endodontic Treatment after the Injection of Room Temperature or Preheated Sodium Hypochlorite. J. Endod. 2015, 41, 1112–1115. [CrossRef] [PubMed]
+46. Jamleh, A.; Yahata, Y.; Ebihara, A.; Atmeh, A.R.; Bakhsh, T.; Suda, H. Performance of NiTi endodontic instrument under different temperatures. Odontology 2016, 104, 324–328. [CrossRef]
+47. Dosanjh, A.; Paurazas, S.; Askar, M. The Effect of Temperature on Cyclic Fatigue of Nickel-titanium Rotary Endodontic Instruments. J. Endod. 2017, 43, 823–826. [CrossRef] [PubMed]
+48. de Vasconcelos, R.A.; Murphy, S.; Carvalho, C.T.; Govindjee, R.G.; Govindjee, S.; Peters, O.A. Evidence for Reduced Fatigue Resistance of Contemporary Rotary Instruments Exposed to Body Temperature. J. Endod. 2016, 42, 782–787. [CrossRef]
+49. Klymus, M.E.; Alcalde, M.P.; Vivan, R.R.; Só, M.V.R.; De Vasconselos, B.C.; Duarte, M.A.H. Effect of temperature on the cyclic fatigue resistance of thermally treated reciprocating instruments. Clin. Oral Investig. 2018, 23, 3047–3052. [CrossRef]
+50. Arias, A.; Hejlawy, S.; Murphy, S.; De La Macorra, J.C.; Govindjee, S.; Peters, O. Variable impact by ambient temperature on fatigue resistance of heat-treated nickel titanium instruments. Clin. Oral Investig. 2018, 23, 1101–1108. [CrossRef]

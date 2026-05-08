@@ -1,0 +1,143 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_475f777a3a59b662fd1a71fb051d5df6.pdf
+Status : ok
+Time   : 20260508_093939
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics
+1. **Study Design**: Experimental in vitro study.
+2. **Objective**: To investigate the impact of core mass and alloy composition on the cyclic fatigue resistance of different nickel-titanium (NiTi) endodontic instruments in matching artificial canals.
+3. **Groups**: Six groups of NiTi instruments based on design, taper, and alloy composition:
+   - F360 (25/0.04)
+   - Twisted File (25/0.04)
+   - JIZAI_04 (25/0.04)
+   - TruNatomy (26/0.04, variable taper)
+   - Mtwo (25/0.06)
+   - JIZAI_06 (25/0.06)
+   - Hyflex OneFile (25/~, variable taper)
+4. **Sample Size**: 20 instruments per group (total = 120 instruments).
+5. **Variables**:
+   - **Independent Variables**: Core mass, alloy composition, cross-sectional design, taper, and size of instruments.
+   - **Dependent Variables**: Cyclic fatigue resistance (measured as number of cycles to fracture, NCF) and length of fractured fragments.
+6. **Measurements**:
+   - **Primary Outcome**: Number of cycles to fracture (NCF).
+   - **Secondary Outcome**: Length of fractured fragments and fracture mode.
+7. **Data Collection Methods**:
+   - Instruments tested in matching artificial canals designed using Geomagic Freeform software.
+   - Cyclic fatigue testing performed at body temperature (37 ± 1°C) using a standardized setup in an incubator.
+   - Rotational speed and torque settings applied as per manufacturer specifications.
+   - Fracture mode analyzed using a laser scanning microscope.
+8. **Artificial Canal Design**:
+   - Simulated canals matched to instrument dimensions (+0.02 mm tolerance).
+   - 60° curvature, 5 mm radius, 16 mm length.
+   - Manufactured using cobalt-based metal ceramic alloy via laser sintering.
+9. **Statistical Power**:
+   - Effect size: 0.4 (based on preliminary investigation).
+   - Alpha level: 0.05.
+   - Beta level: 0.20 (power = 80%).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: One-Way ANOVA
+   - **Purpose**: To compare the mean cyclic fatigue resistance (NCF) across the six groups of NiTi instruments.
+   - **Why Appropriate**:
+     1. The study involves multiple independent groups (six instrument designs).
+     2. The dependent variable (NCF) is continuous and assumed to follow a normal distribution.
+   - **Why It May Not Be Appropriate**:
+     - Assumes homogeneity of variances, which may not hold across groups.
+   - **When This Test Should NOT Be Used**:
+     - If the data violates the assumption of normality or homogeneity of variances.
+   - **Alternative**: Kruskal-Wallis test (non-parametric equivalent).
+
+2. **Test Name**: Post-Hoc Pairwise Comparisons (e.g., Tukey’s HSD)
+   - **Purpose**: To identify specific differences between groups after a significant ANOVA result.
+   - **Why Appropriate**:
+     1. Necessary for understanding which groups differ significantly.
+     2. Controls for Type I error in multiple comparisons.
+   - **Why It May Not Be Appropriate**:
+     - Requires a significant ANOVA result as a prerequisite.
+   - **When This Test Should NOT Be Used**:
+     - If ANOVA is not significant.
+   - **Alternative**: Pairwise Mann-Whitney U tests (non-parametric).
+
+3. **Test Name**: Descriptive Statistics
+   - **Purpose**: To summarize the data (mean, standard deviation, range) for NCF and fragment lengths.
+   - **Why Appropriate**:
+     1. Provides a clear overview of the data distribution.
+     2. Essential for contextualizing results.
+   - **Why It May Not Be Appropriate**:
+     - Not inferential; does not test hypotheses.
+   - **When This Test Should NOT Be Used**:
+     - N/A (always useful).
+   - **Alternative**: None.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Regression Analysis
+   - **Purpose**: To explore the relationship between independent variables (core mass, alloy composition) and cyclic fatigue resistance.
+   - **Why Appropriate**:
+     1. Allows quantification of the impact of specific instrument characteristics.
+     2. Useful for identifying predictors of cyclic fatigue resistance.
+   - **Why It May Not Be Appropriate**:
+     - Requires linearity and independence of predictors.
+   - **When This Test Should NOT Be Used**:
+     - If multicollinearity exists among predictors.
+   - **Alternative**: Generalized Linear Models (GLMs).
+
+2. **Test Name**: Levene’s Test for Homogeneity of Variances
+   - **Purpose**: To test the assumption of equal variances across groups for ANOVA.
+   - **Why Appropriate**:
+     1. Ensures validity of ANOVA results.
+     2. Identifies whether alternative tests are needed.
+   - **Why It May Not Be Appropriate**:
+     - Sensitive to outliers.
+   - **When This Test Should NOT Be Used**:
+     - If sample sizes are unequal across groups.
+   - **Alternative**: Bartlett’s Test.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Survival Analysis (Kaplan-Meier Curve)
+   - **Purpose**: To analyze the time-to-fracture data as survival times.
+   - **Why Appropriate**:
+     1. Provides insight into the durability of instruments over time.
+     2. Accounts for censored data (tests terminated at 600 seconds).
+   - **Why It May Not Be Appropriate**:
+     - Requires specialized software and expertise.
+   - **When This Test Should NOT Be Used**:
+     - If all instruments fracture within the test duration.
+   - **Alternative**: Log-rank test for comparing survival curves.
+
+2. **Test Name**: Multivariate Analysis of Variance (MANOVA)
+   - **Purpose**: To analyze multiple dependent variables (NCF and fragment length) simultaneously.
+   - **Why Appropriate**:
+     1. Accounts for potential correlations between dependent variables.
+     2. Reduces Type I error compared to separate ANOVAs.
+   - **Why It May Not Be Appropriate**:
+     - Requires multivariate normality and homogeneity of covariance matrices.
+   - **When This Test Should NOT Be Used**:
+     - If assumptions are violated or sample size is insufficient.
+   - **Alternative**: Separate ANOVAs.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Chi-Square Test**:
+   - **Why Not Appropriate**: Designed for categorical data, whereas the study involves continuous variables (e.g., NCF).
+2. **Paired t-Test**:
+   - **Why Not Appropriate**: Requires paired data, but the study compares independent groups.
+3. **Independent Samples t-Test**:
+   - **Why Not Appropriate**: Only compares two groups, whereas this study involves six groups.
+
+---
+
+### TASK 4: SUMMARY
+The statistical approach is designed to comprehensively evaluate the cyclic fatigue resistance of NiTi instruments while accounting for group differences and potential predictors. Mandatory tests ensure hypothesis testing, recommended tests validate assumptions and explore relationships, and optional tests provide supplementary insights. The plan balances rigor and practicality, ensuring robust and interpretable results.

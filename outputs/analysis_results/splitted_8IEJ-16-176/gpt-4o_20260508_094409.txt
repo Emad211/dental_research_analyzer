@@ -1,0 +1,125 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_8IEJ-16-176.pdf
+Status : ok
+Time   : 20260508_094409
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Retrospective cohort study.
+2. **Objective**: To compare survival rates from unrestorable fracture of anterior endodontically treated teeth (ETT) restored with direct resin composite (DRC) versus full-coverage crown (FCC). Additionally, to identify predisposing factors to unrestorable fracture.
+3. **Groups**: 
+   - Group 1: Anterior ETT restored with DRC.
+   - Group 2: Anterior ETT restored with FCC.
+4. **Sample Size**: 263 anterior ETT (157 DRC, 106 FCC).
+5. **Variables**:
+   - **Independent Variables**: Type of restoration (DRC or FCC), tooth type (incisor or canine), location (maxillary or mandibular), gender, recall period, restorative surfaces, remaining cervical tooth structure, posterior support, adjacent teeth, type of post, post length relative to alveolar bone level, cervical root dentin thickness, parafunctional habits.
+   - **Dependent Variable**: Survival from unrestorable fracture (yes/no).
+6. **Measurements**:
+   - Survival rates (percentage of teeth surviving unrestorable fracture).
+   - Incidence of fracture (coronal, coronal-root, or root).
+   - Kaplan-Meier survival curves for cumulative survival rates at time intervals.
+   - Statistical significance of survival rates across groups.
+7. **Data Collection Methods**:
+   - Dental records and radiographs from patients treated between 2007–2019.
+   - Information on preoperative, intraoperative, and postoperative factors extracted from charts.
+   - Survival rates calculated based on recall periods and fracture incidence.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Log-Rank Test**:
+   - **Purpose**: To compare survival curves between DRC and FCC groups.
+   - **Why Appropriate**:
+     - Survival analysis is required for time-to-event data (fracture occurrence over time).
+     - Kaplan-Meier curves are presented, and the log-rank test is standard for comparing them.
+   - **Why It May Not Be Appropriate**:
+     - Assumes proportional hazards, which may not hold if survival curves cross.
+   - **When This Test Should NOT Be Used**: If the proportional hazards assumption is violated.
+   - **Alternative**: Breslow (Generalized Wilcoxon) test or Cox proportional hazards model.
+
+2. **Chi-Square Test**:
+   - **Purpose**: To compare categorical variables (e.g., survival rates by gender, tooth type, location, restoration type).
+   - **Why Appropriate**:
+     - Suitable for testing associations between categorical variables.
+     - Sample size is large enough for chi-square assumptions.
+   - **Why It May Not Be Appropriate**:
+     - Small expected frequencies in some categories may violate assumptions.
+   - **When This Test Should NOT Be Used**: If expected frequencies are <5 in >20% of cells.
+   - **Alternative**: Fisher’s exact test.
+
+3. **Kaplan-Meier Survival Analysis**:
+   - **Purpose**: To estimate cumulative survival rates over time for DRC and FCC groups.
+   - **Why Appropriate**:
+     - Standard method for analyzing time-to-event data.
+     - Accounts for censored data (e.g., teeth lost to follow-up).
+   - **Why It May Not Be Appropriate**:
+     - Does not account for covariates affecting survival.
+   - **When This Test Should NOT Be Used**: If covariates significantly influence survival.
+   - **Alternative**: Cox proportional hazards model.
+
+#### CATEGORY B – RECOMMENDED TESTS
+4. **Cox Proportional Hazards Model**:
+   - **Purpose**: To evaluate the effect of multiple covariates (e.g., gender, tooth type, restoration type) on survival rates.
+   - **Why Appropriate**:
+     - Accounts for covariates influencing survival.
+     - Provides hazard ratios for risk factors.
+   - **Why It May Not Be Appropriate**:
+     - Assumes proportional hazards, which may not hold.
+   - **When This Test Should NOT Be Used**: If proportional hazards assumption is violated.
+   - **Alternative**: Stratified Cox model or time-dependent covariates.
+
+5. **Multivariate Logistic Regression**:
+   - **Purpose**: To identify predisposing factors to unrestorable fracture.
+   - **Why Appropriate**:
+     - Suitable for binary outcome (fracture: yes/no).
+     - Allows adjustment for confounders.
+   - **Why It May Not Be Appropriate**:
+     - Assumes linear relationship between predictors and log odds.
+   - **When This Test Should NOT Be Used**: If multicollinearity exists among predictors.
+   - **Alternative**: Ridge regression or stepwise logistic regression.
+
+#### CATEGORY C – OPTIONAL TESTS
+6. **Fisher’s Exact Test**:
+   - **Purpose**: To analyze categorical variables with small sample sizes (e.g., fracture incidence by post type).
+   - **Why Appropriate**:
+     - Accurate for small sample sizes.
+     - Does not rely on chi-square assumptions.
+   - **Why It May Not Be Appropriate**:
+     - Computationally intensive for large datasets.
+   - **When This Test Should NOT Be Used**: If sample size is large.
+   - **Alternative**: Chi-square test.
+
+7. **Wilcoxon Rank-Sum Test**:
+   - **Purpose**: To compare recall periods between groups (DRC vs FCC).
+   - **Why Appropriate**:
+     - Non-parametric test for continuous data.
+     - Suitable if recall periods are non-normally distributed.
+   - **Why It May Not Be Appropriate**:
+     - Less powerful than parametric tests for large samples.
+   - **When This Test Should NOT Be Used**: If data are normally distributed.
+   - **Alternative**: Independent t-test.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-Test**:
+   - **Reason**: Recall periods may not be normally distributed, violating assumptions.
+   - **Alternative**: Wilcoxon rank-sum test.
+
+2. **ANOVA**:
+   - **Reason**: Not suitable for binary outcomes (e.g., survival: yes/no).
+   - **Alternative**: Logistic regression.
+
+3. **Pearson Correlation**:
+   - **Reason**: Not appropriate for categorical variables (e.g., restoration type).
+   - **Alternative**: Chi-square test or logistic regression.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach combines survival analysis (Kaplan-Meier and log-rank tests) with multivariate modeling (Cox proportional hazards and logistic regression) to address the primary objective and identify predisposing factors. This approach ensures robust analysis of time-to-event data while accounting for covariates. Supplementary tests (e.g., chi-square, Fisher’s exact test) enhance rigor for categorical comparisons. Non-parametric tests (e.g., Wilcoxon rank-sum) are recommended for continuous data with non-normal distributions.

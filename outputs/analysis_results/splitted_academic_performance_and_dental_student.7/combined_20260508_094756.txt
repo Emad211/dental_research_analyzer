@@ -1,0 +1,862 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_academic_performance_and_dental_student.7.pdf
+Time : 20260508_094756
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study design, setting, ethics
+- **Design:** Retrospective cohort study (two consecutive academic-year cohorts compared).
+- **Setting:** Princess Nourah Bint Abdulrahman University, College of Dentistry (PNU-CD), Riyadh, Saudi Arabia.
+- **Ethics:** PNU IRB approval **#20-0293**.
+
+### Objectives (as stated)
+1. **Evaluate** consequences of online modalities used in **emergency remote teaching (ERT)** on **students’ learning satisfaction**.
+2. **Compare academic performance** (summative exam scores) of ERT cohort vs **prepandemic face-to-face cohort**.
+
+### Study populations / groups
+- **Cohort 1 (ERT, pandemic year 2019–2020):**  
+  - **N = 39** undergraduate **3rd-year dental students** enrolled in the preclinical endodontic course.
+  - Didactic lectures delivered in three formats:
+    - **Face-to-face:** 4 lectures
+    - **Online-synchronized (live virtual):** 11 lectures (Microsoft Teams)
+    - **Online-asynchronized (recorded):** 4 lectures (Blackboard LMS)
+- **Cohort 2 (prepandemic face-to-face, previous academic year):**
+  - **N = 37** students enrolled in the same course the prior year.
+  - “Lectures and lecturers … identical”; all students “successfully passed.”
+
+### Outcomes / variables and measurements
+
+#### A) Student satisfaction (ERT cohort only)
+- **Instrument:** Online questionnaire emailed to students **after lecture delivery and before summative assessments**.
+- **Response scale:** **3-level ordinal**: *satisfied / neutral / unsatisfied*.
+- **Items:**
+  - Q1: overall satisfaction with online teaching during the course.
+  - Q2: preferred/best method of lecture delivery.
+  - Additional **18 items** rating satisfaction with each modality (face-to-face, synchronized online, asynchronized online) regarding:
+    - comprehension & retention
+    - communication with lecturer
+    - stress-free learning
+    - time convenience
+    - internet/technical support (online)
+    - transportation (face-to-face)
+- **Data type:** mostly **ordinal categorical** per item; “preference” is **nominal categorical**.
+
+#### B) Academic performance (both cohorts)
+- **Assessments:** two **summative examinations** consisting of **MCQs**, blueprint-fixed questions per lecture; monitored by Assessment Unit.
+- **Platform:** ExamSoft; allows **item analysis**.
+- **Primary performance variable:** **overall exam score(s)** (unclear if per exam or combined course score; text implies “overall scores” after completion of the exams).
+- **Comparison:** ERT cohort scores vs prepandemic cohort scores.
+
+### Timing and data collection modes
+- Satisfaction survey: **prospective within the ERT cohort** (though study overall retrospective cohort); administered **online via email link** before exams.
+- Performance: extracted from ExamSoft records for both cohorts; item analysis possible.
+
+### Key design features/limitations implied
+- **Non-randomized** comparison between academic-year cohorts (potential confounding by cohort differences).
+- Satisfaction comparisons across lecture modalities are **within-student repeated measures** (each student experienced all three modalities across the course).
+- No mention of covariates (e.g., GPA), missing data handling, or questionnaire validation/reliability.
+
+---
+
+## TASK 2: Statistical analysis plan (SAP)
+
+### 1) General principles (applies to all analyses)
+- **Analysis set:**
+  - Performance: all enrolled students with available exam score(s) in each cohort.
+  - Satisfaction: all ERT students who responded to the survey; report response rate.
+- **Descriptives:**
+  - Continuous (scores): mean±SD and median (IQR); min–max.
+  - Categorical/ordinal (survey): counts and percentages per response category.
+- **Assumption checks:**
+  - Normality of scores: histogram/Q–Q plot + Shapiro–Wilk (not as a sole decision rule).
+  - Variance homogeneity (two-sample comparisons): Levene or Brown–Forsythe.
+- **Effect sizes + uncertainty:**
+  - For mean differences: mean difference with **95% CI** (and Cohen’s d/Hedges g).
+  - For ordinal outcomes: odds ratios (ordinal models) or paired effect sizes (e.g., matched OR) with 95% CI.
+- **Multiplicity control:**
+  - For the 18 survey items (and multiple modality comparisons), control familywise error (Holm) or false discovery rate (Benjamini–Hochberg), pre-specified.
+- **Missing data:**
+  - Describe patterns; for survey items consider complete-case per item; for modeling consider multiple imputation only if missingness is meaningful and plausibly MAR.
+
+---
+
+## CATEGORY A – MANDATORY tests
+
+### A1) Independent-samples t-test (or Welch t-test) for cohort performance
+- **Purpose:** Compare mean exam score (or combined score) between **ERT (N=39)** and **prepandemic (N=37)** cohorts.
+- **Why appropriate (≥2):**
+  1. Primary research question is a **between-cohort difference** in a (typically) **continuous** outcome (score).
+  2. With moderate sample sizes, t-based inference is robust, especially with Welch for unequal variances.
+- **Why may not be appropriate (≥1):**
+  - If score distribution is strongly non-normal with outliers/ceiling effects, mean comparison may be misleading.
+- **When NOT to use:**
+  - When outcome is not continuous/approximately interval (e.g., pass/fail only) or distributions are extremely skewed with heavy ties.
+- **Alternative if assumptions violated:**
+  - **Welch t-test** (if unequal variances); **Mann–Whitney U** (if severe non-normality/outliers); or **robust Yuen trimmed-mean test**.
+
+### A2) Paired comparison across lecture modalities for satisfaction (within ERT cohort): Friedman test
+- **Purpose:** Test whether satisfaction ratings differ across **three modalities** (face-to-face vs synchronized vs asynchronized) for each item (and/or composite, if created).
+- **Why appropriate (≥2):**
+  1. Satisfaction responses are **ordinal** (3 levels).
+  2. Same students rate multiple modalities → **paired/repeated-measures** with 3 conditions.
+- **Why may not be appropriate (≥1):**
+  - If a given item is not truly measured for all modalities (e.g., “transportation” may apply only to face-to-face), the repeated-measures structure may be invalid.
+- **When NOT to use:**
+  - When the three modality ratings are not available per subject (non-comparable items) or data are not paired.
+- **Alternative if assumptions violated / not applicable:**
+  - **Cochran’s Q** (if dichotomized satisfied vs not), or **ordinal mixed-effects model / GEE** (preferred when adding covariates and handling missingness).
+
+### A3) Post-hoc paired comparisons after Friedman: Wilcoxon signed-rank with multiplicity adjustment
+- **Purpose:** Identify which modality pairs differ (sync vs async, sync vs F2F, async vs F2F).
+- **Why appropriate (≥2):**
+  1. Ordinal paired data with potential non-normality.
+  2. Complements Friedman to provide actionable modality differences.
+- **Why may not be appropriate (≥1):**
+  - Many ties with 3-level scale can reduce power and make rank-based tests less informative.
+- **When NOT to use:**
+  - If the analysis plan uses an ordinal mixed model as the primary approach (then contrasts from the model are preferable).
+- **Alternative if assumptions violated:**
+  - **Sign test** (very tied data), or **ordinal mixed model contrasts** with robust SEs.
+
+### A4) Chi-square goodness-of-fit (or exact multinomial) for “best method preference”
+- **Purpose:** Describe and test whether one lecture method is preferred more than others in the ERT cohort.
+- **Why appropriate (≥2):**
+  1. Preference is **nominal categorical** (3 options).
+  2. Simple one-sample distribution question (are preferences equally distributed?).
+- **Why may not be appropriate (≥1):**
+  - If expected counts are small in any category, chi-square approximation may be poor.
+- **When NOT to use:**
+  - If preference allows multiple selections (not stated) or if sample is too small for chi-square assumptions.
+- **Alternative if assumptions violated:**
+  - **Exact multinomial test** or **Fisher–Freeman–Halton** approach (for small counts).
+
+---
+
+## CATEGORY B – RECOMMENDED tests (enhance rigor)
+
+### B1) Linear regression (or ANCOVA) for cohort performance with adjustment (if covariates available)
+- **Purpose:** Estimate cohort difference in exam score adjusted for potential confounders (e.g., prior GPA, age, baseline academic indicators—*not provided but recommended if obtainable*).
+- **Why appropriate (≥2):**
+  1. Cohort comparison is **non-randomized**; adjustment improves internal validity.
+  2. Produces interpretable adjusted mean difference and CI; allows checking interactions (e.g., exam 1 vs exam 2).
+- **Why may not be appropriate (≥1):**
+  - No covariates measured; then regression provides no advantage over t-test and may overfit.
+- **When NOT to use:**
+  - When key confounders are unavailable and model becomes misleadingly “adjusted.”
+- **Alternative if assumptions violated:**
+  - **Robust regression** (Huber/biweight) or **quantile regression** (median difference).
+
+### B2) Mixed-effects model for performance if two exam scores per student are analyzed
+- **Purpose:** Model repeated performance (Exam 1 and Exam 2) within students and compare cohorts while accounting for within-student correlation.
+- **Why appropriate (≥2):**
+  1. Exams are **repeated measures**; mixed models properly handle correlation.
+  2. Can test **cohort × exam** interaction (did ERT affect one exam more than the other?).
+- **Why may not be appropriate (≥1):**
+  - If only a single combined score is available, repeated-measures modeling is unnecessary.
+- **When NOT to use:**
+  - When exam structure differs across cohorts (not indicated; blueprint suggests similarity).
+- **Alternative if assumptions violated:**
+  - **GEE** with robust SEs; or analyze each exam separately with multiplicity control.
+
+### B3) Ordinal logistic regression (cumulative logit) or ordinal mixed model for satisfaction
+- **Purpose:** Model satisfaction (3-level ordinal) as outcome with **modality** as predictor; optionally include item domain and student-level random effects.
+- **Why appropriate (≥2):**
+  1. Uses the **ordinal nature** of satisfaction without collapsing categories.
+  2. Handles **repeated measures** (multiple modalities per student; multiple items) via random effects/GEE and yields interpretable odds ratios.
+- **Why may not be appropriate (≥1):**
+  - Proportional odds assumption may be violated; with only 3 categories, diagnostics can be limited.
+- **When NOT to use:**
+  - If sample size is too small for the complexity (e.g., sparse cells across modality×category).
+- **Alternative if assumptions violated:**
+  - **Partial proportional odds model**, **multinomial logistic regression**, or **GEE with multinomial link**.
+
+### B4) Reliability/internal consistency of the satisfaction questionnaire (if items intended as a scale)
+- **Test/metric:** **Cronbach’s alpha** (and preferably **McDonald’s omega**) per domain or overall, if a composite score is created.
+- **Purpose:** Assess whether combining items into a total/domain satisfaction score is psychometrically defensible.
+- **Why appropriate (≥2):**
+  1. There are **18 items** likely measuring overlapping constructs.
+  2. Supports validity of any composite used for inferential testing.
+- **Why may not be appropriate (≥1):**
+  - If items measure distinct constructs (comprehension, stress, technical support), a single alpha may be inappropriate.
+- **When NOT to use:**
+  - When items are not intended to form a unidimensional scale.
+- **Alternative if assumptions violated:**
+  - **Factor analysis** (EFA/CFA) to identify domains; compute subscale reliabilities.
+
+---
+
+## CATEGORY C – OPTIONAL tests (supplementary insights)
+
+### C1) Equivalence or non-inferiority testing for performance (ERT vs prepandemic)
+- **Test:** **TOST equivalence test** (requires pre-specified equivalence margin).
+- **Purpose:** Support the claim “did not affect” performance by testing whether differences are within a practically negligible margin.
+- **Why appropriate (≥2):**
+  1. A non-significant difference is not evidence of no effect; equivalence directly addresses “no meaningful difference.”
+  2. Provides decision-making aligned with educational relevance.
+- **Why may not be appropriate (≥1):**
+  - No agreed-upon educational equivalence margin; margin choice can be subjective post hoc.
+- **When NOT to use:**
+  - If equivalence margin cannot be justified a priori.
+- **Alternative if assumptions violated:**
+  - **TOST on robust/bootstrapped CI** or equivalence on standardized effect (d) with CI.
+
+### C2) Item analysis comparisons between cohorts (ExamSoft outputs)
+- **Tests/metrics:** item difficulty (p-value), discrimination (point-biserial), reliability (KR-20), differential item functioning (DIF) screening.
+- **Purpose:** Determine whether exam items functioned similarly across cohorts (supporting fairness/comparability).
+- **Why appropriate (≥2):**
+  1. Exams administered via ExamSoft with item analysis capability.
+  2. Cohort comparisons can be confounded if items behaved differently under remote conditions.
+- **Why may not be appropriate (≥1):**
+  - Requires item-level data and consistent items across years.
+- **When NOT to use:**
+  - If exams differed materially or item mapping is unavailable.
+- **Alternative if assumptions violated:**
+  - Focus on test-level metrics (KR-20, score distributions) and blueprint comparability narrative.
+
+### C3) Sensitivity analysis using nonparametric/robust methods for score comparison
+- **Purpose:** Confirm findings are not driven by outliers or distributional assumptions.
+- **Why appropriate (≥2):**
+  1. Educational scores may show ceiling effects.
+  2. Adds robustness to primary inference.
+- **Why may not be appropriate (≥1):**
+  - Can complicate interpretation if results diverge without clear reason.
+- **When NOT to use:**
+  - If sample is extremely small and nonparametrics become too underpowered.
+- **Alternative:**
+  - Bootstrap CI for mean/median difference.
+
+---
+
+## TASK 3: Inappropriate tests (should NOT be used)
+
+1. **Paired t-test** for comparing cohorts’ exam scores  
+   - **Why wrong:** cohorts are independent groups (different students/years), not paired observations.
+
+2. **One-way ANOVA treating the three satisfaction modalities as independent groups**  
+   - **Why wrong:** same students rate multiple modalities → violates independence; would underestimate SEs and inflate Type I error.
+
+3. **Multiple separate chi-square tests on satisfaction items ignoring ordinality and pairing**  
+   - **Why wrong:** satisfaction is ordinal and paired across modalities; chi-square also ignores within-subject correlation and creates major multiplicity problems.
+
+4. **Simple correlation (Pearson/Spearman) between “lecture modality” and satisfaction**  
+   - **Why wrong:** modality is categorical (3-level) and repeated within subject; correlation is not the right framework.
+
+5. **“No effect because P>0.05” conclusion without effect size/CI (and ideally equivalence framework)**  
+   - **Why wrong:** absence of evidence is not evidence of absence; must report estimated differences with uncertainty.
+
+---
+
+## TASK 4: Summary justification of analytical approach
+
+The analysis should (1) compare **academic performance** between two **independent year-cohorts** using mean-difference inference with appropriate robustness/adjustment, and (2) analyze **student satisfaction** as **within-student ordinal repeated measures** across three lecture modalities, using paired nonparametric tests or (preferably, if feasible) ordinal mixed/GEEs. This aligns the statistical methods with the measurement scales (continuous scores; ordinal satisfaction), the dependence structure (paired modality ratings), and the non-randomized cohort design (need for effect sizes, CIs, and—when possible—confounder adjustment and equivalence-style interpretation).
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics
+1. **Study Design**:  
+   Retrospective cohort study.
+
+2. **Objectives**:  
+   - Evaluate the consequences of emergency remote teaching on dental students' learning satisfaction.  
+   - Compare academic performance in summative examinations between students taught via emergency remote teaching and those taught face-to-face in the prepandemic year.
+
+3. **Groups**:  
+   - **Group 1**: Students taught via emergency remote teaching during the COVID-19 pandemic (2019–2020 academic year).  
+   - **Group 2**: Students taught face-to-face in the prepandemic year (2018–2019 academic year).
+
+4. **Sample Size**:  
+   - Group 1: 39 students.  
+   - Group 2: 37 students.
+
+5. **Variables**:  
+   - **Independent Variables**:  
+     - Mode of teaching (emergency remote teaching vs. face-to-face).  
+     - Lecture delivery method (face-to-face, online-synchronized, online-asynchronized).  
+   - **Dependent Variables**:  
+     - Student satisfaction (survey responses).  
+     - Academic performance (summative examination scores).
+
+6. **Measurements**:  
+   - **Student Satisfaction**:  
+     - Survey with 18 questions rated on satisfaction levels (satisfied, neutral, unsatisfied).  
+     - Categories assessed: comprehension, retention, communication, stress-free learning, time convenience, technical support, transportation.  
+   - **Academic Performance**:  
+     - Summative examination scores (multiple-choice questions based on a fixed blueprint).  
+     - Item analysis performed using ExamSoft platform.
+
+7. **Data Collection Methods**:  
+   - Satisfaction survey distributed via email before summative assessments.  
+   - Examination scores collected via ExamSoft platform for both cohorts.  
+   - Lectures and lecturers were identical across both cohorts.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Independent Samples t-Test (or Mann-Whitney U Test if assumptions are violated).  
+   - **Purpose**: Compare summative examination scores between the two cohorts.  
+   - **Why Appropriate**:  
+     - Continuous dependent variable (exam scores).  
+     - Two independent groups (remote teaching vs. face-to-face teaching).  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes normality and homogeneity of variance.  
+   - **When This Test Should NOT Be Used**:  
+     - If data are not normally distributed or variances are unequal.  
+   - **Alternative**: Mann-Whitney U Test (nonparametric).
+
+2. **Test Name**: Chi-Square Test of Independence (or Fisher’s Exact Test for small sample sizes).  
+   - **Purpose**: Analyze the association between lecture delivery method and student satisfaction levels.  
+   - **Why Appropriate**:  
+     - Categorical variables (lecture delivery method and satisfaction levels).  
+     - Large enough sample size for expected frequencies in contingency tables.  
+   - **Why It May Not Be Appropriate**:  
+     - Small sample size may lead to low expected frequencies.  
+   - **When This Test Should NOT Be Used**:  
+     - If more than 20% of cells have expected frequencies <5.  
+   - **Alternative**: Fisher’s Exact Test.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: One-Way ANOVA (or Kruskal-Wallis Test if assumptions are violated).  
+   - **Purpose**: Compare satisfaction scores across the three lecture delivery methods (face-to-face, online-synchronized, online-asynchronized).  
+   - **Why Appropriate**:  
+     - Continuous dependent variable (satisfaction scores).  
+     - Three independent groups (lecture delivery methods).  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes normality and homogeneity of variance.  
+   - **When This Test Should NOT Be Used**:  
+     - If data are not normally distributed or variances are unequal.  
+   - **Alternative**: Kruskal-Wallis Test (nonparametric).
+
+2. **Test Name**: Paired Samples t-Test (or Wilcoxon Signed-Rank Test if assumptions are violated).  
+   - **Purpose**: Compare satisfaction scores within the same cohort across different lecture delivery methods.  
+   - **Why Appropriate**:  
+     - Continuous dependent variable (satisfaction scores).  
+     - Paired data (same students rating multiple methods).  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes normality of differences.  
+   - **When This Test Should NOT Be Used**:  
+     - If differences are not normally distributed.  
+   - **Alternative**: Wilcoxon Signed-Rank Test.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Correlation Analysis (Pearson or Spearman).  
+   - **Purpose**: Investigate the relationship between satisfaction scores and academic performance.  
+   - **Why Appropriate**:  
+     - Continuous variables (satisfaction scores and exam scores).  
+     - Useful for exploring potential associations.  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes linearity and normality for Pearson correlation.  
+   - **When This Test Should NOT Be Used**:  
+     - If data are not linear or normally distributed.  
+   - **Alternative**: Spearman correlation (nonparametric).
+
+2. **Test Name**: Logistic Regression.  
+   - **Purpose**: Predict likelihood of satisfaction (binary outcome: satisfied vs. unsatisfied) based on lecture delivery method.  
+   - **Why Appropriate**:  
+     - Binary dependent variable (satisfaction).  
+     - Multiple independent variables can be included.  
+   - **Why It May Not Be Appropriate**:  
+     - Requires large sample size for reliable estimates.  
+   - **When This Test Should NOT Be Used**:  
+     - If sample size is insufficient.  
+   - **Alternative**: Fisher’s Exact Test for categorical analysis.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: Paired Samples t-Test for comparing exam scores between cohorts.  
+   - **Reason**: The cohorts are independent groups, not paired.  
+2. **Test Name**: Repeated Measures ANOVA for satisfaction scores across lecture methods.  
+   - **Reason**: Requires repeated measures from the same individuals, which is not applicable for between-group comparisons.  
+3. **Test Name**: Linear Regression for predicting satisfaction.  
+   - **Reason**: Satisfaction is a categorical variable, not continuous.
+
+---
+
+### TASK 4: SUMMARY
+The overall analytical approach is designed to address the study’s objectives comprehensively. Mandatory tests focus on the primary comparisons (academic performance and satisfaction levels), recommended tests enhance the rigor by exploring satisfaction across lecture methods, and optional tests provide supplementary insights into relationships and predictive factors. Nonparametric alternatives are included to ensure robustness if assumptions are violated. This approach balances statistical rigor with practical considerations given the sample size and study design.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1 – INFORMATION EXTRACTION  
+(Study characteristics, variables, measurements, data collection)
+
+1. Study design
+- Type: Retrospective cohort study with cross‑sectional survey component.
+- Setting: College of Dentistry, Princess Nourah Bint Abdulrahman University (PNU‑CD), Riyadh, Saudi Arabia.
+- Period:
+  - Prepandemic cohort: 2018–2019 academic year (preclinical endodontic course).
+  - Pandemic cohort: 2019–2020 academic year (same course, emergency remote teaching).
+- Ethical approval: PNU IRB # 20‑0293.
+
+2. Study population and cohorts
+- Target population: Undergraduate dental students (3rd‑year) enrolled in the preclinical endodontic endodontic course.
+- Pandemic cohort (exposed to emergency remote teaching):
+  - n = 39 students enrolled in 2019–2020.
+  - All took the course with mixed delivery: face‑to‑face plus online.
+- Prepandemic cohort (control/comparator):
+  - n = 37 students enrolled in the previous academic year.
+  - All had conventional face‑to‑face didactic teaching.
+  - All 37 had successfully passed the course.
+- Inclusion (explicitly stated/implicit):
+  - Registered 3rd‑year dental students in preclinical endodontic course in each year.
+- Exclusion:
+  - Not explicitly stated; likely none among enrollees (full cohorts).
+
+3. Intervention/exposure and teaching modalities
+- Course: Preclinical endodontic module for 3rd‑year dental students. Components:
+  - Didactic component (the focus of the study).
+  - Hands‑on training in simulation lab (mentioned but not analyzed in the given text).
+- Prepandemic year:
+  - Main teaching method: conventional face‑to‑face lectures (direct instruction).
+- Pandemic year:
+  - Emergency remote teaching adopted after campus lockdown.
+  - Didactic component delivered via three modalities:
+    - Face‑to‑face lectures (4 lectures).
+    - Online‑synchronized (“virtual”) lectures via Microsoft Teams (11 lectures).
+    - Online‑asynchronized recorded lectures posted on Blackboard LMS (4 lectures).
+  - Total: 19 lectures (4 F2F, 11 synchronous online, 4 asynchronous online).
+
+4. Objectives
+- Primary objectives (from text):
+  1) To evaluate the consequences of introducing online modalities used in emergency remote teaching on students’ learning satisfaction.
+  2) To compare academic performance (summative exam scores) of students taught with emergency remote teaching (pandemic cohort) versus their colleagues taught face to face in the prepandemic year.
+- Implicit secondary objective:
+  - To compare satisfaction with and preferences among the three delivery modalities (face‑to‑face, online‑synchronized, online‑asynchronized) across multiple aspects (comprehension, communication, stress, time, technical issues, transport).
+
+5. Outcomes and variables
+
+A. Student satisfaction (pandemic cohort only)
+- Data collection:
+  - Online questionnaire administered after completion of all 19 lectures and before summative assessments.
+  - Invitation via email.
+  - Participation: voluntary and anonymous (response rate not provided in the excerpt).
+- Response format:
+  - Rated in three categories: satisfied / neutral / unsatisfied (ordered categorical variable; effectively 3‑point Likert).
+- Key survey items:
+  1) Overall satisfaction with online teaching during the course (global item; 3‑category outcome).
+  2) Preferences regarding the best method of lecture delivery used during the course:
+     - Options: face‑to‑face vs online‑synchronized vs online‑asynchronized (nominal categorical variable, “preferred modality”).
+  3) Eighteen (18) additional questions assessing satisfaction with each of the three methods of lecture delivery regarding:
+     - Comprehension and retention of knowledge.
+     - Communication with the lecturer.
+     - Stress‑free learning.
+     - Time convenience.
+     - Internet and technical support in online modalities.
+     - Transportation for face‑to‑face teaching.
+- Structure (inferred):
+  - Each of the 18 questions likely asked students to rate satisfaction with each modality on the same 3‑point scale.
+  - Thus, multiple within‑student repeated measures: satisfaction rating for modality × domain.
+
+B. Academic performance
+- Assessment:
+  - Two summative examinations (knowledge assessment) in the preclinical endodontic course.
+  - Exam format: multiple‑choice questions (MCQs).
+  - Blueprint:
+    - Fixed blueprint defines number of questions per lecture.
+    - Same blueprint and lecture content across both academic years (lectures and lecturers identical).
+  - Quality assurance: questions must conform to guidelines monitored by PNU‑CD Assessment Unit.
+  - Platform: ExamSoft (allows item analysis).
+- Outcome variables:
+  - Primary: Overall summative exam score per student (continuous, likely 0–100 or percentage or total points).
+  - Possibly available: scores per exam (Exam 1 vs Exam 2), item‑level performance, and blueprint sub‑scores (by lecture or content domain) – not explicitly stated as analyzed, but available via ExamSoft.
+- Comparison:
+  - Pandemic cohort (n = 39) vs prepandemic cohort (n = 37).
+  - Same course, same content, same exam blueprint and likely similar exam difficulty; primary exposure difference is mode of lecture delivery.
+
+6. Additional design/measurement details
+- Survey timing:
+  - After all lectures completed.
+  - Before summative assessments (so satisfaction data not influenced by exam results).
+- Nature of study:
+  - Educational effectiveness and perception study.
+  - No randomization; teaching modality determined by year and pandemic context.
+
+7. Potential covariates (not reported but conceptually relevant)
+- Baseline characteristics not mentioned:
+  - Age, gender, prior GPA, prior academic performance, previous exposure to online learning, etc.
+  - No explicit mention of controlling for confounders in the Methods excerpt.
+
+---
+
+TASK 2 – STATISTICAL ANALYSIS PLAN
+
+General principles:
+- Unit of analysis:
+  - Between‑cohort comparisons: student (n = 39 vs 37).
+  - Satisfaction survey: student; within‑subject repeated measures across modalities and domains.
+- Data type:
+  - Continuous: exam scores (overall, possibly exam‑specific or domain‑specific).
+  - Ordinal categorical: satisfaction responses (3‑level).
+  - Nominal categorical: preferred modality.
+- Significance level: α = 0.05 (two‑sided).
+- Software: any standard package (SPSS, Stata, R, SAS).
+
+Below, tests are classified into Mandatory (A), Recommended (B), and Optional (C).
+
+--------------------------------
+CATEGORY A – MANDATORY TESTS
+--------------------------------
+
+A1. Descriptive statistics (continuous and categorical)
+
+- Test / Procedure:
+  - Means, standard deviations (or medians, IQRs) for exam scores.
+  - Counts and percentages for categorical variables (satisfaction levels, preferred modality, pass/fail if used).
+- Purpose:
+  - To characterize the cohorts and describe satisfaction patterns and performance outcomes.
+- Why appropriate:
+  1) Provides essential baseline understanding of distributions before inferential testing (e.g., central tendency and variability of scores).
+  2) Allows transparent reporting of frequencies of satisfaction and preferences, which is critical in survey‑based educational research.
+- Why it may not be appropriate:
+  - Use of means/SD alone may be misleading if distributions are strongly skewed or non‑normal; medians/IQRs may be better.
+- When NOT to use:
+  - Do not summarize heavily skewed or bounded scores (e.g., 0–100 with floor/ceiling effects) solely with means and SD.
+- Alternatives if assumptions violated:
+  - Use median, IQR, and distributional plots (histograms, boxplots) for skewed data; proportions for categorical outcomes.
+
+A2. Normality and distribution assessment of exam scores
+
+- Test / Procedure:
+  - Graphical: histograms, Q–Q plots.
+  - Formal tests: Shapiro–Wilk test (preferred for n < 50), Kolmogorov–Smirnov as supportive.
+- Purpose:
+  - To decide whether parametric methods (e.g., t‑test) are appropriate for exam score comparisons.
+- Why appropriate:
+  1) Exam scores are continuous but may not be normally distributed, especially with small samples; verifying assumptions is necessary.
+  2) Ensures that inferential methods are chosen to match data distribution, preserving validity of p‑values and confidence intervals.
+- Why it may not be appropriate:
+  - Formal normality tests can be overly sensitive or underpowered; p‑values might suggest “non‑normality” even when parametric tests are robust, or fail to detect mild non‑normality in small samples.
+- When NOT to use:
+  - As a strict dichotomous decision rule; normality assessment should be integrated with graphical inspection and knowledge of robustness.
+- Alternatives:
+  - Rely more on visual inspection and robustness of t‑tests; or use nonparametric testing (Mann–Whitney) if clearly non‑normal or with outliers.
+
+A3. Two‑sample comparison of overall exam scores between cohorts
+
+- Primary test:
+  - Independent‑samples t‑test (two‑sided).
+- Purpose:
+  - To compare mean summative exam performance between:
+    - Pandemic cohort (emergency remote teaching) vs prepandemic cohort (traditional face‑to‑face).
+- Why appropriate:
+  1) Outcome is continuous; groups are independent (different students in different years).
+  2) Sample sizes are moderate and group sizes similar (n ≈ 37–39); t‑test is reasonably robust to mild non‑normality.
+- Why it may not be appropriate:
+  - If exam scores are markedly skewed, have strong ceiling/floor effects, or variances between years differ substantially (heteroscedasticity).
+- When NOT to use:
+  - When distributions are highly non‑normal and sample sizes are small with clear outliers.
+  - When each group’s variance is very different and not addressable by Welch correction.
+- Alternative if assumptions violated:
+  - Use Mann–Whitney U test for robust comparison of distributions.
+  - For unequal variances but approximate normality, use Welch’s t‑test instead of the standard pooled‑variance t‑test.
+
+A4. Comparison of satisfaction across modalities for each domain (within the pandemic cohort)
+
+- Primary test (ordinal, repeated measures):
+  - Friedman test (nonparametric repeated‑measures test) on 3 related groups (F2F, synchronous, asynchronous) for each domain, using ordinal satisfaction (1–3).
+- Purpose:
+  - To test whether median satisfaction differs among the three lecture delivery methods, within the same students, for each of the 18 satisfaction aspects (comprehension, communication, stress, etc.).
+- Why appropriate:
+  1) Satisfaction responses are ordinal (3‑level), not interval; Friedman test does not assume normality and is suitable for within‑subject comparisons of ≥3 related groups.
+  2) Each student rates all three modalities → repeated‑measures design; Friedman explicitly accounts for within‑subject correlation.
+- Why it may not be appropriate:
+  - If the data are heavily tied (many identical responses across modalities), test power may be reduced and interpretations less stable.
+- When NOT to use:
+  - When each student rates only one modality (i.e., between‑subject) – not the case here, but relevant conceptually.
+  - When the outcome is truly continuous and normally distributed, where repeated‑measures ANOVA would be more powerful.
+- Alternatives if assumptions violated:
+  - If you opt to treat satisfaction scales as continuous (arguable with 3 categories but less ideal), use repeated‑measures ANOVA (with appropriate checks: sphericity).
+  - For small sample and ordinal data with many ties, use a nonparametric aligned‑rank test or pairwise Wilcoxon signed‑rank tests with multiplicity adjustment.
+
+A5. Comparison of preference frequencies for the three modalities
+
+- Primary test:
+  - Chi‑square goodness‑of‑fit test (if comparing observed distribution of preferred modality against uniform or hypothesized distribution).
+  - Alternatively, chi‑square test of independence if comparing preference vs another categorical variable (e.g., satisfaction category, if such cross‑tab exists).
+- Purpose:
+  - To test whether one lecture modality is significantly more frequently preferred than others (e.g., online‑synchronized vs face‑to‑face vs asynchronous).
+- Why appropriate:
+  1) Preferred modality is nominal categorical; chi‑square tests are standard for comparing observed vs expected frequencies.
+  2) Sample sizes are likely adequate: expected cell counts should exceed 5 for 3 categories with n ≈ 39.
+- Why it may not be appropriate:
+  - If some categories have very few counts (e.g., almost no one prefers one modality), expected frequencies may fall below 5, violating assumptions.
+- When NOT to use:
+  - When expected frequencies are < 5 in more than 20% of cells or any cell has expected count < 1.
+- Alternatives if assumptions violated:
+  - Fisher’s exact test (for 2 × 3 table when sample is small and assumptions of chi‑square are violated), or collapsing rarely chosen categories if justifiable.
+
+A6. Effect size estimation
+
+- Procedures:
+  - For t‑tests: Cohen’s d (with 95% CI).
+  - For Mann–Whitney: rank‑biserial correlation or Cliff’s delta.
+  - For Friedman: Kendall’s W.
+  - For chi‑square: Cramér’s V.
+- Purpose:
+  - To quantify the magnitude of differences in satisfaction and performance, not only statistical significance.
+- Why appropriate:
+  1) Educational significance is better reflected by effect sizes than p‑values alone.
+  2) Allows comparison with other studies and meta‑analytic synthesis.
+- Why it may not be appropriate:
+  - Effect size interpretations can be misleading if distributions are highly skewed or if sample sizes are very small.
+- When NOT to use:
+  - Do not rely solely on standardized effect sizes when distributions are pathological or sample is tiny; contextualize with raw differences.
+- Alternatives:
+  - Present raw mean/median differences and 95% CIs as a complement to standardized indices.
+
+-----------------------------------
+CATEGORY B – RECOMMENDED TESTS
+-----------------------------------
+
+B1. Reliability analysis of satisfaction items (internal consistency)
+
+- Test:
+  - Cronbach’s alpha (or ordinal alpha) for satisfaction scales within each domain across items, possibly separated by modality.
+- Purpose:
+  - To assess internal consistency of the satisfaction survey and justify aggregating items or interpreting them as coherent scales.
+- Why appropriate:
+  1) The survey has 18 items likely grouped by domains; psychometric evaluation supports validity of conclusions about “satisfaction” constructs.
+  2) Ensures that items within a domain measure similar underlying constructs; helps in reporting composite scores if used.
+- Why it may not be appropriate:
+  - Alpha can be inflated by many items even with modest inter‑item correlations; it also assumes tau‑equivalence and continuous items.
+- When NOT to use:
+  - When items are very heterogeneous by design (each measuring a distinct construct) and not intended as a single scale.
+- Alternatives:
+  - Use ordinal alpha (polychoric correlations) for ordinal data; or report inter‑item correlations and item‑total correlations instead.
+
+B2. Paired comparisons between modalities for specific domains
+
+- Tests:
+  - Wilcoxon signed‑rank test for paired ordinal data (e.g., satisfaction with synchronous vs asynchronous lectures on communication).
+- Purpose:
+  - If Friedman test is significant, identify which pairs of modalities differ for each domain (post‑hoc analysis).
+- Why appropriate:
+  1) Ordinal repeated measures within the same students; Wilcoxon signed‑rank handles paired non‑normal data.
+  2) Provides more detailed insight into specific modality differences (e.g., synchronous > face‑to‑face for communication).
+- Why it may not be appropriate:
+  - Multiple pairwise tests inflate type I error if not adjusted; small sample may limit power.
+- When NOT to use:
+  - Without appropriate multiplicity correction (e.g., Bonferroni, Holm); or if sample is too small to justify multiple comparisons.
+- Alternatives:
+  - Use nonparametric post‑hoc tests designed for Friedman (e.g., Nemenyi test).
+  - Consider controlling familywise error using Holm–Bonferroni.
+
+B3. Analysis of exam item properties (item analysis)
+
+- Tests / Procedures:
+  - Item difficulty (proportion correct), discrimination indices, point‑biserial correlations, and reliability (KR‑20 or Cronbach’s alpha) for each exam year.
+  - Comparison of item‑level metrics between years using correlation or descriptive comparison.
+- Purpose:
+  - To ensure that examinations across years are comparable in difficulty and discrimination, supporting a fair comparison of cohort performance.
+- Why appropriate:
+  1) Validates that differences (or lack thereof) in scores are due to teaching modality rather than changes in exam quality.
+  2) ExamSoft provides item analysis; using it strengthens methodological rigor.
+- Why it may not be appropriate:
+  - If item sets differ meaningfully between years (not just blueprint), then direct item‑level comparison may be invalid.
+- When NOT to use:
+  - When exam forms are substantially different or when item‑level data are not available.
+- Alternatives:
+  - Compare aggregated blueprint domain scores; use equating methods if exam forms differ substantially (requires more advanced psychometrics).
+
+B4. Sensitivity analysis for exam score comparison
+
+- Tests:
+  - Mann–Whitney U test as complementary to t‑test.
+  - Welch’s t‑test for unequal variances.
+- Purpose:
+  - To check robustness of the main finding (no substantial performance difference, or difference, between cohorts) under different analytical assumptions.
+- Why appropriate:
+  1) Exam score distributions may deviate from normality; nonparametric test corroborates results.
+  2) Provides reassurance to readers that conclusions do not depend on a single analytical choice.
+- Why it may not be appropriate:
+  - Can yield slightly different p‑values, leading to confusion if not clearly explained.
+- When NOT to use:
+  - If sample is large and distributions are clearly normal; redundancy may be unnecessary.
+- Alternatives:
+  - Bootstrap confidence intervals for mean or median differences.
+
+B5. Exploratory analysis of relationship between satisfaction and exam performance (pandemic cohort)
+
+- Tests:
+  - Spearman’s rank correlation between satisfaction scores (e.g., overall satisfaction, or composite scores for modalities) and exam scores.
+  - Alternatively, simple linear regression with exam score as outcome and satisfaction as predictor.
+- Purpose:
+  - To explore whether higher satisfaction with online modalities relates to better academic performance within the emergency teaching cohort.
+- Why appropriate:
+  1) Both satisfaction (ordinal/composite) and exam scores are at least ordinal/continuous; Spearman correlation handles non‑normality.
+  2) Provides additional insight into whether satisfaction might be a proxy for engagement, which might influence performance.
+- Why it may not be appropriate:
+  - Cross‑sectional association; cannot infer causality and may be confounded by many unmeasured factors.
+- When NOT to use:
+  - When satisfaction response rate is very low or data are incomplete; when composite scores are poorly reliable.
+- Alternatives:
+  - Group comparison (e.g., exam scores by high vs low satisfaction groups) using Mann–Whitney U or Kruskal–Wallis.
+
+B6. Adjusted analysis of cohort differences (if covariates available)
+
+- Test:
+  - Linear regression or ANCOVA with exam score as outcome, cohort (year) as main predictor, adjusting for GPA or other baseline variables if available.
+- Purpose:
+  - To control for potential confounders that differ between cohorts (e.g., baseline academic achievement).
+- Why appropriate:
+  1) Observational (non‑randomized) comparison between years can be confounded; adjustment improves internal validity.
+  2) Linear regression is standard for continuous outcomes and allows estimation of adjusted mean differences.
+- Why it may not be appropriate:
+  - Covariate data are not mentioned in Methods; may not be available.
+- When NOT to use:
+  - If key covariates are missing or measured inconsistently between cohorts.
+- Alternatives:
+  - Stratified analyses (e.g., by prior GPA categories) or matching if data permit.
+
+--------------------------------
+CATEGORY C – OPTIONAL TESTS
+--------------------------------
+
+C1. Multivariate analysis of satisfaction patterns
+
+- Tests:
+  - Exploratory factor analysis (EFA) on the 18 satisfaction items.
+- Purpose:
+  - To identify underlying dimensions (e.g., “interaction”, “convenience”, “technical issues”) that structure student satisfaction.
+- Why appropriate:
+  1) Could simplify interpretation by reducing 18 items into a smaller number of meaningful factors.
+  2) Helps in designing future surveys and improving course design.
+- Why it may not be appropriate:
+  - Sample size (n ≈ 39) is small for factor analysis (rule of thumb ~5–10 participants per item).
+- When NOT to use:
+  - With this sample size, EFA is statistically underpowered and unstable; not recommended unless sample is much larger.
+- Alternatives:
+  - Conceptually group items based on theoretical domains without factor analysis; report domain‑wise descriptive statistics.
+
+C2. Ordinal regression for satisfaction determinants
+
+- Test:
+  - Ordinal logistic regression (proportional odds model) with satisfaction as outcome and modality/domains or student characteristics as predictors.
+- Purpose:
+  - To model probability of being more satisfied versus neutral/unsatisfied as a function of modality and student factors.
+- Why appropriate:
+  1) Satisfaction is inherently ordinal; ordinal regression respects this structure.
+  2) Can simultaneously adjust for multiple predictors.
+- Why it may not be appropriate:
+  - Small sample size; categories may be sparse and model may not converge; proportional odds assumption may be violated.
+- When NOT to use:
+  - With small n and many predictors; when assumptions cannot be tested or satisfied.
+- Alternatives:
+  - Collapsing categories (e.g., satisfied vs not satisfied) and using logistic regression, if clinically meaningful.
+
+C3. Equivalence or non‑inferiority analysis for exam scores
+
+- Test:
+  - Two‑one‑sided tests (TOST) procedure for equivalence between cohorts, with pre‑specified equivalence margin (e.g., ±5 percentage points).
+- Purpose:
+  - To formally test whether emergency remote teaching is not worse (or equivalent) to face‑to‑face teaching within a margin.
+- Why appropriate:
+  1) Educationally, the question is often “Is online teaching at least as good?” rather than “Is it different?”.
+  2) TOST provides a more informative framework than simple null hypothesis testing for “no difference”.
+- Why it may not be appropriate:
+  - Requires a justified equivalence margin, which can be contentious; small sample size may provide limited power for equivalence.
+- When NOT to use:
+  - When you cannot define an educationally meaningful equivalence margin a priori.
+- Alternatives:
+  - Interpret classical confidence intervals of mean differences in the context of clinically/educationally relevant thresholds.
+
+C4. Multiple‑testing correction across many domains
+
+- Procedure:
+  - Adjust p‑values for multiple comparisons across the 18 domains and 3 modalities (e.g., Holm–Bonferroni or Benjamini–Hochberg).
+- Purpose:
+  - To control familywise or false discovery rate when conducting numerous hypothesis tests.
+- Why appropriate:
+  1) Many domain‑wise comparisons increase risk of type I error; correction protects against spurious findings.
+  2) Enhances credibility of reported “significant” differences among modalities.
+- Why it may not be appropriate:
+  - May be overly conservative in small samples, leading to failure to detect real differences (type II error).
+- When NOT to use:
+  - If the analyses are clearly labeled as exploratory and interpreted cautiously; still, some adjustment is usually good practice.
+- Alternatives:
+  - Group domains into a small number of composite outcomes to reduce number of tests.
+
+---
+
+TASK 3 – INAPPROPRIATE TESTS
+
+Tests that should generally NOT be used for this study, with reasons:
+
+1) Independent‑samples t‑test for satisfaction responses (treated as numerical)
+- Why inappropriate:
+  - Satisfaction ratings are ordinal with only three categories; treating them as continuous and applying t‑tests ignores ordinality and can misrepresent differences, especially with such coarse scales and potential ceiling effects.
+- Prefer:
+  - Nonparametric tests (Friedman, Wilcoxon, chi‑square) that respect ordinal/categorical nature.
+
+2) Pearson correlation between satisfaction (3‑point scale) and exam scores
+- Why inappropriate:
+  - Pearson correlation assumes interval‑scale data and approximate normality; satisfaction is ordinal with 3 categories and likely non‑normal.
+- Prefer:
+  - Spearman’s rank correlation or rank‑based methods.
+
+3) One‑way ANOVA for repeated satisfaction ratings without repeated‑measures structure
+- Why inappropriate:
+  - Using standard one‑way ANOVA as if modalities are independent groups ignores within‑student correlation, inflating type I error.
+- Prefer:
+  - Repeated‑measures ANOVA (if treating responses as continuous) or Friedman test (nonparametric).
+
+4) Paired t‑test for small‑category ordinal satisfaction differences
+- Why inappropriate:
+  - Again, assumption of continuous, approximately normal differences is not warranted with 3‑category ordinal variables.
+- Prefer:
+  - Wilcoxon signed‑rank test for paired ordinal data.
+
+5) Chi‑square test on exam scores (after categorizing into pass/fail if high pass rate)
+- Why inappropriate:
+  - Dichotomizing continuous exam scores (e.g., pass vs fail) leads to substantial loss of information and statistical power, particularly when almost all students pass (as suggested by 37/37 passed in prepandemic year).
+- Prefer:
+  - Analyze continuous scores directly with t‑tests or nonparametric alternatives.
+
+6) Logistic regression using cohort as outcome and exam score as predictor (reverse causation)
+- Why inappropriate:
+  - Cohort is not an outcome; it is a design factor (year of study). Modeling year as outcome misrepresents the research question.
+- Prefer:
+  - Treat cohort as predictor of exam score (linear regression/ANCOVA).
+
+7) Complex multilevel or mixed‑effects models (with current sample size)
+- Why inappropriate:
+  - With n ≈ 39 in the pandemic cohort and limited clustering structure (at most items within students), sophisticated multilevel models are likely over‑parameterized and unstable.
+- Prefer:
+  - Simpler repeated‑measures nonparametric or ANOVA‑based methods.
+
+---
+
+TASK 4 – SUMMARY OF ANALYTICAL APPROACH
+
+The study involves:
+
+- A between‑cohort comparison of continuous exam scores (pandemic vs prepandemic) to evaluate impact of emergency remote teaching on didactic performance.
+- A within‑cohort (pandemic year) evaluation of student satisfaction and preferences among three lecture delivery modalities (face‑to‑face, online‑synchronous, online‑asynchronous), measured on 3‑level ordinal scales.
+
+Accordingly:
+
+- Continuous exam scores are analyzed primarily with independent‑samples t‑tests (and/or Welch’s variant), supported by distribution checks and nonparametric sensitivity analyses when needed. Where possible, item analysis ensures exam comparability between years.
+- Satisfaction, being ordinal and repeated across modalities within students, is analyzed using Friedman tests for overall modality effects within each domain and Wilcoxon signed‑rank tests for pairwise contrasts, along with chi‑square tests for modality preference frequencies.
+- Effect sizes and confidence intervals accompany all key comparisons to quantify the magnitude of differences.
+- Optional exploratory analyses (e.g., correlations between satisfaction and performance, equivalence testing) can enrich interpretation but are clearly distinguished from primary analyses.
+
+This approach respects the data types, accounts for repeated measures in the satisfaction survey, acknowledges the non‑randomized retrospective cohort design, and provides robust, interpretable evidence regarding both academic performance and student satisfaction under emergency remote teaching.

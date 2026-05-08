@@ -1,0 +1,267 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+ACTA
+ODONTOLOGICA
+SCANDINAVICA
+VOLUME 79, 2021
+NUMBER 07
+
+Acta Odontologica Scandinavica
+
+Taylor & Francis
+Taylor & Francis Group
+
+ISSN: 0001-6357 (Print) 1502-3850 (Online) Journal homepage: www.tandfonline.com/journals/iode20
+
+# Calibration improves observer reliability in detecting periapical pathology on panoramic radiographs
+
+Dan Sebring, Thomas Kvist, Kåre Buhlin, Peter Jonasson, EndoReCo & Henrik Lund
+
+**To cite this article:** Dan Sebring, Thomas Kvist, Kåre Buhlin, Peter Jonasson, EndoReCo & Henrik Lund (2021) Calibration improves observer reliability in detecting periapical pathology on panoramic radiographs, Acta Odontologica Scandinavica, 79:7, 554-561, DOI: 10.1080/00016357.2021.1910728
+
+**To link to this article:** https://doi.org/10.1080/00016357.2021.1910728
+
+© 2021 The Author(s). Published by Informa UK Limited, trading as Taylor & Francis Group on behalf of Acta Odontologica Scandinavica Society.
+
+Published online: 02 Jun 2021.
+
+Submit your article to this journal
+
+Article views: 2344
+
+View related articles
+
+View Crossmark data
+
+Citing articles: 1 View citing articles
+
+Full Terms & Conditions of access and use can be found at
+https://www.tandfonline.com/action/journalInformation?journalCode=iode20
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+ACTA ODONTOLOGICA SCANDINAVICA
+2021, VOL. 79, NO. 7, 554–561
+https://doi.org/10.1080/00016357.2021.1910728
+
+Taylor & Francis
+Taylor & Francis Group
+
+ORIGINAL ARTICLE
+OPEN ACCESS
+Check for updates
+
+# Calibration improves observer reliability in detecting periapical pathology on panoramic radiographs
+
+Dan Sebringᵃ ⓘ, Thomas Kvistᵃ, Kåre Buhlinᵇ, Peter Jonassonᵃ, EndoReCo* and Henrik Lundᶜ
+
+ᵃDepartment of Endodontology, Institute of Odontology, Sahlgrenska Academy, University of Gothenburg, Gothenburg, Sweden; ᵇDepartment of Dental Medicine, Division of Periodontology, Karolinska Institutet, Huddinge, Sweden; ᶜDepartment of Oral Maxillofacial Radiology, Institute of Odontology, Sahlgrenska Academy, University of Gothenburg, Gothenburg, Sweden
+
+**HISTORY**
+anuary 2021
+arch 2021
+March 2021
+
+ontitis;
+bserver
+io-
+aph
+
+[REDACTED]
+
+### Introduction
+
+Radiography is an essential tool in many areas of dentistry, not the least in the field of endodontics. Endodontic inflammatory conditions, such as pulpitis and apical periodontitis, do not always exhibit any clinical signs or symptoms. Detection of carious and periapical lesions are both highly dependent on radiographic examination. Intra-oral radiography is the most commonly used method for caries and periapical diagnosis. Cone-beam computed tomography (CBCT) has recently become a useful adjunct in certain cases. Compared with intra-oral radiography, panoramic radiography (PR) is of limited value for endodontic diagnosis [1,2] or for detection of approximal caries [3]. Compared with CBCT, an even greater discrepancy is reported [4,5]. However, in the absence of an independent gold standard, the results should be interpreted with caution.
+
+PR offers a rapid, simple means of providing a broad overview of both jaws and teeth and is likely to be well accepted by patients and/or study participants. It is therefore commonly used in epidemiological studies. Variables such as the number of remaining teeth, restorative therapy and endodontic treatments are accurately disclosed. Despite low sensitivity in detecting caries and periapical pathology, for larger epidemiological studies PR is considered to provide an adequate overview [1,2].
+
+Any study reliant on interpretation of a radiograph, regardless of method, is subject to intra- and inter-observer variation. This issue was clearly demonstrated in the classic study by Goldman et al. [6]. Six observers were instructed to determine independently the periapical status of endodontically treated teeth on intra-oral radiographs: there was agreement in fewer than 50% of the cases. Subsequent studies have also reported on the issue of reliability in radiographic
+
+**CONTACT** Dan Sebring ✉ dan.sebring@gu.se ⌂ Department of Endodontology, Institute of Odontology, Sahlgrenska Academy, University of Gothenburg, Gothenburg, Sweden
+*Collaborators: Lars Bjørndal, Victoria S. Dawson, Helena Fransson, Fredrik Frisk, Peter Jonasson, Thomas Kvist, Merete Markvart, and Maria Pigg
+© 2021 The Author(s). Published by Informa UK Limited, trading as Taylor & Francis Group on behalf of Acta Odontologica Scandinavica Society.
+This is an Open Access article distributed under the terms of the Creative Commons Attribution-NonCommercial-NoDerivatives License (http://creativecommons.org/licenses/by-nc-nd/4.0/), which permits non-commercial re-use, distribution, and reproduction in any medium, provided the original work is properly cited, and is not altered, transformed, or built upon in any way.
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+ACTA ODONTOLOGICA SCANDINAVICA (W) 555
+
+assessment of periapical pathology, both for conventional [7,8] and digital [9] intra-oral radiographs, and more recently also for CBCT [10]. Epidemiological and large-scale studies often involve multiple observers and variation in assessment between two or more observers can greatly influence the results. Uncertainties in the registration of independent variables will have implications for the reliability of any conclusions drawn about the material.
+
+Strategies have been proposed for improving reliability in radiographic assessment. The positive effects of observer calibration have been reported in a number of studies in which periapical status was assessed on intra-oral radiographs [7,11,12]. However, to our knowledge, there are no such studies with respect to periapical pathology detected exclusively on PR. As PR is currently widely used in epidemiological studies, and this is likely to continue, e.g. for studies investigating associations between endodontic inflammatory disease and other conditions, the issue of reliability must be addressed. The aim of this study was to investigate whether calibration against a reference standard improves observer reliability when using PR to assess variables indicative of endodontic inflammatory disease, including calculation of DMFT-score and detection of root-filled teeth and periapical lesions.
+
+**Materials and methods**
+
+In accordance with the instructions for calibrating the periapical index (PAI) [13], the sample selected for this study comprised 100 PRs from a cohort previously described by Ryden et al. [14]. In short, the cohort comprised clinical data and PRs from 797 patients who had suffered an initial myocardial infarction and 796 controls, matched for age, sex and postal code area. Dental examinations, as well as radiographic examinations with either film or digital PRs, were undertaken during 2010-2014 at dental clinics at, or near, 17 different Swedish hospitals.
+
+**Training and calibration procedures**
+
+The study layout is illustrated in Figure 1.
+
+Initially, two experienced specialists, one endodontist (TK) and one radiologist (HL), served as reference examiners. Prior to the calibration process instructions were formulated for the radiographic assessment of the following variables; remaining teeth, root-filled teeth, teeth with periapical lesions and DMFT-score, calculated from assessment of decayed, missing and filled teeth.
+
+The instructions were as follows: 'Remaining teeth' comprise, besides apparent ones, also root remnants which are at least partially connected to the surrounding bone, impacted teeth covered by bone (mucosa and follicle) by no more than 2/3 of the crown and also any deciduous teeth. 'Root-filled teeth' are any teeth in which the pulp cavity and/or root canals contain radiopaque material. 'Teeth with periapical lesions' are any teeth that present distinct periapical bone destruction, noticeably larger than a widened periodontal space, around at least one root. For 'DMFT-score'
+
+1593 panoramic radiographs
+from a cohort of patients with
+myocardial infarction and matched
+healthy controls
+↓
+Sample of 100
+panoramic radiographs
+↓
+1st separate assessment
+by the two reference examiners
+↓
+2-3 weeks
+↓
+2nd separate assessment
+by the two reference examiners
+↓
+Joint assessment by
+the two reference examiners
+↓
+Reference standard
+↙ ↕ ↘
+1st separate assessment → Calibration → 2nd separate assessment → 3 months → 3rd separate assessment
+by the three observers 2-3 weeks by the three observers by the three observers,
+the sample concealed
+within the full material of 1593
+panoramic radiographs
+
+Figure 1. Flow chart of the study.
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+556
+D. SEBRING ET AL.
+
+root remnants lacking restoration are registered as decayed
+teeth and dental implants are registered as missing teeth.
+All PR assessments were made on the same high-reso-
+lution screen, in a dimly lit room. All images were assessed
+using the image-processing program ImageJ (U.S. National
+Institutes of Health, Bethesda, Maryland, USA, https://imagej.
+nih.gov/ij/), allowing adjustment of contrast and use of mag-
+nification tools. The two specialists assessed the sample inde-
+pendently and re-examined the material 3-4 weeks later, in
+order to determine intra-observer variation. The results were
+analysed and all cases with either intra- or inter-observer var-
+iations were subsequently subjected to a third, joint assess-
+ment, in which contradictory findings were discussed until
+consensus was reached. The results from the joint assess-
+ment then served as the reference standard for all future
+assessments of this sample.
+Three observers, one general dentist (observer 1) and two
+fifth-year dental students (observers 2 and 3), were pre-
+sented with written instructions for the radiographic assess-
+ment. Each observer made an initial, independent
+assessment of the sample. Thereafter the results were com-
+pared with the reference standard and the agreement was
+calculated. For calibration, each observer was individually
+presented with the results and given instructions on how to
+achieve closer agreement with the reference standard.
+Specifically, two observers (2 and 3) were directed to apply
+the criteria for registering periapical lesions more stringently,
+while one observer (1) was directed to lower slightly the
+threshold for reporting periapical lesions, to match the refer-
+ence standard more closely. A second assessment of the
+sample followed and the results were again compared with
+the reference standard.
+In order to evaluate the long-term effect of the calibration
+process, a third assessment was undertaken approximately
+three months later. This time the sample was randomly con-
+cealed in the complete material of 1593 PRs. When the entire
+material had been reassessed, agreement between the sam-
+ple and the reference standard was again calculated.
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+ACTA ODONTOLOGICA SCANDINAVICA 557
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+(
+
+these observers.
+studied two methods, one similar to Zelenbaum et al. [7] and
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+```json
+{}
+```
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+560 D. SEBRING ET AL.
+
+**Acknowledgements**
+This research was possible due to collaboration with PAROKRANK steering committee, Karolinska Institutet, Solna, Sweden.
+
+**Disclosure statement**
+No potential conflict of interest was reported by the author(s).
+
+**Funding**
+This particular study was supported by generous grants from European Society of Endodontology as well as funding from Västra Götalandsregionen, Public Dental Health, Sweden and University of Gothenburg, Sweden.
+
+**ORCID**
+Dan Sebring http://orcid.org/0000-0002-9008-0408
+
+**References**
+[1] Ahlqwist M, Halling A, Hollender L. Rotational panoramic radiography in epidemiological studies of dental health. Comparison between panoramic radiographs and intraoral full mouth surveys. Swed Dent J. 1986;10(1-2):73–84.
+[2] Molander B, Ahlqwist M, Gröndahl HG, et al. Comparison of panoramic and intraoral radiography for the diagnosis of caries and periapical pathology. Dentomaxillofac Radiol. 1993;22(1):28–32.
+[3] Akkaya N, Kansu O, Kansu H, et al. Comparing the accuracy of panoramic and intraoral radiography in the diagnosis of proximal caries. Dentomaxillofac Radiol. 2006;35(3):170–174.
+[4] Estrela C, Bueno MR, Leles CR, et al. Accuracy of cone beam computed tomography and panoramic and periapical radiography for detection of apical periodontitis. J Endod. 2008;34(3):273–279.
+[5] Nardi C, Calistri L, Pradella S, et al. Accuracy of Orthopantomography for apical periodontitis without endodontic treatment. J Endod. 2017;43(10):1640–1646.
+[6] Goldman M, Pearson AH, Darzenta N. Endodontic success–who’s reading the radiograph? Oral Surg Oral Med Oral Pathol. 1972; 33(3):432–437.
+[7] Eckerbom M, Andersson JE, Magnusson T. Interobserver variation in radiographic examination of endodontic variables. Endod Dent Traumatol. 1986;2(6):243–246.
+[8] Reit C, Gröndahl HG. Application of statistical decision theory to radiographic diagnosis of endodontically treated teeth. Scand J Dent Res. 1983;91(3):213–218.
+[9] Tewary S, Luzzo J, Hartwell G. Endodontic radiography: who is reading the digital radiograph? J Endod. 2011;37(7):919–921.
+[10] Parker JM, Mol A, Rivera EM, et al. Cone-beam computed tomography uses in clinical endodontics: observer variability in detecting periapical lesions. J Endod. 2017;43(2):184–187.
+[11] Reit C. The influence of observer calibration on radiographic periapical diagnosis. Int Endod J. 1987;20(2):75–81.
+[12] Saunders MB, Gulabivala K, Holt R, et al. Reliability of radiographic observations recorded on a proforma measured using inter- and intra-observer variation: a preliminary study. Int Endod J. 2000;33(3):272–278.
+[13] Orstavik D, Kerekes K, Eriksen HM. The periapical index: a scoring system for radiographic assessment of apical periodontitis. Endod Dent Traumatol. 1986;2(1):20–34.
+[14] Ryden L, Buhlin K, Ekstrand E, et al. Periodontitis increases the risk of a first myocardial infarction: a report from the PAROKRANK study. Circulation. 2016;133:576–583.
+[15] Landis JR, Koch GG. The measurement of observer agreement for categorical data. Biometrics. 1977;33(1):159–174.
+
+**Conclusions**
+The study confirms that variables such as the number of remaining teeth, the number of root-filled teeth and the DMFT-score can be reliably assessed on PR. There was initially high variability in recording of teeth with periapical lesions. However, after calibration against a reference standard, agreement improved in all observers, resulting in increased reliability in detection of periapical lesions on PRs.
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+ACTA ODONTOLOGICA SCANDINAVICA 561
+
+[16] Gröndahl HG. Some factors influencing observer
+performance in radiographic caries diagnosis. Swed Dent J. 1979;
+3(5):157–172.
+[17] Patel N, Rushton VE, Macfarlane TV, et al. The influence of view-
+ing conditions on radiological diagnosis of periapical inflamma-
+tion. Br Dent J. 2000;189(1):40–42.
+[18] Granlund C, Thilander-Klang A, Ylhan B, et al. Absorbed
+organ and effective doses from digital intra-oral and pano-
+ramic radiography applying the ICRP 103 recommendations
+for effective dose estimations. Br J Radiol. 2016;89(1066):
+20151052.
+
+[19] Ludlow JB, Davies-Ludlow LE, White SC. Patient risk related to common
+dental radiographic examinations: the impact of 2007 International
+Commission on Radiological Protection recommendations regarding
+dose calculation. J Am Dent Assoc. 2008;139(9):1237–1243.
+[20] Patel S, Brown J, Pimentel T, et al. Cone beam computed tomog-
+raphy in endodontics – a review of the literature. Int Endod J.
+2019;52(8):1138–1152.
+[21] Kruse C, Spin-Neto R, Evar Kraft DC, et al. Diagnostic accuracy of
+cone beam computed tomography used for assessment of apical
+periodontitis: an ex vivo histopathological study on human
+cadavers. Int Endod J. 2019;52(4):439–450.

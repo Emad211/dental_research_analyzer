@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_cbb50020d6bd571e47e12e2979176800.pdf",
+  "timestamp": "20260508_102059",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 17302
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 6185
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 25810
+    }
+  }
+}

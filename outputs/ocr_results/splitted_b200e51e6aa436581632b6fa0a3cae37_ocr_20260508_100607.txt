@@ -1,0 +1,233 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+International Journal of Environmental Research and Public Health
+MDPI
+
+Article
+The Effectiveness of the Blended Learning in Conservative Dentistry with Endodontics on the Basis of the Survey among 4th-Year Students during the COVID-19 Pandemic
+
+Kacper Nijakowski 1,*,ID, Anna Lehmann 1, Jakub Zdrojewski 2,†, Monika Nowak 2,† and Anna Surdacka 1,ID
+
+1 Department of Conservative Dentistry and Endodontics, Poznan University of Medical Sciences, 60-812 Poznan, Poland; annalehmann@ump.edu.pl (A.L.); annasurd@ump.edu.pl (A.S.)
+2 Student’s Scientific Group in Department of Conservative Dentistry and Endodontics, Poznan University of Medical Sciences, 60-812 Poznan, Poland; jakub-zdrojewski11@wp.pl (J.Z.); monikaanowak@opoczta.pl (M.N.)
+* Correspondence: kacpernijakowski@ump.edu.pl
+† These authors contributed equally to this work.
+
+check for updates
+
+Citation: Nijakowski, K.; Lehmann, A.; Zdrojewski, J.; Nowak, M.; Surdacka, A. The Effectiveness of the Blended Learning in Conservative Dentistry with Endodontics on the Basis of the Survey among 4th-Year Students during the COVID-19 Pandemic. Int. J. Environ. Res. Public Health 2021, 18, 4555. https://doi.org/10.3390/ijerph18094555
+
+Academic Editor: Gianrico Spagnuolo
+
+Received: 25 March 2021
+Accepted: 23 April 2021
+Published: 25 April 2021
+
+Publisher’s Note: MDPI stays neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+CC BY
+Copyright: © 2021 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (https://creativecommons.org/licenses/by/4.0/).
+
+1. Introduction
+SARS-CoV-2 is a virus detected in Wuhan, Hubei Province in China at the end of 2019 [1]. Since the day of the first report of infection, every day, new cases have been emerging and the new pathogen has spread all over the world. On 11th March 2020, the World Health Organization declared that the coronavirus causing COVID-19 is referred to as the pandemic [2]. The infection manifests in high fever, dry cough, difficulty breathing, tiredness, and muscle pain as well as loss of taste and smell. The most dangerous consequence of SARS-CoV-2 infection is it may lead to acute respiratory failure, and the treatment is based on alleviating the symptoms [3].
+The lack of knowledge of the virus transmission and how to prevent the infection was an additional danger. The only way of reducing transmission was to keep social distance [4]. Therefore, because of the rapid increase in infection cases, most countries decided to introduce lockdown, which was supposed to restrict social activities only to meet basic life needs. On 24th February in Italy and on 11th March in Poland, the
+
+Int. J. Environ. Res. Public Health 2021, 18, 4555. https://doi.org/10.3390/ijerph18094555
+https://www.mdpi.com/journal/ijerph
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Int. J. Environ. Res. Public Health 2021, 18, 4555
+2 of 15
+
+national governments implemented several restrictions, such as the closure of schools and universities. Every class that had taken place at the University, such as seminars, workshops, laboratories, and classes with patients, were cancelled [5,6].
+
+The epidemiological situation in the world and Poland has posed a great challenge for dental education teachers as well as students. At the beginning of the COVID-19 pandemic, the New York Times published an article describing dentists as the most exposed group to the SARS-CoV-2 [7]. While operating basic tools such as high-speed turbine, spray handpiece, and ultrasonic scaler, the generated aerosol significantly increases the risk of infection [8]. It is extremely difficult to balance safety with development and obtaining practical skills, which are highly required in the dental profession [9,10]. In the case of doctors and students who are conducting aerosol-generating procedures, their personal protective equipment (PPE) should be face masks, disposable gloves, a face shield, goggles, and a protective suit [11,12]. Special face masks with N95 filter (with 95% filtration efficiency) are recommended by the US National Institute for Occupational Safety (NIOSH); according to European standards, face masks FFP2 have comparable effectiveness to N95 face masks. Eventually, double surgical masks were also used to protect air-passages against aerosol [13,14].
+
+The only sensible solution was distance teaching and implementing e-learning platforms. E-learning is based on using online tools such as academic e-learning platforms for playing recorded lectures and seminars, doing self-tests which can monitor progress in studies, and MS Teams programs enabling holding real-time, online meetings instead of face-to-face ones [15]. The communication between academic tutors and students was limited to conversations on internet communicators, e-mails, and educational platforms. The new reality was a great challenge to IT specialists, teachers, and students. At the Poznan University of Medical Sciences (PUMS), some academic coordinators completed their training in order to improve their IT skills and prepare e-learning materials to effectively educate students of medical sciences and be able to use them in the next academic year [16].
+
+Conservative dentistry with endodontics is one of the main fields of dentistry. At the PUMS, for fourth-year students, it is a leading compulsory subject of 210 teaching hours (converted into 10 ECTS [European Credit Transfer System] points). Conservative procedures are essential skills that students should acquire in their undergraduate education. Unfortunately, the pandemic caused changes in the spectrum of provided dental services. As an example of our University Centre of Dentistry and Specialised Medicine in Poznan, during the pandemic period, especially the first wave, the performance of conservative procedures decreased and the performance of surgical procedures increased significantly [17]. As in the case of dental care, the question of how to treat should be asked; in the case of dental education, the question of how to teach effectively should be answered.
+
+After several months of dealing with the pandemic, most of the universities in the world were challenged to organize the 2020/2021 academic year. At the beginning of this academic year, Poland was facing the second wave of the COVID-19 pandemic. On 7th November 2020, there was reported a record number of coronavirus cases, which was 27,875 [data from official Polish government site]. Moreover, on 27th December 2020, Poland started a National Vaccination Programme whereby medical practitioners, including medical and dental students, were vaccinated in the first phase, so-called Stage 0. This programme would increase the safety of medical practitioners and patients and give hope of a slow return to normal life.
+
+The COVID-19 pandemic changed the stomatology and the way of teaching it that might be continued in the post-pandemic time. Blended learning has been introduced and has become the optimal solution in future doctors’ education. It combines e-learning activities allowing the gain of essential theoretical knowledge and clinical workshops in traditional form (while keeping a full sanitary regime) enabling the gaining of all practical skills. Moreover, blended learning also allows increasing communication with module tutors through instant messengers in order to obtain answers to issues discussed during
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Int. J. Environ. Res. Public Health 2021, 18, 4555
+3 of 15
+
+the online classes. In this teaching model, exams and tests can be performed by sOLAT (academic e-learning portal at PUMS), MS Teams, and Socrative platforms. The theoretical examinations are constructed in the form of multiple/single-choice questions, true-or-false questions, and/or matching description with the pictures or the clinical cases [16]. During the examination session, the students should be in their camera range for the whole time [18]. In turn, clinical workshops have been reorganized in order to meet the new sanitary guidelines for dental treatment. This was to keep doctors as well as their patients safe [19,20].
+
+Our study aimed to assess the effectiveness of blended learning in conservative dentistry with endodontics, especially on the basis of the survey among fourth-year students during the COVID-19 pandemic.
+
+**2. Materials and Methods**
+
+The Poznan University of Medical Sciences is the leading academic centre in Poland which allowed students to continue dental clinicals during the second wave of the COVID-19 pandemic. Safe conduct of classes was possible thanks to the observance of the sanitary-epidemiological regime, provision of advanced personal protective equipment, and development of efficient preventive procedures in case of infection among students or academic teachers. It should be emphasised that 80% of the academic hours in the subject curriculum are dedicated to practical classes. In turn, thanks to the virtual experience gained in the first wave of the pandemic, it was possible to organise an e-learning model during the second wave. The seminars were made available on the university’s portal in the form of recorded presentations and self-tests of the covered material, and each thematic block ended with a discussion meeting using Teams messenger. Over 60% of theoretical classes were performed in asynchronous form.
+
+The study design was defined as educational action research. Our survey was conducted among fourth-year dental students who all participated in the blended-learning course. Students were given the link to a Google form (composed of closed and open questions) to fill out. The 39-item author’s questionnaire consisted of 5 parts: self-evaluation, evaluation of theoretical e-learning classes, evaluation of practical clinical classes, evaluation of safety during COVID-19 pandemic, and evaluation of performed blended learning. Most of the questions were based on a 5-point Likert scale or a dichotomous scale. The survey form was pre-validated on a group of 5 volunteers. The evaluation questionnaire (translated into English) is provided as Supplementary Material.
+
+The survey results were presented in tables and graphs. For analysing part of the questions, the respondents were divided into two groups—students who had the clinical exercises in the third year and students who took the classes online only. The answers were compared using the Mann–Whitney’s test or the Wilcoxon’s test. Multidimensional correspondence analysis was used to assess the relationship between potential advantages/disadvantages of blended learning and its evaluation.
+
+Moreover, the base of patients participating in fourth-year classes in the Department of Conservative Dentistry and Endodontics from two winter semesters—pre-pandemic (October 2019–January 2020) and pandemic (October 2020–January 2021)—was evaluated. Selected procedures in conservative dentistry with endodontics were analysed in detail. The number of these individual services was standardised against the number of practising student pairs (per day) in a given block of classes. Each block had 4-h clinical classes every day for 4 weeks with two student groups (each dental year has six student groups in total). Comparisons were made between the performed procedures in the pre-pandemic and the pandemic periods using the Mann–Whitney test.
+
+P
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Int. J. Environ. Res. Public Health 2021, 18, 4555
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Int. J. Er...
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Int. J. Environ. Res. Public Health 2021, 18, 4555                                                                                                   8 of 15
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+This image appears to be a blank page from a document, with some text at the top and some fragments of text and lines on the right side.
+
+Here is the OCR of the visible text:
+
+**Top Header:**
+iranpaper Downloaded from https://iranpaper.ir
+
+**Top Left:**
+i
+-
+
+**Top Right:**
+15
+—
+
+**Right Side Text Fragments:**
+er-
+er
+ic,
+ed.
+nd.
+ed
+
+**Bottom Left Dashes:**
+-
+-
+-
+-
+-
+-
+-
+
+**Bottom Right Dashes:**
+—
+—
+—
+—
+—
+—
+—
+—
+
+════════════════════════════════════════════════════════════
+PAGE 10
+════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+PAGE 11
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Int. J. Environ. Res. Public Health 2021, 18, 4555
+
+════════════════════════════════════════════════════════════
+PAGE 12
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+════════════════════════════════════════════════════════════
+PAGE 13
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Int. J. Environ. Res. Public Health 2021, 18, 4555
+13 of 15
+
+Funding: This research received no external funding.
+Institutional Review Board Statement: Not applicable.
+Informed Consent Statement: Not applicable.
+Conflicts of Interest: The authors declare no conflict of interest.
+
+════════════════════════════════════════════════════════════
+PAGE 14
+════════════════════════════════════════════════════════════
+iranpaper Downloaded from https://iranpaper.ir
+
+Int. J. Environ. Res. Public Health 2021, 18, 4555
+14 of 15
+
+**References**
+
+1. Wang, C.; Horby, P.W.; Hayden, F.G.; Gao, G.F. A Novel Coronavirus Outbreak of Global Health Concern. *Lancet* **2020**, *395*, 470–473. [CrossRef]
+2. Wartecki, A.; Rzymski, P. On the Coronaviruses and Their Associations with the Aquatic Environment and Wastewater. *Water* **2020**, *12*, 1598. [CrossRef]
+3. Hu, B.; Guo, H.; Zhou, P.; Shi, Z.-L. Characteristics of SARS-CoV-2 and COVID-19. *Nat. Rev. Microbiol.* **2021**, *19*, 141–154. [CrossRef]
+4. Bennardo, F.; Buffone, C.; Fortunato, L.; Giudice, A. COVID-19 Is a Challenge for Dental Education-A Commentary. *Eur. J. Dent. Educ.* **2020**, *24*, 822–824. [CrossRef]
+5. Prati, C.; Pelliccioni, G.A.; Sambri, V.; Chersoni, S.; Gandolfi, M.G. COVID-19: Its Impact on Dental Schools in Italy, Clinical Problems in Endodontic Therapy and General Considerations. *Int. Endod. J.* **2020**, *53*, 723–725. [CrossRef]
+6. Gaudin, A.; Arbab-Chirani, R.; Pérez, F. Effect of COVID-19 on Dental Education and Practice in France. *Front. Dent. Med.* **2020**, *1*. [CrossRef]
+7. Spagnuolo, G.; De Vito, D.; Rengo, S.; Tatullo, M. COVID-19 Outbreak: An Overview on Dentistry. *Int. J. Environ. Res. Public Health* **2020**, *17*, 2094. [CrossRef] [PubMed]
+8. Peditto, M.; Scapellato, S.; Marcianò, A.; Costa, P.; Oteri, G. Dentistry during the COVID-19 Epidemic: An Italian Workflow for the Management of Dental Practice. *Int. J. Environ. Res. Public Health* **2020**, *17*, 3325. [CrossRef] [PubMed]
+9. Iyer, P.; Aziz, K.; Ojcius, D.M. Impact of COVID-19 on Dental Education in the United States. *J. Dent. Educ.* **2020**, *84*, 718–722. [CrossRef] [PubMed]
+10. Spanemberg, J.C.; Simões, C.C.; Cardoso, J.A. The Impacts of the COVID-19 Pandemic on the Teaching of Dentistry in Brazil. *J. Dent. Educ.* **2020**, *84*, 1185–1187. [CrossRef] [PubMed]
+11. Holland, M.; Zaloga, D.J.; Friderici, C.S. COVID-19 Personal Protective Equipment (PPE) for the Emergency Physician. *Vis. J. Emerg. Med.* **2020**, *19*, 100740. [CrossRef]
+12. Izzetti, R.; Nisi, M.; Gabriele, M.; Graziani, F. COVID-19 Transmission in Dental Practice: Brief Review of Preventive Measures in Italy. *J. Dent. Res.* **2020**, *99*, 1030–1038. [CrossRef]
+13. Lee, S.-A.; Hwang, D.-C.; Li, H.-Y.; Tsai, C.-F.; Chen, C.-W.; Chen, J.-K. Particle Size-Selective Assessment of Protection of European Standard FFP Respirators and Surgical Masks against Particles-Tested with Human Subjects. *J. Healthc Eng.* **2016**, *2016*. [CrossRef]
+14. Lo Giudice, R. The Severe Acute Respiratory Syndrome Coronavirus-2 (SARS CoV-2) in Dentistry. Management of Biological Risk in Dental Practice. *Int. J. Environ. Res. Public Health* **2020**, *17*, 3067. [CrossRef]
+15. Roszak, M.; Kołodziejczak, B.; Półjanowicz, W.; Bręborowicz, A.; Ren-Kurc, A.; Kowalewski, W. E-Learning Portal Tools for Medical Education. *Stud. Log. Gramm. Rhetor.* **2015**, *43*, 177–194. [CrossRef]
+16. Grześkowiak, M.; Chudzicka-Strugała, I.; Zwoździak, B.; Swora-Cwynar, E.; Nijakowski, K.; Jokiel, M.; Roszak, M. E-Learning During the Coronavirus Pandemic—Creating Educational Resources for Teaching Medical Students. *Stud. Log. Gramm. Rhetor.* **2020**, *64*, 77–97. [CrossRef]
+17. Nijakowski, K.; Cieślik, K.; Łaganowski, K.; Gruszczyński, D.; Surdacka, A. The Impact of the COVID-19 Pandemic on the Spectrum of Performed Dental Procedures. *Int. J. Environ. Res. Public Health* **2021**, *18*, 3421. [CrossRef] [PubMed]
+18. Chang, T.-Y.; Hong, G.; Paganelli, C.; Phantumvanit, P.; Chang, W.-J.; Shieh, Y.-S.; Hsu, M.-L. Innovation of Dental Education during COVID-19 Pandemic. *J. Dent. Sci.* **2021**, *16*, 15–20. [CrossRef]
+19. Deery, C. The COVID-19 Pandemic: Implications for Dental Education. *Evid. Based Dent.* **2020**, *21*, 46–47. [CrossRef] [PubMed]
+20. Desai, B.K. Clinical Implications of the COVID-19 Pandemic on Dental Education. *J. Dent. Educ.* **2020**, *84*, 512. [CrossRef]
+21. Quinn, B.; Field, J.; Gorter, R.; Akota, I.; Manzanares, M.-C.; Paganelli, C.; Davies, J.; Dixon, J.; Gabor, G.; Amaral Mendes, R.; et al. COVID-19: The Immediate Response of European Academic Dental Institutions and Future Implications for Dental Education. *Eur. J. Dent Educ.* **2020**, *24*, 811–814. [CrossRef] [PubMed]
+22. Amir, L.R.; Tanti, I.; Maharani, D.A.; Wimardhani, Y.S.; Julia, V.; Sulijaya, B.; Puspitawati, R. Student Perspective of Classroom and Distance Learning during COVID-19 Pandemic in the Undergraduate Dental Study Program Universitas Indonesia. *BMC Med. Educ.* **2020**, *20*, 392. [CrossRef] [PubMed]
+23. Van Doren, E.J.; Lee, J.E.; Breitman, L.S.; Chutinan, S.; Ohyama, H. Students’ Perceptions on Dental Education in the Wake of the COVID-19 Pandemic. *J. Dent. Educ.* **2020**. [CrossRef]
+24. Turkyilmaz, I.; Hariri, N.H.; Jahangiri, L. Student’s Perception of the Impact of E-Learning on Dental Education. *J. Contemp. Dent Pract.* **2019**, *20*, 616–621. [CrossRef] [PubMed]
+25. Liu, X.; Zhou, J.; Chen, L.; Yang, Y.; Tan, J. Impact of COVID-19 Epidemic on Live Online Dental Continuing Education. *Eur. J. Dent. Educ.* **2020**, *24*, 786–789. [CrossRef] [PubMed]
+26. Varthis, S.; Anderson, O.R. Students’ Perceptions of a Blended Learning Experience in Dental Education. *Eur. J. Dent. Educ.* **2018**, *22*, e35–e41. [CrossRef]
+27. Al-Azzam, N.; Elsalem, L.; Gombedza, F. A Cross-Sectional Study to Determine Factors Affecting Dental and Medical Students’ Preference for Virtual Learning during the COVID-19 Outbreak. *Heliyon* **2020**, *6*, e05704. [CrossRef]
+
+════════════════════════════════════════════════════════════
+PAGE 15
+════════════════════════════════════════════════════════════

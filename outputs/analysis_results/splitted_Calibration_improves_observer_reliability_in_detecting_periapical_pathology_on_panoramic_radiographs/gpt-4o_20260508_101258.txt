@@ -1,0 +1,132 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_Calibration_improves_observer_reliability_in_detecting_periapical_pathology_on_panoramic_radiographs.pdf
+Status : ok
+Time   : 20260508_101258
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: 
+   - Observational study with repeated measures to assess intra- and inter-observer reliability.
+   - Calibration study focusing on observer agreement in detecting periapical pathology on panoramic radiographs (PRs).
+
+2. **Objective**:
+   - Investigate whether calibration against a reference standard improves observer reliability in detecting variables indicative of endodontic inflammatory disease on PRs.
+
+3. **Groups**:
+   - Reference examiners: Two specialists (one endodontist and one radiologist).
+   - Observers: Three individuals (one general dentist and two fifth-year dental students).
+
+4. **Sample Size**:
+   - 100 panoramic radiographs selected from a cohort of 1593 PRs.
+
+5. **Variables**:
+   - Independent variables: Remaining teeth, root-filled teeth, teeth with periapical lesions, and DMFT-score (Decayed, Missing, and Filled Teeth).
+   - Dependent variable: Observer agreement with the reference standard.
+
+6. **Measurements**:
+   - Periapical pathology detection using PRs.
+   - Observer agreement calculated at three time points: pre-calibration, post-calibration, and three months post-calibration.
+
+7. **Data Collection Methods**:
+   - Radiographs assessed using ImageJ software on high-resolution screens in dimly lit rooms.
+   - Observers performed independent assessments, followed by calibration sessions and reassessments.
+   - Agreement calculated using statistical methods.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Cohen’s Kappa
+   - **Purpose**: Measure inter-observer and intra-observer agreement.
+   - **Why Appropriate**:
+     - Suitable for categorical data (e.g., presence/absence of periapical lesions).
+     - Accounts for agreement occurring by chance.
+   - **Why It May Not Be Appropriate**:
+     - Sensitive to prevalence; low prevalence of a condition can reduce kappa values.
+   - **When This Test Should NOT Be Used**:
+     - If data are continuous or ordinal rather than categorical.
+   - **Alternative if Assumptions Are Violated**: Weighted Kappa for ordinal data.
+
+2. **Test Name**: McNemar’s Test
+   - **Purpose**: Compare paired proportions (e.g., pre- and post-calibration agreement).
+   - **Why Appropriate**:
+     - Designed for paired categorical data.
+     - Useful for assessing changes in agreement over time.
+   - **Why It May Not Be Appropriate**:
+     - Requires binary outcomes; inappropriate for multi-category data.
+   - **When This Test Should NOT Be Used**:
+     - If data are not paired or not binary.
+   - **Alternative if Assumptions Are Violated**: Generalized Estimating Equations (GEE) for repeated measures.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Intraclass Correlation Coefficient (ICC)
+   - **Purpose**: Quantify reliability and consistency among observers.
+   - **Why Appropriate**:
+     - Suitable for continuous or ordinal data (e.g., DMFT scores).
+     - Provides detailed reliability metrics beyond kappa.
+   - **Why It May Not Be Appropriate**:
+     - Requires normally distributed data; sensitive to outliers.
+   - **When This Test Should NOT Be Used**:
+     - If data are categorical or non-normal.
+   - **Alternative if Assumptions Are Violated**: Bootstrap methods for ICC.
+
+2. **Test Name**: Chi-Square Test of Independence
+   - **Purpose**: Assess associations between categorical variables (e.g., observer type and agreement level).
+   - **Why Appropriate**:
+     - Suitable for categorical data.
+     - Tests relationships between independent and dependent variables.
+   - **Why It May Not Be Appropriate**:
+     - Requires large sample sizes; small cell counts can invalidate results.
+   - **When This Test Should NOT Be Used**:
+     - If expected cell counts are below 5.
+   - **Alternative if Assumptions Are Violated**: Fisher’s Exact Test.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Bland-Altman Analysis
+   - **Purpose**: Evaluate agreement between continuous measurements (e.g., DMFT scores).
+   - **Why Appropriate**:
+     - Provides visual representation of agreement.
+     - Identifies systematic bias between observers.
+   - **Why It May Not Be Appropriate**:
+     - Not suitable for categorical data.
+   - **When This Test Should NOT Be Used**:
+     - If data are not continuous.
+   - **Alternative if Assumptions Are Violated**: Nonparametric methods like Spearman correlation.
+
+2. **Test Name**: Logistic Regression
+   - **Purpose**: Model the probability of agreement as a function of observer characteristics.
+   - **Why Appropriate**:
+     - Suitable for binary outcomes (e.g., agreement vs. disagreement).
+     - Allows adjustment for confounding variables.
+   - **Why It May Not Be Appropriate**:
+     - Requires large sample sizes for stable estimates.
+   - **When This Test Should NOT Be Used**:
+     - If sample size is insufficient.
+   - **Alternative if Assumptions Are Violated**: Bayesian logistic regression.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: T-Test
+   - **Why NOT Appropriate**:
+     - Designed for continuous data, not categorical agreement metrics.
+     - Assumes normal distribution, which is irrelevant for categorical data.
+
+2. **Test Name**: ANOVA
+   - **Why NOT Appropriate**:
+     - Inappropriate for categorical data or paired comparisons.
+     - Assumes independence, which is violated in repeated measures.
+
+---
+
+### TASK 4: SUMMARY
+
+The analytical approach focuses on assessing observer reliability and agreement using categorical and ordinal data. Mandatory tests like Cohen’s Kappa and McNemar’s Test address the primary study objectives, while recommended tests like ICC and Chi-Square enhance the robustness of the analysis. Optional tests such as Bland-Altman Analysis and Logistic Regression provide supplementary insights into agreement patterns and influencing factors. The overall approach balances rigor and practicality, ensuring valid and interpretable results.

@@ -1,0 +1,457 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_Calibration_improves_observer_reliability_in_detecting_periapical_pathology_on_panoramic_radiographs.pdf
+Status : ok
+Time   : 20260508_101258
+══════════════════════════════════════════════════════════════════════
+
+Below is a structured response following your tasks.
+
+---
+
+## TASK 1 – INFORMATION EXTRACTION
+
+### 1. Study design
+
+- **Type:** Methodological reliability study with a calibration intervention.
+- **Design structure:**
+  - Cross-sectional assessment of radiographs, repeated within observers (intra‑observer) and between observers (inter‑observer).
+  - Pre–post design around a **calibration procedure**, plus a longer‑term follow‑up.
+- **Reference standard:**
+  - Constructed by two experienced specialists (endodontist and oral & maxillofacial radiologist) through independent repeated assessments followed by consensus.
+
+### 2. Study population and sampling
+
+- **Source cohort:** PAROKRANK study (previously published)
+  - 797 patients with initial myocardial infarction.
+  - 796 age-, sex-, and postal code–matched controls.
+  - Total radiographic dataset: **1593 panoramic radiographs (PRs)**.
+- **Study sample for reliability / calibration:**
+  - **100 PRs** selected from the PAROKRANK cohort.
+  - Selection method: “in accordance with the instructions for calibrating the periapical index (PAI) [13]” – implies purposive sampling to span a range of periapical conditions; not described as random.
+
+### 3. Examiners / Observers
+
+- **Reference examiners (for the reference standard):**
+  - One specialist endodontist (TK).
+  - One specialist radiologist (HL).
+- **Observers (calibrated group):**
+  - Observer 1: general dentist.
+  - Observer 2: fifth-year dental student.
+  - Observer 3: fifth-year dental student.
+
+### 4. Study objectives
+
+From the Introduction and Methods:
+
+- **Primary objective:**  
+  To investigate whether **calibration against a reference standard** improves observer reliability when using panoramic radiographs (PR) to assess variables indicative of endodontic inflammatory disease.
+- **Specific variables assessed:**
+  - Number of remaining teeth.
+  - Number of root-filled teeth.
+  - Number of teeth with periapical lesions.
+  - DMFT score (Decayed, Missing, Filled Teeth).
+
+### 5. Variables and operational definitions
+
+All assessments made on PRs, using ImageJ, on the same monitor, in a dim room.
+
+1. **Remaining teeth (per individual PR)**
+   - Includes:
+     - All apparent teeth.
+     - Root remnants at least partly connected to surrounding bone.
+     - Impacted teeth covered by bone (mucosa + follicle) by ≤ 2/3 of the crown.
+     - Any deciduous teeth.
+   - Variable type (analysis level):
+     - At tooth level: binary (present/absent).
+     - At patient / PR level: count.
+
+2. **Root-filled teeth**
+   - Definition: teeth in which the pulp cavity and/or root canals contain radiopaque material visible on PR.
+   - Variable type:
+     - Tooth level: binary (root-filled yes/no).
+     - PR level: count (number of root-filled teeth).
+
+3. **Teeth with periapical lesions**
+   - Definition: teeth with distinct periapical bone destruction, noticeably larger than a widened periodontal space, around at least one root.
+   - Variable type:
+     - Tooth level: binary (lesion yes/no).
+     - PR level: count (number of teeth with lesions).
+
+4. **DMFT score**
+   - Components:
+     - Decayed teeth:
+       - Includes root remnants lacking restoration.
+     - Missing teeth:
+       - Includes dental implants (registered as missing).
+     - Filled teeth.
+   - DMFT: sum of D + M + F per person.
+   - Variable type:
+     - PR level (proxy for patient level): non-negative integer (count).
+
+5. **Observer / assessment variables**
+
+   For each observer (1–3) at each time point (1st, 2nd, 3rd assessment), and for reference assessors:
+
+   - Counts of:
+     - Remaining teeth.
+     - Root-filled teeth.
+     - Teeth with periapical lesions.
+     - DMFT (per PR).
+   - For reliability, these are compared against:
+     - Reference standard (consensus of specialists).
+     - Own earlier assessments (intra‑observer).
+     - Other observers (inter‑observer).
+
+6. **Time / phase variables**
+
+   - Reference examiners:
+     - Assessment 1.
+     - Assessment 2 (3–4 weeks later).
+     - Joint assessment (consensus; reference standard).
+   - Observers 1–3:
+     - **First assessment** of the 100 PR sample (pre‑calibration).
+     - **Calibration session** (individual feedback using discrepancies vs reference standard; specific guidance on threshold for periapical lesions).
+     - **Second assessment** of the same 100 PR sample (post‑calibration, short-term).
+     - **Third assessment** approximately 3 months later:
+       - Full set of 1593 PRs re-assessed.
+       - The original 100 PRs are randomly concealed within this set.
+       - Agreement with reference standard again calculated for the 100‑PR sample.
+
+### 6. Data collection and reading conditions
+
+- **Radiographs:** PRs (film or digital) acquired previously (2010–2014) at/near 17 Swedish hospitals.
+- **Viewing conditions:**
+  - Same high-resolution monitor for all assessments.
+  - Dimly lit room.
+  - Software: ImageJ (contrast adjustment, magnification allowed).
+- **Assessment procedure:**
+  - Independent reading of PRs.
+  - No mention of blinding to disease status (MI vs control), but irrelevant for reliability aim.
+  - For third assessment, the 100‑PR sample was **concealed** in the full set of 1593 to reduce recall bias.
+
+### 7. Outcomes of interest (statistical)
+
+- **Primary outcome:** change in agreement (reliability) between observers and reference standard for:
+  - Periapical lesions (most critical).
+  - Remaining teeth, root-filled teeth, and DMFT.
+- **Secondary outcomes:**
+  - Intra‑observer reliability over time.
+  - Inter‑observer reliability across observers and vs reference standard.
+  - Durability of calibration effect at ~3 months.
+
+---
+
+## TASK 2 – STATISTICAL ANALYSIS PLAN
+
+### Overarching approach
+
+- Treat the **reference standard** as the “truth” for purposes of reliability.
+- Assess:
+  1. Intra‑observer reliability (same person, different time).
+  2. Inter‑observer reliability (between each observer and reference; between observers).
+  3. Effect of calibration on reliability (pre vs post vs 3‑month follow-up).
+- Use:
+  - Agreement measures suitable for **categorical / binary** data at tooth level and count / continuous data at PR level.
+  - Paired comparisons across time points.
+  - Graphical and descriptive summaries.
+
+Below, tests are grouped into mandatory, recommended, and optional.
+
+---
+
+### CATEGORY A – MANDATORY TESTS
+
+#### A1. Cohen’s kappa (κ) for binary tooth-level variables
+
+- **Test name:** Cohen’s kappa (for 2 raters); weighted κ not necessary for binary.
+- **Purpose:**  
+  To quantify agreement beyond chance between two raters for binary classifications:
+  - Tooth present vs absent.
+  - Root-filled vs not.
+  - Periapical lesion vs none.
+  - Decayed/missing/filled for DMFT components (if analyzed at tooth level).
+
+- **Why appropriate (≥2 reasons):**
+  1. Primary data at tooth level are **categorical (binary)**, and kappa is standard for inter- and intra‑observer agreement for such data.
+  2. Study explicitly concerns **observer reliability**, where κ is commonly used and interpretable with existing benchmarks (e.g. Landis & Koch, ref. 15).
+- **Why it may not be appropriate (≥1 reason):**
+  - If prevalence is very high or very low (e.g., very few periapical lesions), κ can be low despite high raw agreement (prevalence paradox).
+- **When this test should NOT be used:**
+  - When categories are ordinal with >2 levels where partial agreement should be differentially weighted.
+  - When counts per category are extremely unbalanced leading to unstable κ.
+- **Alternative if assumptions are violated:**
+  - Use **prevalence-adjusted bias-adjusted kappa (PABAK)** or **Gwet’s AC1** to mitigate prevalence/bias effects.
+  - Report **percent agreement** alongside κ to give context.
+
+Apply separately:
+- Observer vs reference standard at each time point.
+- Observer at time 1 vs time 2 vs time 3 (intra‑observer).
+- Observer 1 vs observer 2, etc. (inter‑observer).
+
+---
+
+#### A2. Intraclass Correlation Coefficient (ICC) for PR-level counts (e.g., number of root-filled teeth, DMFT)
+
+- **Test name:** Intraclass Correlation Coefficient (ICC), two-way mixed effects, absolute agreement, single rater (ICC(3,1)).
+- **Purpose:**  
+  To quantify the degree of absolute agreement between numerical counts obtained by different raters or by the same rater over time:
+  - Number of remaining teeth per PR.
+  - Number of root-filled teeth per PR.
+  - Number of teeth with periapical lesions per PR.
+  - DMFT score per PR.
+
+- **Why appropriate (≥2 reasons):**
+  1. Outcomes at PR level are **continuous/count** measures; ICC is the standard reliability metric for such data.
+  2. Multiple raters with a fixed set of raters (observers and reference) fit a **two-way mixed model**, and “absolute agreement” is the relevant form because exact match is desired.
+- **Why it may not be appropriate (≥1 reason):**
+  - Count data may be skewed, overdispersed, and potentially zero-inflated; ICC assumes approximately normally distributed measurement errors and homoscedasticity.
+- **When this test should NOT be used:**
+  - When data are heavily skewed with many zeros and small sample size such that distributional assumptions are badly violated.
+- **Alternative if assumptions are violated:**
+  - Transform the data (e.g., square root or log+1) and recompute ICC.
+  - Use **Spearman’s rank correlation** or **Kendall’s tau** as non-parametric measures of association, with the understanding they measure association, not strict agreement.
+  - For discrete counts with small ranges, use **weighted kappa** with categories grouped.
+
+---
+
+#### A3. McNemar’s test for pre–post calibration comparison at tooth level
+
+- **Test name:** McNemar’s test for paired binary data.
+- **Purpose:**  
+  To test whether the proportion of correct classifications (agreement with reference standard) changed significantly **before vs after calibration** (as well as vs 3‑month follow-up) for each observer.
+
+  Example: For each tooth, classify as “correct vs incorrect” compared to reference at time 1 vs time 2.
+
+- **Why appropriate (≥2 reasons):**
+  1. The same teeth are assessed by the same observer at two time points → paired binary outcome (correct/incorrect).
+  2. McNemar’s test is designed for testing changes in paired proportions, exactly matching this design (pre–post).
+- **Why it may not be appropriate (≥1 reason):**
+  - If tooth-level observations are **clustered within PRs/patients**, the assumption of independent pairs is violated (within-patient correlation).
+- **When this test should NOT be used:**
+  - When there are multiple dependent observations per subject and clustering is substantial, making simple McNemar invalid.
+- **Alternative if assumptions are violated:**
+  - Use **generalized estimating equations (GEE)** with a logit link for repeated measures clustered within patient/PR.
+  - Use **clustered (subject-level) McNemar’s test** or permutation approaches that respect clustering.
+
+---
+
+#### A4. Descriptive statistics and graphical summaries
+
+(Not a “test” per se but mandatory components)
+
+- **Purpose:**
+  - To characterize distributions of counts and agreement measures across observers and time points.
+  - Provide context for inferential tests and clinical interpretation.
+
+- **Methods:**
+  - Mean, SD, median, IQR for count outcomes per observer and time.
+  - Proportions and 95% CIs for correct classification vs reference.
+  - Bland–Altman plots for PR‑level counts (e.g., difference between observer and reference vs mean).
+  - Plots of κ and ICC over time to show calibration effect.
+
+- **Why appropriate:**
+  - Essential to interpret the magnitude and variability of disagreement.
+  - Help detect systematic bias (over- or underestimation) not visible from single statistics.
+
+---
+
+### CATEGORY B – RECOMMENDED TESTS
+
+#### B1. Fleiss’ kappa or multi-rater kappa (for >2 raters)
+
+- **Test name:** Fleiss’ kappa (or other multi-rater kappa variants).
+- **Purpose:**  
+  To quantify agreement beyond chance among **multiple raters simultaneously** for categorical outcomes (e.g., periapical lesion present/absent at tooth level).
+
+- **Why appropriate (≥2 reasons):**
+  1. The study involves multiple raters at some stages (three observers + reference standard), where a single global measure of agreement is informative.
+  2. Allows comparison of overall agreement pre- vs post‑calibration at the group level.
+- **Why it may not be appropriate (≥1 reason):**
+  - Requires all raters to evaluate the same set of units; if some raters did not assess the same PRs or teeth, the method becomes more complex or infeasible.
+- **When this test should NOT be used:**
+  - When there is incomplete or unbalanced data (not all raters rate all items).
+- **Alternative if assumptions are violated:**
+  - Restrict analysis to subsets with complete ratings.
+  - Use **Gwet’s AC1/AC2** for multiple raters (more robust to prevalence).
+
+---
+
+#### B2. Bland–Altman analysis for continuous/count outcomes vs reference
+
+- **Test name:** Bland–Altman method for agreement.
+- **Purpose:**  
+  To examine bias and limits of agreement between observers and the reference standard for PR‑level counts (remaining teeth, root-filled teeth, DMFT, etc.).
+
+- **Why appropriate (≥2 reasons):**
+  1. Agreement in **numerical counts** is central; BA plots show mean difference and spread, helping distinguish systematic from random error.
+  2. Applicable regardless of distribution shape (though interpretation is easier with roughly symmetric differences).
+- **Why it may not be appropriate (≥1 reason):**
+  - When counts have narrow range and many ties, limits of agreement may be difficult to interpret.
+- **When this test should NOT be used:**
+  - For strictly categorical data (e.g., tooth-level lesion yes/no).
+- **Alternative if assumptions are violated:**
+  - Use **ICC** only, supplemented by histograms of differences.
+  - For skewed differences, consider **log transformation** before BA analysis.
+
+---
+
+#### B3. Generalized linear mixed models (GLMM) or GEE for clustered binary outcomes
+
+- **Test name:** GLMM with logit link or GEE with exchangeable correlation.
+- **Purpose:**  
+  To model the probability of correct classification (observer vs reference) and/or lesion detection while taking into account:
+  - Repeated measures on teeth nested within PR/patient.
+  - Repeated assessments over time within observers.
+  - Effect of calibration (time as factor).
+
+- **Why appropriate (≥2 reasons):**
+  1. Tooth-level data are **clustered** within PRs; GLMM/GEE appropriately handle intracluster correlation.
+  2. Calibration is an **intervention over time**; GLMM/GEE can formally test the effect of time (pre vs post vs follow-up) on accuracy.
+- **Why it may not be appropriate (≥1 reason):**
+  - Complexity and need for larger effective sample size; may be overkill if the primary objective is descriptive reliability rather than causal inference.
+- **When this test should NOT be used:**
+  - When the number of clusters (PRs/patients) is too small to reliably estimate random effects or robust variances.
+- **Alternative if assumptions are violated:**
+  - Use **cluster-robust standard errors** with simpler logistic regression.
+  - Use aggregated data (per PR: number of correctly vs incorrectly classified teeth) with binomial models.
+
+---
+
+#### B4. Paired t-test or Wilcoxon signed-rank test for systematic bias in counts
+
+- **Test name:** Paired t-test (if approximately normal) or Wilcoxon signed-rank test (non-parametric).
+- **Purpose:**  
+  To test if there is a systematic difference between observer and reference standard in counts (e.g., DMFT) pre vs post calibration, or between time points.
+
+- **Why appropriate (≥2 reasons):**
+  1. For each PR, we can compute difference (observer – reference); paired tests check whether mean/median difference is zero.
+  2. Helps quantify whether calibration eliminates systematic over‑ or underestimation.
+- **Why it may not be appropriate (≥1 reason):**
+  - For highly skewed distributions or non-independent observations (same observer on same cases multiple times).
+- **When this test should NOT be used:**
+  - When the distribution of differences is markedly non-symmetric and sample size is very small.
+- **Alternative if assumptions are violated:**
+  - Use **sign test** for median difference.
+  - Use **mixed-effects models** for repeated measures over time.
+
+---
+
+### CATEGORY C – OPTIONAL TESTS
+
+#### C1. Sensitivity, specificity, PPV, NPV vs reference standard
+
+- **Test name:** Diagnostic accuracy measures (sensitivity, specificity, positive/negative predictive values) with confidence intervals.
+- **Purpose:**  
+  To quantify diagnostic performance of each observer at each time point using the reference standard as “truth” for periapical lesion presence.
+
+- **Why appropriate (≥2 reasons):**
+  1. Directly addresses the clinical meaning of calibration: proportion of true lesions detected (sensitivity) and non-lesions correctly classified (specificity).
+  2. Enables comparison of diagnostic performance pre vs post calibration.
+- **Why it may not be appropriate (≥1 reason):**
+  - The reference standard is itself based on expert consensus, not a biological gold standard; so these measures describe agreement rather than true diagnostic accuracy.
+- **When this test should NOT be used:**
+  - When misinterpreted as absolute diagnostic accuracy against histopathology.
+- **Alternative if assumptions are violated:**
+  - Use **likelihood ratios** or **Youden’s index** as complementary measures.
+
+---
+
+#### C2. Receiver Operating Characteristic (ROC) analysis
+
+- **Test name:** ROC curve, Area Under the Curve (AUC).
+- **Purpose:**  
+  If observers applied any graded confidence (e.g., borderline lesions), ROC analysis could assess discrimination; even with binary calls, one can conceptually compare thresholds among observers.
+
+- **Why appropriate (≥2 reasons):**
+  1. Useful if observers can be instructed to apply varying thresholds (e.g., “liberal” vs “strict”) in future work.
+  2. AUC summarizes discrimination independent of specific cut-point.
+- **Why it may not be appropriate (≥1 reason):**
+  - In the present study, assessment appears binary without explicit confidence scores, limiting ROC’s utility.
+- **When this test should NOT be used:**
+  - When only a single binary decision rule exists per observer and no continuous or ordinal scores are recorded.
+- **Alternative if assumptions are violated:**
+  - Omit ROC and focus on sensitivity/specificity at the implemented threshold.
+
+---
+
+#### C3. Stratified analyses by radiograph type (film vs digital) or other covariates
+
+- **Test name:** Stratified κ/ICC calculations; interaction tests in GLMM/GEE.
+- **Purpose:**  
+  To explore whether reliability differs by imaging modality (film vs digital), MI vs control status, or other subgroups.
+
+- **Why appropriate (≥2 reasons):**
+  1. Different technical quality may affect lesion detection; stratified analyses can reveal such effects.
+  2. Helps assess generalizability of calibration across contexts.
+- **Why it may not be appropriate (≥1 reason):**
+  - May be underpowered if subgroup sizes are small.
+- **When this test should NOT be used:**
+  - When subgroup sample sizes are insufficient for stable estimates.
+- **Alternative if assumptions are violated:**
+  - Pool groups but include type as a covariate in mixed models, or report descriptively only.
+
+---
+
+## TASK 3 – INAPPROPRIATE TESTS
+
+Below are tests that **should not** be used for this study’s primary aims, with justification.
+
+### I1. Simple Pearson correlation (r) between observers and reference for counts
+
+- **Why inappropriate:**
+  - Correlation measures **linear association**, not agreement. Two observers can correlate highly while having large systematic bias.
+  - The main question is reliability (agreement), not just whether high or low values go together.
+- **Prefer:** ICC, Bland–Altman plots, and bias tests.
+
+### I2. Independent samples t-tests or chi-square tests comparing observers
+
+- **Why inappropriate:**
+  - Observers evaluate the **same radiographs**; measurements are paired, not independent.
+  - Independent-samples tests ignore pairing and within-subject correlation, leading to incorrect inference.
+- **Prefer:** Paired tests (McNemar, paired t-test/Wilcoxon), ICC, kappa.
+
+### I3. One-way ANOVA for comparing mean counts across observers
+
+- **Why inappropriate:**
+  - Same radiographs are assessed repeatedly → repeated measures design; one-way ANOVA assumes independent groups.
+  - A single observer’s repeated counts over time are also within-subject, violating independence.
+- **Prefer:** Repeated measures ANOVA or mixed-effects models if needed; more commonly ICC and BA analysis.
+
+### I4. Linear regression treating observer as predictor of “true” count
+
+- **Why inappropriate:**
+  - Regression of reference counts on observer counts does not measure reliability; slope and intercept reflect calibration but not agreement metrics.
+  - Errors-in-variables issues: both measurements have error.
+- **Prefer:** ICC, Bland–Altman, calibration plots if needed.
+
+### I5. Survival analysis methods (Kaplan–Meier, Cox regression)
+
+- **Why inappropriate:**
+  - No time-to-event outcomes; study is cross-sectional with repeated ratings, not longitudinal survival.
+- **Prefer:** Not applicable.
+
+### I6. Standard diagnostic test meta-analysis methods
+
+- **Why inappropriate:**
+  - Single study, not multiple independent studies; meta-analytic pooling is unnecessary.
+- **Prefer:** Direct reporting of diagnostic measures per observer and time.
+
+---
+
+## TASK 4 – SUMMARY OF ANALYTICAL APPROACH
+
+The study evaluates whether targeted **calibration** improves the **reliability of observer assessments of periapical pathology and related variables on panoramic radiographs**.
+
+Analytically:
+
+- Use **agreement metrics**:
+  - **Cohen’s kappa** for tooth-level binary classifications.
+  - **ICC** and **Bland–Altman** analysis for PR-level numeric counts (numbers of teeth, root-filled teeth, DMFT).
+- Evaluate **intra‑ and inter‑observer reliability**:
+  - Observer vs reference and observer vs self over time.
+- Assess **calibration effect**:
+  - Compare agreement statistics and proportions of correct classifications **pre vs post vs 3‑month follow-up**, using McNemar’s test (or clustered extensions) for paired binary data and paired tests (or mixed models) for counts.
+- Optionally, express findings in clinical terms using **sensitivity, specificity, and predictive values**, understanding that the reference standard is expert consensus rather than histopathology.
+
+This plan aligns with the methodological nature of the study, respects the data structure (binary tooth-level measurements clustered within radiographs and repeated over time), and focuses on the central question: does calibration meaningfully and sustainably improve observer reliability in interpreting panoramic radiographs for endodontic epidemiology?

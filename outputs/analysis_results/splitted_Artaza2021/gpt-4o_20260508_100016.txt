@@ -1,0 +1,129 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_Artaza2021.pdf
+Status : ok
+Time   : 20260508_100016
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   Retrospective cohort study.
+
+2. **Objectives**:  
+   - Report clinical and radiographic outcomes of root canal treatment or retreatment of teeth with chronic apical abscesses associated with intraoral sinus tracts.  
+   - Evaluate the influence of preoperative, intraoperative, and postoperative variables on treatment outcomes.
+
+3. **Groups**:  
+   - **Preoperative variables**: Age, sex, sinus tract location, size of radiolucent lesion, root canal status (necrotic pulp or previous treatment), tooth type/location, symptoms, periodontal probing, tooth mobility.  
+   - **Intraoperative variables**: Number of treatment sessions, working length, obturation technique, quality of root canal filling, filling of lateral canals.  
+   - **Postoperative variables**: Healing of sinus tract, periradicular tissue healing, presence/type/quality of coronal restoration.
+
+4. **Sample Size**:  
+   - 137 teeth from 128 patients met inclusion criteria.  
+   - Patient demographics: 81 women, 63 men, aged 15–86 years.
+
+5. **Variables**:  
+   - **Independent variables**: Preoperative, intraoperative, and postoperative factors (e.g., sinus tract location, lesion size, obturation technique).  
+   - **Dependent variables**: Treatment outcomes (healed, healing, diseased).
+
+6. **Measurements**:  
+   - **Clinical outcomes**: Presence of sinus tract, symptoms, mobility, periodontal probing depths, coronal restoration quality.  
+   - **Radiographic outcomes**: Periapical Index (PAI) scores (1–5).  
+   - **Outcome classification**: Healed, healing, diseased.
+
+7. **Data Collection Methods**:  
+   - Preoperative data: Clinical examination, pulp tests, radiographs.  
+   - Intraoperative data: Recorded during treatment by a single operator.  
+   - Postoperative data: Follow-up examinations at 7, 14, 21, and 30 days, and annually for up to 17 years. Radiographs evaluated by two blinded endodontists using the PAI system.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Chi-Square Test (or Fisher’s Exact Test)**  
+   - **Purpose**: Assess associations between categorical variables (e.g., sinus tract location, lesion size) and treatment outcomes (healed, healing, diseased).  
+   - **Why Appropriate**:  
+     1. The study involves categorical variables (e.g., PAI scores, sinus tract healing status).  
+     2. Large sample size allows for robust chi-square analysis.  
+   - **Why It May Not Be Appropriate**: Small sample sizes in subgroups may require Fisher’s Exact Test instead.  
+   - **When NOT to Use**: If expected frequencies in any cell are <5.  
+   - **Alternative**: Fisher’s Exact Test.
+
+2. **Logistic Regression**  
+   - **Purpose**: Model the relationship between independent variables (e.g., lesion size, obturation technique) and dichotomous outcomes (e.g., healed vs. diseased).  
+   - **Why Appropriate**:  
+     1. Allows for multivariable analysis of predictors of treatment outcomes.  
+     2. Accounts for confounding variables.  
+   - **Why It May Not Be Appropriate**: Assumes linear relationship between predictors and log-odds of the outcome.  
+   - **When NOT to Use**: If multicollinearity exists among predictors.  
+   - **Alternative**: Ridge regression or penalized logistic regression.
+
+3. **Kaplan-Meier Survival Analysis**  
+   - **Purpose**: Evaluate time-to-event data (e.g., time to sinus tract healing or recurrence).  
+   - **Why Appropriate**:  
+     1. Suitable for follow-up data with varying durations.  
+     2. Accounts for censored data (e.g., patients lost to follow-up).  
+   - **Why It May Not Be Appropriate**: Assumes proportional hazards.  
+   - **When NOT to Use**: If sample size is insufficient for subgroup comparisons.  
+   - **Alternative**: Cox proportional hazards model.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Cox Proportional Hazards Model**  
+   - **Purpose**: Assess the impact of variables (e.g., lesion size, obturation technique) on time to healing or recurrence.  
+   - **Why Appropriate**:  
+     1. Accounts for time-dependent covariates.  
+     2. Handles censored data effectively.  
+   - **Why It May Not Be Appropriate**: Assumes proportional hazards.  
+   - **When NOT to Use**: If proportional hazards assumption is violated.  
+   - **Alternative**: Stratified Cox model.
+
+2. **Repeated Measures ANOVA (or Mixed Effects Model)**  
+   - **Purpose**: Analyze changes in radiographic PAI scores over time.  
+   - **Why Appropriate**:  
+     1. Accounts for within-subject correlations across repeated measures.  
+     2. Suitable for longitudinal data.  
+   - **Why It May Not Be Appropriate**: Requires normality of residuals.  
+   - **When NOT to Use**: If data are non-normally distributed.  
+   - **Alternative**: Nonparametric tests (e.g., Friedman test).
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Correlation Analysis (Spearman’s Rank or Pearson)**  
+   - **Purpose**: Explore relationships between continuous variables (e.g., lesion size, follow-up duration).  
+   - **Why Appropriate**:  
+     1. Provides supplementary insights into variable relationships.  
+     2. Easy to interpret.  
+   - **Why It May Not Be Appropriate**: Does not account for confounding factors.  
+   - **When NOT to Use**: If variables are not continuous or ordinal.  
+   - **Alternative**: Partial correlation.
+
+2. **Cluster Analysis**  
+   - **Purpose**: Identify patterns or subgroups within the dataset (e.g., patients with similar healing trajectories).  
+   - **Why Appropriate**:  
+     1. Useful for exploratory analysis.  
+     2. May reveal latent structures in the data.  
+   - **Why It May Not Be Appropriate**: Requires careful interpretation and validation.  
+   - **When NOT to Use**: If sample size is insufficient for meaningful clusters.  
+   - **Alternative**: Principal component analysis (PCA).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent Samples T-Test**  
+   - **Why NOT Appropriate**: The study primarily involves categorical outcomes (e.g., healed vs. diseased), not continuous variables.  
+   - **Alternative**: Chi-square test or logistic regression.
+
+2. **Linear Regression**  
+   - **Why NOT Appropriate**: The dependent variable (treatment outcome) is categorical, not continuous.  
+   - **Alternative**: Logistic regression.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach integrates mandatory tests (e.g., chi-square, logistic regression, Kaplan-Meier survival analysis) to address the primary objectives of the study, while recommended tests (e.g., Cox proportional hazards, repeated measures ANOVA) enhance the rigor of longitudinal and multivariable analyses. Optional tests (e.g., correlation analysis, cluster analysis) provide supplementary insights into patterns and relationships. The plan avoids inappropriate tests that fail to align with the study design and data characteristics. This comprehensive statistical approach ensures robust and valid conclusions regarding the clinical and radiographic outcomes of root canal treatment for teeth with sinus tracts.

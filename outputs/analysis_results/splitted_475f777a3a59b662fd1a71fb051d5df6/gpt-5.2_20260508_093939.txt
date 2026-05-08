@@ -1,0 +1,276 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_475f777a3a59b662fd1a71fb051d5df6.pdf
+Status : ok
+Time   : 20260508_093939
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design
+- **Type:** In vitro, controlled laboratory experimental study.
+- **Primary comparison:** Cyclic fatigue resistance across **multiple NiTi endodontic instrument systems** tested in **matching artificial canals** under standardized dynamic conditions at **body temperature**.
+- **Hypothesis:** Null hypothesis: **core mass and alloy have no impact** on fracture resistance (cyclic fatigue).
+
+### Objectives
+- To investigate the impact of **core mass** and **alloy** (instruments with **same outer diameter** but **different cross-sectional designs**) on **cyclic fatigue resistance**, using **matching artificial root canals**.
+
+### Groups (instrument systems)
+- **Total groups:** 6 groups (20 instruments/group; total n = 120)
+- **Group list and key operational settings (rpm/torque):**
+  1. **F360** (25/0.04): 300 rpm, 1.8 Ncm
+  2. **Twisted File (TF)** (25/0.04): 500 rpm, 2.5 Ncm
+  3. **JIZAI J_04** (25/0.04): 500 rpm, 3.0 Ncm
+  4. **TruNatomy (TN)** (26/0.04 variable taper; ~0.04 average): 500 rpm, 1.5 Ncm
+  5. **Mtwo** (25/0.06): 280 rpm, 2.3 Ncm
+  6. **JIZAI J_06** (25/0.06): 500 rpm, 3.0 Ncm
+  7. **Hyflex OneFile (HF)** (25/~ variable taper): 400 rpm, 2.5 Ncm  
+  **Note:** The sample size statement implies **120 instruments total**, consistent with **6 groups × 20**; however Methods also list **Hyflex OneFile**, which would make 7 groups. This discrepancy must be resolved from the full paper/results before finalizing the SAP (e.g., confirm whether one listed system was not included in final analysis, or whether total n is misreported).
+
+### Sample size calculation
+- Pilot: 5 instruments/group under identical conditions.
+- Pilot suggested **effect size > 1.0**, but planning used **effect size = 0.4** (conservative).
+- Parameters: **α = 0.05**, **β = 0.20** (power 80%).
+- Computed **n = 19 per group**, used **n = 20 per group**.
+
+### Experimental model and data collection
+- **Artificial canals:** custom designed (Geomagic Freeform) to be **instrument diameter + 0.02 mm** (matching) for friction-free rotation.
+- **Canal geometry:** 60° curvature, **radius 5 mm**, center of curvature 5 mm from apex, **length 16 mm**.
+- **Manufacture of canals:** DMLS cobalt-based alloy (CoCr), stress-relief annealed, sandblasted.
+- **Verification of canal size:** laser scanning microscope.
+- **Test environment:** incubator at **37 ± 1°C**; canal temperature continuously monitored (thermocouples, 50 Hz).
+- **Lubrication:** glycerin oil at body temperature, continuously refreshed.
+- **Dynamic motion:** axial “picking” movement amplitude **3 mm**, frequency **0.5 Hz**.
+- **Outcome timing:** recorded via microscopic camera; start = first reach working length; end = fracture time.
+- **Censoring/stop rule:** tests **limited to 600 s**; if no fracture by 600 s, terminated (with 30 s buffer) → **right-censoring** is present by design.
+
+### Outcomes / variables
+**Primary outcome**
+- **NCF (number of cycles to fracture)** computed as:  
+  \[
+  \text{NCF} = \frac{\text{time to fracture}}{60}\times \text{rpm}
+  \]
+  - Derived from **time-to-fracture** (seconds) and group-specific rpm.
+
+**Secondary/ancillary outcomes**
+- **Time to fracture** (seconds) (directly measured from video).
+- **Fragment length** (mm) measured with digital caliper.
+- **Fracture mode confirmation:** For each group, **5 randomly selected** fractured surfaces (if available) examined via laser scanning microscope (500×) to exclude torsional fracture (mostly qualitative/descriptive).
+
+**Predictors / factors of interest**
+- **Instrument system** (categorical).
+- Implicit mechanistic predictors: **core mass**, **cross-sectional design**, **alloy/heat treatment** (not numerically measured in provided excerpt; likely inferred/compared by system).
+
+---
+
+## TASK 2 — Statistical analysis plan (SAP)
+
+### 0) General principles (apply to all analyses)
+- **Unit of analysis:** instrument.
+- **Analysis sets:**
+  - Primary: all tested instruments with valid fracture time; include censored observations (no fracture by 600 s).
+- **Descriptives:**
+  - Continuous variables: mean/SD if ~normal; otherwise median/IQR; always report **n**, **# censored**.
+  - Graphs: box/violin plots for NCF/time; Kaplan–Meier curves for time-to-fracture by system.
+- **Multiplicity:** if comparing multiple systems pairwise, control family-wise error (Tukey/Holm) or FDR (Benjamini–Hochberg) depending on objective.
+- **Assumption checks:** normality (QQ plot/Shapiro–Wilk), homoscedasticity (Levene/Brown–Forsythe), outliers/influence.
+- **Key design issue:** Because tests stop at 600 s, **time-to-fracture and NCF are right-censored** for instruments not failing; any method treating those as exact 600 s (or excluding them) can bias estimates and p-values. Survival methods are strongly preferred if any censoring occurred.
+
+---
+
+## CATEGORY A — MANDATORY tests (analysis incomplete without them)
+
+### A1. Kaplan–Meier survival analysis + log-rank test
+- **Test name:** Kaplan–Meier estimator; **log-rank test** for group comparison.
+- **Purpose:** Compare **time-to-fracture** distributions across instrument systems while properly handling **right-censoring at 600 s**.
+- **Why appropriate (≥2):**
+  1. Explicitly accommodates **censored observations** (no fracture within test window).
+  2. Compares entire survival curves, not just means, capturing distributional differences in failure times.
+- **Why may not be appropriate (≥1):**
+  - If **no censoring** and all instruments fracture well before 600 s, survival methods are not necessary (though still valid).
+- **When NOT to use:**
+  - If outcome is not time-to-event (e.g., single continuous measurement without censoring) or if censoring is not present/possible by design.
+- **Alternative if assumptions violated:**
+  - If hazards cross heavily (non-proportionality), prefer **weighted log-rank tests** (e.g., Fleming–Harrington) or model-based approaches (A2/A3).
+
+### A2. Cox proportional hazards regression (multivariable survival model)
+- **Test name:** Cox PH model.
+- **Purpose:** Estimate **hazard ratios** for fracture by instrument system (and optionally adjust for test settings such as rpm/torque if treated as covariates, though they are system-determined).
+- **Why appropriate (≥2):**
+  1. Handles **censoring** and yields interpretable **effect sizes** (HR with 95% CI).
+  2. Allows **covariate adjustment** and formal assessment of factors (system; possibly rpm) if needed.
+- **Why may not be appropriate (≥1):**
+  - The **proportional hazards assumption** may be violated (different fatigue behavior over time).
+- **When NOT to use:**
+  - When PH assumption is badly violated and cannot be remedied (e.g., time-varying effects) and sample size is too small for stratification/time-varying terms.
+- **Alternative if assumptions violated:**
+  - **Stratified Cox model**, **Cox with time-varying coefficients**, or **accelerated failure time (AFT) model** (A3).
+
+### A3. Accelerated failure time (AFT) model (e.g., log-normal or Weibull)
+- **Test name:** Parametric survival regression (AFT).
+- **Purpose:** Quantify how instrument system **accelerates/decelerates** time-to-fracture; often more interpretable in fatigue testing (“time ratio”).
+- **Why appropriate (≥2):**
+  1. Handles **right-censoring** and can outperform Cox when a parametric distribution fits well.
+  2. Provides **time ratios** (e.g., “System A lasts 1.6× longer than System B”).
+- **Why may not be appropriate (≥1):**
+  - Misspecification of the survival-time distribution can bias results.
+- **When NOT to use:**
+  - When no plausible parametric form fits (poor goodness-of-fit) or sample size is too small to discriminate distributions.
+- **Alternative if assumptions violated:**
+  - Revert to **Cox PH** (A2) or nonparametric comparisons (A1).
+
+---
+
+## CATEGORY B — RECOMMENDED tests (improve rigor/interpretability)
+
+### B1. Global comparison of NCF across systems using ANOVA (or Welch ANOVA) **only if no censoring**
+- **Test name:** One-way ANOVA (or **Welch ANOVA**).
+- **Purpose:** Compare mean **NCF** among instrument systems when NCF is fully observed.
+- **Why appropriate (≥2):**
+  1. NCF is continuous and group membership is categorical.
+  2. Efficient for detecting mean differences with balanced group sizes (n≈20/group).
+- **Why may not be appropriate (≥1):**
+  - If any censoring exists, NCF is **not fully observed**, and treating censored values as fixed (e.g., NCF at 600 s) biases comparisons.
+- **When NOT to use:**
+  - When tests are censored or assumptions of normality/variance are materially violated without remedy.
+- **Alternative if assumptions violated:**
+  - If no censoring but heteroscedasticity: **Welch ANOVA** + Games–Howell post hoc.
+  - If non-normal: **Kruskal–Wallis** (B2).
+  - If censoring: survival methods (A1–A3) should replace this as primary.
+
+### B2. Kruskal–Wallis test (+ Dunn post hoc) for NCF/time when non-normal (and uncensored)
+- **Test name:** Kruskal–Wallis; Dunn’s test with multiplicity correction.
+- **Purpose:** Compare central tendency across systems without assuming normality.
+- **Why appropriate (≥2):**
+  1. Robust to non-normal distributions common in fatigue data.
+  2. Works with small-to-moderate n/group.
+- **Why may not be appropriate (≥1):**
+  - Still assumes **independent samples** and does not address **censoring**.
+- **When NOT to use:**
+  - When censoring is present or when interest is explicitly in mean differences (it tests stochastic dominance/median-type differences).
+- **Alternative if assumptions violated:**
+  - With censoring: **log-rank/Cox/AFT** (A1–A3).
+
+### B3. Post hoc multiple comparisons (pairwise) with multiplicity control
+- **Test name:** Tukey HSD (after ANOVA), Games–Howell (after Welch), or Holm-adjusted pairwise tests; for survival: pairwise log-rank with Holm/FDR.
+- **Purpose:** Identify which instrument pairs differ.
+- **Why appropriate (≥2):**
+  1. Multiple systems → many pairwise contrasts; multiplicity control prevents inflated Type I error.
+  2. Provides actionable comparisons (which instruments differ).
+- **Why may not be appropriate (≥1):**
+  - Small sample sizes can yield low power after correction.
+- **When NOT to use:**
+  - If only an overall/global hypothesis is of interest or if post hoc testing was not pre-specified and risks overinterpretation.
+- **Alternative if assumptions violated:**
+  - Use robust/nonparametric pairwise methods consistent with the main model (e.g., Dunn, pairwise log-rank).
+
+### B4. Analysis of fragment length across systems
+- **Test name:** One-way ANOVA/Welch or Kruskal–Wallis (depending on assumptions).
+- **Purpose:** Check whether **fracture location** differs by instrument system (quality control; may reflect canal curvature engagement).
+- **Why appropriate (≥2):**
+  1. Fragment length is continuous and may indicate whether failures occurred at comparable canal positions.
+  2. Helps confirm testing comparability across groups (a methodological validity check).
+- **Why may not be appropriate (≥1):**
+  - If fragment length is missing for censored cases (no fracture), analysis is conditional on failure and may be biased.
+- **When NOT to use:**
+  - If many instruments are censored (no fracture), making fragment-length comparison unrepresentative.
+- **Alternative if assumptions violated:**
+  - Robust methods (Kruskal–Wallis) or model fragment length only among fractured instruments with transparent reporting.
+
+### B5. Assumption/diagnostic tests (as part of QA)
+- **Tests:** Shapiro–Wilk (normality), Levene/Brown–Forsythe (equal variances), PH assumption tests (Schoenfeld residuals) for Cox.
+- **Purpose:** Validate model choice and report robustness.
+- **Why appropriate (≥2):**
+  1. Fatigue data often skewed; variance often differs by system.
+  2. Cox models require PH; checking is essential for correct inference.
+- **Why may not be appropriate (≥1):**
+  - With small n, assumption tests can be underpowered/overly sensitive; should be complemented by plots.
+- **When NOT to use:**
+  - Never as the sole basis for decisions; avoid automatic “test then choose” without scientific judgment.
+- **Alternative if assumptions violated:**
+  - Switch to robust methods (Welch, nonparametric) or alternative survival models (AFT, time-varying Cox).
+
+---
+
+## CATEGORY C — OPTIONAL analyses (supplementary insight)
+
+### C1. Effect size reporting
+- **Measures:** For ANOVA-type: η²/ω²; for pairwise: Cohen’s d or Cliff’s delta; for survival: HRs and/or time ratios; restricted mean survival time (RMST) differences.
+- **Purpose:** Quantify magnitude beyond p-values.
+- **Why appropriate (≥2):**
+  1. Enhances interpretability and clinical/material relevance.
+  2. Allows comparison to prior studies and supports meta-analysis.
+- **Why may not be appropriate (≥1):**
+  - Some effect sizes are distribution/scale dependent; RMST depends on truncation time (600 s).
+- **When NOT to use:**
+  - Avoid Cohen’s d on heavily skewed outcomes; avoid mean-based measures when censoring is substantial.
+- **Alternative if assumptions violated:**
+  - Use **RMST** (survival) or **Cliff’s delta** (nonparametric).
+
+### C2. RMST analysis (restricted mean survival time) up to 600 s
+- **Test name:** RMST difference/regression.
+- **Purpose:** Compare average event-free time **within the 600 s window**.
+- **Why appropriate (≥2):**
+  1. Works well with censoring and does **not require PH assumption**.
+  2. Directly aligned with the experimental truncation at 600 s.
+- **Why may not be appropriate (≥1):**
+  - Interpretation is limited to the restriction horizon (600 s).
+- **When NOT to use:**
+  - If the truncation time is arbitrary and far from most events (though here it is design-defined).
+- **Alternative if assumptions violated:**
+  - Cox/AFT remain alternatives; RMST is itself robust.
+
+### C3. Sensitivity analysis using time-to-fracture vs NCF
+- **Approach:** Repeat primary comparisons using both **time-to-fracture** and **NCF**, clarifying interpretation given differing rpm settings across systems.
+- **Purpose:** Confirm conclusions are not an artifact of rpm conversion.
+- **Why appropriate (≥2):**
+  1. rpm differs by system; NCF adjusts for rpm, time does not.
+  2. Demonstrates robustness to outcome scale.
+- **Why may not be appropriate (≥1):**
+  - If rpm is part of the “system package,” adjusting may remove a meaningful component of performance.
+- **When NOT to use:**
+  - If the scientific question is strictly about clinical working time (seconds) rather than cycles.
+- **Alternative if assumptions violated:**
+  - Model both outcomes with appropriate methods (survival for time; survival on cycles if censoring can be translated).
+
+### C4. Reliability of video-derived timing (if multiple raters)
+- **Test name:** Intraclass correlation coefficient (ICC) or Bland–Altman.
+- **Purpose:** Quantify measurement repeatability of start/end time extraction.
+- **Why appropriate (≥2):**
+  1. Timing is derived from video—potential observer variability.
+  2. Supports measurement validity.
+- **Why may not be appropriate (≥1):**
+  - Not needed if times are extracted automatically or by a single rater without repeats.
+- **When NOT to use:**
+  - When no replicate measurements exist.
+- **Alternative if assumptions violated:**
+  - Use weighted kappa for categorized times (not ideal) or repeat measurement protocol.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Chi-square tests / Fisher’s exact test as primary analysis**
+   - Outcome is continuous time/cycles, not categorical counts; would require arbitrary dichotomization (e.g., “fractured by 600 s yes/no”), losing information.
+
+2. **Multiple independent t-tests without multiplicity correction**
+   - Many systems → inflated Type I error; violates family-wise error control.
+
+3. **Paired t-test / repeated-measures ANOVA**
+   - Instruments are independent; no within-instrument repeated outcome was described.
+
+4. **Simple linear regression on time/NCF ignoring censoring**
+   - If any instruments do not fracture by 600 s, treating them as observed (or deleting them) biases estimates and p-values.
+
+5. **Pearson correlation between rpm and NCF across instruments**
+   - rpm is set by manufacturer and essentially collinear with “system”; correlation would be confounded and not meaningful.
+
+6. **MANOVA as primary**
+   - Primary scientific endpoint is fatigue resistance; additional variables (fragment length) are ancillary and may be missing for censored cases, violating MANOVA requirements.
+
+---
+
+## TASK 4 — Summary justification of overall analytical approach
+The study is a controlled in vitro multi-group comparison with a **time-to-failure endpoint** and a **fixed test limit (600 s)** that induces potential **right-censoring**. Therefore, the core analysis should be **survival-based** (Kaplan–Meier/log-rank plus Cox/AFT for effect estimates), supplemented by assumption checks and multiplicity-controlled post hoc contrasts. Secondary analyses of **NCF** and **fragment length** are appropriate for interpretation and quality control, but NCF comparisons should not ignore censoring if any non-fractures occurred within the 600 s window.
+
+If you confirm whether Hyflex OneFile was actually included in the final dataset (6 vs 7 groups) and whether any instruments were censored at 600 s, I can tailor the SAP (primary endpoint as time vs NCF, and exact multiple-comparison structure) precisely.

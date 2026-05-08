@@ -1,0 +1,137 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_academic_performance_and_dental_student.7.pdf
+Status : ok
+Time   : 20260508_094756
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics
+1. **Study Design**:  
+   Retrospective cohort study.
+
+2. **Objectives**:  
+   - Evaluate the consequences of emergency remote teaching on dental students' learning satisfaction.  
+   - Compare academic performance in summative examinations between students taught via emergency remote teaching and those taught face-to-face in the prepandemic year.
+
+3. **Groups**:  
+   - **Group 1**: Students taught via emergency remote teaching during the COVID-19 pandemic (2019–2020 academic year).  
+   - **Group 2**: Students taught face-to-face in the prepandemic year (2018–2019 academic year).
+
+4. **Sample Size**:  
+   - Group 1: 39 students.  
+   - Group 2: 37 students.
+
+5. **Variables**:  
+   - **Independent Variables**:  
+     - Mode of teaching (emergency remote teaching vs. face-to-face).  
+     - Lecture delivery method (face-to-face, online-synchronized, online-asynchronized).  
+   - **Dependent Variables**:  
+     - Student satisfaction (survey responses).  
+     - Academic performance (summative examination scores).
+
+6. **Measurements**:  
+   - **Student Satisfaction**:  
+     - Survey with 18 questions rated on satisfaction levels (satisfied, neutral, unsatisfied).  
+     - Categories assessed: comprehension, retention, communication, stress-free learning, time convenience, technical support, transportation.  
+   - **Academic Performance**:  
+     - Summative examination scores (multiple-choice questions based on a fixed blueprint).  
+     - Item analysis performed using ExamSoft platform.
+
+7. **Data Collection Methods**:  
+   - Satisfaction survey distributed via email before summative assessments.  
+   - Examination scores collected via ExamSoft platform for both cohorts.  
+   - Lectures and lecturers were identical across both cohorts.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Independent Samples t-Test (or Mann-Whitney U Test if assumptions are violated).  
+   - **Purpose**: Compare summative examination scores between the two cohorts.  
+   - **Why Appropriate**:  
+     - Continuous dependent variable (exam scores).  
+     - Two independent groups (remote teaching vs. face-to-face teaching).  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes normality and homogeneity of variance.  
+   - **When This Test Should NOT Be Used**:  
+     - If data are not normally distributed or variances are unequal.  
+   - **Alternative**: Mann-Whitney U Test (nonparametric).
+
+2. **Test Name**: Chi-Square Test of Independence (or Fisher’s Exact Test for small sample sizes).  
+   - **Purpose**: Analyze the association between lecture delivery method and student satisfaction levels.  
+   - **Why Appropriate**:  
+     - Categorical variables (lecture delivery method and satisfaction levels).  
+     - Large enough sample size for expected frequencies in contingency tables.  
+   - **Why It May Not Be Appropriate**:  
+     - Small sample size may lead to low expected frequencies.  
+   - **When This Test Should NOT Be Used**:  
+     - If more than 20% of cells have expected frequencies <5.  
+   - **Alternative**: Fisher’s Exact Test.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: One-Way ANOVA (or Kruskal-Wallis Test if assumptions are violated).  
+   - **Purpose**: Compare satisfaction scores across the three lecture delivery methods (face-to-face, online-synchronized, online-asynchronized).  
+   - **Why Appropriate**:  
+     - Continuous dependent variable (satisfaction scores).  
+     - Three independent groups (lecture delivery methods).  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes normality and homogeneity of variance.  
+   - **When This Test Should NOT Be Used**:  
+     - If data are not normally distributed or variances are unequal.  
+   - **Alternative**: Kruskal-Wallis Test (nonparametric).
+
+2. **Test Name**: Paired Samples t-Test (or Wilcoxon Signed-Rank Test if assumptions are violated).  
+   - **Purpose**: Compare satisfaction scores within the same cohort across different lecture delivery methods.  
+   - **Why Appropriate**:  
+     - Continuous dependent variable (satisfaction scores).  
+     - Paired data (same students rating multiple methods).  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes normality of differences.  
+   - **When This Test Should NOT Be Used**:  
+     - If differences are not normally distributed.  
+   - **Alternative**: Wilcoxon Signed-Rank Test.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Correlation Analysis (Pearson or Spearman).  
+   - **Purpose**: Investigate the relationship between satisfaction scores and academic performance.  
+   - **Why Appropriate**:  
+     - Continuous variables (satisfaction scores and exam scores).  
+     - Useful for exploring potential associations.  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes linearity and normality for Pearson correlation.  
+   - **When This Test Should NOT Be Used**:  
+     - If data are not linear or normally distributed.  
+   - **Alternative**: Spearman correlation (nonparametric).
+
+2. **Test Name**: Logistic Regression.  
+   - **Purpose**: Predict likelihood of satisfaction (binary outcome: satisfied vs. unsatisfied) based on lecture delivery method.  
+   - **Why Appropriate**:  
+     - Binary dependent variable (satisfaction).  
+     - Multiple independent variables can be included.  
+   - **Why It May Not Be Appropriate**:  
+     - Requires large sample size for reliable estimates.  
+   - **When This Test Should NOT Be Used**:  
+     - If sample size is insufficient.  
+   - **Alternative**: Fisher’s Exact Test for categorical analysis.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: Paired Samples t-Test for comparing exam scores between cohorts.  
+   - **Reason**: The cohorts are independent groups, not paired.  
+2. **Test Name**: Repeated Measures ANOVA for satisfaction scores across lecture methods.  
+   - **Reason**: Requires repeated measures from the same individuals, which is not applicable for between-group comparisons.  
+3. **Test Name**: Linear Regression for predicting satisfaction.  
+   - **Reason**: Satisfaction is a categorical variable, not continuous.
+
+---
+
+### TASK 4: SUMMARY
+The overall analytical approach is designed to address the study’s objectives comprehensively. Mandatory tests focus on the primary comparisons (academic performance and satisfaction levels), recommended tests enhance the rigor by exploring satisfaction across lecture methods, and optional tests provide supplementary insights into relationships and predictive factors. Nonparametric alternatives are included to ensure robustness if assumptions are violated. This approach balances statistical rigor with practical considerations given the sample size and study design.

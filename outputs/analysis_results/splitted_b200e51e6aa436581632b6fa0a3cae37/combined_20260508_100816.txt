@@ -1,0 +1,917 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_b200e51e6aa436581632b6fa0a3cae37.pdf
+Time : 20260508_100816
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1: INFORMATION EXTRACTION (study characteristics)
+
+### Study overview
+- **Topic/aim:** Assess the **effectiveness of blended learning** in *Conservative Dentistry with Endodontics* based primarily on a **survey of 4th-year dental students** during the COVID-19 pandemic.
+- **Setting:** Poznan University of Medical Sciences (PUMS), Poland.
+- **Design (as stated):** **Educational action research** with:
+  1) a **cross-sectional survey** of students in a blended-learning course, and  
+  2) a **comparative evaluation of clinical activity (patient/procedure database)** across **two time periods** (pre-pandemic vs pandemic).
+
+### Components, populations, groups
+#### Component 1 — Student survey
+- **Population:** 4th-year dental students at PUMS who **all participated** in the blended-learning course.
+- **Sampling/recruitment:** Link to **Google Form** distributed to eligible students (convenience/voluntary response implied).
+- **Instrument:** **39-item author questionnaire**, **closed and open-ended** items.
+- **Questionnaire sections (5 parts):**
+  1) Self-evaluation  
+  2) Evaluation of theoretical e-learning classes  
+  3) Evaluation of practical clinical classes  
+  4) Evaluation of safety during COVID-19 pandemic  
+  5) Evaluation of blended learning overall
+- **Response scales:** Mostly **5-point Likert** and **dichotomous** items; plus open-text items.
+- **Pilot/pre-validation:** Pre-validated on **5 volunteers** (details of validation metrics not provided).
+
+**Survey-derived comparison groups (between-subject):**
+- **Group A:** Students who had clinical exercises in **3rd year**  
+- **Group B:** Students who took classes **online only** (in 3rd year)
+
+**Key survey variables (implied by sections/scales):**
+- Ordinal outcomes: Likert ratings of course components, perceived safety, overall evaluation, etc.
+- Binary outcomes: yes/no items (exact items not provided).
+- Categorical “advantages/disadvantages” selections used in correspondence analysis.
+- Qualitative outcomes: open-ended responses (not detailed in methods).
+
+#### Component 2 — Clinical procedures database
+- **Data source:** Department patient/services database for 4th-year classes.
+- **Time periods compared:**
+  - **Pre-pandemic:** Oct 2019–Jan 2020 (winter semester)
+  - **Pandemic:** Oct 2020–Jan 2021 (winter semester)
+- **Outcomes:** Counts of **selected procedures** in conservative dentistry/endodontics (“individual services”).
+- **Standardization/denominator:** Number of services **standardized per number of practicing student pairs (per day)** in each block.
+- **Structure of clinical teaching blocks:** 4-hour clinical classes daily for 4 weeks; **two student groups per block**; each year has **six groups total**.
+- **Primary comparison:** Pre-pandemic vs pandemic counts (standardized) for procedures.
+
+### Sample size
+- **Not reported** in the provided excerpt for either:
+  - number of student respondents, or
+  - number of blocks/days/student-pairs, or
+  - number of patients/procedures included.
+  This must be handled in the SAP (report response rate; define analysis denominators).
+
+### Stated statistical methods in article (for alignment)
+- Mann–Whitney test or Wilcoxon test for some survey comparisons.
+- Multidimensional correspondence analysis for relationship between perceived advantages/disadvantages and evaluation.
+- Mann–Whitney test for pre-pandemic vs pandemic procedure comparisons.
+
+---
+
+## TASK 2: STATISTICAL ANALYSIS PLAN (SAP)
+
+### 2.1 General principles
+- **Analysis populations:**
+  - **Survey analysis set:** all respondents with consent/complete eligibility; report **N invited**, **N responded**, **response rate**, missingness.
+  - **Clinical activity analysis set:** all class blocks/days in the two semesters meeting inclusion criteria (define a priori).
+- **Unit of analysis:**
+  - Survey: student.
+  - Clinical database: ideally **block-day** or **block** (depending on how “per day” is computed); avoid treating individual procedures as independent if clustered within day/block.
+- **Outcome types:**
+  - Likert: ordinal (primary) and optionally treated as numeric for sensitivity analyses.
+  - Dichotomous: binary.
+  - Procedure counts standardized per student-pair-day: rate/count-like (may be non-normal, skewed, zero-inflated).
+- **Two-sided alpha:** 0.05 (unless multiplicity strategy dictates otherwise).
+- **Multiplicity:** Many questionnaire items → control false positives:
+  - For families of related Likert items, use **Benjamini–Hochberg FDR** (recommended) or Holm.
+- **Missing data:**
+  - Describe item nonresponse.
+  - Primary: available-case per item.
+  - If scale scores are formed: predefine rules (e.g., compute score if ≥80% items present; otherwise missing).
+- **Software:** any validated statistical package (R/Stata/SPSS); specify version.
+
+### 2.2 Descriptive analyses (MANDATORY baseline)
+- Survey:
+  - Likert items: median (IQR), distribution (stacked bar charts).
+  - Binary: n (%).
+  - Open-ended: thematic summary (see optional qualitative plan).
+- Clinical activity:
+  - For each procedure type and period: median (IQR) and range of standardized counts; distribution plots.
+
+---
+
+## CATEGORY A — MANDATORY tests/analyses
+
+### A1) Mann–Whitney U test (Wilcoxon rank-sum) — between-group comparisons on Likert/ordinal outcomes
+- **Purpose:** Compare distributions/central tendency of ordinal survey responses between:
+  - students with 3rd-year clinical exercises vs online-only.
+- **Why appropriate (≥2):**
+  1) Likert responses are **ordinal** and often non-normal; Mann–Whitney does not assume normality.
+  2) Groups are **independent** (different students in each group).
+- **Why it may not be appropriate (≥1):**
+  - If distributions have very different shapes, the test is not strictly a “median difference” test and interpretation can be tricky.
+- **When NOT to use:**
+  - When responses are **paired/repeated** (same students measured twice) or when there are **>2 groups**.
+- **Alternative if assumptions are violated:**
+  - **Ordinal logistic regression** (proportional odds) with robust SEs (handles covariates and differing distributions); or **Brunner–Munzel test** if stochastic dominance assumption concerns.
+
+### A2) Wilcoxon signed-rank test — within-student paired comparisons (only if questionnaire contains paired items)
+- **Purpose:** Compare two related ordinal ratings within the same student (e.g., rating of e-learning vs clinical classes) **if** such paired constructs are analyzed.
+- **Why appropriate:**
+  1) Handles **paired ordinal** data without normality assumption.
+  2) Uses within-student ranking → controls for subject-level differences.
+- **Why it may not be appropriate:**
+  - Requires **paired measurements** on the same construct/time; not appropriate for independent groups.
+- **When NOT to use:**
+  - If pairing is absent, or differences are extremely tied/zero-heavy (power/interpretation issues).
+- **Alternative if assumptions are violated:**
+  - **Sign test** (fewer assumptions, lower power) or **paired ordinal regression/GEE** for more complex paired structures.
+
+### A3) Chi-square test of independence / Fisher’s exact test — between-group comparisons on binary/categorical items
+- **Purpose:** Compare proportions (e.g., yes/no safety perception; selection of a given advantage/disadvantage) between the two student subgroups.
+- **Why appropriate:**
+  1) Outcomes are **categorical**.
+  2) Directly tests association between group membership and response category.
+- **Why it may not be appropriate:**
+  - Chi-square requires adequate expected cell counts; sparse tables invalidate approximation.
+- **When NOT to use:**
+  - When expected counts are small (use Fisher) or when data are paired.
+- **Alternative if assumptions are violated:**
+  - **Fisher’s exact** (2×2 or small tables), or **exact multinomial tests**; for adjusted analysis use **logistic regression**.
+
+### A4) Pre-pandemic vs pandemic comparison of standardized procedure counts (primary clinical activity endpoint)
+**Preferred primary approach:** **Negative binomial regression** (or Poisson with overdispersion handling) with an offset.
+- **Test/model:** Negative binomial GLM with:
+  - outcome = procedure count per unit time,
+  - **offset** = log(student-pair-days) if using raw counts, or analyze standardized rates directly,
+  - predictor = period (pre vs pandemic).
+- **Purpose:** Quantify change in clinical procedure activity between periods (rate ratio).
+- **Why appropriate:**
+  1) Procedure data are **counts/rates** and commonly skewed; NB handles overdispersion.
+  2) Allows explicit handling of **different exposure/denominators** via offset (student-pair-days), matching the described standardization.
+- **Why it may not be appropriate:**
+  - If the analysis dataset is very small (few blocks/days), model estimates may be unstable.
+- **When NOT to use:**
+  - If data are continuous and approximately normal; or if there is no meaningful exposure denominator.
+- **Alternative if assumptions are violated:**
+  - **Quasi-Poisson** (robust variance), **zero-inflated NB** if many zeros, or **Mann–Whitney** on block-level standardized rates (less parametric but loses denominator modeling).
+
+*(If the investigators insist on the paper’s simpler approach, Mann–Whitney on standardized counts is acceptable as a nonparametric comparison, but NB regression is the methodologically stronger “mandatory” choice for rates.)*
+
+---
+
+## CATEGORY B — RECOMMENDED tests/analyses
+
+### B1) Ordinal logistic regression (proportional odds model) for key Likert outcomes
+- **Purpose:** Estimate adjusted association between subgroup (3rd-year clinical vs online-only) and ordinal outcomes (e.g., overall blended-learning evaluation), optionally adjusting for covariates if available (e.g., gender, age, prior experience—none provided in excerpt).
+- **Why appropriate:**
+  1) Preserves **ordinal nature** (better than treating Likert as continuous).
+  2) Produces interpretable **odds ratios** and supports covariate adjustment and interaction tests.
+- **Why it may not be appropriate:**
+  - Proportional odds assumption may be violated; also requires adequate sample size across categories.
+- **When NOT to use:**
+  - When outcome has very sparse categories (collapse categories or use alternative).
+- **Alternative if assumptions are violated:**
+  - **Partial proportional odds model**, **multinomial logistic regression**, or **adjacent-category models**.
+
+### B2) Reliability analysis for multi-item constructs (if scales are formed)
+- **Test/indices:** **McDonald’s omega** (preferred) and/or **Cronbach’s alpha**.
+- **Purpose:** Assess internal consistency of questionnaire sections (self-evaluation, safety, etc.) if items are combined into subscale scores.
+- **Why appropriate:**
+  1) The instrument is **author-created**; reliability evidence is needed.
+  2) Supports defensible creation of composite scores and reduces multiplicity.
+- **Why it may not be appropriate:**
+  - If items are not intended to measure a single latent construct (low unidimensionality).
+- **When NOT to use:**
+  - For heterogeneous item sets or dichotomous items without appropriate method.
+- **Alternative if assumptions are violated:**
+  - **Ordinal alpha/omega** using polychoric correlations; or avoid scale creation and analyze items separately.
+
+### B3) Exploratory factor analysis (EFA) / Confirmatory factor analysis (CFA) for questionnaire structure
+- **Purpose:** Evaluate whether the 5-part structure is supported empirically; define latent domains.
+- **Why appropriate:**
+  1) Strengthens validity evidence for an author questionnaire beyond “pre-validated on 5 volunteers”.
+  2) Enables more coherent reporting via domain scores.
+- **Why it may not be appropriate:**
+  - Requires adequate sample size; with small N results are unreliable.
+- **When NOT to use:**
+  - If respondent N is too low relative to item count (common rule: ≥5–10 per item, though context-dependent).
+- **Alternative if assumptions are violated:**
+  - **Parallel analysis + EFA on reduced item sets**, or **item response theory (graded response)** if sample allows.
+
+### B4) Multiple-comparisons control (Benjamini–Hochberg FDR or Holm)
+- **Purpose:** Control Type I error inflation across many questionnaire item tests.
+- **Why appropriate:**
+  1) 39 items → many p-values; unadjusted testing is misleading.
+  2) FDR maintains power while limiting false discoveries.
+- **Why it may not be appropriate:**
+  - If only a small pre-specified set of primary endpoints is tested, adjustment may be unnecessary.
+- **When NOT to use:**
+  - When analyses are purely descriptive/exploratory and clearly labeled as such (still report cautiously).
+- **Alternative if assumptions are violated:**
+  - **Hierarchical testing** with pre-specified endpoints; or **family-wise error** control via Holm.
+
+### B5) Effect sizes with confidence intervals (reporting standard)
+- **Measures:**
+  - Mann–Whitney: **rank-biserial correlation** or **Cliff’s delta**
+  - Binary: **risk difference**, **risk ratio**, **odds ratio**
+  - Count models: **rate ratio** (NB/Poisson)
+- **Purpose:** Provide magnitude, not only significance.
+- **Why appropriate:**
+  1) Educational significance depends on effect size.
+  2) CI conveys precision and supports interpretation independent of N.
+- **Why it may not be appropriate:**
+  - Some effect sizes are unfamiliar; requires careful explanation.
+- **When NOT to use:**
+  - Never “not use”; at minimum provide CIs for key estimates.
+- **Alternative if assumptions are violated:**
+  - Use **bootstrap CIs** for nonstandard estimands.
+
+### B6) Multidimensional correspondence analysis (MCA) — as stated, with safeguards
+- **Purpose:** Explore association patterns between categorical selections of advantages/disadvantages and overall evaluation categories.
+- **Why appropriate:**
+  1) Designed for **multivariate categorical** data.
+  2) Provides visual, low-dimensional representation of relationships.
+- **Why it may not be appropriate:**
+  - Results are exploratory and sensitive to sparse categories; interpretation can be subjective.
+- **When NOT to use:**
+  - When categories are extremely sparse or when the goal is confirmatory inference.
+- **Alternative if assumptions are violated:**
+  - **Multiple correspondence analysis with regularization**, or **log-linear models**, or **latent class analysis**.
+
+---
+
+## CATEGORY C — OPTIONAL (supplementary insights)
+
+### C1) Sensitivity analyses treating Likert outcomes as continuous (t-test/linear regression)
+- **Purpose:** Check robustness of conclusions under approximate interval assumptions.
+- **Why appropriate:**
+  1) Often yields similar inference with large samples; easy to interpret mean differences.
+  2) Enables standard regression diagnostics and covariate adjustment.
+- **Why it may not be appropriate:**
+  - Likert is ordinal; mean differences may be misleading with skew/ceiling effects.
+- **When NOT to use:**
+  - With very skewed distributions, small N, or few categories used.
+- **Alternative if assumptions are violated:**
+  - Stick to **ordinal models** or nonparametric methods.
+
+### C2) Qualitative analysis of open-ended responses (thematic analysis)
+- **Purpose:** Summarize perceived strengths/weaknesses of blended learning beyond closed items.
+- **Why appropriate:**
+  1) Open questions require a transparent qualitative method.
+  2) Adds context to quantitative findings.
+- **Why it may not be appropriate:**
+  - If responses are too brief/sparse for reliable coding.
+- **When NOT to use:**
+  - When only a handful of responses exist.
+- **Alternative if assumptions are violated:**
+  - Simple **content analysis** with frequency of key themes.
+
+### C3) Cluster-aware modeling for clinical activity (GEE or mixed models)
+- **Purpose:** Account for clustering by block/group/day (non-independence).
+- **Why appropriate:**
+  1) Procedures within the same block/day share staffing and scheduling → correlation.
+  2) Produces more valid SEs/CIs than assuming independence.
+- **Why it may not be appropriate:**
+  - Needs enough clusters; with few blocks, variance components are unstable.
+- **When NOT to use:**
+  - With extremely small number of clusters.
+- **Alternative if assumptions are violated:**
+  - **Cluster-robust SEs** with simple NB/Poisson; or aggregate to block-level.
+
+---
+
+## TASK 3: INAPPROPRIATE TESTS (should NOT be used)
+
+1) **Paired t-test** for subgroup comparisons (3rd-year clinical vs online-only)  
+- **Why not:** groups are independent; paired t-test assumes matched/paired observations.
+
+2) **One-way ANOVA** on individual Likert items as primary analysis  
+- **Why not:** Likert ordinal; ANOVA assumes interval scale and (approx.) normal residuals/homoscedasticity; also ignores ceiling/floor effects.
+
+3) **Multiple unadjusted t-tests across many items**  
+- **Why not:** severe multiplicity; inflated Type I error and selective reporting risk.
+
+4) **Pearson correlation on ordinal Likert items as the main association measure**  
+- **Why not:** assumes continuous, linear relationship; **Spearman** or ordinal models are more suitable.
+
+5) **Simple comparison of raw procedure counts without accounting for exposure (student-pair-days)**  
+- **Why not:** confounds clinical activity with differing clinical capacity; violates the study’s own standardization concept.
+
+6) **Linear regression on count outcomes (procedures) without transformation/modeling counts**  
+- **Why not:** count data are non-normal, heteroscedastic, non-negative; predictions can be negative.
+
+---
+
+## TASK 4: SUMMARY (overall analytical approach)
+
+The analysis should treat the project as two linked evaluations: (1) **student-perceived effectiveness and safety** measured mostly on **ordinal/binary survey data**, best analyzed using **nonparametric and/or ordinal regression methods** with multiplicity control and effect sizes; and (2) **objective clinical activity change** between semesters measured as **procedure counts/rates**, best analyzed using **count regression (negative binomial/Poisson with offsets)** and, where feasible, **cluster-aware inference**. This combination aligns with the data types, preserves correct measurement level, and yields interpretable estimates of both perceived and operational “effectiveness” of blended learning.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Educational action research.  
+   - Cross-sectional survey among fourth-year dental students.  
+
+2. **Objective**:  
+   - To assess the effectiveness of blended learning in conservative dentistry with endodontics during the COVID-19 pandemic.  
+
+3. **Groups**:  
+   - Two groups of students:  
+     - Group 1: Students who had clinical exercises in the third year.  
+     - Group 2: Students who took classes online only.  
+
+4. **Sample Size**:  
+   - Not explicitly stated in the provided text.  
+
+5. **Variables**:  
+   - Independent variables: Type of learning (blended learning vs. online-only classes).  
+   - Dependent variables:  
+     - Self-evaluation.  
+     - Evaluation of theoretical e-learning classes.  
+     - Evaluation of practical clinical classes.  
+     - Evaluation of safety during the COVID-19 pandemic.  
+     - Overall evaluation of blended learning.  
+
+6. **Measurements**:  
+   - Survey responses based on:  
+     - 5-point Likert scale.  
+     - Dichotomous scale.  
+     - Open-ended questions.  
+   - Standardized number of dental procedures performed during pre-pandemic and pandemic periods.  
+
+7. **Data Collection Methods**:  
+   - Online survey via Google Forms.  
+   - Author-designed 39-item questionnaire (pre-validated on 5 volunteers).  
+   - Data on dental procedures from clinical records during two winter semesters (pre-pandemic and pandemic).  
+
+8. **Statistical Methods Mentioned**:  
+   - Mann–Whitney test.  
+   - Wilcoxon test.  
+   - Multidimensional correspondence analysis.  
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Mann–Whitney U Test**  
+   - **Purpose**: Compare differences between two independent groups (students with prior clinical exercises vs. online-only students).  
+   - **Why Appropriate**:  
+     - Non-parametric test suitable for ordinal data (Likert scale responses).  
+     - Handles small sample sizes and non-normal distributions.  
+   - **Why It May Not Be Appropriate**: Assumes independence between groups, which may be violated if students interact or share experiences.  
+   - **When NOT to Use**: If data are normally distributed and sample sizes are large.  
+   - **Alternative**: Independent t-test (if assumptions of normality and homogeneity of variance are met).  
+
+2. **Wilcoxon Signed-Rank Test**  
+   - **Purpose**: Compare paired responses (e.g., pre-pandemic vs. pandemic evaluations of procedures).  
+   - **Why Appropriate**:  
+     - Non-parametric test suitable for ordinal or non-normal data.  
+     - Accounts for paired observations.  
+   - **Why It May Not Be Appropriate**: Assumes that differences between paired observations are symmetric.  
+   - **When NOT to Use**: If data are normally distributed and sample sizes are large.  
+   - **Alternative**: Paired t-test (if assumptions of normality are met).  
+
+3. **Multidimensional Correspondence Analysis**  
+   - **Purpose**: Explore relationships between categorical variables (e.g., advantages/disadvantages of blended learning).  
+   - **Why Appropriate**:  
+     - Suitable for categorical data.  
+     - Provides visual representation of relationships.  
+   - **Why It May Not Be Appropriate**: Requires sufficient sample size for meaningful interpretation.  
+   - **When NOT to Use**: If data are sparse or poorly categorized.  
+   - **Alternative**: Chi-square test for independence.  
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Descriptive Statistics**  
+   - **Purpose**: Summarize survey responses (e.g., mean, median, frequency distribution).  
+   - **Why Appropriate**:  
+     - Provides an overview of data distribution.  
+     - Essential for understanding trends in Likert scale responses.  
+   - **Why It May Not Be Appropriate**: Limited inferential value.  
+   - **When NOT to Use**: Not applicable; always useful.  
+   - **Alternative**: None; descriptive statistics are foundational.  
+
+2. **Chi-Square Test for Independence**  
+   - **Purpose**: Assess relationships between categorical variables (e.g., safety evaluation vs. blended learning effectiveness).  
+   - **Why Appropriate**:  
+     - Suitable for categorical data.  
+     - Tests independence between variables.  
+   - **Why It May Not Be Appropriate**: Requires sufficient sample size in each category.  
+   - **When NOT to Use**: If expected frequencies in any cell are <5.  
+   - **Alternative**: Fisher’s Exact Test (for small sample sizes).  
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Exploratory Factor Analysis**  
+   - **Purpose**: Identify underlying dimensions in survey responses.  
+   - **Why Appropriate**:  
+     - Useful for understanding latent constructs in multi-item questionnaires.  
+     - Enhances interpretation of survey results.  
+   - **Why It May Not Be Appropriate**: Requires large sample size and continuous data.  
+   - **When NOT to Use**: If sample size is small or data are purely categorical.  
+   - **Alternative**: Principal Component Analysis (if assumptions are met).  
+
+2. **Regression Analysis**  
+   - **Purpose**: Predict blended learning effectiveness based on independent variables (e.g., prior clinical experience, safety evaluation).  
+   - **Why Appropriate**:  
+     - Tests relationships between dependent and independent variables.  
+     - Allows for adjustment of confounders.  
+   - **Why It May Not Be Appropriate**: Assumes linear relationships and requires continuous dependent variables.  
+   - **When NOT to Use**: If data are purely categorical or ordinal.  
+   - **Alternative**: Logistic regression (if dependent variable is binary).  
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-Test**  
+   - **Why Not Appropriate**: Assumes normality and homogeneity of variance, which are unlikely for Likert scale data.  
+
+2. **ANOVA**  
+   - **Why Not Appropriate**: Requires continuous dependent variables and normal distribution, which are not applicable to Likert scale responses.  
+
+3. **Pearson Correlation**  
+   - **Why Not Appropriate**: Assumes continuous data and linear relationships, which are not applicable to ordinal survey data.  
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach combines non-parametric tests (Mann–Whitney, Wilcoxon) for ordinal data, multidimensional correspondence analysis for categorical relationships, and descriptive statistics for summarizing trends. This approach is robust for analyzing survey data and clinical records, ensuring valid conclusions despite potential violations of parametric assumptions. Supplementary analyses (e.g., regression, factor analysis) can enhance insights but require larger sample sizes and more detailed data.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1 – INFORMATION EXTRACTION  
+
+1. Study design and setting  
+- Design: Educational action research, observational, cross-sectional survey with an additional retrospective clinical service audit.  
+- Setting: Department of Conservative Dentistry and Endodontics, Poznan University of Medical Sciences (PUMS), Poland.  
+- Time frame:  
+  - Survey: during the second wave of COVID‑19 pandemic (academic year 2020/2021).  
+  - Clinical procedures database: two winter semesters  
+    - Pre‑pandemic: October 2019–January 2020  
+    - Pandemic: October 2020–January 2021  
+
+2. Population and groups  
+
+a) Student survey component  
+- Target population: 4th‑year dental students at PUMS enrolled in the compulsory subject “Conservative Dentistry with Endodontics” (210 hours, 10 ECTS) in 2020/2021.  
+- Exposure: All students followed a blended‑learning curriculum:  
+  - ~80% of curriculum hours are practical clinical classes overall for the subject.  
+  - >60% of theoretical classes delivered asynchronously (recorded seminars + self‑tests) plus synchronous discussion via MS Teams.  
+- Grouping for comparative analysis:  
+  - Group 1: Students who had clinical exercises in 3rd year (pre‑pandemic, traditional clinical experience).  
+  - Group 2: Students who took classes online only in 3rd year (no prior clinical in‑person exposure, pandemic‑affected cohort).  
+
+b) Clinical procedures component  
+- Units of observation: “Student pairs (per day) in a given block of classes” in 4‑week clinical blocks.  
+- Two periods:  
+  - Pre‑pandemic semester (Oct 2019–Jan 2020).  
+  - Pandemic semester (Oct 2020–Jan 2021).  
+- Each block: 4‑hour clinical classes every day for 4 weeks with two student groups; each year has six student groups in total.  
+- Selected conservative dentistry and endodontic procedures recorded and standardized per practising student pair per day.
+
+3. Objectives  
+
+Primary (stated):  
+- To assess the effectiveness of blended learning in conservative dentistry with endodontics, based on a survey among 4th‑year students during COVID‑19.  
+
+Implicit secondary objectives:  
+- To compare perceptions of teaching/learning (self‑evaluation, theoretical e‑learning, practical clinical classes, safety, and overall blended‑learning evaluation) between:  
+  - Students with prior 3rd‑year clinical exercises vs students who had only online classes in 3rd year.  
+- To compare the volume and profile of selected conservative/endodontic clinical procedures performed in 4th‑year clinical classes between pre‑pandemic and pandemic winter semesters.  
+- To explore associations between perceived advantages/disadvantages of blended learning and overall evaluation of the blended‑learning model (via multidimensional correspondence analysis).
+
+4. Data sources and instruments  
+
+a) Student survey  
+- Instrument: Author‑designed 39‑item questionnaire (closed and open‑ended items) distributed as a Google Form.  
+- Pre‑validation: Tested/piloted on 5 volunteers (face/content validity only, no psychometrics described).  
+- Structure (5 parts):  
+  1) Self‑evaluation (likely of knowledge, skills, readiness, etc.).  
+  2) Evaluation of theoretical e‑learning classes.  
+  3) Evaluation of practical clinical classes.  
+  4) Evaluation of safety during COVID‑19 pandemic.  
+  5) Evaluation of the blended‑learning model as a whole.  
+- Response formats:  
+  - 5‑point Likert scales (e.g., strongly disagree–strongly agree, or poor–excellent).  
+  - Dichotomous (yes/no or similar).  
+  - Open‑ended responses (qualitative).  
+
+b) Clinical procedures database  
+- Source: Department database of patients and procedures for 4th‑year clinical classes.  
+- Periods: Pre‑pandemic vs pandemic winter semesters.  
+- Measures: Counts of selected types of conservative and endodontic procedures; standardized per “number of practising student pairs (per day)” in a block.  
+- Structure: For each period and each procedure, there is a distribution across student pairs/days (necessary for Mann–Whitney tests).
+
+5. Variables  
+
+a) Student‑level variables  
+
+Group/stratification variables  
+- Prior clinical experience:  
+  - Binary: Had 3rd‑year clinical exercises (yes/no).  
+  - This is used to define the two main comparison groups.  
+
+Survey outcomes – mostly ordinal or binary  
+1) Self‑evaluation (ordinal Likert)  
+   - Self‑rated level of theoretical knowledge.  
+   - Self‑rated clinical skills.  
+   - Self‑confidence in performing procedures.  
+   - Self‑perceived progress/improvement.  
+   (Exact items not specified, but all in this domain.)  
+
+2) Evaluation of theoretical e‑learning classes (ordinal Likert + dichotomous)  
+   - Perceived clarity/quality of recorded seminars.  
+   - Usefulness of self‑tests.  
+   - Perceived effectiveness of asynchronous learning.  
+   - Satisfaction with MS Teams discussion meetings.  
+   - Preference for e‑learning vs traditional lectures (dichotomous or Likert).  
+
+3) Evaluation of practical clinical classes (ordinal Likert)  
+   - Satisfaction with 4‑hour clinical sessions.  
+   - Perceived adequacy of clinical time/number of patients.  
+   - Satisfaction with supervision/feedback.  
+   - Perceived impact of sanitary restrictions on clinical learning.  
+
+4) Evaluation of safety during COVID‑19 (ordinal Likert + dichotomous)  
+   - Perceived safety in the clinic (PPE, infection control).  
+   - Fear of infection at university / in clinical settings.  
+   - Perceived adequacy of institutional safety measures.  
+
+5) Evaluation of blended‑learning model (ordinal Likert)  
+   - Global evaluation of blended learning (e.g., overall satisfaction, “good/very good” vs “poor/very poor”).  
+   - Assessment of specific potential advantages (e.g., flexibility, accessibility, better work‑life balance).  
+   - Assessment of specific potential disadvantages (e.g., reduced interaction, technical problems, decreased motivation).  
+
+Other potential variables (not fully specified but typical for such surveys)  
+- Demographics: age, gender (may or may not have been collected; not mentioned).  
+- Technical conditions: internet access quality, equipment availability.  
+
+b) Clinical‑procedures–level variables  
+
+- Main independent variable: period (pre‑pandemic vs pandemic).  
+- Outcomes:  
+  - Number of each selected conservative/endodontic procedure per student pair per day (continuous/discrete count).  
+     Examples:  
+     - Conservative (e.g., restorative fillings, caries treatment).  
+     - Endodontic (e.g., root canal treatments).  
+     - Possibly others (e.g., emergency procedures), but not detailed in text.  
+
+6. Data collection methods  
+
+- Survey:  
+  - Mode: Online via Google Forms.  
+  - Administration: Students received a link and completed the questionnaire after the blended‑learning experience.  
+  - Data type: Anonymous/aggregated (ethics not required, as indicated by “Not applicable”).  
+
+- Clinical procedures:  
+  - Retrospective extraction from departmental patient/clinical activity database.  
+  - Standardization: Counts of procedures divided by number of practising student pairs per day in each teaching block.  
+
+7. Statistical methods already mentioned  
+
+- For survey comparisons between subgroups of students:  
+  - Mann–Whitney U test: for comparing distributions of Likert‑scale responses between independent groups (e.g., students with vs without prior clinical exercises).  
+  - Wilcoxon test: for comparing paired responses on related questions (likely pre‑post or “online vs traditional” within the same respondents, or comparisons within individuals).  
+
+- For exploring associations between perceptions and evaluation of blended learning:  
+  - Multidimensional correspondence analysis (MCA): for relationships between categorical variables (e.g., categories of perceived advantages/disadvantages and overall evaluation categories).  
+
+- For clinical procedures comparison:  
+  - Mann–Whitney U test: to compare distributions of standardized procedure counts per student pair between pre‑pandemic and pandemic semesters.
+
+---
+
+TASK 2 – STATISTICAL ANALYSIS PLAN  
+
+Below, the plan is structured by data component, then by test category. I’ll assume access to raw data beyond what is reported in the article, so the plan is comprehensive.
+
+A. MANDATORY ANALYSES  
+
+A1. Descriptive statistics  
+
+1) Test: Descriptive statistics (no inferential test)  
+- Purpose:  
+  - To summarize the characteristics of the student sample and the distribution of survey responses.  
+  - To describe the distribution of clinical procedures pre‑pandemic vs pandemic.  
+- Why appropriate:  
+  1. Essential first step to understand data structure, central tendency, and variability.  
+  2. Allows checking for missing values, floor/ceiling effects, and whether inferential tests are justified.  
+- Why it may not be appropriate:  
+  - Not a “test”; cannot assess statistical significance by itself.  
+- When NOT to use:  
+  - Not applicable; descriptive summaries are always needed.  
+- Alternatives if assumptions violated:  
+  - Use robust summaries (median, IQR) instead of mean/SD if distributions are skewed or ordinal.
+
+Recommended implementation:  
+- Categorical variables: n, % (e.g., proportion of students in each response category for Likert items, proportion in each group).  
+- Ordinal variables: median (IQR), full frequency distribution across Likert categories.  
+- Continuous counts (procedures per pair per day): mean ± SD and median (IQR); check distribution.
+
+A2. Between‑group comparison of student survey responses  
+
+2) Test: Mann–Whitney U test (Wilcoxon rank‑sum)  
+- Purpose:  
+  - To compare ordinal survey responses between independent groups:  
+    - Students with prior clinical exercises in 3rd year vs students with only online classes.  
+- Why appropriate:  
+  1. Likert‑scale responses are ordinal and typically non‑normally distributed; Mann–Whitney is robust and does not require normality.  
+  2. Groups are independent; sample sizes may be modest and unequal, conditions where non‑parametric tests are safer.  
+- Why it may not be appropriate:  
+  - If you have very small sample sizes per group (e.g., n < 10 in one group), the test has low power and exact methods or permutation tests may be preferable.  
+- When NOT to use:  
+  - When comparing more than two independent groups simultaneously (then use Kruskal–Wallis).  
+  - When the same subjects are measured twice (paired; use Wilcoxon signed‑rank).  
+- Alternative if assumptions are violated:  
+  - If the approximate large‑sample Mann–Whitney assumptions fail (e.g., extremely small sample): exact Mann–Whitney or permutation test.  
+  - If Likert scales have many categories and approximate interval properties, and data are roughly symmetric: independent‑samples t‑test with robust standard errors could be considered, but only with justification.
+
+Application:  
+- For each key ordinal survey item (self‑evaluation, satisfaction with e‑learning, satisfaction with clinical classes, safety perception, global evaluation of blended learning), compare distributions between the two student groups.  
+- Report effect sizes (e.g., rank‑biserial correlation or Cliff’s delta) with 95% CIs.
+
+3) Test: Chi‑square test of independence / Fisher’s exact test  
+- Purpose:  
+  - To compare proportions for binary outcomes between groups (e.g., “prefer blended learning vs traditional” yes/no; “feel safe” yes/no).  
+- Why appropriate:  
+  1. Data are categorical (nominal or dichotomous).  
+  2. Groups are independent.  
+- Why it may not be appropriate:  
+  - If expected cell counts in the contingency table are <5 in more than 20% of cells, chi‑square approximation is poor.  
+- When NOT to use:  
+  - Not suitable for paired/before–after binary data (use McNemar test).  
+- Alternative if assumptions are violated:  
+  - Fisher’s exact test (especially for 2×2 tables or small samples).  
+  - For larger tables with sparse data: exact multinomial tests or collapsing categories.
+
+A3. Within‑student comparisons of paired perceptions  
+
+4) Test: Wilcoxon signed‑rank test  
+- Purpose:  
+  - To compare paired ordinal responses within the same students, such as:  
+    - attitude to theoretical classes before vs after blended learning (if measured), or  
+    - preference for traditional vs online teaching rated on separate Likert scales by the same student.  
+- Why appropriate:  
+  1. Data are paired (same subject answering two related questions).  
+  2. Response variables are ordinal/non‑normal; Wilcoxon signed‑rank is a non‑parametric alternative to paired t‑test.  
+- Why it may not be appropriate:  
+  - Requires that differences in paired scores can be meaningfully ranked; with highly skewed or very small samples, distributions of differences may be problematic.  
+- When NOT to use:  
+  - When comparing independent groups (use Mann–Whitney).  
+  - If the variable is nominal (use McNemar or Bowker tests).  
+- Alternative if assumptions are violated:  
+  - Sign test (if the distribution of differences is extremely non‑symmetric or with many ties).  
+  - Paired t‑test if the data are reasonably continuous and differences approximate normality.
+
+A4. Comparison of clinical procedure volumes pre‑ vs pandemic  
+
+5) Test: Mann–Whitney U test for procedure counts  
+- Purpose:  
+  - To compare the distribution of standardized counts of each selected procedure (per student pair per day) between pre‑pandemic and pandemic periods.  
+- Why appropriate:  
+  1. Counts are typically skewed and may not follow a normal distribution; Mann–Whitney is robust.  
+  2. Observations in the two periods (blocks/student‑pair‑days) are independent.  
+- Why it may not be appropriate:  
+  - If data structure is hierarchical (days nested within blocks or student pairs), ignoring clustering may underestimate variance.  
+- When NOT to use:  
+  - When there is a natural pairing (e.g., same student pairs followed across both periods; then use Wilcoxon signed‑rank or a mixed model).  
+- Alternative if assumptions are violated:  
+  - Negative binomial or Poisson regression with period as predictor if counts and exposure differ.  
+  - Permutation test for difference in distributions.
+
+B. RECOMMENDED ANALYSES  
+
+B1. Reliability and internal consistency of questionnaire  
+
+6) Test: Cronbach’s alpha (per scale/domain)  
+- Purpose:  
+  - To assess internal consistency/reliability of sets of Likert items forming each of the five domains (self‑evaluation, eval. of theoretical classes, etc.).  
+- Why appropriate:  
+  1. Multiple items appear to measure similar constructs; Cronbach’s alpha provides an internal reliability estimate.  
+  2. Helps justify forming composite scores rather than using single items.  
+- Why it may not be appropriate:  
+  - Alpha assumes essentially tau‑equivalent items and unidimensionality; if items tap multiple constructs, alpha can be misleading.  
+- When NOT to use:  
+  - When there are fewer than 3 items in a scale (alpha is unstable).  
+  - When items are very clearly multi‑dimensional; factor analysis is needed first.  
+- Alternative if assumptions are violated:  
+  - McDonald’s omega or ordinal alpha (polychoric correlations) for Likert data.  
+  - Item response theory models if item‑level analysis is needed.
+
+B2. Creation of composite scores and comparisons  
+
+7) Test: Mann–Whitney U or t‑test on composite domain scores  
+- Purpose:  
+  - To compare mean/median composite scores (e.g., sum or mean of items in each domain) between student groups.  
+- Why appropriate:  
+  1. Composite scores improve reliability and reduce multiple‑testing burden.  
+  2. They allow effect sizes (e.g., Cohen’s d) that are easier to interpret than item‑by‑item differences.  
+- Why it may not be appropriate:  
+  - If items within a scale are not sufficiently homogeneous (low alpha) or if scale scores are heavily skewed.  
+- When NOT to use:  
+  - If the Likert scales are extremely coarse (e.g., only 3 categories) and composite is not meaningful.  
+- Alternative if assumptions are violated:  
+  - Non‑parametric comparison: Mann–Whitney for composite; or ordinal logistic regression if treating composite as ordered categories.
+
+B3. Multivariable modelling of overall evaluation  
+
+8) Test: Ordinal logistic regression (proportional odds model)  
+- Purpose:  
+  - To model the global evaluation of blended learning (e.g., poor/fair/good/very good) as an ordinal outcome, with predictors such as:  
+    - Prior clinical experience (yes/no).  
+    - Self‑evaluation score.  
+    - Satisfaction with e‑learning.  
+    - Satisfaction with clinical classes.  
+    - Safety perception.  
+- Why appropriate:  
+  1. Outcome is ordinal; ordinal logistic regression respects ordering and uses more information than dichotomization.  
+  2. Allows adjustment for multiple predictors simultaneously, estimating independent associations.  
+- Why it may not be appropriate:  
+  - Proportional odds assumption (same effect across cutpoints) may not hold.  
+- When NOT to use:  
+  - When sample size is too small for the number of predictors (risk of overfitting).  
+  - When outcome has only two categories (logistic regression instead).  
+- Alternative if assumptions are violated:  
+  - Partial proportional odds models (e.g., generalized ordered logit).  
+  - Multinomial logistic regression treating the outcome as nominal (loses ordering).
+
+B4. Association between advantages/disadvantages and overall evaluation  
+
+9) Test: Multidimensional correspondence analysis (MCA)  
+- Purpose:  
+  - To explore and visualize relationships between categorical variables:  
+    - Specific advantages/disadvantages coded as categories.  
+    - Overall evaluation categories of blended learning.  
+- Why appropriate:  
+  1. MCA is designed for multiple categorical variables, revealing patterns and clusters.  
+  2. It summarizes complex associations into a low‑dimensional plot for interpretation.  
+- Why it may not be appropriate:  
+  - MCA is exploratory and descriptive; it does not provide straightforward p‑values for hypothesis testing.  
+- When NOT to use:  
+  - When variables are primarily ordinal with few categories and you’re interested in directional effects; models like ordinal regression may be better.  
+- Alternative if assumptions are violated:  
+  - Multiple correspondence analysis variants or latent class analysis if one expects latent clusters.  
+  - Logistic/ordinal regression for confirmatory analysis.
+
+B5. Multiple comparisons control  
+
+10) Method: False discovery rate (FDR) control (e.g., Benjamini–Hochberg)  
+- Purpose:  
+  - To control for multiple hypothesis testing across numerous survey items and procedure types.  
+- Why appropriate:  
+  1. Many items are being compared between groups; FDR maintains overall expected proportion of false positives.  
+  2. Less conservative than Bonferroni, preserving power while addressing multiplicity.  
+- Why it may not be appropriate:  
+  - If a priori there are only a few pre‑specified primary outcomes; strict FDR for all items may be unnecessary.  
+- When NOT to use:  
+  - When performing primarily exploratory analyses without formal claims; in that case, emphasize effect sizes and CIs rather than strict p‑value thresholds.  
+- Alternative if assumptions are violated:  
+  - Bonferroni or Holm corrections for strong family‑wise error control.
+
+B6. Modelling clinical procedure counts  
+
+11) Test: Negative binomial regression (or Poisson with overdispersion check)  
+- Purpose:  
+  - To model procedure counts per student pair per day as a function of period (pre‑pandemic vs pandemic), possibly adjusting for exposure (e.g., number of clinical days) or other covariates.  
+- Why appropriate:  
+  1. Count data are often overdispersed; negative binomial handles variance > mean.  
+  2. Provides rate ratios, which are clinically interpretable (e.g., % change in number of a given procedure).  
+- Why it may not be appropriate:  
+  - If counts are very small with many zeros, standard models may fit poorly (zero‑inflation).  
+- When NOT to use:  
+  - When there are only aggregate counts per period (no individual‑day data); then only simple rates and differences can be computed.  
+- Alternative if assumptions are violated:  
+  - Zero‑inflated negative binomial models.  
+  - Non‑parametric comparisons (Mann–Whitney) if modelling assumptions are unacceptable.
+
+C. OPTIONAL ANALYSES  
+
+C1. Factor structure of the questionnaire  
+
+12) Test: Exploratory factor analysis (EFA) on Likert scales  
+- Purpose:  
+  - To identify latent constructs underlying the 39 items, potentially refining domains beyond the 5 predefined parts.  
+- Why appropriate:  
+  1. Helps validate the structure of the instrument and detection of item clusters.  
+  2. May reveal dimensions not originally conceptualized (e.g., “technical issues”, “interaction quality”).  
+- Why it may not be appropriate:  
+  - Sample size may be insufficient relative to number of items (rule of thumb: ≥5–10 subjects per item).  
+- When NOT to use:  
+  - When n is too small or when instrument is already validated elsewhere.  
+- Alternative if assumptions are violated:  
+  - Principal component analysis (PCA) as a descriptive dimensionality reduction.  
+  - Item‑cluster analysis or hierarchical clustering on item correlations.
+
+C2. Effect size calculations  
+
+13) Test: Effect size metrics (Cliff’s delta, Cohen’s d, odds ratios)  
+- Purpose:  
+  - To quantify the magnitude of differences in survey scores and procedure volumes beyond p‑values.  
+- Why appropriate:  
+  1. Improves interpretability (e.g., small, moderate, large effect).  
+  2. Necessary for meta‑analytic comparability.  
+- Why it may not be appropriate:  
+  - In very small samples, estimates can be unstable.  
+- When NOT to use:  
+  - Not applicable; effect sizes are almost always useful.  
+- Alternative if assumptions are violated:  
+  - Use non‑parametric effect sizes (e.g., rank‑biserial correlation) for ordinal data instead of Cohen’s d.
+
+C3. Subgroup analyses  
+
+14) Test: Stratified analyses (Mann–Whitney/chi‑square within strata)  
+- Purpose:  
+  - To explore whether perceptions differ by (if available): gender, age group, or other characteristics.  
+- Why appropriate:  
+  1. May uncover heterogeneity of experience across subgroups.  
+  2. Could inform targeted educational interventions.  
+- Why it may not be appropriate:  
+  - Increases multiple testing; subgroups may be small and underpowered.  
+- When NOT to use:  
+  - When subgroups are very small (e.g., <15 per cell).  
+- Alternative if assumptions are violated:  
+  - Include subgroup variables as predictors in regression models (e.g., ordinal logistic) rather than separate subgroup tests.
+
+C4. Qualitative analysis of open‑ended responses  
+
+15) Test: Thematic content analysis (qualitative)  
+- Purpose:  
+  - To systematically classify and interpret open‑ended comments about advantages/disadvantages and improvement suggestions.  
+- Why appropriate:  
+  1. Captures nuances not reflected in fixed‑choice items.  
+  2. Helps contextualize quantitative findings.  
+- Why it may not be appropriate:  
+  - Requires trained qualitative coders; time‑intensive.  
+- When NOT to use:  
+  - When open‑ended responses are extremely sparse or superficial.  
+- Alternative if assumptions are violated:  
+  - Simple categorization with frequency counts (less rigorous but informative).
+
+---
+
+TASK 3 – INAPPROPRIATE TESTS AND WHY  
+
+1) Independent‑samples t‑test on individual Likert items  
+- Why inappropriate:  
+  - Likert items are ordinal with few categories; t‑test assumes interval‑scale and approximate normality.  
+  - With potentially skewed distributions and ceiling effects, t‑test can misrepresent differences and p‑values.  
+- Preferred alternative: Mann–Whitney U test; or t‑test only on well‑behaved composite scores with clear justification.
+
+2) Paired t‑test for Likert pre‑post or paired items  
+- Why inappropriate:  
+  - Same rationale as above; ordinal non‑normal data violate assumptions of t‑test for mean differences.  
+- Preferred alternative: Wilcoxon signed‑rank or sign test.
+
+3) Pearson correlation between Likert items  
+- Why inappropriate:  
+  - Pearson requires interval‑scale and linear relationship; Likert data are ordinal and often non‑linear.  
+- Preferred alternative: Spearman rank correlation or polychoric correlations for factor analysis.
+
+4) One‑way ANOVA on procedure counts without transformation or modelling  
+- Why inappropriate:  
+  - Count data are discrete, often skewed with unequal variances; ANOVA assumes normality and homoscedasticity.  
+- Preferred alternative: Mann–Whitney, Poisson/negative binomial regression.
+
+5) Repeated‑measures ANOVA for survey items in absence of repeated continuous measurements  
+- Why inappropriate:  
+  - Requires multiple continuous repeated measures with normal distributions; here we primarily have separate categorical items and possibly only single post‑measurement.  
+- Preferred alternative: Wilcoxon signed‑rank for specific paired comparisons; mixed ordinal models if true repeated measures exist.
+
+6) Linear regression treating Likert item as continuous outcome with small sample  
+- Why inappropriate:  
+  - Violates assumptions of linear regression regarding normality and equal spacing; may yield biased estimates.  
+- Preferred alternative: Ordinal logistic regression.
+
+7) Survival analysis (Kaplan–Meier, Cox regression)  
+- Why inappropriate:  
+  - No time‑to‑event outcome (e.g., no “time until failure” or “time until passing exam” measured).  
+- Preferred alternative: Not applicable; not needed.
+
+8) Parametric tests not accounting for clustering (e.g., student pairs nested in groups) when strong clustering exists  
+- If, for example, procedure counts per student pair are correlated within blocks and this is ignored in simple models, standard errors may be underestimated.  
+- Preferred alternative: Mixed‑effects models or cluster‑robust standard errors.
+
+---
+
+TASK 4 – SUMMARY OF OVERALL ANALYTICAL APPROACH  
+
+The analytical strategy should:
+
+1) Describe the blended‑learning context, student sample, and clinical activity in detail using descriptive statistics.  
+2) Respect the ordinal nature of survey data by using non‑parametric tests (Mann–Whitney, Wilcoxon) and, where appropriate, ordinal regression to compare students with and without prior clinical experience and to model global evaluation of blended learning.  
+3) Use chi‑square/Fisher’s exact tests for binary preferences and safety perceptions.  
+4) Compare clinical procedure volumes across semesters using non‑parametric tests and/or count regression models to quantify the impact of the pandemic on teaching‑related clinical exposure.  
+5) Evaluate questionnaire reliability and, if possible, factor structure, to support use of composite domain scores.  
+6) Explore relationships between perceived advantages/disadvantages and overall evaluation via multidimensional correspondence analysis, complemented by regression approaches.  
+7) Control for multiple testing where many items are analysed, and report effect sizes and confidence intervals to emphasize magnitude and precision over mere significance.
+
+This approach is consistent with the data types (ordinal survey responses, count clinical data), the study’s objectives (evaluation and comparison rather than causal inference), and best practices in educational and clinical biostatistics.

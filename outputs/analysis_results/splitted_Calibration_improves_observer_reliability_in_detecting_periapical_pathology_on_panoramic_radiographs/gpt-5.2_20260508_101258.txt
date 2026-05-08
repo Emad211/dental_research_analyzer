@@ -1,0 +1,323 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_Calibration_improves_observer_reliability_in_detecting_periapical_pathology_on_panoramic_radiographs.pdf
+Status : ok
+Time   : 20260508_101258
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study design
+- **Type:** Observer reliability/agreement study with a **calibration intervention** and **repeated measurements**.
+- **Setting/material:** **100 panoramic radiographs (PRs)** sampled from a larger cohort (PAROKRANK) of **1593 PRs** collected 2010–2014 at/near **17 Swedish hospitals**.
+- **Timepoints (per observer):**
+  1. **Baseline (pre-calibration) assessment** of the 100 PRs.
+  2. **Post-calibration assessment** of the same 100 PRs (immediately after calibration).
+  3. **3-month follow-up assessment**: the same 100 PRs were **randomly concealed within the full set of 1593 PRs**, then reassessed.
+
+### Objectives/aim
+- Primary aim: determine whether **calibration against a reference standard** improves **observer reliability** on PRs for:
+  - **Remaining teeth**
+  - **Root-filled teeth**
+  - **Teeth with periapical lesions**
+  - **DMFT score** (decayed, missing, filled teeth)
+
+### Reference standard construction
+- **Two experienced specialists** (endodontist + radiologist) served as **reference examiners**.
+- Process:
+  - Independent assessment of 100 PRs
+  - Reassessment **3–4 weeks later** (intra-observer variation)
+  - **Joint consensus adjudication** of all discrepant cases
+  - The consensus result = **reference standard** for future comparisons
+
+### Observers (index raters)
+- **3 observers:**
+  - Observer 1: **general dentist**
+  - Observers 2–3: **5th-year dental students**
+- All received **written instructions** for variable definitions.
+- **Calibration procedure:** individualized feedback comparing each observer’s results to the reference standard; some instructed to be more stringent/less stringent for periapical lesions.
+
+### Variables and measurement definitions (radiographic)
+Assessed on PRs using ImageJ with ability to adjust contrast/magnify; same screen; dim room.
+
+1. **Remaining teeth** (count)
+   - Includes visible teeth plus: root remnants partially connected to bone, impacted teeth with ≤2/3 crown covered, and deciduous teeth.
+2. **Root-filled teeth** (count)
+   - Any tooth with radiopaque material in pulp cavity/root canals.
+3. **Teeth with periapical lesions** (count; lesion presence per tooth)
+   - Distinct periapical bone destruction larger than widened periodontal space around ≥1 root.
+4. **DMFT score** (count)
+   - Derived from radiographic assessment of Decayed/Missing/Filled teeth.
+   - Rule: **root remnants without restoration = decayed**; **implants = missing**.
+
+### Data structure implied
+- Unit of assessment likely **per radiograph** (counts: remaining teeth, root-filled, periapical-lesion teeth, DMFT).
+- Also inherently **tooth-level binary** data exist (e.g., lesion yes/no per tooth), but the paper aim emphasizes counts and DMFT; plan can accommodate both.
+
+---
+
+## TASK 2: Statistical analysis plan
+
+### Overall principles
+- Primary endpoint: **agreement/reliability vs reference standard**, and **change in agreement after calibration** (baseline → post-calibration → 3 months).
+- Analyses should be done **separately for each observer** and each variable; then summarize across observers.
+- Report **effect sizes with 95% CIs** (not only p-values).
+- Because data are repeated on the same 100 PRs, comparisons across time should use **paired/repeated-measures** methods.
+
+---
+
+# CATEGORY A — MANDATORY tests/analyses
+
+## A1. Cohen’s kappa (weighted where appropriate)
+**Purpose**
+- Quantify agreement **beyond chance** between each observer and the **reference standard** for **categorical** outcomes.
+
+**Why appropriate (≥2 reasons)**
+- Agreement vs reference is the core study aim.
+- Corrects for agreement expected by chance; suitable for binary outcomes like **periapical lesion present/absent** (at tooth-level) or categorized counts (if categorized).
+
+**Why may not be appropriate (≥1 reason)**
+- Kappa is sensitive to **prevalence** and **marginal imbalance** (“kappa paradox”), especially if lesions are rare.
+
+**When NOT to use**
+- When the variable is truly **continuous/count** with many values and you want agreement on the numeric scale (use ICC/Bland–Altman instead).
+- When categories are extremely imbalanced and kappa becomes misleading without additional indices.
+
+**Alternative if assumptions/limitations**
+- Report **Gwet’s AC1/AC2** or **prevalence-adjusted bias-adjusted kappa (PABAK)** as a sensitivity analysis.
+- Also report **percent agreement** and positive/negative agreement.
+
+---
+
+## A2. Intraclass correlation coefficient (ICC) for counts/scores (two-way, absolute agreement)
+**Purpose**
+- Quantify agreement between each observer and reference for **numeric** variables: **remaining teeth count, root-filled teeth count, DMFT, number of teeth with periapical lesions (count)**.
+
+**Why appropriate (≥2 reasons)**
+- These outcomes are numeric and assessed on the same set of PRs.
+- ICC (absolute agreement) captures both correlation and systematic differences (bias) between observer and reference.
+
+**Why may not be appropriate**
+- ICC can be distorted if there is **restricted range** of values across PRs (low between-PR variability).
+- Not ideal if distributions are highly skewed with many zeros (e.g., periapical lesion counts).
+
+**When NOT to use**
+- For binary outcomes (use kappa/AC1).
+- When agreement is better expressed as **measurement error** and bias across the range (use Bland–Altman).
+
+**Alternative if assumptions/limitations**
+- Use **Lin’s concordance correlation coefficient (CCC)**.
+- Use **Bland–Altman** with appropriate transformation or count-based modeling for heavy skew.
+
+---
+
+## A3. Bland–Altman analysis (observer vs reference) for numeric outcomes
+**Purpose**
+- Evaluate **systematic bias** (mean difference) and **limits of agreement** for numeric variables (DMFT, counts).
+
+**Why appropriate (≥2 reasons)**
+- Reliability studies should show not only a single coefficient but also the **magnitude of disagreement** in clinically interpretable units (e.g., ± teeth).
+- Detects proportional bias (differences increasing with higher scores).
+
+**Why may not be appropriate**
+- Standard Bland–Altman assumes approximately **constant variance** of differences; counts often show heteroscedasticity.
+
+**When NOT to use**
+- If the outcome is categorical/binary.
+- If differences are strongly heteroscedastic and not addressable via transformation (unless using advanced BA methods).
+
+**Alternative if assumptions violated**
+- **Log/variance-stabilizing transformation** (e.g., log(x+1)).
+- **Regression-based Bland–Altman** (model difference vs mean) or **Poisson/negative binomial mixed models** for count disagreement.
+
+---
+
+## A4. Paired comparison of agreement metrics pre- vs post-calibration (and 3 months)
+**Test name**
+- For binary/tooth-level agreement: **McNemar test** on discordant pairs (observer vs reference) *within the same units* to test change in misclassification rate across timepoints.
+- For numeric absolute error (e.g., |observer−reference|): **Wilcoxon signed-rank test** (or paired t-test if approximately normal) comparing baseline vs post-calibration and baseline vs 3 months.
+
+**Purpose**
+- Establish whether calibration **improved** agreement (not just describe it).
+
+**Why appropriate (≥2 reasons)**
+- Same PRs are rated repeatedly ⇒ paired design.
+- Directly addresses the study aim of improvement due to calibration and persistence at 3 months.
+
+**Why may not be appropriate**
+- McNemar requires paired binary outcomes on the same unit; if only radiograph-level counts are available, McNemar is not applicable.
+- Multiple comparisons across outcomes/observers inflate type I error if unaddressed.
+
+**When NOT to use**
+- When assessments are not paired (e.g., different PRs).
+- When outcome is not binary for McNemar or not suitable for paired rank/t tests.
+
+**Alternative if assumptions violated**
+- Use **generalized estimating equations (GEE)** or **mixed-effects logistic/Poisson models** with timepoint as predictor and clustering by PR (and tooth, if tooth-level).
+
+---
+
+# CATEGORY B — RECOMMENDED analyses
+
+## B1. Gwet’s AC1/AC2 (agreement for categorical outcomes)
+**Purpose**
+- Provide a prevalence-robust chance-corrected agreement measure.
+
+**Why appropriate**
+- Periapical lesions may be uncommon; AC1 is less sensitive to prevalence than kappa.
+- Improves interpretability when kappa appears low despite high raw agreement.
+
+**Why may not be appropriate**
+- Less familiar to some readers; comparability to prior literature using kappa may be reduced.
+
+**When NOT to use**
+- As the only metric if field standards require kappa reporting; better as complement/sensitivity analysis.
+
+**Alternative**
+- PABAK; report positive/negative agreement.
+
+---
+
+## B2. Multi-rater reliability among the 3 observers (without reference): Fleiss’ kappa / ICC(2,k)
+**Purpose**
+- Quantify inter-observer reliability **among the three observers** at each timepoint.
+
+**Why appropriate**
+- Epidemiologic PR studies often use multiple observers; understanding between-observer consistency is valuable beyond reference agreement.
+- Shows whether calibration harmonized observers with each other, not only with reference.
+
+**Why may not be appropriate**
+- The “true” target is the reference standard; inter-observer agreement can be high even if all are biased.
+
+**When NOT to use**
+- If the key question is strictly observer-vs-reference only and space is limited; still commonly expected in reliability papers.
+
+**Alternative**
+- Pairwise kappas/ICCs with bootstrap CIs.
+
+---
+
+## B3. Mixed-effects modeling to quantify calibration effect (preferred unified approach)
+**Test name**
+- **Generalized linear mixed models (GLMM)** or **GEE**:
+  - Tooth-level lesion (binary): mixed logistic regression (random intercept for PR; optionally tooth nested in PR).
+  - Count outcomes: mixed **negative binomial** (or Poisson if no overdispersion) with offset if needed.
+
+**Purpose**
+- Estimate the effect of **timepoint (pre/post/3 months)** on probability of agreement or on error, accounting for clustering and repeated measures.
+
+**Why appropriate**
+- Properly handles correlated data (same PR repeatedly; multiple teeth per PR).
+- Provides adjusted estimates and CIs; can test interaction **observer × timepoint** (different calibration response).
+
+**Why may not be appropriate**
+- Requires more modeling choices and assumptions; may be overkill if only radiograph-level summary outcomes are available.
+
+**When NOT to use**
+- Very small sample for the modeling level used (e.g., only 100 radiographs and few events) leading to unstable estimates.
+- If only aggregated agreement indices are available (not item-level data).
+
+**Alternative**
+- Nonparametric paired tests on per-PR errors; bootstrap CIs for change in agreement.
+
+---
+
+## B4. Bootstrap confidence intervals for agreement statistics and changes
+**Purpose**
+- Provide robust CIs for kappa/ICC/limits of agreement and for *differences* pre/post.
+
+**Why appropriate**
+- Agreement statistics have non-normal sampling distributions.
+- With n=100 PRs, bootstrap is feasible and improves inference.
+
+**Why may not be appropriate**
+- Needs resampling at the correct cluster level (radiograph, not tooth) to avoid overly narrow CIs.
+
+**When NOT to use**
+- If cluster structure cannot be respected (e.g., tooth-level data without identifiers).
+
+**Alternative**
+- Analytical/large-sample CIs (less robust).
+
+---
+
+# CATEGORY C — OPTIONAL analyses
+
+## C1. Diagnostic accuracy vs reference for periapical lesions (sensitivity/specificity)
+**Purpose**
+- Treat reference as “truth” and report **sensitivity, specificity, PPV, NPV** for lesion detection per observer/timepoint.
+
+**Why appropriate**
+- Clinically intuitive and complements agreement metrics.
+- Calibration may differentially affect sensitivity vs specificity (threshold shift explicitly described).
+
+**Why may not be appropriate**
+- The reference standard is consensus-based, not an external gold standard; “accuracy” language should be cautious.
+
+**When NOT to use**
+- If lesion prevalence is extremely low (unstable PPV) or if tooth-level truth labels aren’t available.
+
+**Alternative**
+- Positive/negative agreement; ROC-type approaches if ordinal scales exist (not here).
+
+---
+
+## C2. Repeatability coefficient / within-observer SD for reference examiners
+**Purpose**
+- Quantify intra-observer repeatability of the two specialists (from their 2 assessments).
+
+**Why appropriate**
+- Supports credibility of the reference standard process.
+- Adds methodological transparency on reference variability.
+
+**Why may not be appropriate**
+- If the paper’s dataset does not retain the two independent reference readings.
+
+**When NOT to use**
+- If only the final consensus reference is available.
+
+**Alternative**
+- Report percent agreement/kappa/ICC between the two reference readings and between timepoints.
+
+---
+
+## C3. Subgroup analyses by radiograph type (film vs digital) or site
+**Purpose**
+- Explore whether calibration effects differ by PR modality or acquisition setting.
+
+**Why appropriate**
+- Data collected across multiple hospitals and PR types; image quality could affect agreement.
+
+**Why may not be appropriate**
+- The 100-PR sample may be too small for stable subgroup inference; risk of multiplicity.
+
+**When NOT to use**
+- If modality/site information is missing for the 100 PRs.
+
+**Alternative**
+- Descriptive stratification only; include modality as covariate in mixed models if sample allows.
+
+---
+
+## TASK 3: Inappropriate tests (should NOT be used) and why
+
+1. **Independent-samples t-test / one-way ANOVA** comparing pre vs post
+   - Wrong because measurements are **paired/repeated** on the same PRs/observers; ignores correlation and misstates SEs.
+
+2. **Pearson correlation alone** (observer vs reference)
+   - Correlation measures association, not agreement; can be high with systematic bias (e.g., consistently overcounting).
+
+3. **Chi-square test of independence** for pre vs post agreement tables
+   - Treats observations as independent; should be **McNemar** (paired) or a repeated-measures model.
+
+4. **Simple linear regression of observer on reference** as the primary reliability analysis
+   - Again assesses association; does not directly quantify agreement or limits of disagreement; residual structure violates assumptions due to repeated measures.
+
+5. **Using only percent agreement** without chance-corrected metrics
+   - Can be misleading under class imbalance (likely for periapical lesions).
+
+---
+
+## TASK 4: Summary justification of the analytical approach
+
+This is a repeated-measures observer calibration study; the primary question is whether calibration increases agreement with a consensus reference standard and whether this persists after 3 months. Therefore, the core analyses must quantify **agreement** appropriately by outcome type (kappa/AC1 for categorical; ICC and Bland–Altman for numeric counts/DMFT) and must test **within-observer paired changes** across timepoints (paired tests or, preferably, mixed-effects/GEE models that respect clustering by radiograph and tooth). This combination yields both interpretable effect sizes (bias and limits) and statistically valid inference on calibration impact.

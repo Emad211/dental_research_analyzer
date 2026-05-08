@@ -1,0 +1,315 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_Artaza2021.pdf
+Status : ok
+Time   : 20260508_100016
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design & setting
+- **Design:** Retrospective observational cohort/case series with prognostic-factor evaluation (associations between covariates and outcomes).
+- **Setting:** Single endodontic specialist private practice.
+- **Period:** **1999–2019**.
+- **Operator:** **Single experienced operator** performed all treatments/retreatments (reduces operator variability).
+- **Ethics:** Institutional Board Review approval; patients consented for examination/treatment.
+
+### Objectives
+1. **Describe** clinical and radiographic outcomes after **root canal treatment or retreatment** of infected teeth **with an intraoral sinus tract**.
+2. Report **demographics** of consecutive cases.
+3. **Evaluate influence** of selected **preoperative, intraoperative, postoperative** variables on outcomes.
+
+### Source population and sample
+- Initially referred: **144 patients** (81 women, 63 men), age **15–86**, all referred due to **intraoral sinus tract**.
+- Included/treated: **137 teeth from 128 patients** met inclusion criteria and were treated/retreated and followed.
+
+**Unit of analysis:** Tooth (primary), but clustering exists because some patients contributed >1 tooth.
+
+### Inclusion criteria (key eligibility)
+- Tooth with **sinus tract** + **radiographic periradicular bone destruction**
+- **Necrotic pulp** (confirmed by pulp tests) **or** previously root canal treated tooth
+- Tooth **restorable** and indicated for treatment/retreatment
+- Mobility score **<3**
+- **No periodontal pockets >4 mm**
+- Patient without **significant systemic disease**
+
+### Data collection / variables
+
+#### Preoperative variables (recorded)
+- **Demographics:** age, sex
+- **Sinus tract location:** buccal / distal / palatal-lingual
+- **Lesion size** on periapical radiograph: largest diameter; categorized:
+  - Small **≤5 mm**
+  - Large **>5 to <10 mm**
+  - Very large **≥10 mm**
+- **Root canal status:** necrotic pulp vs previously treated (retreatment)
+- **Tooth type and location:** tooth type; arch **maxillary vs mandibular**
+- **Symptoms** (presence of symptoms; details not fully enumerated pre-op)
+- **Periodontal probing**
+- **Tooth mobility**
+
+#### Intraoperative variables (recorded)
+- **Number of sessions** (single vs multiple; possibly >2 with Ca(OH)₂ renewals)
+- **Working length** (measured by apex locator, radiographically confirmed)
+- **Obturation technique:** lateral compaction vs Schilder vertical compaction
+- **Quality of root canal filling:** “adequate” if all canals obturated, no voids, terminus 0–1 mm short of radiographic apex
+- **Filling of lateral canals** (yes/no)
+
+#### Postoperative variables (recorded at follow-up)
+- **Coronal restoration presence/type/quality** at follow-up:
+  - “Adequate” if intact, no detectable defects or recurrent caries
+
+### Outcomes
+
+#### Outcome 1 (short-term): sinus tract closure
+- Assessed at **7, 14, 21, 30 days** post-op.
+- **Binary at each visit:** healed (closed) vs not healed (active).
+- Additional derived outcomes:
+  - **Persistent sinus tract:** not healed after **30 days**
+  - **Recurrent sinus tract:** re-emerged after having healed (any time later)
+
+#### Outcome 2 (long-term): periradicular (clinical + radiographic) outcome
+- Follow-up frequency: periodic, **range 1–17 years**; annual telephone recall invitations.
+- Failure could be declared even **before 1 year** if clinical signs/symptoms present.
+- Clinical evaluation: sinus tract, spontaneous pain, tenderness to percussion/palpation, root fracture, loss of function, mobility, probing depths.
+- Radiographic evaluation:
+  - Periapical radiographs compared (pre, post, follow-up)
+  - Scored using **Periapical Index (PAI)** by **2 blinded experienced evaluators**; disagreement resolved by discussion
+  - Calibration: 100 reference radiographs
+  - Multirooted teeth: categorized by **worst (highest) PAI root**
+- **Composite outcome classification (ordinal, 3 levels):**
+  1. **Healed:** asymptomatic/functional, sinus tract disappeared, **PAI 1–2**
+  2. **Healing:** asymptomatic/functional, sinus tract disappeared, **PAI decreased but still >2**, and **follow-up <4 years**
+  3. **Diseased:** symptomatic/nonfunctional, sinus tract **persisted or recurred**, and/or radiographic lesion unchanged/enlarged (**PAI 3–5**)
+
+**Key implication:** the “Healing” category is partly defined by **follow-up duration (<4 years)**, so time is embedded in outcome definition (important for analysis).
+
+---
+
+## TASK 2 — Statistical analysis plan (tests & models)
+
+### General analysis principles (apply to all categories)
+- **Analysis unit:** tooth-level, but account for **within-patient clustering** (some patients have multiple teeth).
+- **Two primary outcomes:**
+  1. **Sinus tract closure within 30 days** (and/or time-to-closure using repeated assessments).
+  2. **Final long-term outcome** (Healed / Healing / Diseased).
+- **Covariate sets:** pre-, intra-, post-operative predictors as listed.
+- **Effect size reporting (preferred):**
+  - Odds ratios (OR) for binary/ordinal models
+  - Hazard ratios (HR) for time-to-event
+  - Risk differences/probabilities for interpretability
+- **Missing data:** describe extent/pattern; if nontrivial, consider multiple imputation (see Recommended).
+
+---
+
+# CATEGORY A — MANDATORY (without these, analysis is incomplete)
+
+## A1) Descriptive statistics (with appropriate summaries)
+**Test/Method:** Descriptive summaries (no hypothesis test)  
+**Purpose:** Characterize the cohort and distributions of predictors and outcomes.  
+**Why appropriate (≥2):**
+1. Retrospective cohort requires transparent reporting of case mix and baseline characteristics.
+2. Many predictors are categorical/ordinal; simple counts/percentages are essential before modeling.  
+**Why may not be appropriate (≥1):** Not sufficient for inference; cannot address associations/confounding.  
+**When NOT to use:** Never omit; but avoid using only descriptives as the “analysis.”  
+**Alternative if assumptions violated:** Not applicable (nonparametric summaries always possible).
+
+Include:
+- n teeth, n patients, teeth per patient distribution
+- Follow-up time: median (IQR), range
+- Outcome frequencies: closure by day 30; persistent/recurrent; 3-level long-term outcome
+- Predictor distributions (age, lesion size categories, etc.)
+
+---
+
+## A2) Inter-rater reliability for PAI scoring
+**Test:** Weighted kappa (or ICC depending on how PAI treated; PAI is ordinal → **weighted kappa** preferred)  
+**Purpose:** Quantify agreement between the 2 blinded evaluators on PAI.  
+**Why appropriate:**
+1. PAI is an **ordinal** rating; weighted kappa accounts for partial disagreement.
+2. Validates that outcome assessment is reliable and not dominated by measurement error.  
+**Why may not be appropriate:** If only final consensus scores are retained and raw independent scores unavailable.  
+**When NOT to use:** When only one rater or only consensus scores exist.  
+**Alternative if assumptions violated:** Gwet’s AC2 (more stable than kappa under prevalence/imbalance issues).
+
+---
+
+## A3) Primary model for short-term sinus tract outcome at 30 days (binary)
+**Test/Model:** Logistic regression with clustering handled via **GEE** (population-averaged) *or* mixed-effects logistic regression (subject-specific random intercept for patient)  
+**Purpose:** Identify predictors associated with **non-closure/persistence at 30 days** (or closure).  
+**Why appropriate:**
+1. Outcome is **binary** (healed vs not at day 30; persistent defined accordingly).
+2. Accounts for multiple predictors simultaneously (confounding control) and allows adjusted inference.
+3. Can account for **patient-level clustering** (GEE or random effects).  
+**Why may not be appropriate:**
+- Small number of persistent cases can cause separation/unstable estimates (rare events).  
+**When NOT to use:**
+- When event count is too small for multivariable modeling (e.g., <~10 events per parameter as a rough rule).  
+**Alternative if assumptions violated:**
+- Penalized logistic regression (Firth) for rare events/separation (with cluster-robust SE if possible), or reduce predictors via prespecified limited model.
+
+Predictors to consider (prespecified):
+- Preop: age, sex, lesion size category, root canal status (necrotic vs retreatment), sinus tract location, tooth type/location, symptoms
+- Intraop: number of sessions, obturation technique, filling quality, lateral canals filled, working length (if categorical/continuous available)
+- Postop: coronal restoration adequacy (if assessed before/at 30 days; if only later, treat carefully)
+
+---
+
+## A4) Primary model for long-term outcome (3-level ordinal)
+**Test/Model:** Ordinal logistic regression (proportional odds model) with clustering (GEE ordinal or mixed-effects cumulative logit)  
+**Purpose:** Evaluate associations between predictors and ordered outcome **Healed > Healing > Diseased** (or reverse).  
+**Why appropriate:**
+1. Outcome is **ordinal (3 categories)** with clear ranking of health status.
+2. More efficient than collapsing to binary (retains information).
+3. Allows covariate adjustment and clustering control.  
+**Why may not be appropriate:**
+- Proportional odds assumption may be violated.
+- “Healing” category depends on follow-up duration (<4 years), which can distort ordinal interpretation.  
+**When NOT to use:**
+- When proportional odds assumption is clearly violated and cannot be remedied.
+- When follow-up time differs greatly and is strongly tied to category definition without adjustment.  
+**Alternative if assumptions violated:**
+- Partial proportional odds model / generalized ordered logit.
+- Multinomial logistic regression (nominal) with cluster-robust SE.
+- Or redefine outcome for sensitivity (e.g., healed vs not healed at ≥4y).
+
+---
+
+# CATEGORY B — RECOMMENDED (enhances rigor)
+
+## B1) Time-to-sinus-tract closure analysis (repeated assessments)
+**Test/Model:** Survival analysis for **time to closure**:
+- Kaplan–Meier curve(s) + log-rank test (unadjusted)
+- Cox proportional hazards model with robust SE for clustering or frailty model (adjusted)  
+**Purpose:** Use full information from assessments at 7/14/21/30 days rather than only day-30 status.  
+**Why appropriate:**
+1. Closure is inherently **time-to-event**; uses censoring at last observed day (e.g., not closed by day 30).
+2. Can compare closure speed by predictors (e.g., lesion size, retreatment vs initial).  
+**Why may not be appropriate:**
+- Event time is interval-censored (closure known only between visits), standard Cox approximates using visit day as event time.  
+**When NOT to use:**
+- When closure timing is too coarsely measured and interval censoring is substantial and must be modeled exactly.  
+**Alternative if assumptions violated:**
+- Discrete-time survival model (complementary log–log) using visit intervals.
+- Interval-censored survival models (Turnbull / parametric).
+
+---
+
+## B2) Model diagnostics & assumptions
+**Tests/Methods:**  
+- Proportional odds test (Brant test or score tests) for ordinal models  
+- Linearity in logit (restricted cubic splines for age)  
+- Multicollinearity (VIF)  
+**Purpose:** Validate model assumptions and improve specification.  
+**Why appropriate:**
+1. Ensures validity of inference (assumption checks are essential).
+2. Improves predictive and explanatory accuracy.  
+**Why may not be appropriate:** Some diagnostics (e.g., Brant) less straightforward with clustered/robust variance implementations.  
+**When NOT to use:** When sample size too small to support flexible modeling/diagnostics.  
+**Alternative if assumptions violated:** Use nonparametric terms/splines, categorize cautiously, or switch to multinomial/partial proportional odds.
+
+---
+
+## B3) Sensitivity analyses for outcome definition tied to follow-up time
+**Test/Model:**  
+- Binary outcome at a fixed horizon: e.g., among cases with **≥4-year** follow-up, model **Healed (PAI 1–2, asymptomatic)** vs **Diseased** (exclude “Healing” or recode). Use mixed/GEE logistic.  
+**Purpose:** Reduce bias due to “Healing” being defined partly by follow-up duration.  
+**Why appropriate:**
+1. Makes outcome less dependent on follow-up length.
+2. Provides robustness check for main conclusions.  
+**Why may not be appropriate:** Subsetting to ≥4 years reduces sample size and power; may induce selection bias if long follow-up is informative.  
+**When NOT to use:** When very few teeth have ≥4-year follow-up.  
+**Alternative if assumptions violated:** Joint modeling or inverse probability weighting for follow-up/return.
+
+---
+
+## B4) Handling clustering and tooth-level vs patient-level inference
+**Test/Model:** Mixed-effects models (random intercept for patient) or GEE with exchangeable correlation  
+**Purpose:** Correct standard errors and inferences due to non-independence of teeth within patient.  
+**Why appropriate:**
+1. 137 teeth from 128 patients implies some clustering; ignoring it underestimates SE.
+2. Clinically plausible shared patient factors (host response, behaviors).  
+**Why may not be appropriate:** If almost all patients contribute only 1 tooth, clustering impact is negligible and mixed models may be unstable.  
+**When NOT to use:** When clustering is absent (1 tooth per patient) or random-effects model fails to converge due to sparse data.  
+**Alternative if assumptions violated:** Cluster-robust sandwich SE in standard regression.
+
+---
+
+## B5) Multiple imputation for missing covariates/outcomes (if present)
+**Test/Method:** Multiple imputation by chained equations (MICE) + Rubin’s rules  
+**Purpose:** Reduce bias and inefficiency from missing data.  
+**Why appropriate:**
+1. Retrospective charts often have missing predictors (e.g., symptoms, restoration quality).
+2. Preserves sample size vs complete-case analysis.  
+**Why may not be appropriate:** If missingness is MNAR and cannot be plausibly modeled; or if outcome missingness is extreme.  
+**When NOT to use:** When missing proportion is tiny and complete-case is acceptable; or when variables needed for imputation are unavailable.  
+**Alternative:** Sensitivity analyses (best/worst case), pattern-mixture models.
+
+---
+
+# CATEGORY C — OPTIONAL (supplementary insights)
+
+## C1) Unadjusted bivariate association screens (with caution)
+**Tests:** Chi-square/Fisher’s exact (categorical), t-test/Mann–Whitney (continuous vs binary), Kruskal–Wallis (continuous vs 3-level outcome)  
+**Purpose:** Exploratory description of crude associations.  
+**Why appropriate:**
+1. Provides simple, interpretable unadjusted comparisons.
+2. Helps detect data issues/outliers/imbalance before multivariable modeling.  
+**Why may not be appropriate:** Can encourage p-value driven variable selection and inflate type I error; ignores clustering/confounding.  
+**When NOT to use:** Do not use as the main evidence for prognostic claims.  
+**Alternative if assumptions violated:** Fisher’s exact; nonparametric tests; or always prefer regression with robust SE.
+
+---
+
+## C2) Prediction performance (if building a prognostic model)
+**Tests/Methods:**  
+- Discrimination: C-statistic/AUC (binary), ordinal c-index  
+- Calibration plots, calibration slope/intercept; Brier score  
+- Internal validation: bootstrap or cross-validation  
+**Purpose:** Quantify how well predictors predict outcomes (especially “closure predicts long-term healing”).  
+**Why appropriate:**
+1. Study conclusion suggests prognostic utility of early closure.
+2. Distinguishes statistical significance from clinical predictiveness.  
+**Why may not be appropriate:** Sample size may be limited for stable prediction modeling; risk of optimism.  
+**When NOT to use:** When the goal is purely explanatory with limited events and no intent to predict.  
+**Alternative:** Penalized regression + bootstrap validation.
+
+---
+
+## C3) Mediation-style exploratory analysis (early closure as predictor of long-term outcome)
+**Test/Model:** Ordinal/binary regression of long-term outcome including **early closure status** (e.g., closed by 30 days) plus baseline covariates  
+**Purpose:** Evaluate whether early closure predicts long-term healing after adjustment.  
+**Why appropriate:**
+1. Directly addresses concluding statement (“closure in first month may predict favorable long-term outcome”).
+2. Adjusts for lesion size, retreatment status, filling quality, etc.  
+**Why may not be appropriate:** Temporal ambiguity if some long-term outcomes are assessed early; also potential collider bias if only recalled patients are analyzed.  
+**When NOT to use:** If closure status and long-term outcome are not available for the same teeth or follow-up is too short.  
+**Alternative:** Landmark analysis (include only those at risk and evaluated after a defined time point), or inverse probability weighting for follow-up.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Independent-samples t-test / one-way ANOVA** to compare outcomes across groups  
+   - **Why not:** Primary outcomes are binary/ordinal, not continuous; violates distributional assumptions and wastes information.
+
+2. **Paired t-test / repeated-measures ANOVA** for sinus tract healing over days  
+   - **Why not:** Outcome is binary at each time; repeated-measures ANOVA assumes normality/continuous response. Use GEE logistic or survival/discrete-time methods.
+
+3. **Simple Pearson correlation** between predictors and outcome  
+   - **Why not:** Outcomes are categorical; correlation is not meaningful and ignores confounding and clustering.
+
+4. **Linear regression** with PAI or the 3-level outcome treated as continuous without justification  
+   - **Why not:** Ordinal scale is not interval; linear model assumptions (normal residuals, equal spacing) are dubious.
+
+5. **Chi-square tests as the sole inferential approach**  
+   - **Why not:** Cannot adjust for confounding; does not handle clustering; multiple testing risk.
+
+6. **Log-rank test alone** to claim predictor effects  
+   - **Why not:** Unadjusted; cannot control confounders; also interval-censoring nuance.
+
+---
+
+## TASK 4 — Summary justification of the overall analytical approach
+
+This is a retrospective cohort of consecutively treated teeth with sinus tracts, with outcomes measured short-term (closure by 30 days, repeatedly assessed) and long-term (ordinal clinical+radiographic status based on PAI and symptoms). The analysis should (i) describe the cohort, (ii) establish reliability of radiographic scoring, and (iii) quantify adjusted associations between pre/intra/postoperative factors and outcomes using regression models appropriate for binary/ordinal endpoints while accounting for clustering by patient and variable follow-up. Time-to-closure methods are recommended to fully leverage repeated early assessments, and sensitivity analyses are important because the “Healing” category is partially defined by follow-up duration.

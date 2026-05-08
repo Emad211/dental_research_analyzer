@@ -1,0 +1,581 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_applsci-11-11768.pdf
+Status : ok
+Time   : 20260508_095405
+══════════════════════════════════════════════════════════════════════
+
+Below is structured around your four tasks.
+
+---
+
+## TASK 1 – INFORMATION EXTRACTION
+
+### 1. Study design
+
+- **Type:** Prospective longitudinal clinical study.
+- **Setting:** Department of Operative Dentistry in collaboration with Institute of Biomedical Sciences, Dow University of Health Sciences, Karachi, Pakistan.
+- **Period:** July 2017 – December 2018.
+- **Ethical approval:** IRB-862/DUHS/Approval/2017/50, Dow University of Health Sciences; Declaration of Helsinki adhered to.
+- **Design flow:**
+  1. Initial enrollment of patients indicated for conventional re-root canal treatment and periapical surgery.
+  2. Baseline clinical and radiographic evaluation; documentation of preoperative factors.
+  3. Conventional re-root canal treatment performed.
+  4. Re-evaluation after 3–6 months:
+     - If lesion healed and signs/symptoms disappeared → excluded.
+     - If lesion persisted → eligible for periapical surgery.
+  5. Periapical surgery performed on eligible teeth.
+  6. Follow-up at 6 and 12 months post-surgery with clinical and radiographic assessment of healing.
+
+### 2. Population and sample
+
+- **Initial sample:** 52 patients, age 15–57 years, with chronic apical periodontitis of single-rooted anterior teeth.
+- **Inclusion criteria:**
+  - Age 15–57.
+  - Chronic apical periodontitis in single-rooted anterior tooth.
+  - Radiographic periapical radiolucency > 4 mm around root apex with loss of lamina dura and PDL space.
+  - Lesions associated with:
+    - Incompletely attempted or previously failed root canal treatment, or
+    - Open apex due to trauma with halted root formation.
+- **Exclusion criteria:**
+  - Medically compromised with uncontrolled systemic disease (ASA III).
+  - Pre-existing periodontal disease.
+  - Lesion < 4 mm.
+  - Multirooted teeth.
+  - Teeth with cracks or root fractures.
+  - Pregnant or lactating women.
+  - Patients who did not attend follow-up visits.
+- **Attrition before surgery:**
+  - 12 patients excluded:
+    - 7: signs/symptoms disappeared and periapical lesion healed after conventional re-root canal treatment.
+    - 5: lost to follow-up.
+- **Final analytic sample for periapical surgery:** 40 patients/teeth (single-rooted anterior).
+
+### 3. Interventions and procedures
+
+1. **Baseline evaluation**
+   - History, clinical examination, and investigations to ascertain:
+     - Presence of specific preoperative factors (e.g., age, gender, smoking status, size of lesion, preoperative signs and symptoms).
+   - Preoperative digital periapical radiograph:
+     - **Technique:** Parallel technique with cone indicator and reference marker on radiographic sensor.
+     - **Purpose:** Radiographic confirmation of chronic apical periodontitis, measurement of lesion size, baseline Periapical Index (PAI) score.
+
+2. **Conventional re-root canal treatment**
+   - Details not fully specified here, but performed on all initially eligible teeth.
+   - The outcomes categorized as healed vs persistent lesion at 3–6 months.
+
+3. **Periapical surgery (surgical endodontic treatment)**
+   - Performed on 40 teeth with persistent lesions.
+   - Described steps:
+     - Full-thickness mucoperiosteal flap reflection.
+     - Creation of bony window around periapical area.
+     - Apical resection.
+     - Retrograde cavity preparation using zirconia-coated ultrasonic tips.
+     - Retrograde root-end filling with Mineral Trioxide Aggregate (MTA).
+   - Immediate postoperative periapical radiograph taken.
+
+4. **Follow-up and outcome assessment**
+   - Follow-up times: 6 months and 12 months after periapical surgery.
+   - **Clinical parameters:**
+     - Presence/absence of:
+       - Pain
+       - Swelling
+       - Sinus tract
+       - Tenderness to palpation
+       - Tenderness to percussion
+       - Mobility
+       - Discoloration
+   - **Radiographic parameters:**
+     - Periapical healing assessed using **Periapical Index (PAI)**.
+     - Serial radiographs demonstrate change in periapical radiolucency (immediate post-op, 6 months, 12 months).
+
+### 4. Outcomes and variables
+
+From the Introduction and Methods, even though not all are explicitly named as variables, the study is described as examining **preoperative factors affecting the outcome** of periapical surgery; thus we infer:
+
+#### Primary outcome
+
+- **Periapical healing status** at 6 and/or 12 months after surgery, defined by:
+  - Clinical criteria: absence of pain, swelling, sinus tract, tenderness, mobility, and discoloration.
+  - Radiographic criteria: PAI score and degree of radiolucency resolution.
+- Likely operationalized as:
+  - **Binary:**
+    - Success vs failure (healed vs non-healed / uncertain / diseased) based on combined clinical and radiographic criteria.
+  - Possibly **ordinal**:
+    - Categories such as complete, incomplete, uncertain, unsatisfactory healing, depending on PAI-based criteria (not fully described in text you provided but standard in periapical surgery literature).
+
+#### Key preoperative predictors (patient- and lesion-related)
+
+- **Age** (continuous in years; may also be categorized into age groups).
+- **Gender** (male / female).
+- **Smoking status** (smoker / non-smoker; possibly ex-smoker vs never, but only “smoking” is mentioned).
+- **Size of preoperative periapical lesion:**
+  - Measured on preoperative digital radiograph, likely continuous in mm or mm², but at least classified as >4 mm; possibly further categorized (e.g., ≤10 mm vs >10 mm as often done in literature).
+- **Preoperative signs and symptoms**:
+  - Presence/absence of symptoms such as pain and swelling (indicating acute vs chronic lesion).
+  - Other signs: sinus tract, tenderness, etc., though only “presence of pretreatment signs and symptoms” is emphasised as a prognostic factor.
+- Potentially other preoperative factors mentioned in literature but not clearly stated in methods (e.g., tooth position, previous treatment status type, trauma history, etc.). However, from the text we can safely list:
+  - Age
+  - Gender
+  - Smoking
+  - Lesion size
+  - Preoperative signs/symptoms (symptomatic vs asymptomatic).
+
+#### Perioperative factors
+
+- In this protocol, **most perioperative factors are standardized**:
+  - Surgical technique (apical surgery with microsurgical protocol).
+  - Root-end filling material (MTA for all cases).
+  - Type of tooth (single-rooted anterior teeth only).
+- Therefore, perioperative factors are not main sources of variability here and likely not used as predictors (unless in full text they consider surgeon, flap design, etc., which aren’t in the excerpt).
+
+#### Follow-up / repeated measures
+
+- Radiographic PAI scores and lesion size at:
+  - Immediate post-op.
+  - 6 months.
+  - 12 months.
+- Clinical status (presence/absence of symptoms) at 6 and 12 months.
+
+### 5. Data structure
+
+- **Unit of analysis:** Tooth/patient (one treated tooth per patient).
+- **Study type:** Single cohort, no randomization; multiple preoperative characteristics compared between outcome-defined groups.
+- **Repeated measures:** Radiographic and clinical outcome data at multiple time points (baseline, 6 months, 12 months).
+
+---
+
+## TASK 2 – STATISTICAL ANALYSIS PLAN
+
+I’ll structure the plan around the main objectives:
+
+1. Describe the sample and outcome.
+2. Identify which preoperative factors are associated with periapical healing after surgery.
+3. Characterize longitudinal change in radiographic and clinical parameters.
+
+I. **General considerations**
+
+- **Software:** SPSS, R, or Stata.
+- **Alpha (type I error):** 0.05 (two-sided).
+- **Handling missing data:**
+  - Describe attrition between surgery and 12-month follow-up.
+  - For primary outcome, focus on 12-month status; consider sensitivity analysis including 6-month data or treating missing 12-month as failure.
+
+---
+
+### CATEGORY A – MANDATORY ANALYSES
+
+These are essential to answer the stated research question.
+
+#### A1. Descriptive statistics
+
+- **Purpose:** Summarize patient, tooth, and lesion characteristics, and overall healing rates.
+- **Test/Methods:**
+  - Means (SD) or medians (IQR) for continuous variables (age, lesion size).
+  - Frequencies (%) for categorical variables (sex, smoking, symptoms, outcome categories).
+
+**Appropriateness:**
+1. Required to understand baseline characteristics and interpret any association analyses.
+2. Enables assessment of data distribution and detection of outliers to inform selection of subsequent tests.
+
+**Limitations / not appropriate when:**
+- Not a test per se, but still: purely descriptive statistics cannot infer associations or causality.
+
+**Alternatives if assumptions violated:**
+- For skewed continuous variables, use medians and IQR; consider transformations or nonparametric tests in subsequent steps.
+
+---
+
+#### A2. Comparison of baseline characteristics between outcome groups
+
+**Primary outcome grouping:**
+- Group 1: Successful healing at 12 months.
+- Group 2: Unsuccessful/uncertain healing at 12 months.
+
+**A2.1. Chi-square test (or Fisher’s exact test) for categorical predictors**
+
+- **Variables:**
+  - Smoking status (smoker vs non-smoker).
+  - Sex (male vs female).
+  - Preoperative symptoms (present vs absent).
+  - Age categorized (e.g., <30 vs ≥30, or other clinically meaningful cut-offs) – if used as categorical.
+- **Test name:** Pearson’s Chi-square test; Fisher’s exact test when needed.
+
+**Purpose:**
+- Examine association between categorical preoperative factors and binary healing outcome.
+
+**Why appropriate (≥2 reasons):**
+1. Outcome and predictors are categorical; the test is designed to evaluate independence/association in contingency tables.
+2. Sample size per cell is moderate (40 total); with proper grouping, expected frequencies can be adequate for chi-square; otherwise Fisher’s exact test is suitable.
+
+**Why it may not be appropriate (≥1 reason):**
+- With small cell counts (e.g., very few smokers), chi-square assumptions on expected frequencies (<5) may be violated, inflating type I error.
+
+**When not to use:**
+- When >20% of expected cell counts are <5 or any expected cell <1.
+- When the predictor has many sparse categories (e.g., multiple symptom patterns with small n).
+
+**Alternative if assumptions violated:**
+- **Fisher’s exact test** for 2×2 tables.
+- **Exact chi-square** or **Monte Carlo** methods for larger but sparse tables.
+- Consider collapsing categories (e.g., grouping several symptom types) to increase cell counts.
+
+---
+
+**A2.2. Independent samples t-test or Mann–Whitney U test for continuous predictors**
+
+- **Variables:**
+  - Age (years).
+  - Preoperative lesion size (mm or mm²).
+
+**Test name:**
+- Independent samples t-test (if parametric assumptions met).
+- Mann–Whitney U test (nonparametric alternative).
+
+**Purpose:**
+- Compare mean (or median) age and lesion size between success vs failure groups.
+
+**Why appropriate (≥2 reasons):**
+1. Outcome is binary, predictor is continuous – standard 2-group comparison framework.
+2. With reasonably symmetric distributions and adequate sample size per group, t-test provides powerful comparison of means; if distribution is skewed or outlier-prone, Mann–Whitney is robust.
+
+**Why it may not be appropriate:**
+- t-test: sensitive to non-normality and unequal variances in small samples.
+- Mann–Whitney: tests distribution shift, not necessarily means; interpretation requires care.
+
+**When not to use:**
+- t-test should not be used if:
+  - Normality assumption clearly violated and n per group very small (e.g., <15).
+  - Variance heterogeneity is extreme.
+- Mann–Whitney should be avoided if:
+  - Data are heavily tied or ordinal with few categories; consider ordinal methods instead.
+
+**Alternatives if assumptions violated:**
+- **Welch’s t-test** if variances unequal but approximate normality holds.
+- **Mann–Whitney U test** if severe non-normality or outliers.
+
+---
+
+#### A3. Multivariable logistic regression for predictors of healing
+
+- **Test name:** Binary logistic regression.
+
+**Outcome:**
+- Success (1) vs failure/uncertain (0) at 12 months.
+
+**Candidate predictors:**
+- Age (continuous).
+- Sex (male/female).
+- Smoking status (smoker vs non-smoker).
+- Preoperative lesion size (continuous or categorized into clinically meaningful groups).
+- Preoperative symptoms (present vs absent).
+- Possibly baseline PAI score (if available) and other relevant covariates (e.g., cause of lesion – failed RCT vs open apex due to trauma).
+
+**Purpose:**
+- Estimate adjusted associations (odds ratios and 95% CI) between preoperative factors and healing, controlling for confounders.
+
+**Why appropriate (≥2 reasons):**
+1. Outcome is binary; logistic regression is the standard method for modeling binary outcomes with multiple predictors.
+2. Allows simultaneous adjustment for multiple factors, providing more accurate estimates of each factor’s independent association with healing.
+
+**Why it may not be appropriate:**
+- With only 40 patients and limited number of events (failures), a full multivariable model with many predictors risks overfitting and unstable estimates.
+
+**When not to use:**
+- When events-per-variable (EPV) ratio is too low. A rough guideline: at least 10 events per predictor; with e.g., 10 failures, we should include at most 1 predictor (or 2 in penalized models).
+
+**Alternative if assumptions violated:**
+- **Penalized logistic regression** (e.g., Firth’s correction) to reduce small-sample bias.
+- **Exact logistic regression** if there are rare exposures (e.g., very few smokers).
+- **Univariate logistic regression** plus careful interpretation when sample size is too limited for multivariable models; restrict adjustment to key confounders.
+
+---
+
+#### A4. Analysis of longitudinal radiographic outcome (pre vs 6 vs 12 months)
+
+Assuming PAI is recorded on the same teeth at different times.
+
+**A4.1. Repeated measures analysis for PAI (ordinal/continuous approach)**
+
+- **If PAI treated as continuous-like (scores 1–5):**
+  - **Test name:** Friedman test (nonparametric repeated-measures ANOVA) or repeated-measures ANOVA if assumptions hold.
+
+**Purpose:**
+- Evaluate whether there is a statistically significant change in PAI scores over time (pre-op, 6 months, 12 months).
+
+**Why appropriate (≥2 reasons):**
+1. Same subjects measured at multiple time points → within-subject design.
+2. Friedman test does not require normality and is suitable for ordinal data like PAI.
+
+**Why it may not be appropriate:**
+- PAI is ordinal, not strictly continuous; repeated-measures ANOVA may not be suitable unless assumptions (approximate normality, equal intervals) are acceptable.
+- Small sample size may limit power.
+
+**When not to use:**
+- Repeated measures ANOVA should not be used if:
+  - Data are not approximately normal and PAI is clearly ordinal.
+  - Sphericity assumption is violated (and cannot be corrected reasonably given small n).
+- Friedman test should not be used if:
+  - There are substantial missing values at one or more time points (it requires complete cases).
+
+**Alternative if assumptions violated:**
+- **Wilcoxon signed-rank test** comparing two selected time points (e.g., baseline vs 12 months).
+- **Ordinal mixed-effects models** (cumulative logit mixed models) if more advanced modeling is possible and sample size permits (likely borderline with n=40).
+
+**A4.2. Evolution of lesion size (if measured continuously)**
+
+- **Test name:** Paired t-test (baseline vs 12 months) or Wilcoxon signed-rank test.
+
+**Purpose:**
+- Quantify and test reduction in lesion size over time.
+
+**Why appropriate:**
+1. Paired design (same tooth at two time points).
+2. Continuous measurement of lesion size suits paired t-test if normality of differences holds; otherwise Wilcoxon signed-rank is robust.
+
+**Reasons against:**
+- If lesion size is poorly measured (large measurement error) or heavily skewed, standard parametric tests may mislead.
+
+**Alternative:**
+- Wilcoxon signed-rank test if normality violated.
+- Bootstrap confidence intervals for mean change.
+
+---
+
+### CATEGORY B – RECOMMENDED ANALYSES
+
+These improve rigor and depth.
+
+#### B1. Model diagnostics and goodness-of-fit for logistic regression
+
+**Tests/Methods:**
+- Hosmer–Lemeshow goodness-of-fit test.
+- ROC curve and AUC for discrimination.
+- Assessment of linearity in logit for continuous predictors (e.g., Box–Tidwell test, or plotting).
+
+**Purpose:**
+- Evaluate how well the logistic model fits data and how well it discriminates healed vs non-healed cases.
+
+**Why appropriate:**
+1. Ensures model-based inferences are valid (no major misfit).
+2. ROC/AUC gives clinically interpretable evidence on predictive performance (e.g., how well lesion size or age classify outcomes).
+
+**Why it may not be appropriate:**
+- With small sample size, Hosmer–Lemeshow can have low power or unstable results; ROC curves may be noisy.
+
+**Alternative:**
+- Calibration plots and bootstrap internal validation.
+- Brier score for overall performance.
+
+---
+
+#### B2. Sensitivity analyses for primary outcome definition
+
+**Methods:**
+- Repeat analyses using:
+  - Strict definition: only complete radiographic resolution (PAI ≤ specified cutoff) and no clinical signs counted as success.
+  - Broader definition: including “uncertain but improving” cases as success.
+
+**Purpose:**
+- Examine robustness of conclusions to different outcome categorizations.
+
+**Why appropriate:**
+1. Healing in periapical surgery has gray zones; different studies use slightly different criteria.
+2. Ensures findings are not an artifact of a particular cut-point.
+
+**Why it may not be appropriate:**
+- Over-fragmenting outcome categories with already small sample reduces power.
+
+**Alternative:**
+- Ordinal logistic regression with outcome categories: complete, incomplete, uncertain/unsatisfactory.
+
+---
+
+#### B3. Ordinal logistic regression for multi-category radiographic outcome
+
+If final healing is classified into multiple radiographic categories (e.g., complete vs incomplete vs uncertain vs unsatisfactory).
+
+- **Test name:** Proportional odds (ordinal) logistic regression.
+
+**Purpose:**
+- Model the association of preoperative factors with the ordered outcome categories.
+
+**Why appropriate:**
+1. PAI-based outcomes are inherently ordered; ordinal model uses this information more efficiently than collapsing to binary.
+2. Provides odds ratios for being in a better category vs worse, preserving gradation of healing.
+
+**Why it may not be appropriate:**
+- With n=40, multiple outcome categories may lead to sparse cells; proportional odds assumption may be violated.
+
+**Alternatives:**
+- Collapse outcome into fewer ordered categories (e.g., favorable vs uncertain vs unfavorable).
+- Multinomial logistic regression (no ordering) if proportional odds strongly violated, though sample size becomes more limiting.
+
+---
+
+#### B4. Interobserver reliability for PAI scoring
+
+If more than one examiner assessed PAI (not stated in excerpt, but commonly the case).
+
+- **Test name:** Weighted kappa statistic.
+
+**Purpose:**
+- Assess agreement between examiners for ordinal PAI scores.
+
+**Why appropriate:**
+1. PAI is ordinal; weighted kappa accounts for partial disagreement (1 vs 2 vs 5).
+2. Ensures outcome assessment is reliable, strengthening validity of findings.
+
+**Why it may not be appropriate:**
+- If only one examiner scored radiographs, kappa cannot be computed.
+
+**Alternative:**
+- If continuous measurements (e.g., lesion area) were made by multiple examiners, use intraclass correlation coefficient (ICC).
+
+---
+
+#### B5. Subgroup analyses
+
+Examples (only if numbers allow):
+
+- By smoking status: separate healing trajectories for smokers vs non-smokers.
+- By lesion size (small vs large, e.g., ≤10 mm vs >10 mm).
+
+**Tests:**
+- Same as A2 and A4 within strata.
+- Interaction terms (e.g., smoking × lesion size) in logistic regression.
+
+**Purpose:**
+- Explore whether effect of one factor depends on another (e.g., is lesion size more detrimental in smokers?).
+
+**Why appropriate:**
+1. Clinically relevant hypotheses from literature.
+2. May explain heterogeneity in healing.
+
+**Why it may not be appropriate:**
+- Small sample size makes subgroups tiny, leading to unstable estimates and low power; interaction tests could be unreliable.
+
+**Alternative:**
+- Present descriptive stratified results without formal interaction testing.
+- Use Bayesian approaches with informative priors (if available) to partially mitigate low power.
+
+---
+
+### CATEGORY C – OPTIONAL ANALYSES
+
+These are useful but not essential.
+
+#### C1. Survival (time-to-event) analysis
+
+If the exact time to healing or to failure (re-surgery, extraction, persistent symptoms) can be determined within the 12-month period.
+
+- **Test name:**
+  - Kaplan–Meier curves.
+  - Log-rank test.
+  - Cox proportional hazards regression.
+
+**Purpose:**
+- Evaluate time-dependent probability of healing and factors influencing time to healing.
+
+**Why appropriate:**
+1. Follow-up at 6 and 12 months suggests time dimension; survival methods handle censoring (e.g., lost to follow-up).
+2. Cox regression can adjust for multiple preoperative factors similar to logistic regression but uses time information.
+
+**Why it may not be appropriate:**
+- Exact healing times may not be known (only “healed by 6 months” vs “healed by 12 months”), making time-to-event coarse.
+- Small sample size may limit precise estimation of hazard ratios.
+
+**Alternatives:**
+- Use discrete-time survival models or interval-censored methods if healing is only known at visits.
+- Retain simpler logistic approach focusing on 12-month status.
+
+---
+
+#### C2. Exploratory correlation analyses
+
+- **Test name:** Spearman rank correlation.
+
+**Variables:**
+- Continuous/ordinal: age, lesion size, PAI change, etc.
+
+**Purpose:**
+- Explore monotonic relationships between continuous/ordinal variables (e.g., lesion size and PAI improvement).
+
+**Why appropriate:**
+1. Nonparametric and robust to non-normal distributions.
+2. Can reveal trends not captured by dichotomized analyses.
+
+**Why it may not be appropriate:**
+- With n=40, correlations may be imprecise and of limited inferential value.
+
+**Alternative:**
+- Scatter plots with smoothing lines for visual inspection without heavy inference.
+
+---
+
+#### C3. Effect size estimation and CIs for key comparisons
+
+- **Methods:**
+  - Risk difference, risk ratio, odds ratio with 95% CI for categorical comparisons.
+  - Mean difference (or median difference with bootstrap CI) for continuous variables.
+
+**Purpose:**
+- Provide clinically interpretable effect sizes beyond p-values.
+
+**Why appropriate:**
+1. Decision-making in clinical context benefits from magnitude of effect (e.g., how much higher is failure risk in smokers).
+2. CIs convey precision of estimates.
+
+**Why it may not be appropriate:**
+- Not inappropriate, but can be misleading if interpreted without recognizing small sample and wide CIs.
+
+---
+
+## TASK 3 – INAPPROPRIATE TESTS
+
+Tests that should not be used for this study (with reasons):
+
+1. **Student’s t-test or ANOVA for PAI (as if it were continuous) without justification**
+   - PAI is ordinal; intervals between categories are not guaranteed equal.
+   - Treating PAI as continuous ignores its ordinal nature and may violate assumptions of normality and homoscedasticity.
+
+2. **Linear regression with binary outcome (e.g., “healing” as 0/1)**
+   - Violates assumptions:
+     - Predicted values can fall outside [0, 1].
+     - Residuals are not normally distributed nor homoscedastic.
+   - Logistic regression is the appropriate model.
+
+3. **Parametric repeated-measures ANOVA on clearly non-normal ordinal data without transformation or checks**
+   - Repeated-measures ANOVA assumes continuous normally distributed outcomes and sphericity; PAI is ordinal.
+   - Friedman or ordinal mixed models are more appropriate.
+
+4. **Multiple uncorrected pairwise tests across time points and predictors without overall plan**
+   - Increases type I error inflation.
+   - Prefer structured repeated-measures tests or models with appropriate control of family-wise error or false discovery rate.
+
+5. **Chi-square tests on sparse multi-category tables without considering exact methods**
+   - If any cell has expected count < 1 or >20% of cells have expected counts < 5, chi-square p-values become unreliable.
+   - Fisher’s exact or exact/Monte-Carlo methods should be used instead.
+
+6. **Paired t-test for non-normal, highly skewed lesion size differences without checking assumptions**
+   - With small sample size and skewed differences, type I error control is compromised.
+   - Wilcoxon signed-rank test is safer.
+
+7. **Complex high-parameter models (e.g., Cox with many covariates, multivariable ordinal logistic regression with 5–6 predictors) in n=40**
+   - Leads to overfitting, unstable estimates, failure to converge, and misleading inferences.
+
+---
+
+## TASK 4 – SUMMARY AND JUSTIFICATION OF ANALYTICAL APPROACH
+
+The study is a prospective cohort of 40 patients undergoing standardized periapical surgery, designed to identify preoperative predictors (age, smoking, lesion size, preoperative symptoms) of postoperative healing assessed clinically and radiographically.
+
+The analytical approach should therefore:
+
+1. **Describe the cohort** clearly (descriptive statistics) to contextualize results.
+2. **Compare preoperative characteristics** between healed vs non-healed groups using chi-square / Fisher’s exact and t-test / Mann–Whitney, as appropriate, to identify potential prognostic factors.
+3. **Model the outcome multivariately** with logistic regression, to adjust for confounding and estimate independent effects of key predictors (age, smoking, lesion size, symptoms), while respecting limitations of the small sample (e.g., limiting number of predictors, using penalized methods if needed).
+4. **Account for the longitudinal nature of healing** by examining changes in PAI and lesion size over time using appropriate repeated-measures nonparametric methods (Friedman, Wilcoxon) and considering ordinal methods if outcome categories are used.
+5. **Evaluate robustness and reliability** through model diagnostics, sensitivity analyses for outcome definitions, and interrater reliability for PAI if applicable.
+
+This plan balances methodological rigor with the constraints of sample size and measurement scales, uses standard and widely accepted methods for binary and longitudinal outcomes in endodontic surgery, and allows clinically meaningful interpretation of the influence of age, smoking, and lesion size on periapical healing after surgical endodontic treatment.

@@ -1,0 +1,612 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_475f777a3a59b662fd1a71fb051d5df6.pdf
+Status : ok
+Time   : 20260508_093939
+══════════════════════════════════════════════════════════════════════
+
+Below is a structured response following your four requested tasks.
+
+---
+
+## TASK 1: INFORMATION EXTRACTION
+
+### 1.1 Study design and objectives
+
+- **Design**:  
+  - In vitro, laboratory-based experimental study.  
+  - Completely randomized, parallel-group comparison of multiple NiTi endodontic instruments.
+- **Primary objective**:  
+  - To investigate the impact of **core mass** (cross‑sectional design, taper) and **alloy** of different NiTi endodontic instruments with the same outer diameter but different cross-sectional designs on **cyclic fatigue resistance** in **matching artificial root canals**.
+- **Null hypothesis (H0)**:  
+  - Core mass and alloy have no impact on fracture resistance (cyclic fatigue resistance) of the tested instruments.
+
+### 1.2 Groups / instruments
+
+Six main “instrument systems” are tested, with 20 instruments per group, total N = 120:
+
+1. **F360**  
+   - Size 25/0.04  
+   - Rotary, continuous rotation  
+   - Speed: 300 rpm  
+   - Torque: 1.8 N·cm  
+   - Alloy: conventional (superelastic) NiTi (implied from manufacturer; not explicitly stated in the provided text)
+   - Canal: artificial canal size 27/0.04 (instrument + 0.02 mm)
+
+2. **Twisted File (TF)**  
+   - Size 25/0.04  
+   - Speed: 500 rpm  
+   - Torque: 2.5 N·cm  
+   - Alloy: R-phase NiTi (twisted technology; implied, typical for TF)  
+   - Canal: 27/0.04
+
+3. **JIZAI 0.04 (J_04)**  
+   - Size 25/0.04  
+   - Speed: 500 rpm  
+   - Torque: 3.0 N·cm  
+   - Alloy: (likely thermally treated martensitic; exact type not in excerpt)  
+   - Canal: 27/0.04
+
+4. **TruNatomy (TN)**  
+   - Nominal: 26/0.04 **variable taper** (0.04 average)  
+   - Starts at 0.26 mm, canal based on manufacturer’s spec + 0.02 mm (so canal start 0.28 mm)  
+   - Speed: 500 rpm  
+   - Torque: 1.5 N·cm  
+   - Alloy: specialized heat-treated NiTi (thermomechanical treatment; implied)  
+   - Canal: custom, variable, matching TN + 0.02 mm
+
+5. **Mtwo**  
+   - Size 25/0.06  
+   - Speed: 280 rpm  
+   - Torque: 2.3 N·cm  
+   - Alloy: conventional NiTi (implied)  
+   - Canal: 27/0.06
+
+6. **JIZAI 0.06 (J_06)**  
+   - Size 25/0.06  
+   - Speed: 500 rpm  
+   - Torque: 3.0 N·cm  
+   - Alloy: as for JIZAI system above  
+   - Canal: 27/0.06
+
+7. **Hyflex OneFile (HF)**  
+   - Size 25/~ variable taper (not precisely specified by manufacturer)  
+   - Speed: 400 rpm  
+   - Torque: 2.5 N·cm  
+   - Alloy: martensitic/controlled memory NiTi (heat-treated; implied)  
+   - Canal: custom variable canal calculated from manufacturer’s spec + 0.02 mm.
+
+> Note: The abstract and some figure captions (not fully visible) suggest focus on 0.04 taper group (F360, TF, J_04, TN) and 0.06 taper group (Mtwo, J_06, HF), but the text states total 120 instruments, i.e., 6 groups × 20. Hyflex belongs to the 0.06/variable taper set.
+
+### 1.3 Sample size details
+
+- **Preliminary / pilot study**:  
+  - 5 instruments per group under identical conditions.  
+  - Observed effect size > 1.0 (Cohen’s f or d; they chose conservative f = 0.4 for final calculation).
+- **Sample size calculation** (G*Power 3.1):
+  - Assumed effect size: 0.4  
+  - α = 0.05  
+  - β = 0.20 (power 80%)  
+  - Required n ≈ 19 per group  
+  - Final n = 20 per group  
+  - Total N = 120.
+
+### 1.4 Experimental apparatus and conditions
+
+- **Artificial canals**:
+  - Designed with **Geomagic Freeform** software.
+  - 4 basic canal geometries + customized variable‑taper canals.
+  - Diameter: instrument nominal size + 0.02 mm (for matching fit; friction-free rotation).
+  - Curvature: 60° curvature, 5 mm radius.
+  - Center of curvature: 5 mm from apex.
+  - Canal length: 16 mm (matching working part length).
+  - Canal exits: terminate in a circular opening (open system with lubricant reservoir).
+  - Material: CoCr alloy produced via **DMLS (digital metal laser sintering)**, with:
+    - Layer thickness: 20–40 µm
+    - Stress-relief annealing and sandblasting postprocessing.
+  - Verification: canal dimensions measured with a **laser scanning microscope** (Keyence VK‑X1000).
+
+- **Environmental conditions**:
+  - All tests conducted in an **incubator at 37 ± 1 °C**.
+  - Temperature inside artificial canal monitored continuously using **Type-K thermocouples**, 50 Hz acquisition.
+  - Glycerin oil warmed to body temperature used as **lubricant**, continuously refreshed via small window in Plexiglas incubator door.
+
+- **Mechanical setup**:
+  - Instrument mounted in a handpiece attached to a **3D-printed handpiece holder** on a cyclic fatigue testing device.
+  - Artificial canal blocks adjustable relative to handpiece, with 2-axis locking.
+  - Artificial canals covered with **tempered glass** to prevent instrument from slipping out.
+  - Dynamic testing: 
+    - Eccentric mount 1.5 mm from central axis on a rotating disk, resulting in vertical amplitude of **3 mm**.
+    - Vertical motion frequency: **0.5 Hz** (1 cycle per 2 seconds).
+  - All instruments rotated with a torque-controlled endodontic motor (VDW Silver).
+
+### 1.5 Outcome variables and measurements
+
+**Primary outcome:**
+
+- **Number of cycles to fracture (NCF)**  
+  - Time to fracture captured via video recording (microscopic camera + AMcap software).
+  - Start time: moment instrument first reaches working length.  
+  - End time: moment of instrument fracture observed on video.
+  - Testing limited to 600 seconds.  
+    - If no fracture by 600 s, test terminated + 30 s buffer → right-censoring; treatment in the original paper likely as “run-outs” or assigned NCF based on 600 s.
+  - NCF formula:  
+    \[
+    NCF = \frac{\text{time to fracture (s)}}{60} \times \text{rpm}
+    \]
+  - Measured for each instrument.
+
+**Secondary outcomes and assessments:**
+
+1. **Time to fracture (seconds)**  
+   - Direct from video data; continuous variable.
+
+2. **Fragment length (mm)**  
+   - Measured with digital calliper (Mitutoyo 500‑196‑30).  
+   - Continuous variable.
+
+3. **Fracture mode** (qualitative / categorical):
+   - For each group, five randomly selected fractured fragments (if available).
+   - Examination of fracture surface morphology with **laser scanning microscope** (500× magnification).
+   - Purpose: confirm **cyclic fatigue failure**; exclude torsional fracture (qualitative judgment, no explicit numerical analysis indicated).
+
+### 1.6 Factors / explanatory variables
+
+- **Instrument system (group)**: categorical (6 levels: F360, TF, J_04, TN, Mtwo, J_06, HF).
+- **Taper group / core mass proxy**:
+  - 0.04 nominal taper group: F360, TF, J_04, TN.
+  - 0.06 / variable group: Mtwo, J_06, HF.
+  - Cross-sectional design differences contribute to “core mass”.
+- **Alloy / heat treatment category** (implicit factor):
+  - Conventional SE NiTi vs heat-treated martensitic/R-phase vs twisted. Specific classification may be required from manufacturer information.
+- **Rotational speed** (rpm): instrument-specific numerical variable; could be considered covariate or design characteristic.
+- **Torque settings** (N·cm): instrument-specific; also a design attribute.
+
+### 1.7 Data structure
+
+- Each instrument yields:
+  - Instrument group (categorical).
+  - NCF (primary outcome).
+  - Time to fracture (or censoring at 600 s).
+  - Fragment length.
+  - Fracture mode (for subset of instruments).
+
+Replication: 20 independent instruments per group; independence across instruments is assumed.
+
+---
+
+## TASK 2: STATISTICAL ANALYSIS PLAN
+
+Below, tests are organized into three categories with details requested for each.
+
+### CATEGORY A – MANDATORY ANALYSES
+
+#### A1. Descriptive statistics and distribution assessment
+
+**Test / Procedure name:**  
+- Descriptive statistics + distribution diagnostics (e.g., Shapiro–Wilk test, Q–Q plots, histograms, skewness/kurtosis)
+
+**Purpose:**  
+- To summarize central tendency and dispersion of NCF and fragment length by group, and assess normality and potential outliers to inform choice of inferential tests.
+
+**Why appropriate (≥2 reasons):**  
+1. NCF and fragment length are continuous outcomes; descriptive summaries (mean, SD, median, IQR) are essential for interpretation and comparison.  
+2. Parametric tests (ANOVA, t-tests) require approximate normality and homoscedasticity; distribution diagnostics guide whether these assumptions are reasonable.
+
+**Why it may not be appropriate (≥1 reason):**  
+- For small sample sizes (e.g., in subgroups, if some groups have fewer failures), normality tests like Shapiro–Wilk have low power and can be misleading.
+
+**When this should NOT be used:**  
+- None; descriptive statistics and visual diagnostics should always be done. But overreliance on formal normality tests in very small samples is discouraged.
+
+**Alternative if assumptions are violated:**  
+- If clearly non-normal and sample size is small, use robust summaries (median, IQR) and nonparametric inference (see A2/A3).
+
+---
+
+#### A2. One-way ANOVA for NCF (primary group comparison)
+
+**Test name:**  
+- One-way analysis of variance (ANOVA) on NCF across instrument systems.
+
+**Purpose:**  
+- To compare mean NCF between the 6 instrument groups, determining if any group differs in cyclic fatigue resistance.
+
+**Why appropriate (≥2 reasons):**  
+1. Design: independent groups with a continuous outcome and roughly equal sample size (n = 20/group) suits ANOVA.  
+2. Sample size is moderate and balanced, making ANOVA robust to modest deviations from normality and variance equality.
+
+**Why it may not be appropriate (≥1 reason):**  
+- If NCF distributions are severely skewed or contain many censored (“run-out”) values at the upper limit (600 s), the normality assumption may fail, and ANOVA on raw NCF becomes questionable.
+
+**When this test should NOT be used:**  
+- When more than ~10–20% of instruments in one or more groups do not fracture within 600 s and are censored; then NCF is not fully observed and standard ANOVA is inappropriate.  
+- When homogeneity of variance is grossly violated (e.g., very large differences in SD across groups) and transformations do not help.
+
+**Alternative if assumptions are violated:**  
+- If data are non-normal but uncensored and variance heterogeneity modest: use **Welch ANOVA**.  
+- If strong non-normality: use **Kruskal–Wallis test** on NCF.  
+- If censoring is substantial: use **survival analysis (log-rank test, Cox regression)** on time to fracture (see A4).
+
+---
+
+#### A3. Multiple comparisons / post hoc tests for NCF
+
+**Test name:**  
+- Post hoc multiple comparison procedures (e.g., Tukey’s HSD; or Games–Howell if variances unequal).
+
+**Purpose:**  
+- To identify which specific instrument pairs differ in mean NCF if ANOVA is significant.
+
+**Why appropriate (≥2 reasons):**  
+1. With >2 groups, ANOVA only tells us that at least one group differs; post hoc tests locate these differences.  
+2. Tukey’s HSD controls family-wise error rate with balanced group sizes and is straightforward to interpret.
+
+**Why it may not be appropriate (≥1 reason):**  
+- If variances are unequal and/or sample sizes unbalanced, Tukey’s standard HSD may give misleading results.
+
+**When this test should NOT be used:**  
+- When the overall ANOVA F-test is not significant; pairwise post hoc tests then inflate type I error without clear benefit.  
+- When data are heavily tied/censored and ANOVA itself is inappropriate.
+
+**Alternative if assumptions are violated:**  
+- For unequal variances: **Games–Howell** post hoc test.  
+- For nonparametric data using Kruskal–Wallis: **Dunn’s test** (or Conover–Iman) with appropriate multiplicity correction (e.g., Bonferroni, Holm).
+
+---
+
+#### A4. Survival analysis for time to fracture (accounting for censoring)
+
+**Test name:**  
+- Kaplan–Meier survival curves + log-rank test comparing instrument groups.
+
+**Purpose:**  
+- To compare the distribution of **time to fracture** across groups while correctly handling tests terminated without fracture at 600 s (right-censoring).
+
+**Why appropriate (≥2 reasons):**  
+1. Time to event (fracture) with administrative censoring at 600 s is a classic survival data structure; Kaplan–Meier/log-rank is standard.  
+2. It avoids arbitrary handling of run-outs (e.g., assigning them fixed maximum NCF), thus giving more valid comparison.
+
+**Why it may not be appropriate (≥1 reason):**  
+- If almost all instruments fracture well before 600 s (minimal censoring), survival methods add complexity with little gain.
+
+**When this test should NOT be used:**  
+- If times are recorded with substantial rounding to only a few discrete values and there is no censoring, survival methods are unnecessary; standard ANOVA on time or NCF is adequate.
+
+**Alternative if assumptions are violated:**  
+- If proportional hazards assumption is violated for log-rank / Cox models, use:
+  - **Restricted mean survival time (RMST) comparison** or  
+  - **Nonparametric tests for interval-censored data** (if timing is coarse) or 
+  - Stratified or time-dependent Cox models.
+
+---
+
+#### A5. Two-way ANOVA (or equivalent) by taper/alloy group (if explicitly analyzed)
+
+**Test name:**  
+- Two-way ANOVA on NCF with factors:
+  - Taper/core-mass group (e.g., 0.04 vs 0.06/variable)  
+  - Alloy category (e.g., conventional vs heat-treated vs twisted), if definable.
+
+**Purpose:**  
+- To formally test main effects of **core mass (taper group)** and **alloy type**, and their interaction, on cyclic fatigue resistance.
+
+**Why appropriate (≥2 reasons):**  
+1. The stated research question is the impact of **core mass** and **alloy**, not just “brand”; factorial ANOVA aligns with the hypothesis about these two parameters.  
+2. Balanced design with ~20 observations per cell (or per combination category) supports factorial analysis.
+
+**Why it may not be appropriate (≥1 reason):**  
+- Alloy type and taper/core mass may not be orthogonal across instruments; classification may be ambiguous or some combinations missing (e.g., no conventional alloy in certain taper categories), making a full factorial ANOVA impossible.
+
+**When this test should NOT be used:**  
+- When some factor combinations are absent or n is too small in some cells (e.g., 0 or very few instruments), leading to unstable estimates or non-estimable interaction terms.
+
+**Alternative if assumptions are violated / structure unsuitable:**  
+- Use **general linear model** with instrument as fixed effect and include relevant continuous covariates (e.g., rpm, nominal core area if measured).  
+- Alternatively, consider grouping instruments simply by taper (0.04 vs 0.06/variable) and perform a simpler **two-sample t-test** or **Mann–Whitney U** on NCF within an alloy category, understanding the limitations.
+
+---
+
+#### A6. Comparison of fragment lengths across groups
+
+**Test name:**  
+- One-way ANOVA (or Kruskal–Wallis) for fragment length.
+
+**Purpose:**  
+- To verify that the length of the fractured segment is similar across groups (confirming fractures occur in equivalent regions of curvature).
+
+**Why appropriate (≥2 reasons):**  
+1. Fragment length is continuous and measured in all fractured instruments; differences might confound interpretation of cyclic fatigue (different stress regions).  
+2. Demonstrating non-significant differences (or small effect sizes) supports comparability of fracture location and test standardization.
+
+**Why it may not be appropriate (≥1 reason):**  
+- If some instruments are censored (no fracture), fragment length is undefined for those; groups with few fractures may have small n for fragment length, making parametric analysis underpowered.
+
+**When this test should NOT be used:**  
+- When a group has too few fractures (e.g., <5) to support meaningful inferential statistics. In that case, descriptive analysis only.
+
+**Alternative if assumptions are violated:**  
+- Use **Kruskal–Wallis** test if distribution non-normal or sample size per group small.  
+- Report medians and ranges.
+
+---
+
+### CATEGORY B – RECOMMENDED ANALYSES
+
+#### B1. Effect size estimation
+
+**Test name:**  
+- Effect size measures (e.g., η² or partial η² for ANOVA, Cohen’s d for pairwise comparisons, hazard ratios from Cox models).
+
+**Purpose:**  
+- To quantify the magnitude of differences in NCF or time to fracture between instrument groups, taper groups, and alloy categories.
+
+**Why appropriate (≥2 reasons):**  
+1. Statistical significance alone does not reflect practical or clinical relevance; effect size provides scale.  
+2. Sample size was planned based on an effect size; reporting effect sizes closes the loop and improves interpretability and comparability across studies.
+
+**Why it may not be appropriate (≥1 reason):**  
+- For highly censored data, effect size measures based on mean differences may be misleading.
+
+**When this should NOT be used:**  
+- None in principle; but caution in interpretation with small subgroups or non-normal distributions.
+
+**Alternative if assumptions are violated:**  
+- Use **nonparametric effect sizes**, such as Cliff’s delta or probability of superiority (AUC-type measures).
+
+---
+
+#### B2. Regression modeling (GLM or linear regression on NCF)
+
+**Test name:**  
+- Multiple linear regression or generalized linear model (GLM).
+
+**Purpose:**  
+- To quantify the association of NCF with multiple predictors simultaneously, such as instrument group, rpm, taper, and alloy type, and to adjust for design differences (especially rpm).
+
+**Why appropriate (≥2 reasons):**  
+1. Rotational speed (rpm) directly influences NCF because NCF = (time × rpm / 60); modeling NCF while adjusting for rpm clarifies instrument differences beyond mechanical settings.  
+2. It allows exploration of whether the observed differences are attributable to alloy, core mass, or just rpm differences.
+
+**Why it may not be appropriate (≥1 reason):**  
+- If the relationship between predictors and NCF is nonlinear or heteroscedastic, standard linear regression assumptions may not hold.
+
+**When this test should NOT be used:**  
+- When data are heavily censored; linear regression on observed NCF may be biased because censored observations are truncated by design.
+
+**Alternative if assumptions are violated:**  
+- Use **accelerated failure time model** or **Cox regression** on time to fracture, including rpm and instrument characteristics as covariates.  
+- For non-normal residuals, consider GLM with appropriate distribution (e.g., gamma with log link).
+
+---
+
+#### B3. Homogeneity of variance tests
+
+**Test name:**  
+- Levene’s test or Brown–Forsythe test.
+
+**Purpose:**  
+- To assess equality of variances across groups before/with ANOVA on NCF and fragment length.
+
+**Why appropriate (≥2 reasons):**  
+1. Homoscedasticity is an assumption of ANOVA; testing it supports choice of classical vs Welch ANOVA.  
+2. Especially in mechanical property tests, variance can differ substantially between instrument designs; ignoring that can distort inference.
+
+**Why it may not be appropriate (≥1 reason):**  
+- In small samples, Levene’s test has low power and a non-significant result doesn’t guarantee equal variances.
+
+**When this test should NOT be used:**  
+- If sample sizes are very small (e.g., n < 10 per group) or if ANOVA result is clearly robust; but even then it can still be run with caution.
+
+**Alternative if assumptions are violated:**  
+- Use **Welch ANOVA** and appropriate post hoc tests (Games–Howell).  
+- Consider variance-stabilizing transformations.
+
+---
+
+#### B4. Correlation between fragment length and NCF
+
+**Test name:**  
+- Pearson or Spearman correlation coefficient.
+
+**Purpose:**  
+- To examine whether longer or shorter fragments correlate with NCF (e.g., whether fractures nearer to apex are associated with higher or lower fatigue resistance).
+
+**Why appropriate (≥2 reasons):**  
+1. Both variables are continuous; correlation is a simple way to explore relationships.  
+2. Could reveal a systematic relationship hinting at spatial variations in stress along the instrument.
+
+**Why it may not be appropriate (≥1 reason):**  
+- Fragment length might have limited variability (if nearly all fractures occur at similar positions), leading to spurious or uninformative correlation estimates.
+
+**When this test should NOT be used:**  
+- When fragment length is virtually constant (e.g., all fractures at ~3–4 mm from tip) or when some groups have very few fractures.
+
+**Alternative if assumptions are violated:**  
+- Use **Spearman rank correlation** instead of Pearson if data non-normal or with outliers.
+
+---
+
+#### B5. Sensitivity analysis excluding censored data
+
+**Test name:**  
+- Re-run ANOVA / Kruskal–Wallis on NCF or time to fracture excluding instruments that did not fracture (censored at 600 s).
+
+**Purpose:**  
+- To test robustness of conclusions to how censored observations are handled.
+
+**Why appropriate (≥2 reasons):**  
+1. Provides a clear picture of results among instruments that actually fractured.  
+2. Helps check whether differences are driven by few highly resistant instruments.
+
+**Why it may not be appropriate (≥1 reason):**  
+- Excluding censored data may bias results; sensitivity analyses should be interpreted cautiously.
+
+**When this test should NOT be used:**  
+- If a large proportion of instruments in a group are censored; exclusion may leave too few observations for that group.
+
+**Alternative if assumptions are violated:**  
+- Use parametric interval-censored or survival models that incorporate censored data directly.
+
+---
+
+### CATEGORY C – OPTIONAL ANALYSES
+
+#### C1. Nonparametric group comparisons
+
+**Test name:**  
+- Kruskal–Wallis test for NCF and fragment length, with Dunn’s post hoc test.
+
+**Purpose:**  
+- To compare median NCF across groups without relying on normality.
+
+**Why appropriate (≥2 reasons):**  
+1. Provides nonparametric confirmation of ANOVA results; robust to outliers and skewed distributions.  
+2. Useful if the distribution of NCF is clearly non-normal even after transformation.
+
+**Why it may not be appropriate (≥1 reason):**  
+- Less power than ANOVA when normality holds; rank-based methods lose some information.
+
+**When this test should NOT be used:**  
+- If substantial censoring is present; NCF for censored data is not fully observed and ranking is problematic.
+
+**Alternative if assumptions are violated:**  
+- Survival analysis methods (log-rank, Cox, RMST) on time to fracture, which properly handle censoring.
+
+---
+
+#### C2. Cox proportional hazards regression
+
+**Test name:**  
+- Cox proportional hazards model on time to fracture.
+
+**Purpose:**  
+- To model the hazard (instantaneous risk) of fracture over time as a function of instrument group and other covariates (rpm, taper, alloy).
+
+**Why appropriate (≥2 reasons):**  
+1. Handles censored time-to-fracture data naturally.  
+2. Provides hazard ratios comparing fracture risk between instruments, adjusted for covariates.
+
+**Why it may not be appropriate (≥1 reason):**  
+- Proportional hazards assumption may be violated (hazard functions crossing, differing shapes over time).
+
+**When this test should NOT be used:**  
+- If the number of fractures per group is small and the number of covariates large, leading to overfitting.
+
+**Alternative if assumptions are violated:**  
+- Use **accelerated failure time (AFT) models** with appropriate distributions (Weibull, log-normal) or stratified Cox models.
+
+---
+
+#### C3. Graphical analyses
+
+**Test name:**  
+- Boxplots, violin plots for NCF; Kaplan–Meier curves; scatter plots.
+
+**Purpose:**  
+- To visually display differences in distribution across groups and support interpretation.
+
+**Why appropriate (≥2 reasons):**  
+1. Visualizations can reveal patterns (skewness, outliers, heterogeneity) that summary statistics hide.  
+2. They aid communication of results to readers.
+
+**Why it may not be appropriate (≥1 reason):**  
+- None, except that poorly scaled or cluttered graphics may confuse rather than clarify.
+
+**When this test should NOT be used:**  
+- Not applicable; graphs are always helpful.
+
+**Alternative if assumptions are violated:**  
+- Use informative scaling (log transformation) or robust visualizations.
+
+---
+
+#### C4. Inter-rater reliability for fracture mode (if multiple examiners)
+
+**Test name:**  
+- Cohen’s kappa or Fleiss’ kappa on fracture mode classification (fatigue vs torsion).
+
+**Purpose:**  
+- To assess consistency if more than one examiner classifies fracture mode microscopically.
+
+**Why appropriate (≥2 reasons):**  
+1. Fracture mode classification can be subjective; reliability assessment adds rigor.  
+2. Ensures that exclusion of torsional fractures is reproducible.
+
+**Why it may not be appropriate (≥1 reason):**  
+- The provided text suggests a single examiner; then kappa is not applicable.
+
+**When this test should NOT be used:**  
+- When only one examiner is involved or when fracture mode categories do not vary.
+
+**Alternative if assumptions are violated:**  
+- Not needed; instead, clearly report criteria and show representative images.
+
+---
+
+## TASK 3: INAPPROPRIATE TESTS AND WHY
+
+Below are statistical tests/methods that should NOT be used for this study, with rationale.
+
+1. **Independent-samples t-test for all pairwise comparisons without correction**
+   - **Why inappropriate:**  
+     - There are 6 groups; pairwise t-tests (15 comparisons) without multiplicity correction inflate type I error substantially.  
+   - **Better alternative:** ANOVA + appropriate post hoc procedure.
+
+2. **Paired t-test or repeated-measures ANOVA**
+   - **Why inappropriate:**  
+     - Each instrument is measured once and belongs to a single group; there are no repeated measurements on the same unit.  
+   - **Better alternative:** One-way ANOVA (independent groups).
+
+3. **Chi-square test for comparing NCF or time to fracture**
+   - **Why inappropriate:**  
+     - NCF and time to fracture are continuous; dichotomizing them (e.g., high vs low fatigue resistance) wastes information and reduces power.  
+   - **Better alternative:** ANOVA, Kruskal–Wallis, or survival methods on continuous data.
+
+4. **Simple linear regression of NCF on rpm alone to infer instrument differences**
+   - **Why inappropriate:**  
+     - RPM is fixed by design for each instrument; regression of NCF on rpm confounds instrumental and design differences and does not answer the question about instrument/alloy/core mass.  
+   - **Better alternative:** Group-based comparisons with rpm as covariate in a multi-variable model if needed.
+
+5. **Correlation between instrument group (categorical) and NCF using Pearson correlation**
+   - **Why inappropriate:**  
+     - Pearson correlation requires numeric variables; coding categories as arbitrary numbers (1–6) misrepresents relationships.  
+   - **Better alternative:** ANOVA or regression with dummy variables.
+
+6. **Student’s t-test to compare more than two groups simultaneously**
+   - **Why inappropriate:**  
+     - t-test is limited to two groups; multiple t-tests across several groups leads to inflated type I error and ignores overall group structure.  
+   - **Better alternative:** One-way ANOVA or Kruskal–Wallis.
+
+7. **Parametric methods ignoring censoring (e.g., ANOVA on time to fracture when many tests end at 600 s without proper handling)**
+   - **Why inappropriate:**  
+     - Censored observations are not true times; treating them as equal to 600 s biases estimates and violates assumptions.  
+   - **Better alternative:** Kaplan–Meier + log-rank, Cox regression, or parametric survival models.
+
+8. **Logistic regression modelling “fracture vs no fracture by 600 s” as the primary outcome**
+   - **Why inappropriate:**  
+     - There is rich information on the time to fracture; collapsing to a binary indicator loses resolution and power.  
+   - **Better alternative:** Survival analysis; NCF/time to fracture as continuous outcome.
+
+9. **MANOVA on NCF and time to fracture simultaneously**
+   - **Why inappropriate:**  
+     - Time to fracture and NCF are linearly related given rpm; they are not independent multivariate outcomes, so MANOVA adds no value and can violate assumptions.  
+   - **Better alternative:** Analyze one primary outcome (NCF or time) and, if desired, the other as supportive.
+
+---
+
+## TASK 4: SUMMARY – JUSTIFICATION OF OVERALL ANALYTICAL APPROACH
+
+The study is a controlled in vitro experiment with six independent instrument groups, balanced sample sizes, and continuous primary outcomes (NCF, time to fracture) with potential right-censoring. The core scientific question concerns the effect of instrument design factors (core mass, alloy) on cyclic fatigue resistance.
+
+A suitable analysis framework therefore:
+
+1. Starts with robust **descriptive statistics and distribution checks** for NCF and fragment length.
+2. Uses **group-comparison methods** aligned with the design:  
+   - **One-way ANOVA** (or nonparametric equivalent) to test for overall differences among instruments.  
+   - **Post hoc tests** to localize differences while controlling for multiple comparisons.
+3. Incorporates **survival analysis** (Kaplan–Meier, log-rank, possibly Cox/AFT models) to properly address censoring (tests terminated at 600 s).
+4. Optionally employs **factorial or regression models** to more directly answer the mechanistic question about alloy and core mass, adjusting for rpm and other design parameters.
+5. Examines **fragment length** to confirm comparable fracture location and thus standardization of stress conditions.
+
+This approach respects the structure of the data (continuous outcomes, possible censoring, independent groups, balanced design), aligns with the stated hypothesis (core mass and alloy effects), and avoids loss of information or inflated error rates that would arise with inappropriate binary or pairwise methods.

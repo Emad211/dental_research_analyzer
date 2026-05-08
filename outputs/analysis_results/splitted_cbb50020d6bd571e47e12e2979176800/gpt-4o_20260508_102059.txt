@@ -1,0 +1,111 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_cbb50020d6bd571e47e12e2979176800.pdf
+Status : ok
+Time   : 20260508_102059
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Prospective cohort study.
+2. **Objective**: Evaluate the clinical and radiographic outcomes of Vital Pulp Therapy (VPT) using iRoot BP Plus in permanent teeth with irreversible pulpitis caused by caries and analyze preoperative factors affecting VPT prognosis.
+3. **Groups**:
+   - Direct Pulp Capping (DPC): n = 22
+   - Partial Pulpotomy (PP): n = 23
+   - Full Pulpotomy (FP): n = 14
+   - Total analyzed: n = 57 (after exclusions and loss to follow-up).
+4. **Sample Size**: 57 permanent teeth from 57 patients aged 6–20 years.
+5. **Variables**:
+   - **Independent Variables**: Sex, age, root maturation, cavity shape, spontaneous pain, nocturnal pain, referred pain, cold test, pain level of cold test, heat test, pain level of heat test, electrical vitality test difference, percussion sensitivity, VPT type.
+   - **Dependent Variable**: VPT prognosis (binary outcome: success/failure).
+6. **Measurements**:
+   - Clinical success criteria: absence of pain, tenderness, swelling, sinus tract, mobility, and radiographic pathosis.
+   - Radiographic success criteria: intact filling materials, normal periradicular tissues, and continued root development in immature roots.
+7. **Data Collection Methods**:
+   - Preoperative clinical and radiographic evaluation.
+   - Pain intensity recorded using verbal numerical rating scale (vNRS).
+   - Follow-up at 3, 6, and 12 months, and annually thereafter.
+   - Statistical analysis using binary logistic regression.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Binary Logistic Regression
+   - **Purpose**: Assess the relationship between independent variables and the binary outcome (success/failure of VPT).
+   - **Why Appropriate**:
+     - The dependent variable (prognosis) is binary.
+     - Multiple independent variables are available for modeling.
+   - **Why It May Not Be Appropriate**:
+     - Assumes linearity of the logit function and independence of observations.
+   - **When NOT to Use**: If multicollinearity exists among independent variables or sample size is insufficient for the number of predictors.
+   - **Alternative**: Penalized logistic regression (e.g., LASSO) if multicollinearity is detected.
+
+2. **Test Name**: Descriptive Statistics
+   - **Purpose**: Summarize baseline characteristics of patients and teeth (e.g., age, sex, VPT type).
+   - **Why Appropriate**:
+     - Provides an overview of the study population.
+     - Helps identify potential confounders.
+   - **Why It May Not Be Appropriate**: Not inferential; does not test hypotheses.
+   - **When NOT to Use**: If sample size is too small for meaningful summaries.
+   - **Alternative**: None; descriptive statistics are always necessary.
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Chi-Square Test or Fisher’s Exact Test
+   - **Purpose**: Compare categorical variables (e.g., VPT type) with binary outcomes (success/failure).
+   - **Why Appropriate**:
+     - Suitable for categorical data.
+     - Identifies associations between VPT type and prognosis.
+   - **Why It May Not Be Appropriate**: Requires sufficient sample size in each cell; Fisher’s Exact Test may be needed for small sample sizes.
+   - **When NOT to Use**: If expected frequencies in contingency tables are <5.
+   - **Alternative**: Fisher’s Exact Test for small sample sizes.
+
+2. **Test Name**: Kaplan-Meier Survival Analysis
+   - **Purpose**: Assess the time-to-event (failure) for different VPT types.
+   - **Why Appropriate**:
+     - Accounts for varying follow-up times.
+     - Provides insights into long-term outcomes.
+   - **Why It May Not Be Appropriate**: Assumes independence of survival times.
+   - **When NOT to Use**: If censoring is excessive or sample size is too small.
+   - **Alternative**: Cox proportional hazards model.
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Multivariate Analysis of Variance (MANOVA)
+   - **Purpose**: Explore differences in continuous variables (e.g., pain scores) across VPT types.
+   - **Why Appropriate**:
+     - Accounts for multiple dependent variables simultaneously.
+     - Useful for exploring secondary outcomes.
+   - **Why It May Not Be Appropriate**: Requires normally distributed data and equal variances.
+   - **When NOT to Use**: If assumptions of normality and homogeneity are violated.
+   - **Alternative**: Nonparametric MANOVA.
+
+2. **Test Name**: Receiver Operating Characteristic (ROC) Curve Analysis
+   - **Purpose**: Evaluate the predictive accuracy of preoperative factors (e.g., cold test results) for VPT prognosis.
+   - **Why Appropriate**:
+     - Assesses diagnostic performance.
+     - Identifies optimal cutoff values for predictors.
+   - **Why It May Not Be Appropriate**: Requires a large sample size for reliable estimates.
+   - **When NOT to Use**: If predictors are poorly correlated with outcomes.
+   - **Alternative**: Precision-recall curves for imbalanced datasets.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: Independent Samples t-Test
+   - **Why NOT Appropriate**: The outcome variable is binary, not continuous.
+   - **Alternative**: Logistic regression or Chi-Square Test.
+
+2. **Test Name**: Pearson Correlation
+   - **Why NOT Appropriate**: Correlation is not suitable for binary dependent variables.
+   - **Alternative**: Logistic regression for binary outcomes.
+
+3. **Test Name**: Linear Regression
+   - **Why NOT Appropriate**: Linear regression assumes a continuous dependent variable, whereas the outcome here is binary.
+   - **Alternative**: Binary logistic regression.
+
+---
+
+### TASK 4: SUMMARY
+The statistical analysis plan is tailored to the study’s prospective cohort design and binary outcome. Binary logistic regression is the cornerstone of the analysis, supported by descriptive statistics and recommended tests like Chi-Square and Kaplan-Meier survival analysis. Optional tests like MANOVA and ROC curve analysis provide supplementary insights into secondary outcomes and predictive accuracy. The overall approach ensures robust evaluation of VPT outcomes while addressing potential limitations like multicollinearity and small sample sizes.

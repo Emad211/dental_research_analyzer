@@ -1,0 +1,276 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_applsci-11-11768.pdf
+Status : ok
+Time   : 20260508_095405
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study overview
+- **Title/topic:** Factors affecting outcome of periapical surgery (surgical endodontic treatment) for persistent periapical lesions.
+- **Primary objective:** Evaluate **preoperative factors** affecting **periapical healing** after periapical surgery.
+- **Design:** **Prospective longitudinal clinical study** (single-arm cohort undergoing periapical surgery, then followed over time).
+- **Setting/period:** Department of Operative Dentistry + Institute of Biomedical Sciences, Dow University of Health Sciences, Karachi; **July 2017–Dec 2018**.
+- **Ethics:** IRB-862/DUHS/Approval/2017/50; informed consent.
+
+### Participant flow / sample size
+- **Initially enrolled:** **n = 52** patients (age **15–57**).
+- **Run-in treatment:** All underwent **conventional re-root canal treatment** first.
+- **Excluded before surgery:** **n = 12**
+  - Lesion healed / symptoms disappeared after re-RCT: **n=7**
+  - Lost to follow-up: **n=5**
+- **Underwent periapical surgery (analysis cohort):** **n = 40**
+- **Follow-ups after surgery:** **6 months** and **12 months** (also mentioned: recalled **3–6 months** after re-RCT for healing evaluation before surgery eligibility).
+
+### Eligibility criteria
+- **Inclusion:**
+  - Chronic apical periodontitis of **single-rooted anterior teeth**
+  - Radiographic radiolucency **> 4 mm** around root apex with lamina dura/PDL changes
+  - Due to incompletely attempted or failed RCT, **or** lesion around **open apex** after trauma (halted root formation)
+- **Exclusion:**
+  - Medically compromised with uncontrolled systemic disease (**ASA III**)
+  - Pre-existing periodontal disease
+  - Lesion **< 4 mm**
+  - **Multirooted teeth**
+  - Cracks/root fractures
+  - Pregnant/lactating women
+  - Did not attend follow-up visits
+
+### Intervention / procedure (as described)
+- Periapical surgery with flap reflection, retrograde cavity preparation (ultrasonic tip), **retrograde filling with MTA** (mineral trioxide aggregate) shown in figures.
+
+### Outcomes and measurements
+**Outcome domain: periapical healing after surgery**, assessed using:
+
+1. **Clinical parameters (binary presence/absence):**
+   - pain, swelling, sinus tract
+   - tenderness to palpation, tenderness to percussion
+   - mobility
+   - discoloration
+
+2. **Radiographic healing:**
+   - **Periapical Index (PAI)** (ordinal score; typically 1–5, though scale not restated here)
+   - Imaging: **digital periapical radiographs** using **parallel technique**, cone indicator + reference marker on sensor.
+
+### Exposures / prognostic (preoperative) factors mentioned
+The introduction and conclusion indicate focus on:
+- **Age**
+- **Gender**
+- **Smoking status**
+- **Size of preoperative periapical lesion** (continuous in mm or categorized; threshold >4 mm for inclusion; exact measurement method not fully specified)
+- **Presence of pretreatment signs/symptoms** (acute vs chronic indicators)
+
+(Other factors referenced in background: type of root-end filling material, etc., but in this study MTA appears uniform, so likely not a varying predictor.)
+
+### Data structure implications
+- Repeated measurements over time: at least **6 and 12 months** post-surgery (and possibly baseline pre-surgery radiograph/PAI).
+- Outcomes include:
+  - **Ordinal** (PAI) repeated over time
+  - **Binary** clinical signs/symptoms repeated over time
+  - Potentially a derived **overall success/failure** endpoint (not explicitly defined in provided Methods, but typical in this literature).
+
+---
+
+## TASK 2 — Statistical analysis plan (tests)
+
+### General analysis framework (recommended)
+- **Primary endpoint (recommended to define explicitly):**
+  - **Treatment success at 12 months**, e.g., *absence of clinical signs/symptoms AND radiographic healing* (PAI improvement to “healed” category or PAI ≤2). Since the paper doesn’t define success in the excerpt, the SAP should pre-specify:
+    - Radiographic success definition (e.g., PAI ≤2 or decrease ≥2 points)
+    - Clinical success definition (all clinical parameters absent)
+    - Composite success definition and how to handle discordance (clinical healed but PAI not healed, etc.)
+
+- **Secondary endpoints:**
+  - Change in **PAI** from baseline to 6 and 12 months
+  - Prevalence of each clinical sign at 6 and 12 months
+  - Time pattern of healing (6→12 month improvement)
+
+- **Key predictors:** age, sex, smoking, lesion size, baseline signs/symptoms (and any other collected baseline covariates).
+
+- **Principles:**
+  - Two-sided alpha 0.05; report effect sizes + 95% CIs.
+  - Handle repeated measures with mixed models/GEE.
+  - Address missingness (lost follow-up after surgery, if any) with planned approach (multiple imputation / sensitivity).
+
+---
+
+# CATEGORY A — Mandatory (analysis incomplete without these)
+
+## A1) Descriptive statistics (baseline and follow-up)
+- **Test/Method:** Descriptive summaries (mean±SD or median[IQR], counts/percent; plots).
+- **Purpose:** Describe cohort characteristics and outcome distributions at each time point.
+- **Why appropriate:**
+  1. Needed to characterize sample and assess comparability across prognostic groups (e.g., smokers vs non-smokers).
+  2. Informs choice of modeling approach (distributional shape; sparse outcomes).
+- **Why may not be appropriate:** Not a hypothesis test; cannot infer associations.
+- **When NOT to use:** Never “instead of” inferential modeling for prognostic conclusions.
+- **Alternative if assumptions violated:** Use robust summaries (median/IQR) and distribution plots.
+
+## A2) Primary prognostic modeling for success at 12 months — multivariable logistic regression
+- **Test:** **Binary logistic regression** (multivariable).
+- **Purpose:** Estimate association between preoperative factors and **probability of success** at 12 months (odds ratios).
+- **Why appropriate:**
+  1. Primary question is *which factors affect outcome*; logistic regression directly models binary success/failure.
+  2. Allows **confounding control** (age, smoking, lesion size, baseline symptoms, etc.).
+- **Why may not be appropriate:**
+  - If success definition is not binary or if events are too few causing separation/overfitting.
+- **When this test should NOT be used:**
+  - When outcome is ordinal/continuous and dichotomization would discard information (unless binary success is explicitly primary).
+- **Alternative if assumptions are violated:**
+  - **Penalized logistic regression (Firth)** for small-sample/rare events or separation.
+  - **Poisson regression with robust SE** to estimate risk ratios if outcome is common and RR preferred.
+
+## A3) Longitudinal analysis of radiographic healing (PAI over time) — ordinal mixed model (or GEE)
+- **Test:** **Cumulative link mixed model (ordinal mixed-effects model)** for PAI at baseline/6/12 months (random intercept for patient).
+- **Purpose:** Model change in **PAI (ordinal)** over time and association with predictors.
+- **Why appropriate:**
+  1. PAI is **ordinal**; ordinal models respect ranking without assuming equal intervals.
+  2. Accounts for **within-patient correlation** across repeated follow-ups.
+- **Why may not be appropriate:**
+  - If proportional odds assumption fails, or if PAI has sparse categories.
+- **When this test should NOT be used:**
+  - When PAI is treated as continuous with normality assumptions *without justification*; or when only one time point exists.
+- **Alternative if assumptions are violated:**
+  - **Partial proportional odds model**.
+  - Collapse PAI into fewer clinically meaningful categories and use **mixed logistic** (e.g., healed vs not).
+  - **GEE ordinal model** (population-averaged) if random effects not desired.
+
+## A4) Longitudinal analysis of clinical signs (binary) — GEE logistic or mixed logistic
+- **Test:** **Mixed-effects logistic regression** or **GEE with logit link** for repeated binary outcomes (each sign or composite clinical healing).
+- **Purpose:** Assess how clinical symptom prevalence changes from 6 to 12 months and whether predictors affect trajectories.
+- **Why appropriate:**
+  1. Clinical signs are **binary** and repeated.
+  2. Accounts for **correlation** within individuals over time.
+- **Why may not be appropriate:**
+  - Too few events per sign → unstable models.
+- **When this test should NOT be used:**
+  - When analyzing repeated outcomes with ordinary chi-square tests ignoring within-person correlation.
+- **Alternative if assumptions are violated:**
+  - Use **exact methods** for sparse data (conditional exact logistic) at a single time point.
+  - Combine signs into a **composite** clinical failure indicator to increase event count.
+
+---
+
+# CATEGORY B — Recommended (adds rigor)
+
+## B1) Model diagnostics and assumption checks
+- **Method:** 
+  - Logistic model: linearity in logit (restricted cubic splines), multicollinearity (VIF), influential points, calibration.
+  - Ordinal model: proportional odds tests; residual checks where applicable.
+- **Purpose:** Validate modeling assumptions and robustness.
+- **Why appropriate:**
+  1. Prognostic conclusions depend on model validity.
+  2. Identifies need for transformations or non-linear terms.
+- **Why may not be appropriate:** Some checks have low power in small n=40.
+- **When NOT to use:** Don’t over-interpret formal tests; prefer graphical diagnostics.
+- **Alternatives:** Penalization/bootstrapping for stability.
+
+## B2) Non-linear effects for continuous predictors (age, lesion size)
+- **Test/Method:** **Restricted cubic splines** (within regression).
+- **Purpose:** Capture non-linear associations without arbitrary categorization.
+- **Why appropriate:**
+  1. Lesion size effects may not be linear.
+  2. Avoids information loss from cut-points.
+- **Why may not be appropriate:** Overfitting risk with small sample.
+- **When NOT to use:** If events are too few; then keep linear term or clinically pre-specified categories.
+- **Alternative:** Fractional polynomials; or pre-specified categories with caution.
+
+## B3) Agreement/reliability for PAI scoring (if >1 rater or repeated scoring)
+- **Test:** **Weighted Cohen’s kappa** (2 raters) or **ICC** (if treating PAI quasi-continuously), intra-rater kappa.
+- **Purpose:** Quantify reproducibility of radiographic scoring.
+- **Why appropriate:**
+  1. PAI is observer-dependent; reliability affects outcome validity.
+  2. Weighted kappa accounts for ordinal nature.
+- **Why may not be appropriate:** If only one rater and no repeat scoring performed.
+- **When NOT to use:** When the scale is not ordinal or categories extremely imbalanced (kappa paradox).
+- **Alternative:** Gwet’s AC1/AC2 for imbalanced categories.
+
+## B4) Multiple testing control for numerous signs/symptoms
+- **Test/Method:** **Holm** or **Benjamini–Hochberg (FDR)** adjustment.
+- **Purpose:** Control false positives when testing many clinical endpoints.
+- **Why appropriate:**
+  1. Several signs are assessed; unadjusted testing inflates type I error.
+  2. Improves interpretability of secondary analyses.
+- **Why may not be appropriate:** If analyses are clearly labeled exploratory and limited.
+- **When NOT to use:** Don’t adjust the single pre-specified primary endpoint.
+- **Alternative:** Emphasize effect sizes/CIs; pre-specify a composite endpoint.
+
+## B5) Missing data handling and sensitivity
+- **Method:** Describe missingness; **multiple imputation** for covariates/outcomes (where defensible); sensitivity analyses (best/worst-case for success).
+- **Purpose:** Reduce bias from incomplete follow-up.
+- **Why appropriate:**
+  1. Lost follow-up can bias estimates in longitudinal studies.
+  2. MI better than complete-case if MAR plausible.
+- **Why may not be appropriate:** MI unstable with very small n and complex models.
+- **When NOT to use:** If missing not at random and no auxiliary info; then do sensitivity analyses.
+- **Alternative:** Inverse probability weighting; pattern-mixture sensitivity.
+
+---
+
+# CATEGORY C — Optional (supplementary insights)
+
+## C1) McNemar test (paired binary change from 6→12 months) for a single symptom
+- **Test:** **McNemar’s test**.
+- **Purpose:** Test within-patient change in a binary sign between two follow-ups.
+- **Why appropriate:**
+  1. Paired binary data at two time points.
+  2. Simple summary of improvement.
+- **Why may not be appropriate:** Does not adjust for covariates; limited to two time points.
+- **When NOT to use:** When there are >2 time points or need adjustment for predictors.
+- **Alternative:** Mixed/GEE logistic model.
+
+## C2) Wilcoxon signed-rank test for change in PAI (baseline→12 months)
+- **Test:** **Wilcoxon signed-rank** (paired ordinal).
+- **Purpose:** Unadjusted within-subject change in PAI.
+- **Why appropriate:**
+  1. PAI is ordinal; test does not assume normality.
+  2. Useful as a simple corroborative analysis.
+- **Why may not be appropriate:** Cannot include covariates; ignores intermediate time point.
+- **When NOT to use:** As the main analysis of predictors.
+- **Alternative:** Ordinal mixed model.
+
+## C3) Kaplan–Meier / time-to-healing (only if healing time is well-defined)
+- **Test:** **Kaplan–Meier** curves + **Cox regression**.
+- **Purpose:** Model time until “healed” if healing date is known (more than just 6/12 month visits).
+- **Why appropriate:**
+  1. Handles censoring.
+  2. Provides dynamic view of healing.
+- **Why may not be appropriate:** With only fixed visit assessments (6 and 12 months), time-to-event is interval-censored.
+- **When NOT to use:** If exact healing time is unknown.
+- **Alternative:** **Interval-censored survival models**; or stick to longitudinal mixed models.
+
+## C4) Interaction testing (effect modification)
+- **Test:** Interaction terms (e.g., smoking×lesion size, age×smoking) in regression.
+- **Purpose:** Identify subgroups with different prognostic effects.
+- **Why appropriate:**
+  1. Clinically plausible effect modification.
+  2. Can guide personalized prognosis.
+- **Why may not be appropriate:** Low power / high overfitting risk with n=40.
+- **When NOT to use:** If not pre-specified and events are few.
+- **Alternative:** Stratified descriptive analyses; penalized models.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Independent-samples t-test / ANOVA** to compare “PAI means” between groups  
+   - **Why not:** PAI is **ordinal**, often non-normal, and repeated over time; mean comparisons ignore correlation and scale properties.
+
+2. **Pearson chi-square tests** comparing 6- and 12-month outcomes as if independent samples  
+   - **Why not:** Same patients measured twice; violates independence → wrong p-values.
+
+3. **Multiple separate univariable tests only (no multivariable model)** to claim “factors affecting outcome”  
+   - **Why not:** Confounding likely (e.g., smoking correlated with age); unadjusted associations are not sufficient for prognostic inference.
+
+4. **Linear regression on binary success**  
+   - **Why not:** Predictions outside [0,1], heteroskedastic errors; logistic/Poisson robust is appropriate.
+
+5. **Repeated-measures ANOVA** for PAI  
+   - **Why not:** Assumes continuous normally distributed outcome and sphericity; PAI is ordinal.
+
+---
+
+## TASK 4 — Summary justification of the overall approach
+
+A prospective longitudinal cohort with repeated clinical (binary) and radiographic (ordinal PAI) assessments requires (i) **multivariable prognostic modeling** to evaluate independent effects of preoperative factors on healing and (ii) **methods accounting for within-patient correlation over time** (mixed-effects or GEE). Logistic regression (for a pre-specified binary success endpoint) and ordinal mixed models (for PAI trajectories) provide clinically interpretable effect estimates while respecting the outcome scales and the longitudinal design.

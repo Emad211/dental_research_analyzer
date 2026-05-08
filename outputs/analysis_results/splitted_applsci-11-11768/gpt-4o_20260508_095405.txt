@@ -1,0 +1,148 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_applsci-11-11768.pdf
+Status : ok
+Time   : 20260508_095405
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Prospective longitudinal clinical study.
+2. **Objective**: To evaluate preoperative factors affecting the outcome of surgical endodontic treatment.
+3. **Study Setting**: Conducted at the Department of Operative Dentistry, Dow University of Health Sciences, Karachi, from July 2017 to December 2018.
+4. **Ethical Approval**: Approved by the Institutional Review Board (IRB-862/DUHS/Approval/2017/50).
+5. **Sample Size**:
+   - Initially enrolled: 52 patients.
+   - Excluded: 12 patients (7 healed after conventional re-root canal treatment; 5 lost to follow-up).
+   - Final sample size: 40 patients underwent periapical surgery.
+6. **Inclusion Criteria**:
+   - Patients aged 15–57 years.
+   - Chronic apical periodontitis of single-rooted anterior teeth.
+   - Radiolucency >4 mm around the root apex.
+   - Failed root canal treatment or open root apex due to trauma.
+7. **Exclusion Criteria**:
+   - Medically compromised patients (ASA III).
+   - Pre-existing periodontal disease.
+   - Lesions <4 mm.
+   - Multirooted teeth, cracked teeth, or root fractures.
+   - Pregnant or lactating women.
+   - Patients lost to follow-up.
+8. **Groups**:
+   - No explicit grouping; all patients underwent periapical surgery.
+9. **Variables**:
+   - **Independent Variables**: Age, smoking status, size of preoperative lesion, presence of preoperative signs and symptoms.
+   - **Dependent Variable**: Periapical healing (clinical and radiographic outcomes).
+10. **Measurements**:
+    - **Clinical Parameters**: Pain, swelling, sinus tract, tenderness to palpation/percussion, mobility, discoloration.
+    - **Radiographic Parameters**: Periapical Index (PAI) for healing assessment.
+11. **Data Collection Methods**:
+    - Preoperative digital radiographs using the parallel technique.
+    - Follow-up evaluations at 6 and 12 months post-surgery.
+12. **Intervention**:
+    - Full-thickness mucoperiosteal flap reflection.
+    - Retrograde cavity preparation using zirconia-coated ultrasonic tips.
+    - Retrograde filling with mineral trioxide aggregate (MTA).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Chi-Square Test or Fisher’s Exact Test.
+   - **Purpose**: To assess associations between categorical variables (e.g., smoking status, presence of preoperative symptoms) and healing outcomes.
+   - **Why Appropriate**:
+     - The study involves categorical data (e.g., healed vs. not healed).
+     - It evaluates relationships between independent variables and binary outcomes.
+   - **Why It May Not Be Appropriate**:
+     - Small sample sizes may require Fisher’s Exact Test instead of Chi-Square.
+   - **When NOT to Use**: If expected cell counts in contingency tables are <5.
+   - **Alternative**: Fisher’s Exact Test.
+
+2. **Test Name**: Independent Samples t-Test or Mann-Whitney U Test.
+   - **Purpose**: To compare continuous variables (e.g., lesion size) between healed and non-healed groups.
+   - **Why Appropriate**:
+     - Lesion size is a continuous variable.
+     - It evaluates differences between two independent groups.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normality for t-Test; Mann-Whitney U Test is non-parametric.
+   - **When NOT to Use**: If data distribution is non-normal for t-Test.
+   - **Alternative**: Mann-Whitney U Test.
+
+3. **Test Name**: Logistic Regression.
+   - **Purpose**: To identify predictors of healing outcomes (e.g., smoking, lesion size, age).
+   - **Why Appropriate**:
+     - Binary dependent variable (healed vs. not healed).
+     - Allows adjustment for confounders.
+   - **Why It May Not Be Appropriate**:
+     - Requires a sufficiently large sample size for reliable estimates.
+   - **When NOT to Use**: If sample size is too small or multicollinearity exists.
+   - **Alternative**: Penalized logistic regression.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Kaplan-Meier Survival Analysis.
+   - **Purpose**: To evaluate time-dependent healing outcomes.
+   - **Why Appropriate**:
+     - Longitudinal follow-up data (6 and 12 months).
+     - Accounts for censored data (e.g., loss to follow-up).
+   - **Why It May Not Be Appropriate**:
+     - Requires precise time-to-event data.
+   - **When NOT to Use**: If healing is not recorded as a time-dependent event.
+   - **Alternative**: Cox Proportional Hazards Model.
+
+2. **Test Name**: ANOVA or Kruskal-Wallis Test.
+   - **Purpose**: To compare lesion size across multiple subgroups (e.g., age groups, smoking status).
+   - **Why Appropriate**:
+     - Useful for comparing continuous variables across >2 groups.
+     - Kruskal-Wallis is non-parametric.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normality and homogeneity of variances for ANOVA.
+   - **When NOT to Use**: If assumptions are violated.
+   - **Alternative**: Kruskal-Wallis Test.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Pearson or Spearman Correlation.
+   - **Purpose**: To assess relationships between continuous variables (e.g., lesion size and age).
+   - **Why Appropriate**:
+     - Evaluates linear or monotonic relationships.
+     - Useful for exploratory analysis.
+   - **Why It May Not Be Appropriate**:
+     - Does not account for confounding variables.
+   - **When NOT to Use**: If data is non-linear or heavily skewed.
+   - **Alternative**: Partial correlation.
+
+2. **Test Name**: Generalized Estimating Equations (GEE).
+   - **Purpose**: To analyze repeated measures data (e.g., clinical and radiographic outcomes at 6 and 12 months).
+   - **Why Appropriate**:
+     - Accounts for within-subject correlations.
+     - Suitable for longitudinal data.
+   - **Why It May Not Be Appropriate**:
+     - Requires advanced statistical expertise.
+   - **When NOT to Use**: If data is not longitudinal or clustered.
+   - **Alternative**: Mixed-effects models.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1. **Test Name**: Paired t-Test.
+   - **Why NOT Appropriate**: This test is for comparing dependent samples, but the study involves independent groups (healed vs. non-healed).
+   - **Alternative**: Independent Samples t-Test.
+
+2. **Test Name**: Linear Regression.
+   - **Why NOT Appropriate**: The dependent variable (healing outcome) is binary, not continuous.
+   - **Alternative**: Logistic Regression.
+
+3. **Test Name**: Repeated Measures ANOVA.
+   - **Why NOT Appropriate**: The study does not involve repeated measures of the same variable across multiple conditions.
+   - **Alternative**: GEE or mixed-effects models for longitudinal data.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach integrates mandatory, recommended, and optional tests to comprehensively evaluate factors influencing periapical healing after surgery. Logistic regression is central to identifying predictors of healing, while Kaplan-Meier survival analysis and GEE enhance the rigor of longitudinal evaluations. Non-parametric tests ensure robustness when assumptions are violated. This approach balances statistical rigor with practical considerations, ensuring valid and reliable conclusions.

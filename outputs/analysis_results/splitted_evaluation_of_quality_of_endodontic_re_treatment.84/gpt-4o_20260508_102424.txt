@@ -1,0 +1,114 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_evaluation_of_quality_of_endodontic_re_treatment.84.pdf
+Status : ok
+Time   : 20260508_102424
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Retrospective observational study.
+2. **Objective**: To assess the quality of root canal (RC) filling before and after RC re-treatment and evaluate changes in periapical status.
+3. **Groups**: 
+   - Baseline radiographs (before re-treatment).
+   - Follow-up radiographs (6 months after re-treatment).
+4. **Sample Size**: 238 radiographs of failed endodontic treatments.
+5. **Variables**:
+   - **Independent Variables**: Quality of RC filling (density, length, homogeneity).
+   - **Dependent Variables**: Periapical status (presence or absence of lesion).
+6. **Measurements**:
+   - **Quality of RC Filling**: Scored 1–6 based on density, length, and homogeneity (Unal et al.).
+   - **Periapical Status**: Evaluated using Periapical Index (PAI) scoring system (1–5 scale).
+     - PAI <3: Absence of periapical lesion.
+     - PAI >3: Presence of periapical lesion.
+7. **Data Collection Methods**:
+   - Digital intraoral periapical radiographs (IOPARs) taken with Schick sensor using Gnatus intraoral radiographic unit (72 kVp, 8 mA, exposure time 0.30–0.50 sec).
+   - Rinn XCP holder used for sensor positioning.
+   - Baseline and follow-up radiographs compared.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Paired t-test (or Wilcoxon signed-rank test for non-normal data).
+   - **Purpose**: Compare mean scores of RC filling quality and PAI scores before and after re-treatment.
+   - **Why Appropriate**:
+     - The study involves paired data (baseline vs. follow-up radiographs).
+     - Continuous variables (quality scores and PAI scores) are being analyzed.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normal distribution of differences; if violated, non-parametric alternative is needed.
+   - **When NOT to Use**: If data are ordinal or non-normal.
+   - **Alternative**: Wilcoxon signed-rank test (non-parametric).
+
+2. **Test Name**: Chi-square test (or Fisher’s exact test for small sample sizes).
+   - **Purpose**: Assess association between RC filling quality categories and periapical lesion presence/absence.
+   - **Why Appropriate**:
+     - Both variables are categorical (quality categories and lesion presence).
+     - Tests for independence between two categorical variables.
+   - **Why It May Not Be Appropriate**:
+     - Requires sufficient sample size for expected cell counts.
+   - **When NOT to Use**: If expected cell counts are <5.
+   - **Alternative**: Fisher’s exact test.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Logistic regression.
+   - **Purpose**: Model the probability of periapical lesion presence (PAI >3) based on RC filling quality scores.
+   - **Why Appropriate**:
+     - Dependent variable is binary (presence/absence of lesion).
+     - Allows adjustment for potential confounders (e.g., age, gender).
+   - **Why It May Not Be Appropriate**:
+     - Assumes linear relationship between predictors and log odds.
+   - **When NOT to Use**: If predictors are highly collinear.
+   - **Alternative**: Ridge regression or penalized logistic regression.
+
+2. **Test Name**: Intraclass correlation coefficient (ICC).
+   - **Purpose**: Assess reliability of PAI scoring across radiographs.
+   - **Why Appropriate**:
+     - Evaluates consistency of scoring between raters or across time.
+     - Suitable for continuous or ordinal data.
+   - **Why It May Not Be Appropriate**:
+     - Requires multiple raters or repeated measurements.
+   - **When NOT to Use**: If only one rater is involved.
+   - **Alternative**: Cohen’s kappa (for categorical data).
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Receiver Operating Characteristic (ROC) curve analysis.
+   - **Purpose**: Evaluate diagnostic accuracy of RC filling quality scores in predicting periapical lesion presence.
+   - **Why Appropriate**:
+     - Provides insight into sensitivity and specificity of quality scores.
+     - Useful for threshold determination.
+   - **Why It May Not Be Appropriate**:
+     - Requires binary classification of outcomes.
+   - **When NOT to Use**: If outcome is not binary.
+   - **Alternative**: Precision-recall curve (for imbalanced datasets).
+
+2. **Test Name**: Kaplan-Meier survival analysis.
+   - **Purpose**: Analyze time-to-event data (e.g., time to lesion resolution).
+   - **Why Appropriate**:
+     - Suitable for longitudinal follow-up data.
+     - Accounts for censored observations.
+   - **Why It May Not Be Appropriate**:
+     - Requires time-to-event data, which may not be available.
+   - **When NOT to Use**: If time-to-event data are not collected.
+   - **Alternative**: Cox proportional hazards model.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: Independent t-test.
+   - **Why NOT Appropriate**: The study involves paired data (baseline vs. follow-up), not independent groups.
+2. **Test Name**: ANOVA.
+   - **Why NOT Appropriate**: No more than two groups are being compared; ANOVA is unnecessary.
+3. **Test Name**: Pearson correlation.
+   - **Why NOT Appropriate**: The study does not aim to assess linear relationships between continuous variables.
+
+---
+
+### TASK 4: SUMMARY
+The overall analytical approach focuses on comparing baseline and follow-up outcomes using paired tests, assessing associations between categorical variables, and modeling binary outcomes using logistic regression. Recommended tests enhance reliability and diagnostic accuracy, while optional tests provide supplementary insights into longitudinal trends and predictive thresholds. This approach ensures robust analysis of the study's objectives while addressing potential confounding factors and assumptions.

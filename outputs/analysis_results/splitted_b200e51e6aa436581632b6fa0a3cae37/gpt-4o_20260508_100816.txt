@@ -1,0 +1,141 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_b200e51e6aa436581632b6fa0a3cae37.pdf
+Status : ok
+Time   : 20260508_100816
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Educational action research.  
+   - Cross-sectional survey among fourth-year dental students.  
+
+2. **Objective**:  
+   - To assess the effectiveness of blended learning in conservative dentistry with endodontics during the COVID-19 pandemic.  
+
+3. **Groups**:  
+   - Two groups of students:  
+     - Group 1: Students who had clinical exercises in the third year.  
+     - Group 2: Students who took classes online only.  
+
+4. **Sample Size**:  
+   - Not explicitly stated in the provided text.  
+
+5. **Variables**:  
+   - Independent variables: Type of learning (blended learning vs. online-only classes).  
+   - Dependent variables:  
+     - Self-evaluation.  
+     - Evaluation of theoretical e-learning classes.  
+     - Evaluation of practical clinical classes.  
+     - Evaluation of safety during the COVID-19 pandemic.  
+     - Overall evaluation of blended learning.  
+
+6. **Measurements**:  
+   - Survey responses based on:  
+     - 5-point Likert scale.  
+     - Dichotomous scale.  
+     - Open-ended questions.  
+   - Standardized number of dental procedures performed during pre-pandemic and pandemic periods.  
+
+7. **Data Collection Methods**:  
+   - Online survey via Google Forms.  
+   - Author-designed 39-item questionnaire (pre-validated on 5 volunteers).  
+   - Data on dental procedures from clinical records during two winter semesters (pre-pandemic and pandemic).  
+
+8. **Statistical Methods Mentioned**:  
+   - Mann–Whitney test.  
+   - Wilcoxon test.  
+   - Multidimensional correspondence analysis.  
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Mann–Whitney U Test**  
+   - **Purpose**: Compare differences between two independent groups (students with prior clinical exercises vs. online-only students).  
+   - **Why Appropriate**:  
+     - Non-parametric test suitable for ordinal data (Likert scale responses).  
+     - Handles small sample sizes and non-normal distributions.  
+   - **Why It May Not Be Appropriate**: Assumes independence between groups, which may be violated if students interact or share experiences.  
+   - **When NOT to Use**: If data are normally distributed and sample sizes are large.  
+   - **Alternative**: Independent t-test (if assumptions of normality and homogeneity of variance are met).  
+
+2. **Wilcoxon Signed-Rank Test**  
+   - **Purpose**: Compare paired responses (e.g., pre-pandemic vs. pandemic evaluations of procedures).  
+   - **Why Appropriate**:  
+     - Non-parametric test suitable for ordinal or non-normal data.  
+     - Accounts for paired observations.  
+   - **Why It May Not Be Appropriate**: Assumes that differences between paired observations are symmetric.  
+   - **When NOT to Use**: If data are normally distributed and sample sizes are large.  
+   - **Alternative**: Paired t-test (if assumptions of normality are met).  
+
+3. **Multidimensional Correspondence Analysis**  
+   - **Purpose**: Explore relationships between categorical variables (e.g., advantages/disadvantages of blended learning).  
+   - **Why Appropriate**:  
+     - Suitable for categorical data.  
+     - Provides visual representation of relationships.  
+   - **Why It May Not Be Appropriate**: Requires sufficient sample size for meaningful interpretation.  
+   - **When NOT to Use**: If data are sparse or poorly categorized.  
+   - **Alternative**: Chi-square test for independence.  
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Descriptive Statistics**  
+   - **Purpose**: Summarize survey responses (e.g., mean, median, frequency distribution).  
+   - **Why Appropriate**:  
+     - Provides an overview of data distribution.  
+     - Essential for understanding trends in Likert scale responses.  
+   - **Why It May Not Be Appropriate**: Limited inferential value.  
+   - **When NOT to Use**: Not applicable; always useful.  
+   - **Alternative**: None; descriptive statistics are foundational.  
+
+2. **Chi-Square Test for Independence**  
+   - **Purpose**: Assess relationships between categorical variables (e.g., safety evaluation vs. blended learning effectiveness).  
+   - **Why Appropriate**:  
+     - Suitable for categorical data.  
+     - Tests independence between variables.  
+   - **Why It May Not Be Appropriate**: Requires sufficient sample size in each category.  
+   - **When NOT to Use**: If expected frequencies in any cell are <5.  
+   - **Alternative**: Fisher’s Exact Test (for small sample sizes).  
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Exploratory Factor Analysis**  
+   - **Purpose**: Identify underlying dimensions in survey responses.  
+   - **Why Appropriate**:  
+     - Useful for understanding latent constructs in multi-item questionnaires.  
+     - Enhances interpretation of survey results.  
+   - **Why It May Not Be Appropriate**: Requires large sample size and continuous data.  
+   - **When NOT to Use**: If sample size is small or data are purely categorical.  
+   - **Alternative**: Principal Component Analysis (if assumptions are met).  
+
+2. **Regression Analysis**  
+   - **Purpose**: Predict blended learning effectiveness based on independent variables (e.g., prior clinical experience, safety evaluation).  
+   - **Why Appropriate**:  
+     - Tests relationships between dependent and independent variables.  
+     - Allows for adjustment of confounders.  
+   - **Why It May Not Be Appropriate**: Assumes linear relationships and requires continuous dependent variables.  
+   - **When NOT to Use**: If data are purely categorical or ordinal.  
+   - **Alternative**: Logistic regression (if dependent variable is binary).  
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-Test**  
+   - **Why Not Appropriate**: Assumes normality and homogeneity of variance, which are unlikely for Likert scale data.  
+
+2. **ANOVA**  
+   - **Why Not Appropriate**: Requires continuous dependent variables and normal distribution, which are not applicable to Likert scale responses.  
+
+3. **Pearson Correlation**  
+   - **Why Not Appropriate**: Assumes continuous data and linear relationships, which are not applicable to ordinal survey data.  
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach combines non-parametric tests (Mann–Whitney, Wilcoxon) for ordinal data, multidimensional correspondence analysis for categorical relationships, and descriptive statistics for summarizing trends. This approach is robust for analyzing survey data and clinical records, ensuring valid conclusions despite potential violations of parametric assumptions. Supplementary analyses (e.g., regression, factor analysis) can enhance insights but require larger sample sizes and more detailed data.

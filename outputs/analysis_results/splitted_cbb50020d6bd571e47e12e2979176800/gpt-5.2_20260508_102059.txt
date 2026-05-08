@@ -1,0 +1,278 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_cbb50020d6bd571e47e12e2979176800.pdf
+Status : ok
+Time   : 20260508_102059
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: INFORMATION EXTRACTION (study characteristics)
+
+### Study identification
+- **Title/topic:** Vital pulp therapy (VPT) in permanent posterior teeth with *clinically diagnosed irreversible pulpitis caused by caries* using **iRoot BP Plus**.
+- **Setting:** Single center, Department of Endodontics, Affiliated Hospital of Stomatology, Zhejiang University School of Medicine (China).
+- **Ethics/registration:** Ethics approved; registered (ChiCTR2100044580). Informed consent obtained.
+- **Reporting guideline mentioned:** STROBE.
+
+### Objectives
+1. **Primary objective:** Evaluate **clinical and radiographic outcomes (success/failure)** of VPT using iRoot BP Plus.
+2. **Secondary objective:** Analyze **preoperative/baseline factors affecting prognosis** of VPT.
+
+### Study design
+- **Prospective cohort study** (single-arm cohort receiving VPT; comparisons are *within cohort* across VPT types and baseline characteristics).
+- **Allocation to VPT type:** Not randomized; determined intraoperatively by **hemostasis time** and extent of pulp removal.
+
+### Participants and sampling
+- **Eligibility screening:** 382 assessed; 310 excluded (305 not meeting criteria; 5 refused).
+- **Enrolled:** 72 included initially.
+- **Intraoperative exclusions after pulp assessment:** 13 excluded (hemostasis >5 min after full coronal pulp removal or necrotic appearance).
+- **Treated with VPT:** 59 teeth/patients initially treated.
+- **Analyzed:** 57 teeth/patients (2 lost to follow-up; follow-up rate 96.6% among treated).
+- **Unit of analysis:** **Tooth**, restricted to **one tooth per participant** to maintain independence (priority tooth selection rule specified).
+- **Age range:** 6–20 years (mean in analyzed cohort 11.75 ± 3.81).
+- **Sex (analyzed):** 27 male, 30 female.
+
+### Inclusion criteria (key)
+- Posterior teeth with **deep caries and pulp exposure**.
+- Symptoms consistent with irreversible pulpitis (referred/spontaneous/thermal pain lasting seconds to hours vs control).
+- No prominent **periapical/furcation radiolucency**.
+- One tooth per participant.
+
+### Exclusion criteria (key)
+- Medical contraindications to dental treatment.
+- Previous RCT or VPT.
+- External/internal resorption; prominent periapical radiolucency/furcation lesion.
+- Pulpitis due to non-caries etiology (wedge defect, crack, periodontitis, fracture).
+- No response to vitality tests.
+
+### Interventions / exposure definition
+All cases received VPT using **iRoot BP Plus** (3 mm layer), protected with resin-modified glass ionomer, restored with composite or stainless-steel crown.
+
+**VPT types (exposure groups):**
+- **DPC (Direct pulp capping):** If hemostasis achieved within 5 min after exposure.
+- **PP (Partial pulpotomy):** If initial hemostasis >5 min, remove ~2–3 mm coronal pulp; if then hemostasis <5 min.
+- **FP (Full pulpotomy):** If after partial removal hemostasis still >5 min, remove all coronal pulp to canal orifices; include only if hemostasis <5 min.
+- If hemostasis still >5 min after full coronal pulp removal or pulp appears necrotic → excluded and treated otherwise (RCT/revascularization).
+
+**Operators:** Three endodontic postgraduate students under supervision; same protocol.
+
+### Follow-up schedule and retention
+- Planned visits: 3, 6, 12 months; then annually.
+- Available follow-up durations (analyzed): >6 mo n=57; >12 mo n=42; >24 mo n=11; >36 mo n=1.
+- Mean follow-up: 16.0 ± 6.58 months (range 6–36).
+
+### Outcomes
+
+#### Primary outcome (binary)
+- **VPT success vs failure**, defined by combined **clinical + radiographic** criteria:
+  - No spontaneous discomfort/pain history
+  - No tenderness to percussion/palpation/cold/heat
+  - Mobility ≤ Grade I
+  - No swelling/sinus tract; normal soft tissue
+  - Restoration intact; normal function
+  - No periradicular pathosis; no external resorption radiographically
+  - No intraradicular pathosis; no internal resorption radiographically
+  - For immature roots: continued radiographic root development
+
+#### Pain measurement (mentioned)
+- **vNRS** used to record postoperative pain intensity (timing not fully specified in provided text; likely during early postoperative period).
+
+#### Reliability
+- Radiographic/clinical evaluators: intra-/interobserver agreement reported using **Cohen’s kappa** (0.75–0.85).
+
+### Baseline predictors/covariates (14 variables used in regression)
+From Table 1 (coded categories):
+1. Sex (male/female)
+2. Age groups ([5,10], [10,15], [15,16] as written—likely a typographical issue; intended ordered age categories)
+3. Root maturation (open vs closed apex)
+4. Cavity shape (occlusal only vs proximal involved)
+5. Spontaneous pain (no/yes)
+6. Nocturnal pain (no/yes)
+7. Referred pain (no/yes)
+8. Cold test response category (no delayed pain / delayed pain <30s / delayed pain ≥30s)
+9. Cold test pain level (vNRS <5 vs ≥5)
+10. Heat test response category (no delayed pain / delayed pain <30s / delayed pain ≥30s / normal)
+11. Heat test pain level (vNRS <5 vs ≥5)
+12. Electrical vitality test difference (<10 vs ≥10 relative to control tooth)
+13. Percussion sensitivity (negative/positive)
+14. VPT type (PP / FP / DPC)
+
+---
+
+## TASK 2: STATISTICAL ANALYSIS PLAN (SAP)
+
+### General principles
+- **Analysis set:** All treated teeth with follow-up ≥6 months (n≈57) as primary; sensitivity analyses for ≥12 months (n≈42).
+- **Unit:** One tooth per patient → independent observations.
+- **Two-sided α:** 0.05. Emphasize **effect sizes + CIs** due to small number of failures.
+- **Missing data:** Document reasons (e.g., loss to follow-up). Use sensitivity analyses; avoid complex imputation with very small n unless missingness is substantial and plausibly MAR.
+
+---
+
+# CATEGORY A – MANDATORY (core analyses)
+
+## A1) Descriptive statistics (no hypothesis test)
+**Test/Procedure:** Descriptive summaries (counts/%, mean±SD or median[IQR])  
+**Purpose:** Describe cohort, baseline predictors, VPT type distribution, follow-up time, and outcome rates.  
+**Why appropriate (≥2):**
+1. Observational cohort requires transparent characterization and potential imbalance across VPT types.
+2. Provides denominators for success rates overall and by VPT type.  
+**Why may not be appropriate (≥1):** None (always appropriate).  
+**When NOT to use:** Never.  
+**Alternative if assumptions violated:** Use medians/IQR for skewed continuous variables (e.g., follow-up time).
+
+## A2) Estimation of success proportions with confidence intervals
+**Test:** Exact (Clopper–Pearson) or Wilson **binomial proportion CI** for success overall and by VPT type.  
+**Purpose:** Quantify precision around success rates (overall and stratified).  
+**Why appropriate:**
+1. Outcome is binary (success/failure).
+2. Small sample sizes in groups (e.g., FP n≈13) make normal approximations unreliable.  
+**Why may not be appropriate:** If success definition varies over time and follow-up is heterogeneous, a single proportion ignores censoring.  
+**When NOT to use:** As the only outcome summary if follow-up times differ materially and failures can occur later.  
+**Alternative:** Kaplan–Meier survival estimates of success over time (see B2).
+
+## A3) Primary modeling of prognostic factors: penalized multivariable logistic regression
+**Test/Model:** **Firth penalized logistic regression** (or exact logistic regression if needed) with outcome success (1/0).  
+**Purpose:** Estimate associations (adjusted ORs) between baseline factors (including VPT type) and success.  
+**Why appropriate:**
+1. Binary endpoint with multiple predictors; goal explicitly includes “preoperative factors affecting prognosis.”
+2. Small number of failures (~5) risks separation and biased MLE; Firth reduces small-sample bias and handles separation better than standard logistic regression.  
+**Why may not be appropriate:**
+- With too many predictors relative to events, even penalized models can be unstable and overfit.  
+**When NOT to use:**
+- If events are extremely sparse within categories leading to non-identifiability even after collapsing levels; or if the intent is causal effect estimation without adequate confounding control structure.  
+**Alternative if assumptions violated / data limitations:**
+- Reduce model complexity using **clinically justified predictor selection** (pre-specify a small set), collapse categories, or use **penalized regression with shrinkage** (ridge) and report predictive performance rather than causal interpretation.
+- For very sparse strata: **exact logistic regression** (computationally heavy).
+
+**Mandatory implementation details:**
+- Pre-specify a *parsimonious* model given event count (e.g., include VPT type + age + root maturation + key symptom variables), not all 14 unless events permit.
+- Report adjusted ORs with 95% CIs; avoid relying solely on p-values.
+
+---
+
+# CATEGORY B – RECOMMENDED (improves rigor)
+
+## B1) Unadjusted group comparisons of success by VPT type
+**Test:** **Fisher’s exact test** (3×2) or pairwise Fisher with multiplicity control.  
+**Purpose:** Compare crude success proportions across DPC/PP/FP.  
+**Why appropriate:**
+1. Categorical outcome with small cell counts; Fisher is valid where chi-square is not.
+2. Provides an easily interpretable unadjusted comparison complementing regression.  
+**Why may not be appropriate:**
+- Not adjusted for confounding; VPT type is determined by bleeding/hemostasis pathway and may correlate with disease severity.  
+**When NOT to use:**
+- If interpreted causally as “best treatment,” which is not justified in nonrandomized allocation.  
+**Alternative if assumptions violated:** Not applicable (Fisher is assumption-light). For effect size, use **risk difference/ratio** with exact CIs.
+
+## B2) Time-to-failure analysis (handles unequal follow-up)
+**Test/Model:** **Kaplan–Meier** survival curve of “survival” = maintained success; optionally **log-rank test** by VPT type; and/or **Cox proportional hazards** (penalized) with key predictors.  
+**Purpose:** Account for varying follow-up durations; estimate success probability over time.  
+**Why appropriate:**
+1. Follow-up ranges 6–36 months; a simple success proportion mixes short and long follow-up.
+2. Allows visualization of when failures occur and comparison of durability by VPT type.  
+**Why may not be appropriate:**
+- Very few failures limit power; Cox models may be unstable and PH assumption hard to assess.  
+**When NOT to use:**
+- If failure times are not recorded (only status at last visit) or interval-censored without visit dates.  
+**Alternatives:**
+- If only visit-based status: discrete-time survival (complementary log–log) or report success at fixed landmarks (e.g., 12-month success among those reached) with CIs.
+
+## B3) Model diagnostics and reporting for logistic model
+**Tests/Procedures:**  
+- **Calibration:** calibration plot; **Brier score**; (Hosmer–Lemeshow is unstable at small n).  
+- **Discrimination:** **AUC (c-statistic)** with bootstrap CI.  
+- **Influence/outliers:** delta-beta or leverage diagnostics.  
+**Purpose:** Evaluate model fit and reliability of predictions/associations.  
+**Why appropriate:**
+1. With small n, apparent associations can be driven by a few observations.
+2. Improves transparency and reproducibility.  
+**Why may not be appropriate:**
+- Overemphasis on predictive metrics when goal is etiologic/prognostic inference; AUC unstable with few events.  
+**When NOT to use:** Avoid HL test as “proof of good fit” in small samples.  
+**Alternatives:** Bootstrap internal validation; penalized calibration slope.
+
+## B4) Reliability analysis for outcome assessment (if multiple raters)
+**Test:** **Cohen’s kappa** (already used), with 95% CI; consider **weighted kappa** if ordinal ratings exist.  
+**Purpose:** Quantify intra-/interobserver agreement for radiographic/clinical scoring.  
+**Why appropriate:**
+1. Outcome includes radiographic judgments; agreement impacts validity.
+2. Kappa accounts for chance agreement.  
+**Why may not be appropriate:**
+- Kappa affected by prevalence (high success rate can deflate kappa).  
+**When NOT to use:** If only one rater or outcomes are continuous.  
+**Alternative:** Gwet’s AC1 (less prevalence-sensitive) or percent agreement alongside kappa.
+
+## B5) Sensitivity analyses for variable coding and sparse categories
+**Procedure:**  
+- Collapse symptom test categories (e.g., cold test 3 levels → binary delayed pain yes/no), age as continuous (if available), alternative cutpoints for EPT difference, etc.  
+**Purpose:** Assess robustness to arbitrary categorization and sparse cells.  
+**Why appropriate:**
+1. Many predictors are categorized; small cell counts can distort estimates.
+2. Demonstrates robustness of conclusions.  
+**Why may not be appropriate:**
+- Multiple re-codings can inflate researcher degrees of freedom if not pre-specified.  
+**When NOT to use:** If done post hoc without transparency.  
+**Alternative:** Pre-specify primary coding; use splines for continuous variables when sample permits (optional).
+
+---
+
+# CATEGORY C – OPTIONAL (supplementary insights)
+
+## C1) Multinomial/ordinal modeling of VPT type determinants (process analysis)
+**Model:** Multinomial logistic regression with VPT type as outcome, baseline predictors as covariates.  
+**Purpose:** Describe which baseline features are associated with receiving DPC vs PP vs FP (selection mechanism).  
+**Why appropriate:**
+1. Helps quantify confounding/selection since VPT type is determined by intraoperative hemostasis and likely correlates with severity.
+2. Supports interpretation of outcome comparisons.  
+**Why may not be appropriate:**
+- VPT type is largely determined intraoperatively (hemostasis time), which is not fully captured by baseline variables; limited sample.  
+**When NOT to use:** If categories are too sparse or quasi-separation occurs.  
+**Alternative:** Descriptive cross-tabs only.
+
+## C2) Effect size measures beyond ORs
+**Method:** Compute **risk ratio** or **risk difference** (with exact or bootstrap CIs) for VPT types; optionally marginal effects from logistic model.  
+**Purpose:** Provide clinically interpretable measures (absolute risk).  
+**Why appropriate:**
+1. ORs can exaggerate effects when outcome is common (success ~91%).
+2. Absolute differences are clinically meaningful.  
+**Why may not be appropriate:** Small group sizes lead to wide CIs.  
+**When NOT to use:** If readers might misinterpret unstable estimates without CIs.  
+**Alternative:** Report predicted probabilities from penalized model.
+
+## C3) Multiple testing adjustment (if many univariable comparisons)
+**Method:** Holm or Benjamini–Hochberg (FDR).  
+**Purpose:** Control false positives if many exploratory tests are performed.  
+**Why appropriate:**
+1. There are many baseline predictors; unadjusted univariable screening inflates type I error.
+2. Supports transparent exploratory inference.  
+**Why may not be appropriate:** Overcorrection in small samples increases type II error; primary inference should be effect-size based.  
+**When NOT to use:** If analyses are strictly pre-specified and limited in number.  
+**Alternative:** Emphasize CIs and avoid mass univariable testing.
+
+---
+
+## TASK 3: INAPPROPRIATE TESTS (should NOT be used)
+
+1. **Independent-samples t-test / ANOVA on the binary outcome (success)**  
+   - **Why inappropriate:** Outcome is not continuous/normal; violates model assumptions; yields uninterpretable mean differences of a 0/1 variable compared to logistic/binomial methods.
+
+2. **Pearson chi-square test for success by VPT type when expected counts are small**  
+   - **Why inappropriate:** FP failures likely very few → expected cell counts <5; chi-square approximation invalid. Prefer Fisher’s exact.
+
+3. **Standard (MLE) multivariable logistic regression with 14 predictors given ~5 failures**  
+   - **Why inappropriate:** Severe events-per-variable problem → overfitting, separation, inflated/unstable coefficients, misleading p-values and CIs. Use penalized methods + parsimonious model.
+
+4. **Hosmer–Lemeshow test as primary evidence of “good fit”**  
+   - **Why inappropriate:** Low power and unstable grouping with small n; a non-significant result does not confirm adequate calibration.
+
+5. **Linear regression for vNRS without specifying timing/repeated measures**  
+   - **Why inappropriate:** Pain likely measured over time; repeated measures require mixed models or summarized endpoints. Also vNRS is bounded/ordinal-like; distribution may be skewed.
+
+6. **Kaplan–Meier/log-rank if failure time is not available**  
+   - **Why inappropriate:** Requires time-to-event or at least interval information; otherwise results are not valid.
+
+---
+
+## TASK 4: SUMMARY (overall analytical approach justification)
+
+Because this is a **prospective cohort** with a **binary composite clinical+radiographic success outcome** and **nonrandom assignment** to VPT types, the analysis should (i) report **precise success estimates with exact CIs**, (ii) compare crude outcomes across VPT types using **exact methods**, and (iii) evaluate prognostic factors using a **parsimonious, penalized logistic regression** to address **very few failures** and avoid overfitting. Given heterogeneous follow-up, **time-to-event methods** are recommended when failure timing is available; otherwise, use **landmark analyses** (e.g., ≥12 months) as sensitivity checks.

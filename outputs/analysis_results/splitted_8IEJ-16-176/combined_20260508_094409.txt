@@ -1,0 +1,1040 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_8IEJ-16-176.pdf
+Time : 20260508_094409
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1: INFORMATION EXTRACTION (study characteristics)
+
+### Study identification
+- **Title/Topic:** Survival from *unrestorable fracture* in endodontically treated anterior teeth restored with **direct resin composite (DRC)** vs **full-coverage crown (FCC)**.
+- **Design:** **Retrospective cohort** (chart + radiograph review) with **time-to-event** follow-up (recall time in months; 2007–2019).
+- **Setting:** Endodontic Postgraduate Clinic, Faculty of Dentistry, Mahidol University, Bangkok, Thailand.
+- **Ethics:** MU-DT/PY-IRB 2018/014.2302.
+
+### Objectives
+1. **Primary objective:** Compare **survival rates from unrestorable fracture** between anterior ETT restored with **DRC vs FCC**.
+2. **Secondary objective:** Identify **predisposing factors** associated with **unrestorable fracture**.
+
+### Study population / sampling frame
+- **Source:** Dental records + radiographs of patients receiving endodontic treatment and attending recall (2007–2019).
+- **Unit of analysis:** **Tooth** (anterior endodontically treated teeth).  
+  *Important implication:* potential clustering if multiple teeth per patient (not clarified in text).
+
+### Inclusion criteria (tooth-level)
+1. Mature root
+2. Single-unit coronal restoration: **DRC or FCC**
+3. Has occluding pair
+4. ≥ 1-year recall period
+
+### Exclusion criteria
+1. Preoperative root resorption, crack, or fracture
+2. Direct/indirect veneers
+3. Supporting alveolar bone loss > half root length
+4. History of post removal before retreatment
+5. Procedural errors during endodontic/restorative treatment (e.g., perforation)
+6. Ongoing orthodontic treatment
+
+### Interventions / exposure groups
+- **Group 1:** **DRC** (direct resin composite restoration)
+- **Group 2:** **FCC** (full-coverage crown) *with intra-radicular post planned* (cast metal or prefabricated fiber) + crown type (all-ceramic or PFM)
+
+### Outcomes
+**Primary outcome (time-to-event):**
+- **Event:** **Unrestorable fracture** (fracture leading to “not survived” classification)
+- **Time origin:** not explicitly stated; likely from completion of definitive coronal restoration to fracture/last recall.
+- **Censoring:** teeth without unrestorable fracture by last recall are “survived” (right-censored).
+
+**Additional fracture descriptors (among fractured teeth):**
+- **Incidence of fracture:** yes/no
+- **Fracture site:** coronal / coronal-root / root  
+  (This is descriptive unless modeled with competing risks/multinomial methods.)
+
+### Follow-up / time scale
+- **Recall period:** recorded in months (Kaplan–Meier plot shows intervals up to 120 months).
+- **Minimum follow-up:** 1 year.
+
+### Variables collected (candidate predictors/predisposing factors)
+From records/radiographs:
+- **Demographics:** age, gender
+- **Tooth characteristics:** tooth type (incisor/canine), location (maxillary/mandible)
+- **Restoration-related:**
+  - Restoration type: DRC vs FCC
+  - **DRC:** restorative surface(s) (M, D, Pa, La, I) → categorized **1–3 vs 4–5 surfaces**
+  - **FCC:** core build-up surfaces similarly noted
+- **Occlusion/support:**
+  - Posterior support: none / 1 / 2 (pairs of occluding posterior teeth)
+  - Adjacent teeth: none / 1 / 2
+- **Post variables:** none / cast metal / prefabricated fiber
+- **Post length vs alveolar bone level:** below / above / at level
+- **Remaining cervical tooth structure:** number/location of remaining cervical walls (M, D, Pa, La)
+- **Cervical root dentin thickness ratio** at 2 mm below CEJ (mesial and distal) relative to canal width: **< 1:1:1 vs ≥ 1:1:1**
+- **Parafunction:** bruxism/clenching (yes/no)
+
+### Sample size (as reported)
+- **Total teeth:** **n = 263**
+  - DRC: n=157; events (not survived) = 15
+  - FCC: n=106; events = 1
+- Survival comparisons in Table 1 used **log-rank test** (reported p<0.01 for restoration type).
+
+### Data collection method
+- **Retrospective abstraction** from charts + radiographs; measurements include radiographic dentin thickness ratio at a standardized level (2 mm below CEJ).
+
+---
+
+## TASK 2: STATISTICAL ANALYSIS PLAN
+
+### Overview of planned analyses
+Because the endpoint is **time to unrestorable fracture** with variable follow-up and censoring, the core analyses should be **survival analysis** (Kaplan–Meier + regression). Secondary analyses address fracture incidence and predictors, while accounting for sparse events (especially only 1 event in FCC).
+
+---
+
+# CATEGORY A – MANDATORY (without these, analysis is incomplete)
+
+## A1) Kaplan–Meier (KM) survival curves with risk table
+- **Purpose:** Estimate and visualize **cumulative survival probability** over time for DRC vs FCC (and possibly for key predictors).
+- **Why appropriate:**
+  1. Handles **right-censoring** naturally (teeth without fracture at last recall).
+  2. Provides **nonparametric** survival estimates without distributional assumptions; standard for retrospective cohort time-to-event outcomes.
+- **Why may not be appropriate:**
+  - If **time origin** is inconsistently defined across records (e.g., from RCT completion vs from restoration placement), KM curves can be biased/misleading.
+- **When NOT to use:**
+  - If follow-up times are not reliable or cannot be defined consistently.
+- **Alternative if assumptions violated:**
+  - If censoring is suspected **informative**, perform **sensitivity analyses** (e.g., inverse probability of censoring weighting) rather than replacing KM outright.
+
+## A2) Log-rank test (primary unadjusted comparison)
+- **Purpose:** Hypothesis test of equality of survival curves between DRC and FCC.
+- **Why appropriate:**
+  1. Compares **time-to-event** distributions accounting for censoring.
+  2. Simple, widely accepted for **unadjusted** group comparison in cohorts.
+- **Why may not be appropriate:**
+  - Low number of events (especially **1 event in FCC**) can lead to **low power** and unstable inference; also log-rank is most sensitive to **proportional hazards** alternatives.
+- **When NOT to use:**
+  - If survival curves have strong **non-proportional hazards** with crossings and the scientific question targets early vs late differences.
+- **Alternative if assumptions violated:**
+  - **Weighted log-rank tests** (e.g., Fleming–Harrington) focusing on early/late differences, or model-based approaches with time-varying effects.
+
+## A3) Cox proportional hazards regression (adjusted effect of restoration type)
+- **Purpose:** Estimate **hazard ratio (HR)** for unrestorable fracture comparing DRC vs FCC, adjusting for confounders/predisposing factors (age, tooth type, cervical walls, parafunction, etc.).
+- **Why appropriate:**
+  1. Directly models **time-to-event** with censoring and yields interpretable **HRs**.
+  2. Allows **multivariable adjustment** to address confounding inherent in retrospective treatment allocation (DRC vs FCC likely chosen based on tooth condition).
+- **Why may not be appropriate:**
+  - **Sparse events** (total events appear small; especially only 1 in FCC) risks **separation/instability**, wide CIs, and biased coefficients in standard partial likelihood Cox.
+- **When NOT to use:**
+  - When events-per-parameter are too low to support the planned model (e.g., many predictors with ~16 events total).
+- **Alternative if assumptions violated / sparse data:**
+  - **Penalized Cox regression** (Firth correction) or **ridge/LASSO** Cox with careful tuning; or **reduce model** to a small set of prespecified covariates.
+  - If PH assumption fails: **time-varying coefficients** or **stratified Cox** (stratify on violating covariate).
+
+---
+
+# CATEGORY B – RECOMMENDED (improves rigor/credibility)
+
+## B1) Assessment of proportional hazards (PH) assumption (Schoenfeld residuals + log(-log) plots)
+- **Purpose:** Verify key Cox model assumption; detect time-varying effects.
+- **Why appropriate:**
+  1. Ensures validity of HR interpretation over follow-up.
+  2. Identifies need for stratification or time-varying terms.
+- **Why may not be appropriate:**
+  - With very few events, diagnostic tests have **low reliability** and may be inconclusive.
+- **When NOT to use:**
+  - Never truly “not use,” but interpret cautiously when event counts are very small.
+- **Alternative if PH questionable:**
+  - **Restricted mean survival time (RMST)** comparison; or Cox with **time-dependent** effects.
+
+## B2) Multivariable modeling strategy tailored to sparse events (penalized methods)
+- **Test/model:** **Firth-penalized Cox** (or penalized likelihood Cox)
+- **Purpose:** Reduce small-sample bias; handle quasi-separation (e.g., near-zero events in crown group).
+- **Why appropriate:**
+  1. Provides more stable HR estimates when one group has **very low event count**.
+  2. Better finite-sample properties than standard Cox under sparse events.
+- **Why may not be appropriate:**
+  - Software availability and interpretation familiarity may be limited for some audiences.
+- **When NOT to use:**
+  - If event numbers are sufficient and standard Cox is stable; penalization may be unnecessary.
+- **Alternative:**
+  - **Exact methods** (rare), or **RMST** as a robust, assumption-light effect measure.
+
+## B3) Confounding control via propensity score methods (given nonrandom restoration selection)
+- **Test/model:** Propensity score (PS) **matching**, **IPTW**, or **overlap weighting** + weighted Cox (or weighted KM/log-rank)
+- **Purpose:** Reduce confounding due to clinical indication (e.g., teeth with major structure loss more likely crowned).
+- **Why appropriate:**
+  1. Retrospective cohorts commonly have **treatment-selection bias**.
+  2. Creates better covariate balance between DRC and FCC groups, improving causal interpretability.
+- **Why may not be appropriate:**
+  - With very few events and potentially limited overlap, PS approaches can yield **unstable weights** and inflated variance.
+- **When NOT to use:**
+  - If there is **poor overlap/positivity violation** (e.g., certain risk profiles only get crowns).
+- **Alternative if PS fails:**
+  - Parsimonious **multivariable penalized Cox**, or **matching on key covariates** only, or **stratification**.
+
+## B4) Clustered data handling (if multiple teeth per patient)
+- **Test/model:** Cox model with **robust sandwich SEs clustered by patient** or **shared frailty Cox**
+- **Purpose:** Correct standard errors / account for within-patient correlation.
+- **Why appropriate:**
+  1. Tooth-level outcomes may not be independent if patients contributed >1 tooth.
+  2. Ignoring clustering can underestimate SEs and overstate significance.
+- **Why may not be appropriate:**
+  - If only one tooth per patient (not stated); adding clustering then changes little and may reduce precision.
+- **When NOT to use:**
+  - If data confirm independence (one tooth/patient).
+- **Alternative:**
+  - Restrict to **one tooth per patient** (e.g., first treated) as sensitivity analysis.
+
+## B5) Baseline comparability and descriptive statistics
+- **Tests:** Chi-square/Fisher’s exact for categorical; t-test/Mann–Whitney for continuous (e.g., age, recall time)
+- **Purpose:** Describe sample and assess imbalance between DRC and FCC groups.
+- **Why appropriate:**
+  1. Identifies potential confounders to adjust for.
+  2. Helps interpret external validity and clinical comparability.
+- **Why may not be appropriate:**
+  - Hypothesis testing for baseline differences is often **misused**; emphasis should be on **standardized differences** rather than p-values.
+- **When NOT to use:**
+  - Avoid declaring “balanced” purely from non-significant p-values.
+- **Alternative:**
+  - **Standardized mean differences (SMDs)** with plots (Love plot).
+
+---
+
+# CATEGORY C – OPTIONAL (supplementary insights)
+
+## C1) Restricted Mean Survival Time (RMST) difference at clinically meaningful time horizons (e.g., 5 years)
+- **Purpose:** Provide an absolute, clinically interpretable measure: mean fracture-free time up to τ.
+- **Why appropriate:**
+  1. Does not rely on proportional hazards.
+  2. Useful when events are sparse and HR is unstable.
+- **Why may not be appropriate:**
+  - Requires choosing τ; results depend on follow-up support beyond τ.
+- **When NOT to use:**
+  - If follow-up is too short or heavily censored before τ.
+- **Alternative:**
+  - Milestone survival (e.g., 3-year/5-year KM estimates with CIs).
+
+## C2) Competing risks analysis (if extractions for other reasons occur and are recorded)
+- **Test/model:** Cumulative incidence function + Fine–Gray model
+- **Purpose:** If teeth are lost for reasons other than unrestorable fracture, treat those as competing events.
+- **Why appropriate:**
+  1. Standard KM can overestimate event probability when competing risks are present.
+  2. Provides clinically meaningful incidence of fracture in presence of other failures.
+- **Why may not be appropriate:**
+  - The text only defines fracture vs no fracture; competing events may be unavailable.
+- **When NOT to use:**
+  - If competing events are not collected or are extremely rare/undefined.
+- **Alternative:**
+  - Standard KM/Cox with clear definition of censoring.
+
+## C3) Subgroup/interaction analyses (pre-specified only)
+- **Test/model:** Cox model with **interaction terms** (e.g., restoration type × parafunction; restoration type × remaining cervical walls)
+- **Purpose:** Evaluate whether the restoration effect differs by key risk factors.
+- **Why appropriate:**
+  1. Biologically plausible effect modification (parafunction, remaining structure).
+  2. Can guide individualized restorative decisions.
+- **Why may not be appropriate:**
+  - Very low event counts → high false-positive/false-negative risk and unstable estimates.
+- **When NOT to use:**
+  - If not prespecified and if events are sparse.
+- **Alternative:**
+  - Report stratified KM descriptively without formal interaction testing.
+
+## C4) Modeling fracture site (coronal vs coronal-root vs root) among fractured teeth
+- **Test/model:** Multinomial logistic regression (or ordinal if justified)
+- **Purpose:** Explore whether restoration type relates to *pattern* of fracture.
+- **Why appropriate:**
+  1. Uses collected fracture site data.
+  2. May reveal mechanistic differences between restorations.
+- **Why may not be appropriate:**
+  - Too few fracture events overall; models will be unreliable.
+- **When NOT to use:**
+  - When any category has near-zero counts.
+- **Alternative:**
+  - Descriptive cross-tabulation with exact tests (Fisher) only.
+
+---
+
+## TASK 3: INAPPROPRIATE TESTS (should NOT be used)
+
+1. **Independent-samples t-test/ANOVA on “survival time” among only fractured teeth**
+   - Ignores censoring and discards information from non-fractured teeth → biased estimates.
+
+2. **Simple chi-square comparing fracture incidence (yes/no) between DRC and FCC without accounting for follow-up time**
+   - Follow-up varies; risk accumulates with time. A crude 2×2 ignores censoring and unequal observation time.
+
+3. **Pearson correlation between predictors and survival time**
+   - Survival time is censored and not normally distributed; correlation is not meaningful under censoring.
+
+4. **Standard (non-penalized) multivariable logistic regression for “fracture yes/no” with many predictors**
+   - Sparse outcome events (≈16 total) → severe overfitting; also ignores time-to-event nature.
+
+5. **Paired tests (paired t-test, McNemar)**
+   - No pairing/matching described; unit is tooth without within-tooth repeated measures.
+
+---
+
+## TASK 4: SUMMARY (overall analytical approach)
+
+Use **survival analysis** because the endpoint is **time to unrestorable fracture** with right-censoring and variable recall durations. The primary comparison should be **KM curves + log-rank**, followed by an **adjusted Cox model** to address confounding, with strong attention to **sparse-event methods** (penalized Cox) and **possible clustering by patient**. Report effect sizes as **HRs with 95% CIs** plus clinically interpretable survival estimates at fixed times (and optionally RMST) rather than relying only on p-values.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Retrospective cohort study.
+2. **Objective**: To compare survival rates from unrestorable fracture of anterior endodontically treated teeth (ETT) restored with direct resin composite (DRC) versus full-coverage crown (FCC). Additionally, to identify predisposing factors to unrestorable fracture.
+3. **Groups**: 
+   - Group 1: Anterior ETT restored with DRC.
+   - Group 2: Anterior ETT restored with FCC.
+4. **Sample Size**: 263 anterior ETT (157 DRC, 106 FCC).
+5. **Variables**:
+   - **Independent Variables**: Type of restoration (DRC or FCC), tooth type (incisor or canine), location (maxillary or mandibular), gender, recall period, restorative surfaces, remaining cervical tooth structure, posterior support, adjacent teeth, type of post, post length relative to alveolar bone level, cervical root dentin thickness, parafunctional habits.
+   - **Dependent Variable**: Survival from unrestorable fracture (yes/no).
+6. **Measurements**:
+   - Survival rates (percentage of teeth surviving unrestorable fracture).
+   - Incidence of fracture (coronal, coronal-root, or root).
+   - Kaplan-Meier survival curves for cumulative survival rates at time intervals.
+   - Statistical significance of survival rates across groups.
+7. **Data Collection Methods**:
+   - Dental records and radiographs from patients treated between 2007–2019.
+   - Information on preoperative, intraoperative, and postoperative factors extracted from charts.
+   - Survival rates calculated based on recall periods and fracture incidence.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Log-Rank Test**:
+   - **Purpose**: To compare survival curves between DRC and FCC groups.
+   - **Why Appropriate**:
+     - Survival analysis is required for time-to-event data (fracture occurrence over time).
+     - Kaplan-Meier curves are presented, and the log-rank test is standard for comparing them.
+   - **Why It May Not Be Appropriate**:
+     - Assumes proportional hazards, which may not hold if survival curves cross.
+   - **When This Test Should NOT Be Used**: If the proportional hazards assumption is violated.
+   - **Alternative**: Breslow (Generalized Wilcoxon) test or Cox proportional hazards model.
+
+2. **Chi-Square Test**:
+   - **Purpose**: To compare categorical variables (e.g., survival rates by gender, tooth type, location, restoration type).
+   - **Why Appropriate**:
+     - Suitable for testing associations between categorical variables.
+     - Sample size is large enough for chi-square assumptions.
+   - **Why It May Not Be Appropriate**:
+     - Small expected frequencies in some categories may violate assumptions.
+   - **When This Test Should NOT Be Used**: If expected frequencies are <5 in >20% of cells.
+   - **Alternative**: Fisher’s exact test.
+
+3. **Kaplan-Meier Survival Analysis**:
+   - **Purpose**: To estimate cumulative survival rates over time for DRC and FCC groups.
+   - **Why Appropriate**:
+     - Standard method for analyzing time-to-event data.
+     - Accounts for censored data (e.g., teeth lost to follow-up).
+   - **Why It May Not Be Appropriate**:
+     - Does not account for covariates affecting survival.
+   - **When This Test Should NOT Be Used**: If covariates significantly influence survival.
+   - **Alternative**: Cox proportional hazards model.
+
+#### CATEGORY B – RECOMMENDED TESTS
+4. **Cox Proportional Hazards Model**:
+   - **Purpose**: To evaluate the effect of multiple covariates (e.g., gender, tooth type, restoration type) on survival rates.
+   - **Why Appropriate**:
+     - Accounts for covariates influencing survival.
+     - Provides hazard ratios for risk factors.
+   - **Why It May Not Be Appropriate**:
+     - Assumes proportional hazards, which may not hold.
+   - **When This Test Should NOT Be Used**: If proportional hazards assumption is violated.
+   - **Alternative**: Stratified Cox model or time-dependent covariates.
+
+5. **Multivariate Logistic Regression**:
+   - **Purpose**: To identify predisposing factors to unrestorable fracture.
+   - **Why Appropriate**:
+     - Suitable for binary outcome (fracture: yes/no).
+     - Allows adjustment for confounders.
+   - **Why It May Not Be Appropriate**:
+     - Assumes linear relationship between predictors and log odds.
+   - **When This Test Should NOT Be Used**: If multicollinearity exists among predictors.
+   - **Alternative**: Ridge regression or stepwise logistic regression.
+
+#### CATEGORY C – OPTIONAL TESTS
+6. **Fisher’s Exact Test**:
+   - **Purpose**: To analyze categorical variables with small sample sizes (e.g., fracture incidence by post type).
+   - **Why Appropriate**:
+     - Accurate for small sample sizes.
+     - Does not rely on chi-square assumptions.
+   - **Why It May Not Be Appropriate**:
+     - Computationally intensive for large datasets.
+   - **When This Test Should NOT Be Used**: If sample size is large.
+   - **Alternative**: Chi-square test.
+
+7. **Wilcoxon Rank-Sum Test**:
+   - **Purpose**: To compare recall periods between groups (DRC vs FCC).
+   - **Why Appropriate**:
+     - Non-parametric test for continuous data.
+     - Suitable if recall periods are non-normally distributed.
+   - **Why It May Not Be Appropriate**:
+     - Less powerful than parametric tests for large samples.
+   - **When This Test Should NOT Be Used**: If data are normally distributed.
+   - **Alternative**: Independent t-test.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-Test**:
+   - **Reason**: Recall periods may not be normally distributed, violating assumptions.
+   - **Alternative**: Wilcoxon rank-sum test.
+
+2. **ANOVA**:
+   - **Reason**: Not suitable for binary outcomes (e.g., survival: yes/no).
+   - **Alternative**: Logistic regression.
+
+3. **Pearson Correlation**:
+   - **Reason**: Not appropriate for categorical variables (e.g., restoration type).
+   - **Alternative**: Chi-square test or logistic regression.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach combines survival analysis (Kaplan-Meier and log-rank tests) with multivariate modeling (Cox proportional hazards and logistic regression) to address the primary objective and identify predisposing factors. This approach ensures robust analysis of time-to-event data while accounting for covariates. Supplementary tests (e.g., chi-square, Fisher’s exact test) enhance rigor for categorical comparisons. Non-parametric tests (e.g., Wilcoxon rank-sum) are recommended for continuous data with non-normal distributions.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1 – INFORMATION EXTRACTION  
+(Study characteristics, design, variables, measurements, data collection)
+
+1. Study design
+- Type: Retrospective cohort study.
+- Setting: Endodontic Postgraduate Clinic, Faculty of Dentistry, Mahidol University, Bangkok, Thailand.
+- Period of treatment/recall: 2007–2019.
+- Source of data: Dental charts/records and radiographs.
+- Unit of analysis: Tooth (endodontically treated anterior tooth; ETT).
+- Cohorts/exposure groups:  
+  - ETT restored with direct resin composite (DRC).  
+  - ETT restored with full-coverage crowns (FCC), including post and core.
+
+2. Objectives
+- Primary:
+  - Compare survival rates from unrestorable fracture of anterior ETT restored with DRC versus FCC.
+- Secondary:
+  - Identify predisposing factors to unrestorable fracture in anterior ETT.
+
+3. Population, inclusion, and exclusion criteria
+- Population: Anterior endodontically treated teeth of patients attending the clinic and recalls between 2007–2019.
+- Inclusion criteria (per tooth):
+  1) Mature root.  
+  2) Restored with single-unit coronal restoration: DRC or FCC.  
+  3) Have occluding pair.  
+  4) At least one-year recall period.
+- Exclusion criteria (per tooth):
+  1) Preoperative root resorption, crack, or fracture.  
+  2) Restored with direct or indirect veneers.  
+  3) Supporting alveolar bone loss > half of root length.  
+  4) History of post removal before retreatment.  
+  5) Procedural errors in endodontic/restorative treatment (e.g., perforation).  
+  6) Ongoing orthodontic treatment.
+
+4. Sample
+- Total teeth: n = 263 anterior ETT.
+- Coronal restoration:
+  - DRC: n = 157.
+  - FCC: n = 106.
+- Demographic breakdown (from Table 1):
+  - Gender: Female 155, Male 108.
+  - Tooth type: Incisor 185, Canine 78.
+  - Location: Maxillary 204, Mandibular 59.
+
+5. Treatment details (procedural context)
+- Endodontic treatment:
+  - Rubber dam isolation, conservative access, WL determination.
+  - Crown-down instrumentation using Ni-Ti hand/rotary files.
+  - Irrigants: 2.5% NaOCl, 17% EDTA.
+  - Intracanal medicament: Calcium hydroxide 1–4 weeks.
+  - Obturation: Gutta-percha + sealer (zinc oxide–eugenol or epoxy resin AH-Plus), lateral or warm vertical compaction, to 1–2 mm below CEJ.
+- DRC procedures:
+  - Lining: non-eugenol zinc oxide (Caviton) and/or GIC (Vitrebond or Fuji VII), 1–2 mm thick.
+  - Adhesives: Etch-and-rinse (Adper Single Bond 2) or self-etch (Clearfil SE Bond).
+  - Restorative materials: Micro- or nano-hybrid composites (Z350 XT, Estelite Sigma) with 2 mm increments, 20 sec light curing.
+- FCC procedures:
+  - Post space preparation: System B or Peeso-reamer.
+  - Post type: Cast metal or prefabricated fiber post (D.T. Light-Post).
+  - Post cement: Rely-X U200 or MultiCore Flow.
+  - Crown type: All-ceramic (Empress, E.max) or porcelain-fused-to-metal.
+  - Crowns cemented on prepared teeth.
+
+6. Outcomes and key definitions
+- Time scale:
+  - Time origin: Completion of endodontic treatment / placement of definitive coronal restoration (implied; need explicit definition in SAP).
+  - Follow-up duration: Recall period in months (minimum 12 months; maximum ~120 months per Kaplan–Meier figure).
+- Primary outcome (failure event):
+  - Unrestorable fracture of anterior ETT.
+  - “Incidence of tooth/root fracture (yes/no)” recorded; further classified:
+    - Fracture site: coronal, coronal-root, root.
+  - Restorability: fracture categorized as “unrestorable” vs “restorable.”
+  - “Survived”: no unrestorable fracture during observation.
+  - “Not survived”: unrestorable fracture occurred.
+- Censoring:
+  - Teeth with no unrestorable fracture by last recall (administrative censoring).  
+  - (Other censoring reasons not described but may include loss to follow-up, extraction for non-fracture reasons; to be specified in SAP if data available.)
+
+7. Exposures / predictors / covariates
+Data collected per tooth from records and radiographs:
+
+A. Demographic:
+- Age (continuous; years).
+- Gender (female, male).
+
+B. Tooth-related:
+- Tooth type: incisor vs canine.
+- Location: maxillary vs mandibular.
+
+C. Coronal restoration:
+- Type: DRC vs FCC (primary exposure).
+- Restorative surfaces:
+  - DRC: surfaces restored (M, D, Pa, La, I).  
+  - FCC: surfaces of core build-up (M, D, Pa, La, I).  
+  - Categorized as: 1–3 surfaces vs 4–5 surfaces (ordinal/binary predictor of extent of restoration / loss of structure).
+
+D. Structural/anatomical:
+- Remaining cervical tooth structure:
+  - Presence of residual walls in each of 4 cervical walls (M, D, Pa, La).  
+  - Likely recoded into categories (e.g., 0–1, 2, 3–4 walls, or similar, though exact categorization not visible in text provided).
+- Cervical root dentin thickness:
+  - Measured mesial and distal at 2 mm below CEJ on radiographs.  
+  - Transformed into a ratio of root dentin thickness to root canal width.  
+  - Categorized: <1:1:1 vs ≥1:1:1 (binary).
+
+E. Occlusal/anatomical context:
+- Posterior support:
+  - At least one pair of occluding teeth in posterior region: none, 1, or 2 (ordinal).
+- Adjacent teeth:
+  - Number of adjacent teeth: none, 1, or 2 (ordinal).
+- Parafunction:
+  - Parafunctional habits (bruxism, clenching): yes/no (binary).
+
+F. Endodontic/restorative-related:
+- Type of coronal restoration: DRC vs FCC (already noted).
+- Post usage: none vs cast metal vs prefabricated fiber post (categorical).
+- Relationship of post length to alveolar bone level (radiographic):
+  - Post length relative to bone: below, above, or at the level (categorical).
+
+8. Outcome presentation already in the article (partial)
+- Table 1 shows, by factors (gender, tooth type, location, restoration):
+  - Number of teeth.
+  - Number (%) survived vs not survived.
+  - P-values from log-rank tests.
+- Figure 2:
+  - Kaplan–Meier survival curves comparing DRC vs FCC.
+  - Cumulative survival percentages at time intervals (0–120 months).
+
+9. Data structure
+- Each row/record corresponds to one tooth with:
+  - Tooth ID, patient ID (not shown but should be in data).
+  - Follow-up time (months).
+  - Event indicator (unrestorable fracture yes/no).
+  - Covariates as listed above.
+
+---
+
+TASK 2 – STATISTICAL ANALYSIS PLAN
+
+Overall approach: Survival analysis of time to unrestorable fracture, comparing DRC vs FCC and evaluating multiple predictors/predisposing factors. Supplementary descriptive and diagnostic analyses for baseline comparability and confounder assessment.
+
+I will structure the SAP into:
+
+- A. Mandatory analyses (Core).  
+- B. Recommended analyses (Strengthen rigor).  
+- C. Optional analyses (Supplementary).
+
+For each test: name, purpose, appropriateness, limitations, when not to use, alternative.
+
+-----------------------------------
+CATEGORY A – MANDATORY ANALYSES
+-----------------------------------
+
+A1. Descriptive statistics
+
+Test / Method:
+- Descriptive summaries: means/SD, medians/IQR, counts/percentages.
+
+Purpose:
+- Describe sample characteristics overall and by restoration group (DRC vs FCC).
+- Describe follow-up distribution and crude event rates.
+
+Why appropriate (≥2 reasons):
+1) Provides essential context on demographics, tooth characteristics, and treatment distribution.  
+2) Allows assessment of potential imbalance in covariates between DRC and FCC, informing confounding.  
+
+Why it may not be appropriate:
+- Not a test; does not establish statistical significance or causal relationships.
+
+When NOT to use:
+- N/A—always necessary.
+
+Alternative if assumptions violated:
+- Use medians/IQR and nonparametric summaries when distributions are skewed; graphical methods (histograms, boxplots).
+
+A2. Kaplan–Meier (KM) survival analysis
+
+Test / Method:
+- Kaplan–Meier survival curves with log-rank tests.
+  - Primary comparison: DRC vs FCC.
+  - Optionally by other key factors (e.g., ≥1:1:1 vs <1:1:1 dentin ratio).
+
+Purpose:
+- Estimate and visualize survival functions (time to unrestorable fracture) for DRC and FCC.  
+- Obtain cumulative survival probabilities at clinically relevant time points (e.g., 1, 3, 5, 10 years).
+- Use log-rank test to compare survival curves.
+
+Why appropriate:
+1) Outcome is time-to-event (unrestorable fracture), with censoring; KM is standard nonparametric estimator for such data.  
+2) Groups are defined by restoration type at baseline (exposure), with no time-varying group assignment; KM/log-rank is valid for between-group comparisons under non-informative censoring.  
+
+Why it may not be appropriate:
+- KM assumes independent censoring and does not adjust for covariates; if groups differ substantially in prognostic factors, results are confounded.
+
+When NOT to use:
+- If event times are interval-censored or only known as “occurred sometime between visits” without approximated times (then use interval-censored methods).  
+- If there is heavy informative censoring (e.g., many extractions for reasons related to fracture risk) without appropriate modeling.
+
+Alternative if assumptions violated:
+- Use Cox proportional hazards model (possibly with time-dependent covariates or stratification) for adjusted comparison.  
+- Use parametric survival models (Weibull, log-logistic) if proportional hazards fails and parametric form is reasonable.
+
+A3. Log-rank test for group comparison
+
+Test / Method:
+- Log-rank test comparing survival distributions of DRC vs FCC.
+
+Purpose:
+- Test null hypothesis of no difference in survival experience between DRC and FCC.
+
+Why appropriate:
+1) Nonparametric test designed for comparing KM survival curves between groups.  
+2) Handles right-censored data and does not require distributional assumptions about survival times beyond equal hazards under H0.
+
+Why it may not be appropriate:
+- Assumes proportional hazards between groups over time; if hazards cross substantially, log-rank may miss differences or be misleading.
+
+When NOT to use:
+- When sample size in one group is very small with few events (e.g., 1 event in 106 FCC teeth, as in their data); p-values become unstable and test has low power.  
+- When proportional hazards strongly violated and time-varying effects are obvious.
+
+Alternative if assumptions violated:
+- Use Wilcoxon (Breslow) test if early differences are of main interest.  
+- Use time-varying Cox model or restricted mean survival time (RMST) comparisons.
+
+A4. Cox proportional hazards regression (univariable and multivariable)
+
+Test / Method:
+- Cox proportional hazards (PH) model.
+
+  Model 1 (unadjusted):  
+  - Outcome: time to unrestorable fracture.  
+  - Predictor: restoration type (DRC=ref, FCC).
+
+  Model 2 (adjusted):  
+  - Include clinically relevant covariates / potential confounders:
+    - Age, gender.
+    - Tooth type, location.
+    - Remaining cervical walls (categorical).
+    - Number of restorative surfaces (1–3 vs 4–5).
+    - Cervical dentin ratio (<1:1:1 vs ≥1:1:1).
+    - Posterior support (0/1/2).
+    - Adjacent teeth (0/1/2).
+    - Parafunction (yes/no).
+    - Post type, post length vs bone level (for FCC, but also consider full data with an appropriate coding).
+
+Purpose:
+- Estimate hazard ratios (HR) for unrestorable fracture associated with DRC vs FCC.  
+- Assess independent effects of predisposing factors while adjusting for confounders.
+
+Why appropriate:
+1) Standard multivariable method for time-to-event analysis in observational cohorts.  
+2) Handles censored data and allows inclusion of multiple covariates, enabling adjustment and identification of independent predictors.
+
+Why it may not be appropriate:
+- Assumes proportional hazards for each covariate; if violated, hazard ratios are not constant over time.  
+- With very low number of events (e.g., in FCC; 1 failure), model may be unstable, particularly for multi-parameter models.
+
+When NOT to use:
+- When the number of events is too small relative to number of predictors (rule-of-thumb: ~≥10 events per parameter; here events may be <25 total).  
+- When PH assumption is clearly violated and cannot be remedied with stratification or time-varying terms.
+
+Alternative if assumptions violated:
+- Use stratified Cox model (e.g., stratify by variables violating PH).  
+- Use parametric survival models (e.g., Weibull with AFT formulation).  
+- Use penalized Cox regression (Firth, ridge, LASSO) under small-event conditions.  
+- Use cause-specific modeling of the few predictors deemed most crucial; keep model parsimonious.
+
+A5. Chi-square or Fisher’s exact tests for baseline comparability
+
+Test / Method:
+- Chi-square test of independence or Fisher’s exact test (for small expected counts).
+
+Purpose:
+- Compare distributions of categorical covariates between DRC and FCC groups (e.g., tooth type, location, cervical walls, dentin ratio, parafunction).
+
+Why appropriate:
+1) Retrospective allocation (not randomized); assessing baseline imbalances is important to interpret confounding in the Cox models.  
+2) Helps demonstrate whether restoration type is preferentially chosen for more compromised teeth.
+
+Why it may not be appropriate:
+- Provides p-values but does not adjust for multiple covariates or account for clustering; significant differences do not automatically imply causation.
+
+When NOT to use:
+- When expected cell counts are very small (<5) in more than 20% of cells; Chi-square then invalid.
+
+Alternative if assumptions violated:
+- Use Fisher’s exact test for 2×2 or small tables.  
+- Use logistic regression with restoration type as outcome and covariates as predictors to model selection mechanisms more formally.
+
+A6. Assessment and reporting of follow-up time
+
+Method:
+- Summarize follow-up time distribution (median, IQR; min–max).  
+- Summarize number of events and censoring by group.
+
+Purpose:
+- Essential to interpret survival rates and hazard ratios; ensures that group differences are not due to strongly different follow-up durations.
+
+Why appropriate:
+1) Provides context for KM and Cox estimates; differences in censoring patterns can bias apparent survival.  
+2) Needed to understand event rate and justify model complexity.
+
+Why it may not be appropriate:
+- Not a hypothesis test; interpretive only.
+
+When NOT to use:
+- Always necessary.
+
+Alternative:
+- Graphical representation of number at risk over time (already present under KM).
+
+-----------------------------------
+CATEGORY B – RECOMMENDED ANALYSES
+-----------------------------------
+
+B1. Proportional hazards assumption diagnostics for Cox model
+
+Test / Method:
+- Schoenfeld residuals (global and covariate-specific tests).  
+- Log(-log) survival plots by covariate categories.  
+- Time-dependent covariate tests.
+
+Purpose:
+- Check PH assumption for Cox model; ensure HRs are valid across follow-up.
+
+Why appropriate:
+1) Cox model is central to analysis; verifying its assumptions is critical.  
+2) Provides insight into whether effect of restoration type or other risk factors changes over time.
+
+Why it may not be appropriate:
+- Requires enough events; with very few failures, tests may be underpowered or unstable.
+
+When NOT to use:
+- With extremely low number of events (e.g., <10 events total) where PH tests become uninformative.
+
+Alternative if assumptions violated:
+- Use stratified Cox (stratify by violating factor).  
+- Include time-by-covariate interaction (time-varying coefficients).  
+- Use parametric AFT models or RMST-based comparisons.
+
+B2. Univariable screening of predictors using log-rank or univariable Cox
+
+Test / Method:
+- For each categorical predictor (e.g., parafunction, posterior support, remaining walls): log-rank test and/or univariable Cox regression.  
+- For continuous predictors (e.g., age): univariable Cox.
+
+Purpose:
+- Identify potential predictors and covariates to include in multivariable Cox model.  
+- Explore relationship strength and direction for each factor.
+
+Why appropriate:
+1) Provides a structured approach to variable selection in the presence of limited events.  
+2) Helps avoid overfitting by focusing on predictors with at least moderate univariable associations plus clinical plausibility.
+
+Why it may not be appropriate:
+- Pure p-value–based variable selection risks omitting clinically important confounders and can introduce bias.
+
+When NOT to use:
+- Do not rely solely on univariable p-values to decide inclusion; always combine with clinical judgment.
+
+Alternative if assumptions violated:
+- Use penalized regression approaches (ridge, LASSO) if many correlated predictors and low event count.  
+- Use Bayesian modeling with informative priors.
+
+B3. Competing risks analysis (if applicable)
+
+Test / Method:
+- If there are competing events (e.g., extraction for non-fracture reasons, loss of tooth for periodontal/other reasons), use:
+  - Cumulative incidence function (CIF) for unrestorable fracture.  
+  - Fine–Gray subdistribution hazard model.
+
+Purpose:
+- Account for competing events that preclude occurrence of unrestorable fracture, providing a more realistic clinical estimate.
+
+Why appropriate:
+1) In endodontic/restorative follow-up, teeth may be lost for other reasons; standard KM treats these as censored and may overestimate fracture-free survival.  
+2) Competing risks models give directly interpretable absolute risks for the event of interest in presence of competing risks.
+
+Why it may not be appropriate:
+- Competing event data must be reliably coded; if not available, impossible.  
+- With very low number of events overall, splitting events into subtypes reduces power.
+
+When NOT to use:
+- When precise classification of competing vs primary event is not possible from records.  
+- When competing events are extremely rare or negligible.
+
+Alternative if assumptions violated:
+- If only simple description is feasible, present crude incidence of competing events and discuss limitations qualitatively.
+
+B4. Stratified analyses and effect modification
+
+Test / Method:
+- Stratified KM curves and log-rank tests (e.g., DRC vs FCC stratified by parafunction yes/no, or number of remaining cervical walls).  
+- Interaction terms in Cox model (e.g., restoration type × parafunction).
+
+Purpose:
+- Explore whether effect of restoration type differs across clinically relevant subgroups (effect modification).
+
+Why appropriate:
+1) Occlusal and structural factors could modify fracture risk; exploring interaction may guide clinical decisions (e.g., DRC adequate only when certain tooth structure present).  
+2) Stratified analyses can reveal patterns masked in overall results.
+
+Why it may not be appropriate:
+- Event numbers are very low, particularly in FCC; stratification and interaction testing can produce unstable estimates and wide CIs.
+
+When NOT to use:
+- Avoid extensive interaction modeling when events per cell or per interaction term are too few (e.g., <5 events per stratum).
+
+Alternative if assumptions violated:
+- Provide descriptive subgroup KM curves without formal hypothesis testing.  
+- Limit to one or two clinically strongest hypothesized interactions.
+
+B5. Sensitivity analyses for definition of “failure” or “survival”
+
+Test / Method:
+- Re-run survival analyses with:
+  - Outcome as any fracture (restorable + unrestorable).  
+  - Outcome including other clinically relevant failures (if recorded: e.g., post debond, restoration loss requiring retreatment).
+
+Purpose:
+- Assess robustness of conclusions to alternative clinical definitions of failure.
+
+Why appropriate:
+1) “Unrestorable fracture” is strict; using broader outcomes may increase events and allow more stable modeling.  
+2) Clinicians may be interested in overall structural failure, not only irreparable ones.
+
+Why it may not be appropriate:
+- Requires accurate separate recording of restorable vs unrestorable fractures and other failure modes; may not be consistently documented in retrospective charts.
+
+When NOT to use:
+- If classification is inconsistent or missing for many cases.
+
+Alternative:
+- At least report the proportion of total fractures that were unrestorable and the distribution by restoration type.
+
+B6. Model calibration and discrimination (if a risk prediction model is developed)
+
+Test / Method:
+- Harrell’s C-index for discrimination.  
+- Calibration plots (predicted vs observed risk at fixed time).  
+- Bootstrap internal validation.
+
+Purpose:
+- If the study aims to produce a risk prediction equation for unrestorable fracture, evaluate its performance.
+
+Why appropriate:
+1) Provides evidence that a multi-factor model meaningfully distinguishes high vs low risk teeth.  
+2) Assesses overfitting and generalizability.
+
+Why it may not be appropriate:
+- With few events and moderate sample size, predictive modeling may be unstable; CIs for C-index wide.
+
+When NOT to use:
+- When the analysis aims only to estimate associations, not to build a predictive tool.  
+- When events per predictor are too low.
+
+Alternative:
+- Focus on simple risk groups (low vs high risk) defined by key predictors and present KM curves by risk group.
+
+-----------------------------------
+CATEGORY C – OPTIONAL ANALYSES
+-----------------------------------
+
+C1. Parametric survival models (Weibull, log-normal, log-logistic)
+
+Test / Method:
+- Fit parametric survival models (e.g., Weibull) with restoration type and key predictors.
+
+Purpose:
+- Provide estimates of time ratios (AFT models) or HRs under parametric assumptions, and potentially more efficient estimates.
+
+Why appropriate:
+1) If shape of hazard over time is interpretable and approximated by a known distribution, parametric models can increase precision.  
+2) Can easily generate predicted survival functions and median survival times by covariate pattern.
+
+Why it may not be appropriate:
+- Requires correct specification of survival distribution; mis-specification can bias results.  
+- With few events, complex parametric models may be unstable.
+
+When NOT to use:
+- When hazard function shape is unclear or inconsistent with model assumptions.
+
+Alternative:
+- Stick with Cox PH and KM.
+
+C2. Restricted mean survival time (RMST) comparisons
+
+Test / Method:
+- Compare RMST up to a pre-specified time horizon (e.g., 60 or 84 months) between DRC and FCC.
+
+Purpose:
+- Provide interpretable measure: average event-free time difference over a fixed period, not relying heavily on PH assumption.
+
+Why appropriate:
+1) RMST is robust when PH is questionable, and easy to interpret clinically (e.g., “DRC teeth lost on average X months of fracture-free time compared to FCC over 5 years”).  
+2) Handles right-censored data well.
+
+Why it may not be appropriate:
+- Requires choice of truncation time; results can depend on that choice.  
+- Implementation may be less familiar to readers.
+
+When NOT to use:
+- When follow-up is very heterogeneous and too few at risk at the chosen truncation time.
+
+Alternative:
+- Time-varying Cox or stratified survival curves.
+
+C3. Multi-state modeling (if multiple states recorded)
+
+Test / Method:
+- Multi-state Markov or semi-Markov models (e.g., state: intact → restorable fracture → unrestorable fracture).
+
+Purpose:
+- Model transitions between states if both restorable and unrestorable fractures are observed and well-documented.
+
+Why appropriate:
+1) Clarifies pathways to ultimate tooth loss.  
+2) Allows estimation of transition-specific hazards.
+
+Why it may not be appropriate:
+- Likely too complex for current data; requires reliable timing and classification of intermediate events.
+
+When NOT to use:
+- With limited and/or poorly coded intermediate states and few events.
+
+Alternative:
+- Simple competing risks or separate analyses for distinct event types.
+
+C4. Clustered data methods (frailty models or robust SEs)
+
+Test / Method:
+- Robust sandwich variance (cluster on patient ID) or shared frailty Cox model.
+
+Purpose:
+- Account for possible clustering if some patients contribute multiple teeth.
+
+Why appropriate:
+1) Teeth in the same patient may share unmeasured risk factors; independence assumption violated.  
+2) Adjusts standard errors and confidence intervals for intra-patient correlation.
+
+Why it may not be appropriate:
+- Requires patient-level identifiers and enough clusters (patients) with multiple teeth.
+
+When NOT to use:
+- If each patient contributes only one tooth or if clustering is negligible.
+
+Alternative:
+- If patient-level data not available, acknowledge potential clustering as limitation.
+
+C5. Exploratory logistic regression on binary outcome (ever fractured or not)
+
+Test / Method:
+- Logistic regression of unrestorable fracture (yes/no) ignoring time, for sensitivity or when time not reliably measured.
+
+Purpose:
+- Provide simpler estimates of odds ratios for fracture risk factors when survival data are incomplete.
+
+Why appropriate:
+1) More straightforward with limited follow-up detail.  
+2) May be used as supplementary check or if time to event is measured with error.
+
+Why it may not be appropriate:
+- Discards time information; biases if follow-up duration differs between groups.  
+- Overestimates risk ratios when events are not rare (here events are rare, so less of a concern).
+
+When NOT to use:
+- As primary analysis in time-to-event setting with adequate survival data.
+
+Alternative:
+- Cox PH or KM, as per Category A.
+
+---
+
+TASK 3 – INAPPROPRIATE TESTS AND WHY
+
+1. Student’s t-test / ANOVA comparing mean “survival time” without censoring
+- Why inappropriate:
+  - Survival time is right-censored; standard t-test/ANOVA assumes complete data and normal distribution of outcomes.  
+  - Censoring will bias mean comparisons and invalidate inference.
+- Proper alternative:
+  - KM survival analysis and log-rank test; Cox PH model; RMST.
+
+2. Simple chi-square test comparing proportion “fractured” vs “not fractured” without accounting for follow-up time
+- Why inappropriate:
+  - Ignores different follow-up durations between teeth; teeth followed longer naturally accumulate more failures.  
+  - Risk estimates biased if DRC vs FCC have different follow-up distributions or censoring patterns.
+- Proper alternative:
+  - KM/log-rank or Cox PH using time-to-event data.
+
+3. Paired tests (paired t-test, McNemar’s test) treating teeth within same patient as paired observations
+- Why inappropriate:
+  - Teeth are not necessarily paired by design; many patients may have only one tooth.  
+  - Pairing assumptions not met; mis-specified data structure.
+- Proper alternative:
+  - Use robust SEs or frailty models if clustering by patient is to be addressed.
+
+4. Repeated measures ANOVA / linear mixed models for survival time
+- Why inappropriate:
+  - Outcome is time-to-event, not repeated continuous measures over time; structure and distribution assumptions violated.
+- Proper alternative:
+  - Survival analysis methods (KM, Cox, parametric survival).
+
+5. Pearson correlation between continuous predictors and “survival time”
+- Why inappropriate:
+  - Censored outcome; standard correlation mis-handles censored observations and is biased.
+- Proper alternative:
+  - Use survival regression (Cox or parametric) including continuous predictors appropriately.
+
+6. Non-time-aware logistic regression as the primary method
+- Why inappropriate:
+  - If used as primary method, it ignores differential follow-up; cannot distinguish between early and late failures.  
+  - Odds ratios may misrepresent relative hazard over time.
+- Proper alternative:
+  - Use Cox PH for primary time-to-event analysis; logistic can be reported only as a supplementary sensitivity analysis.
+
+---
+
+TASK 4 – SUMMARY OF OVERALL ANALYTICAL APPROACH
+
+- The study is a retrospective cohort with a time-to-event outcome (unrestorable fracture of anterior ETT) and right-censoring. The central analytical framework must therefore be survival analysis.
+- Core analyses:
+  - Use Kaplan–Meier curves and log-rank tests to compare fracture-free survival of DRC vs FCC, and to report cumulative survival rates over time.  
+  - Apply Cox proportional hazards regression to estimate hazard ratios for DRC vs FCC and to identify independent predisposing factors (structural, occlusal, and patient-related), adjusting for confounders.
+- Supporting analyses:
+  - Descriptive statistics to characterize groups and check baseline imbalances.  
+  - Diagnostics for PH assumption and sensitivity analyses (e.g., competing risks if other causes of tooth loss are frequent, alternative definitions of failure).
+- Optional analyses:
+  - Parametric survival models, RMST differences, and consideration of clustering by patient to refine interpretation where feasible.
+
+This approach uses methods specifically designed for censored time-to-event data, respects the observational nature of the retrospective cohort, adjusts for key confounders, and directly addresses both study aims: comparison of survival between coronal restoration types and identification of predisposing factors to unrestorable fracture.

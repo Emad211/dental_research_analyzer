@@ -1,0 +1,248 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+applied sciences
+MDPI
+
+Article
+Factors Affecting the Outcome of Periapical Surgery; a Prospective Longitudinal Clinical Study
+
+Muhammad Adeel Ahmed 1,2,*, Nouman Mughal 3,4, Syed Hani Abidi 4, Muhammad Furqan Bari 5, Mohammed Mustafa 6, Fahim Vohra 7,8 and Ali Alrahlah 8,9
+
+1 Department of Operative Dentistry and Institute of Biomedical Sciences, Dow University of Health Sciences, Karachi 74200, Pakistan
+2 Department of Restorative Dentistry and Endodontics, College of Dentistry, King Faisal University, Al-Ahsa 31982, Saudi Arabia
+3 Department of Surgery, Aga Khan University, Karachi 74800, Pakistan; muhammad.nouman@aku.edu
+4 Department of Biological and Biomedical Sciences, Aga Khan University, Karachi 74800, Pakistan; m.haniabidi@gmail.com
+5 Department of Pathology, Dr. Ishrat-ul-Ebad Khan Institute of Oral Health Sciences, Dow University of Health Sciences, Karachi 74200, Pakistan; bari.m.f@gmail.com
+6 Department of Conservative Dental Sciences, College of Dentistry, Prince Sattam Bin Abdulaziz University, Al-Kharj 11942, Saudi Arabia; ma.mustafa@psau.edu.sa
+7 Department of Prosthetic Dental Science, College of Dentistry, King Saud University, Riyadh 11545, Saudi Arabia; fvohra@ksu.edu.sa
+8 Engineer Abdullah Bugshan Research Chair for Dental and Oral Rehabilitation (Department), College of Dentistry, King Saud University, Riyadh 11545, Saudi Arabia; aalrahlah@ksu.edu.sa
+9 Department of Restorative Dentistry—Operative Division, College of Dentistry, King Saud University, Riyadh 11545, Saudi Arabia
+* Correspondence: mshakeel@kfu.edu.sa; Tel.: +96-65-8167-4914
+
+check for updates
+
+Citation: Ahmed, M.A.; Mughal, N.; Abidi, S.H.; Bari, M.F.; Mustafa, M.; Vohra, F.; Alrahlah, A. Factors Affecting the Outcome of Periapical Surgery; a Prospective Longitudinal Clinical Study. Appl. Sci. 2021, 11, 11768. https://doi.org/10.3390/app112411768
+
+Academic Editor: Gianrico Spagnuolo
+
+Received: 23 August 2021
+Accepted: 22 November 2021
+Published: 10 December 2021
+
+Publisher’s Note: MDPI stays neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+CC BY
+
+Copyright: © 2021 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (https://creativecommons.org/licenses/by/4.0/).
+
+Keywords: periapical surgery; surgical endodontic treatment; preoperative factors; prospective study
+
+1. Introduction
+The treatment of choice for symptomatic, persistent or enlarging periapical lesion after conventional re-root canal treatment is surgical endodontic treatment, which is aimed at resecting the root end and then creating a barrier at the apical end of the root with an inert material [1–3]. The goal of this treatment protocol is to salvage the tooth and prevent it
+
+Appl. Sci. 2021, 11, 11768. https://doi.org/10.3390/app112411768
+https://www.mdpi.com/journal/applsci
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+Appl. Sci. 2021, 11, 11768                                                                                                                                  2 of 11
+
+from further damage by limiting the entry of microbes and their byproducts into the canal system, thus promoting the health of the tooth.
+The success of surgical endodontic treatment mainly relies on the absence of clinical signs and symptoms and radiographic resolution of periapical lesions. Studies have shown that multiple factors may influence the outcome of periapical surgery such as age, gender, smoking, type of root-end filling material, size of the preoperative periapical lesion, and the presence of pretreatment signs and symptoms [3,4].
+Smoking is considered one of the risk factors that can impede periapical healing. Smoking disturbs healing by limiting the supply of oxygenated blood and nutrients to the periapical area [5]. This in turn makes periapical tissue more susceptible to bacterial infection [6]. Additionally, it alters the synthesis of collagen, expedites bone loss, and interferes in the tissue repair process around the periapical area [7,8]. Furthermore, smokers have restricted defense mechanisms due to the deficiency of several immunological factors such as Tumor necrosis factor alpha (TNF-α) and Human beta defensin-2 (hBD-2) [9].
+There have been numerous studies investigating the size of preoperative periapical lesions with periapical wound healing. It was observed that fibroblasts proliferate into a large bony defect after periapical surgery and form scar tissues instead of allowing osteoblasts for osseous regeneration [10], which in turn disrupts healing. However, the involvement of several molecular and cellular factors makes it more intricate [11]. Few studies have reported a better healing outcome with smaller lesions [3,12,13] while others find no statistically significant difference in outcome in relation to the size of periapical lesions [14,15].
+The presence of preoperative signs and symptoms indicates the acute stage of periapical lesion. Acute lesions usually present with pain and swelling while chronic lesions are usually asymptomatic with or without the presence of sinus tract. A consensus has been observed that the presence of preoperative clinical signs and symptoms do not significantly influence postoperative healing [16,17] however, vice versa has also been reported in some studies [3,18].
+In light of conflicting evidence and lack of prospective studies regarding the factors that determine the successful outcome, the current study was designed to evaluate the various preoperative factors affecting the outcome of surgical endodontic treatment.
+
+2. Materials and Methods
+2.1. Study Setting and Ethical Approval
+This study was conducted at the Department of Operative Dentistry in collaboration with the Institute of Biomedical Sciences, Dow University of Health Sciences, Karachi from July 2017 to December 2018 after obtaining ethical approval (IRB-862/DUHS/Approval/2017/50) from Institutional Review Board, Dow University of Health Sciences. All the recommendations of the Helsinki Declaration and its later amendments were strictly followed.
+
+2.2. Inclusion and Exclusion Criteria
+Initially, 52 patients aged between 15–57 years who presented with chronic apical periodontitis of single-rooted anterior teeth, characterized radiographically as radiolucency greater than 4 mm around the root apex with loss of lamina dura and periodontal ligament space due to incompletely attempted or previously failed root canal treatment or periapical lesion around an open root apex in the tooth, where root formation was halted prematurely due to trauma, were enrolled in this study. Medically compromised patients with any uncontrolled systemic disease (ASA III), patients with pre-existing periodontal disease or patients in whom the lesion was smaller than 4 mm, multirooted teeth, teeth with cracks and root fractures, pregnant or lactating women and patients who did not turn up for follow-up visits were excluded from this study.
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+Appl. Sci. 2021, 11, 11768
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+Appl. Sci. 2021, 11, 11768
+4 of 11
+
+Potentially eligible patients for conventional re-root canal treatment and periapical surgery (n=52)
+
+History, examination, and investigation were performed to ascertain the presence of certain preoperative factors
+
+Preoperative digital radiographs using the parallel technique were taken with cone indicator and reference marker placed on the radiographic sensor
+
+Conventional re-root canal treatment was performed
+
+All patients were recalled after 3 to 6 months for periapical healing evaluation
+
+Patients excluded (n =12)
+Sign and symptoms disappeared and periapical lesion healed after conventional re-root canal treatment (n=7)
+Loss of follow up (n=5)
+
+Eligible patients for periapical surgery (n=40)
+
+Periapical surgery performed (n=40)
+
+All patients were recalled after 6 and 12 months. Periapical healing was evaluated based on clinical and radiographic parameters
+
+Clinical Parameters: Presence or absence of pain, swelling, sinus tract, tenderness to palpation, tenderness to percussion, mobility and discoloration
+
+Radiographic healing was assessed using Periapical Index (PAI)
+
+Figure 1. Flowchart of Methodology.
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+Appl. Sci. 2021, 11, 11768
+5 of 11
+
+Figure 2. A full-thickness mucoperiosteal flap was reflected and the window was created around the
+periapical area of teeth 11 and 21.
+
+Figure 3. Retrograde cavity preparation was performed by zirconia-coated ultrasonic tip used for
+periapical surgery.
+
+Figure 4. The retrograde filling was performed by MTA.
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+Appl. Sci. 2021, 11, 11768
+6 of 11
+
+A B C
+
+Figure 5. (A). Immediate postoperative periapical radiograph showing periapical radiolucency around the apex of Tooth 12. (B). Periapical radiolucency decreased in six months. (C). Complete resolution of periapical radiolucency in one year.
+
+L
+,
+.
+-
+.
+
+)
+)
+,
+.
+!
+,
+
+.
+
+.
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+Appl. Sci. 2021, 11, 11768                                                                                                                            7 of 11
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+```
+Appl. Sci. 2021, 11, 11768
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+Appl. Sci. 2021, 11, 11768
+9 of 11
+
+5. Conclusions
+Patient age, smoking status, and size of the preoperative lesion had a strong influence on periapical healing after surgical endodontic treatment. However, other perioperative (treatment-related) factors should also be taken into account to establish conclusive evidence.
+
+Author Contributions: Conceptualization, M.A.A., N.M. and S.H.A.; methodology, M.A.A.; software, M.A.A.; validation, F.V., M.M., A.A. and M.F.B.; formal analysis, M.A.A.; investigation, M.A.A. and A.A.; resources, N.M. and S.H.A.; data curation, M.F.B.; writing—original draft preparation, M.A.A. and A.A.; writing—review and editing, M.A.A., F.V., M.M., A.A. and S.H.A.; visualization, N.M.; supervision, N.M., S.H.A. and M.F.B.; project administration, M.A.A. and A.A.; funding acquisition, M.A.A. All authors have read and agreed to the published version of the manuscript.
+
+Funding: The authors are grateful to the Deanship of Scientific Research, King Saud University for supporting through Vice Deanship of Scientific Research Chairs, Engr. Abdullah Bugshan research chair for Dental and Oral Rehabilitation.
+
+Institutional Review Board Statement: The study was conducted according to the guidelines of the Declaration of Helsinki, and approved by the Institutional Review Board, Dow University of Health Sciences (IRB-862/DUHS/Approval/2017/50) on 10 July 2017.
+
+Informed Consent Statement: Informed consent was obtained from all subjects involved in the study.
+
+Data Availability Statement: The data presented in this study are available on request from the corresponding author. The data are not publicly available due to ethical concerns.
+
+Conflicts of Interest: The authors declare no conflict of interest.
+
+════════════════════════════════════════════════════════════
+PAGE 10
+════════════════════════════════════════════════════════════
+Appl. Sci. 2021, 11, 11768
+10 of 11
+
+References
+1. Schilder, H.; Hargreaves, K.M. Filling root canals in three dimensions. J. Endod. 2006, 32, 281–290. [CrossRef]
+2. Alghamdi, F.; Alhaddad, A.J.; Abuzinadah, S. Healing of Periapical Lesions After Surgical Endodontic Retreatment: A Systematic Review. Cureus 2020, 12, e6916. [CrossRef]
+3. Ahmed, M.A.; Anwar, M.F.; Ahmed, K.; Aftab, M.; Nazim, F.; Bari, M.F.; Mustafa, M.; Vohra, F.; Alrahlah, A.; Mughal, N.; et al. Baseline MMP expression in periapical granuloma and its relationship with periapical wound healing after surgical endodontic treatment. BMC Oral Health 2021, 21, 562. [CrossRef] [PubMed]
+4. Serrano-Giménez, M.; Sánchez-Torres, A.; Gay-Escoda, C. Prognostic factors on periapical surgery: A systematic review. Med. Oral Patol. Oral Cir. Bucal 2015, 20, e715–e722. [CrossRef]
+5. Segura-Egea, J.J.; Martín-González, J.; Castellanos-Cosano, L. Endodontic medicine: Connections between apical periodontitis and systemic diseases. Int. Endod. J. 2015, 48, 933–951. [CrossRef] [PubMed]
+6. Krall, E.A.; Sosa, C.A.; Garcia, C.; Nunn, M.E.; Caplan, D.J.; Garcia, R.I. Cigarette smoking increases the risk of root canal treatment. J. Dent. Res. 2006, 85, 313–317. [CrossRef]
+7. Peršić Bukmir, R.; Jurčević Grgić, M.; Brumini, G.; Spalj, S.; Pezelj-Ribaric, S.; Brekalo Pršo, I. Influence of tobacco smoking on dental periapical condition in a sample of Croatian adults. Wien. Klin. Wochenschr. 2016, 128, 260–265. [CrossRef]
+8. López-López, J.; Jané-Salas, E.; Martín-González, J.; Castellanos-Cosano, L.; Llamas-Carreras, J.M.; Velasco-Ortega, E.; Segura-Egea, J.J. Tobacco smoking and radiographic periapical status: A retrospective case-control study. J. Endod. 2012, 38, 584–588. [CrossRef]
+9. Ghattas Ayoub, C.; Aminoshariae, A.; Bakkar, M.; Ghosh, S.; Bonfield, T.; Demko, C.; Montagnese, T.A.; Mickel, A.K. Comparison of IL-1β, TNF-α, hBD-2, and hBD-3 Expression in the Dental Pulp of Smokers Versus Nonsmokers. J. Endod. 2017, 43, 2009–2013. [CrossRef]
+10. Melcher, A.H. On the Repair Potential of Periodontal Tissues. J. Periodontol. 1976, 47, 256–260. [CrossRef]
+11. Lin, L.; Chen, M.Y.H.; Ricucci, D.; Rosenberg, P.A. Guided Tissue Regeneration in Periapical Surgery. J. Endod. 2010, 36, 618–625. [CrossRef] [PubMed]
+12. Von Arx, T.; Jensen, S.S.; Hänni, S.; Friedman, S. Five-year longitudinal assessment of the prognosis of apical microsurgery. J. Endod. 2012, 38, 570–579. [CrossRef] [PubMed]
+13. Çalışkan, M.K.; Tekin, U.; Kaval, M.E.; Solmaz, M.C. The outcome of apical microsurgery using MTA as the root-end filling material: 2- to 6-year follow-up study. Int. Endod. J. 2016, 49, 245–254. [CrossRef] [PubMed]
+14. Shinbori, N.; Grama, A.M.; Patel, Y.; Woodmansey, K.; He, J. Clinical Outcome of Endodontic Microsurgery That Uses EndoSequence BC Root Repair Material as the Root-end Filling Material. J. Endod. 2015, 41, 607–612. [CrossRef]
+15. Lui, J.N.; Khin, M.M.; Krishnaswamy, G.; Chen, N.N. Prognostic factors relating to the outcome of endodontic microsurgery. J. Endod. 2014, 40, 1071–1076. [CrossRef]
+16. Lustmann, J.; Friedman, S.; Shaharabany, V. Relation of pre- and intraoperative factors to prognosis of posterior apical surgery. J. Endod. 1991, 17, 239–241. [CrossRef]
+17. Allen, R.K.; Newton, C.W.; Brown, C.E. A statistical analysis of surgical and nonsurgical endodontic retreatment cases. J. Endod. 1989, 15, 261–266. [CrossRef]
+18. Rahbaran, S.; Gilthorpe, M.S.; Harrison, S.D.; Gulabivala, K. Comparison of clinical outcome of periapical surgery in endodontic and oral surgery units of a teaching dental hospital: A retrospective study. Oral Surg. Oral Med. Oral Pathol. Oral Radiol. Endodontology 2001, 91, 700–709. [CrossRef]
+19. Kruse, C.; Spin-Neto, R.; Christiansen, R.; Wenzel, A.; Kirkevang, L.L. Periapical Bone Healing after Apicectomy with and without Retrograde Root Filling with Mineral Trioxide Aggregate: A 6-year Follow-up of a Randomized Controlled Trial. J. Endod. 2016, 42, 533–537. [CrossRef]
+20. Von Arx, T.; Peñarrocha, M.; Jensen, S. Prognostic factors in apical surgery with root-end filling: A meta-analysis. J. Endod. 2010, 36, 957–973. [CrossRef]
+21. Martins, C.M.; Sasaki, H.; Hirai, K.; Andrada, A.C.; Gomes-Filho, J.E. Relationship between hypertension and periapical lesion: An in vitro and in vivo study. Braz. Oral Res. 2016, 30, e78. [CrossRef] [PubMed]
+22. Kreisler, M.; Gockel, R.; Aubell-Falkenberg, S.; Kreisler, T.; Weihe, C.; Filippi, A.; Kühl, S.; Schütz, S.; D’Hoedt, B. Clinical outcome in periradicular surgery: Effect of patient- and tooth-related factors—A multicenter study. Quintessence Int. 2013, 44, 53–60.
+23. Barone, C.; Dao, T.T.; Basrani, B.B.; Wang, N.; Friedman, S. Treatment Outcome in Endodontics: The Toronto Study-Phases 3, 4, and 5: Apical Surgery. J. Endod. 2010, 36, 28–35. [CrossRef]
+24. Zuolo, M.L.; Ferreira, M.O.F.; Gutmann, J.L. Prognosis in periradicular surgery: A clinical prospective study. Int. Endod. J. 2000, 33, 91–98. [CrossRef]
+25. Wesson, C.M.; Gale, T.M. Molar apicectomy with amalgam root-end filling: Results of a prospective study in two district general hospitals. Br. Dent. J. 2003, 195, 707–714. [CrossRef] [PubMed]
+26. Peñarrocha-Diago, M.; Ortega-Sánchez, B.; García-Mira, B.; Maestre-Ferrín, L.; Peñarrocha-Oltra, D.; Gay-Escoda, C. A prospective clinical study of polycarboxylate cement in periapical surgery. Med. Oral Patol. Oral Cir. Bucal 2012, 17, 276–280. [CrossRef] [PubMed]
+27. Johnson, G.K.; Guthmiller, J.M. The impact of cigarette smoking on periodontal disease and treatment. Periodontol. 2000 2007, 44, 178–194. [CrossRef]
+
+════════════════════════════════════════════════════════════
+PAGE 11
+════════════════════════════════════════════════════════════
+Appl. Sci. 2021, 11, 11768
+11 of 11
+
+28. Cabanillas-balsera, D.; Segura-Egea, J.J.; Bermudo-fuenmayor, M.; Martín-gonzález, J.; Jiménez-sánchez, M.C.; Areal-quecuty,
+V.; Sánchez-domínguez, B.; Montero-miralles, P.; Velasco-Ortega, E. Smoking and Radiolucent Periapical Lesions in Root Filled
+Teeth: Systematic Review and Meta-Analysis. J. Clin. Med. 2020, 9, 3506. [CrossRef]
+29. Bergström, J.; Babcan, J.; Eliasson, S. Tobacco smoking and dental periapical condition. Eur. J. Oral Sci. 2004, 112, 115–120.
+30. Krall, E.A.; Sosa, C.A.; Garcia, C.; Nunn, M.E.; Caplan, D.J.; Garcia, R.I. Cigarette smoking is associated with an acute impairment
+of microvascular function in humans. Clin. Sci. 2003, 104, 247–252.
+31. Kirkevang, L.L.; Wenzel, A. Risk indicators for apical periodontitis. Community Dent. Oral Epidemiol. 2003, 31, 59–67. [CrossRef]
+32. Rodriguez, F.R.; Taner, B.; Weiger, R.; Walter, C. Is smoking a predictor of apical periodontitis? Clin. Oral Investig. 2013, 17,
+1947–1955. [CrossRef]
+33. Balto, H.A.; Alabdulaaly, L.; Bahammam, S.; Al-Ekrish, A.A. Comparative analysis of prevalence of apical periodontitis in
+smokers and non-smokers using cone-beam computed tomography. Saudi Dent. J. 2019, 31, 52–57. [CrossRef] [PubMed]
+34. Song, M.; Jung, I.Y.; Lee, S.J.; Lee, C.Y.; Kim, E. Prognostic factors for clinical outcomes in endodontic microsurgery: A retrospective
+study. J. Endod. 2011, 37, 927–933. [CrossRef] [PubMed]
+35. Peñarrocha Diago, M.; Ortega Sánchez, B.; García Mira, B.; Martí Bowen, E.; Von Arx, T.; Gay Escoda, C. Evaluation of healing
+criteria for success after periapical surgery. Med. Oral Patol. Oral Cir. Bucal 2008, 13, 143–147.
+36. Segura-Egea, J.J.; Martín-González, J.; Cabanillas-Balsera, D.; Fouad, A.F.; Velasco-Ortega, E.; López-López, J. Association between
+diabetes and the prevalence of radiolucent periapical lesions in root-filled teeth: Systematic review and meta-analysis. Clin. Oral
+Investig. 2016, 20, 1133–1141. [CrossRef]
+37. Hsiao, A.; Glickman, G.; He, J. A retrospective clinical and radiographic study on healing of periradicular lesions in patients
+taking oral bisphosphonates. J. Endod. 2009, 35, 1525–1528. [CrossRef] [PubMed]
+38. Tortorici, S.; Difalco, P.; Caradonna, L.; Tetè, S. Traditional endodontic surgery versus modern technique: A 5-year controlled
+clinical trial. J. Craniofac. Surg. 2014, 25, 804–807. [CrossRef]
+39. Setzer, F.C.; Shah, S.B.; Kohli, M.R.; Karabucak, B.; Kim, S. Outcome of endodontic surgery: A meta-analysis of the literature—part
+1: Comparison of traditional root-end surgery and endodontic microsurgery. J. Endod. 2010, 36, 1757–1765. [CrossRef]
+40. Abdinian, M.; Katiraei, M.; Zahedi, H.; Rengo, C.; Soltani, P.; Spagnuolo, G. Age Estimation Based on Pulp–Tooth Volume Ratio
+of Anterior Teeth in Cone-Beam Computed Tomographic Images in a Selected Population: A Cross-Sectional Study. Appl. Sci.
+2021, 11, 9984. [CrossRef]
+41. Lowe, D.; Rogers, S. University of Washington Quality of Life Questionnaire (UW-QOL v4 and v4.1). Available online: http:
+//www.headandneckcancer.co.uk/sites/default/files/assets/pages/UW-QOL-update-2018.pdf (accessed on 10 June 2021).
+42. Soltani, P.; Sami, S.; Yaghini, J.; Golkar, E.; Riccitiello, F.; Spagnuolo, G. Application of Fractal Analysis in Detecting Trabecular
+Bone Changes in Periapical Radiograph of Patients with Periodontitis. Int. J. Dent. 2021, 7, 3221448. [CrossRef] [PubMed]

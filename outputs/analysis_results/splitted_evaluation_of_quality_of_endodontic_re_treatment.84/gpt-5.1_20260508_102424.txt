@@ -1,0 +1,447 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_evaluation_of_quality_of_endodontic_re_treatment.84.pdf
+Status : ok
+Time   : 20260508_102424
+══════════════════════════════════════════════════════════════════════
+
+TASK 1: INFORMATION EXTRACTION  
+==============================
+
+Study design
+- Type: Retrospective radiographic study.
+- Setting: Department of Endodontics, University of Sharjah (postgraduate/specialist clinic).
+- Time frame: Not stated; baseline and 6‑month follow-up radiographs were used.
+- Unit of analysis: Individual root‑treated teeth (or roots) represented by intraoral periapical radiographs (IOPARs); 238 radiographs of failed endodontic treatment.
+- Population: Teeth with previously failed root canal treatment (RCT) that underwent endodontic re‑treatment in this department.
+- Ethical approval: Obtained from institutional ethics committee.
+
+Study objective
+- To assess the quality of root canal (RC) filling before and after RC re‑treatment.
+- To evaluate changes in periapical status (periapical health vs apical periodontitis) from baseline to 6‑month follow‑up.
+
+Eligibility / selection
+- Included:  
+  - Digital intraoral periapical radiographs (IOPARs) of failed endodontic treatment that subsequently had re‑treatment, with:
+    - Baseline radiograph (before or immediately after re‑treatment) and
+    - Follow‑up radiograph at 6 months.
+- Excluded:  
+  - Radiographs of poor quality, nondiagnostic radiographs, and films with radiographic errors.
+
+Imaging and measurement methods
+- Radiographic equipment:
+  - Digital IOPARs taken with Schick sensor.
+  - Gnatus intraoral radiographic unit: 72 kVp, 8 mA, exposure time 0.30–0.50 s.
+  - Rinn XCP holder used to standardize sensor positioning.
+- Outcomes assessed on radiographs:
+  1. Periapical status
+     - Evaluated using Periapical Index (PAI) scoring system.
+     - Original scale: 1 to 5 (standard PAI typically 1–5; the text inconsistently mentions 0–5 but clearly states 1–5 earlier).
+     - In this study:
+       - Dichotomization:  
+         - PAI < 3 → absence of periapical lesion (periapical health / no AP).  
+         - PAI > 3 → presence of periapical lesion (apical periodontitis).  
+       - Additionally, they mention that score 0 indicated absence and 1 presence of pathology, but within the same paragraph they define PAI <3 vs >3; for practical purposes, PAI category is the main outcome and may be analyzed:
+         - As ordinal (1–5) and/or as binary (lesion present vs absent).
+     - Time points:
+       - Baseline radiograph.
+       - Follow‑up radiograph at 6 months.
+     - Key derived variables:
+       - Change in PAI score (continuous/ordinal difference).
+       - Change in periapical status (e.g., diseased → healed, diseased → unchanged/worsened).
+  2. Quality of root canal filling
+     - Evaluation criteria:
+       - Density of the filling.
+       - Distance between the end of filling and radiographic apex (length).
+       - Presence/absence of voids.
+       - Condensation / homogeneity of the filling material.
+     - Scoring:
+       - 6‑point scale (1–6) based on Unal et al. (2011).
+       - “Adequate” RCT defined as:
+         - Acceptable filling length and
+         - Homogenous root filling (no voids, good condensation).
+       - Thus two representations:
+         - Ordinal categorical score (1–6).
+         - Binary quality classification: adequate vs inadequate.
+     - Time points:
+       - Before re‑treatment (quality of previous RCT).
+       - After re‑treatment (quality of re‑treatment).
+- Data structure:
+  - Paired observations for each tooth:
+    - Baseline PAI and post‑re‑treatment PAI (6 months).
+    - Baseline quality score (1–6) and post‑re‑treatment quality score (1–6).
+    - Baseline adequacy (adequate/inadequate) and post‑re‑treatment adequacy (adequate/inadequate).
+
+Other potential variables (not clearly given but may be present in full article)
+- Tooth‑level covariates (likely but not specified here):
+  - Tooth type (incisor/canine/premolar/molar; maxillary vs mandibular).
+  - Number of roots/canals.
+  - Patient demographics (age, sex) – only age mentioned partially (“females were 40.5 years”).
+- Follow‑up duration:
+  - Nominally 6 months for all.
+
+Key comparisons / implied study questions
+- Within‑tooth change in periapical status after re‑treatment:
+  - Proportion with AP at baseline vs at 6 months.
+  - Distribution of PAI scores before vs after re‑treatment.
+- Within‑tooth change in root filling quality:
+  - Quality score (1–6) before vs after re‑treatment.
+  - Proportion of “adequate” fillings before vs after re‑treatment.
+- Association between quality of re‑treatment and periapical outcome:
+  - Whether adequate post‑treatment quality is associated with absence (or improvement) of AP at 6 months.
+- Descriptive epidemiology:
+  - Prevalence of AP among re‑treated teeth at baseline and follow‑up.
+  - Distribution of quality categories in baseline vs post‑re‑treatment.
+
+TASK 2: STATISTICAL ANALYSIS PLAN  
+=================================
+
+General analysis principles
+- Level of analysis: tooth / root (depending on how PAI and filling quality are defined; assume tooth).
+- Data type summary:
+  - PAI score: ordinal (1–5); can be dichotomized.
+  - Presence of AP: binary.
+  - Filling quality score: ordinal (1–6); can be dichotomized as adequate/inadequate.
+- Primary interest: paired comparisons (baseline vs follow‑up); association between quality and outcome.
+- Significance level: α = 0.05 (two‑sided), with confidence intervals (95%) for key estimates.
+- Software: any standard statistical package (SPSS, R, Stata, SAS).
+
+Assumptions to check before specific tests:
+- Independence of observations:
+  - Ideally one tooth per patient, or account for clustering if multiple teeth per patient are present (not stated).
+- Distribution and scale:
+  - PAI and quality scores: ordinal → avoid treating as continuous without careful justification.
+- Expected cell counts:
+  - For chi‑square–type tests, ensure expected counts ≥ 5.
+
+CATEGORY A – MANDATORY ANALYSES  
+--------------------------------
+
+1. Descriptive statistics for all key variables
+- Purpose:
+  - To summarize the distribution of periapical status and filling quality at baseline and follow‑up.
+- Approach:
+  - Categorical/ordinal variables:
+    - Counts and percentages for each PAI category (1–5) at baseline and follow‑up.
+    - Counts and percentages for filling quality score (1–6) at baseline and follow‑up.
+    - Prevalence of AP (yes/no) at each time point.
+    - Proportion of adequate vs inadequate RCT at each time point.
+  - Continuous/ordinal as numeric summaries (if treated as numeric):
+    - Median (IQR) and possibly mean (SD) PAI score at baseline and follow‑up.
+    - Same for quality score.
+- Why appropriate (2+ reasons):
+  - Essential foundation for all inferential analyses; readers need to understand the data structure and variability.
+  - Allows assessment of potential floor/ceiling effects and distributional properties relevant for test choice.
+- Why it may not be appropriate:
+  - Only an issue if there are major data quality problems (e.g., misclassification), but descriptive statistics themselves are always appropriate.
+- When not to use:
+  - Not applicable; descriptive statistics should always be used.
+- Alternative if assumptions violated:
+  - Use non‑parametric summaries (medians, percentiles) and graphs (bar charts, boxplots) if distributions are skewed or sample sizes small.
+
+2. McNemar’s test for change in binary periapical status (AP present vs absent)  
+   (baseline vs 6 months)
+- Purpose:
+  - To test whether the proportion of teeth with AP changes significantly after re‑treatment.
+- Why appropriate:
+  1) Within‑tooth paired binary measurements (before vs after) – classic setting for McNemar’s test.
+  2) Simple, robust, and widely used for pre/post dichotomous outcomes; focuses on discordant pairs, which capture true change.
+- Why it may not be appropriate:
+  - If sample sizes in discordant cells are very small, the asymptotic McNemar p‑value may be unreliable.
+- When this test should NOT be used:
+  - When observations are not paired (e.g., comparing two independent groups).
+  - When outcome has more than two categories (without dichotomization).
+- Alternative if assumptions are violated:
+  - Exact McNemar’s test (binomial‑based), suitable for small discordant counts.
+  - For more than two outcome categories: Stuart–Maxwell test or marginal homogeneity test.
+
+3. Wilcoxon signed‑rank test for PAI score (ordinal, paired: baseline vs follow‑up)
+- Purpose:
+  - To compare the distribution of PAI scores at baseline and 6 months, accounting for the ordinal nature of the scale and paired design.
+- Why appropriate:
+  1) PAI is ordinal with small number of categories; Wilcoxon signed‑rank is non‑parametric and appropriate for paired ordinal data.
+  2) Does not assume normality; robust to skewness and outliers.
+- Why it may not be appropriate:
+  - If there are many ties (common with small ordinal scales), power may be reduced; test statistics may be less informative.
+- When this test should NOT be used:
+  - When the outcome is nominal rather than ordered.
+  - When data are not paired.
+- Alternative if assumptions are violated:
+  - Sign test (less powerful but more robust to distributional issues).
+  - For multi‑category outcomes and emphasis on full contingency table: marginal homogeneity tests (Stuart–Maxwell).
+
+4. Wilcoxon signed‑rank test for root filling quality score (ordinal 1–6, paired)  
+   (baseline vs post‑re‑treatment)
+- Purpose:
+  - To assess whether the overall quality score of root fillings improves after re‑treatment.
+- Why appropriate:
+  1) Quality score is ordinal; Wilcoxon signed‑rank appropriately handles paired ordinal data.
+  2) Does not rely on normality of difference scores, which is unlikely with 6‑category ordinal data.
+- Why it may not be appropriate:
+  - Same as above: many ties or heavy clustering in a few categories can reduce sensitivity.
+- When this test should NOT be used:
+  - For binary adequate/inadequate quality; McNemar’s test is more natural there.
+  - For independent groups.
+- Alternative if assumptions are violated:
+  - Sign test for direction of change.
+  - For binary adequate/inadequate: McNemar’s test.
+
+5. McNemar’s test for change in adequacy of root filling  
+   (adequate vs inadequate, baseline vs post‑re‑treatment)
+- Purpose:
+  - To test whether the proportion of adequate RCTs significantly increases after re‑treatment.
+- Why appropriate:
+  1) Adequacy is binary; pre/post on same tooth → paired binary data suited to McNemar’s test.
+  2) Directly addresses a clinically meaningful endpoint: adequacy improvement.
+- Why it may not be appropriate:
+  - Same considerations as with AP status: very small numbers of discordant pairs.
+- When this test should NOT be used:
+  - Independent groups.
+  - When adequacy cannot be meaningfully dichotomized (e.g., if scoring scheme is more complex).
+- Alternative if assumptions are violated:
+  - Exact McNemar test.
+  - For ordinal, multi‑category quality measures: Wilcoxon signed‑rank or marginal homogeneity tests.
+
+6. Cross‑sectional association between post‑re‑treatment quality (adequate vs inadequate) and periapical status (AP vs no AP) at 6 months  
+   (Chi‑square or Fisher’s exact test)
+- Purpose:
+  - To examine whether better technical quality of re‑treatment is associated with improved periapical health at 6 months.
+- Why appropriate:
+  1) Both variables are categorical (binary); association can be summarized in a 2×2 table.
+  2) This explores the main clinical hypothesis that adequate RCT quality relates to healing.
+- Why it may not be appropriate:
+  - If some cells have very small counts (<5), chi‑square approximations may be inaccurate.
+- When this test should NOT be used:
+  - When sample sizes per cell are extremely small; or when there is severe zero inflation.
+- Alternative if assumptions are violated:
+  - Fisher’s exact test for small samples.
+  - If quality is ordinal with more than two levels: Mantel–Haenszel trend test (if treating quality as ordered) or exact tests.
+
+7. Estimation of effect sizes with confidence intervals
+- Purpose:
+  - To quantify the magnitude of changes and associations (not just p‑values).
+- Examples:
+  - Risk difference, risk ratio, and odds ratio for:
+    - AP prevalence baseline vs follow‑up (paired OR via McNemar).
+    - Adequacy prevalence baseline vs follow‑up.
+    - Association between post‑re‑treatment adequacy and AP at 6 months (OR).
+  - Median change in PAI and quality scores with confidence intervals (e.g., Hodges–Lehmann estimator).
+- Why appropriate:
+  1) Provides clinically interpretable measures of effect size.
+  2) CIs highlight precision and are standard in clinical research.
+- Why it may not be appropriate:
+  - If data are extremely sparse, CI estimation may be unstable or very wide.
+- When this should NOT be used:
+  - There is no reason not to estimate effect sizes; but one should avoid over‑interpreting very imprecise estimates.
+- Alternative if assumptions are violated:
+  - Exact confidence intervals (e.g., exact binomial or exact OR CIs) for small samples.
+
+CATEGORY B – RECOMMENDED ANALYSES  
+----------------------------------
+
+These analyses improve depth and rigor but are not strictly necessary to address the core objective.
+
+8. Ordinal logistic regression (proportional odds model) for PAI at 6 months  
+   with post‑treatment quality as predictor
+- Purpose:
+  - To model periapical status (graded PAI categories) at 6 months as a function of filling quality (ordinal or dichotomous) and potentially adjust for confounders (e.g., baseline PAI, tooth type).
+- Why appropriate:
+  1) PAI is ordinal; proportional odds models use the full order information rather than dichotomizing.
+  2) Allows adjustment for baseline PAI score and other covariates (tooth type, age, etc.), providing more robust estimates of the association between quality and outcome.
+- Why it may not be appropriate:
+  - Proportional odds assumption may be violated (the effect of quality may differ across thresholds).
+- When this test should NOT be used:
+  - When sample size is small relative to number of covariates (risk of overfitting and unstable estimates).
+  - When PAI is heavily skewed (e.g., almost all scores in 1–2 or 4–5) leading to sparse categories.
+- Alternative if assumptions are violated:
+  - Partial proportional odds models (relaxing proportionality).
+  - Binary logistic regression on dichotomized PAI (AP yes/no).
+  - Collapsing categories (e.g., 1–2 vs 3 vs 4–5) and using multinomial logistic regression.
+
+9. Logistic regression for AP status at 6 months (binary)  
+   with quality of re‑treatment and baseline status as predictors
+- Purpose:
+  - To quantify the adjusted association between post‑re‑treatment adequacy and presence/absence of AP at 6 months, controlling for baseline AP and other covariates.
+- Why appropriate:
+  1) Binary outcome fits logistic regression framework well.
+  2) Incorporates multiple predictors (baseline PAI, quality, tooth type, patient age) to control for confounding and provide adjusted odds ratios.
+- Why it may not be appropriate:
+  - If the number of outcome events (e.g., healed cases) is small, the model may be unstable (low events‑per‑variable).
+- When this test should NOT be used:
+  - With very limited sample size or rare outcome, especially if multiple predictors are included.
+  - If there is serious multicollinearity among predictors.
+- Alternative if assumptions are violated:
+  - Exact logistic regression for small samples.
+  - Penalized logistic regression (e.g., Firth’s correction) for sparse data.
+  - Unadjusted analyses (stratified risk ratios/ORs) when regression is not feasible.
+
+10. Multilevel / mixed‑effects modeling to account for clustering by patient  
+    (e.g., mixed‑effects logistic regression)
+- Purpose:
+  - To account for potential non‑independence when multiple teeth per patient are included.
+- Why appropriate:
+  1) Teeth in the same patient may share biological and treatment characteristics; random intercept models can adjust for this.
+  2) Provides correct standard errors and avoids inflated type I error due to clustering.
+- Why it may not be appropriate:
+  - The method requires information on patient identifiers and sufficient numbers of patients with more than one tooth to estimate random effects.
+- When this test should NOT be used:
+  - If sample size is small or clustering negligible (e.g., nearly all patients have only one tooth included).
+  - When patient IDs are not available or anonymized in a way that precludes clustering.
+- Alternative if assumptions are violated:
+  - Use robust sandwich standard errors clustered by patient.
+  - Restrict analysis to one tooth per patient (e.g., randomly select one).
+
+11. Agreement/reliability analysis for scoring (if multiple raters)  
+    (Cohen’s kappa, weighted kappa)
+- Purpose:
+  - To assess inter‑rater or intra‑rater reliability of PAI and quality scoring.
+- Why appropriate:
+  1) PAI and quality scores are subjectively interpreted; reliability metrics quantify consistency of scoring.
+  2) Weighted kappa is suitable for ordinal scales where near‑miss disagreements are less serious than far‑miss.
+- Why it may not be appropriate:
+  - If only one examiner performed all ratings and no repeat ratings were done, reliability cannot be assessed.
+- When this test should NOT be used:
+  - When the same rater scored all radiographs once and there is no repeated scoring.
+- Alternative if assumptions are violated:
+  - Intraclass correlation coefficient (ICC) if numeric/continuous scoring is used by multiple raters.
+  - Simply describe training and calibration if quantitative reliability data are unavailable.
+
+12. Sensitivity analyses for different cut‑offs of PAI and quality
+- Purpose:
+  - To explore robustness of results to how PAI and quality scores are dichotomized or categorized (e.g., PAI ≤2 vs ≥3; quality 1–3 vs 4–6).
+- Why appropriate:
+  1) Cut‑offs for “AP present” and “adequate quality” can be somewhat arbitrary; sensitivity analyses show whether conclusions depend on these choices.
+  2) Helps interpret clinical relevance: small shifts near cut‑off points may affect classification but not real clinical change.
+- Why it may not be appropriate:
+  - Multiple explorations can inflate type I error if treated as confirmatory without adjustment.
+- When this should NOT be used:
+  - As primary analyses; they should be clearly labeled as exploratory.
+- Alternative if assumptions are violated:
+  - Use models that directly use ordinal values (e.g., ordinal regression) rather than dichotomizing.
+
+CATEGORY C – OPTIONAL ANALYSES  
+-------------------------------
+
+These can provide additional insights but are not necessary for core conclusions.
+
+13. Graphical displays of change
+- Purpose:
+  - To visually illustrate distributions and changes:
+    - Stacked bar charts of PAI categories and quality categories at baseline vs follow‑up.
+    - Alluvial or transition plots showing shifts in PAI and quality categories.
+- Why appropriate:
+  1) Enhance interpretability and communication of results.
+  2) Can reveal patterns not obvious from tables (e.g., where improvements are concentrated).
+- Why it may not be appropriate:
+  - Not strictly statistical testing; adds to workload and space in the article.
+- When this should NOT be used:
+  - There is no statistical prohibition; limited journal space may restrict inclusion.
+- Alternative:
+  - Simple bar charts or tables.
+
+14. Change‑score analysis using paired t‑test (if scores treated as approximately continuous)
+- Purpose:
+  - To compare mean PAI or quality score changes pre‑ and post‑re‑treatment using parametric methods.
+- Why appropriate:
+  1) With large enough sample and fairly symmetric distributions, treating ordinal scales as interval can be a reasonable approximation.
+  2) Parametric tests can be more powerful and yield easily interpretable mean differences.
+- Why it may not be appropriate:
+  - Ordinal data with only 5–6 levels may violate the interval and normality assumptions; results may be misleading.
+- When this test should NOT be used:
+  - When distributions are clearly non‑normal (e.g., strongly skewed, bimodal) or heavily clustered at extremes.
+- Alternative:
+  - Wilcoxon signed‑rank test (already listed as mandatory).
+  - Bootstrapped CIs for mean change if still wanting a mean estimate.
+
+15. Time‑to‑event analysis (Kaplan–Meier) – if variable follow‑up times exist
+- Purpose:
+  - To model time to radiographic healing (PAI below lesion threshold) and compare by quality category.
+- Why appropriate:
+  1) If some radiographs were taken at varying follow‑up times or some teeth did not have complete follow‑up, survival methods can incorporate censoring.
+  2) Provides dynamic view of healing over time.
+- Why it may not be appropriate:
+  - In this study, follow‑up appears fixed at 6 months, so survival analysis may not be applicable.
+- When this test should NOT be used:
+  - When all subjects have nearly identical follow‑up times and no censoring.
+- Alternative:
+  - Use simple binary outcome (healed vs not at 6 months) with logistic regression.
+
+16. Stratified analyses by tooth type or jaw (e.g., chi‑square tests within strata)
+- Purpose:
+  - To explore whether the effect of re‑treatment quality on AP resolution differs by tooth type (anterior vs posterior, single vs multi‑rooted).
+- Why appropriate:
+  1) Clinical factors such as anatomy may influence both technical difficulty and outcome.
+  2) Stratification can illuminate heterogeneity of effect.
+- Why it may not be appropriate:
+  - Sample size per stratum may be too small, leading to unstable estimates.
+- When this test should NOT be used:
+  - Very sparse data in strata or extreme imbalance.
+- Alternative:
+  - Include interaction terms in regression models rather than fully stratified analyses.
+
+TASK 3: INAPPROPRIATE TESTS AND WHY  
+===================================
+
+1. Independent‑samples t‑test for comparing baseline vs follow‑up PAI or quality scores
+- Why inappropriate:
+  - The data are paired (repeated measures on the same tooth); using an independent‑samples test ignores pairing and reduces power and validity.
+  - PAI/quality are ordinal, not continuous, violating t‑test assumptions.
+- Better alternative:
+  - Wilcoxon signed‑rank test; or paired t‑test only if very strong justification for treating as continuous and normality is met.
+
+2. One‑way ANOVA comparing baseline vs follow‑up PAI or quality scores as “groups”
+- Why inappropriate:
+  - Baseline and follow‑up are repeated measurements for the same subjects; ANOVA for independent groups is unsuitable.
+  - Ordinal outcome; ANOVA assumes interval‑scale and normally distributed residuals.
+- Better alternative:
+  - Repeated measures methods; in this case non‑parametric paired tests (Wilcoxon).
+
+3. Pearson correlation between baseline and follow‑up PAI as the main test of change
+- Why inappropriate:
+  - Correlation measures association, not change; high correlation can coexist with substantial systematic change.
+  - PAI is ordinal; Pearson correlation assumes continuous, normally distributed variables.
+- Better alternative:
+  - Wilcoxon signed‑rank test and descriptive change summaries.
+
+4. Simple linear regression with PAI as continuous outcome without checking assumptions
+- Why inappropriate:
+  - PAI is ordinal and bounded (1–5), violating linear regression assumptions (normal residuals, homoscedasticity).
+  - The relationship between predictors and outcome may not be linear.
+- Better alternative:
+  - Ordinal logistic regression or logistic regression with dichotomized PAI.
+
+5. Unpaired chi‑square test comparing baseline vs follow‑up prevalence of AP without accounting for pairing
+- Why inappropriate:
+  - Treating baseline and follow‑up as independent groups neglects the matched nature of the sample.
+  - This can distort standard errors and p‑values.
+- Better alternative:
+  - McNemar’s test for paired proportions.
+
+6. Parametric repeated‑measures ANOVA on PAI/quality scores over two time points
+- Why inappropriate:
+  - Ordinal outcome and only two time points (pre/post), making repeated measures ANOVA unnecessary and assumption‑heavy.
+- Better alternative:
+  - Wilcoxon signed‑rank test.
+
+7. Multiple unadjusted subgroup tests without consideration of multiplicity
+- Why inappropriate:
+  - Increases risk of false positives; not ideal for a relatively small observational dataset.
+- Better alternative:
+  - Focus on a limited number of pre‑specified comparisons; consider adjustments (e.g., Bonferroni) if multiple primary tests.
+
+TASK 4: SUMMARY OF OVERALL ANALYTICAL APPROACH  
+===============================================
+
+The study involves paired ordinal and binary outcomes measured on the same teeth before and after endodontic re‑treatment. The core analytical strategy should:
+
+- Use appropriate paired analyses:
+  - McNemar’s test for binary outcomes (AP yes/no, adequacy yes/no).
+  - Wilcoxon signed‑rank test for ordinal scores (PAI, quality).
+- Emphasize estimation:
+  - Report change in prevalence, median score changes, and effect sizes (odds ratios, risk differences) with confidence intervals.
+- Explore relationships between technical quality and clinical outcome:
+  - Cross‑sectional association at 6 months (chi‑square/Fisher’s exact).
+  - Regression models (logistic or ordinal) for adjusted analyses, if sample size and data structure permit.
+- Consider clustering by patient and reliability of scoring if data are available.
+
+This approach respects the paired, ordinal nature of the data, addresses the main clinical questions (improvement in quality and periapical healing), and provides interpretable, clinically relevant estimates while avoiding inappropriate parametric or independence‑based methods.
