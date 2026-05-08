@@ -1,0 +1,96 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_ijcpd-14-471.pdf
+Status : ok
+Time   : 20260508_131507
+══════════════════════════════════════════════════════════════════════
+
+It seems that the article text you provided is incomplete, and I cannot fully extract the necessary information to complete the tasks (e.g., study design, objectives, groups, variables, etc.). However, I can guide you on how to approach the tasks based on a typical dental research study. If you can provide the full Introduction and Methods sections, I can tailor the response more precisely.
+
+Below is a general framework for completing the tasks based on typical dental research methodology.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+#### Study Characteristics
+Based on the provided references and partial context, this study likely involves:
+- **Study Design**: Comparative clinical study (e.g., randomized controlled trial or observational study).
+- **Objective**: To evaluate the quality of obturation and instrumentation time using different rotary file systems compared to manual instrumentation in primary teeth.
+- **Groups**: At least two groups (e.g., rotary file systems vs. manual instrumentation).
+- **Sample Size**: Not specified in the provided text; typically determined based on power analysis.
+- **Variables**:
+  - **Independent Variables**: Type of instrumentation (manual vs. rotary systems).
+  - **Dependent Variables**: Quality of obturation, instrumentation time.
+- **Measurements**:
+  - **Quality of Obturation**: Likely assessed using radiographic or clinical scoring systems.
+  - **Instrumentation Time**: Measured in minutes or seconds.
+- **Data Collection Methods**: Clinical procedures performed on primary teeth, followed by radiographic evaluation and time tracking.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Independent t-test (or Mann-Whitney U test if data is non-parametric).
+   - **Purpose**: Compare mean instrumentation time between groups.
+   - **Why Appropriate**:
+     - The dependent variable (time) is continuous.
+     - The study involves two independent groups.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normal distribution and equal variances.
+   - **When This Test Should NOT Be Used**: If data is heavily skewed or sample sizes are very small.
+   - **Alternative**: Mann-Whitney U test (non-parametric).
+
+2. **Test Name**: Chi-square test (or Fisher’s exact test for small sample sizes).
+   - **Purpose**: Compare categorical outcomes (e.g., quality of obturation scores) between groups.
+   - **Why Appropriate**:
+     - The dependent variable is categorical (e.g., “acceptable” vs. “unacceptable” obturation quality).
+     - The study involves independent groups.
+   - **Why It May Not Be Appropriate**:
+     - Requires sufficient sample size in each category.
+   - **When This Test Should NOT Be Used**: If expected frequencies in any cell are <5.
+   - **Alternative**: Fisher’s exact test.
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: ANOVA (or Kruskal-Wallis test for non-parametric data).
+   - **Purpose**: Compare instrumentation time across multiple rotary systems (if more than two groups are included).
+   - **Why Appropriate**:
+     - Allows comparison of means across multiple groups.
+     - Accounts for variability within and between groups.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normality and homogeneity of variances.
+   - **When This Test Should NOT Be Used**: If assumptions are violated or sample sizes are unequal.
+   - **Alternative**: Kruskal-Wallis test.
+
+2. **Test Name**: Logistic regression.
+   - **Purpose**: Assess the association between type of instrumentation and quality of obturation while adjusting for confounders (e.g., operator experience, tooth type).
+   - **Why Appropriate**:
+     - Accounts for multiple predictors.
+     - Suitable for binary outcomes (e.g., acceptable vs. unacceptable obturation quality).
+   - **Why It May Not Be Appropriate**:
+     - Requires large sample size for stable estimates.
+   - **When This Test Should NOT Be Used**: If sample size is too small or multicollinearity exists.
+   - **Alternative**: Exact logistic regression.
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Kaplan-Meier survival analysis.
+   - **Purpose**: Evaluate time-to-completion for instrumentation across groups.
+   - **Why Appropriate**:
+     - Suitable for time-to-event data.
+     - Accounts for censored observations (e.g., incomplete procedures).
+   - **Why It May Not Be Appropriate**:
+     - May be unnecessary if instrumentation time is straightforward and not censored.
+   - **When This Test Should NOT Be Used**: If all procedures are completed without censoring.
+   - **Alternative**: Independent t-test or ANOVA.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: Paired t-test.
+   - **Why NOT Appropriate**: This test is for dependent (paired) samples, whereas the study involves independent groups.
+2. **Test Name**: Correlation analysis (e.g., Pearson or Spearman).
+   - **Why NOT Appropriate**: Correlation tests assess relationships between two continuous variables, not group comparisons.
+
+---
+
+### TASK 4: SUMMARY
+The overall analytical approach should focus on comparing outcomes (quality of obturation and instrumentation time) between groups using appropriate tests for continuous and categorical data. Adjustments for confounders and subgroup analyses can enhance the rigor of the study. Non-parametric alternatives should be considered if assumptions are violated.

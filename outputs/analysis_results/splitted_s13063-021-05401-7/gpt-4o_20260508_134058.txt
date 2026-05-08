@@ -1,0 +1,162 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_s13063-021-05401-7.pdf
+Status : ok
+Time   : 20260508_134058
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Randomized, double-blind, parallel positive control, multicenter clinical trial.
+   - Allocation ratio: 1:1.
+
+2. **Objectives**:  
+   - **Primary Objective**: Evaluate the efficacy of regenerative endodontic therapy (RET) with i-PRF versus blood clots (BCs) for mature permanent teeth with pulp necrosis.  
+   - **Secondary Objective**: Investigate factors influencing clinical outcomes and explore a standard RET protocol for mature permanent teeth.
+
+3. **Groups**:  
+   - **Test Group**: RET with injectable platelet-rich fibrin (i-PRF).  
+   - **Control Group**: RET with blood clots (BC).
+
+4. **Sample Size**:  
+   - Total: 346 patients (173 per group).
+
+5. **Variables**:  
+   - **Primary Outcome**: Success rates of RET (defined by clinical and radiographic outcomes).  
+   - **Secondary Outcomes**: Crown discoloration, pocket depth, percussion, palpation, sinus tract, tooth mobility, periapical swelling, maxillofacial swelling, general symptoms, cold/heat test, vitality test, periapical film, and CBCT findings.  
+   - **Safety Outcomes**: Adverse events during the study period.
+
+6. **Measurements**:  
+   - Clinical examination and imaging (CBCT, periapical film) at baseline and follow-up intervals (1, 3, 6, 12, 18, and 24 months).  
+   - Subjective symptoms and clinical signs (e.g., tooth mobility, sinus tract presence).
+
+7. **Data Collection Methods**:  
+   - Randomization using SPSS 20.0 software.  
+   - Blinding: Double-blind (patients and outcome evaluators).  
+   - Follow-up assessments at specified intervals.  
+   - Data management overseen by a coordinating center.
+
+8. **Intervention Procedures**:  
+   - **First Appointment**: Infection control and inflammation relief (standardized for both groups).  
+   - **Second Appointment**: RET procedures differ by group:  
+     - Test Group: i-PRF injected into the root canal.  
+     - Control Group: Blood clot revascularization.
+
+9. **Inclusion Criteria**:  
+   - Age: 10–59 years.  
+   - Diagnosis: Mature permanent tooth with pulp necrosis (confirmed by CBCT).  
+   - Single root necrotic tooth with a single root canal.
+
+10. **Exclusion Criteria**:  
+    - Teeth with severe coronal defects, root fractures, or periodontitis.  
+    - Patients with systemic diseases, dental phobia, or mental disorders.  
+    - Pregnant/lactating women.  
+    - Participation in other clinical trials within the last 3 months.
+
+11. **Dropout Criteria**:  
+    - Serious adverse events (e.g., severe root resorption or tooth fracture).  
+    - Poor clinical compliance or withdrawal of consent.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Chi-Square Test**:  
+   - **Purpose**: Compare success rates between the test and control groups.  
+   - **Why Appropriate**:  
+     - Primary outcome is categorical (success vs. failure).  
+     - Groups are independent and randomized.  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes large sample sizes; may be less reliable for small subgroups.  
+   - **When NOT to Use**: If expected cell counts are <5.  
+   - **Alternative**: Fisher’s Exact Test for small sample sizes.
+
+2. **Logistic Regression**:  
+   - **Purpose**: Adjust for confounders affecting success rates and calculate odds ratios (OR).  
+   - **Why Appropriate**:  
+     - Accounts for baseline differences between groups.  
+     - Provides adjusted ORs for predictors.  
+   - **Why It May Not Be Appropriate**:  
+     - Requires large sample sizes for reliable estimates.  
+   - **When NOT to Use**: If multicollinearity exists among predictors.  
+   - **Alternative**: Ridge regression or penalized logistic regression.
+
+3. **McNemar’s Test**:  
+   - **Purpose**: Analyze intra-group changes over time.  
+   - **Why Appropriate**:  
+     - Suitable for paired categorical data (e.g., success rates at different time points).  
+     - Evaluates longitudinal changes within groups.  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes paired observations; not suitable for unpaired data.  
+   - **When NOT to Use**: If data are not paired or if sample size is insufficient.  
+   - **Alternative**: Generalized estimating equations (GEE) for repeated measures.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **One-Way ANOVA**:  
+   - **Purpose**: Compare baseline quantitative variables (e.g., age, apical hole size) between groups.  
+   - **Why Appropriate**:  
+     - Tests mean differences across groups for continuous variables.  
+     - Assumes normal distribution and homogeneity of variance.  
+   - **Why It May Not Be Appropriate**:  
+     - Sensitive to violations of normality and homogeneity assumptions.  
+   - **When NOT to Use**: If data are skewed or variances are unequal.  
+   - **Alternative**: Kruskal-Wallis test for non-parametric data.
+
+2. **Principal Component Analysis (PCA)**:  
+   - **Purpose**: Identify factors influencing clinical outcomes and reduce dimensionality of predictors.  
+   - **Why Appropriate**:  
+     - Useful for exploring relationships among multiple variables.  
+     - Reduces multicollinearity in regression models.  
+   - **Why It May Not Be Appropriate**:  
+     - Interpretation can be complex.  
+   - **When NOT to Use**: If sample size is insufficient for reliable factor extraction.  
+   - **Alternative**: Factor analysis.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Kaplan-Meier Survival Analysis**:  
+   - **Purpose**: Assess time-to-event outcomes (e.g., time to treatment failure).  
+   - **Why Appropriate**:  
+     - Accounts for censored data.  
+     - Provides survival curves for each group.  
+   - **Why It May Not Be Appropriate**:  
+     - Requires time-to-event data, which may not be collected.  
+   - **When NOT to Use**: If follow-up times are inconsistent.  
+   - **Alternative**: Cox proportional hazards model.
+
+2. **Repeated Measures ANOVA**:  
+   - **Purpose**: Analyze changes in continuous outcomes (e.g., pocket depth) over time.  
+   - **Why Appropriate**:  
+     - Suitable for longitudinal data with repeated measurements.  
+     - Tests for time and group effects.  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes sphericity; sensitive to violations of this assumption.  
+   - **When NOT to Use**: If sphericity is violated or data are non-normal.  
+   - **Alternative**: Linear mixed models.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1. **Independent Sample T-Test**:  
+   - **Why NOT Appropriate**:  
+     - Assumes continuous data; primary outcome is categorical.  
+     - Does not account for confounders.  
+   - **Alternative**: Chi-square test or logistic regression.
+
+2. **Pearson Correlation**:  
+   - **Why NOT Appropriate**:  
+     - Assumes linear relationships between continuous variables; not suitable for categorical outcomes.  
+   - **Alternative**: Spearman correlation for ordinal data.
+
+---
+
+### TASK 4: SUMMARY
+
+The statistical analysis plan is tailored to the study's randomized controlled design and longitudinal follow-up. Mandatory tests (e.g., chi-square, logistic regression) address the primary and secondary objectives by comparing success rates and adjusting for confounders. Recommended tests (e.g., ANOVA, PCA) enhance baseline comparability and explore influencing factors. Optional tests (e.g., Kaplan-Meier, repeated measures ANOVA) provide supplementary insights into time-to-event outcomes and longitudinal trends. The plan ensures robustness and flexibility, with alternatives for assumption violations.

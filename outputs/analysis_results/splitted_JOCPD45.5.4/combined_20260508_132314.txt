@@ -1,0 +1,839 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_JOCPD45.5.4.pdf
+Time : 20260508_132314
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study identification/design
+- **Design:** Randomized clinical trial with **within-tooth (split-tooth / split-mouth–like) randomization at the canal level**.
+- **Setting:** Department of Pedodontics and Preventive Dentistry (single center).
+- **Ethics:** Approved (Ref. No: TMDCRC/IEC/18-19/PPD1 dated 22/1/2019).
+- **Operator/evaluator:** **Single operator** performed procedures and also assessed radiographs (not blinded).
+
+### Objective
+- To determine whether **placing a resorbable collagen apical barrier** in resorbing primary molar canals **reduces extrusion/overfilling of obturating material beyond the apex** compared with no barrier.
+
+### Participants/sample size
+- **Screened:** 60 children.
+- **Included:** 47 children with **47 primary mandibular molars** requiring pulpectomy.
+- **Units analyzed:** **94 canals** (1 mesial + 1 distal per tooth).
+- **Allocation:** Canals “equally allocated” to:
+  - **Group A (Test):** collagen barrier placed
+  - **Group B (Control):** no barrier
+- **Randomization method:** “flip coin method” by the parent; **one mesial and one distal canal of each tooth randomly assigned to test/control** (implies pairing within tooth).
+- **Power:** Sample size calculation via power analysis; **power = 80%** (no alpha/effect size provided).
+
+### Eligibility criteria
+- **Inclusion:**
+  - Children **7–9 years**
+  - Frankl behavior rating **Class 3 or 4**
+  - No systemic disease
+  - Pulpally involved mandibular primary molars with **≥ 2/3 root length**
+- **Exclusion:**
+  - Pulpal floor perforation due to resorption
+  - Extreme mobility
+  - Congenitally missing permanent tooth bud
+  - Radiographic signs of internal/external resorption
+  - Radicular radiolucencies
+
+### Interventions / procedures
+- **Common endodontic protocol:** LA, rubber dam, access, extirpation, irrigation (3% NaOCl + saline), canal identification, working length with #15 K-file, instrumentation with hand Protaper SX–F2, drying.
+- **Working length standardization:** final instrumented length kept **2 mm short of radiographic apex** in both groups (test: to “accommodate 2mm of apical barrier”).
+- **Test group (collagen barrier):**
+  - **2 mm square piece** of resorbable collagen (Coloplug) placed and condensed to working length.
+- **Obturation (both groups):**
+  - Metapex (calcium hydroxide + iodoform paste) syringe delivery; technique standardized.
+- **Restoration:** GIC + stainless steel crown.
+
+### Outcomes and measurement
+- **Primary outcome (binary):** postoperative radiographic **extrusion of obturating material**
+  - **No Extrusion (NE / “acceptable”):** optimal fill or **1–2 mm short of apex**
+  - **Extruded (E):** material beyond apex/periapex
+- **Measurement tool:** **Digital postoperative RVG**; additional radiograph if superimposition.
+- **Time point:** immediate postoperative (no follow-up outcomes described in provided text).
+
+### Key methodological/statistical implications
+- **Paired/correlated data:** Two canals per tooth and **randomized within tooth** ⇒ outcomes are **not independent**.
+- **Potential clustering beyond tooth:** one tooth per child (as described), so child-level clustering likely equals tooth-level; primary correlation is **within-tooth canal pair**.
+- **Assessment bias risk:** evaluator not blinded.
+
+---
+
+## TASK 2: Statistical analysis plan (SAP)
+
+### A. Data handling and general principles (applies to all categories)
+1. **Analysis population:** Intention-to-treat at the **canal level** (analyze canals as randomized), with explicit handling if any canal not evaluable radiographically.
+2. **Descriptive statistics:**
+   - Counts/percent for NE/E by group.
+   - Also report by canal type (mesial vs distal) if available.
+3. **Primary estimand/effect measure:**
+   - Prefer **paired risk difference** and/or **paired odds ratio** (test vs control within tooth).
+   - Provide **95% confidence intervals**.
+4. **Missing data:** If postoperative radiograph missing/uninterpretable:
+   - Report frequency and reasons by group.
+   - If minimal: complete-case with sensitivity “worst-case” imputation (optional).
+5. **Significance level:** Two-sided α = 0.05 (unless otherwise specified).
+6. **Software:** Any standard package (R/Stata/SPSS), but must support paired binary tests / conditional logistic / GEE.
+
+---
+
+## CATEGORY A – MANDATORY tests
+
+### 1) McNemar test (paired binary outcome)
+- **Purpose:** Test whether the **probability of extrusion differs** between test and control **within the same tooth**.
+- **Why appropriate (≥2 reasons):**
+  1. Outcome is **binary** (E vs NE).
+  2. Design creates **matched pairs** (each tooth contributes one test canal and one control canal), violating independence required for a standard chi-square.
+- **Why it may not be appropriate (≥1 reason):**
+  - If pairing is not truly 1:1 within tooth (e.g., some teeth contribute only one canal or allocation not paired), McNemar is not valid.
+- **When this test should NOT be used:**
+  - When observations are **independent** (parallel-group randomization by tooth/child) or when there are **>2 correlated observations per cluster** without clear pairing.
+- **Alternative if assumptions are violated:**
+  - **GEE logistic regression** with cluster = tooth (or child) for correlated binary outcomes; or **mixed-effects logistic regression**.
+
+### 2) Effect size estimation with 95% CI (paired)
+(Conceptually mandatory even if not a “test”.)
+- **Purpose:** Quantify magnitude: e.g., **paired risk difference** (Δ risk of extrusion) and/or **matched odds ratio**.
+- **Why appropriate:**
+  1. RCT interpretation requires **estimation**, not only p-values.
+  2. Provides clinical relevance (e.g., absolute reduction in extrusion).
+- **Why it may not be appropriate:**
+  - With **very low event counts**, CIs may be wide/unstable.
+- **When it should NOT be used:**
+  - Never omit estimation; but avoid asymptotic CI formulas if sparse.
+- **Alternative if assumptions violated:**
+  - **Exact** CI methods for matched pairs; or **bootstrap by tooth**.
+
+---
+
+## CATEGORY B – RECOMMENDED tests/models
+
+### 3) Conditional logistic regression (matched-pair logistic model)
+- **Purpose:** Estimate **matched odds ratio** for extrusion (test vs control) while respecting within-tooth matching; optionally adjust for canal-level covariates (e.g., mesial/distal) if recorded.
+- **Why appropriate:**
+  1. Directly models **paired binary outcomes** consistent with split-tooth randomization.
+  2. Can incorporate **covariates** (canal type, degree of resorption if measured) and yields adjusted effect estimates with CIs.
+- **Why it may not be appropriate:**
+  - Sparse outcomes can cause **separation** or unstable estimates.
+- **When it should NOT be used:**
+  - If there is **no matching** or matching factors are incorrectly specified; or if only marginal inference is desired and pairing is complex.
+- **Alternative if assumptions are violated:**
+  - **Exact conditional logistic regression** (if sparse) or **GEE logistic** with robust SEs.
+
+### 4) GEE logistic regression (population-averaged)
+- **Purpose:** Estimate treatment effect on extrusion with **robust standard errors** accounting for within-tooth correlation.
+- **Why appropriate:**
+  1. Handles **correlated binary** outcomes without requiring correct random-effects distribution.
+  2. Provides **marginal (population-averaged)** effect, often preferred for clinical interpretation.
+- **Why it may not be appropriate:**
+  - With small numbers of clusters (here ~47 teeth), sandwich SEs can be **biased downward**.
+- **When it should NOT be used:**
+  - Very small cluster count without small-sample corrections; or if interest is specifically subject/tooth-specific effects.
+- **Alternative if assumptions are violated:**
+  - **Mixed-effects logistic regression**; or GEE with **small-sample correction** (e.g., Fay–Graubard / Kauermann–Carroll corrections, depending on software).
+
+### 5) Fisher’s exact test / chi-square test (as a *sensitivity* analysis only)
+- **Purpose:** Compare extrusion proportions between groups **ignoring pairing** (not primary).
+- **Why appropriate:**
+  1. Provides a simple cross-check of direction/magnitude.
+  2. Fisher’s exact can be valid with **small counts** (but still assumes independence).
+- **Why it may not be appropriate:**
+  - **Violates independence** because canals within a tooth are paired; p-values can be misleading.
+- **When it should NOT be used:**
+  - As the main inferential test for this split-tooth design.
+- **Alternative if assumptions are violated:**
+  - Use **McNemar** / **conditional logistic** instead (i.e., revert to paired methods).
+
+---
+
+## CATEGORY C – OPTIONAL (supplementary insight)
+
+### 6) Mixed-effects logistic regression (random intercept for tooth)
+- **Purpose:** Estimate treatment effect with an explicit **tooth-level random effect**, allowing tooth-to-tooth heterogeneity.
+- **Why appropriate:**
+  1. Models **cluster-specific** (tooth-specific) effects and correlation structure.
+  2. Can accommodate additional canal/tooth covariates and interaction terms (e.g., treatment × canal type).
+- **Why it may not be appropriate:**
+  - With low event rates, random-effects models may be **unstable** and sensitive to modeling assumptions.
+- **When it should NOT be used:**
+  - If convergence fails or results are overly model-dependent due to sparse events.
+- **Alternative if assumptions are violated:**
+  - **Conditional logistic** (matched) or **penalized logistic regression** (e.g., Firth) with clustering approach.
+
+### 7) Subgroup/interaction analysis (e.g., mesial vs distal canal)
+- **Purpose:** Assess whether treatment effect differs by **canal type**.
+- **Why appropriate:**
+  1. Clinically plausible that anatomy differs between canals.
+  2. Helps understand heterogeneity of effect.
+- **Why it may not be appropriate:**
+  - Underpowered and risks false positives if not pre-specified.
+- **When it should NOT be used:**
+  - If canal type not reliably recorded or events are too few per subgroup.
+- **Alternative if assumptions are violated:**
+  - Report descriptive stratified results only; avoid inferential claims.
+
+### 8) Inter-rater reliability (not feasible here, but optional if added)
+- **Purpose:** If a second blinded assessor is used, quantify agreement for E/NE scoring (e.g., **Cohen’s kappa**).
+- **Why appropriate:**
+  1. Outcome is radiographic and potentially subjective.
+  2. Addresses measurement reliability and bias.
+- **Why it may not be appropriate:**
+  - Only one evaluator in the study as described; kappa cannot be computed.
+- **When it should NOT be used:**
+  - Single-rater data only.
+- **Alternative if assumptions are violated:**
+  - Use **percent agreement** (still limited) or redesign with dual ratings.
+
+---
+
+## TASK 3: Tests that should NOT be used (and why)
+
+1. **Independent-samples t-test**
+   - Outcome is **binary**, not continuous; also design is paired (non-independent).
+
+2. **One-way ANOVA**
+   - Same issues: binary outcome and paired design; no continuous normal outcome.
+
+3. **Standard (unpaired) Pearson chi-square test as the primary analysis**
+   - Assumes **independent observations**; violated because canals are paired within tooth.
+
+4. **Mann–Whitney U / Wilcoxon rank-sum**
+   - For ordinal/continuous outcomes; outcome is binary and paired.
+
+5. **Simple (unpaired) logistic regression without clustering/matching**
+   - Produces **incorrect standard errors** and potentially misleading inference due to within-tooth correlation.
+
+6. **Correlation tests (Pearson/Spearman)**
+   - Not aligned with the causal RCT objective and does not address paired binary endpoint.
+
+---
+
+## TASK 4: Summary/justification of overall approach
+
+The outcome (extrusion: yes/no) is binary and the randomization occurs **within each tooth** (one canal test, one control), creating **paired, correlated observations**. Therefore, the primary analysis must use **paired methods** (McNemar) and should be complemented with **effect sizes and CIs**; regression approaches (conditional logistic or GEE/mixed-effects) are recommended to obtain robust estimates and allow adjustment/sensitivity analyses while respecting the matched design.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Randomized clinical trial.
+2. **Objective**: To evaluate whether positioning a resorbable collagen barrier at the apical third of root canals reduces the extrusion of obturating material in primary molars undergoing resorption.
+3. **Groups**:
+   - **Group A (Test)**: Canals with a resorbable collagen barrier placed at the apical third.
+   - **Group B (Control)**: Canals without a collagen barrier.
+4. **Sample Size**:
+   - **Patients**: 47 children aged 7–9 years.
+   - **Teeth**: 47 primary mandibular molars (94 canals; 47 canals in each group).
+   - **Power Analysis**: 80%.
+5. **Inclusion Criteria**:
+   - Pulpally involved mandibular primary molars with at least two-thirds of root length.
+   - Children aged 7–9 years with Frankel’s Class 3 or 4 behavior rating.
+   - No systemic disease.
+6. **Exclusion Criteria**:
+   - Perforation of pulpal floor due to resorption.
+   - Extreme tooth mobility.
+   - Congenitally missing permanent tooth bud.
+   - Radiographic evidence of internal/external resorption or radicular radiolucencies.
+7. **Variables**:
+   - **Independent Variable**: Presence of resorbable collagen barrier.
+   - **Dependent Variable**: Presence of extrusion of obturating material (binary outcome: Extruded [E] vs. No Extrusion [NE]).
+8. **Measurements**:
+   - Pre- and post-operative radiographs using radiovisiography (RVG) to assess extrusion.
+   - Acceptable obturation defined as material 1–2 mm short of the apex; extrusion defined as material beyond the apex.
+9. **Randomization**: Flip coin method performed by parents to assign canals to test or control groups.
+10. **Data Collection Methods**:
+    - Radiographic determination of working length using No. 15 k files.
+    - Placement of collagen barrier (Coloplug) in test canals.
+    - Obturation with calcium hydroxide and iodoform paste (Metapex) using syringe delivery system.
+    - Radiographic assessment of extrusion by a single operator.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Chi-Square Test**:
+   - **Purpose**: To compare the proportion of extrusion (E vs. NE) between Group A (test) and Group B (control).
+   - **Why Appropriate**:
+     - The dependent variable is categorical (binary: Extruded vs. No Extrusion).
+     - The study involves two independent groups (test vs. control).
+   - **Why It May Not Be Appropriate**:
+     - Assumes independence of observations, which may be violated if canals within the same tooth are correlated.
+   - **When NOT to Use**: If sample size is too small for expected frequencies in contingency tables.
+   - **Alternative**: Fisher’s Exact Test (if sample size is small).
+
+2. **Descriptive Statistics**:
+   - **Purpose**: To summarize the frequency and percentage of extrusion in both groups.
+   - **Why Appropriate**:
+     - Provides a clear understanding of the distribution of outcomes.
+     - Essential for reporting baseline characteristics.
+   - **Why It May Not Be Appropriate**: Not inferential; cannot test hypotheses.
+   - **When NOT to Use**: Not applicable (always useful).
+   - **Alternative**: None.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **McNemar’s Test**:
+   - **Purpose**: To account for paired data (mesial and distal canals within the same tooth) and test for differences in extrusion rates between test and control groups.
+   - **Why Appropriate**:
+     - Accounts for the dependency between paired observations.
+     - Suitable for binary outcomes in paired data.
+   - **Why It May Not Be Appropriate**: Requires paired data; cannot be used if canals are analyzed independently.
+   - **When NOT to Use**: If canals are treated as independent observations.
+   - **Alternative**: Generalized Estimating Equations (GEE) for correlated binary data.
+
+2. **Logistic Regression**:
+   - **Purpose**: To model the probability of extrusion (binary outcome) as a function of group (test vs. control) and other covariates (e.g., canal location, patient age).
+   - **Why Appropriate**:
+     - Allows adjustment for potential confounders.
+     - Provides odds ratios for extrusion between groups.
+   - **Why It May Not Be Appropriate**: Requires sufficient sample size for reliable estimates.
+   - **When NOT to Use**: If sample size is too small or multicollinearity exists among covariates.
+   - **Alternative**: Exact Logistic Regression (for small sample sizes).
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Cohen’s Kappa**:
+   - **Purpose**: To assess inter-rater reliability if extrusion assessments are performed by multiple evaluators.
+   - **Why Appropriate**:
+     - Ensures consistency in outcome classification.
+     - Useful for validating radiographic assessments.
+   - **Why It May Not Be Appropriate**: Not relevant if a single operator assessed all radiographs.
+   - **When NOT to Use**: If only one evaluator is involved.
+   - **Alternative**: None.
+
+2. **Subgroup Analysis**:
+   - **Purpose**: To explore differences in extrusion rates within subgroups (e.g., mesial vs. distal canals).
+   - **Why Appropriate**:
+     - Provides additional insights into canal-specific effects.
+     - Useful for hypothesis generation.
+   - **Why It May Not Be Appropriate**: May lead to overinterpretation if sample size is small.
+   - **When NOT to Use**: If subgroup sizes are too small for reliable comparisons.
+   - **Alternative**: Pool data across subgroups.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent Samples t-Test**:
+   - **Why NOT Appropriate**: The outcome variable (extrusion) is categorical, not continuous.
+2. **ANOVA**:
+   - **Why NOT Appropriate**: Designed for continuous outcomes; extrusion is binary.
+3. **Pearson Correlation**:
+   - **Why NOT Appropriate**: Correlation is for continuous variables, not categorical outcomes.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach focuses on comparing extrusion rates between test and control groups using appropriate statistical methods for binary outcomes. Mandatory tests (e.g., Chi-Square) address the primary objective, while recommended tests (e.g., McNemar’s Test, Logistic Regression) account for paired data and potential confounders. Optional tests (e.g., Cohen’s Kappa, Subgroup Analysis) provide supplementary insights but should be used cautiously to avoid overinterpretation. The plan ensures rigor while addressing the study’s limitations, such as small sample size and potential dependency between canals within the same tooth.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1: INFORMATION EXTRACTION  
+===============================
+
+1. Study design and setting
+--------------------------
+
+- Type: Randomized clinical trial (parallel at canal level, split-mouth / split-tooth at tooth level).
+- Setting: Department of Pedodontics and Preventive Dentistry, Teerthanker Mahaveer Dental College & Research Centre, Moradabad, India.
+- Ethics: Approved by institutional ethics committee (Ref. No: TMDCRC/IEC/18-19/PPD1, dated 22/1/2019).
+- Timeframe: Not explicitly stated (publication 2021; ethics 2019).
+- Operator: All procedures and evaluations performed by a single operator (N.M.S) – no blinding mentioned.
+
+2. Participants
+---------------
+
+- Population: Child patients requiring pulpectomy in mandibular primary molars.
+- Screening: 60 children screened.
+- Included: 47 children (one tooth per child), 47 mandibular primary molars.
+- Age: 7–9 years.
+- Behavioral inclusion: Frankel’s behavior rating Class 3 or 4.
+- Health: Without any systemic disease.
+- Dentition: Primary mandibular molars with at least two-thirds of root length; “without any pre-operative root resorption” is mentioned in the footer of page 4 but context truncated; core inclusion in text is “pulpally involved mandibular primary molars with at least two third of root length”.
+- Exclusion criteria:
+  - Perforation of pulpal floor due to resorption.
+  - Extreme tooth mobility.
+  - Dentition with congenitally missing permanent tooth bud.
+  - Radiographic signs of any internal or external resorption.
+  - Radiolucencies in radicular area.
+
+3. Sample units and allocation
+------------------------------
+
+- Teeth: 47 primary mandibular molars (1 tooth per child).
+- Canals:
+  - Total canals: 94 canals in 47 teeth (implies 2 canals per tooth: one mesial, one distal).
+  - Randomization unit: canal.
+  - Groups:
+    - Group A (Test): canals with a resorbable collagen apical barrier (Coloplug).
+    - Group B (Control): canals without collagen barrier.
+  - Allocation: “94 canals in 47 primary molars were equally allocated to Group A and Group B, based on randomization protocol.”
+  - Method of randomization: For each tooth, one mesial and one distal canal were randomly assigned to test or control by flip coin method performed by the parent.
+  - Design implication: Within each tooth, one canal is test and the other is control → paired / matched design (canals clustered within tooth; child-level clustering ≈ tooth-level as one tooth per child).
+
+4. Sample size
+--------------
+
+- Canals: 94 canals (47 test, 47 control; stated “equally allocated”).
+- Teeth/children: 47.
+- Sample size justification: Power analysis performed with power = 80% (details not given – effect size, alpha, expected extrusion rates not specified).
+
+5. Interventions
+----------------
+
+Common procedures for all canals:
+- Local anesthesia.
+- Rubber dam isolation.
+- Access cavity: high-speed sterile round bur.
+- Pulp extirpation.
+- Irrigation: 3% sodium hypochlorite and normal saline.
+- Canals located and recorded (using double-ended endodontic explorer).
+- Working length determination:
+  - Initial radiographic working length with #15 K-file (21 mm).
+- Instrumentation:
+  - Final working length: 2 mm short of radiographic apex for both test and control canals (standardization).
+  - Preparation with hand Protaper files (SX to F2).
+  - Drying of canals.
+
+Group-specific intervention:
+- Test canals (Group A):
+  - A 2 mm square piece of resorbable collagen (Coloplug, Cologenesis Healthcare Pvt Ltd, Tamil Nadu, India) placed into canal.
+  - Condensed with an endodontic plugger set to the final working length (2 mm short of radiographic apex).
+- Control canals (Group B):
+  - No collagen barrier; same working length (2 mm short) used for instrumentation and obturation.
+
+Obturation and restoration (both groups):
+- Obturating material: Metapex (pre-packed syringe, calcium hydroxide + iodoform paste).
+- Technique:
+  - Syringe tip positioned into canal, paste pushed while withdrawing syringe until material flows back into pulp chamber.
+  - Light condensation with moist cotton pellet.
+  - All remaining canals (including non-study canals in the same tooth) obturated similarly.
+- Postoperative radiograph: Radiovisiography (Kodak Carestream RVG 5200); additional radiograph only if superimposition.
+- Final restoration: Glass ionomer cement + stainless steel crown.
+
+6. Outcomes and variables
+-------------------------
+
+Primary endpoint (explicit):
+- Extrusion status of obturating material per canal on postoperative radiograph.
+
+Operational definitions:
+- “Acceptable” / No Extrusion (NE):
+  - Canal showing optimal filling or 1–2 mm short of apex.
+- “Extruded” (E):
+  - Extravasation of obturation material into the periapex (overfilled beyond apex).
+
+Measurements:
+- Data type: Binary categorical outcome at canal level (E vs NE).
+- Assessor: Same operator (not blinded).
+- Modality: Digital radiographs (pre- and postoperative) using RVG.
+- Timing: Immediately post-obturation.
+
+Derived measures (possible):
+- Proportion of canals with extrusion in test vs control.
+- Difference in extrusion rates (%).
+- Risk ratio, odds ratio, risk difference.
+- Possibly canal-type specific outcomes (mesial vs distal) if recorded.
+
+Other potential variables (not explicitly stated as recorded but may exist):
+- Tooth ID (first vs second primary molar).
+- Canal type (mesial/distal).
+- Presence or absence of pre-operative root resorption is mentioned but inclusion criteria suggests exclusion of resorbed roots; any stratification not described.
+- Age, sex, behavior rating – only used for eligibility, not stated as analytic covariates.
+
+7. Data structure and dependencies
+----------------------------------
+
+- Hierarchical structure:
+  - Child level: 47 children.
+  - Tooth level: 1 tooth per child.
+  - Canal level: 2 canals per tooth (one test, one control).
+- Correlation:
+  - Canals within the same tooth are not independent.
+  - Study design is essentially paired (matched canals within tooth).
+- Randomization method:
+  - Within-tooth random allocation of canal to test/control by coin flip.
+
+8. Missing data and attrition
+-----------------------------
+
+- No explicit mention of dropouts, incomplete treatments, or excluded canals after randomization.
+- Assume all 94 canals analyzed (extrusion 6.4% vs 17% is consistent with 3 vs 8 extrusions out of 47 per group, but exact counts are not given in the excerpt).
+
+9. Stated results in conclusion (for context)
+---------------------------------------------
+
+- Extrusion rates:
+  - Test canals: 6.4%.
+  - Control canals: 17%.
+- Comparison reported as “statistically not significant”.
+
+TASK 2: STATISTICAL ANALYSIS PLAN  
+==================================
+
+Key points for the plan:
+- Binary primary outcome (extrusion yes/no) at canal level.
+- Paired / clustered design (each tooth provides one test and one control canal).
+- Sample size: 47 matched pairs (94 canals).
+- Primary aim: Does collagen barrier reduce extrusion rate vs control?
+
+I will structure the plan around:
+
+- Descriptive analyses.
+- Primary inferential analysis (mandatory).
+- Secondary / sensitivity analyses (recommended).
+- Exploratory / supplementary analyses (optional).
+
+A. MANDATORY TESTS / ANALYSES
+-----------------------------
+
+1. Descriptive statistics and flow diagram
+-----------------------------------------
+
+**Test/Method name:**  
+- Descriptive statistics (proportions, counts) and CONSORT-style flow diagram.
+
+**Purpose:**  
+- Summarize baseline characteristics, number of children, teeth, canals; describe extrusion rates in each group; show flow from screening to analysis.
+
+**Why appropriate (≥2 reasons):**  
+1. Essential to understand sample and context of inferential tests.  
+2. Allows assessment of potential selection bias and attrition (if any), and to verify equal allocation.  
+
+**Why it may not be appropriate (≥1 reason):**  
+- Not a hypothesis test; does not directly answer whether groups differ statistically.
+
+**When NOT to use:**  
+- Never “not used”; descriptive statistics are always required.
+
+**Alternative if assumptions violated:**  
+- Not applicable; descriptive summaries do not rely on distributional assumptions.
+
+Planned descriptive outputs:
+- Table at child/tooth level:
+  - N screened, N included, N analyzed.
+  - Distribution of age (mean ± SD or median [IQR]), sex (if available).
+- Table at canal level:
+  - N canals per group (test, control).
+  - Number and percentage extruded vs non-extruded in each group.
+  - Possibly stratified by canal type (mesial vs distal) and tooth type (if available).
+
+2. Primary comparative test for paired binary outcome
+-----------------------------------------------------
+
+**Test name:**  
+- McNemar’s test for paired binary data (preferred primary test).  
+- If data are instead treated as independent canals: chi-square test or Fisher’s exact test (secondary, but conceptually inferior given design).
+
+Given the design (one test and one control canal per tooth), McNemar’s is statistically the correct primary test.
+
+**Purpose:**  
+- To compare the proportion of canals with extrusion between test (collagen barrier) and control within matched pairs (same tooth/child).
+
+**Why appropriate (≥2 reasons):**  
+1. Outcome is binary (extruded vs not), and canals are paired within tooth – McNemar’s explicitly accounts for this intra-tooth pairing.  
+2. Focuses on discordant pairs (test extruded / control not; control extruded / test not), which directly reflects treatment effect under within-tooth randomization.  
+
+**Why it may not be appropriate (≥1 reason):**  
+- If pairing is broken (e.g., if some teeth only have one evaluable canal in either test or control group), McNemar’s cannot use unpaired observations and will lose data; with substantial unpairing, it may be inefficient or biased.
+
+**When this test should NOT be used:**  
+- When observations are independent and not paired (e.g., if teeth had random allocation of entire tooth to group rather than canal within tooth).  
+- When there are no discordant pairs (all pairs have both extruded or both non-extruded), McNemar statistic is undefined.  
+- When sample size of discordant pairs is extremely small, p-values may be unreliable (use exact McNemar).
+
+**Alternative if assumptions are violated:**  
+- **Exact McNemar test** (if discordant pair counts are small).  
+- **Generalized estimating equations (GEE) with logit link** and robust standard errors, clustering by tooth, as a regression-based alternative.  
+- If pairing is lost and canals truly independent: **Fisher’s exact test** (for small counts) or **Pearson chi-square test**.
+
+Implementation details:
+- Construct 2×2 table at tooth level:
+  - Rows: Test canal (E vs NE).
+  - Columns: Control canal (E vs NE).
+- Apply McNemar’s with continuity correction or exact variant.
+- Report:
+  - p-value.
+  - Discordant pair counts.
+  - Optionally, matched-pairs odds ratio with 95% CI.
+
+3. Estimation of effect size for binary outcome
+-----------------------------------------------
+
+**Test/Method name:**  
+- Estimation of risk difference, risk ratio, and odds ratio (paired or marginal) with 95% confidence intervals.
+
+**Purpose:**  
+- Quantify the magnitude and clinical relevance of effect of collagen barrier on extrusion, beyond hypothesis testing.
+
+**Why appropriate (≥2 reasons):**  
+1. Effect estimates and confidence intervals provide more interpretable clinical information (how much risk is reduced) than p-values alone.  
+2. CONSORT and modern reporting standards emphasize estimation (effect size with CI) as central to trial reporting.  
+
+**Why it may not be appropriate (≥1 reason):**  
+- When sample size is small and event rates are low, interval estimates may be very wide and unstable, particularly for odds ratios; exact methods might be required.
+
+**When this should NOT be used:**  
+- Should be avoided only if data are too sparse to calculate meaningful CIs (e.g., zero events in both groups).  
+- For paired data, do not use naive “independent sample” risk ratio methods that ignore pairing.
+
+**Alternative if assumptions are violated:**  
+- Use:
+  - **Conditional logistic regression** for matched pairs to obtain matched odds ratio.  
+  - **Exact confidence intervals** for proportions and risk differences (e.g., Clopper-Pearson for binomial, or exact McNemar CI).
+
+Specifics:
+- Compute (marginal, canal-level) extrusion proportions in each group and:
+  - Risk difference (RD = p_test − p_control).  
+  - Relative risk (RR = p_test / p_control).  
+  - Odds ratio (OR).  
+- For paired data, a matched OR from McNemar/conditional logistic regression is preferable.
+
+B. RECOMMENDED TESTS / ANALYSES
+--------------------------------
+
+4. Regression model accounting for clustering
+---------------------------------------------
+
+**Test name:**  
+- Generalized estimating equations (GEE) with logit link and exchangeable correlation, or  
+- Multilevel (mixed-effects) logistic regression with random intercept for tooth/child.
+
+**Purpose:**  
+- To model extrusion (binary) as a function of treatment (test vs control), while correctly accounting for clustering of canals within teeth (and possibly additional covariates if available).
+
+**Why appropriate (≥2 reasons):**  
+1. Accounts for within-tooth (and within-child) correlation beyond simple paired analysis, especially if additional canals/tooth or any deviations from perfect pairing occur.  
+2. Allows inclusion of covariates (e.g., canal type, tooth type, age) to adjust for potential imbalances or explore effect modification.  
+
+**Why it may not be appropriate (≥1 reason):**  
+- Sample size is small (47 teeth, 94 canals) and event numbers (extrusions) are low; complex models may be over-parameterized and unstable.
+
+**When this test should NOT be used:**  
+- When there are too few events per parameter (e.g., <10 events per predictor), leading to convergence problems or extreme estimates.  
+- When there is perfect collinearity between treatment and other covariates.
+
+**Alternative if assumptions are violated:**  
+- Stick to simpler paired analysis (McNemar or exact) as primary.  
+- If fitting regression is not stable, consider:
+  - **Exact logistic regression** (conditional on tooth) if feasible.  
+  - Or treat regression analyses as strictly exploratory and interpret with caution.
+
+Recommended model:
+- Outcome: Extrusion (yes/no) per canal.
+- Fixed effect: Treatment (test vs control).
+- Cluster: Tooth (ID = child, since one tooth/child).
+- Optional covariates (if recorded): canal type (mesial/distal), tooth type (first/second molar), age, sex.
+
+5. Sensitivity analysis treating canals as independent
+------------------------------------------------------
+
+**Test name:**  
+- Fisher’s exact test (2×2 table treatment × extrusion), or Pearson’s chi-square test.
+
+**Purpose:**  
+- To examine robustness of conclusions if canals are assumed independent (i.e., ignoring pairing); provides a simple comparison often familiar to readers.
+
+**Why appropriate (≥2 reasons):**  
+1. Straightforward test for binary outcome by group; widely understood and easy to compute.  
+2. Provides a check whether results are qualitatively similar to McNemar’s; useful for sensitivity analysis and to show the impact of dependency modeling.  
+
+**Why it may not be appropriate (≥1 reason):**  
+- It ignores within-tooth dependence and randomization structure; p-values and CIs may be misleading (typically anti-conservative if clustering present).
+
+**When this test should NOT be used:**  
+- As the *primary* analysis in a paired randomized design; it misaligns with the randomization unit and correlation structure.
+
+**Alternative if assumptions are violated:**  
+- If expected cell counts <5 in chi-square, use Fisher’s exact test or exact unconditional tests.
+
+6. Inter-rater reliability (if multiple raters ever used)
+---------------------------------------------------------
+
+Currently, all radiographs are assessed by one operator; if in future another examiner is involved:
+
+**Test name:**  
+- Cohen’s kappa (for 2 raters) or Fleiss’ kappa (for >2 raters) for binary outcomes.
+
+**Purpose:**  
+- To assess reliability in classification of extrusion status (E vs NE) across examiners.
+
+**Why appropriate (≥2 reasons):**  
+1. Extrusion status is binary, so kappa is standard for categorical agreement.  
+2. Important for ensuring outcome measurement is reproducible and not heavily dependent on a single examiner.  
+
+**Why it may not be appropriate (≥1 reason):**  
+- Not applicable if only one examiner does all measurements and no repeat readings are taken.
+
+**When this test should NOT be used:**  
+- With only one rater and no replicate readings.  
+- If outcome categories are extremely imbalanced (very few extrusions), kappa can be misleadingly low or high.
+
+**Alternative if assumptions are violated:**  
+- Use percent agreement as a simple supplement.  
+- For ordinal outcomes (if grading extrusion extent), use weighted kappa.
+
+C. OPTIONAL / SUPPLEMENTARY ANALYSES
+-------------------------------------
+
+7. Subgroup analysis by canal type (mesial vs distal)
+-----------------------------------------------------
+
+**Test name:**  
+- Stratified McNemar or logistic regression with interaction term (treatment × canal type).
+
+**Purpose:**  
+- Explore whether effect of collagen barrier differs between mesial vs distal canals (if canal type recorded).
+
+**Why appropriate (≥2 reasons):**  
+1. Mesial and distal canals may differ anatomically and in resorption patterns; effect may not be uniform.  
+2. Stratified analyses can generate hypotheses for future studies.  
+
+**Why it may not be appropriate (≥1 reason):**  
+- Subgroup sizes are small; low power and increased risk of type I error due to multiple comparisons.
+
+**When this test should NOT be used:**  
+- If canal type is not reliably recorded or if numbers per subgroup are too low (e.g., very few extrusions in either subgroup).  
+- Do not label these analyses as confirmatory; they must be clearly exploratory.
+
+**Alternative if assumptions are violated:**  
+- Descriptive comparison only (extrusion rates by canal type and group), without formal testing.
+
+8. Subgroup analysis by tooth type or other baseline factors
+-------------------------------------------------------------
+
+Same logic as above.
+
+**Test name:**  
+- Stratified analyses (e.g., Mantel–Haenszel pooled RR) or logistic regression with interaction terms.
+
+**Purpose:**  
+- Explore if effect differs by tooth type (first vs second primary molar), age group, etc.
+
+**Why appropriate (≥2 reasons):**  
+1. Can identify effect heterogeneity which may influence clinical implementation.  
+2. Adjusted analyses can control for confounding if randomization at canal level does not perfectly balance tooth-level characteristics.  
+
+**Why it may not be appropriate (≥1 reason):**  
+- Very limited events and sample size, so large uncertainty and high multiplicity risk.
+
+**When NOT to use:**  
+- If baseline variables are not collected in analytic form.  
+- If small cell sizes make models non-convergent.
+
+**Alternative if assumptions violated:**  
+- Present descriptive subgroup results without formal statistical tests.
+
+9. Graphical presentation of outcome
+------------------------------------
+
+**Method name:**  
+- Bar plots with 95% confidence intervals for extrusion rates by group; paired dot plots at tooth level.
+
+**Purpose:**  
+- Visualize difference in extrusion rates and paired relationships within teeth.
+
+**Why appropriate (≥2 reasons):**  
+1. Enhances understanding of the magnitude and direction of effect.  
+2. Paired visualizations help emphasize the within-tooth comparison.  
+
+**Why it may not be appropriate (≥1 reason):**  
+- With small sample size and discrete outcomes, plots may appear sparse or not add much beyond the table.
+
+**When NOT to use:**  
+- When space is limited or journal does not accept such figures.
+
+**Alternative if assumptions violated:**  
+- Simple tabular presentation.
+
+TASK 3: INAPPROPRIATE TESTS AND WHY
+====================================
+
+Below are tests that **should NOT** be used for this study’s primary question, with reasons.
+
+1. Independent-samples t-test / paired t-test
+---------------------------------------------
+
+- Outcome is binary (E vs NE), not continuous; t-tests assume continuous, approximately normally distributed data.
+- Using t-test on binary outcome (coding 0/1) can in some designs be equivalent to comparing proportions but is non-standard and mis-specifies variance, especially with small sample size.
+- When not to use: Any inferential comparison of extrusion rates between groups.
+
+Alternative: McNemar’s test, chi-square, Fisher’s exact, logistic regression.
+
+2. One-way or two-way ANOVA / repeated-measures ANOVA
+-----------------------------------------------------
+
+- Same reason: outcome is binary, not continuous, and design is not about multiple continuous measurements.
+- Not appropriate for comparing proportions.
+
+Alternative: Logistic regression or generalized linear models for binary outcomes.
+
+3. Pearson correlation or linear regression for main effect
+-----------------------------------------------------------
+
+- Correlation assumes continuous variables; here the outcome is binary and treatment is categorical.
+- Linear regression with binary outcome violates assumptions and can produce predicted probabilities outside [0,1].
+
+Alternative: Logistic regression, GEE, or conditional logistic regression.
+
+4. Unpaired (independent) chi-square test as primary analysis
+-------------------------------------------------------------
+
+- While a chi-square (or Fisher’s exact) test on canals can be computed, treating canals as independent ignores pairing and within-tooth randomization; p-values and confidence intervals may be invalid.
+- It does not match the randomization unit (tooth with paired canals).
+- It can be used only as sensitivity/exploratory, not as primary.
+
+Alternative: McNemar’s test (primary), exact McNemar.
+
+5. Survival analysis (Kaplan–Meier, Cox regression) for primary outcome
+-----------------------------------------------------------------------
+
+- Primary outcome is immediate post-op extrusion, not time-to-event.
+- No follow-up times or censoring structures are present for the main endpoint.
+
+Alternative: Binary outcome methods as above.
+
+6. ROC curve analysis
+---------------------
+
+- ROC analysis is used for evaluating classification performance of continuous or ordinal predictors against a binary gold standard.
+- There is no continuous diagnostic test here; only a treatment versus control comparison.
+
+Alternative: Not needed.
+
+7. Nonparametric tests for continuous data (Mann–Whitney U, Wilcoxon signed-rank, Kruskal–Wallis)
+--------------------------------------------------------------------------------------------------
+
+- These are for continuous or ordinal outcomes; not binary.  
+- Misapplied if used to compare extrusion frequencies.
+
+Alternative: Appropriate binary outcome tests.
+
+TASK 4: SUMMARY OF OVERALL ANALYTICAL APPROACH
+==============================================
+
+- The study is a randomized clinical trial with **paired canals within each tooth** (one test, one control). The **primary outcome** is a **binary** indicator of extrusion vs no extrusion on immediate postoperative radiographs.
+- Analysis must therefore:
+  - Respect the **paired/clustered structure** (canals within the same tooth/child).
+  - Use methods suited for **binary outcomes**.
+- The **primary analysis** should be a **McNemar’s test**, comparing extrusion rates in matched test vs control canals within each tooth, supplemented by **effect size estimation** (risk difference, relative risk, and/or matched odds ratio with 95% CI).
+- **Descriptive statistics** at child, tooth, and canal levels are essential to characterize the sample and extrusion frequencies.
+- **Regression models with clustering (GEE or mixed-effects logistic regression)** are recommended to adjust for canal-level or tooth-level covariates and to check robustness, acknowledging that small sample size may limit model complexity.
+- Additional analyses (independent chi-square/Fisher as sensitivity, exploratory subgroup analyses, and graphical displays) can provide supplementary insight but must be clearly labelled as exploratory and interpreted cautiously.
+
+This strategy aligns with the randomization, the data structure, and the nature of the primary endpoint, and adheres to common standards for analysis of paired binary outcomes in randomized dental clinical trials.

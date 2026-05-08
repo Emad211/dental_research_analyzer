@@ -1,0 +1,121 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splittedijcpd-14-243.pdf
+Status : ok
+Time   : 20260508_134520
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Single-blinded randomized clinical trial.
+2. **Objective**: To evaluate the antimicrobial efficacy of triple antibiotic paste (TAP) and propolis as intracanal medicaments in young permanent teeth.
+3. **Study Groups**:
+   - **Group I**: Triple antibiotic paste (TAP) prepared using ciprofloxacin, metronidazole, and minocycline mixed in a 1:1:1 ratio with saline.
+   - **Group II**: Propolis powder mixed with saline in a 1.5:1 ratio (wt/vol).
+4. **Sample Size**: 30 teeth (15 teeth per group).
+5. **Population**: Children aged 7–14 years with single-rooted young permanent teeth meeting the inclusion criteria.
+   - **Inclusion Criteria**: Non-vital tooth with open apex, history of trauma, presence of clinical/radiographic periapical pathology, and restorable teeth.
+   - **Exclusion Criteria**: Grade III tooth mobility and medically compromised children.
+6. **Variables**:
+   - **Independent Variable**: Type of intracanal medicament (TAP vs. Propolis).
+   - **Dependent Variable**: Reduction in bacterial count (antimicrobial efficacy).
+7. **Measurements**:
+   - Bacterial colony count from three samples:
+     - **S1**: Pre-treatment sample.
+     - **S2**: Post-irrigation with NaOCl and saline.
+     - **S3**: Post-treatment with intracanal medicament (after 3–4 weeks).
+8. **Data Collection Methods**:
+   - Bacterial samples collected using sterile paper points and transferred to test tubes containing brain heart infusion (BHI) nutrient broth.
+   - Microbiological analysis performed by an independent investigator blinded to group allocation.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Paired t-test (or Wilcoxon signed-rank test for non-normal data).
+   - **Purpose**: Compare bacterial colony counts within each group (S1 vs. S2, S2 vs. S3).
+   - **Why Appropriate**:
+     - The study involves repeated measures (pre-treatment, post-irrigation, post-medication).
+     - Continuous data (bacterial colony counts) is collected.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normal distribution of differences, which may not hold.
+   - **When This Test Should NOT Be Used**: If data is heavily skewed or contains outliers.
+   - **Alternative**: Wilcoxon signed-rank test (non-parametric).
+
+2. **Test Name**: Independent t-test (or Mann-Whitney U test for non-normal data).
+   - **Purpose**: Compare bacterial colony reduction between Group I (TAP) and Group II (Propolis).
+   - **Why Appropriate**:
+     - Two independent groups are compared.
+     - Continuous outcome variable (bacterial colony reduction).
+   - **Why It May Not Be Appropriate**:
+     - Assumes equal variances and normal distribution.
+   - **When This Test Should NOT Be Used**: If variance is unequal or data is non-normal.
+   - **Alternative**: Mann-Whitney U test (non-parametric).
+
+#### CATEGORY B – RECOMMENDED TESTS
+3. **Test Name**: Repeated Measures ANOVA (or Friedman test for non-normal data).
+   - **Purpose**: Analyze bacterial colony counts across all three time points (S1, S2, S3) within each group.
+   - **Why Appropriate**:
+     - Accounts for repeated measures within subjects.
+     - Tests for overall differences across time points.
+   - **Why It May Not Be Appropriate**:
+     - Assumes sphericity (equal variance of differences between time points).
+   - **When This Test Should NOT Be Used**: If sphericity assumption is violated.
+   - **Alternative**: Friedman test (non-parametric).
+
+4. **Test Name**: Mixed-Effects Model.
+   - **Purpose**: Evaluate the interaction between time points and treatment groups on bacterial colony counts.
+   - **Why Appropriate**:
+     - Accounts for repeated measures and group differences simultaneously.
+     - Handles missing data better than ANOVA.
+   - **Why It May Not Be Appropriate**:
+     - Requires expertise in model specification and interpretation.
+   - **When This Test Should NOT Be Used**: If sample size is insufficient for model convergence.
+   - **Alternative**: Repeated Measures ANOVA.
+
+#### CATEGORY C – OPTIONAL TESTS
+5. **Test Name**: Effect Size Calculation (Cohen’s d or η²).
+   - **Purpose**: Quantify the magnitude of differences between groups or time points.
+   - **Why Appropriate**:
+     - Provides additional insight into clinical significance.
+     - Useful for interpreting results beyond p-values.
+   - **Why It May Not Be Appropriate**:
+     - Does not test statistical significance.
+   - **When This Test Should NOT Be Used**: If sample size is too small for meaningful effect size interpretation.
+   - **Alternative**: None (effect size is supplementary).
+
+6. **Test Name**: Chi-Square Test of Independence.
+   - **Purpose**: Analyze categorical outcomes (e.g., presence/absence of bacterial colonies).
+   - **Why Appropriate**:
+     - Useful if bacterial colony counts are dichotomized.
+     - Tests association between treatment groups and categorical outcomes.
+   - **Why It May Not Be Appropriate**:
+     - Requires categorical data, which may lose information from continuous counts.
+   - **When This Test Should NOT Be Used**: If data is continuous.
+   - **Alternative**: Logistic regression.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1. **ANOVA (One-Way)**:
+   - **Why Not Appropriate**: Does not account for repeated measures within subjects.
+   - **Alternative**: Repeated Measures ANOVA or Mixed-Effects Model.
+
+2. **Chi-Square Test for Continuous Data**:
+   - **Why Not Appropriate**: Assumes categorical data, whereas bacterial colony counts are continuous.
+   - **Alternative**: Independent t-test or Mann-Whitney U test.
+
+3. **Pearson Correlation**:
+   - **Why Not Appropriate**: Does not test group differences or time effects.
+   - **Alternative**: Paired t-test or Repeated Measures ANOVA.
+
+---
+
+### TASK 4: SUMMARY
+
+The statistical analysis plan focuses on comparing bacterial colony counts across time points and between treatment groups. Paired and independent t-tests (or their non-parametric counterparts) are mandatory for assessing intra-group and inter-group differences. Repeated Measures ANOVA and Mixed-Effects Models are recommended for analyzing trends across time points and interactions between time and treatment groups. Optional tests, such as effect size calculations, enhance the interpretability of results. Inappropriate tests, such as one-way ANOVA and Pearson correlation, are avoided due to their inability to address the study’s repeated measures design and objectives.
+
+This comprehensive approach ensures robust statistical analysis while addressing potential violations of assumptions.

@@ -1,0 +1,148 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splittd_JOCPD45.3.3.pdf
+Status : ok
+Time   : 20260508_130020
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Randomized Clinical Trial (RCT)  
+   - Double-blinded (participant and outcome assessor blinded; clinician not blinded due to material-specific manipulation requirements).
+
+2. **Objective**:  
+   - To evaluate the efficacy of Biodentine, Theracal, and Dycal as indirect pulp therapy (IPT) agents in young permanent teeth.
+
+3. **Groups**:  
+   - Group 1: Biodentine  
+   - Group 2: Theracal  
+   - Group 3: Dycal  
+
+4. **Sample Size**:  
+   - Initial sample size: 60 teeth (20 per group).  
+   - Final sample size after follow-up loss: 54 teeth (18 per group).  
+
+5. **Population**:  
+   - Children aged 7–15 years with deep dentinal caries in permanent molars.  
+   - Male-to-female ratio: 0.88:1.00.  
+   - Mean age: 12.36 ± 2.29 years.  
+   - Teeth distribution: 33.33% mandibular, 66.66% maxillary.
+
+6. **Inclusion Criteria**:  
+   - Permanent posterior teeth with deep dentinal caries (ICDAS 5 & 6) and open apices.  
+   - Clinical symptoms: sensitivity to cold and pain on mastication.  
+   - Radiographic criteria: >70% or 2/3 of dentin thickness affected without periapical pathology, external/internal root resorption, or pulp calcification.
+
+7. **Sampling Technique**:  
+   - Simple randomization using coded colored balls for material allocation.  
+   - Randomization performed separately for each tooth if multiple teeth met inclusion criteria.
+
+8. **Variables**:  
+   - **Primary Outcome**: Clinical success (absence of postoperative pain, mobility, inflammation, sinus tract, or fistula).  
+   - **Secondary Outcome**: Radiographic success (absence of resorption, PDL widening, periapical involvement, and evidence of root apex development).
+
+9. **Measurements and Data Collection**:  
+   - Clinical evaluations at 3 weeks, 3 months, 6 months, 12 months, 18 months, and 24 months.  
+   - Radiographic evaluations using standardized paralleling technique.  
+   - Inter-examiner agreement: Baseline (0.91) and final follow-up (0.94), with significant p-values (<0.05).
+
+10. **Statistical Considerations**:  
+    - Baseline agreement and follow-up agreement were statistically significant.  
+    - Sample size calculation accounted for 10% dropout rate and aimed for 80% power with a 5% Type I error.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### **CATEGORY A – MANDATORY**
+1. **Test Name**: Chi-Square Test or Fisher’s Exact Test  
+   - **Purpose**: To compare the success rates (clinical and radiographic) across the three groups.  
+   - **Why Appropriate**:  
+     - Categorical outcome (success vs. failure).  
+     - Comparing proportions between independent groups.  
+   - **Why It May Not Be Appropriate**:  
+     - Small sample size in subgroups may violate assumptions of Chi-Square.  
+   - **When This Test Should NOT Be Used**:  
+     - When expected frequencies in contingency tables are <5.  
+   - **Alternative**: Fisher’s Exact Test.
+
+2. **Test Name**: Repeated Measures ANOVA or Mixed-Effects Model  
+   - **Purpose**: To evaluate changes in clinical and radiographic outcomes over time (3 weeks, 3 months, 6 months, etc.).  
+   - **Why Appropriate**:  
+     - Longitudinal data with repeated measures.  
+     - Accounts for within-subject correlation.  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes normality of residuals and homogeneity of variances.  
+   - **When This Test Should NOT Be Used**:  
+     - If data are non-normal or variances are unequal.  
+   - **Alternative**: Non-parametric alternatives like Friedman Test.
+
+#### **CATEGORY B – RECOMMENDED**
+1. **Test Name**: Kaplan-Meier Survival Analysis  
+   - **Purpose**: To assess the time-to-failure (clinical or radiographic) for each material.  
+   - **Why Appropriate**:  
+     - Accounts for censored data (e.g., dropout cases).  
+     - Provides insights into durability of materials over time.  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes proportional hazards, which may not hold.  
+   - **When This Test Should NOT Be Used**:  
+     - If follow-up intervals are irregular or data are sparse.  
+   - **Alternative**: Cox Proportional Hazards Model.
+
+2. **Test Name**: Inter-Rater Reliability (Kappa Statistic)  
+   - **Purpose**: To validate the agreement between examiners for clinical and radiographic evaluations.  
+   - **Why Appropriate**:  
+     - Measures consistency between raters.  
+     - Accounts for chance agreement.  
+   - **Why It May Not Be Appropriate**:  
+     - If sample size is small or raters are inconsistent.  
+   - **When This Test Should NOT Be Used**:  
+     - If data are ordinal rather than categorical.  
+   - **Alternative**: Weighted Kappa for ordinal data.
+
+#### **CATEGORY C – OPTIONAL**
+1. **Test Name**: Logistic Regression  
+   - **Purpose**: To identify predictors of success (e.g., material type, tooth location, age).  
+   - **Why Appropriate**:  
+     - Binary outcome (success vs. failure).  
+     - Adjusts for confounding variables.  
+   - **Why It May Not Be Appropriate**:  
+     - Requires large sample size for reliable estimates.  
+   - **When This Test Should NOT Be Used**:  
+     - If sample size is insufficient or predictors are highly correlated.  
+   - **Alternative**: Exact Logistic Regression.
+
+2. **Test Name**: Subgroup Analysis (e.g., stratified by tooth location or age group).  
+   - **Purpose**: To explore differential effects of materials in subgroups.  
+   - **Why Appropriate**:  
+     - Provides insights into heterogeneity of treatment effects.  
+     - Useful for clinical decision-making.  
+   - **Why It May Not Be Appropriate**:  
+     - Risk of Type I error due to multiple comparisons.  
+   - **When This Test Should NOT Be Used**:  
+     - If subgroup sizes are too small.  
+   - **Alternative**: Meta-regression (if applicable).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1. **Independent Samples t-Test**:  
+   - **Why Not Appropriate**:  
+     - Outcomes are categorical (success vs. failure), not continuous.  
+
+2. **Pearson Correlation**:  
+   - **Why Not Appropriate**:  
+     - Correlation is not suitable for categorical or longitudinal data.  
+
+3. **Paired t-Test**:  
+   - **Why Not Appropriate**:  
+     - Groups are independent, not paired.
+
+---
+
+### TASK 4: SUMMARY
+
+The statistical analysis plan prioritizes robust methods to evaluate the efficacy of three IPT materials. Mandatory tests focus on comparing success rates and analyzing longitudinal data. Recommended tests enhance rigor by accounting for time-to-failure and inter-rater reliability. Optional tests provide supplementary insights into predictors and subgroup effects. Inappropriate tests are excluded to ensure methodological validity. This approach ensures comprehensive evaluation of clinical and radiographic outcomes while adhering to best practices in biostatistics.

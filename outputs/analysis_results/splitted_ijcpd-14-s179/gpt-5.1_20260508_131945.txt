@@ -1,0 +1,755 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_ijcpd-14-s179.pdf
+Status : ok
+Time   : 20260508_131945
+══════════════════════════════════════════════════════════════════════
+
+TASK 1: INFORMATION EXTRACTION
+-------------------------------
+
+1. STUDY DESIGN
+
+- Type: Single-blinded randomized controlled clinical trial (parallel groups).
+- Setting: Saveetha Dental College and Hospitals, Chennai, Tamil Nadu, India.
+- Time frame: Not specified; single-visit pulpectomy for each included tooth.
+- Blinding:
+  - Single-blinded: likely patient/parent blinded to group allocation; operator was not masked (performs treatment and records outcomes).
+- Randomization:
+  - Computer-generated randomization sequence.
+  - Allocation concealment using sequentially numbered, sealed, opaque envelopes opened at enrollment.
+
+2. OBJECTIVES
+
+Primary aim (explicit):
+
+- Compare and evaluate between manual and rotary instrumentation in primary root canal therapy with respect to:
+  - Child’s behavior during canal preparation.
+  - Anxiety level during instrumentation.
+  - Pain perception during instrumentation.
+
+3. STUDY POPULATION
+
+- Target population: Children attending Saveetha Dental College for routine dental treatment.
+
+Inclusion criteria:
+
+- Age: 4–7 years.
+- Cooperative behavior for dental treatment at their first dental visit.
+- Need for pulpectomy in a primary tooth (vital tooth; vitality confirmed by hemorrhage in canal upon de-roofing).
+- Tooth with adequate coronal tooth structure to receive stainless steel crown.
+
+Exclusion criteria:
+
+- Children lacking cooperative ability at first visit.
+- Children with physical disabilities.
+- Children with psychological disabilities.
+- Children with underlying systemic diseases requiring special health care needs.
+- Teeth needing pulpectomy in abscessed or nonvital tooth.
+- Teeth showing signs of internal/pathological resorption.
+- Teeth with inadequate coronal tooth structure for stainless steel crown.
+- Parents unwilling or refusing informed consent.
+
+Ethics & consent:
+
+- Ethical approval: Institutional ethical committee, Saveetha Institute of Medical and Technical Sciences (SRB/SDMDS15PED12).
+- Conducted per Declaration of Helsinki.
+- Written informed consent from parents.
+
+4. INTERVENTION GROUPS
+
+Two parallel groups:
+
+- Group I (Manual/Conventional):
+  - Canal preparation using stainless steel K files (Mani, Inc., Japan) up to size 30.
+  - Quarter turn pull technique.
+  - Irrigation with saline between each file size.
+
+- Group II (Rotary/NiTi):
+  - Simplified protocol for ProTaper NiTi rotary files (Dentsply):
+    - SX file: bucco-lingual brushing motion to remove overlying dentin and gain straight-line access.
+    - S2 file: inserted to working length for canal preparation.
+  - Powered by X-Smart motor at 300 rpm, torque at lowest setting.
+  - Thorough irrigation with saline.
+  - Files discarded after use in five teeth.
+  - No forcing beyond resistance to avoid fracture.
+
+Common procedures for both groups:
+
+- Single pediatric dentist performed all pulpectomies in a single visit.
+- Topical anesthetic: Precaine B (Pascal International, USA).
+- Local anesthetic: 2% lignocaine with 1:200,000 adrenaline (LOX 2%).
+- Rubber dam isolation.
+- Removal of superficial caries with high-speed sterile No. 330 carbide burs.
+- Standard access opening and coronal pulp tissue removal.
+- Dentin reduction until all canals visible.
+- Canal exploration and patency: No. 10 K file.
+- Working length: from pre-operative radiograph, 1 mm short of radiographic apex.
+- Irrigation: saline for all canals.
+- Obturation: premixed calcium hydroxide + iodoform paste (Metapex).
+- Canal drying with paper points.
+- Access restoration: Glass Ionomer Cement.
+- Final restoration: Stainless steel crown (3M ESPE).
+
+Behavior management methods (both groups):
+
+- Baseline: Tell-Show-Do, euphemisms.
+- For negative behavior: voice control, HOME (hand-over-mouth technique), physical restraints.
+
+5. SAMPLE SIZE
+
+- Pilot study: 20 children (10 per group) using same criteria.
+- Sample size calculation:
+  - Software: G*Power.
+  - Power: 95%.
+  - Alpha: 5%.
+  - Final sample size: 88 children (44 per group).
+- Unit of randomization: child (each child with at least one indicated tooth). The text does not clearly state if multiple teeth per child were included; by default plan as one tooth per child.
+
+6. OUTCOME VARIABLES & MEASUREMENTS
+
+Timing: Outcomes assessed during/after canal preparation within the single visit.
+
+Primary outcomes (as described):
+
+1) Child’s behavior during canal preparation
+
+- Instrument: Frankl Behavior Rating Scale.
+- Rater: operator (pediatric dentist performing treatment).
+- Measurement:
+  - Ordinal scale with 4 categories:
+    - Definitely positive.
+    - Positive.
+    - Negative.
+    - Definitely negative.
+- Recording time: “During canal preparation.”
+
+2) Anxiety level during instrumentation
+
+- Instrument: Venham’s Interval Rating Scale.
+- Rater: operator.
+- Measurement:
+  - Ordinal scale, scores 0–5, increasing anxiety.
+- Recording time: “On instrumentation” (during canal preparation).
+
+3) Pain experienced during instrumentation
+
+- Instrument: Wong-Baker FACES Pain Rating Scale.
+- Rater: self-report by child: scale explained; child selects face representing pain.
+- Measurement:
+  - Standard Wong-Baker: typically 0–5 or 0–10; article says self-reported scale with faces; treat as ordinal 0–5 (most likely).
+- Recording time: “After canal preparation,” assessing pain experienced during instrumentation.
+
+Other potential outcomes (not explicitly stated but typical and hinted by the broader project / references):
+
+- Instrumentation time/chairside time: not mentioned explicitly in Methods for this specific article, so cannot assume it was measured.
+- Technical outcomes (quality of obturation, radiographic outcomes): not mentioned in this article’s methods; ignore for this plan.
+
+7. GROUP COMPARABILITY VARIABLES (POTENTIAL COVARIATES)
+
+Explicitly measured covariates are not listed in Methods, but for rigor we should consider:
+
+- Age (years; 4–7) – should be recorded.
+- Sex – likely recorded in the clinical context though not described.
+- Tooth type/location – primary molar type and arch, but not described. May impact behavior/anxiety if procedures differ in difficulty.
+- Baseline behavior/anxiety:
+  - Children were included only if “showing cooperative behavior” at first visit, but baseline scales are not reported to be measured quantitatively.
+- Operator is fixed (one pediatric dentist), so no operator effect.
+
+8. DATA COLLECTION & BLINDING OF ASSESSMENTS
+
+- Outcome assessment:
+  - Frankl behavior rating and Venham scale: scored directly by the treating dentist during procedure; not independent/ blinded.
+  - Wong-Baker: self-reported by the child; dentist explains the scale.
+- Blinding:
+  - Only single-blinded trial. Participants or parents may not know file type; however visual and auditory differences between manual and rotary instrumentation could break blinding.
+  - No blinding of outcome assessment (operator not blinded to group).
+
+9. DATA STRUCTURE
+
+- Design: Two independent groups, each with n = 44 children.
+- Main outcomes: Ordinal scales measured once per child (cross-sectional, post-randomization).
+- No repeated measures over time are described.
+- No mention of missing data handling; for planning, assume low missingness but include strategy.
+
+---------------------------------
+TASK 2: STATISTICAL ANALYSIS PLAN
+---------------------------------
+
+General approach:
+
+- Primary comparison: Manual vs Rotary instrumentation.
+- All primary outcomes are ordinal; group sizes equal; randomization ensures comparability.
+- Plan intention-to-treat (all randomized participants analyzed in assigned group).
+- Two-sided tests, α = 0.05 for primary comparisons; consider adjustment for multiple primary outcomes if maintaining strict familywise error.
+
+I’ll list tests by category (Mandatory, Recommended, Optional). For each, I’ll give:
+
+- Name
+- Purpose
+- Why appropriate (2+ reasons)
+- Why it may not be appropriate (≥1 reason)
+- When not to use
+- Alternative if assumptions are violated
+
+### CATEGORY A – MANDATORY TESTS
+
+A1. Descriptive Statistics
+
+Test/procedure:
+
+- Tabulation and descriptive summaries (no formal “test”):
+  - For each group: frequencies and percentages for:
+    - Frankl categories (4 levels).
+    - Venham scores (0–5).
+    - Wong-Baker scores (0–5).
+  - For covariates: age (mean ± SD or median [IQR]), sex distribution, tooth-type distribution if available.
+
+Purpose:
+
+- Characterize each group.
+- Check balance after randomization.
+- Provide absolute numbers and distributions for interpretation.
+
+Why appropriate:
+
+1) Essential in RCTs to show baseline characteristics and distributions of outcomes.
+2) Ordinal outcomes summarized via frequency tables and medians allow understanding without assuming normality.
+
+Why it may not be appropriate:
+
+- Not a hypothesis test; alone, it does not provide evidence of statistical significance.
+
+When not to use:
+
+- Never; descriptive statistics are always required.
+
+Alternative if assumptions violated:
+
+- Not applicable; purely descriptive.
+
+---
+
+A2. Comparison of Frankl Behavior Categories Between Groups
+
+Primary test:
+
+- Chi-square test of independence (manual vs rotary by 4-category Frankl scale) as the main categorical comparison.
+- Additionally: Ordinal association test such as Cochran–Armitage trend test or nonparametric Mann–Whitney U (see A3) treating Frankl scores as 1–4.
+
+Purpose:
+
+- Test whether distribution of behavior (definitely negative → definitely positive) differs between manual and rotary instrumentation.
+
+Why appropriate (Chi-square):
+
+1) Outcome is categorical; groups are independent and mutually exclusive.
+2) Sample size is moderate (44 per group), suitable for Chi-square contingency analysis.
+
+Why it may not be appropriate:
+
+- If some cells (e.g., “definitely negative”) have very small counts (<5), Chi-square approximation may be inaccurate.
+
+When NOT to use:
+
+- When expected cell counts in more than ~20% of cells are <5 or any expected count <1.
+
+Alternative if assumptions are violated:
+
+- Fisher’s exact test for a 2×4 table (exact p-value).
+- Or collapse categories into fewer levels (e.g., positive vs negative) and then use Chi-square or Fisher’s test.
+
+---
+
+A3. Comparison of Frankl Scores Using a Nonparametric Test
+
+Test:
+
+- Mann–Whitney U test (a.k.a. Wilcoxon rank-sum test) treating Frankl scale as ordered 1–4.
+
+Purpose:
+
+- Compare central tendency of behavior (as ordinal scores) between manual and rotary groups, considering ordering.
+
+Why appropriate:
+
+1) Frankl is an ordinal scale; Mann–Whitney uses ranking and does not assume normality.
+2) Two independent groups with a single post-intervention measure each; ideal setting for this test.
+
+Why it may not be appropriate:
+
+- If there is a high proportion of tied values and distributions are very skewed in different shapes, interpretation of the Mann–Whitney “shift in distribution” may be less straightforward.
+
+When NOT to use:
+
+- For nominal (unordered) categories; or if sample size in one group is extremely small (not the case here).
+
+Alternative if assumptions are violated:
+
+- Ordinal logistic regression (proportional odds model) with group as predictor, which can handle ties and adjust for covariates (see B3).
+- Permutation test on ranks as a robust alternative.
+
+---
+
+A4. Comparison of Venham Anxiety Scores Between Groups
+
+Test:
+
+- Mann–Whitney U test.
+
+Purpose:
+
+- Compare anxiety levels (0–5) between manual and rotary groups.
+
+Why appropriate:
+
+1) Venham scale is ordinal (0–5); Mann–Whitney is suitable for comparing two independent groups on ordinal outcomes.
+2) Does not assume normal distribution or equal variances, appropriate for small ordinal scales.
+
+Why it may not be appropriate:
+
+- Similar to A3: different distribution shapes and many ties may complicate interpretation.
+
+When NOT to use:
+
+- If Venham were treated as categorical without clear ordering (not the case here).
+- For paired/repeated measurements (not present here).
+
+Alternative if assumptions are violated:
+
+- Ordinal logistic regression with group as predictor (see B3).
+- Exact Mann–Whitney or permutation test if sample is small or distribution is extremely nonstandard.
+
+---
+
+A5. Comparison of Wong-Baker Pain Scores Between Groups
+
+Test:
+
+- Mann–Whitney U test.
+
+Purpose:
+
+- Compare pain intensity (ordinal faces scale) between manual and rotary groups.
+
+Why appropriate:
+
+1) Wong-Baker FACES is inherently ordinal; Mann–Whitney respects ranking and avoids normality assumptions.
+2) Two independent groups; outcomes measured once per child.
+
+Why it may not be appropriate:
+
+- Interpretation of a numeric “median difference” on a faces scale may not be intuitive to clinicians, though the test is statistically valid.
+
+When NOT to use:
+
+- For data that are binary/categorical without order.
+- For repeated time points (not present).
+
+Alternative if assumptions are violated:
+
+- Ordinal logistic regression with group as predictor.
+- Nonparametric permutation test on ranks.
+
+---
+
+A6. Familywise Considerations / Multiple Primary Outcomes
+
+Test/procedure:
+
+- Control for multiple comparisons (behavior, anxiety, pain) using one of:
+  - Bonferroni correction (α = 0.05/3 ≈ 0.0167 per test).
+  - Or clearly declare one primary endpoint and two key secondary endpoints.
+
+Purpose:
+
+- Maintain overall Type I error given multiple primary outcomes.
+
+Why appropriate:
+
+1) Behavior, anxiety, and pain are related but distinct, and the study conclusions emphasize all three; formal multiplicity control improves rigor.
+2) Randomization tests each separately; controlling error avoids overstating significance.
+
+Why it may not be appropriate:
+
+- Bonferroni can be overly conservative and reduce power, especially with correlated outcomes.
+
+When NOT to use:
+
+- If the study protocol pre-specified one primary and others as exploratory; in that case, only the primary needs strict α=0.05.
+
+Alternative if assumptions are violated:
+
+- Holm–Bonferroni procedure (less conservative).
+- Multivariate model (e.g., multivariate ordinal model), but this is complex and rarely necessary here.
+
+---
+
+### CATEGORY B – RECOMMENDED TESTS (ENHANCE RIGOR)
+
+B1. Baseline Comparability Tests
+
+Tests:
+
+- Age: t-test or Mann–Whitney U (depending on distribution) to check age balance.
+- Sex: Chi-square or Fisher’s exact test.
+- Tooth type (if available): Chi-square.
+
+Purpose:
+
+- Document that randomization produced comparable groups in important characteristics.
+
+Why appropriate:
+
+1) Common practice in RCT reporting; helps identify potential confounding imbalances (even if random).
+2) Simple tests; clarify whether any covariates should be adjusted for in further analyses.
+
+Why it may not be appropriate:
+
+- Conceptually, significance testing of baseline variables in properly randomized trials is not strictly necessary; imbalance is due to chance, not systematic bias.
+
+When NOT to use:
+
+- Not needed if sample size is very large and baseline balancing is guaranteed; or if the trial protocol discourages significance testing of baseline covariates, favoring descriptive comparison only.
+
+Alternative if assumptions are violated:
+
+- Use nonparametric tests or exact tests if sample sizes/cell counts are small.
+
+---
+
+B2. Effect Size Estimation
+
+Measures:
+
+- For ordinal outcomes:
+  - Mann–Whitney-based effect size (e.g., probability of superiority / Cliff’s delta).
+  - Median difference and interquartile ranges.
+- For categorical behavior:
+  - Risk difference and risk ratio for “positive” vs “negative” behavior (e.g., combine definitely positive + positive vs negative + definitely negative).
+  - 95% confidence intervals for effect sizes.
+
+Purpose:
+
+- Quantify magnitude of differences beyond p-values.
+
+Why appropriate:
+
+1) Clinically interpretable: “X% more children had positive behavior with rotary.”
+2) Helps assess clinical relevance even when p-values are significant or borderline.
+
+Why it may not be appropriate:
+
+- Requires dichotomization or specific coding decisions (e.g., what is “positive behavior”), which may be somewhat arbitrary.
+
+When NOT to use:
+
+- If sample size is too small for stable confidence interval estimation (not the case here).
+
+Alternative if assumptions are violated:
+
+- Bayesian credible intervals for effect sizes.
+- Use ordinal effect sizes (odds ratios from ordinal logistic regression; see B3).
+
+---
+
+B3. Ordinal Logistic Regression (Proportional Odds Model)
+
+Tests:
+
+- For each ordinal outcome (Frankl, Venham, Wong-Baker), fit a proportional odds model:
+  - Outcome: ordinal scale.
+  - Predictor: group (rotary vs manual).
+  - Optional covariates: age, sex, tooth type, baseline behavior if available.
+
+Purpose:
+
+- Estimate adjusted odds ratios for better behavior, lower anxiety, and lower pain with rotary vs manual.
+- Check robustness of simple two-sample analyses.
+
+Why appropriate:
+
+1) Ordinal platforms: properly captures ordering without assuming equal intervals or normality.
+2) Allows adjustment for covariates, helpful if any baseline imbalance (e.g., age difference) is discovered.
+
+Why it may not be appropriate:
+
+- Proportional odds assumption (same odds ratio across all cut-points) may be violated.
+
+When NOT to use:
+
+- When the proportional odds assumption is clearly violated (e.g., goodness-of-fit tests show poor fit).
+- When sample size is insufficient relative to the number of covariates (rule-of-thumb: at least ~10 events per parameter for each cumulative split; here likely fine with 1–2 covariates).
+
+Alternative if assumptions are violated:
+
+- Partial proportional odds model (relax assumption for some covariates).
+- Multinomial logistic regression treating outcome as unordered (loses ordering information).
+- Nonparametric models (Mann–Whitney plus stratification).
+
+---
+
+B4. Sensitivity Analyses for Category Collapsing
+
+Test/procedure:
+
+- For behavior and possibly anxiety/pain, dichotomize:
+  - Behavior: Positive = definitely positive + positive; Negative = negative + definitely negative.
+  - Anxiety: Low = scores 0–2; High = 3–5.
+  - Pain: Low vs high.
+- Compare groups with Chi-square or Fisher’s exact test on these binary outcomes.
+
+Purpose:
+
+- Assess robustness of findings to how categories are grouped; support clinical interpretation (e.g., “clinically acceptable conduct” vs “problematic behavior”).
+
+Why appropriate:
+
+1) Clinicians may find binary outcomes easier to interpret.
+2) Dichotomization anchors interpretation around clinically meaningful thresholds.
+
+Why it may not be appropriate:
+
+- Data loss and reduced power.
+- Results can be sensitive to chosen cut-points.
+
+When NOT to use:
+
+- When there is no clinically meaningful threshold; or when sample size is small and dichotomization leads to sparse categories.
+
+Alternative if assumptions are violated:
+
+- Use ordered categories in ordinal logistic regression instead of dichotomization.
+
+---
+
+B5. Inter-rater Reliability – Not Applicable Here
+
+- Only one dentist rates behavior/anxiety; so inter-rater reliability cannot be assessed. Mentioning this is important: we cannot improve reliability analysis without additional raters.
+
+---
+
+B6. Exploratory Subgroup Analyses
+
+Tests:
+
+- Interaction terms in ordinal logistic regression or stratified Mann–Whitney:
+  - e.g., interaction between group and age category (4–5 vs 6–7).
+  - Explore whether effect of rotary vs manual differs by age or sex.
+
+Purpose:
+
+- Explore whether younger vs older children benefit differently from rotary instrumentation.
+
+Why appropriate:
+
+1) Age is a plausible effect modifier for behavior/anxiety/pain.
+2) Enhances understanding of which subgroups derive greatest benefit.
+
+Why it may not be appropriate:
+
+- Study not powered for subgroup analyses; risk of false positives due to multiple testing.
+
+When NOT to use:
+
+- When sample size is too small in subgroups (e.g., n<15 per subgroup).
+- If not pre-specified, subgroup analyses should be clearly labelled exploratory.
+
+Alternative if assumptions are violated:
+
+- Descriptive stratified analyses without formal statistical tests.
+
+---
+
+### CATEGORY C – OPTIONAL / SUPPLEMENTARY ANALYSES
+
+C1. Correlation Between Behavior, Anxiety, and Pain
+
+Tests:
+
+- Spearman rank correlation between:
+  - Venham scores and Wong-Baker scores.
+  - Frankl scores (coded 1–4) and Venham.
+  - Frankl and Wong-Baker.
+
+Purpose:
+
+- Explore relationships among behavioral outcomes; do higher anxiety or pain correspond to worse behavior?
+
+Why appropriate:
+
+1) All variables are ordinal; Spearman correlation is suitable.
+2) May support mechanistic understanding: pain and anxiety are linked to behavior.
+
+Why it may not be appropriate:
+
+- The scales may be non-linear; interpretation of correlation magnitude may be ambiguous.
+
+When NOT to use:
+
+- If sample size is too small or distributions are very clumped (e.g., almost everyone in 1–2 categories).
+
+Alternative if assumptions are violated:
+
+- Kendall’s tau-b for ordinal correlation.
+
+---
+
+C2. Graphical Analyses
+
+Procedures:
+
+- Bar charts showing distribution of Frankl categories by group.
+- Stack bar plots for Venham and Wong-Baker distributions by group.
+- Boxplots (or boxplots of ranks) for Venham and Wong-Baker scores.
+
+Purpose:
+
+- Visual illustration of differences for easier clinical interpretation.
+
+Why appropriate:
+
+1) Ordinal distributions can be clearly visualized; more intuitive than tables.
+2) Helps detect outliers or patterns (e.g., clustering at extremes).
+
+Why it may not be appropriate:
+
+- Graphs may be redundant with tables in short reports.
+
+When NOT to use:
+
+- Purely text-based journals with space limitations; but typically still recommended.
+
+Alternative if assumptions are violated:
+
+- Use cumulative distribution curves (CDFs) for ordinal outcomes.
+
+---
+
+C3. Mediation Exploration (Very Optional)
+
+Tests:
+
+- Exploratory mediation analysis:
+  - Does instrumentation method affect behavior partially through anxiety/pain?
+  - Model: Group → Venham/Wong-Baker → Frankl.
+  - Using ordinal regression or logistic models, with bootstrapped indirect effect.
+
+Purpose:
+
+- Investigate whether reduced anxiety/pain mediates the effect of rotary instrumentation on behavior.
+
+Why appropriate:
+
+1) Conceptually consistent with clinical hypothesis.
+2) Provides richer insight for theory-building (though sample size is modest).
+
+Why it may not be appropriate:
+
+- Cross-sectional data and modest sample size limit causal inference in mediation.
+- Not pre-specified; may be beyond scope.
+
+When NOT to use:
+
+- If journal space is limited; or if no clear pre-specified mediation hypothesis.
+
+Alternative if assumptions are violated:
+
+- Restrict to descriptive statements and correlations.
+
+---
+
+DATA HANDLING & GENERAL CONSIDERATIONS
+
+- Missing data:
+  - If some outcome scales are missing, report frequency and reasons.
+  - If missingness is ≤5%, analyze available cases.
+  - If >5%, consider sensitivity analysis assuming best/worst-case scenario for missing outcomes.
+
+- Outliers:
+  - Ordinal outcomes bounded 0–5 or 1–4; outliers not an issue.
+
+- Software:
+  - SPSS, R, Stata, or SAS for nonparametric tests and ordinal regression.
+
+----------------------------------
+TASK 3: INAPPROPRIATE TESTS
+----------------------------------
+
+Tests that should NOT be used and why:
+
+1) Independent-samples t-test for Venham or Wong-Baker scores (treating them as continuous)
+
+- Why inappropriate:
+  - These scales are ordinal with few categories; assuming interval-scale and normal distribution is questionable.
+  - Differences between adjacent categories (e.g., 0 to 1 vs 4 to 5) are not guaranteed equal.
+- When not to use:
+  - When sample size is moderate and appropriate ordinal/nonparametric methods are available.
+- Appropriate alternative:
+  - Mann–Whitney U test or ordinal logistic regression.
+
+2) One-way ANOVA for Frankl, Venham, or Wong-Baker scores
+
+- Why inappropriate:
+  - Same reasons as above; ordinal outcomes with non-normal distribution and limited categories.
+  - ANOVA assumes normally distributed residuals and homoscedasticity.
+- Alternative:
+  - Mann–Whitney U or ordinal logistic regression.
+
+3) Paired t-test or Wilcoxon signed-rank test for between-group comparisons
+
+- Why inappropriate:
+  - Design is parallel groups; observations are independent, not paired.
+- Alternative:
+  - Independent-sample tests (Mann–Whitney U, Chi-square).
+
+4) Repeated-measures ANOVA
+
+- Why inappropriate:
+  - Only one measurement time point per outcome; no repeated measures over time are described.
+- Alternative:
+  - Simple between-group tests as outlined in Category A.
+
+5) Pearson correlation for scale associations
+
+- Why inappropriate:
+  - Venham, Wong-Baker, and Frankl are ordinal; Pearson assumes interval/ratio-scaled variables and linear relationships.
+- Alternative:
+  - Spearman or Kendall rank correlation.
+
+6) Linear regression treating ordinal outcomes as continuous dependent variables
+
+- Why inappropriate:
+  - Ordinal outcomes with few points violate assumptions of linearity and normal residuals.
+  - Interpretation of regression coefficients is less meaningful.
+- Alternative:
+  - Ordinal logistic regression (proportional odds model).
+
+7) McNemar test
+
+- Why inappropriate:
+  - McNemar is for paired dichotomous data (pre/post in same subjects or matched pairs). Here we have independent groups and multi-category outcomes.
+- Alternative:
+  - Chi-square or Fisher’s exact tests for between-group comparisons.
+
+8) Survival analysis (Kaplan–Meier, Cox regression)
+
+- Why inappropriate:
+  - No time-to-event outcomes; all outcomes are measured during a single visit.
+- Alternative:
+  - Not applicable; use cross-sectional analyses.
+
+--------------------------------
+TASK 4: SUMMARY / JUSTIFICATION
+--------------------------------
+
+The trial is a simple two-arm, parallel-group randomized clinical trial with three primary outcomes, all measured on short ordinal scales during/after a single pulpectomy visit. The central question is whether rotary instrumentation improves behavior, reduces anxiety, and reduces pain relative to conventional hand files.
+
+Accordingly:
+
+- The primary analysis uses nonparametric and categorical methods suited to ordinal variables and independent groups (Mann–Whitney U for ordered scales; Chi-square/Fisher’s test for categorical distributions).
+- Ordinal logistic regression is recommended as a secondary analysis to estimate adjusted odds ratios and check robustness, while respecting the ordered nature of the scales.
+- Descriptive statistics and suitable effect size measures provide clinically interpretable results (e.g., proportion with positive behavior and median anxiety/pain scores).
+- Inappropriate parametric methods (t-tests, ANOVA, linear regression) that treat ordinal outcomes as continuous are avoided to prevent assumption violations and misleading inferences.
+
+This analytical approach aligns with the study design, measurement scales, and sample size, providing statistically valid and clinically meaningful answers to the trial objectives.

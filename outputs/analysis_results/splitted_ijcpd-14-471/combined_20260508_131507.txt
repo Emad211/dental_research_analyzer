@@ -1,0 +1,531 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_ijcpd-14-471.pdf
+Time : 20260508_131507
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+I can’t extract methods or build a study-specific statistical analysis plan from the text provided because it contains only the article title (“Quality of Obturation in Primary Teeth”) and references (items 6–9). The Introduction and Methods sections (study objectives, design, sample, groups, outcomes, measurements, timing, etc.) are not present in the excerpt (Pages 1–4 are effectively blank aside from citations).
+
+Please paste the full **Introduction** and **Methods** (or upload images/PDF pages showing them). Once you provide that, I will:
+
+## What I need from the Methods to produce a complete SAP
+- Study design (RCT, split-mouth, cohort, in vitro, etc.) and setting  
+- Objectives/hypotheses (primary/secondary)  
+- Eligibility criteria; recruitment; randomization/allocation concealment/blinding (if applicable)  
+- Groups/interventions/comparators (e.g., manual vs rotary systems; file types)  
+- Sample size (per group), unit of analysis (tooth, canal, child), clustering (multiple teeth/canals per child)  
+- Outcomes and how measured (e.g., obturation quality scoring system, radiographic criteria, instrumentation time), time points  
+- Covariates (age, tooth type, operator, pre-op status, root morphology, resorption)  
+- Data collection procedures and reliability (intra/inter-examiner agreement)  
+- Missing data handling, exclusions, protocol deviations  
+
+---
+
+## Provisional note (non–study-specific)
+Based on the topic and typical pediatric endodontic studies, analyses often require methods that account for:
+- **Ordinal outcomes** (quality scores) and/or **categorical ratings** (under/optimal/overfill, voids)  
+- **Continuous outcomes** (instrumentation time)  
+- **Clustered data** (multiple canals/teeth per child) and possibly repeated measures (multiple raters)
+
+But I will not recommend specific “mandatory/recommended/optional” tests until I see your actual Methods (to avoid giving inappropriate guidance).
+
+Send the Introduction and Methods text and I’ll return:
+1) full information extraction,  
+2) a categorized SAP with tests + assumptions/alternatives,  
+3) inappropriate tests list, and  
+4) a concise justification of the overall approach.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+It seems that the article text you provided is incomplete, and I cannot fully extract the necessary information to complete the tasks (e.g., study design, objectives, groups, variables, etc.). However, I can guide you on how to approach the tasks based on a typical dental research study. If you can provide the full Introduction and Methods sections, I can tailor the response more precisely.
+
+Below is a general framework for completing the tasks based on typical dental research methodology.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+#### Study Characteristics
+Based on the provided references and partial context, this study likely involves:
+- **Study Design**: Comparative clinical study (e.g., randomized controlled trial or observational study).
+- **Objective**: To evaluate the quality of obturation and instrumentation time using different rotary file systems compared to manual instrumentation in primary teeth.
+- **Groups**: At least two groups (e.g., rotary file systems vs. manual instrumentation).
+- **Sample Size**: Not specified in the provided text; typically determined based on power analysis.
+- **Variables**:
+  - **Independent Variables**: Type of instrumentation (manual vs. rotary systems).
+  - **Dependent Variables**: Quality of obturation, instrumentation time.
+- **Measurements**:
+  - **Quality of Obturation**: Likely assessed using radiographic or clinical scoring systems.
+  - **Instrumentation Time**: Measured in minutes or seconds.
+- **Data Collection Methods**: Clinical procedures performed on primary teeth, followed by radiographic evaluation and time tracking.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Independent t-test (or Mann-Whitney U test if data is non-parametric).
+   - **Purpose**: Compare mean instrumentation time between groups.
+   - **Why Appropriate**:
+     - The dependent variable (time) is continuous.
+     - The study involves two independent groups.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normal distribution and equal variances.
+   - **When This Test Should NOT Be Used**: If data is heavily skewed or sample sizes are very small.
+   - **Alternative**: Mann-Whitney U test (non-parametric).
+
+2. **Test Name**: Chi-square test (or Fisher’s exact test for small sample sizes).
+   - **Purpose**: Compare categorical outcomes (e.g., quality of obturation scores) between groups.
+   - **Why Appropriate**:
+     - The dependent variable is categorical (e.g., “acceptable” vs. “unacceptable” obturation quality).
+     - The study involves independent groups.
+   - **Why It May Not Be Appropriate**:
+     - Requires sufficient sample size in each category.
+   - **When This Test Should NOT Be Used**: If expected frequencies in any cell are <5.
+   - **Alternative**: Fisher’s exact test.
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: ANOVA (or Kruskal-Wallis test for non-parametric data).
+   - **Purpose**: Compare instrumentation time across multiple rotary systems (if more than two groups are included).
+   - **Why Appropriate**:
+     - Allows comparison of means across multiple groups.
+     - Accounts for variability within and between groups.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normality and homogeneity of variances.
+   - **When This Test Should NOT Be Used**: If assumptions are violated or sample sizes are unequal.
+   - **Alternative**: Kruskal-Wallis test.
+
+2. **Test Name**: Logistic regression.
+   - **Purpose**: Assess the association between type of instrumentation and quality of obturation while adjusting for confounders (e.g., operator experience, tooth type).
+   - **Why Appropriate**:
+     - Accounts for multiple predictors.
+     - Suitable for binary outcomes (e.g., acceptable vs. unacceptable obturation quality).
+   - **Why It May Not Be Appropriate**:
+     - Requires large sample size for stable estimates.
+   - **When This Test Should NOT Be Used**: If sample size is too small or multicollinearity exists.
+   - **Alternative**: Exact logistic regression.
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Kaplan-Meier survival analysis.
+   - **Purpose**: Evaluate time-to-completion for instrumentation across groups.
+   - **Why Appropriate**:
+     - Suitable for time-to-event data.
+     - Accounts for censored observations (e.g., incomplete procedures).
+   - **Why It May Not Be Appropriate**:
+     - May be unnecessary if instrumentation time is straightforward and not censored.
+   - **When This Test Should NOT Be Used**: If all procedures are completed without censoring.
+   - **Alternative**: Independent t-test or ANOVA.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: Paired t-test.
+   - **Why NOT Appropriate**: This test is for dependent (paired) samples, whereas the study involves independent groups.
+2. **Test Name**: Correlation analysis (e.g., Pearson or Spearman).
+   - **Why NOT Appropriate**: Correlation tests assess relationships between two continuous variables, not group comparisons.
+
+---
+
+### TASK 4: SUMMARY
+The overall analytical approach should focus on comparing outcomes (quality of obturation and instrumentation time) between groups using appropriate tests for continuous and categorical data. Adjustments for confounders and subgroup analyses can enhance the rigor of the study. Non-parametric alternatives should be considered if assumptions are violated.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+I can’t see the Introduction and Methods of the article in what you’ve provided—only a small fragment of the reference list is visible. The key methodological details needed for a proper statistical analysis plan (study design, sample size, outcomes, groups, measurement methods, etc.) are not present.
+
+Because the rest of the article text is missing, I’ll do two things:
+
+1. **Explain exactly what information I need from the Introduction and Methods to build a precise, article‑specific plan.**  
+2. **Provide a generic, but detailed, statistical analysis framework for a typical study on “Quality of Obturation in Primary Teeth” comparing instrumentation techniques (manual vs rotary), which you can adapt once the full text is available.**
+
+If you can paste the full Introduction and Methods sections (even in parts), I can then tailor everything very specifically to that study.
+
+---
+
+## TASK 1 – INFORMATION EXTRACTION (WHAT IS CURRENTLY AVAILABLE / MISSING)
+
+From the visible text, we can infer only:
+
+- **Topic:** Quality of obturation in primary teeth.
+- **Context:** The references suggest the study concerns primary teeth endodontics and compares:
+  - Rotary NiTi files vs manual instrumentation.
+  - Different rotary file systems (e.g., Mtwo, ProTaper, modified rotary systems vs manual).
+  - Cleaning capacity, instrumentation time, and obturation quality.
+
+However, we do **not** have:
+
+- Study design (e.g., randomized clinical trial, in vitro lab study, split‑mouth design, etc.).
+- Setting (clinic vs lab; single‑center vs multi‑center).
+- Allocation method (randomized? concealed?).
+- Group definitions (number and type of groups; exact file systems used).
+- Sample size and how it was determined.
+- Inclusion/exclusion criteria (tooth type, root morphology, patient age, etc.).
+- Primary and secondary outcomes (e.g., quality of obturation score, instrumentation time, canal cleanliness score, procedural errors).
+- Measurement scales (binary, ordinal, continuous), scoring protocols, and who assessed them.
+- Blinding (of clinician, assessor, statistician).
+- Number of roots/canals vs number of teeth vs number of patients (cluster structure).
+- Time points (post‑operative only vs follow‑up).
+- Handling of multiple canals/teeth per subject.
+- Any pre‑specified statistical tests, significance level, or software.
+
+So TASK 1 cannot be done specifically without those sections. Below I list what should be extracted once you provide the full text.
+
+### 1.1. Study characteristics to extract (template)
+
+When you provide the Introduction and Methods, I will extract:
+
+1. **Study objective(s)**
+   - Primary objective (e.g., compare quality of obturation between instrumentation systems).
+   - Secondary objectives (e.g., compare instrumentation time, cleaning capacity, procedural errors).
+
+2. **Study design**
+   - Type: randomized controlled trial, split‑mouth trial, cross‑over, non‑randomized clinical study, in vitro laboratory experimental study, etc.
+   - Parallel vs split‑mouth vs cross‑over.
+   - Number of groups and how they are defined (e.g., Manual K‑files vs Rotary System A vs Rotary System B).
+
+3. **Participants / Teeth**
+   - Population (children age range, types of teeth: primary molars, anterior teeth).
+   - Unit of analysis: patient, tooth, root, or canal.
+   - Inclusion and exclusion criteria.
+   - Recruitment method and setting.
+
+4. **Interventions**
+   - Instrumentation techniques/systems (name, manufacturer, sequence).
+   - Any standardization of technique (operator, training, working length, irrigation protocol).
+   - Randomization method and allocation concealment (if any).
+   - Blinding (assessor blinding to group).
+
+5. **Outcomes and variables**
+   - **Primary outcome:** e.g., quality of obturation (optimal / under‑filled / over‑filled; or multi‑category score).
+   - **Secondary outcomes:** instrumentation time (seconds), cleaning capacity score, number of procedural errors (perforation, ledge, apical transportation), pain, flare‑up, success at follow‑up.
+   - Type of variables:
+     - Binary (e.g., acceptable vs unacceptable obturation).
+     - Ordinal (e.g., 3–4 category obturation quality or debris scores).
+     - Continuous (e.g., time in seconds, length in mm).
+   - Measurement methods:
+     - Radiographic evaluation, scoring criteria, calibration of examiners, reliability assessment (kappa/ICC).
+     - Timing (immediate post‑op; at 6 or 12 months follow‑up).
+
+6. **Sample size**
+   - Planned sample size and justification (power calculation or convenience).
+   - Actual sample size analyzed.
+   - Loss to follow‑up or exclusions and reasons.
+
+7. **Data collection procedures**
+   - Standardization of radiographs and scoring.
+   - Data entry, coding, and quality checks.
+   - Handling of multiple canals per tooth/patient (independence issues).
+
+8. **Pre‑specified statistical methods** (if any are in the Methods):
+   - Tests mentioned by the authors.
+   - Significance level (alpha, usually 0.05).
+   - Treatment of multiple comparisons.
+   - Software used.
+
+Once those sections are available, I will fill all of this specifically for that paper.
+
+---
+
+## TASK 2 – STATISTICAL ANALYSIS PLAN (GENERIC FOR THIS TYPE OF STUDY)
+
+Below is a **fully structured analysis plan** for a typical study on quality of obturation in primary teeth comparing endodontic instrumentation systems. When the article’s exact details are available, I will adapt this accordingly.
+
+Assumptions for this generic plan:
+- Multigroup comparison (e.g., 2–3 instrumentation techniques).
+- Primary outcome: categorical or ordinal score of obturation quality.
+- Secondary outcomes: continuous (instrumentation time), ordinal (cleaning score), binary (procedural errors).
+- Unit of analysis: tooth or root canal, possibly clustered within children.
+
+### CATEGORY A – MANDATORY TESTS
+
+#### 1. Descriptive Statistics
+
+- **Test/Method Name:** Descriptive statistics (frequencies, percentages, mean ± SD, median [IQR]).
+- **Purpose:** Summarize baseline characteristics and outcomes for each group.
+- **Why appropriate:**
+  1. Essential to understand distribution and central tendency before inferential tests.
+  2. Allows assessment of comparability between groups and detection of outliers/skewness.
+- **Why it may not be appropriate:** Not a hypothesis test; can be misleading if misinterpreted as proof of “no difference”.
+- **When NOT to use:** Never omitted; only adapt form (mean/SD vs median/IQR) depending on distribution.
+- **Alternative if assumptions violated:** Use robust summaries (median, IQR, trimmed means) and graphical displays (histograms, boxplots).
+
+---
+
+#### 2. Comparison of Ordinal/Categorical Primary Outcome Across Groups
+
+Assume primary outcome is obturation quality with 3–4 ordered categories (e.g., under‑filled, optimal, over‑filled, voids).
+
+##### 2a. Chi‑square test of independence
+
+- **Test name:** Pearson Chi‑square test.
+- **Purpose:** Compare distribution of obturation quality categories across groups.
+- **Why appropriate:**
+  1. Designed for association between two categorical variables (group × obturation quality).
+  2. Easy to interpret via cross‑tabulations and percentages.
+- **Why it may not be appropriate:**
+  - Requires adequate expected cell counts (>5 in most cells); with small sample or many categories this can be violated.
+- **When NOT to use:**
+  - Very small samples or sparse tables (expected cells <5 in >20% of cells).
+  - Non‑independent observations (e.g., multiple teeth from same child analyzed as independent).
+- **Alternative if assumptions are violated:**
+  - Fisher’s exact test for 2×2 or small tables.
+  - Monte Carlo exact test for larger but sparse tables.
+  - Use generalized estimating equations (GEE) or mixed‑effects models if clustering (multiple teeth per child) is present.
+
+##### 2b. Ordinal logistic regression (proportional odds model)
+
+- **Test name:** Ordinal logistic regression.
+- **Purpose:** Model ordinal obturation quality as a function of instrumentation group, adjusting for covariates.
+- **Why appropriate:**
+  1. Utilizes the ordinal nature of the outcome, providing more power than treating it as nominal.
+  2. Allows adjustment for confounders (e.g., tooth type, root curvature, operator) and can account for clustering if fit as mixed‑effects.
+- **Why it may not be appropriate:**
+  - Assumes proportional odds (parallel lines)—the effect of group is constant across cutpoints.
+- **When NOT to use:**
+  - Proportional odds assumption clearly violated (tested via Brant or similar tests).
+  - Very small sample size or too few observations in each category.
+- **Alternative if assumptions are violated:**
+  - Multinomial logistic regression (treat categories as nominal).
+  - Partial proportional odds models.
+  - Collapsing categories to binary and using logistic regression (with caution).
+
+---
+
+#### 3. Comparison of Continuous Secondary Outcome (Instrumentation Time)
+
+##### 3a. One‑way ANOVA
+
+- **Test name:** One‑way analysis of variance.
+- **Purpose:** Compare mean instrumentation time among 2–3 or more groups.
+- **Why appropriate:**
+  1. Designed for continuous normally distributed outcomes with ≥2 groups.
+  2. More powerful than multiple t‑tests and controls Type I error for a single comparison across groups.
+- **Why it may not be appropriate:**
+  - Requires approximately normal distribution and homogeneity of variances in each group; independence of observations.
+- **When NOT to use:**
+  - Strong skewness, heavy tails, or outliers that cannot be addressed with transformations.
+  - Unequal variances combined with unequal group sizes.
+  - Clustered data (multiple teeth per child) without adjusting for clustering.
+- **Alternative if assumptions are violated:**
+  - Kruskal–Wallis test for non‑normal distributions.
+  - Welch ANOVA for unequal variances.
+  - Linear mixed‑effects models or GEE for clustered data.
+
+##### 3b. Post‑hoc multiple comparison tests
+
+- **Test name:** Tukey’s HSD (for ANOVA), or Dunn’s test (for Kruskal–Wallis).
+- **Purpose:** Identify which pairs of groups differ significantly in mean instrumentation time.
+- **Why appropriate:**
+  1. Controls family‑wise error rate when multiple pairwise comparisons are made.
+  2. Provides adjusted p‑values and confidence intervals for each comparison.
+- **Why it may not be appropriate:**
+  - Reduced power in small samples; multiple comparison procedures can be conservative.
+- **When NOT to use:**
+  - When ANOVA or Kruskal–Wallis does not show an overall group effect (to avoid fishing).
+- **Alternative if assumptions are violated:**
+  - Pairwise t‑tests with Holm or Bonferroni correction.
+  - Pairwise Wilcoxon rank‑sum tests with adjusted p‑values.
+
+---
+
+#### 4. Comparison of Binary Outcomes (e.g., presence of voids, procedural errors, acceptable vs unacceptable obturation)
+
+##### 4a. Chi‑square / Fisher’s exact test
+
+- **Test name:** Chi‑square test or Fisher’s exact test (for 2×2 tables).
+- **Purpose:** Compare proportion of events between groups (e.g., void present vs absent).
+- **Why appropriate:**
+  1. Standard test for association between binary outcome and group.
+  2. Fisher’s exact test is valid even in very small samples.
+- **Why it may not be appropriate:**
+  - Assumes independence of observations; violated if multiple canals per tooth or multiple teeth per child are treated as independent.
+- **When NOT to use:**
+  - Clustered data without adjustment for clustering.
+- **Alternative if assumptions are violated:**
+  - Logistic regression with robust (clustered) standard errors.
+  - Mixed‑effects logistic regression (random intercept for patient).
+
+---
+
+### CATEGORY B – RECOMMENDED TESTS
+
+These improve rigor but may not be absolutely essential for a minimal analysis.
+
+#### 5. Inter‑rater and Intra‑rater Reliability
+
+- **Test name:** Cohen’s kappa / weighted kappa for categorical or ordinal outcomes; ICC for continuous measures.
+- **Purpose:** Assess reliability of obturation quality ratings between examiners or within the same examiner over time.
+- **Why appropriate:**
+  1. Ensures that radiographic scoring is reproducible and not heavily influenced by observer variability.
+  2. Important for validation of categorical outcomes central to the study.
+- **Why it may not be appropriate:**
+  - Requires repeated ratings (subset of teeth) which may not have been collected.
+- **When NOT to use:**
+  - Only one examiner with no repeated scoring.
+- **Alternative if assumptions are violated:**
+  - Use simple percent agreement (less preferred).
+  - Use Gwet’s AC1 for highly imbalanced categories.
+
+---
+
+#### 6. Logistic Regression (for binary primary/secondary outcomes)
+
+If primary outcome is dichotomized as acceptable vs unacceptable obturation:
+
+- **Test name:** Binary logistic regression.
+- **Purpose:** Estimate odds ratios comparing groups while adjusting for confounders (e.g., tooth type, arch, root curvature).
+- **Why appropriate:**
+  1. Provides effect estimates and confidence intervals rather than only p‑values.
+  2. Can incorporate covariates and account for clustering via robust SE or random effects.
+- **Why it may not be appropriate:**
+  - Requires sufficient events per variable (EPV ≥ 10 is a common rule of thumb).
+- **When NOT to use:**
+  - Very small sample size with few outcome events per group.
+- **Alternative if assumptions are violated:**
+  - Exact logistic regression for very small samples.
+  - Penalized regression (Firth adjustment) to reduce bias.
+
+---
+
+#### 7. Non‑parametric Comparison of Ordinal Outcomes
+
+- **Test name:** Kruskal–Wallis test (for ≥3 groups) or Mann–Whitney U test (for 2 groups) applied to ordinal scores (e.g., cleaning capacity scores).
+- **Purpose:** Compare distributions of ordinal scores across groups.
+- **Why appropriate:**
+  1. Does not assume normality and accommodates ordinal outcomes.
+  2. Robust to outliers and skewed distributions.
+- **Why it may not be appropriate:**
+  - Tests differences in distributions, not strictly medians; interpretation can be less intuitive.
+- **When NOT to use:**
+  - When sample sizes are tiny (n<5 per group), the test has very low power.
+- **Alternative if assumptions are violated:**
+  - Ordinal logistic regression (if proportional odds holds).
+  - Collapsing categories and using chi‑square/Fisher’s test.
+
+---
+
+#### 8. Multivariable Linear Model for Instrumentation Time
+
+- **Test name:** Linear regression or linear mixed‑effects model.
+- **Purpose:** Estimate adjusted mean differences in instrumentation time between groups controlling for covariates (e.g., tooth type, number of canals).
+- **Why appropriate:**
+  1. Provides adjusted effect estimates and confidence intervals.
+  2. Mixed‑effects models handle clustering from multiple teeth per child.
+- **Why it may not be appropriate:**
+  - Requires approximate normality and homoscedasticity of residuals.
+- **When NOT to use:**
+  - Clearly non‑normal residuals and strong heteroscedasticity not corrected by transformation.
+- **Alternative if assumptions are violated:**
+  - Generalized linear models with suitable family (e.g., gamma with log link).
+  - Rank‑based regression methods.
+
+---
+
+### CATEGORY C – OPTIONAL TESTS
+
+These add depth but are not essential for the main conclusions.
+
+#### 9. Effect Size Measures
+
+- **Test name:** Risk difference, risk ratio, odds ratio; Cohen’s d; Cramer’s V; eta‑squared.
+- **Purpose:** Quantify magnitude of differences beyond p‑values.
+- **Why appropriate:**
+  1. Clinically interpretable measures (e.g., difference in acceptable obturation rate).
+  2. Facilitates meta‑analysis if the study is later pooled with others.
+- **Why it may not be appropriate:**
+  - Requires careful interpretation with small samples; CIs may be wide.
+- **When NOT to use:**
+  - Almost never; but avoid over‑interpreting unstable estimates with very wide CIs.
+- **Alternative if assumptions are violated:**
+  - Use non‑parametric effect sizes (e.g., Cliff’s delta for ordinal/continuous data).
+
+---
+
+#### 10. Sensitivity Analyses
+
+- **Test name:** Sensitivity analysis is a strategy, not a specific test; may repeat key analyses excluding outliers or using alternative categorizations (e.g., different cut‑offs for acceptable obturation).
+- **Purpose:** Assess robustness of findings to key analytic decisions.
+- **Why appropriate:**
+  1. Shows whether conclusions depend on specific coding choices or inclusion/exclusion decisions.
+  2. Enhances credibility of results.
+- **Why it may not be appropriate:**
+  - Requires larger sample and pre‑planned approach; otherwise can seem post‑hoc and data‑driven.
+- **When NOT to use:**
+  - Extremely small studies where subsetting further destroys power.
+- **Alternative if assumptions are violated:**
+  - Use bootstrapping to assess stability of estimates.
+
+---
+
+#### 11. Handling Multiple Teeth/Canals per Patient
+
+- **Test name:** Clustered/cluster‑robust methods (e.g., GEE, mixed‑effects models).
+- **Purpose:** Account for intra‑patient correlation when multiple teeth or canals per child are included.
+- **Why appropriate:**
+  1. Avoids underestimation of standard errors and inflated Type I error.
+  2. Reflects true hierarchical structure of dental data (teeth nested within children).
+- **Why it may not be appropriate:**
+  - Requires enough clusters (patients) to estimate random effects robustly.
+- **When NOT to use:**
+  - If only one tooth per child is included (no clustering).
+- **Alternative if assumptions are violated:**
+  - Aggregate to patient‑level summaries before analysis (e.g., one outcome per child).
+
+---
+
+## TASK 3 – INAPPROPRIATE TESTS FOR THIS TYPE OF STUDY
+
+Below are tests that typically should NOT be used in this context and why.
+
+1. **Independent samples t‑tests for multiple >2 group comparisons without adjustment**
+   - **Why inappropriate:** Inflates family‑wise Type I error; ANOVA or regression is superior for multiple groups.
+
+2. **Parametric tests (t‑test, ANOVA) directly on ordinal scores (e.g., 3‑category obturation quality)**
+   - **Why inappropriate:** Ordinal categories do not have equal intervals; mean differences have unclear meaning. Use chi‑square, ordinal logistic regression, or non‑parametric tests instead.
+
+3. **Simple chi‑square tests ignoring clustering when multiple teeth/canals per child**
+   - **Why inappropriate:** Violates independence assumption; leads to underestimated standard errors and potentially spurious significance. Use cluster‑robust methods instead.
+
+4. **Pearson correlation between categorical group indicator and obturation quality**
+   - **Why inappropriate:** Pearson correlation assumes continuous, approximately normal variables; not suitable for nominal/ordinal category vs group.
+
+5. **Linear regression treating a nominal outcome (multi‑category obturation score) as continuous**
+   - **Why inappropriate:** Mis‑specifies link and distribution; coefficients are difficult to interpret and standard errors unreliable. Use ordinal or multinomial logistic regression.
+
+6. **Stepwise variable selection (automatic forward/backward) in multivariable models**
+   - **Why inappropriate:** Data‑driven, inflates Type I error, and produces unstable models, especially with small n typical in dental studies.
+
+7. **Multiple unadjusted comparisons for many outcomes without any correction or prioritization**
+   - **Why inappropriate:** High risk of false positives. Prefer prespecifying a primary outcome and controlling for multiplicity where needed.
+
+---
+
+## TASK 4 – SUMMARY OF OVERALL ANALYTICAL APPROACH
+
+For a study on **quality of obturation in primary teeth** comparing instrumentation systems, an appropriate analytical framework is:
+
+1. **Describe** the sample and baseline characteristics per group with appropriate descriptive statistics.
+2. **Analyze the primary outcome** (obturation quality) using:
+   - Cross‑tabulations and chi‑square/Fisher’s exact test.
+   - Preferably, an ordinal/ logistic regression framework that:
+     - Respects the categorical/ordinal nature of the data.
+     - Adjusts for potential confounders.
+     - Accounts for clustering if multiple teeth per child.
+3. **Analyze secondary outcomes:**
+   - Continuous (e.g., instrumentation time) via ANOVA/linear models or non‑parametric and mixed models when needed.
+   - Ordinal scores (cleaning capacity) via non‑parametric tests or ordinal models.
+   - Binary outcomes via chi‑square/logistic regression.
+4. **Check assumptions** (normality, variance homogeneity, proportional odds, independence) and switch to non‑parametric or clustered methods as appropriate.
+5. **Report effect sizes and 95% confidence intervals**, not only p‑values, to emphasize clinical relevance.
+6. **Assess measurement reliability** of subjective ratings (kappa/ICC) to support validity of the primary outcome.
+
+Once you paste the **actual Introduction and Methods**, I will:
+- Populate TASK 1 with the article‑specific design, sample, groups, outcomes, and measurements.
+- Refine TASK 2–4 with tests and models precisely matched to what that paper did and what it should have done.

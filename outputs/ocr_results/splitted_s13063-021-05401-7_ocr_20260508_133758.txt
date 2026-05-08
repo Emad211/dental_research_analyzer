@@ -1,0 +1,339 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+Liang et al. Trials (2021) 22:436
+https://doi.org/10.1186/s13063-021-05401-7
+
+Trials
+
+STUDY PROTOCOL Open Access
+
+Efficacy of i-PRF in regenerative endodontics therapy for mature permanent teeth with pulp necrosis: study protocol for a multicentre randomised controlled trial
+
+Yuee Liang†, Rongyang Ma†, Lijuan Chen, Xingzhu Dai, Shiya Zuo, Weiyi Jiang, Naiming Hu, Zilong Deng* and Wanghong Zhao*
+
+Check for updates
+
+* Correspondence: zldeng@yeah.net; wanghong_zhao@sina.com
+†Yuee Liang and Rongyang Ma contributed equally to this work.
+Department of Stomatology, Nanfang Hospital, Southern Medical University, No. 1838, Guangzhou Avenue North, Guangzhou 510515, China
+
+BMC
+
+© The Author(s). 2021 Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third party material in this article are included in the article's Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the article's Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/. The Creative Commons Public Domain Dedication waiver (http://creativecommons.org/publicdomain/zero/1.0/) applies to the data made available in this article, unless otherwise stated in a credit line to the data.
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+Liang et al. Trials (2021) 22:436 Page 2 of 11
+
+**Background**
+Dental pulp necrosis has become one of the most common health problems being the sequelae of caries, trauma, and inappropriate endodontic treatments [1, 2]. Necrosis of the dental pulp not only affects long-term tooth survival and preservation, but also can serve as a source of bacteria leading to the infection of periapical tissue and even the maxillofacial space. In addition, there is a strong correlation between oral infections and systemic diseases such as cardiovascular diseases and diabetes mellitus [3].
+
+To date, root canal therapy (RCT) is the most acceptable treatment for pulp necrosis, based on the replacement of inflamed or necrotic pulp tissue with artificial filling materials [4]. However, this conventional therapy does not restore the vitality of damaged pulp or reconstitute the neurovascular system [5, 6]. Therefore, regenerative endodontic therapy (RET) has attracted increasing attention with the development of tissue engineering. RET applies the concept of tissue engineering (stem cells, biomimetic scaffolds, and bioactive growth factors) to achieve revascularization, innervation, and restoration of odontoblastic layers [5, 7, 8]. Unlike root canal therapy, the disinfected canals are filled with vital tissue in RET rather than biocompatible, nonvital foreign materials [9]. While several studies have explored the potential of pulp regeneration for infected teeth, most studies are limited to the treatment of immature necrotic teeth [10]. For mature permanent teeth, vital pulp is also of great importance in enhancing the immune system in root canals, promoting dentin deposition under chronic stimuli, and preventing discolouration [6]. But most of the reports of pulp regeneration in mature teeth are case reports or case series [6, 9, 11, 12] as mature teeth have fewer stem/progenitor cells, have narrower apical pathways for cell migration, and are more difficult to disinfect [4, 6, 13]. Hence, it is of great urgency to develop an improved RET procedure to maximize the regeneration potential of mature teeth and extend the indications of RET.
+
+Scaffolds play a key role in RET, as they provide a favourable microenvironment for stem cells to migrate, proliferate, and differentiate [14–17]. Blood clot revascularization (BCR) is the most common revascularization method, in which the blood clot can serve as a scaffold and is formed by an endodontic file introduced into the root canal beyond the apical foramen to provoke bleeding from the periapical tissue [13, 18–20]. The evoked-bleeding technique stimulates surviving dental pulp stem cells near the root apex to migrate into the root canal space, such as periodontal ligament stem cells and bone marrow mesenchymal stem cells [6, 21, 22]. However, blood clots are a poor source of growth factors [19], and the precise technique required to control the speed and volume of bleeding has limited its applications in clinical practice [20]. Furthermore, several studies regarding mature necrotic teeth reported that BCR resulted in a negative response to pulp sensibility after 8–26 months [23]. Therefore, the development of a bioscaffold with high concentration of pro-regenerative factors is an important topic in the field of pulp regeneration.
+
+Platelet products have been used in tissue regeneration and dentistry for over two decades and have shown great potential in providing an optimal scaffold for pulp regeneration [24–27]. Platelet-rich fibrin (PRF), the second-generation platelet concentrate, is a kind of purely natural autologous fibrin matrix with trapped platelets and leukocytes, guaranteeing the prolonged release of growth factors and cytokines [19, 28, 29]. However, the solid-state of PRF limits its applications [30]. There is controversy regarding the performance of PRF in RET compared to that of the conventional blood clots and the first-generation platelet concentrate, platelet-rich plasma (PRP) [17, 20]. As the low-speed centrifugation concept (LSCC) was developed, injectable platelet-rich fibrin (i-PRF) was developed as a novel liquid blood derivative in 2014. This liquid blood derivative is enriched with high concentrations of platelets, leukocytes, and growth factors [31–33]. Recent studies have reported that i-PRF provides a three-dimensional fibrin-dynamic gel embedded with platelets, leukocytes, type-I collagen, osteocalcin, and growth factors [31] with the potential to modulate inflammatory processes [34], exert anti-bacterium and anti-biofilm activities [35, 36], and promote osteogenesis [37–39]. Compared to PRF, i-PRF results in better bone regeneration [39], treatment of gingival recession defects [40], and elimination of endodontic infection [36]. However, there is no high-quality evidence regarding whether i-PRF, as an improved platelet product, could serve as an optimised scaffold in RET. At the same time, the lack of a standard protocol for RET with i-PRF also limits the use of i-PRF in RET, as different protocols may result in different treatment outcomes [5, 41, 42].
+
+Therefore, the main aim of this randomised, double-blind, controlled, multicentre clinical trial is further evaluating the efficacy of RET in treating mature necrotic teeth, and exploring the feasibility of i-PRF as a scaffold in RET.
+
+**Methods**
+**Study design and objectives**
+This is a randomised, double-blind, parallel positive control, multicentre clinical trial (Fig. 1) that aims to compare the efficacy of i-PRF and blood clots (BCs) as scaffolds in RET for mature permanent teeth with pulp necrosis. The protocol will be reported according to the Standard Protocol Items: Recommendations for
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+Liang et al. Trials (2021) 22:436
+Page 3 of 11
+
+| Patient recruitment |
+| :--- |
+| ↓ |
+| Eligibility assessment |
+| ↓ |
+| Informed consent signing |
+| ↓ |
+| Randomization and allocation |
+| ↙ ↘ |
+| RET with i-PRF (n=173) | RET with blood clot (n=173) |
+| ↘ ↙ |
+| Follow-up 1, 3, 6, 12, 18 and 24 months (Subjective symptoms, Clinical examination, and Imaging) |
+| ↓ |
+| Statistical analysis |
+
+**Fig. 1** Study flowchart
+
+Interventional Trials (SPIRIT) statement (Additional file 1). After informed consent acquisition, all eligible patients (n = 346) will be randomly divided into two groups at an allocation ratio of 1:1. Patients in the test group will receive RET with i-PRF while those in the control group will receive conventional RET with BC. The follow-up period will be 24 months, and clinical data will be collected at 1, 3, 6, 12, 18, and 24 months after surgery. Figure 2 outlines the schedule of events for patients in the trial.
+
+The primary objective of this study is to evaluate the efficacy of RET and RET with i-PRF for the treatment of mature permanent teeth with pulp necrosis. The secondary aim is to carefully investigate the factors influencing the clinical outcomes of RET in mature permanent teeth with pulp necrosis, and at the same time, to explore the standard RET protocol for treating mature permanent teeth with pulp necrosis.
+
+**Study setting and recruitment**
+The study will be carried out at three centres of Southern Medical University: NanFang Hospital, Stomatological Hospital, and Shenzhen Hospital. Two dentists from each centre will participate in this trial after receiving standardised training to obtain a comprehensive overview of the rationale and strategy of the standard intervention procedure. A total of 346 patients will be recruited via outpatient hospital clinics by researchers of the above centres. After an eligibility assessment and informed consent, the patients will be randomly assigned to the control group or the experimental group at a ratio of 1:1. Patients who agree to participate in this study will sign an informed consent form.
+
+**Inclusion criteria**
+
+(1) Agree to participate in this study and provide informed consent
+(2) Age 10–59 years at the time of enrolment
+(3) At least one mature permanent tooth diagnosed with pulp necrosis (no response to pulp vital test) with or without periapical lesions
+(4) Radiologic confirmation (cone beam CT (CBCT)) of a single root necrotic tooth with a single root canal
+
+**Exclusion criteria**
+
+(1) Teeth with severe coronal defects that require post and core as final restorations
+(2) Non-restorable teeth
+(3) Teeth with root fractures or split roots
+(4) Presence of other pathological root resorptions
+(5) Presence of periodontitis
+(6) Allergies to any medications or materials necessary to complete the procedures
+(7) Presence of dental dysplasia or other oral genetic disorders
+(8) Women who are pregnant or lactating, or women who plan to become pregnant in the subsequent 2 years
+(9) Presence of dental phobia
+(10) Presence of mental disorders
+(11) A history of systemic diseases that may alter immune function
+(12) Medical conditions and/or receiving medications that affect healing or blood coagulation
+(13) Participation in other clinical studies within the past 3 months
+(14) Patients who are deemed unsuitable to participate in the study by investigators
+
+**Dropout criteria**
+
+(1) Presence of serious adverse events that doctors believe should lead to termination of trial participation, such as severe internal or external root resorption and tooth fracture
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+Liang et al. Trials (2021) 22:436
+Page 4 of 11
+
+| | | STUDY PERIOD | | | | | | | |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **TIMEPOINT** | **Baseline** | **Week -1** | **Month 0** | **Month 1** | **Month 3** | **Month 6** | **Month 12** | **Month 18** | **Month 24** |
+| **ENROLMENT:** | | | | | | | | | |
+| Eligibility screen | X | | | | | | | | |
+| Informed consent | X | | | | | | | | |
+| Randomization and allocation | X | | | | | | | | |
+| **INTERVENTIONS:** | | | | | | | | | |
+| RET with i-PRF | | <——— | ———> | | | | | | |
+| RET with blood clot | | <——— | ———> | | | | | | |
+| **ASSESSMENTS:** | | | | | | | | | |
+| Crown discoloration | X | | | X | X | X | X | X | X |
+| Pocket depth | X | | | X | X | X | X | X | X |
+| Percussion | X | | | X | X | X | X | X | X |
+| Palpation | X | | | X | X | X | X | X | X |
+| Sinus tract | X | | | X | X | X | X | X | X |
+| Tooth mobility | X | | | X | X | X | X | X | X |
+| Periapcial swell | X | | | X | X | X | X | X | X |
+| Maxillofacial swell | X | | | X | X | X | X | X | X |
+| General symptoms | X | | | X | X | X | X | X | X |
+| Cold and heat test | X | | | X | X | X | X | X | X |
+| Vitality test | X | | | X | X | X | X | X | X |
+| Periapical film | X | | | X | X | X | X | X | X |
+| CBCT | X | | | | | | | | X |
+
+**Fig. 2** Schedule of intervention and assessments. All study-related procedures are outlined in this figure. RET, regenerative endodontic therapy; CBCT, cone beam computed tomography
+
+(2) Poor clinical compliance
+(3) Withdrawal of consent for study participation by the patient
+
+**Randomisation, allocation, and blinding**
+Eligible patients will be randomly assigned to one of two groups at an allocation ratio of 1:1. The randomisation sequence and grouping will be generated and stored by one researcher who will not be involved directly in participant screening, enrolment, or assessment, using SPSS 20.0 software (IBM Co., Armonk, NY, USA). All random numbers will be listed sequentially, and a set of 10 numbers will be arranged as a cluster (the first 5 for the test group and the last 5 for the control group). Then, random numbers and grouping are inserted in opaque and sealed envelopes sequentially. After all the envelopes have been sealed, they will be distributed to each research centre. Only dentists can open the envelope to check the group allocation and perform the interventions according to the instructions of this study. As a double-blind trial, the patients and outcome evaluators will be blinded to the group assignment until the
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+Liang et al. Trials (2021) 22:436 Page 5 of 11
+
+completion of the study. As dentists cannot be blinded to treatment allocation due to the notable differences in the treatment methods, they will not be allowed to discuss the type of intervention with either patients or outcome evaluators.
+
+**Interventions**
+According to the latest RET operating guidelines issued by the American Academy of Endodontics (AAE) [43] and the European Society of Endodontics (ESE) [44], the standardised operating procedure of RET requires two treatment visits. During the first appointment, infection is controlled and inflammation is relieved. Pulp regeneration and revascularization is accomplished during the second appointment. All RET procedures will be performed under a dental microscope, except anaesthesia and rubber dam placement steps.
+
+**First Appointment**
+With the aim of infection control and inflammation relief, the first appointment will be the same for all patients in this study. The first appointment will include the following components:
+
+(1) *Anaesthesia and isolation.* After local anaesthesia with articaine hydrochloride and epinephrine tartrate injection (with 1:100,000 adrenaline [Produits Dentaires Pierre Rolland, Merignac, France]), the tooth is isolated with a rubber dam and disinfected.
+(2) *Access preparation.* All decayed areas of the tooth will be removed, and the pulp chamber will be completely unroofed.
+(3) *Root canal preparation.* The working length and the initial apical file will be determined.
+(4) *Root canal irrigation.* As canal disinfection relies considerably on chemical irrigants, the needle will be placed with the side-port vents into the apical third of the tooth and irrigation will be accomplished using needles with a slow infusion rate. The canal will be copiously irrigated in three steps using ultrasonic irrigation with interspersed drying with sterile paper points. A 5-min irrigation with 20 mL 1.0% sodium hypochlorite (NaClO) (Longly biomedical, Wuhan, China) will be followed by a simple irrigation with 5-mL sterile saline solution (Baxter Healthcare, Shanghai, China), ending with a 5-min irrigation with 20 mL 17% ethylene diamine tetraacetic acid (EDTA) (Longly biomedical, Wuhan, China).
+(5) *Medicated intra-pulpal dressings.* To restrict bacterial regrowth and supply continued disinfection, the root canal will be filled homogeneously to the working length with calcium hydroxide paste (CALXYL X-Ray Visible, OCO Praparate GmbH, Dirmstein/Pfalz, Germany) [45]. Then, glass ionomer (GC Fuji IX, GC Corporation, Tokyo, Japan) will be placed onto the intracanal dressing.
+
+**Second Appointment**
+After 2–4 weeks, patients will return for a second visit. If the symptoms are not relieved, the root canals will be re-treated with calcium hydroxide. Patients with no symptoms will proceed to the next RET treatment steps (Fig. 3).
+
+(1) Cleaning, anaesthesia, field isolation, disinfection of the operating field, and temporary seal removal
+(2) *Root canal irrigation.* The canal will be irrigated with 20 mL of 17% EDTA for 5 min to flush out the calcium hydroxide paste, followed by irrigation with sterile saline solution to decrease the cytotoxicity of EDTA. After drying the canal using sterile paper points, the two groups of patients will experience different revascularization procedures.
+(3) *PRF preparation.* To prepare PRF, 10 mL of whole blood from the median cubital vein will be drawn into 10-ml plastic tubes (Kangjian Medical, Jiangsu, China) without anticoagulant reagent and centrifuged at 800 rpm for 3 min with Centrifuge (Process for PRF, FRANC). After centrifugation, the upper yellow fluid liquid (i-PRF) will be collected as close as possible to the layer of red cells (Fig. 4).
+(4) *RET with i-PRF (the test group).* K-files will be intentionally used to violate the periapical tissues via overinstrumentation up to 2–3 mm beyond the apical foramen to provoke bleeding. However, only the apex third of the root canal will be filled with blood. The i-PRF will be injected into the root canal to a level 3 mm below the cementoenamel junction (CEJ). After a 10–15-min period for coagulation, the PRF will be covered by a 3-mm layer of iRoot BP Plus (Innovative Bioceramix Inc., Vancouver, Canada).
+(5) *RET with BC (the control group).* K-files will be intentionally used to violate the periapical tissues via overinstrumentation up to 2–3 mm beyond the apical foramen to provoke bleeding. The blood will be permitted to fill the canal space to a level 3 mm below the CEJ. After a 10–15-min period for coagulation, the BC will be covered by a 3-mm layer of iRoot BP Plus.
+(6) *Cavity restoration.* A layer of self-adhering flowable composite (Kerr Dyad Flow, Kerr, CA, USA) will be applied on top of the iRoot BP Plus layer as a cavity liner, and the final filling will be accomplished with resin with adhesive for permanent restoration.
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+Liang et al. Trials (2021) 22:436
+Page 6 of 11
+
+A
+B
+C
+D
+E
+F
+G
+
+Resin
+Flowable composite
+iRoot BP Plus
+i-PRF
+Blood
+
+Resin
+Flowable composite
+iRoot BP Plus
+Blood
+
+Fig. 3 Regenerative endodontics therapy procedures. The steps of regenerative endodontics therapy (RET) with injectable platelet-rich fibrin (i-PRF) and with blood clot are shown. A After 2–4 weeks of intercanal medication, B the temporary seal is removed. C The root canal is irrigated and D dried with sterile paper points. E Bleeding is provoked. F i-PRF and cavity restoration are performed in the test group. G Blood clot and cavity restoration are performed in the control group
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+Liang et al. Trials (2021) 22:436 Page 7 of 11
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+Liang et al. Trials (2021) 22:436 Page 8 of 11
+
+(1) Baseline analysis
+
+The two groups will be comparable in terms of sex, age, tooth position, disease type, and apical hole size. Quantitative variables will be analysed using a one-way analysis of variance (independent sample t-test) or non-parametric methods if the data do not meet and cannot be transformed to meet parametric assumptions. Qualitative variables will be analysed using the Wilcoxon rank-sum test. A principal component analysis will be performed using multinomial logistic regression to adjust for potential confounders.
+
+(2) Main outcome analysis
+
+The inter-group comparison of success rates will be analysed using the chi-square test. If there are baseline variables influencing the comparability of the two groups, a logistic regression model will be used to eliminate the effects of these confounders on the success rate and the odds ratio (OR) will be calculated. For the missing data, the last observation carry forward method will be adopted to fill the validity analysis, that is, the case data that fails to observe the whole treatment process will be transferred to the final result of the test with the last observation data.
+
+(3) Secondary outcome analysis
+
+For intra-group comparisons, McNemar’s test will be used to analyse the clinical outcomes of different centres. For inter-group comparisons, the secondary outcome will be analysed using the Chi-square test.
+
+(4) Safety evaluation analysis
+
+The adverse events that occur during the study period will be listed for each group and compared using the chi-square test. The security evaluation does not evaluate missing data.
+
+Ethics and dissemination
+The protocol has been approved by the Medical Ethics Committee of NanFang Hospital of Southern Medical University (reference NFEC-2019-233) and registered at ClinicalTrials.gov (reference NCT04313010). Any amendments to the protocol will be reviewed and approved by the ethics committee and funding support departments. Written informed consent will be obtained from all patients. The results will be published in the peer-reviewed journal and presented at conference presentations.
+The Data Management Coordinating Centre will oversee the intra-study data sharing process, with the involvement of the Data Management Subcommittee. Only the principal investigator will be given access to all the data with a special password. Other project investigators will have direct access to their own site’s data sets, and other sites’ data by request. To ensure confidentiality, data dispersed to project team members will be blinded to any identifying participant information.
+As for ancillary and post-trial care, all the patients who participated in the study could receive compensation from the study unit, including additional medical care, compensation or damages.
+
+════════════════════════════════════════════════════════════
+PAGE 9
+════════════════════════════════════════════════════════════
+Liang et al. Trials (2021) 22:436
+Page 9 of 11
+
+Trial status
+This trial is in the process of recruiting participants.
+
+Abbreviations
+RET: Regenerative endodontic therapy; i-PRF: Injectable platelet-rich fibrin; RCT: Root canal therapy; BCR: Blood clot revascularization; PRF: Platelet-rich fibrin; PRP: Platelet-rich plasma; LSCC: Low-speed centrifugation concept; BCs: Blood clots; AAE: American Academy of Endodontics; ESE: European Society of Endodontics; CEJ: Cementoenamel junction; CBCT: Cone beam computed tomography; NaClO: Sodium hypochlorite; EDTA: Ethylene diamine tetraacetic acid; CRF: Case report form; DQF: Data query forms; OR: Odds ratio; TAP: Triple antibiotic paste; MTA: Mineral trioxide aggregate
+
+Supplementary Information
+The online version contains supplementary material available at https://doi.org/10.1186/s13063-021-05401-7.
+
+Additional file 1. SPIRIT 2013 Checklist: Recommended items to address in a clinical trial protocol and related documents.
+
+Acknowledgements
+The authors would like to thank the clinical research teams at each of the clinical sites involved in the study.
+
+════════════════════════════════════════════════════════════
+PAGE 10
+════════════════════════════════════════════════════════════
+Liang et al. Trials (2021) 22:436
+
+Page 10 of 11
+
+**Authors' contributions**
+YEL participated in the design of the study, and recruited participants. RYM drafted the manuscript. LJC recruited participants and performed the statistical analysis. XZD and SYZ collected case data. WYJ and RYM participated in the design of outcome measures and performed the evaluation of the clinical and radiographic outcomes. NMH assisted with participant recruitment and screening. WHZ and ZLD conceived the study, participated in its design and coordination, and helped draft the manuscript. The authors read and approved the final manuscript.
+
+**Funding**
+The work is funded by the Clinical Research Program of Southern Medical University (No. LC2019ZD023); the Clinical Research Program of Nanfang Hospital, Southern Medical University (No. 2020CR029); and the President Foundation of Nanfang Hospital, Southern Medical University (No. 2019Z019). The study funder plays no role in study design; collection, management, analysis, or interpretation of the data; or writing/submitting the manuscript.
+
+**Availability of data and materials**
+The datasets analysed during the current study are available from the corresponding author on reasonable request.
+
+**Declarations**
+
+**Ethics approval and consent to participate**
+The protocol has been approved by the Medical Ethics Committee of NanFang Hospital of Southern Medical University (NFEC-2019-233). The study protocol has been registered on ClinicalTrials.gov (NCT04313010). The purpose, procedures, and potential risks of the trial will be clearly explained to the participants. Written informed consent will be obtained from all patients.
+
+**Consent for publication**
+Not applicable
+
+**Competing interests**
+All authors have no conflicts of interest to declare.
+
+Received: 4 May 2021 Accepted: 25 June 2021
+Published online: 06 July 2021
+
+**References**
+1. Peres MA, Macpherson LMD, Weyant RJ, Daly B, Venturelli R, Mathur MR, et al. Oral diseases: a global public health challenge. Lancet. 2019; 394(10194):249–60. https://doi.org/10.1016/S0140-6736(19)31146-8.
+2. Righolt AJ, Jevdjevic M, Marcenes W, Listl S. Global-, regional-, and country-level economic impacts of dental diseases in 2015. J Dent Res. 2018;97(5): 501–7. https://doi.org/10.1177/0022034517750572.
+3. Sasaki H, Hirai K, Martins C, Furusho H, Battaglino R, Hashimoto K. Interrelationship between periapical lesion and systemic metabolic disorders. Curr Pharm Des. 2016;22(15):2204–15. https://doi.org/10.2174/13 81612822666160216145107.
+4. Schmalz G, Widbiller M, Galler KM. Clinical perspectives of pulp regeneration. J Endod. 2020;46(9S):S161–S74. https://doi.org/10.1016/j.joen.2 020.06.037.
+5. Kim SG, Malek M, Sigurdsson A, Lin LM, Kahler B. Regenerative endodontics: a comprehensive review. Int Endod J. 2018;51(12):1367–88. https://doi.org/1 0.1111/iej.12954.
+6. Paryani K, Kim SG. Regenerative endodontic treatment of permanent teeth after completion of root development: a report of 2 cases. J Endod. 2013; 39(7):929–34. https://doi.org/10.1016/j.joen.2013.04.029.
+7. Mao J, Kim S, Zhou J, et al. Regenerative endodontics: barriers and strategies for clinical translation. Dent Clin N Am. 2012;56(3):639–49. https:// doi.org/10.1016/j.cden.2012.05.005.
+8. Adnan S, Ullah R. Top-cited articles in regenerative endodontics: a bibliometric analysis. J Endod. 2018;44(11):1650–64. https://doi.org/10.1016/j. joen.2018.07.015.
+9. Saoud TM, Martin G, Chen YH, et al. Treatment of mature permanent teeth with necrotic pulps and apical periodontitis using regenerative endodontic procedures: a case series. J Endod. 2016;42(1):57–65. https://doi.org/10.1016/ j.joen.2015.09.015.
+10. Nosrat A, Seifi A, Asgary S. Regenerative endodontic treatment (revascularization) for necrotic immature permanent molars: a review and report of two cases with a new biomaterial. J Endod. 2011;37(4):562–7. https://doi.org/10.1016/j.joen.2011.01.011.
+11. Saoud TM, Sigurdsson A, Rosenberg PA, Lin LM, Ricucci D. Treatment of a large cystlike inflammatory periapical lesion associated with mature necrotic teeth using regenerative endodontic therapy. J Endod. 2014;40(12):2081–6.
+12. Wang Y, Zhu X, Zhang C. Pulp revascularization on permanent teeth with open apices in a middle-aged patient. J Endod. 2015;41(9):1571–5. https:// doi.org/10.1016/j.joen.2015.04.022.
+13. Gomes-Filho JE, Duarte PC, Ervolino E, et al. Histologic characterization of engineered tissues in the canal space of closed-apex teeth with apical periodontitis. J Endod. 2013;39(12):1549–56. https://doi.org/10.1016/j.joen.2 013.08.023.
+14. Lovelace TW, Henry MA, Hargreaves KM, Diogenes A. Evaluation of the delivery of mesenchymal stem cells into the root canal space of necrotic immature teeth after clinical regenerative endodontic procedure. J Endod. 2011;37(2):133–8. https://doi.org/10.1016/j.joen.2010.10.009.
+15. Torabinejad M, Turman M. Revitalization of tooth with necrotic pulp and open apex by using platelet-rich plasma: a case report. J Endod. 2011;37(2): 265–8. https://doi.org/10.1016/j.joen.2010.11.004.
+16. Eramo S, Natali A, Pinna R, Milia E. Dental pulp regeneration via cell homing. Int Endod J. 2018;51(4):405–19. https://doi.org/10.1111/iej.12868.
+17. Lv H, Chen Y, Cai Z, Lei L, Zhang M, Zhou R, et al. The efficacy of platelet-rich fibrin as a scaffold in regenerative endodontic treatment: a retrospective controlled cohort study. BMC Oral Health. 2018;18(1):139. https://doi.org/10.1186/s12903-018-0598-z.
+18. Murray PE. Platelet-rich plasma and platelet-rich fibrin can induce apical closure more frequently than blood-clot revascularization for the regeneration of immature permanent teeth: a meta-analysis of clinical efficacy. Front Bioeng Biotechnol. 2018;6:139. https://doi.org/10.3389/fbioe.2 018.00139.
+19. Shivashankar VY. Comparison of the Effect of PRP, PRF and induced bleeding in the revascularization of teeth with necrotic pulp and open apex: a triple blind randomized clinical trial. J Clin Diagn Res. 2017;11(6): ZC34–9. https://doi.org/10.7860/JCDR/2017/22352.10056.
+20. Narang I, Mittal N, Mishra N. A comparative evaluation of the blood clot, platelet-rich plasma, and platelet-rich fibrin in regeneration of necrotic immature permanent teeth: a clinical study. Contemp Clin Dent. 2015;6(1): 63–8. https://doi.org/10.4103/0976-237X.149294.
+21. Seo B, Miura M, Gronthos S, et al. Investigation of multipotent postnatal stem cells from human periodontal ligament. Lancet (London, England). 2004;364(9429):149–55.
+22. Chrepa V, Henry MA, Daniel BJ, Diogenes A. Delivery of apical mesenchymal stem cells into root canals of mature teeth. J Dent Res. 2015;94(12):1653–9. https://doi.org/10.1177/0022034515596527.
+23. Nageh M, Ahmed GM, El-Baz AA. Assessment of regaining pulp sensibility in mature necrotic teeth using a modified revascularization technique with platelet-rich fibrin: a clinical study. J Endod. 2018;44(10):1526–33.
+24. Nurden AT. Platelets, inflammation and tissue regeneration. Thromb Haemost. 2011;105(Suppl 1):S13–33.
+25. Barbeck M, Najman S, Stojanovic S, et al. Addition of blood to a phycogenic bone substitute leads to increased in vivo vascularization. Biomed Mater. 2015;10(5):055007. https://doi.org/10.1088/1748-6041/10/5/055007.
+26. Cabaro S, D'Esposito V, Gasparro R, Borriello F, Granata F, Mosca G, et al. White cell and platelet content affects the release of bioactive factors in different blood-derived scaffolds. Platelets. 2018;29(5):463–7. https://doi. org/10.1080/09537104.2017.1319046.
+27. Fujioka-Kobayashi M, Katagiri H, Kono M, Schaller B, Zhang Y, Sculean A, et al. Improved growth factor delivery and cellular activity using concentrated platelet-rich fibrin (C-PRF) when compared with traditional injectable (i-PRF) protocols. Clin Oral Investig. 2020;24(12):4373–83. https:// doi.org/10.1007/s00784-020-03303-7.
+28. El Bagdadi K, Kubesch A, Yu X, et al. Reduction of relative centrifugal forces increases growth factor release within solid platelet-rich-fibrin (PRF)-based matrices: a proof of concept of LSCC (low speed centrifugation concept). Eur J Trauma Emerg Surg. 2019;45(3):467–79. https://doi.org/10.1007/s00068- 017-0785-7.
+29. Lei L, Yu Y, Han J, Shi D, Sun W, Zhang D, et al. Quantification of growth factors in advanced platelet-rich fibrin and concentrated growth factors and their clinical efficacy as adjunctive to the GTR procedure in periodontal
+
+════════════════════════════════════════════════════════════
+PAGE 11
+════════════════════════════════════════════════════════════
+Liang et al. Trials (2021) 22:436 Page 11 of 11
+
+intrabony defects. J Periodontol. 2020;91(4):462–72. https://doi.org/10.1002/ JPER.19-0290.
+30. Aydinyurt HS, Sancak T, Taskin C, Basbugan Y, Akinci L. Effects of injectable platelet-rich fibrin in experimental periodontitis in rats. Odontology. 2021; 109(2):422–32. https://doi.org/10.1007/s10266-020-00557-1 Epub 2020 Oct 17. PMID: 33068206.
+31. Varela HA, Souza JCM, Nascimento RM, Araújo RF Jr, Vasconcelos RC, Cavalcante RS, et al. Injectable platelet rich fibrin: cell content, morphological, and protein characterization. Clin Oral Investig. 2019;23(3): 1309–18. https://doi.org/10.1007/s00784-018-2555-2.
+32. Gasparro R, Adamo D, Masucci M, Sammartino G, Mignogna MD. Use of injectable platelet-rich fibrin in the treatment of plasma cell mucositis of the oral cavity refractory to corticosteroid therapy: a case report. Dermatol Ther. 2019;32(5):e13062. https://doi.org/10.1111/dth.13062 Epub 2019 Aug 23. PMID: 31415129.
+33. Choukroun J, Ghanaati S. Reduction of relative centrifugation force within injectable platelet-rich fibrin (PRF) concentrates advances patients' own inflammatory cells, platelets and growth factors: the first introduction to the low speed centrifugation concept. Eur J Trauma Emerg Surg. 2018;44(1):87– 95. https://doi.org/10.1007/s00068-017-0767-9.
+34. Zhang J, Yin C, Zhao Q, Zhao Z, Wang J, Miron RJ, et al. Anti-inflammation effects of injectable platelet-rich fibrin via macrophages and dendritic cells. J Biomed Mater Res A. 2020;108(1):61–8. https://doi.org/10.1002/jbm.a.3 6792.
+35. Jasmine S, Thangavelu A, Janarthanan K, Krishnamoorthy R, Alshatwi AA. Antimicrobial and antibiofilm potential of injectable platelet rich fibrin-a second-generation platelet concentrate-against biofilm producing oral staphylococcus isolates. Saudi J Biol Sci. 2020;27(1):41-6. https://doi.org/10.1 016/j.sjbs.2019.04.012.
+36. Rafiee A, Memarpour M, Najibi Y, et al. Antimicrobial efficacy of a novel antibiotic-eluting injectable platelet-rich fibrin scaffold against a dual-species biofilm in an infected immature root canal model. Biomed Res Int. 2020;2020:6623830.
+37. Wang X, Zhang Y, Choukroun J, Ghanaati S, Miron RJ. Effects of an injectable platelet-rich fibrin on osteoblast behavior and bone tissue formation in comparison to platelet-rich plasma. Platelets. 2018;29(1):48–55. https://doi.org/10.1080/09537104.2017.1293807.
+38. Kyyak S, Blatt S, Pabst A, Thiem D, Al-Nawas B, Kammerer PW. Combination of an allogenic and a xenogenic bone substitute material with injectable platelet-rich fibrin - a comparative in vitro study. J Biomater Appl. 2020; 35(1):83–96. https://doi.org/10.1177/0885328220914407.
+39. Amaral Valladao CA Jr, Freitas Monteiro M, Joly JC. Guided bone regeneration in staged vertical and horizontal bone augmentation using platelet-rich fibrin associated with bone grafts: a retrospective clinical study. Int J Implant Dent. 2020;6(1):72. https://doi.org/10.1186/s40729-020-00266-y.
+40. Ucak Turer O, Ozcan M, Alkaya B, Surmeli S, Seydaoglu G, Haytac MC. Clinical evaluation of injectable platelet-rich fibrin with connective tissue graft for the treatment of deep gingival recession defects: a controlled randomized clinical trial. J Clin Periodontol. 2020;47(1):72–80. https://doi. org/10.1111/jcpe.13193.
+41. Kontakiotis E, Filippatos C, Tzanetakis G, Agrafioti A. Regenerative endodontic therapy: a data analysis of clinical protocols. J Endod. 2015; 41(2):146–54. https://doi.org/10.1016/j.joen.2014.08.003.
+42. Thanasrisuebwong P, Kiattavorncharoen S, Surarit R, Phruksaniyom C, Ruangsawasdi N. Red and yellow injectable platelet-rich fibrin demonstrated differential effects on periodontal ligament stem cell proliferation, migration, and osteogenic differentiation. Int J Mol Sci. 2020;21(14):5153. https://doi.org/10.3390/ijms21145153.
+43. AAE clinical considerations for a regenerative procedure [https://www.aae. org/specialty/wp-content/uploads/sites/2/2017/06/currentregenera tiveendodonticconsiderations.pdf].
+44. Galler KM, Krastl G, Simon S, Van Gorp G, Meschi N, Vahedi B, et al. European Society of Endodontology position statement: revitalization procedures. Int Endod J. 2016;49(8):717–23. https://doi.org/10.1111/iej.12629.
+45. Ruparel NB, Teixeira FB, Ferraz CC, Diogenes A. Direct effect of intracanal medicaments on survival of stem cells of the apical papilla. J Endod. 2012; 38(10):1372–5.
+46. He L, Kim SG, Gong Q, Zhong J, Wang S, Zhou X, et al. Regenerative endodontics for adult patients. J Endod. 2017;43(9S):S57–64. https://doi. org/10.1016/j.joen.2017.06.012.
+47. Marx RE. Platelet-rich plasma: evidence to support its use. J Oral Maxillofac Surg. 2004;62(4):489–96. https://doi.org/10.1016/j.joms.2003.12.003.
+48. Li X, Hou J, Wu B, Chen T, Luo A. Effects of platelet-rich plasma and cell coculture on angiogenesis in human dental pulp stem cells and endothelial progenitor cells. J Endod. 2014;40(11):1810–4. https://doi.org/10.1016/j.joen.2 014.07.022.
+49. Khademi AA, Dianat O, Mahjour F, Razavi SM, Younessian F. Outcomes of revascularization treatment in immature dog's teeth. Dent Traumatol. 2014; 30(5):374–9. https://doi.org/10.1111/edt.12100.
+50. Kobayashi E, Fluckiger L, Fujioka-Kobayashi M, Sawada K, Sculean A, Schaller B, et al. Comparative release of growth factors from PRP, PRF, and advanced-PRF. Clin Oral Investig. 2016;20(9):2353–60. https://doi.org/10.1 007/s00784-016-1719-1.
+51. Torabinejad M, Milan M, Shabahang S, Wright KR, Faras H. Histologic examination of teeth with necrotic pulps and periapical lesions treated with 2 scaffolds: an animal investigation. J Endod. 2015;41(6):846–52. https://doi. org/10.1016/j.joen.2015.01.026.
+52. Miron RJ, Chai J, Zheng S, Feng M, Sculean A, Zhang Y. A novel method for evaluating and quantifying cell types

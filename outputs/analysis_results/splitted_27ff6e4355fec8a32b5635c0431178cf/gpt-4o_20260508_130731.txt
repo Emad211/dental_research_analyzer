@@ -1,0 +1,143 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_27ff6e4355fec8a32b5635c0431178cf.pdf
+Status : ok
+Time   : 20260508_130731
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Randomized Controlled Double-Blinded Clinical Trial.
+
+2. **Objective**:  
+   - To evaluate and compare clinical periodontal parameters in patients with true combined endodontic-periodontal lesions (EPL) treated with gutta-percha (GP) and mineral trioxide aggregate (MTA) as obturation materials, with and without bone grafting.
+
+3. **Groups**:  
+   - **Group I**: Conventional non-surgical root canal treatment (RCT) with gutta-percha.  
+   - **Group II**: Conventional non-surgical RCT with mineral trioxide aggregate.  
+   - **Group III**: Conventional non-surgical RCT with gutta-percha + bone grafting.  
+   - **Group IV**: Conventional non-surgical RCT with mineral trioxide aggregate + bone grafting.
+
+4. **Sample Size**:  
+   - Total: 120 teeth (n = 120).  
+   - Group size: 30 teeth per group (n = 30/group).
+
+5. **Population**:  
+   - Inclusion: Saudi patients aged 25–55 years with upper anterior non-vital single-rooted teeth diagnosed with true combined EPL.  
+   - Exclusion: Systemic diseases affecting bone metabolism, oral cancer, long-term antibiotic use, medications modifying bone metabolism, fractures, resorptions, or associated pathological cysts.
+
+6. **Variables**:  
+   - **Independent Variables**: Treatment modality (GP vs. MTA; with vs. without bone grafting).  
+   - **Dependent Variables**: Clinical parameters (probing depth, relative clinical attachment level, gingival recession, keratinized tissue width, gingival phenotype) and radiographic parameters (CBCTPAI scores).
+
+7. **Measurements**:  
+   - **Clinical**: Probing depth (PD), relative clinical attachment level (rCAL), gingival recession, keratinized tissue width (KTW), gingival phenotype (G.Ph.).  
+   - **Radiographic**: CBCTPAI scores (Cone Beam Computed Tomography Periapical Index).
+
+8. **Data Collection Methods**:  
+   - Clinical measurements recorded at baseline, 3, 6, and 12 months post-treatment.  
+   - Radiographic evaluation performed at baseline and 6 months using CBCT and standardized vertical periapical radiographs.
+
+9. **Randomization**:  
+   - Blocked randomization (block size = 3) using locked computer software (Minitab 1.5). Allocation concealed in closed envelopes.
+
+10. **Blinding**:  
+   - Double-blinded (blinded endodontist and periodontist).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Repeated Measures ANOVA  
+   - **Purpose**: To compare changes in clinical parameters (PD, rCAL, gingival recession, KTW, G.Ph.) across time points (baseline, 3, 6, and 12 months) and between groups.  
+   - **Why Appropriate**:  
+     - Accounts for repeated measurements within subjects.  
+     - Suitable for comparing multiple groups over time.  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes normality and sphericity of data.  
+   - **When NOT to Use**: If data violates sphericity or normality assumptions.  
+   - **Alternative**: Linear Mixed Models (LMM) or Friedman Test (non-parametric).
+
+2. **Test Name**: Chi-Square Test  
+   - **Purpose**: To compare success rates (CBCTPAI levels) between groups at 6 months and 12 months.  
+   - **Why Appropriate**:  
+     - Suitable for categorical data (success/failure).  
+     - Allows comparison between independent groups.  
+   - **Why It May Not Be Appropriate**:  
+     - Requires sufficient sample size in each category for valid results.  
+   - **When NOT to Use**: If expected frequencies in any cell are <5.  
+   - **Alternative**: Fisher’s Exact Test.
+
+3. **Test Name**: Independent Samples t-Test or Mann-Whitney U Test  
+   - **Purpose**: To compare continuous variables (e.g., PD, rCAL) between two groups (e.g., GP vs. MTA).  
+   - **Why Appropriate**:  
+     - t-Test assumes normal distribution; Mann-Whitney U Test is non-parametric.  
+     - Suitable for comparing two independent groups.  
+   - **Why It May Not Be Appropriate**:  
+     - t-Test is inappropriate for non-normal data or unequal variances.  
+   - **When NOT to Use**: If data is non-normal or variances are unequal.  
+   - **Alternative**: Mann-Whitney U Test (non-parametric).
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Linear Mixed Models (LMM)  
+   - **Purpose**: To analyze longitudinal data accounting for repeated measures and random effects.  
+   - **Why Appropriate**:  
+     - Handles missing data and complex covariance structures.  
+     - Suitable for repeated measures with unequal intervals.  
+   - **Why It May Not Be Appropriate**:  
+     - Requires expertise in model specification and interpretation.  
+   - **When NOT to Use**: If simpler methods (e.g., Repeated Measures ANOVA) suffice.  
+   - **Alternative**: Generalized Estimating Equations (GEE).
+
+2. **Test Name**: Kruskal-Wallis Test  
+   - **Purpose**: To compare clinical parameters between all four groups when data is non-normal.  
+   - **Why Appropriate**:  
+     - Non-parametric test for comparing multiple groups.  
+     - Does not assume normality.  
+   - **Why It May Not Be Appropriate**:  
+     - Less powerful than parametric tests.  
+   - **When NOT to Use**: If data is normal and parametric tests are valid.  
+   - **Alternative**: One-Way ANOVA.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Pearson or Spearman Correlation  
+   - **Purpose**: To assess relationships between clinical and radiographic parameters (e.g., PD vs. CBCTPAI scores).  
+   - **Why Appropriate**:  
+     - Pearson for normal data; Spearman for non-normal data.  
+     - Provides insight into variable associations.  
+   - **Why It May Not Be Appropriate**:  
+     - Does not imply causation.  
+   - **When NOT to Use**: If data lacks variability or sample size is small.  
+   - **Alternative**: Partial Correlation (adjusts for confounding).
+
+2. **Test Name**: Logistic Regression  
+   - **Purpose**: To predict success rates (CBCTPAI levels) based on treatment modality and baseline characteristics.  
+   - **Why Appropriate**:  
+     - Suitable for binary outcomes (success/failure).  
+     - Accounts for multiple predictors.  
+   - **Why It May Not Be Appropriate**:  
+     - Requires large sample size for reliable estimates.  
+   - **When NOT to Use**: If sample size is insufficient or predictors are highly correlated.  
+   - **Alternative**: Bayesian Logistic Regression.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Paired t-Test**:  
+   - **Reason**: Not suitable for comparing more than two groups or repeated measures.  
+2. **One-Way ANOVA**:  
+   - **Reason**: Does not account for repeated measures or longitudinal data.  
+3. **Wilcoxon Signed-Rank Test**:  
+   - **Reason**: Designed for paired data, not for between-group comparisons.
+
+---
+
+### TASK 4: SUMMARY
+The overall analytical approach combines mandatory tests for hypothesis testing (e.g., Repeated Measures ANOVA, Chi-Square Test) with recommended tests (e.g., Linear Mixed Models) to enhance rigor and account for longitudinal data. Optional tests (e.g., correlation, logistic regression) provide supplementary insights into variable relationships and predictors of success. This approach ensures robust, valid, and clinically meaningful results while addressing potential violations of statistical assumptions.

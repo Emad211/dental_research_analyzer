@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_ijcpd-14-471.pdf",
+  "timestamp": "20260508_131507",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 2183
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 5363
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 21039
+    }
+  }
+}

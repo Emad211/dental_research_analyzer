@@ -1,0 +1,326 @@
+
+════════════════════════════════════════════════════════════
+PAGE 1
+════════════════════════════════════════════════════════════
+materials
+MDPI
+
+Article
+Comparison of the Effects of a Bioceramic and Conventional Resin-Based Sealers on Postoperative Pain after Nonsurgical Root Canal Treatment: A Randomized Controlled Clinical Study
+
+Kiche Shim, Young-Eun Jang and Yemi Kim * [ID]
+
+Department of Conservative Dentistry, College of Medicine, Ewha Womans University, Seoul 07986, Korea; tlarlco@hanmail.net (K.S.); jang@ewha.ac.kr (Y.-E.J.)
+* Correspondence: yemis@ewha.ac.kr; Tel.: +82-2-2650-5763; Fax: +82-2-2650-5764
+
+check for updates
+
+Citation: Shim, K.; Jang, Y.-E.; Kim, Y. Comparison of the Effects of a Bioceramic and Conventional Resin-Based Sealers on Postoperative Pain after Nonsurgical Root Canal Treatment: A Randomized Controlled Clinical Study. Materials 2021, 14, 2661. https://doi.org/10.3390/ma14102661
+
+Academic Editors: Francesco Baino and Marco Cicciù
+
+Received: 19 April 2021
+Accepted: 17 May 2021
+Published: 19 May 2021
+
+Publisher’s Note: MDPI stays neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+[CC BY logo]
+Copyright: © 2021 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (https://creativecommons.org/licenses/by/4.0/).
+
+Keywords: postoperative pain; root canal sealer; bioceramic sealer; resin-based sealer
+
+1. Introduction
+Pain of endodontic origin can be alleviated by root canal treatment. However, in one study, 17% of patients described the procedure as their most painful dental experience [1]. Indeed, it can be challenging for clinicians to alleviate pain during and after treatment. After root canal treatment, the incidence of postoperative pain reportedly ranges from 3% to 58% [2]. The factors associated with postoperative pain include working length determination [3], number of visits [4], gender [5], use of analgesics [6], instrumentation system [7], and root canal sealer [8]. To be more specific, extrusion of root canal sealer can disrupt periodontal tissues and cause inflammatory reactions, resulting in postoperative pain [8,9].
+There are various kinds of root canal sealers; the most widely used are resin-based and bioceramic sealers, the latter of which were recently introduced. Bioceramic sealers generally contain alumina, zirconia particles, bioactive glass, calcium silicates, hydroxyapatite, and resorbable calcium phosphates [10]. These ingredients allow the sealers to resist bacterial leakage [11], make it biocompatible [12,13], and even stimulate dynamic intratubular biomineralization [14]. Furthermore, bioceramic sealers enhance endodontic treatment outcomes by facilitating the differentiation of odontoblasts [15] and the release of bioactive substances [16].
+Endoseal MTA (Maruchi, Wonju, South Korea) is a premixed injectable bioceramic sealer that has garnered attention due to its convenience and positive outcomes. Endoseal MTA comprises calcium silicate, calcium aluminates and calcium sulfates, which has
+
+Materials 2021, 14, 2661. https://doi.org/10.3390/ma14102661
+https://www.mdpi.com/journal/materials
+
+════════════════════════════════════════════════════════════
+PAGE 2
+════════════════════════════════════════════════════════════
+Materials 2021, 14, 2661
+
+2 of 8
+
+several advantages, such as high alkalinity, good flowability, and cytocompatibility [13,17]. In addition, it has dimensional stability during an experimental time of 30 days, while several other bioceramic sealers tend to expand [17]. In vitro and in vivo animal studies have shown that bioceramic sealers have favorable physiobiological properties [18–20]; however, although of great interest, there have been few clinical studies on the effects of bioceramic sealers on postoperative pain [8,21,22]. To the best of our knowledge, no clinical study has reported the effect of Endoseal MTA on post-obturation pain. Furthermore, pain is multifactorial, so it is very difficult to consider every factor potentially involved in its aggravation or diminution. Thus, a randomized controlled clinical trial is preferable to investigate postoperative pain [4,7,8,21].
+
+The purpose of this single-blind, randomized controlled clinical trial was to compare the effects of Endoseal MTA and AH Plus on the incidence and intensity of postoperative pain.
+
+2. Materials and Methods
+2.1. Patient Allocation and Randomization
+
+A total of 108 patients from the Department of Conservative Dentistry, Ewha Womans University Hospital, were enrolled in this study between March 2019 and May 2020. The study was approved by Ewha Womans University Medical Center (EUMC) Institutional Review Board on 18 January 2018, trial registration number of IRB no. 2018-01-021. Oral and written informed consent was obtained from all patients. In addition, all methods were performed following the approved guidelines and regulations. Patients with anterior teeth or premolars requiring root canal treatment were assigned to group 1; molars were assigned to group 2. Block randomization was performed to prevent any imbalance in the number of subjects in each group. The patients in group 1 were further randomized into group 1En (Endoseal MTA) and group 1AH (AH-Plus); those in group 2 were randomized to group 2En and group 2AH. The randomization table was managed by a study assistant, who delivered the allocated sealer to the practitioner just before obturation.
+
+2.2. Inclusion and Exclusion Criteria
+2.2.1. Inclusion Criteria
+1. Patients requiring root canal treatment who can follow treatment protocols as well as the criteria for postoperative pain evaluation;
+2. Patients of age between 19 to 70 years old,
+
+2.2.2. Exclusion Criteria
+1. Patients with any uncontrolled systemic diseases;
+2. Patients who are pregnant;
+3. Patients who refused to participate;
+4. Teeth with open apex;
+5. Retreatments of root canals;
+6. Patients who initiated root canal treatment in other clinics.
+
+2.3. Treatment Process
+The root canal treatment was performed by a single practitioner. Before beginning the treatment, each patient rated their preoperative pain at rest and while biting using a visual analog scale (VAS). The treatment flow diagram is provided in Figure 1A,B.
+
+════════════════════════════════════════════════════════════
+PAGE 3
+════════════════════════════════════════════════════════════
+Materials 2021, 14, 2661
+3 of 8
+
+Enrollment
+Assessed for eligibility (n=51)
+Excluded (n=10)
+Declined to participate (n=10)
+Randomised (n=41)
+
+Allocation
+Endoseal MTA, Single cone technique (n=22)
+AH Plus, Continuous wave technique (n=19)
+
+Follow-up
+Lost to follow-up (continued further treatment in local dental clinic) (n=5)
+Lost to follow-up (continued further treatment in local dental clinic) (n=4)
+
+Analysis
+Analysed (n=17)
+Analysed (n=15)
+
+(A)
+
+Enrollment
+Assessed for eligibility (n=57)
+Excluded (n=10)
+Declined to participate (n=10)
+Randomised (n=47)
+
+Allocation
+Endoseal MTA, Single cone technique (n=24)
+AH Plus, Continuous wave technique (n=23)
+
+Follow-up
+Lost to follow-up (continued further treatment in local dental clinic) (n=6)
+Lost to follow-up (continued further treatment in local dental clinic) (n=6)
+
+Analysis
+Analysed (n=18)
+Analysed (n=17)
+
+(B)
+
+Figure 1. (A) Flow chart of patient selection in group 1. (B) Flowchart of patient selection in group 2.
+
+2.4. Root Canal Treatment Procedure
+The treated tooth in all patients was anesthetized with 2% lidocaine with 1:100,000 epinephrine and isolated using a rubber dam. An access cavity was formed, and the patency of each canal was confirmed using a #15 K file. The working length was established using Root ZX (J. Morita Corp, Osaka, Japan). Each canal was shaped with the ProTaper Next file system (Dentsply Maillefer, Ballaigues, Switzerland) and soaked in 2.5% sodium hypochlorite (NaOCl) during shaping. On the day of canal filling, the canals were irrigated with 5% NaOCl for 5 min, followed by 17% EDTA for 1 min and then irrigated with 5% NaOCl and saline. Each canal was dried with paper points. An assistant delivered the assigned sealer to the practitioner just before the obturation. The continuous-wave
+
+════════════════════════════════════════════════════════════
+PAGE 4
+════════════════════════════════════════════════════════════
+Materials 2021, 14, 2661                                                                                                                                                            4 of 8
+
+technique was used in the AH Plus group, and the single-cone technique was used in the Endoseal MTA group. After obturation, a postoperative radiograph was taken.
+
+2.5. Assessment of Postoperative Pain
+       On the day of obturation, each patient indicated their level of postoperative pain over 7 days, at rest and while biting, using the VAS. On day 7, each patient was asked to visit the clinic for a recall check. Their pain on that day was noted.
+
+════════════════════════════════════════════════════════════
+PAGE 5
+════════════════════════════════════════════════════════════
+*   |
+
+════════════════════════════════════════════════════════════
+PAGE 6
+════════════════════════════════════════════════════════════
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+
+════════════════════════════════════════════════════════════
+PAGE 7
+════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+PAGE 8
+════════════════════════════════════════════════════════════
+Materials 2021, 14, 2661
+8 of 8
+
+24. Alí, A.; Olivieri, J.G.; Duran-Sindreu, F.; Abella, F.; Roig, M.; García-Font, M. Influence of preoperative pain intensity on postoperative pain after root canal treatment: A prospective clinical study. J. Dent. 2016, 45, 39–42. [CrossRef]
+25. Segura-Egea, J.J.; Cisneros-Cabello, R.; Llamas-Carreras, J.M.; Velasco-Ortega, E. Pain associated with root canal treatment. Int. Endod. J. 2009, 42, 614–620. [CrossRef] [PubMed]
+26. Taşdemir, T.; Er, K.; Yildirim, T.; Buruk, K.; Çelik, D.; Cora, S.; Tahan, E.; Tuncel, B.; Serper, A. Comparison of the sealing ability of three filling techniques in canals shaped with two different rotary systems: A bacterial leakage study. Oral Surg. Oral Med. Oral Pathol. Oral Radiol. Endodontol. 2009, 108, e129–e134. [CrossRef]
+27. Pereira, A.C.; Nishiyama, C.K.; de Castro Pinto, L. Single-cone obturation technique: A literature review. RSBO Rev. Sul-Bras. Odontol. 2012, 9, 442–447.
+28. Tasdemir, T.; Yesilyurt, C.; Ceyhanli, K.T.; Celik, D.; Er, K. Evaluation of apical filling after root canal filling by 2 different techniques. J. Can. Dent. Assoc. 2009, 75, 201a–201d.
+29. El Sayed, M.A.A.M.; Taleb, A.A.A.; Balbahaith, M.S.M. Sealing ability of three single-cone obturation systems: An in-vitro glucose leakage study. J. Conserv. Dent. 2013, 16, 489–493. [CrossRef]
+30. Hörsted-Bindslev, P.; Andersen, M.A.; Jensen, M.F.; Nilsson, J.H.; Wenzel, A. Quality of molar root canal fillings performed with the lateral compaction and the single-cone technique. J. Endod. 2007, 33, 468–471. [CrossRef]
+31. Guess, G.M.; Edwards, K.R.; Yang, M.-L.; Iqbal, M.K.; Kim, S. Analysis of continuous-wave obturation using a single-cone and hybrid technique. J. Endod. 2003, 29, 509–512. [CrossRef] [PubMed]
+32. Iglecias, E.F.; Freire, L.G.; de Miranda Candeiro, G.T.; dos Santos, M.; Antoniazzi, J.H.; Gavini, G. Presence of voids after continuous wave of condensation and single-cone obturation in mandibular molars: A micro-computed tomography analysis. J. Endod. 2017, 43, 638–642. [CrossRef] [PubMed]

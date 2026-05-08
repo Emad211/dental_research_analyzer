@@ -1,0 +1,260 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_ijcpd-14-s179.pdf
+Status : ok
+Time   : 20260508_131945
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study design & setting
+- **Design:** Single-blinded, parallel-group **randomized controlled trial**.
+- **Setting:** Saveetha Dental College and Hospitals, Chennai, India.
+- **Ethics:** Institutional ethical approval (SRB/SDMDS15PED12); Declaration of Helsinki.
+- **Blinding:** “Single-blinded” stated; however **behavior and anxiety were recorded by the treating dentist**, so observer blinding is unlikely for key outcomes (potential performance/detection bias).
+
+### Objectives / hypotheses
+- **Primary aim:** Compare **child behavior**, **anxiety level**, and **pain perception** during canal instrumentation when pulpectomy is done using:
+  - **Manual (conventional) instrumentation** vs
+  - **Rotary (NiTi) instrumentation**
+
+### Population
+- **Target population:** Children attending the institution for routine dental treatment.
+- **Age:** **4–7 years**
+- **Baseline cooperation:** Children showing **cooperative behavior at their first dental visit** were invited.
+
+### Eligibility
+- **Included:** Children 4–7 years meeting criteria and needing pulpectomy (vitality confirmed during access by hemorrhage).
+- **Excluded (child-level):**
+  - Lacking cooperative ability
+  - Physical/psychological disabilities
+  - Systemic diseases/special health care needs
+  - Parents refusing consent
+- **Excluded (tooth-level/clinical):**
+  - Abscessed or nonvital tooth
+  - Internal/pathological resorption
+  - Inadequate coronal structure to receive stainless steel crown
+
+### Sample size
+- **Pilot:** 20 children (10/group).
+- **Planned main sample:** **N = 88** total (**44 per group**)
+- **Parameters:** 95% power, alpha 0.05; computed using G*Power.
+- Unit appears to be **child/participant** (one pulpectomy per child implied, but not explicitly stated).
+
+### Randomization & allocation concealment
+- **Randomization:** Computer-generated random sequence.
+- **Concealment:** Sequentially numbered, sealed envelopes opened after recruitment.
+
+### Interventions (per group)
+All pulpectomies:
+- Performed by **one pediatric dentist**, **single visit**
+- Standard anesthesia, rubber dam, access, working length 1 mm short of apex
+- Irrigation: saline
+- Obturation: calcium hydroxide + iodoform paste (Metapex)
+- Restoration: GIC + stainless steel crown
+
+**Group I (Manual):**
+- K files to size 30, quarter pull-turn method; saline irrigation between files.
+
+**Group II (Rotary):**
+- ProTaper rotary: SX then S2 using X-Smart motor (300 rpm, low torque)
+- Brushing motion, then to working length; saline irrigation
+- Files discarded after 5 teeth; no forcing beyond resistance
+
+### Outcomes (variables) and measurement instruments
+Measured **during/after canal preparation**:
+1. **Child behavior** (operator-rated): **Frankl Behavior Rating Scale**
+   - 4 categories: definitely positive / positive / negative / definitely negative
+   - **Ordinal categorical**
+2. **Anxiety level** (operator-rated): **Venham’s Interval Rating Scale**
+   - Scores **0–5**
+   - **Ordinal**
+3. **Pain perception** (child self-report, after preparation): **Wong-Baker FACES Pain Scale**
+   - **Ordinal** (commonly 0–10 in steps; exact coding not stated)
+
+Other methodological notes:
+- Behavior management approaches applied to both groups (Tell-Show-Do, euphemisms; escalation to voice control/HOME/physical restraint if negative behavior).
+
+### Data structure implications
+- Primary comparisons are **between two independent randomized groups**.
+- Outcomes are **ordinal** and potentially non-normal.
+- Potential operator-related bias because the operator both treated and rated two outcomes.
+
+---
+
+## TASK 2: Statistical analysis plan
+
+### General principles (apply to all analyses)
+- **Analysis set:** Intention-to-treat (ITT) as primary; per-protocol as sensitivity if protocol deviations exist.
+- **Descriptives:**
+  - Continuous (if any): mean±SD (and median/IQR if skewed)
+  - Ordinal: median (IQR) and full category distributions
+- **Alpha:** 0.05 (two-sided).
+- **Multiplicity:** 3 outcomes → control family-wise error (e.g., Holm) or pre-specify one primary endpoint and treat others as secondary.
+- **Effect sizes:** report alongside p-values
+  - Ordinal comparisons: **rank-biserial r**, **Cliff’s delta**, **odds ratios** (for ordinal models)
+  - Categorical distributions: **risk differences**, **relative risks**, or **common OR**
+- **Missing data:** quantify; if >5–10%, consider multiple imputation (ordinal models) and do sensitivity analyses.
+- **Baseline comparability:** describe and test cautiously (randomization should balance on average).
+
+---
+
+### CATEGORY A – MANDATORY tests
+
+#### A1) Mann–Whitney U test (Wilcoxon rank-sum)
+- **Purpose:** Compare **distributions/central tendency** of ordinal outcomes between manual vs rotary.
+- **Why appropriate (≥2):**
+  1. Outcomes (Venham 0–5; pain faces; Frankl as ordered) are **ordinal**, not interval-scaled.
+  2. Does **not require normality**; robust for skewed ordinal scores.
+- **Why may not be appropriate (≥1):**
+  - If the goal is to compare **category probabilities** (e.g., “negative vs positive”) rather than overall rank distribution, MWU may be less interpretable clinically.
+- **When NOT to use:**
+  - When there is **substantial tie inflation** (very common with small ordinal scales), MWU can lose interpretability/power; also not ideal if distributions differ mainly in shape (not location).
+- **Alternative if assumptions violated / better fit:**
+  - **Ordinal logistic regression (proportional odds)** for an effect estimate (common OR), or
+  - **Permutation version** of MWU if small sample/exact inference desired.
+
+*(Apply separately to Venham score and Wong-Baker pain score; for Frankl either treat as ordinal ranks or use A2 below depending on the analysis choice.)*
+
+#### A2) Chi-square test of independence (or Fisher’s exact test)
+- **Purpose:** Compare **proportions across Frankl categories** (4-level) between groups (and/or anxiety/pain categorized).
+- **Why appropriate (≥2):**
+  1. Frankl is naturally **categorical/ordinal** and often analyzed via **frequency tables**.
+  2. Directly addresses clinically meaningful differences in **behavior category distribution**.
+- **Why may not be appropriate (≥1):**
+  - If expected cell counts are small (likely with 4 categories and n=44/group), chi-square approximation may be invalid.
+- **When NOT to use:**
+  - When **>20% of cells have expected count <5** (rule of thumb), or any expected count <1.
+- **Alternative if assumptions violated:**
+  - **Fisher’s exact test** (r×c) or **Monte Carlo exact chi-square**.
+  - If you want to preserve ordering and estimate effect: **ordinal logistic regression**.
+
+---
+
+### CATEGORY B – RECOMMENDED tests (to improve rigor)
+
+#### B1) Ordinal logistic regression (proportional odds model)
+- **Purpose:** Estimate the **treatment effect** of rotary vs manual on each ordinal outcome as an **odds ratio** (shift toward better behavior/lower anxiety/lower pain), optionally adjusting for covariates.
+- **Why appropriate (≥2):**
+  1. Outcomes are **ordered**; model uses ordering efficiently and yields interpretable **common OR**.
+  2. Allows adjustment for **important prognostic factors** (e.g., age, tooth type if recorded) and provides **CIs**, improving clinical interpretability beyond p-values.
+- **Why may not be appropriate (≥1):**
+  - The **proportional odds assumption** may be violated (effect not constant across thresholds).
+- **When NOT to use:**
+  - When sample size is too small relative to outcome categories leading to **sparse cells/separation**, or when proportional odds is strongly violated and cannot be remedied.
+- **Alternative if assumptions violated:**
+  - **Partial proportional odds model** or **generalized ordered logit**.
+  - **Multinomial logistic regression** (drops ordering but flexible).
+  - Collapse categories (pre-specified) + binary logistic regression.
+
+*(Recommended as the primary inferential framework if the authors want effect sizes and covariate adjustment.)*
+
+#### B2) Fisher’s exact / exact trend test (Cochran–Armitage trend)
+- **Purpose:** For ordered categorical outcomes (esp. Frankl), test for a **monotonic shift** toward more positive categories with rotary.
+- **Why appropriate (≥2):**
+  1. Leverages **ordering** (more power than nominal chi-square when shift is directional).
+  2. Works well when distributions are sparse; exact versions mitigate small expected counts.
+- **Why may not be appropriate (≥1):**
+  - If the effect is not monotonic (e.g., changes only in one category), trend tests can miss differences.
+- **When NOT to use:**
+  - When category ordering is ambiguous or when the alternative is not a monotone trend.
+- **Alternative if assumptions violated:**
+  - **r×c Fisher’s exact**, **ordinal logistic regression**, or **MWU**.
+
+#### B3) Inter-rater reliability / measurement bias assessment (if feasible)
+- **Test:** **Weighted Cohen’s kappa** (or intraclass correlation for ordinal treated as numeric—less ideal)
+- **Purpose:** Quantify reliability of behavior/anxiety scoring if a second blinded assessor scores a subset from video/audio.
+- **Why appropriate (≥2):**
+  1. Outcomes (Frankl, Venham) are **ordinal observer ratings**; reliability is crucial.
+  2. Addresses a key threat to validity: the operator was also the assessor.
+- **Why may not be appropriate (≥1):**
+  - Not possible if only one rater and no recordings/second ratings exist.
+- **When NOT to use:**
+  - When ratings are not independent or when categories are extremely imbalanced (kappa paradox).
+- **Alternative if assumptions violated:**
+  - **Gwet’s AC2** (more stable with prevalence imbalance).
+
+#### B4) Multiple comparison control (Holm–Bonferroni)
+- **Purpose:** Control family-wise error across the 3 outcomes (or across multiple tests per outcome).
+- **Why appropriate (≥2):**
+  1. Prevents inflation of Type I error due to multiple endpoints.
+  2. Holm is more powerful than classic Bonferroni and easy to report.
+- **Why may not be appropriate (≥1):**
+  - If one endpoint is clearly pre-specified as **primary**, multiplicity control across secondary outcomes may be unnecessary (but still defensible).
+- **When NOT to use:**
+  - When analyses are strictly exploratory and clearly labeled as such (still report unadjusted + caution).
+- **Alternative:**
+  - **Benjamini–Hochberg FDR** control (if many exploratory comparisons).
+
+---
+
+### CATEGORY C – OPTIONAL tests (supplementary insight)
+
+#### C1) Mediation-style exploration: does anxiety/pain relate to behavior?
+- **Test/model:** Ordinal regression models assessing association of anxiety and pain with Frankl, including group as predictor (exploratory).
+- **Purpose:** Explore whether **pain/anxiety** may explain behavior differences.
+- **Why appropriate (≥2):**
+  1. Clinically plausible pathways (instrumentation → pain/anxiety → behavior).
+  2. Helps interpret findings beyond group differences.
+- **Why may not be appropriate (≥1):**
+  - Temporality and measurement timing are limited; strong causal mediation claims are not justified.
+- **When NOT to use:**
+  - When sample size is insufficient for multi-parameter models or when this was not pre-specified.
+- **Alternative:**
+  - Simple **Spearman correlation** between scales + stratified summaries.
+
+#### C2) Sensitivity analyses with dichotomized outcomes (clinically interpretable)
+- **Test:** Risk ratio / chi-square or Fisher after collapsing:
+  - Frankl: positive (definitely positive/positive) vs negative (negative/definitely negative)
+  - Venham: low (0–1) vs higher (≥2) (threshold must be justified)
+- **Purpose:** Provide easily communicated clinical contrasts.
+- **Why appropriate (≥2):**
+  1. Clinicians often reason in **binary** outcomes (cooperative vs not).
+  2. Allows reporting **RR/RD** and NNT-like measures.
+- **Why may not be appropriate (≥1):**
+  - Dichotomization **loses information** and can reduce power / introduce threshold artifacts.
+- **When NOT to use:**
+  - As the only analysis of ordinal outcomes.
+- **Alternative:**
+  - Keep ordinal via **ordinal logistic regression** and report predicted probabilities.
+
+#### C3) Nonparametric effect size CIs via bootstrap
+- **Test:** Bootstrap CI for median difference / Cliff’s delta
+- **Purpose:** Provide robust uncertainty quantification without normality assumptions.
+- **Why appropriate (≥2):**
+  1. Outcomes are ordinal with ties; bootstrap can be robust.
+  2. Complements rank tests with **confidence intervals**.
+- **Why may not be appropriate (≥1):**
+  - With heavy ties and small n, bootstrap distributions may be unstable.
+- **When NOT to use:**
+  - Very small samples or extreme discreteness.
+- **Alternative:**
+  - Exact methods; model-based ordinal regression CIs.
+
+---
+
+## TASK 3: Inappropriate tests (should NOT be used)
+
+1. **Independent-samples t-test** (for Frankl/Venham/Wong-Baker raw scores)
+   - Why inappropriate: outcomes are **ordinal**, bounded, and likely non-normal with many ties; mean differences may be misleading.
+
+2. **One-way ANOVA / repeated-measures ANOVA**
+   - Why inappropriate: only **two independent groups** and outcomes are ordinal; no repeated measures described.
+
+3. **Pearson correlation** between ordinal scales
+   - Why inappropriate: assumes interval scale and linear relationship; use **Spearman** or ordinal association measures.
+
+4. **Linear regression treating ordinal outcomes as continuous** (without strong justification)
+   - Why inappropriate: violates distributional assumptions; predicted values can fall outside scale; variance non-constant.
+
+5. **Paired tests (paired t-test, Wilcoxon signed-rank)**
+   - Why inappropriate: groups are **independent** (not split-mouth / not crossover).
+
+6. **Kaplan–Meier / Cox regression**
+   - Why inappropriate: no time-to-event outcome.
+
+---
+
+## TASK 4: Summary justification of overall approach
+
+This is a two-arm randomized trial with three **ordinal** patient-centered outcomes measured at the instrumentation visit. The core analysis should therefore compare groups using **ordinal-appropriate methods** (MWU/chi-square as minimum), and preferably estimate effects using **ordinal logistic regression** with confidence intervals, while addressing small cell counts (exact methods) and multiplicity across endpoints. This aligns the statistical methods with the measurement scales and the randomized parallel design, producing interpretable, assumption-respectful inferences.

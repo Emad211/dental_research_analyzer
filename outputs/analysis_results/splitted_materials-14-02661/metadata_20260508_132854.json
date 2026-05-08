@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_materials-14-02661.pdf",
+  "timestamp": "20260508_132854",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 16039
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 6721
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 26079
+    }
+  }
+}

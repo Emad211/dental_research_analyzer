@@ -1,0 +1,127 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_ijcpd-14-s179.pdf
+Status : ok
+Time   : 20260508_131945
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics
+1. **Study Design**: Single-blinded randomized controlled trial (RCT).
+2. **Objective**: To compare and evaluate the child's behavior, anxiety level, and pain perception during pulpectomy using manual (K files) and rotary (ProTaper NiTi files) instrumentation techniques.
+3. **Groups**:
+   - **Group I**: Manual instrumentation using K files.
+   - **Group II**: Rotary instrumentation using ProTaper NiTi files.
+4. **Sample Size**: 
+   - Total: 88 participants (44 per group).
+   - Determined from a pilot study with 95% power and 5% alpha error.
+5. **Target Population**: Children aged 4–7 years attending Saveetha Dental College for routine dental treatment.
+6. **Inclusion Criteria**:
+   - Cooperative behavior during the first dental visit.
+   - Vital primary teeth requiring pulpectomy.
+7. **Exclusion Criteria**:
+   - Non-cooperative children.
+   - Children with physical/psychological disabilities or systemic diseases.
+   - Abscessed/nonvital teeth, internal/pathological resorption, or inadequate coronal tooth structure.
+   - Parents unwilling to provide informed consent.
+8. **Randomization and Allocation Concealment**: Computer-generated randomization sequence with sealed envelope concealment.
+9. **Variables**:
+   - **Independent Variable**: Type of instrumentation (manual vs. rotary).
+   - **Dependent Variables**:
+     - Child's behavior (Frankl Behavior Rating Scale).
+     - Anxiety level (Venham’s Interval Rating Scale).
+     - Pain perception (Wong-Baker FACES Pain Scale).
+10. **Measurements**:
+    - **Behavior**: Frankl Behavior Rating Scale (4 categories: definitely positive, positive, negative, definitely negative).
+    - **Anxiety**: Venham’s Interval Rating Scale (scores 0–5).
+    - **Pain**: Wong-Baker FACES Pain Scale (self-reported).
+11. **Data Collection Methods**:
+    - Behavior and anxiety scores recorded by the operator during canal preparation.
+    - Pain scores self-reported by children after instrumentation.
+12. **Intervention Details**:
+    - **Manual Group**: K files used in quarter pull turn method with saline irrigation.
+    - **Rotary Group**: ProTaper files used sequentially (SX and S2) with an X-Smart motor at 300 rpm and low torque.
+13. **Ethical Approval**: Approved by the institutional ethical committee (SRB/SDMDS15PED12).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Independent Samples t-Test (or Mann-Whitney U Test if assumptions are violated).
+   - **Purpose**: Compare mean scores of behavior, anxiety, and pain between manual and rotary groups.
+   - **Why Appropriate**:
+     1. The study involves comparing two independent groups.
+     2. The dependent variables (behavior, anxiety, pain) are measured on ordinal or continuous scales.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normal distribution of data, which may not hold for ordinal scales (e.g., Frankl and Venham scales).
+   - **When NOT to Use**: If data are heavily skewed or non-normal.
+   - **Alternative**: Mann-Whitney U Test for non-parametric data.
+
+2. **Test Name**: Chi-Square Test of Independence.
+   - **Purpose**: Assess the association between type of instrumentation and categorical behavior outcomes (Frankl scale categories).
+   - **Why Appropriate**:
+     1. Behavior outcomes are categorical (4 levels).
+     2. Suitable for comparing proportions between two independent groups.
+   - **Why It May Not Be Appropriate**:
+     - Requires sufficient sample size in each category; sparse data may lead to unreliable results.
+   - **When NOT to Use**: If expected frequencies in any cell are <5.
+   - **Alternative**: Fisher’s Exact Test for small sample sizes.
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Wilcoxon Rank-Sum Test (alternative to Mann-Whitney U Test).
+   - **Purpose**: Compare anxiety and pain scores between groups when data are ordinal and non-normal.
+   - **Why Appropriate**:
+     1. Non-parametric test suitable for ordinal data.
+     2. Does not assume normality.
+   - **Why It May Not Be Appropriate**:
+     - Less powerful than parametric tests for large sample sizes.
+   - **When NOT to Use**: If data are truly continuous and normally distributed.
+   - **Alternative**: Independent Samples t-Test.
+
+2. **Test Name**: Repeated Measures ANOVA (or Friedman Test for non-parametric data).
+   - **Purpose**: Analyze changes in anxiety and pain scores across different time points (if applicable).
+   - **Why Appropriate**:
+     1. Suitable for longitudinal or repeated measures data.
+     2. Accounts for within-subject variability.
+   - **Why It May Not Be Appropriate**:
+     - Assumes sphericity; violations require corrections (e.g., Greenhouse-Geisser).
+   - **When NOT to Use**: If data are ordinal or non-normal.
+   - **Alternative**: Friedman Test.
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Logistic Regression.
+   - **Purpose**: Predict categorical behavior outcomes based on instrumentation type and other covariates (e.g., age, gender).
+   - **Why Appropriate**:
+     1. Allows adjustment for confounding variables.
+     2. Provides odds ratios for categorical outcomes.
+   - **Why It May Not Be Appropriate**:
+     - Requires large sample size for reliable estimates.
+   - **When NOT to Use**: If sample size is insufficient or data are sparse.
+   - **Alternative**: Chi-Square Test.
+
+2. **Test Name**: Spearman’s Rank Correlation.
+   - **Purpose**: Assess relationships between anxiety, pain, and behavior scores.
+   - **Why Appropriate**:
+     1. Suitable for ordinal data.
+     2. Does not assume linearity or normality.
+   - **Why It May Not Be Appropriate**:
+     - Cannot infer causation.
+   - **When NOT to Use**: If data are nominal or binary.
+   - **Alternative**: Pearson’s Correlation (for continuous data).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: Paired Samples t-Test.
+   - **Why Not Appropriate**: This test is for comparing two related samples, but the study involves independent groups.
+2. **Test Name**: ANOVA (One-Way).
+   - **Why Not Appropriate**: This test is for comparing more than two groups, but the study has only two groups.
+3. **Test Name**: Pearson’s Correlation.
+   - **Why Not Appropriate**: Assumes continuous and normally distributed data, which may not apply to ordinal scales used in this study.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach focuses on comparing manual and rotary instrumentation techniques across three key outcomes: behavior, anxiety, and pain. Mandatory tests (e.g., t-Test, Chi-Square) ensure robust comparisons between groups, while recommended tests (e.g., Wilcoxon, Repeated Measures ANOVA) enhance rigor by addressing potential violations of parametric assumptions. Optional tests (e.g., Logistic Regression, Spearman’s Correlation) provide supplementary insights into relationships and predictors. The overall plan balances statistical rigor with practical considerations, ensuring valid and interpretable results.

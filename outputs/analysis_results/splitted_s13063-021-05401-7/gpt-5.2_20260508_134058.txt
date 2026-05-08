@@ -1,0 +1,229 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_s13063-021-05401-7.pdf
+Status : ok
+Time   : 20260508_134058
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study identification/design
+- **Type/design:** Multicentre, randomised, double-blind (patient + outcome assessor), **parallel-group**, **positive-controlled** clinical trial protocol.
+- **Setting:** 3 centres (Southern Medical University): NanFang Hospital, Stomatological Hospital, Shenzhen Hospital.
+- **Allocation ratio:** 1:1.
+- **Unit of randomisation/analysis:** Appears to be **patient/tooth** (eligibility requires “at least one” eligible tooth; protocol implies one treated tooth per participant, but not explicitly stated).
+- **Randomisation method:** SPSS-generated random sequence; **blocked/clusters of 10** numbers (first 5 test, last 5 control); concealment via opaque sealed envelopes distributed to centres.
+- **Blinding:** Patients and outcome evaluators blinded; operators (dentists) not blinded.
+
+### Objectives
+- **Primary objective:** Evaluate efficacy of RET and specifically **RET with i‑PRF** in mature permanent teeth with pulp necrosis (operationally: compare i‑PRF scaffold vs blood clot scaffold).
+- **Secondary objective:** Investigate factors influencing clinical outcomes and explore/standardize RET protocol in this population.
+
+### Participants
+- **Planned sample size:** **346** total; **173/group** (i‑PRF vs blood clot).
+- **Age:** 10–59 years.
+- **Key inclusion clinical characteristics:**
+  - Mature permanent tooth with **pulp necrosis** (no response to pulp vitality test), with/without periapical lesions.
+  - **Single-root, single-canal** necrotic tooth confirmed by **CBCT**.
+- **Key exclusions:** Severe coronal defects requiring post/core, non-restorable, root fracture/split, other pathologic resorption, periodontitis, allergies, pregnancy/lactation/planned pregnancy, dental phobia, mental disorders, systemic disease altering immune function, meds/conditions affecting healing/coagulation, recent other clinical study participation.
+- **Dropout criteria:** Serious adverse events (e.g., severe internal/external resorption, fracture), poor compliance, withdrawal.
+
+### Interventions (two-visit RET protocol; both groups identical except scaffold)
+- **Visit 1 (both groups):** Anaesthesia/isolation; access; WL determination; irrigation regimen (1% NaOCl 20 mL 5 min + saline 5 mL + 17% EDTA 20 mL 5 min) with ultrasonic irrigation; intracanal calcium hydroxide dressing; temporary seal with glass ionomer.
+- **Visit 2 (2–4 weeks later):**
+  - Irrigate with 17% EDTA 20 mL 5 min + saline; dry.
+  - **Bleeding induction**: K-file 2–3 mm beyond foramen in both groups.
+  - **Test:** i‑PRF prepared from 10 mL venous blood, centrifuged 800 rpm 3 min; inject i‑PRF to 3 mm below CEJ (only apical third has blood); cover with 3 mm iRoot BP Plus; restore with flowable composite liner + resin.
+  - **Control:** allow blood to fill canal to 3 mm below CEJ (blood clot); cover with 3 mm iRoot BP Plus; same restoration.
+
+### Follow-up schedule and data collection
+- **Follow-up duration:** 24 months.
+- **Timepoints:** baseline and **1, 3, 6, 12, 18, 24 months** (CBCT baseline + 24 months only; periapical film at all timepoints listed).
+- **Assessments (baseline + follow-ups unless noted):**
+  - Clinical: crown discoloration; pocket depth; percussion; palpation; sinus tract; tooth mobility; periapical swelling; maxillofacial swelling; general symptoms.
+  - Pulp tests: cold/heat test; “vitality test” (method not specified).
+  - Imaging: periapical radiograph (“periapical film”) at each timepoint; CBCT at baseline and 24 months.
+
+### Outcomes (as inferable from text)
+- **Primary outcome:** “Success rate” of treatment (binary), assessed over follow-up (definition not provided in excerpt; likely composite clinical+radiographic).
+- **Secondary outcomes:** Not explicitly defined; implied categorical clinical outcomes and/or site (centre) comparisons; possibly sensibility/vitality response, radiographic healing, discoloration etc.
+- **Safety outcome:** Adverse events during study period (categorical; counts and proportions).
+
+### Baseline covariates named for comparability/confounding
+- Sex, age, tooth position, disease type, apical hole size, centre.
+
+### Missing data approach stated in protocol
+- **Primary analysis:** Last Observation Carried Forward (LOCF) for “validity analysis” (i.e., efficacy); **no imputation** for safety.
+
+---
+
+## TASK 2: Statistical Analysis Plan (SAP)
+
+### General analysis principles (recommended SAP structure)
+- **Populations:**
+  - **Intention-to-treat (ITT)**: all randomised participants analysed by assigned group (primary).
+  - **Per-protocol (PP)**: exclude major protocol deviations (supportive).
+  - **Safety set**: all treated participants (by treatment received).
+- **Type I error:** two-sided α=0.05 for primary endpoint.
+- **Effect size reporting:** risk difference, risk ratio, and/or odds ratio with 95% CI (pre-specify primary estimand, e.g., OR).
+- **Centre effects:** account for multicentre design (stratified analyses or mixed models).
+- **Multiplicity:** if multiple secondary endpoints/timepoints, pre-specify hierarchy or adjust (Holm/FDR).
+- **Repeated measures:** many outcomes measured repeatedly; avoid analysing each timepoint separately without accounting for correlation.
+
+---
+
+# CATEGORY A – MANDATORY tests/models
+
+## A1) Pearson chi-square test (or Fisher’s exact) for primary endpoint (success rate) at 24 months
+- **Purpose:** Compare proportions “successful” between i‑PRF vs blood clot.
+- **Why appropriate (≥2):**
+  1. Primary endpoint is described as a **success rate** (binary/categorical).
+  2. Two independent parallel groups with 1:1 allocation.
+- **Why may not be appropriate (≥1):** If expected cell counts are small (e.g., very high success in both groups or heavy dropout), chi-square approximation may fail.
+- **When NOT to use:** When any expected cell count <5 (common rule) or sparse tables.
+- **Alternative if assumptions violated:** **Fisher’s exact test**; or **exact unconditional** methods; always accompany with effect size + CI.
+
+## A2) Logistic regression for adjusted treatment effect on success (primary)  
+(including covariates and centre)
+- **Purpose:** Estimate adjusted association of treatment with success; produce adjusted OR and CI; address imbalance and prognostic covariates.
+- **Why appropriate (≥2):**
+  1. Outcome is binary; logistic regression is standard for binary endpoints.
+  2. Trial is **multicentre** and baseline factors (age, apical size, disease type) may influence outcome; adjustment increases precision and addresses chance imbalance.
+- **Why may not be appropriate (≥1):** If events are rare, model may be unstable or suffer separation.
+- **When NOT to use:** With extremely low number of failures/successes per parameter (overfitting), or perfect prediction (separation) without penalisation.
+- **Alternative if assumptions violated:** **Penalised logistic regression** (Firth), **exact logistic**, or reduce covariates via pre-specified limited adjustment set.
+
+## A3) Mixed-effects logistic regression / GEE for repeated binary outcomes over time (e.g., sensibility tests, presence/absence of symptoms)
+- **Purpose:** Compare groups across follow-up while accounting for within-subject correlation and time trends.
+- **Why appropriate (≥2):**
+  1. Measurements occur at **multiple follow-up times** (1–24 months), inducing correlated observations.
+  2. Handles incomplete follow-up under MAR more appropriately than LOCF (model-based).
+- **Why may not be appropriate (≥1):** Requires sufficient data at multiple timepoints; model complexity and convergence issues possible.
+- **When NOT to use:** If outcome measured only once (then use simple logistic), or if timepoints are too sparse with heavy missingness causing non-identifiability.
+- **Alternative if assumptions violated:** Simpler **GEE with robust SE**, or analyse **time-specific** endpoints with multiplicity control.
+
+## A4) Comparison of adverse event rates between groups (chi-square/Fisher) + AE rate description
+- **Purpose:** Safety comparison of proportion experiencing ≥1 AE (and specific AEs if relevant).
+- **Why appropriate (≥2):**
+  1. AE outcome is categorical (counts/proportions).
+  2. Parallel groups, standard safety summary.
+- **Why may not be appropriate (≥1):** Multiple AE types lead to sparse cells and multiplicity.
+- **When NOT to use:** For rare AEs per preferred term with very small counts.
+- **Alternative if assumptions violated:** Fisher’s exact; or **Poisson/negative binomial** models for AE counts per person-time if varying follow-up.
+
+---
+
+# CATEGORY B – RECOMMENDED tests/models
+
+## B1) Baseline comparability: t-test / Mann–Whitney U for continuous; chi-square/Fisher for categorical (descriptive emphasis)
+- **Purpose:** Describe baseline characteristics; assess balance (primarily descriptively).
+- **Why appropriate (≥2):**
+  1. Continuous covariates likely include age, apical hole size, pocket depth.
+  2. Categorical covariates include sex, tooth position, disease type, centre.
+- **Why may not be appropriate (≥1):** Significance testing at baseline is often discouraged (randomisation justifies balance; p-values can mislead).
+- **When NOT to use:** As a decision rule to include/exclude covariates or to “prove” groups are equal.
+- **Alternative if assumptions violated:** Use **standardised mean differences (SMDs)** and descriptive summaries; for continuous non-normal use median (IQR).
+
+## B2) Linear mixed-effects model (LMM) for continuous repeated outcomes (e.g., pocket depth, radiographic/CBCT continuous measures if quantified)
+- **Purpose:** Estimate treatment effects on continuous outcomes over time; accommodate correlation and unequal follow-up.
+- **Why appropriate (≥2):**
+  1. Repeated continuous measures are collected at multiple timepoints.
+  2. LMM flexibly models time (categorical or spline) and includes random subject and/or centre effects.
+- **Why may not be appropriate (≥1):** If outcome is not approximately continuous/normal (e.g., ordinal scores) or has strong floor/ceiling effects.
+- **When NOT to use:** With clearly non-continuous distributions (counts/ordinal) without transformation/appropriate link.
+- **Alternative if assumptions violated:** **Generalised linear mixed models (GLMM)** (e.g., gamma/log for skewed), **rank-based mixed models**, or **GEE** with robust SE.
+
+## B3) Ordinal logistic regression / proportional odds model (with mixed effects if repeated) for ordinal clinical grades (if outcomes graded rather than binary)
+- **Purpose:** Compare groups on ordered outcomes without collapsing categories.
+- **Why appropriate (≥2):**
+  1. Dental clinical/radiographic outcomes are often ordinal (e.g., severity/healing categories).
+  2. Preserves information and power compared with dichotomisation.
+- **Why may not be appropriate (≥1):** Proportional odds assumption may fail.
+- **When NOT to use:** If categories are nominal (unordered) or assumption grossly violated without partial proportional odds approach.
+- **Alternative if assumptions violated:** **Partial proportional odds**, **multinomial logistic regression**, or dichotomise only if clinically justified.
+
+## B4) Survival analysis for time-to-failure (Kaplan–Meier + log-rank; Cox regression)
+- **Purpose:** Use timing of failures across 24 months; handle censoring due to dropout.
+- **Why appropriate (≥2):**
+  1. Follow-up is longitudinal; failures may occur at varying times.
+  2. Dropout occurs; censoring is naturally handled.
+- **Why may not be appropriate (≥1):** If failure time is not well-defined (only assessed at visits) leading to interval censoring.
+- **When NOT to use:** If outcome only meaningfully defined at 24 months (no intermediate ascertainment) or if interval censoring is ignored.
+- **Alternative if assumptions violated:** **Discrete-time survival models**, **interval-censored survival models**, or analyse at fixed time with logistic regression.
+
+## B5) Centre (site) heterogeneity and treatment-by-centre interaction (mixed models)
+- **Purpose:** Assess consistency of treatment effect across centres and control for clustering.
+- **Why appropriate (≥2):**
+  1. Trial is multicentre; operator/site differences may affect outcomes.
+  2. Detects effect modification or quality issues at a centre.
+- **Why may not be appropriate (≥1):** Limited number of centres (n=3) reduces reliability of random-effects variance estimates.
+- **When NOT to use:** Over-interpret interaction p-values with only 3 centres; unstable estimates.
+- **Alternative if assumptions violated:** Treat centre as **fixed effect**; report stratified estimates.
+
+## B6) Missing data handling via Multiple Imputation (MI) + sensitivity analyses (instead of LOCF)
+- **Purpose:** Reduce bias vs LOCF; reflect uncertainty due to missingness.
+- **Why appropriate (≥2):**
+  1. 24-month follow-up makes missingness likely; LOCF can bias toward no change.
+  2. MI is principled under Missing At Random (MAR) and supports regression models.
+- **Why may not be appropriate (≥1):** If missingness is plausibly MNAR and cannot be justified as MAR.
+- **When NOT to use:** Very small sample within patterns or extremely high missingness with weak predictors.
+- **Alternative if assumptions violated:** **Pattern-mixture** or **selection models**, **delta-adjusted MI**, and best/worst-case sensitivity for binary endpoints.
+
+---
+
+# CATEGORY C – OPTIONAL analyses (supplementary)
+
+## C1) Subgroup analyses with interaction terms (e.g., age bands, presence of periapical lesion, apical hole size, tooth position)
+- **Purpose:** Explore differential treatment effects.
+- **Why appropriate (≥2):**
+  1. Secondary aim includes identifying factors influencing outcomes.
+  2. Clinically plausible effect modifiers (e.g., apical size).
+- **Why may not be appropriate (≥1):** Multiplicity and low power; risk of false positives.
+- **When NOT to use:** Post hoc without pre-specification; small subgroup sizes.
+- **Alternative if assumptions violated:** Report exploratory estimates with CIs; shrinkage/penalised interaction models.
+
+## C2) Agreement/reliability for imaging outcomes (intra-/inter-rater): Cohen’s kappa / ICC
+- **Purpose:** Quantify consistency of outcome assessors for radiographic/CBCT measures.
+- **Why appropriate (≥2):**
+  1. Outcome evaluators are blinded; reliability supports validity.
+  2. Imaging outcomes can be subjective.
+- **Why may not be appropriate (≥1):** Requires repeated ratings on a subset; may not be collected.
+- **When NOT to use:** If only one rater and no duplicate reads exist.
+- **Alternative if assumptions violated:** Weighted kappa for ordinal; Bland–Altman for continuous.
+
+## C3) Mediation/causal pathway exploration (e.g., i‑PRF → sensibility return → overall success)
+- **Purpose:** Hypothesis-generating mechanisms.
+- **Why appropriate (≥2):**
+  1. Biological plausibility that sensibility recovery mediates success.
+  2. Adds interpretability beyond efficacy.
+- **Why may not be appropriate (≥1):** Requires strong assumptions and careful timing; often underpowered.
+- **When NOT to use:** If mediator and outcome measured concurrently without temporal ordering.
+- **Alternative if assumptions violated:** Descriptive pathway analyses; avoid causal claims.
+
+---
+
+## TASK 3: Tests that should NOT be used (and why)
+
+1. **Paired t-test** for between-group comparisons  
+   - Wrong because groups are independent; paired tests require matched/within-subject pairing.
+
+2. **One-way ANOVA** to compare only the two groups at a single timepoint (as primary method)  
+   - Equivalent to t-test but not ideal framing; more importantly, it ignores multicentre structure and repeated measures.
+
+3. **Multiple separate chi-square tests at each follow-up timepoint without correlation/multiplicity handling**  
+   - Inflates type I error; ignores within-patient correlation and time trend.
+
+4. **LOCF as the sole primary missing-data strategy**  
+   - Can bias effect estimates and understate uncertainty; should not be the only method (use MI/model-based methods + sensitivity).
+
+5. **Wilcoxon rank-sum test for nominal categorical variables (e.g., sex, centre)**  
+   - Rank-sum is not designed for nominal categories; use chi-square/Fisher.
+
+6. **Principal Component Analysis (PCA) “using multinomial logistic regression” as confounder adjustment**  
+   - PCA is dimension reduction for correlated continuous variables; it is not a standard confounding-control method here and is incoherent as stated. Use prespecified covariate adjustment in regression/mixed models.
+
+---
+
+## TASK 4: Summary justification of overall analytical approach
+
+A two-arm multicentre RCT with repeated follow-ups requires (i) a primary comparison of **24‑month success proportions** (chi-square/Fisher) with effect sizes and CIs, and (ii) **adjusted modelling** (logistic regression) to incorporate centre and key prognostic factors. Because outcomes are collected repeatedly, mixed-effects/GEE and (optionally) time-to-event methods provide valid inference under correlation and dropout, while principled missing-data handling (MI + sensitivity) improves validity beyond LOCF.

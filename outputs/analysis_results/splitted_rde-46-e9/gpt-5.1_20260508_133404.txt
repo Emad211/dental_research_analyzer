@@ -1,0 +1,587 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_rde-46-e9.pdf
+Status : ok
+Time   : 20260508_133404
+══════════════════════════════════════════════════════════════════════
+
+TASK 1 – INFORMATION EXTRACTION  
+(Study characteristics, variables, measurements, data collection)
+
+1. **Study design**
+   - Prospective, double‑blind, randomized clinical trial.
+   - Two parallel groups (1:1 allocation).
+   - Single center: Department of Conservative Dentistry and Endodontics, Rama Dental College, Kanpur, India.
+   - Registered trial: CTRI/2018/10/016010.
+   - Ethical approval obtained.
+
+2. **Study population**
+   - Target population: Patients with symptomatic irreversible pulpitis in mandibular molars.
+   - Setting: Dental college/hospital outpatient endodontic clinic.
+   - Age range: 15–65 years.
+   - Sample size:
+     - Planned: 56 total (28 per group).
+     - Basis: Effect size 0.82, α = 0.05, power 0.80 (minimum 52; rounded to 56 to allow for errors).
+     - Calculation tool: G*Power 3.1.
+   - Inclusion criteria:
+     - Pain in mandibular molars with HP‑VAS > 54 (moderate to severe pain).
+     - Vital tooth with no distinct periapical pathology.
+     - Exaggerated response to cold testing (Endo‑Frost) with pain > 45 seconds.
+     - Initial electric pulp tester (EPT) response 0–40.
+     - ASA physical status class I or II.
+     - Able to comprehend consent and HP‑VAS.
+   - Exclusion criteria:
+     - More than one infected tooth.
+     - Failure to achieve lip numbness with a single IANB injection.
+     - Known allergy/hypersensitivity to piroxicam or other anti‑inflammatory drugs.
+     - History of peptic ulcers, renal, liver, or bleeding disorders.
+     - Pregnant or lactating patients.
+     - Patients requiring additional anesthetic due to severe intraoperative pain (excluded after randomization).
+
+3. **Interventions and groups**
+   - All patients:
+     - Standard inferior alveolar nerve block (IANB) with 1.8 mL of 2% lignocaine with 1:80,000 epinephrine.
+     - Immediately followed by buccal infiltration of 0.9 mL lignocaine.
+   - Randomization:
+     - After 5 min, once all had received IANB + buccal lignocaine, patients were randomized to 2 groups (n = 28 each).
+     - Allocation by a postgraduate student unaware of study design and purpose.
+     - Syringes:
+       - Syringe A: normal saline.
+       - Syringe B: piroxicam 20 mg/mL (Dolonex).
+       - Syringes coded to maintain blinding.
+   - Groups:
+     - Group 1 (control): supplemental buccal infiltration with normal saline (syringe A).
+     - Group 2 (test): supplemental buccal infiltration with piroxicam 20 mg/mL (syringe B).
+   - Blinding:
+     - Double‑blind:
+       - Participants blinded to group assignment.
+       - The injector/randomizer was ignorant of the study design and purpose; syringes were coded.
+       - Article implies operator assessing pain/anesthesia was also blinded (standard for such RCTs, though not stated explicitly).
+
+4. **Timing and procedures**
+   - Post‑injection assessments:
+     - Pulpal anesthesia assessed every 5 min using EPT and lip numbness check.
+     - Access opening procedure (AOP) performed 15 min after IANB once:
+       - Lip numbness present.
+       - Two successive negative responses to EPT.
+       - If these criteria not met, patient excluded from study.
+   - Clinical operative phases during which pain was evaluated:
+     - Caries removal (CR).
+     - Access opening procedure (AOP).
+     - Working length measurement (WLM).
+
+5. **Outcomes and variables**
+
+   5.1. Baseline/descriptive variables
+   - Age (years): continuous.
+   - Sex: categorical (male/female).
+   - Initial pain score (IPS): continuous HP‑VAS (0–170 mm).
+
+   5.2. Main explanatory (grouping) variable
+   - Treatment group:
+     - Control: supplemental buccal saline.
+     - Test: supplemental buccal piroxicam (20 mg/mL).
+     - Binary categorical (0 = control, 1 = test).
+
+   5.3. Primary clinical outcomes (implicit from methods)
+   - Success of anesthesia during each procedural step:
+     - Measured via HP‑VAS during:
+       - Caries removal (CR).
+       - Access opening procedure (AOP).
+       - Working length measurement (WLM).
+     - Definitions:
+       - Successful anesthesia: no pain or mild/slight pain (HP‑VAS 0–54) during CR, AOP, and WLM; no additional anesthetic required.
+       - Failure: moderate or severe pain (HP‑VAS > 54) OR need for additional anesthetic dose (these patients excluded from final analysis).
+   - Likely primary outcome as reported in the article (though not explicit here):
+     - Proportion of patients with successful anesthesia (binary), per step and overall, by group.
+     - Mean HP‑VAS scores per step by group.
+
+   5.4. Secondary outcomes (based on methods text)
+   - Continuous HP‑VAS pain scores (0–170 mm) at:
+     - Baseline (IPS).
+     - During CR.
+     - During AOP.
+     - During WLM.
+   - Physiologic pulpal anesthesia:
+     - EPT negativity (yes/no) before AOP.
+     - Lip numbness (yes/no).
+     - These are used mainly as eligibility criteria, but could also be summarised descriptively.
+
+6. **Data collection instruments and methods**
+   - Pain measurement:
+     - Heft‑Parker Visual Analogue Scale (HP‑VAS), 170 mm line.
+     - Categories:
+       - 0: no pain.
+       - 1–54 mm: slight pain.
+       - 55–114 mm: moderate pain.
+       - >114 mm: extreme pain.
+     - Patients trained pre‑procedure on how to use the scale.
+   - Pulp vitality / pulpal anesthesia:
+     - Electric pulp tester (COXO SOCO C‑Pulse).
+     - Baseline inclusion if initial EPT reading 0–40.
+     - During anesthetic latency: repeated EPT to confirm two successive negative responses.
+   - Cold test:
+     - Endo‑Frost (Coltene Whaledent) to confirm irreversible pulpitis diagnosis (pain > 45 s).
+   - Clinical documentation:
+     - Oral and written questionnaire for health and preoperative pain.
+     - Consent form.
+     - Case forms presumably included demographic data, ASA class, HP‑VAS, intraoperative pain per step, need for supplemental anesthesia.
+
+7. **Randomization and blinding details**
+   - Randomization:
+     - Random allocation to 2 groups after standard anesthetic regimen; number per group: 28.
+     - Method of randomization not described (e.g., computer‑generated, envelopes).
+   - Concealment:
+     - Syringes coded A and B; randomizer did not know which contained piroxicam vs saline.
+   - Blinding:
+     - Participants: yes.
+     - Injector: partially blinded to content (via coding) and to study hypothesis/design.
+     - Outcomes assessor: inferred to be the same clinician performing treatment, likely blinded to syringe content via coding.
+
+8. **Handling of exclusions and missing data**
+   - Pre‑randomization exclusions:
+     - Patients not achieving lip numbness and two negative EPT responses within 15 min were excluded (not randomized or excluded prior to analysis).
+   - Post‑randomization exclusions:
+     - Patients requiring additional anesthetic dose due to severe pain during any procedure step were excluded from the trial.
+     - These are protocol deviations and lead to informative post‑randomization exclusions (per‑protocol analysis).
+
+---
+
+TASK 2 – STATISTICAL ANALYSIS PLAN
+
+Assume the primary goal is to compare anesthetic efficacy between piroxicam and saline groups in mandibular molars with irreversible pulpitis, using both binary success/failure and continuous pain scores.
+
+I’ll group the tests by your requested categories.
+
+-----------------------------------
+CATEGORY A – MANDATORY ANALYSES
+-----------------------------------
+
+A1. **Descriptive statistics and baseline comparison**
+
+- **Test name**
+  - Descriptive statistics + Independent samples t test or Mann–Whitney U test (age, baseline HP‑VAS).
+  - χ² test or Fisher’s exact test (sex).
+
+- **Purpose**
+  - Summarize baseline characteristics.
+  - Evaluate comparability of groups at baseline (randomization check).
+
+- **Why appropriate (≥2 reasons)**
+  1. The trial is randomized; baseline comparisons help show whether randomization achieved balance (especially with modest n).
+  2. Age and baseline pain score (HP‑VAS) are continuous; sex is categorical. These tests directly address differences in such variable types between independent groups.
+  3. The tests are standard in clinical trials and help readers assess potential confounding and generalizability.
+
+- **Why it may not be appropriate (≥1 reason)**
+  - Statistical tests for baseline differences in RCTs are sometimes discouraged because any observed imbalance is due to chance by design; descriptive presentation may be sufficient.
+
+- **When this test should NOT be used**
+  - t test: when distribution of the variable is markedly non‑normal with very small group sizes and outliers, and transformation or nonparametric options are better.
+  - χ² test: when expected cell counts are <5 in any cell; use Fisher’s exact instead.
+
+- **Alternative if assumptions are violated**
+  - For age and baseline HP‑VAS:
+    - If non‑normal or small n with skew: Mann–Whitney U test instead of t test.
+  - For sex:
+    - Fisher’s exact test if any expected cell count <5.
+
+---
+
+A2. **Comparison of anesthetic success rates between groups (primary outcome)**
+
+- **Test name**
+  - χ² test (or Fisher’s exact test) for comparing proportions of success between piroxicam and saline groups.
+  - Report risk difference, risk ratio, and 95% confidence intervals.
+
+- **Purpose**
+  - Quantify and test whether piroxicam buccal infiltration increases the success of IANB + buccal lignocaine compared with saline.
+
+- **Why appropriate (≥2 reasons)**
+  1. Primary outcome is binary: success vs. failure of anesthesia based on HP‑VAS and need for supplemental anesthetic. χ²/Fisher’s compare proportions between two independent groups appropriately.
+  2. Groups are randomized and independent, with fixed sample sizes and simple 2×2 contingency tables.
+  3. The test is easy to interpret clinically (e.g., percentage success difference, relative risk).
+
+- **Why it may not be appropriate (≥1 reason)**
+  - If there are very few failures or very small counts in some cells, the χ² approximation may be inaccurate.
+
+- **When this test should NOT be used**
+  - Not appropriate for small expected cell frequencies (<5) in any cell of the 2×2 table.
+  - Not appropriate if multiple categories (e.g., 4‑level pain categories) are collapsed into binary in a way that discards important information without clear justification.
+
+- **Alternative if assumptions are violated**
+  - Fisher’s exact test (exact p‑value) for 2×2 tables with small counts.
+  - For adjusted analysis, exact logistic regression if sample size is small and sparse.
+
+---
+
+A3. **Comparison of mean HP‑VAS scores between groups at each procedure step**
+
+- **Test name**
+  - Independent samples t test (CR HP‑VAS, AOP HP‑VAS, WLM HP‑VAS), or Mann–Whitney U test if distributional assumptions are not met.
+
+- **Purpose**
+  - Compare the intensity of pain during CR, AOP, and WLM between groups.
+  - Provide quantitative evidence of pain reduction beyond simple success/failure.
+
+- **Why appropriate (≥2 reasons)**
+  1. HP‑VAS is a continuous measure with reasonably fine resolution; often approximates a normal distribution in moderate samples.
+  2. Groups are independent and randomized; t tests compare means between two independent groups.
+  3. Pain scores at each procedural step are clinically meaningful continuous outcomes.
+
+- **Why it may not be appropriate (≥1 reason)**
+  - HP‑VAS distributions are frequently skewed and bounded (0–170), especially when many values cluster near 0 or near high pain; normality and equal variance assumptions may fail.
+
+- **When this test should NOT be used**
+  - When distributions are heavily skewed or clearly non‑normal (e.g., many zeros) and sample size per group is small enough that CLT cannot ensure approximate normality.
+  - When variances differ substantially between groups (Levene’s test significant) and not using a variance‑corrected version.
+
+- **Alternative if assumptions are violated**
+  - Mann–Whitney U test as a nonparametric alternative.
+  - If transformation (e.g., log or square root) normalizes data, a t test on transformed scores.
+
+---
+
+A4. **Within‑group comparison: change from baseline pain (IPS) to intraoperative HP‑VAS**
+
+- **Test name**
+  - Paired t test or Wilcoxon signed‑rank test (within each group) for:
+    - IPS vs CR pain.
+    - IPS vs AOP pain.
+    - IPS vs WLM pain.
+
+- **Purpose**
+  - Assess the magnitude of pain reduction within each group from preoperative pain (IPS) to pain at various procedural steps.
+
+- **Why appropriate (≥2 reasons)**
+  1. Same patients measured at multiple times: baseline and during procedures; paired data require within‑subject tests.
+  2. HP‑VAS is continuous; t tests or Wilcoxon provide simple summaries of mean/median change.
+  3. Helps demonstrate clinical effect of anesthesia in each group separately.
+
+- **Why it may not be appropriate (≥1 reason)**
+  - Multiple tests across steps inflate type I error without adjustment.
+  - Distribution of change scores may be skewed.
+
+- **When this test should NOT be used**
+  - When the distribution of differences is strongly non‑normal with many outliers and n is small; Wilcoxon is preferable.
+  - If many patients have missing follow‑up pain scores at specific steps.
+
+- **Alternative if assumptions are violated**
+  - Wilcoxon signed‑rank test for non‑normal paired data.
+  - Mixed‑effects models (see B5) can incorporate all time points and handle missing data more efficiently.
+
+---
+
+A5. **Effect size and confidence intervals for primary and key secondary outcomes**
+
+- **Test name**
+  - Estimation using:
+    - Risk ratio (RR) and risk difference (RD) for success rates, with 95% CIs.
+    - Mean difference (MD) in HP‑VAS, with 95% CIs.
+
+- **Purpose**
+  - Quantify the magnitude and precision of treatment effects, not just p‑values.
+
+- **Why appropriate (≥2 reasons)**
+  1. Clinical decision‑making relies on effect sizes and their precision, especially in analgesic/anesthetic trials.
+  2. Confidence intervals are standard reporting in RCTs and required by many journals.
+  3. They give more information than hypothesis tests alone.
+
+- **Why it may not be appropriate (≥1 reason)**
+  - If event counts are very low, standard CI formulas may be inaccurate.
+
+- **When this should NOT be used**
+  - Never “not used”; effect size reporting is always recommended; but specific formulas (e.g., Wald CIs for RR) should be avoided with small samples.
+
+- **Alternative if assumptions are violated**
+  - Exact confidence intervals for proportions and RRs.
+  - Bootstrap CIs for mean differences when normality is questionable.
+
+---------------------------------------
+CATEGORY B – RECOMMENDED ANALYSES
+---------------------------------------
+
+B1. **Logistic regression for anesthetic success (adjusted and effect‑modification analyses)**
+
+- **Test name**
+  - Binary logistic regression with success (yes/no) as outcome; predictor: group (piroxicam vs saline), adjusted for relevant covariates (e.g., age, sex, baseline IPS if any imbalance).
+
+- **Purpose**
+  - Estimate adjusted odds ratio (OR) for success comparing piroxicam to saline.
+  - Explore whether baseline variables modify treatment effect (interaction terms).
+
+- **Why appropriate (≥2 reasons)**
+  1. Outcome is binary; logistic regression is the standard modeling approach.
+  2. Adjusts for any residual imbalance in prognostic factors (e.g., age, sex, baseline pain) even in randomized trials, improving precision.
+  3. Allows examination of effect modification (e.g., stronger effect in severe baseline pain).
+
+- **Why it may not be appropriate (≥1 reason)**
+  - Sample size is modest (n ≈ 56); with few failures, model may be unstable or overfit if too many covariates are included.
+
+- **When this test should NOT be used**
+  - When events per variable (EPV) are too low (rule of thumb: <10 events per predictor) leading to unreliable estimates.
+  - When outcome is extremely common or rare in both groups, causing separation.
+
+- **Alternative if assumptions are violated**
+  - Exact logistic regression for small samples and sparse data.
+  - Fisher’s exact test for unadjusted comparisons if multivariable modeling is not feasible.
+
+---
+
+B2. **Analysis of HP‑VAS as ordinal categories (no/slight/moderate/severe pain)**
+
+- **Test name**
+  - Ordinal logistic regression (proportional odds model) or nonparametric tests like Cochran–Armitage trend test or χ² test for trend.
+
+- **Purpose**
+  - Use the clinically defined HP‑VAS categories to compare distribution of pain severity between groups at each step.
+
+- **Why appropriate (≥2 reasons)**
+  1. Categories (none, slight, moderate, extreme) reflect clinically meaningful gradations, not just continuous mm differences.
+  2. Ordinal models respect the ordered nature of the outcome and can be more robust than assuming normality of raw HP‑VAS scores.
+  3. They may be easier to interpret clinically (e.g., “odds of being in a lower pain category”).
+
+- **Why it may not be appropriate (≥1 reason)**
+  - Ordinal logistic regression assumes proportional odds (parallel lines); if violated, the model may misrepresent relationships.
+
+- **When this test should NOT be used**
+  - When sample sizes in some categories are very small (e.g., few extreme pain values), leading to sparse ordinal data.
+  - When proportional odds assumption clearly fails.
+
+- **Alternative if assumptions are violated**
+  - Collapsing categories and using binary logistic regression (e.g., none/slight vs moderate/extreme).
+  - Generalized ordered logit models if proportional odds is violated.
+
+---
+
+B3. **Repeated measures analysis for HP‑VAS over time (CR, AOP, WLM)**
+
+- **Test name**
+  - Repeated measures ANOVA or, preferably, linear mixed‑effects model (LMM) with random intercept for patients.
+  
+- **Purpose**
+  - Account for within‑subject correlation across the three intraoperative time points and directly test:
+    - Main effect of group.
+    - Main effect of time.
+    - Group × time interaction.
+
+- **Why appropriate (≥2 reasons)**
+  1. Each patient contributes repeated measures (CR, AOP, WLM), which are correlated; repeated measures methods handle this correlation explicitly.
+  2. Mixed models can handle missing data at some time points under missing‑at‑random assumptions.
+  3. More efficient and interpretable than running separate t tests at each time point.
+
+- **Why it may not be appropriate (≥1 reason)**
+  - Sample size is modest; complex covariance structures may not be estimable.
+  - HP‑VAS may violate normality and homoscedasticity assumptions.
+
+- **When this test should NOT be used**
+  - When distributions are highly skewed and transformations fail to fix assumptions.
+  - When there is substantial differential missingness across time points that is clearly not missing at random.
+
+- **Alternative if assumptions are violated**
+  - Nonparametric repeated measures tests (e.g., Friedman test within group; then compare change scores between groups with Mann–Whitney).
+  - Generalized estimating equations (GEE) with robust standard errors and appropriate link (identity for continuous, cumulative logit for ordinal).
+
+---
+
+B4. **Sensitivity analyses for excluded post‑randomization patients**
+
+- **Test name**
+  - Sensitivity analysis using worst‑case/best‑case imputation frameworks and re‑analysis of primary outcome (e.g., treat all excluded for pain as failures in their randomized groups; ITT‑like approach).
+  - Compare with per‑protocol analysis.
+
+- **Purpose**
+  - Assess robustness of primary conclusions to exclusion of patients who required additional anesthesia (post‑randomization, likely informative).
+
+- **Why appropriate (≥2 reasons)**
+  1. Post‑randomization exclusions can bias treatment effect estimates; sensitivity analyses probe impact of such bias.
+  2. ITT principle is gold standard in RCTs; even if strict ITT is not feasible, approximations via imputation help.
+
+- **Why it may not be appropriate (≥1 reason)**
+  - If the number of excluded patients is extremely small and balanced between groups, the impact may be negligible, and complex sensitivity analyses may not change conclusions.
+
+- **When this should NOT be used**
+  - Not “not used,” but full ITT with actual outcome imputation may be misleading if outcome is impossible to define in excluded patients (e.g., no further pain measurements). However, simple classification as failure is reasonable and conservative.
+
+- **Alternative if assumptions are violated**
+  - Present both per‑protocol and modified ITT results and discuss differences qualitatively rather than over‑interpret imputed data.
+
+---
+
+B5. **Graphical data presentation**
+
+- **Test name / method**
+  - Boxplots or violin plots of HP‑VAS by group and step.
+  - Bar plots with 95% CIs for success rates.
+
+- **Purpose**
+  - Visually summarize distributions and treatment differences.
+
+- **Why appropriate (≥2 reasons)**
+  1. Visualizations often reveal skewness, outliers, and group differences more effectively than tables alone.
+  2. Aid interpretation by clinicians and non‑statisticians.
+
+- **Why it may not be appropriate (≥1 reason)**
+  - Overly complex or numerous graphs can distract from main messages.
+
+- **When not to use**
+  - Don’t use overly fancy or 3D plots that obscure data.
+
+- **Alternative**
+  - Tabular summaries with clear statistics if graphs cannot be included.
+
+-----------------------------------
+CATEGORY C – OPTIONAL ANALYSES
+-----------------------------------
+
+C1. **Exploratory subgroup analyses**
+
+- **Test name**
+  - Stratified χ² / Fisher’s tests or logistic regression with interaction terms (e.g., treatment × baseline pain severity, treatment × age group, treatment × sex).
+
+- **Purpose**
+  - Explore whether piroxicam’s benefit is different in:
+    - Younger vs older patients.
+    - Male vs female.
+    - Very high baseline pain vs moderate baseline pain.
+
+- **Why appropriate (≥2 reasons)**
+  1. Can generate hypotheses for future studies about which patients benefit most.
+  2. May clarify whether observed overall effect is consistent across subgroups.
+
+- **Why it may not be appropriate (≥1 reason)**
+  - Study is not powered for subgroups; risk of spurious findings and over‑interpretation.
+
+- **When this should NOT be used**
+  - Don’t formally test numerous subgroups without adjustment; avoid making strong claims based on these exploratory analyses.
+
+- **Alternative if assumptions are violated**
+  - Present subgroup success rates descriptively with CIs, but refrain from formal testing.
+
+---
+
+C2. **Dose–response or duration of preoperative pain as predictors of success**
+
+- **Test name**
+  - Logistic regression with IPS (continuous or categorized) as predictor of success, optionally including treatment and an interaction.
+
+- **Purpose**
+  - Evaluate whether higher preoperative pain intensity predicts lower anesthetic success, and whether piroxicam offsets this.
+
+- **Why appropriate (≥2 reasons)**
+  1. IPS is recorded and may be prognostic.
+  2. Helps characterize risk factors for anesthetic failure.
+
+- **Why it may not be appropriate (≥1 reason)**
+  - Limited sample and events; risk of overfitting.
+
+- **When this test should NOT be used**
+  - When success/failure events per IPS category are very low.
+
+- **Alternative**
+  - Correlation or simple cross‑tabulations, presented descriptively.
+
+---
+
+C3. **Comparison of EPT response pattern between groups**
+
+- **Test name**
+  - Descriptive or χ² test on whether patients achieved two successive negative EPT responses within 15 min (if recorded per group) or time to EPT negativity (if available) via t test or nonparametric test.
+
+- **Purpose**
+  - Evaluate whether piroxicam altered pulpal anesthesia onset as measured objectively by EPT.
+
+- **Why appropriate (≥2 reasons)**
+  1. EPT negativity is an objective indicator of pulpal anesthesia.
+  2. May support mechanistic claims about piroxicam’s effect beyond subjective pain.
+
+- **Why it may not be appropriate (≥1 reason)**
+  - All included patients by design had two negative EPT responses before AOP; there may be no between‑group variability to analyze.
+
+- **When this test should NOT be used**
+  - If the inclusion criteria guarantee no variation (all yes), analysis is meaningless.
+
+- **Alternative**
+  - None; present inclusion criteria flow diagram only.
+
+---
+
+C4. **Nonparametric effect size estimates for HP‑VAS**
+
+- **Test name**
+  - Hodges–Lehmann estimator of median difference with 95% CI for HP‑VAS differences.
+
+- **Purpose**
+  - Provide robust, distribution‑free effect size estimates for skewed pain data.
+
+- **Why appropriate (≥2 reasons)**
+  1. Pain data are often skewed; median differences are robust.
+  2. Offers complement to mean differences, particularly if using Mann–Whitney.
+
+- **Why it may not be appropriate (≥1 reason)**
+  - Less familiar to many clinicians.
+
+- **When not to use**
+  - When data are clearly symmetric, and mean differences convey the same information without confusion.
+
+- **Alternative**
+  - Report median and interquartile range with simple descriptive comparison.
+
+---
+
+TASK 3 – INAPPROPRIATE TESTS FOR THIS STUDY
+
+1. **Paired t test for between‑group comparisons**
+   - Inappropriate because:
+     - Groups (piroxicam vs saline) are independent, not paired.
+     - Using a paired test would artificially inflate power and yield invalid p‑values.
+
+2. **Repeated measures ANOVA treating groups as repeated factor**
+   - Inappropriate because:
+     - Group is a between‑subjects factor, not within‑subjects.
+     - Mis‑specification of design leads to incorrect error terms.
+
+3. **One‑way ANOVA with more than two levels for group**
+   - Inappropriate because:
+     - Only two groups exist; ANOVA offers no advantage over t test, and multiple comparisons (if misused) could complicate interpretation.
+
+4. **Correlation (Pearson/Spearman) between group and outcomes**
+   - Inappropriate because:
+     - Group is binary; correlation is not the right measure for testing treatment effects; binary outcomes need appropriate presentation (proportions, logistic regression).
+
+5. **Linear regression with binary outcome treated as continuous**
+   - Inappropriate because:
+     - Success/failure is binary; linear regression yields predicted probabilities outside [0,1] and wrong error structure.
+
+6. **Parametric tests ignoring repeated measures (e.g., ordinary least squares regression with multiple pain measures per subject treated as independent)**
+   - Inappropriate because:
+     - Violates independence assumption, underestimates standard errors.
+
+7. **Time‑to‑event survival analysis (Kaplan–Meier, Cox)**
+   - Inappropriate because:
+     - No time‑to‑event outcome is specified (no follow‑up time, no event times recorded); focus is on immediate anesthetic success during a single visit.
+
+8. **McNemar test for success differences between groups**
+   - Inappropriate because:
+     - McNemar is for paired binary data (e.g., pre/post in same individuals); this is a parallel‑group design.
+
+9. **Multiple comparison post‑hoc tests designed for >2 groups (e.g., Tukey HSD)**
+   - Inappropriate because:
+     - Only two randomized groups; no multiple group factor requiring such procedures.
+
+10. **Chi‑square test for trend when only two ordered categories**
+    - Inappropriate because:
+      - With two categories, a simple χ² is equivalent; trend test adds nothing and may be misinterpreted.
+
+---
+
+TASK 4 – SUMMARY AND JUSTIFICATION OF OVERALL ANALYTICAL APPROACH
+
+The study is a two‑arm, parallel‑group, randomized, double‑blind clinical trial assessing whether buccal piroxicam infiltration improves the anesthetic efficacy of standard IANB plus buccal lignocaine in mandibular molars with irreversible pulpitis. The main outcomes are binary anesthetic success and continuous HP‑VAS pain scores during specific operative steps.
+
+Accordingly, the core analytical strategy focuses on:
+
+- Comparing **proportions of anesthetic success** between groups using χ²/Fisher’s exact tests, with effect size estimates (risk differences, risk ratios, and CIs), potentially supplemented by logistic regression for adjusted estimates.
+- Comparing **HP‑VAS pain scores** between groups with appropriate two‑sample tests (t or Mann–Whitney), and modeling repeated measurements over CR, AOP, and WLM with a repeated measures/mixed‑effects approach to respect within‑patient correlation.
+- Evaluating **within‑group changes** from baseline pain using paired methods to illustrate the clinical effect of anesthesia.
+
+Recommended enhancements include ordinal modeling of pain categories, mixed models for repeated HP‑VAS measures, and sensitivity analyses for post‑randomization exclusions, all of which improve rigor, account for the longitudinal and hierarchical nature of the data, and support more robust conclusions while respecting the modest sample size and the randomized design.

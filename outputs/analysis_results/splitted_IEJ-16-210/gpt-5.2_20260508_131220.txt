@@ -1,0 +1,257 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_IEJ-16-210.pdf
+Status : ok
+Time   : 20260508_131220
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — INFORMATION EXTRACTION (study characteristics)
+
+### Study design & setting
+- **Design:** Double-blind, randomized, parallel-group clinical trial.
+- **Setting:** Isfahan Dental School (Iran).
+- **Registration/ethics:** IR.MUI.REC.1396.3.272; IRCT20201031049199N1; CONSORT followed.
+- **Randomization method:** Endodontist rolled a **die** immediately before treatment (odd → Cartridge 1; even → Cartridge 2). Investigators/patients blinded to contents. (Note: allocation concealment is weak; authors acknowledge selection-bias risk.)
+
+### Objective
+- **Primary objective:** Determine whether adding **clonidine** to **4% articaine + 1:100,000 epinephrine** for **inferior alveolar nerve block (IANB)** reduces **post-treatment pain** after single-visit root canal therapy in **symptomatic irreversible pulpitis**.
+
+### Participants
+- **Population:** Patients age **15–60**, **ASA I** (healthy), with **symptomatic irreversible pulpitis** in a **mandibular posterior tooth**.
+- **Key exclusions:** diabetes, hypertension, cardiovascular disease; contraindication to clonidine/articaine/epinephrine; pregnancy/lactation; drug abuse; β-blocker use; periodontal problems/active infection/inflammation; no response to cold test; radiographic pathology other than widened PDL; pulpal necrosis/partial necrosis at access; multiple dental treatments needed; opioid use week prior or 72h after; noncooperation in pain assessment; block failure requiring additional injections; change in treatment plan.
+- **Diagnosis confirmation:** Cold test with Endo Ice applied up to 15s; **exaggerated reaction and lingering >10s** recorded; radiographic evaluation.
+
+### Groups (interventions)
+- **Intervention (Case; Cartridge No.1):**
+  - IANB with **1.8 mL 4% articaine + epi 1:100,000** + **0.2 mL clonidine** (Catapressan 150 µg/mL)  
+  - Total volume **2.0 mL**; clonidine dose = **30 µg**.
+- **Control (Cartridge No.2):**
+  - Same articaine/epi + **0.2 mL distilled water** (total 2.0 mL).
+
+### Procedures / standardization
+- **Topical:** 20% benzocaine gel for 1 minute.
+- **IANB technique:** standard; 27-gauge 1.5-inch needle; aspirate; inject over 2 min.
+- **Block success criterion:** **profound lip numbness within 15 min**; otherwise considered failed and **excluded**.
+- **Endodontic treatment:** single-visit, RaCe rotary system; temporary eugenol dressing; occlusion checked.
+
+### Outcomes & measurements
+
+#### Primary outcome (as described)
+- **Post-operative pain intensity** measured by **170-mm Heft-Parker VAS (HP-VAS)**.
+- **Time points:** baseline (pre-treatment questionnaire includes pain intensity) and follow-ups at **6, 12, 24, 48, 72 hours** via phone/text.
+- **Pain categories (ordinal cutoffs):**
+  - 0 = no pain
+  - >0 to ≤54 = mild
+  - >54 to <114 = moderate
+  - ≥114 = severe
+
+#### Secondary/safety outcomes
+- **Hemodynamics:** **blood pressure and heart rate** measured **pre-injection** and **5 min post-injection**.
+- **Adverse symptoms** at follow-ups: nausea, vomiting, drowsiness, dizziness, headaches.
+- **Rescue analgesic use:** instructed ibuprofen up to **400 mg** for emergency pain.
+  - Protocol deviation: those who consumed analgesic post-op were **excluded from analysis** (explicitly: 1 person in clonidine group).
+
+### Sample size & flow
+- **Assessed:** 105
+- **Excluded pre-randomization:** 5 (not meeting criteria)
+- **Randomized:** 100 (50/50)
+- **Follow-up issues:** mentions **lost to follow-up (n=1)** and **discontinued (n=1) for not profound lip numbness** in each group (wording suggests per group; totals unclear from provided excerpt).
+- **Analysis note:** analgesic users excluded (at least 1).
+
+### Key variables to analyze
+- **Treatment group** (clonidine vs placebo).
+- **Pain intensity (continuous)** HP-VAS at 6/12/24/48/72h; baseline pain for adjustment.
+- **Pain category (ordinal)** at each time.
+- **Rescue analgesic use (binary)** and/or time-to-first dose (not fully captured but can be analyzed if collected).
+- **Adverse effects (binary)**.
+- **BP/HR (continuous)** pre and post (paired within person; change score).
+- **Demographics/medical history** from questionnaire (age, sex, etc.—not enumerated but implied).
+
+---
+
+## TASK 2 — STATISTICAL ANALYSIS PLAN
+
+### General SAP principles (apply to all analyses)
+- **Analysis population (recommended):**
+  - **Intention-to-treat (ITT):** all randomized participants analyzed in assigned groups.
+  - **Per-protocol (PP):** exclude major protocol deviations (e.g., anesthesia failure requiring extra injection), but *do not* exclude rescue analgesic users—handle analytically.
+- **Primary estimand:** difference in post-treatment pain trajectory (HP-VAS) over 72h between groups.
+- **Multiplicity:** multiple time points → control family-wise error or use a single global test from a repeated-measures model plus pre-specified contrasts.
+- **Missing data:** phone follow-ups may be missing; use mixed models (valid under MAR) and/or multiple imputation; avoid complete-case-only.
+- **Rescue analgesics:** treat as an outcome and/or incorporate in sensitivity analyses (e.g., censoring/penalized pain scores); excluding users biases toward benefit.
+
+---
+
+### CATEGORY A — MANDATORY tests/models
+
+#### A1) Linear Mixed-Effects Model (LMM) for repeated HP-VAS (continuous)
+- **Purpose:** Compare **pain over time** between groups while accounting for within-subject correlation and baseline pain.
+- **Why appropriate:**
+  1. Outcome measured repeatedly (6–72h); LMM directly models correlated observations.
+  2. Can include **group, time, and group×time interaction** to test differential pain trajectories.
+  3. Handles **incomplete follow-up** under MAR without discarding subjects.
+- **Why it may not be appropriate:**
+  - HP-VAS may be **non-normal** and bounded (0–170), with skew/zero inflation.
+- **When NOT to use:**
+  - If residual diagnostics show severe non-normality/heteroscedasticity that cannot be remedied, or if pain is primarily ordinal with heavy heaping.
+- **Alternatives if assumptions violated:**
+  - **Generalized linear mixed model (GLMM)** with appropriate distribution (e.g., **Gamma** with log link; **Tweedie**), or
+  - **Rank-based mixed model / nonparametric longitudinal methods**, or
+  - Analyze **ordinal pain categories** with an ordinal mixed model (see B2).
+
+*Model specification (minimum):*  
+HP-VAS ~ group + time (categorical) + group×time + baseline pain + (random intercept for participant). Consider random slope for time if supported.
+
+#### A2) Baseline comparability/descriptive inference for key covariates
+- **Test(s):**  
+  - **Two-sample t-test** (or **Wilcoxon rank-sum**) for continuous baseline variables (e.g., age, baseline pain).  
+  - **Chi-square test** (or **Fisher’s exact**) for categorical baseline variables (e.g., sex).
+- **Purpose:** Describe balance and identify variables for adjusted analyses.
+- **Why appropriate:**
+  1. RCT expects balance; reporting is standard and informs adjustment decisions.
+  2. Identifies chance imbalances that may affect precision.
+- **Why it may not be appropriate:**
+  - Significance testing of baseline can be misleading; emphasis should be on **standardized differences**.
+- **When NOT to use:**
+  - Do not use p-values to decide “randomization failed” or to gatekeep covariates mechanically.
+- **Alternatives if assumptions violated:**
+  - For continuous: **Wilcoxon rank-sum**; for categorical with small counts: **Fisher’s exact**; use **standardized mean differences (SMDs)** regardless.
+
+#### A3) Analysis of BP and HR change (safety/physiologic effect)
+- **Test/model:** **ANCOVA or LMM** on post value adjusting for baseline (or analyze change score with two-sample t-test).
+- **Purpose:** Evaluate whether clonidine affects hemodynamics shortly after injection.
+- **Why appropriate:**
+  1. Continuous outcomes measured twice; baseline-adjusted post values improve precision.
+  2. Directly addresses safety concern (hypotension/bradycardia).
+- **Why it may not be appropriate:**
+  - If measurements are highly non-normal or contain outliers due to device error.
+- **When NOT to use:**
+  - If there are multiple post measurements requiring a different repeated-measures structure (not the case here).
+- **Alternatives if assumptions violated:**
+  - **Robust regression** or **Wilcoxon** on change scores; or **quantile regression**.
+
+---
+
+### CATEGORY B — RECOMMENDED tests/models
+
+#### B1) Multiple-comparisons controlled contrasts at each time point (from LMM)
+- **Test:** Pre-specified **estimated marginal means** (EMMs) comparing groups at 6/12/24/48/72h with **Holm** (or Benjamini–Hochberg if controlling FDR).
+- **Purpose:** Identify *when* differences occur while controlling multiplicity.
+- **Why appropriate:**
+  1. Clinical interpretability at each follow-up time.
+  2. Uses model-based estimates with correct SEs under correlation structure.
+- **Why it may not be appropriate:**
+  - Overemphasis on multiple timepoint p-values can distract from overall effect.
+- **When NOT to use:**
+  - If timepoints were not pre-specified or study not powered for time-specific comparisons.
+- **Alternatives if assumptions violated:**
+  - Do contrasts from **GLMM** or **nonparametric longitudinal model**.
+
+#### B2) Ordinal mixed model for pain categories (no/mild/moderate/severe)
+- **Test/model:** **Cumulative logit mixed model** (proportional odds) with random intercept; group, time, group×time, baseline category.
+- **Purpose:** Analyze clinically meaningful pain severity levels.
+- **Why appropriate:**
+  1. Pain categories are **ordered** and may be more robust to VAS skew.
+  2. Provides **odds ratios** for being in a lower pain category.
+- **Why it may not be appropriate:**
+  - Proportional odds assumption may be violated; categories may be sparse at later times.
+- **When NOT to use:**
+  - If category counts are too small or assumption grossly violated without remedy.
+- **Alternatives if assumptions violated:**
+  - **Partial proportional odds model**, **adjacent-category model**, or collapse to binary (e.g., moderate/severe vs none/mild) with **logistic mixed model**.
+
+#### B3) Rescue analgesic use analysis
+- **Test/model options (depending on data):**
+  - **Logistic regression** (use vs no use within 72h), or
+  - **Time-to-event (Cox proportional hazards)** for time to first ibuprofen.
+- **Purpose:** Quantify clinically important failure of pain control.
+- **Why appropriate:**
+  1. Avoids biased practice of excluding analgesic users.
+  2. Captures a patient-centered endpoint; complements VAS.
+- **Why it may not be appropriate:**
+  - Very low event count (appears rare) → unstable estimates.
+- **When NOT to use:**
+  - If analgesic data are incomplete/unreliable or near-zero events.
+- **Alternatives if assumptions violated:**
+  - **Firth penalized logistic regression** (small events), or **exact logistic regression**; for Cox violations, use **restricted mean survival time**.
+
+#### B4) Adverse-event comparison
+- **Test:** **Fisher’s exact** (preferred if low counts) for each AE; optionally a composite “any AE”.
+- **Purpose:** Compare safety symptom rates between groups.
+- **Why appropriate:**
+  1. Binary outcomes with potentially small cell counts.
+  2. Directly addresses stated adverse effects list.
+- **Why it may not be appropriate:**
+  - Multiple AE endpoints → multiplicity; may be underpowered.
+- **When NOT to use:**
+  - If events are extremely rare and inferential testing is uninterpretable; then report descriptively.
+- **Alternatives if assumptions violated:**
+  - Exact methods; or descriptive with confidence intervals only.
+
+---
+
+### CATEGORY C — OPTIONAL (supplementary insight)
+
+#### C1) Area Under the Curve (AUC) for pain over 0–72h
+- **Test:** Compare group AUC using **t-test/ANCOVA** (or **Wilcoxon**) and/or model-based AUC from LMM.
+- **Purpose:** Provide a single summary of total pain burden.
+- **Why appropriate:**
+  1. Clinically intuitive “overall pain experience”.
+  2. Reduces multiplicity vs many timepoint comparisons.
+- **Why it may not be appropriate:**
+  - Requires handling missing timepoints carefully; assumes time grid comparable.
+- **When NOT to use:**
+  - If follow-up times are highly inconsistent or missingness is heavy/non-ignorable.
+- **Alternatives if assumptions violated:**
+  - Model-based AUC from mixed model; multiple imputation before AUC.
+
+#### C2) Effect size reporting
+- **Method:** **Mean difference** with 95% CI at each time; **standardized mean difference (Hedges g)**; for ordinal model, **common OR**.
+- **Purpose:** Quantify magnitude beyond p-values.
+- **Why appropriate:**
+  1. Enables clinical interpretation and meta-analysis.
+  2. Supports CONSORT-style reporting.
+- **Why it may not be appropriate:**
+  - SMD can be less interpretable clinically than raw mm difference.
+- **When NOT to use:**
+  - Don’t rely solely on SMD without raw scale estimates.
+- **Alternatives if assumptions violated:**
+  - Use **median difference** or **Hodges–Lehmann** estimate if nonparametric.
+
+#### C3) Sensitivity analyses for missing data and rescue medication
+- **Tests/models:** Pattern-mixture sensitivity; “worst-case” imputation; tipping-point.
+- **Purpose:** Assess robustness to departures from MAR and to analgesic effects.
+- **Why appropriate:**
+  1. Phone follow-ups are prone to missingness.
+  2. Rescue analgesics can mask pain scores.
+- **Why it may not be appropriate:**
+  - Requires additional assumptions; may be complex for small samples.
+- **When NOT to use:**
+  - If data are nearly complete and analgesic use is negligible; then keep simple.
+- **Alternatives if assumptions violated:**
+  - Report both ITT primary mixed model and PP as pragmatic sensitivity.
+
+---
+
+## TASK 3 — INAPPROPRIATE TESTS (should NOT be used)
+
+1. **Multiple independent t-tests at each follow-up time without adjustment**
+   - Ignores within-subject correlation and inflates Type I error (5 timepoints).
+2. **Paired t-test within each group (pre vs each post) as main inference**
+   - Answers a different question (change over time within group), not treatment effect; also multiplicity.
+3. **One-way ANOVA treating repeated measures as independent**
+   - Violates independence assumption; incorrect SEs/p-values.
+4. **Complete-case analysis only (dropping missing follow-ups) as primary**
+   - Biased if missingness related to pain; wastes randomized information.
+5. **Excluding participants who used rescue analgesics (as done in article)**
+   - Post-randomization exclusion induces bias; analgesic use is likely related to outcome.
+6. **Simple chi-square test on pain categories pooled across all times**
+   - Discards timing and correlation; may be misleading.
+7. **Pearson correlation between treatment group and pain**
+   - Treatment is binary; correlation is not the right framework and is less interpretable than regression.
+
+---
+
+## TASK 4 — SUMMARY (overall analytical approach)
+
+A two-arm randomized, double-blind trial with pain measured repeatedly over 72 hours requires a **longitudinal treatment-effect model**. The core analysis should use a **mixed-effects framework** (continuous HP-VAS and/or ordinal categories) with **group×time** to estimate differential pain trajectories, while appropriately handling **within-subject correlation** and **incomplete follow-up**. Safety outcomes (BP/HR and adverse symptoms) should be analyzed with baseline-adjusted models and exact methods where counts are small. Rescue analgesic use should be **analyzed, not excluded**, with sensitivity analyses to ensure robustness.

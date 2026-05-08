@@ -1,0 +1,122 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_JOCPD45.5.4.pdf
+Status : ok
+Time   : 20260508_132314
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Randomized clinical trial.
+2. **Objective**: To evaluate whether positioning a resorbable collagen barrier at the apical third of root canals reduces the extrusion of obturating material in primary molars undergoing resorption.
+3. **Groups**:
+   - **Group A (Test)**: Canals with a resorbable collagen barrier placed at the apical third.
+   - **Group B (Control)**: Canals without a collagen barrier.
+4. **Sample Size**:
+   - **Patients**: 47 children aged 7–9 years.
+   - **Teeth**: 47 primary mandibular molars (94 canals; 47 canals in each group).
+   - **Power Analysis**: 80%.
+5. **Inclusion Criteria**:
+   - Pulpally involved mandibular primary molars with at least two-thirds of root length.
+   - Children aged 7–9 years with Frankel’s Class 3 or 4 behavior rating.
+   - No systemic disease.
+6. **Exclusion Criteria**:
+   - Perforation of pulpal floor due to resorption.
+   - Extreme tooth mobility.
+   - Congenitally missing permanent tooth bud.
+   - Radiographic evidence of internal/external resorption or radicular radiolucencies.
+7. **Variables**:
+   - **Independent Variable**: Presence of resorbable collagen barrier.
+   - **Dependent Variable**: Presence of extrusion of obturating material (binary outcome: Extruded [E] vs. No Extrusion [NE]).
+8. **Measurements**:
+   - Pre- and post-operative radiographs using radiovisiography (RVG) to assess extrusion.
+   - Acceptable obturation defined as material 1–2 mm short of the apex; extrusion defined as material beyond the apex.
+9. **Randomization**: Flip coin method performed by parents to assign canals to test or control groups.
+10. **Data Collection Methods**:
+    - Radiographic determination of working length using No. 15 k files.
+    - Placement of collagen barrier (Coloplug) in test canals.
+    - Obturation with calcium hydroxide and iodoform paste (Metapex) using syringe delivery system.
+    - Radiographic assessment of extrusion by a single operator.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Chi-Square Test**:
+   - **Purpose**: To compare the proportion of extrusion (E vs. NE) between Group A (test) and Group B (control).
+   - **Why Appropriate**:
+     - The dependent variable is categorical (binary: Extruded vs. No Extrusion).
+     - The study involves two independent groups (test vs. control).
+   - **Why It May Not Be Appropriate**:
+     - Assumes independence of observations, which may be violated if canals within the same tooth are correlated.
+   - **When NOT to Use**: If sample size is too small for expected frequencies in contingency tables.
+   - **Alternative**: Fisher’s Exact Test (if sample size is small).
+
+2. **Descriptive Statistics**:
+   - **Purpose**: To summarize the frequency and percentage of extrusion in both groups.
+   - **Why Appropriate**:
+     - Provides a clear understanding of the distribution of outcomes.
+     - Essential for reporting baseline characteristics.
+   - **Why It May Not Be Appropriate**: Not inferential; cannot test hypotheses.
+   - **When NOT to Use**: Not applicable (always useful).
+   - **Alternative**: None.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **McNemar’s Test**:
+   - **Purpose**: To account for paired data (mesial and distal canals within the same tooth) and test for differences in extrusion rates between test and control groups.
+   - **Why Appropriate**:
+     - Accounts for the dependency between paired observations.
+     - Suitable for binary outcomes in paired data.
+   - **Why It May Not Be Appropriate**: Requires paired data; cannot be used if canals are analyzed independently.
+   - **When NOT to Use**: If canals are treated as independent observations.
+   - **Alternative**: Generalized Estimating Equations (GEE) for correlated binary data.
+
+2. **Logistic Regression**:
+   - **Purpose**: To model the probability of extrusion (binary outcome) as a function of group (test vs. control) and other covariates (e.g., canal location, patient age).
+   - **Why Appropriate**:
+     - Allows adjustment for potential confounders.
+     - Provides odds ratios for extrusion between groups.
+   - **Why It May Not Be Appropriate**: Requires sufficient sample size for reliable estimates.
+   - **When NOT to Use**: If sample size is too small or multicollinearity exists among covariates.
+   - **Alternative**: Exact Logistic Regression (for small sample sizes).
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Cohen’s Kappa**:
+   - **Purpose**: To assess inter-rater reliability if extrusion assessments are performed by multiple evaluators.
+   - **Why Appropriate**:
+     - Ensures consistency in outcome classification.
+     - Useful for validating radiographic assessments.
+   - **Why It May Not Be Appropriate**: Not relevant if a single operator assessed all radiographs.
+   - **When NOT to Use**: If only one evaluator is involved.
+   - **Alternative**: None.
+
+2. **Subgroup Analysis**:
+   - **Purpose**: To explore differences in extrusion rates within subgroups (e.g., mesial vs. distal canals).
+   - **Why Appropriate**:
+     - Provides additional insights into canal-specific effects.
+     - Useful for hypothesis generation.
+   - **Why It May Not Be Appropriate**: May lead to overinterpretation if sample size is small.
+   - **When NOT to Use**: If subgroup sizes are too small for reliable comparisons.
+   - **Alternative**: Pool data across subgroups.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent Samples t-Test**:
+   - **Why NOT Appropriate**: The outcome variable (extrusion) is categorical, not continuous.
+2. **ANOVA**:
+   - **Why NOT Appropriate**: Designed for continuous outcomes; extrusion is binary.
+3. **Pearson Correlation**:
+   - **Why NOT Appropriate**: Correlation is for continuous variables, not categorical outcomes.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach focuses on comparing extrusion rates between test and control groups using appropriate statistical methods for binary outcomes. Mandatory tests (e.g., Chi-Square) address the primary objective, while recommended tests (e.g., McNemar’s Test, Logistic Regression) account for paired data and potential confounders. Optional tests (e.g., Cohen’s Kappa, Subgroup Analysis) provide supplementary insights but should be used cautiously to avoid overinterpretation. The plan ensures rigor while addressing the study’s limitations, such as small sample size and potential dependency between canals within the same tooth.

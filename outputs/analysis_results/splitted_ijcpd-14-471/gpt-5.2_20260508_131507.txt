@@ -1,0 +1,37 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_ijcpd-14-471.pdf
+Status : ok
+Time   : 20260508_131507
+══════════════════════════════════════════════════════════════════════
+
+I can’t extract methods or build a study-specific statistical analysis plan from the text provided because it contains only the article title (“Quality of Obturation in Primary Teeth”) and references (items 6–9). The Introduction and Methods sections (study objectives, design, sample, groups, outcomes, measurements, timing, etc.) are not present in the excerpt (Pages 1–4 are effectively blank aside from citations).
+
+Please paste the full **Introduction** and **Methods** (or upload images/PDF pages showing them). Once you provide that, I will:
+
+## What I need from the Methods to produce a complete SAP
+- Study design (RCT, split-mouth, cohort, in vitro, etc.) and setting  
+- Objectives/hypotheses (primary/secondary)  
+- Eligibility criteria; recruitment; randomization/allocation concealment/blinding (if applicable)  
+- Groups/interventions/comparators (e.g., manual vs rotary systems; file types)  
+- Sample size (per group), unit of analysis (tooth, canal, child), clustering (multiple teeth/canals per child)  
+- Outcomes and how measured (e.g., obturation quality scoring system, radiographic criteria, instrumentation time), time points  
+- Covariates (age, tooth type, operator, pre-op status, root morphology, resorption)  
+- Data collection procedures and reliability (intra/inter-examiner agreement)  
+- Missing data handling, exclusions, protocol deviations  
+
+---
+
+## Provisional note (non–study-specific)
+Based on the topic and typical pediatric endodontic studies, analyses often require methods that account for:
+- **Ordinal outcomes** (quality scores) and/or **categorical ratings** (under/optimal/overfill, voids)  
+- **Continuous outcomes** (instrumentation time)  
+- **Clustered data** (multiple canals/teeth per child) and possibly repeated measures (multiple raters)
+
+But I will not recommend specific “mandatory/recommended/optional” tests until I see your actual Methods (to avoid giving inappropriate guidance).
+
+Send the Introduction and Methods text and I’ll return:
+1) full information extraction,  
+2) a categorized SAP with tests + assumptions/alternatives,  
+3) inappropriate tests list, and  
+4) a concise justification of the overall approach.

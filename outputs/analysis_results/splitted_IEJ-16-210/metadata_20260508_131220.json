@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_IEJ-16-210.pdf",
+  "timestamp": "20260508_131220",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 15531
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 6754
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 28741
+    }
+  }
+}

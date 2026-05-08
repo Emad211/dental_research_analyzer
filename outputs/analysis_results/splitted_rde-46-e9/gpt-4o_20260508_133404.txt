@@ -1,0 +1,126 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_rde-46-e9.pdf
+Status : ok
+Time   : 20260508_133404
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Prospective, double-blind, randomized clinical trial.
+
+2. **Objective**:  
+   - To evaluate the efficacy of buccal infiltration with piroxicam on the success rate of inferior alveolar nerve block (IANB) in patients with irreversible pulpitis.
+
+3. **Groups**:  
+   - **Control Group**: Buccal infiltration with normal saline (syringe A).  
+   - **Test Group**: Buccal infiltration with 20 mg/mL of piroxicam (syringe B).
+
+4. **Sample Size**:  
+   - Total: 56 patients (28 per group).  
+   - Sample size calculation: Effect size = 0.82, α = 0.05, power = 0.95.
+
+5. **Participants**:  
+   - Inclusion criteria: Patients aged 15–65 years with mandibular molars exhibiting irreversible pulpitis, initial pain score > 54 on Heft-Parker VAS, exaggerated response to cold testing lasting > 45 seconds, and negative response to electric pulp testing (EPT).  
+   - Exclusion criteria: Multiple infected teeth, failure to achieve lip numbness, hypersensitivity to piroxicam, history of peptic ulcers, renal/liver/bleeding disorders, pregnancy/lactation.
+
+6. **Variables**:  
+   - **Independent Variable**: Type of buccal infiltration (normal saline vs. piroxicam).  
+   - **Dependent Variables**:  
+     - Pain scores during caries removal (CR), access opening procedure (AOP), and working length measurement (WLM) using Heft-Parker VAS.  
+     - Success of anesthesia (absence of pain or mild/slight pain during procedures).
+
+7. **Measurements**:  
+   - Pain scores: Heft-Parker VAS (0–170 mm).  
+   - Anesthesia success: Absence of pain or mild/slight pain during CR, AOP, and WLM, with no need for additional anesthetic doses.
+
+8. **Data Collection Methods**:  
+   - Pain assessment using Heft-Parker VAS and EPT.  
+   - Randomized allocation of patients into groups using coded syringes (A and B).  
+   - Blinding: Both patients and the postgraduate student administering the injections were blinded to the group allocation.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS:
+1. **Test Name**: Independent Samples t-Test  
+   - **Purpose**: Compare mean pain scores between the control and test groups.  
+   - **Why Appropriate**:  
+     - The study involves two independent groups (control vs. test).  
+     - Pain scores are continuous variables measured on the Heft-Parker VAS.  
+   - **Why It May Not Be Appropriate**: Assumes normal distribution of pain scores and equal variances between groups.  
+   - **When This Test Should NOT Be Used**: If pain scores are not normally distributed or variances are unequal.  
+   - **Alternative**: Mann-Whitney U test (non-parametric alternative).
+
+2. **Test Name**: Chi-Square Test of Independence  
+   - **Purpose**: Compare the proportion of patients achieving successful anesthesia between the two groups.  
+   - **Why Appropriate**:  
+     - Success of anesthesia is a categorical variable (success vs. failure).  
+     - The study involves two independent groups.  
+   - **Why It May Not Be Appropriate**: Requires a sufficient sample size in each cell of the contingency table.  
+   - **When This Test Should NOT Be Used**: If expected cell counts are < 5.  
+   - **Alternative**: Fisher’s Exact Test.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS:
+1. **Test Name**: Repeated Measures ANOVA  
+   - **Purpose**: Analyze pain scores across multiple time points (CR, AOP, WLM) within each group.  
+   - **Why Appropriate**:  
+     - Pain scores are measured repeatedly for each patient during different procedures.  
+     - Allows comparison of trends over time between groups.  
+   - **Why It May Not Be Appropriate**: Assumes sphericity (equal variances of differences between time points).  
+   - **When This Test Should NOT Be Used**: If sphericity is violated.  
+   - **Alternative**: Greenhouse-Geisser correction or Linear Mixed Models.
+
+2. **Test Name**: Logistic Regression  
+   - **Purpose**: Assess the impact of group allocation (control vs. test) on the likelihood of successful anesthesia, adjusting for covariates like age and sex.  
+   - **Why Appropriate**:  
+     - Outcome (success of anesthesia) is binary.  
+     - Allows adjustment for potential confounders.  
+   - **Why It May Not Be Appropriate**: Requires a large sample size for reliable estimates.  
+   - **When This Test Should NOT Be Used**: If the sample size is too small.  
+   - **Alternative**: Exact Logistic Regression.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS:
+1. **Test Name**: Effect Size Calculation (Cohen’s d)  
+   - **Purpose**: Quantify the magnitude of difference in pain scores between groups.  
+   - **Why Appropriate**:  
+     - Provides a standardized measure of group differences.  
+     - Useful for interpreting clinical significance.  
+   - **Why It May Not Be Appropriate**: Does not account for confounding variables.  
+   - **When This Test Should NOT Be Used**: If the sample size is insufficient to reliably estimate effect size.  
+   - **Alternative**: Glass’s Delta (if variances are unequal).
+
+2. **Test Name**: Subgroup Analysis  
+   - **Purpose**: Explore differences in outcomes within subgroups (e.g., age or sex).  
+   - **Why Appropriate**:  
+     - Identifies potential effect modifiers.  
+     - Enhances understanding of differential effects.  
+   - **Why It May Not Be Appropriate**: Increases risk of Type I error due to multiple comparisons.  
+   - **When This Test Should NOT Be Used**: If the sample size within subgroups is too small.  
+   - **Alternative**: Bootstrap methods for small samples.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1. **Paired Samples t-Test**:  
+   - **Why Inappropriate**: The study involves independent groups, not paired observations.  
+
+2. **One-Way ANOVA**:  
+   - **Why Inappropriate**: Only two groups are being compared; Independent Samples t-Test is more appropriate.  
+
+3. **Pearson Correlation**:  
+   - **Why Inappropriate**: Correlation is not suitable for comparing group differences or binary outcomes.
+
+---
+
+### TASK 4: SUMMARY
+
+The analytical approach combines mandatory tests (Independent Samples t-Test, Chi-Square Test) to address primary objectives, recommended tests (Repeated Measures ANOVA, Logistic Regression) to enhance rigor, and optional tests (Effect Size Calculation, Subgroup Analysis) for supplementary insights. This approach ensures robust evaluation of the efficacy of piroxicam buccal infiltration while accounting for confounding variables and exploring secondary patterns. Non-parametric alternatives will be employed if assumptions are violated.

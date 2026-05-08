@@ -1,0 +1,269 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splittedijcpd-14-243.pdf
+Status : ok
+Time   : 20260508_134520
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design and setting
+- **Design:** Single-blinded **randomized clinical trial** (in vivo).
+- **Blinding:** **Outcome assessor blinded** (independent investigator counted bacterial colonies without allocation knowledge). **Participants not blinded** (materials visibly different).
+- **Setting:** Outpatient Department of Pediatric and Preventive Dentistry, SVS Institute of Dental Sciences, Mahabubnagar, Telangana, India.
+- **Ethics:** SVSIDS/PEDO/3/2017; written parental consent.
+
+### Objective
+- To **evaluate and compare antimicrobial efficacy** of:
+  - **Triple antibiotic paste (TAP)** vs
+  - **Propolis**
+  as **intracanal medicaments** in **young permanent teeth**.
+
+### Participants / units / eligibility
+- **Unit of analysis:** **Tooth** (single-rooted young permanent tooth).
+- **Target population:** Children **7–14 years**.
+- **Inclusion (tooth-level):**
+  - Non-vital tooth with **open apex**
+  - **History of trauma**
+  - **Clinical/radiographic periapical pathology**
+  - Restorable teeth
+- **Exclusion:**
+  - **Grade III mobility**
+  - **Medically compromised** children
+- **Note:** Teeth included regardless of maxillary/mandibular as long as single-rooted.
+
+### Sample size / allocation
+- **Total:** 30 teeth
+- **Groups:** 2 parallel groups
+  - Group I: TAP, **n = 15 teeth**
+  - Group II: Propolis, **n = 15 teeth**
+- **Sample size basis:** WHO calculator, **90% power**, **β = 10%** (alpha not stated; effect size not stated).
+
+### Interventions / procedures
+- Standardized steps prior to medicament placement:
+  - Local anesthesia (2% lignocaine) + rubber dam isolation
+  - Access preparation
+- **Samples collected from each tooth at 3 timepoints:**
+  - **S1 (baseline):** paper point #35 placed 1 minute; transferred to BHI broth.
+  - **S2 (post-irrigation):** after irrigation per AAE 2016:
+    - 20 mL **1.5% NaOCl** for 5 min
+    - then 20 mL **saline** for 5 min
+    - then sampling as S1
+  - **S3 (post-medicament, 3–4 weeks):**
+    - temporary restoration removed
+    - irrigate with **saline until medicament washed off**
+    - then sampling as S1
+- **Group I medicament:**
+  - Ciprofloxacin + metronidazole + minocycline (1:1:1) + **0.3 mL saline**, placed with lentulospiral; interim restoration.
+- **Group II medicament:**
+  - Propolis powder mixed with saline **1.5:1 (wt/vol)**, placed similarly; interim restoration.
+
+### Outcomes / variables (explicit and implied)
+- **Primary outcome (implied):** **bacterial colony counts** (CFU) from intracanal samples (manual colony counting).
+- **Timepoints:** S1, S2, S3 (repeated measures within tooth).
+- **Primary contrast of interest:** Between-group difference in **bacterial reduction**, especially from S2→S3 and/or S1→S3.
+- **Potential covariates (mentioned but not analyzed in text):**
+  - Age, jaw (max/mand), tooth type, baseline bacterial load, time to recall (3 vs 4 weeks).
+
+### Data structure implications
+- **Clustered / repeated:** Three observations per tooth → within-tooth correlation.
+- **Randomization at tooth level** (but could be multiple teeth per child; not stated). If multiple teeth per child occurred, there is **additional clustering by child** (important to check).
+
+---
+
+## TASK 2 — Statistical analysis plan (SAP)
+
+### 0) Pre-analysis decisions (required to make tests valid)
+1. **Define endpoints clearly**
+   - Use **CFU** at S1/S2/S3 and/or **log10(CFU + 1)** transformation.
+   - Define **primary endpoint** as:
+     - Option A: **Change** from S2 to S3 (effect of medicament after standardized irrigation), or
+     - Option B: **Percent reduction** from S1 to S3.
+   - Prefer **S2→S3** as primary because it isolates medicament effect after standardized irrigation.
+2. **Analysis population**
+   - **Intention-to-treat (ITT)** at tooth level: all randomized teeth with available outcome(s).
+   - Handle missing S3 (loss to follow-up) with mixed models (preferred) or multiple imputation (if missingness is material).
+3. **Descriptive statistics**
+   - By group and timepoint: mean/SD (if approx normal on log scale) and median/IQR (raw CFU often skewed), plus plots.
+4. **Primary significance level:** two-sided α = 0.05 (unless otherwise specified).
+5. **Multiplicity**
+   - If multiple pairwise time comparisons are tested, control family-wise error (Holm) or pre-specify hierarchy (recommended).
+
+---
+
+## CATEGORY A — Mandatory tests/models
+
+### A1. Linear mixed-effects model (LMM) for repeated measures (on log-transformed CFU)
+- **Purpose:** Compare antimicrobial effects over time **between groups**, accounting for within-tooth correlation.
+- **Why appropriate (≥2):**
+  1. **Repeated measures** (S1, S2, S3) within the same tooth violate independence; LMM models correlation via random effects.
+  2. Tests the clinically relevant **group × time interaction** (does TAP vs propolis differ in reduction pattern?).
+  3. Handles **missing follow-up** under MAR without dropping all data from a subject (unlike repeated-measures ANOVA).
+- **Why it may not be appropriate (≥1):**
+  - CFU data may be **zero-inflated** and/or highly skewed even after transformation; residual normality may be poor.
+- **When this should NOT be used:**
+  - When outcome is a **count with strong overdispersion/zero inflation** that cannot be stabilized by transformation, or when sample is too small to support model complexity (though n=30 usually supports a simple model).
+- **Alternative if assumptions violated:**
+  - **Generalized linear mixed model (GLMM)** with **negative binomial** (or Poisson if appropriate) and random intercept for tooth (and possibly child).
+  - Or **rank-based mixed models** / **nonparametric longitudinal methods** (e.g., Brunner–Langer approach).
+
+**Model specification (suggested):**
+- Outcome: \(Y_{ijt} = \log_{10}(\text{CFU}_{ijt}+1)\)
+- Fixed: group (TAP vs propolis), time (S1/S2/S3), **group×time**
+- Random: intercept for tooth; add random intercept for child if multiple teeth per child.
+- Primary estimand: difference in mean change **S2→S3** between groups (contrast from model).
+
+---
+
+### A2. Baseline comparability check (descriptive + targeted test)
+- **Test name:** Two-sample comparison at baseline (e.g., **t-test** on log(CFU+1) at S1, or **Mann–Whitney U** if non-normal).
+- **Purpose:** Ensure randomization produced comparable groups on **baseline bacterial load** (and optionally age).
+- **Why appropriate:**
+  1. Baseline imbalance in CFU can strongly affect apparent “reduction.”
+  2. Helps decide whether to include baseline as covariate (precision gain).
+- **Why it may not be appropriate:**
+  - With RCTs, significance testing baseline differences is sometimes discouraged; focus should be on **clinical magnitude**.
+- **When NOT to use:**
+  - As a gatekeeper to decide whether to adjust; adjustment can be pre-specified regardless of balance.
+- **Alternative if assumptions violated:**
+  - Use **Mann–Whitney U** (or permutation test) for baseline CFU.
+
+---
+
+## CATEGORY B — Recommended tests/models
+
+### B1. GLMM (negative binomial) for CFU counts (sensitivity analysis)
+- **Purpose:** Model CFU as counts directly and confirm robustness of conclusions from log-LMM.
+- **Why appropriate:**
+  1. CFU are **count data** often **overdispersed** → negative binomial fits better than normal models.
+  2. Can incorporate repeated measures (random effects) similarly to LMM.
+- **Why it may not be appropriate:**
+  - With small sample size, NB-GLMM may have **convergence issues** or unstable variance estimates.
+- **When NOT to use:**
+  - When counts are already well-behaved after transformation and NB-GLMM does not converge reliably.
+- **Alternative if assumptions violated:**
+  - **Poisson GLMM with robust (sandwich) SE**, or **GEE with negative binomial** working variance.
+
+---
+
+### B2. ANCOVA-style endpoint model focusing on S3 adjusted for S2 (primary endpoint simplification)
+- **Test name:** Linear regression / LMM for **S3** with **group + S2** covariate (on log scale).
+- **Purpose:** Compare groups at S3 while adjusting for post-irrigation bacterial level (S2), improving precision.
+- **Why appropriate:**
+  1. S2 is a strong predictor of S3; adjustment improves **power** with n=30.
+  2. Targets medicament effect more directly than including S1 in the primary contrast.
+- **Why it may not be appropriate:**
+  - If S2 is affected by procedures that differ across participants (though irrigation protocol was standardized).
+- **When NOT to use:**
+  - If S2 missingness is high or differential, or if timing/protocol deviations make S2 non-comparable.
+- **Alternative if assumptions violated:**
+  - **Quantile regression** for S3 (median) adjusted for S2, or **NB regression** for counts.
+
+---
+
+### B3. Multiple-comparison control for pairwise contrasts across time
+- **Test name:** Holm-adjusted post hoc comparisons (or Tukey for all pairs) on model-based estimated marginal means.
+- **Purpose:** Control Type I error when evaluating:
+  - Within-group: S1 vs S2 vs S3
+  - Between-group at each timepoint
+- **Why appropriate:**
+  1. Prevents inflated false positives from multiple contrasts.
+  2. Common in repeated-measures designs with 3 timepoints.
+- **Why it may not be appropriate:**
+  - If only one **pre-specified primary contrast** is tested (e.g., S2→S3), adjustment may be unnecessary.
+- **When NOT to use:**
+  - When analysis is strictly confirmatory with a single primary endpoint and limited secondary endpoints.
+- **Alternative if assumptions violated:**
+  - Use **bootstrap CIs** for contrasts with multiplicity control via adjusted percentile methods (less standard).
+
+---
+
+### B4. Effect sizes with confidence intervals (not just p-values)
+- **Test name:** Model-based **mean difference in log CFU change**, ratio of geometric means, and/or standardized effect size.
+- **Purpose:** Quantify magnitude and clinical relevance of antimicrobial reduction.
+- **Why appropriate:**
+  1. RCT interpretation requires **estimation** (CI) not only hypothesis testing.
+  2. Log scale allows natural interpretation as **fold-change** (geometric mean ratio).
+- **Why it may not be appropriate:**
+  - If distributional assumptions are unstable, CIs may be misleading.
+- **When NOT to use:**
+  - Never “not use,” but interpret cautiously if model fit is poor.
+- **Alternative if assumptions violated:**
+  - **Bootstrap** effect size and CI; or median differences with **Hodges–Lehmann** estimates.
+
+---
+
+## CATEGORY C — Optional (supplementary) analyses
+
+### C1. Nonparametric within-group change tests
+- **Test name:** **Friedman test** (within each group across S1/S2/S3) with post hoc Wilcoxon signed-rank + Holm.
+- **Purpose:** Provide assumption-light confirmation of within-group reductions.
+- **Why appropriate:**
+  1. Handles **non-normal** repeated measures.
+  2. Simple summary of whether bacterial counts decrease over time within each group.
+- **Why it may not be appropriate:**
+  - Does not easily test **group×time interaction** (key comparative question).
+- **When NOT to use:**
+  - As the primary analysis for an RCT whose key question is **between-group difference** over time.
+- **Alternative if assumptions violated:**
+  - Use **rank-based mixed models** (more direct for interaction).
+
+---
+
+### C2. Responder analysis (binary)
+- **Test name:** Logistic regression / mixed logistic model for “**culture negative / zero CFU at S3**” (yes/no).
+- **Purpose:** Provide clinically interpretable endpoint: probability of complete disinfection.
+- **Why appropriate:**
+  1. Clinically meaningful and easily communicated.
+  2. Robust to extreme CFU outliers.
+- **Why it may not be appropriate:**
+  - Dichotomization loses information; may be underpowered (n=30).
+- **When NOT to use:**
+  - When almost all observations are zeros or non-zeros (complete separation).
+- **Alternative if assumptions violated:**
+  - **Firth penalized logistic regression** or exact logistic regression.
+
+---
+
+### C3. Intraclass correlation / variance components
+- **Test name:** ICC from mixed model (tooth-level; plus child-level if applicable).
+- **Purpose:** Quantify within-tooth correlation (and child clustering if multiple teeth/child).
+- **Why appropriate:**
+  1. Justifies use of mixed models.
+  2. Useful for planning future studies.
+- **Why it may not be appropriate:**
+  - Small sample can yield imprecise ICC estimates.
+- **When NOT to use:**
+  - If model fit is unstable or convergence fails.
+- **Alternative if assumptions violated:**
+  - Report empirical correlation of repeated measures or use GEE working correlation estimates.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Independent-samples t-test comparing S3 CFU only (ignoring S1/S2)**
+   - **Why inappropriate:** wastes repeated-measures information; ignores baseline/post-irrigation variability; lower power and can be biased if baseline differs.
+
+2. **Multiple separate t-tests at each timepoint without multiplicity correction**
+   - **Why inappropriate:** inflates Type I error; gives fragmented inference; does not test interaction.
+
+3. **Chi-square test on raw CFU categories created ad hoc (e.g., low/medium/high)**
+   - **Why inappropriate:** arbitrary categorization, information loss, unstable cell counts with n=30.
+
+4. **Simple one-way ANOVA treating S1/S2/S3 as independent groups**
+   - **Why inappropriate:** violates independence; same tooth measured repeatedly.
+
+5. **Pearson correlation between S1 and S3 to claim treatment efficacy**
+   - **Why inappropriate:** correlation does not estimate treatment effect; ignores randomization and group comparison.
+
+6. **Paired t-test conducted across all teeth combining both treatment groups**
+   - **Why inappropriate:** mixes interventions; cannot attribute change to one medicament vs the other.
+
+---
+
+## TASK 4 — Summary justification of overall approach
+
+The study is a two-arm randomized trial with **three repeated microbiological measurements per tooth**, so the analysis must (i) compare groups and (ii) account for **within-tooth correlation** and skewed **count** outcomes. A **mixed-effects framework** (primary: LMM on log(CFU+1), with sensitivity via negative-binomial GLMM) directly targets the main scientific question—whether **TAP and propolis differ in bacterial reduction over time**, especially from **post-irrigation (S2) to post-medicament (S3)**—while providing valid inference under repeated measures and allowing principled handling of missing follow-up.
+
+If you paste the Results section (or the actual CFU summary tables), I can tailor the SAP to the exact outcome scale used in the paper (raw CFU vs log CFU) and specify the exact primary contrast and reporting format.

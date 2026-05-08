@@ -1,0 +1,216 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_JOCPD45.5.4.pdf
+Status : ok
+Time   : 20260508_132314
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study identification/design
+- **Design:** Randomized clinical trial with **within-tooth (split-tooth / split-mouth–like) randomization at the canal level**.
+- **Setting:** Department of Pedodontics and Preventive Dentistry (single center).
+- **Ethics:** Approved (Ref. No: TMDCRC/IEC/18-19/PPD1 dated 22/1/2019).
+- **Operator/evaluator:** **Single operator** performed procedures and also assessed radiographs (not blinded).
+
+### Objective
+- To determine whether **placing a resorbable collagen apical barrier** in resorbing primary molar canals **reduces extrusion/overfilling of obturating material beyond the apex** compared with no barrier.
+
+### Participants/sample size
+- **Screened:** 60 children.
+- **Included:** 47 children with **47 primary mandibular molars** requiring pulpectomy.
+- **Units analyzed:** **94 canals** (1 mesial + 1 distal per tooth).
+- **Allocation:** Canals “equally allocated” to:
+  - **Group A (Test):** collagen barrier placed
+  - **Group B (Control):** no barrier
+- **Randomization method:** “flip coin method” by the parent; **one mesial and one distal canal of each tooth randomly assigned to test/control** (implies pairing within tooth).
+- **Power:** Sample size calculation via power analysis; **power = 80%** (no alpha/effect size provided).
+
+### Eligibility criteria
+- **Inclusion:**
+  - Children **7–9 years**
+  - Frankl behavior rating **Class 3 or 4**
+  - No systemic disease
+  - Pulpally involved mandibular primary molars with **≥ 2/3 root length**
+- **Exclusion:**
+  - Pulpal floor perforation due to resorption
+  - Extreme mobility
+  - Congenitally missing permanent tooth bud
+  - Radiographic signs of internal/external resorption
+  - Radicular radiolucencies
+
+### Interventions / procedures
+- **Common endodontic protocol:** LA, rubber dam, access, extirpation, irrigation (3% NaOCl + saline), canal identification, working length with #15 K-file, instrumentation with hand Protaper SX–F2, drying.
+- **Working length standardization:** final instrumented length kept **2 mm short of radiographic apex** in both groups (test: to “accommodate 2mm of apical barrier”).
+- **Test group (collagen barrier):**
+  - **2 mm square piece** of resorbable collagen (Coloplug) placed and condensed to working length.
+- **Obturation (both groups):**
+  - Metapex (calcium hydroxide + iodoform paste) syringe delivery; technique standardized.
+- **Restoration:** GIC + stainless steel crown.
+
+### Outcomes and measurement
+- **Primary outcome (binary):** postoperative radiographic **extrusion of obturating material**
+  - **No Extrusion (NE / “acceptable”):** optimal fill or **1–2 mm short of apex**
+  - **Extruded (E):** material beyond apex/periapex
+- **Measurement tool:** **Digital postoperative RVG**; additional radiograph if superimposition.
+- **Time point:** immediate postoperative (no follow-up outcomes described in provided text).
+
+### Key methodological/statistical implications
+- **Paired/correlated data:** Two canals per tooth and **randomized within tooth** ⇒ outcomes are **not independent**.
+- **Potential clustering beyond tooth:** one tooth per child (as described), so child-level clustering likely equals tooth-level; primary correlation is **within-tooth canal pair**.
+- **Assessment bias risk:** evaluator not blinded.
+
+---
+
+## TASK 2: Statistical analysis plan (SAP)
+
+### A. Data handling and general principles (applies to all categories)
+1. **Analysis population:** Intention-to-treat at the **canal level** (analyze canals as randomized), with explicit handling if any canal not evaluable radiographically.
+2. **Descriptive statistics:**
+   - Counts/percent for NE/E by group.
+   - Also report by canal type (mesial vs distal) if available.
+3. **Primary estimand/effect measure:**
+   - Prefer **paired risk difference** and/or **paired odds ratio** (test vs control within tooth).
+   - Provide **95% confidence intervals**.
+4. **Missing data:** If postoperative radiograph missing/uninterpretable:
+   - Report frequency and reasons by group.
+   - If minimal: complete-case with sensitivity “worst-case” imputation (optional).
+5. **Significance level:** Two-sided α = 0.05 (unless otherwise specified).
+6. **Software:** Any standard package (R/Stata/SPSS), but must support paired binary tests / conditional logistic / GEE.
+
+---
+
+## CATEGORY A – MANDATORY tests
+
+### 1) McNemar test (paired binary outcome)
+- **Purpose:** Test whether the **probability of extrusion differs** between test and control **within the same tooth**.
+- **Why appropriate (≥2 reasons):**
+  1. Outcome is **binary** (E vs NE).
+  2. Design creates **matched pairs** (each tooth contributes one test canal and one control canal), violating independence required for a standard chi-square.
+- **Why it may not be appropriate (≥1 reason):**
+  - If pairing is not truly 1:1 within tooth (e.g., some teeth contribute only one canal or allocation not paired), McNemar is not valid.
+- **When this test should NOT be used:**
+  - When observations are **independent** (parallel-group randomization by tooth/child) or when there are **>2 correlated observations per cluster** without clear pairing.
+- **Alternative if assumptions are violated:**
+  - **GEE logistic regression** with cluster = tooth (or child) for correlated binary outcomes; or **mixed-effects logistic regression**.
+
+### 2) Effect size estimation with 95% CI (paired)
+(Conceptually mandatory even if not a “test”.)
+- **Purpose:** Quantify magnitude: e.g., **paired risk difference** (Δ risk of extrusion) and/or **matched odds ratio**.
+- **Why appropriate:**
+  1. RCT interpretation requires **estimation**, not only p-values.
+  2. Provides clinical relevance (e.g., absolute reduction in extrusion).
+- **Why it may not be appropriate:**
+  - With **very low event counts**, CIs may be wide/unstable.
+- **When it should NOT be used:**
+  - Never omit estimation; but avoid asymptotic CI formulas if sparse.
+- **Alternative if assumptions violated:**
+  - **Exact** CI methods for matched pairs; or **bootstrap by tooth**.
+
+---
+
+## CATEGORY B – RECOMMENDED tests/models
+
+### 3) Conditional logistic regression (matched-pair logistic model)
+- **Purpose:** Estimate **matched odds ratio** for extrusion (test vs control) while respecting within-tooth matching; optionally adjust for canal-level covariates (e.g., mesial/distal) if recorded.
+- **Why appropriate:**
+  1. Directly models **paired binary outcomes** consistent with split-tooth randomization.
+  2. Can incorporate **covariates** (canal type, degree of resorption if measured) and yields adjusted effect estimates with CIs.
+- **Why it may not be appropriate:**
+  - Sparse outcomes can cause **separation** or unstable estimates.
+- **When it should NOT be used:**
+  - If there is **no matching** or matching factors are incorrectly specified; or if only marginal inference is desired and pairing is complex.
+- **Alternative if assumptions are violated:**
+  - **Exact conditional logistic regression** (if sparse) or **GEE logistic** with robust SEs.
+
+### 4) GEE logistic regression (population-averaged)
+- **Purpose:** Estimate treatment effect on extrusion with **robust standard errors** accounting for within-tooth correlation.
+- **Why appropriate:**
+  1. Handles **correlated binary** outcomes without requiring correct random-effects distribution.
+  2. Provides **marginal (population-averaged)** effect, often preferred for clinical interpretation.
+- **Why it may not be appropriate:**
+  - With small numbers of clusters (here ~47 teeth), sandwich SEs can be **biased downward**.
+- **When it should NOT be used:**
+  - Very small cluster count without small-sample corrections; or if interest is specifically subject/tooth-specific effects.
+- **Alternative if assumptions are violated:**
+  - **Mixed-effects logistic regression**; or GEE with **small-sample correction** (e.g., Fay–Graubard / Kauermann–Carroll corrections, depending on software).
+
+### 5) Fisher’s exact test / chi-square test (as a *sensitivity* analysis only)
+- **Purpose:** Compare extrusion proportions between groups **ignoring pairing** (not primary).
+- **Why appropriate:**
+  1. Provides a simple cross-check of direction/magnitude.
+  2. Fisher’s exact can be valid with **small counts** (but still assumes independence).
+- **Why it may not be appropriate:**
+  - **Violates independence** because canals within a tooth are paired; p-values can be misleading.
+- **When it should NOT be used:**
+  - As the main inferential test for this split-tooth design.
+- **Alternative if assumptions are violated:**
+  - Use **McNemar** / **conditional logistic** instead (i.e., revert to paired methods).
+
+---
+
+## CATEGORY C – OPTIONAL (supplementary insight)
+
+### 6) Mixed-effects logistic regression (random intercept for tooth)
+- **Purpose:** Estimate treatment effect with an explicit **tooth-level random effect**, allowing tooth-to-tooth heterogeneity.
+- **Why appropriate:**
+  1. Models **cluster-specific** (tooth-specific) effects and correlation structure.
+  2. Can accommodate additional canal/tooth covariates and interaction terms (e.g., treatment × canal type).
+- **Why it may not be appropriate:**
+  - With low event rates, random-effects models may be **unstable** and sensitive to modeling assumptions.
+- **When it should NOT be used:**
+  - If convergence fails or results are overly model-dependent due to sparse events.
+- **Alternative if assumptions are violated:**
+  - **Conditional logistic** (matched) or **penalized logistic regression** (e.g., Firth) with clustering approach.
+
+### 7) Subgroup/interaction analysis (e.g., mesial vs distal canal)
+- **Purpose:** Assess whether treatment effect differs by **canal type**.
+- **Why appropriate:**
+  1. Clinically plausible that anatomy differs between canals.
+  2. Helps understand heterogeneity of effect.
+- **Why it may not be appropriate:**
+  - Underpowered and risks false positives if not pre-specified.
+- **When it should NOT be used:**
+  - If canal type not reliably recorded or events are too few per subgroup.
+- **Alternative if assumptions are violated:**
+  - Report descriptive stratified results only; avoid inferential claims.
+
+### 8) Inter-rater reliability (not feasible here, but optional if added)
+- **Purpose:** If a second blinded assessor is used, quantify agreement for E/NE scoring (e.g., **Cohen’s kappa**).
+- **Why appropriate:**
+  1. Outcome is radiographic and potentially subjective.
+  2. Addresses measurement reliability and bias.
+- **Why it may not be appropriate:**
+  - Only one evaluator in the study as described; kappa cannot be computed.
+- **When it should NOT be used:**
+  - Single-rater data only.
+- **Alternative if assumptions are violated:**
+  - Use **percent agreement** (still limited) or redesign with dual ratings.
+
+---
+
+## TASK 3: Tests that should NOT be used (and why)
+
+1. **Independent-samples t-test**
+   - Outcome is **binary**, not continuous; also design is paired (non-independent).
+
+2. **One-way ANOVA**
+   - Same issues: binary outcome and paired design; no continuous normal outcome.
+
+3. **Standard (unpaired) Pearson chi-square test as the primary analysis**
+   - Assumes **independent observations**; violated because canals are paired within tooth.
+
+4. **Mann–Whitney U / Wilcoxon rank-sum**
+   - For ordinal/continuous outcomes; outcome is binary and paired.
+
+5. **Simple (unpaired) logistic regression without clustering/matching**
+   - Produces **incorrect standard errors** and potentially misleading inference due to within-tooth correlation.
+
+6. **Correlation tests (Pearson/Spearman)**
+   - Not aligned with the causal RCT objective and does not address paired binary endpoint.
+
+---
+
+## TASK 4: Summary/justification of overall approach
+
+The outcome (extrusion: yes/no) is binary and the randomization occurs **within each tooth** (one canal test, one control), creating **paired, correlated observations**. Therefore, the primary analysis must use **paired methods** (McNemar) and should be complemented with **effect sizes and CIs**; regression approaches (conditional logistic or GEE/mixed-effects) are recommended to obtain robust estimates and allow adjustment/sensitivity analyses while respecting the matched design.

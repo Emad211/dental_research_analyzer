@@ -1,0 +1,523 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_materials-14-02661.pdf
+Status : ok
+Time   : 20260508_132854
+══════════════════════════════════════════════════════════════════════
+
+TASK 1: INFORMATION EXTRACTION  
+(Study characteristics, variables, measurements, data collection)
+
+1. Study design  
+- Type: Single-blind, randomized controlled clinical trial (RCT).  
+- Objective:  
+  - To compare the effects of a bioceramic sealer (Endoseal MTA) and a conventional resin-based sealer (AH Plus) on:  
+    - Incidence of postoperative pain.  
+    - Intensity of postoperative pain.  
+- Blinding: Single-blind (patients blinded to sealer assignment; operator not blinded).  
+- Randomization:  
+  - Block randomization to prevent imbalance in numbers across groups.  
+  - Stratification by tooth type:  
+    - Group 1: Anterior teeth and premolars.  
+    - Group 2: Molars.  
+  - Within each tooth-type stratum:  
+    - Group 1En: Endoseal MTA (anterior/premolar).  
+    - Group 1AH: AH Plus (anterior/premolar).  
+    - Group 2En: Endoseal MTA (molar).  
+    - Group 2AH: AH Plus (molar).  
+- Randomization implementation:  
+  - Randomization table managed by study assistant.  
+  - Assistant delivered allocated sealer just before obturation.
+
+2. Setting and timeframe  
+- Location: Department of Conservative Dentistry, Ewha Womans University Hospital, Seoul, Korea.  
+- Enrollment period: March 2019 – May 2020.  
+- Ethics: Approved by Ewha Womans University Medical Center IRB (IRB no. 2018-01-021).  
+- Consent: Oral and written informed consent obtained.
+
+3. Participants  
+- Initial total enrolled: 108 patients.  
+- Flow by stratum (from CONSORT-style diagrams):  
+
+  Group 1 (anterior/premolar):  
+  - Assessed: 51  
+  - Excluded: 10 (declined to participate)  
+  - Randomized: 41  
+    - Endoseal MTA: 22 allocated  
+    - AH Plus: 19 allocated  
+  - Lost to follow-up: 5 (Endoseal) + 4 (AH) = 9 (continued treatment in local clinic)  
+  - Analyzed: 17 (Endoseal) + 15 (AH)  
+
+  Group 2 (molar):  
+  - Assessed: 57  
+  - Excluded: 10 (declined to participate)  
+  - Randomized: 47  
+    - Endoseal MTA: 24 allocated  
+    - AH Plus: 23 allocated  
+  - Lost to follow-up: 6 (Endoseal) + 6 (AH) = 12 (continued treatment in local clinic)  
+  - Analyzed: 18 (Endoseal) + 17 (AH)  
+
+- Final analyzed sample sizes (per protocol):  
+  - Endoseal MTA: 17 + 18 = 35  
+  - AH Plus: 15 + 17 = 32  
+  - Total analyzed: 67.
+
+4. Inclusion criteria  
+1. Patients requiring root canal treatment who can follow treatment protocols and the postoperative pain evaluation criteria.  
+2. Age 19–70 years.
+
+5. Exclusion criteria  
+1. Uncontrolled systemic diseases.  
+2. Pregnant.  
+3. Refusal to participate.  
+4. Teeth with open apex.  
+5. Root canal retreatments.  
+6. Patients who started root canal treatment in other clinics.
+
+6. Interventions  
+- Common treatment protocol for all:  
+  - Anesthesia: 2% lidocaine with 1:100,000 epinephrine.  
+  - Isolation: Rubber dam.  
+  - Access cavity preparation.  
+  - Canal patency: #15 K file.  
+  - Working length: Root ZX electronic apex locator.  
+  - Canal shaping: ProTaper Next file system.  
+  - Irrigation during shaping: 2.5% NaOCl.  
+  - On obturation day irrigation protocol:  
+    - 5% NaOCl for 5 min  
+    - 17% EDTA for 1 min  
+    - Followed by 5% NaOCl and saline  
+  - Drying: Paper points.  
+  - Post-obturation: Radiograph taken.  
+  - Operator: Single practitioner (reduces operator variability).
+
+- Experimental interventions (main comparison):  
+  - Sealer type + obturation technique (coupled):  
+    - Endoseal MTA group (bioceramic sealer):  
+      - Premixed injectable bioceramic sealer.  
+      - Obturation technique: Single-cone technique.  
+    - AH Plus group (conventional resin-based sealer):  
+      - Resin-based sealer.  
+      - Obturation technique: Continuous-wave technique.  
+
+  Note: Sealer type is confounded with obturation technique (cannot statistically separate sealer effect from technique effect).
+
+7. Outcomes and variables  
+
+Primary outcomes (implied by objective and methods):  
+1) Postoperative pain intensity (VAS scores).  
+2) Incidence of postoperative pain (binary outcome: presence vs absence).  
+
+Measurements:  
+- Preoperative pain:  
+  - On the day treatment begins (before instrumentation):  
+    - Pain at rest (VAS).  
+    - Pain while biting (VAS).  
+- Postoperative pain:  
+  - On the day of obturation (i.e., immediately post-op day 0): patients indicate their pain over 7 days.  
+  - Pain rating period: 7 days following obturation.  
+  - For each day (as described):  
+    - Pain at rest (VAS).  
+    - Pain while biting (VAS).  
+  - On day 7: patients return to clinic; pain on that day is recorded (presumably VAS at rest and while biting).  
+
+VAS scale details:  
+- Not explicitly stated, but standard dental VAS is 0–10 cm/0–100 mm, continuous.  
+- Data level: Ordinal but often treated as continuous; repeated measures within subject.
+
+Derived variables (likely or recommended):  
+- For each patient and each day (1–7):  
+  - VAS_rest_dayX, VAS_bite_dayX.  
+  - Pain presence: VAS > 0 (yes/no).  
+- Summary measures:  
+  - Maximum VAS in 7-day period.  
+  - Area under the pain–time curve (AUC).  
+  - Time to pain resolution (first day with VAS=0 and remains 0).  
+
+Covariates / potential confounders:  
+- Tooth type: anterior/premolar vs molar (stratum group 1 vs 2).  
+- Sealer group within stratum (Endoseal vs AH Plus).  
+- Preoperative pain at rest and biting (VAS).  
+- Baseline characteristics (age, sex, etc.) are likely collected but not described in this excerpt.
+
+Data collection methods:  
+- Pain assessment:  
+  - Self-reported by patients using VAS daily for 7 days.  
+  - Likely on a paper or diary form (not specified).  
+  - Day 7 pain recorded in clinic.  
+- Group assignment:  
+  - Recorded by assistant and operator.  
+- Clinical data (not fully detailed in the excerpt but implicit):  
+  - Tooth location (anterior, premolar, molar).  
+  - Possibly other clinical characteristics (not shown here).
+
+Handling of missing data:  
+- Patients who continued further treatment in other clinics were lost to follow-up and excluded from analysis.  
+- No explicit imputation mentioned; analysis appears per-protocol from the flow chart.
+
+---
+
+TASK 2: STATISTICAL ANALYSIS PLAN
+
+I will structure the plan around the main aims: comparing postoperative pain incidence and intensity between sealers, while accounting for repeated measures and stratification by tooth type.
+
+CATEGORY A – MANDATORY TESTS
+
+A1. Descriptive statistics and baseline comparability
+
+- Test name:  
+  - Descriptive summaries + t-test / Mann–Whitney U test for continuous variables,  
+  - Chi-square test / Fisher’s exact test for categorical variables.
+
+- Purpose:  
+  - Summarize baseline characteristics and check for balance between sealer groups (Endoseal vs AH Plus), overall and within tooth-type strata.
+
+- Why appropriate (≥2 reasons):  
+  1) This is an RCT with modest sample size; assessing baseline comparability is critical to support internal validity and interpret treatment effects.  
+  2) VAS scores and age are continuous; sex, tooth type, and other categorical variables (if available) require different tests (t/Manh–Whitney for continuous; chi-square/Fisher for categorical).  
+
+- Why it may not be appropriate (≥1 reason):  
+  - With relatively small per-group sample sizes, parametric assumptions (normal distribution, equal variances) may be questionable; t-tests or chi-square may be underpowered or inaccurate.
+
+- When this test should NOT be used:  
+  - t-test: if distributions are heavily skewed or have extreme outliers and sample sizes are very small (e.g., <15 per group).  
+  - Chi-square test: when expected cell counts are <5 in >20% of cells.
+
+- Alternative if assumptions are violated:  
+  - For continuous variables: use Mann–Whitney U test (Wilcoxon rank-sum) instead of t-test.  
+  - For categorical variables with small counts: use Fisher’s exact test instead of chi-square.
+
+A2. Primary endpoint: Comparison of postoperative pain incidence at each time point
+
+- Test name:  
+  - Chi-square test or Fisher’s exact test for proportion with pain (Endoseal vs AH Plus) at each day (1–7) and pain condition (rest, biting).
+
+- Purpose:  
+  - Compare the proportion of patients experiencing any postoperative pain between sealers at specified time points (e.g., day 1, day 3, day 7).
+
+- Why appropriate (≥2 reasons):  
+  1) Incidence is a binary outcome (pain present vs absent); chi-square/Fisher tests are standard for comparing proportions between two independent groups.  
+  2) Groups are randomized and independent, and group sizes are moderate (n≈35 vs 32 overall), supporting use of these tests for daily incidence comparisons.
+
+- Why it may not be appropriate (≥1 reason):  
+  - Testing each day separately inflates type I error (multiple comparisons) and ignores the within-subject repeated structure over days.  
+  - Expected frequencies may be small on days with low pain incidence, undermining chi-square validity.
+
+- When this test should NOT be used:  
+  - When sample size per group is very small or event rate is very low (e.g., <5 events per cell).  
+  - As the sole analysis of incidence if a more holistic repeated-measures or longitudinal approach is planned (risk of multiplicity).
+
+- Alternative if assumptions are violated:  
+  - Fisher’s exact test for sparse data.  
+  - A repeated-measures logistic regression or generalized estimating equation (GEE) model (see B2) to model incidence across all days simultaneously.
+
+A3. Primary endpoint: Comparison of postoperative pain intensity as repeated VAS measures
+
+- Test name:  
+  - Linear mixed-effects model (LMM) for repeated measures, OR  
+  - Repeated-measures ANOVA (RM-ANOVA) if assumptions are met.
+
+- Purpose:  
+  - Evaluate differences in mean pain intensity (VAS) over time between sealers, accounting for repeated measurements within individuals and the time course.
+
+- Why appropriate (≥2 reasons):  
+  1) Pain is measured daily for 7 days in the same subject, generating correlated data; LMM / RM-ANOVA accounts for within-subject correlation.  
+  2) LMM can accommodate missing data under missing at random (e.g., missing some daily ratings) more flexibly than listwise deletion.  
+
+- Why it may not be appropriate (≥1 reason):  
+  - VAS scores may be skewed or show floor effects (many zeros); if distribution is strongly non-normal, linear models may be suboptimal.  
+  - With relatively small sample size and multiple time points, RM-ANOVA sphericity assumptions may be violated and hard to assess.
+
+- When this test should NOT be used:  
+  - RM-ANOVA: should not be used with substantial missing data or when sphericity is severely violated and corrections (Greenhouse–Geisser) result in very low df.  
+  - LMM: not appropriate if pain is best conceptualized as ordinal or zero-inflated and linearity is clearly violated.
+
+- Alternative if assumptions are violated:  
+  - Use a generalized linear mixed model (GLMM) with appropriate link (e.g., gamma or log-link for skewed distributions, or cumulative logit for ordinal categories).  
+  - Use nonparametric repeated-measures approaches (e.g., Friedman test for within-group time comparisons and Mann–Whitney on change scores at key time points), though less powerful and less comprehensive.
+
+A4. Comparison of summary pain intensity measures between groups
+
+To supplement repeated measures, one or two clinically meaningful summary metrics should be compared.
+
+- Test name:  
+  - Mann–Whitney U test (or t-test if assumptions met) on:  
+    - Maximum VAS over 7 days.  
+    - AUC (area under the VAS–time curve) over 7 days.
+
+- Purpose:  
+  - Provide simple, interpretable group comparisons that summarize pain trajectory into single patient-level measures.
+
+- Why appropriate (≥2 reasons):  
+  1) Reduces multiple repeated observations to a single summary, simplifying analysis and avoiding complex modeling.  
+  2) Mann–Whitney is robust for skewed distributions and small sample sizes; appropriate for VAS which may be non-normal and bounded.  
+
+- Why it may not be appropriate (≥1 reason):  
+  - Summaries (especially maximum VAS) can discard temporal information and obscure patterns (e.g., early vs late pain).  
+  - If data are very heavily tied at 0, rank-based methods may have limited discriminatory power.
+
+- When this test should NOT be used:  
+  - If important clinical questions hinge on the time course of pain rather than overall intensity (in that case, rely on LMM/GLMM).  
+  - If missing daily data preclude reliable computation of AUC or maximum.
+
+- Alternative if assumptions are violated:  
+  - For highly skewed AUC: a permutation test comparing medians or means between groups.  
+  - Transform AUC (e.g., log(AUC+1)) and use t-test if approximate normality achieved.
+
+A5. Adjustment for preoperative pain and tooth type (stratified or multivariable analysis)
+
+- Test name:  
+  - Linear mixed-effects model or ANCOVA with baseline covariates, including:  
+    - Preoperative VAS at rest and biting.  
+    - Tooth-type stratum (group 1 vs 2).  
+
+- Purpose:  
+  - Adjust for potential imbalances in preoperative pain and tooth type, which are known predictors of postoperative pain.
+
+- Why appropriate (≥2 reasons):  
+  1) Preoperative pain intensity is an established predictor of postoperative pain; including it improves precision and controls for residual confounding.  
+  2) The design stratified by tooth type; adjusting for stratum or testing sealer*tooth-type interaction respects randomization structure.
+
+- Why it may not be appropriate (≥1 reason):  
+  - If baseline differences are minimal and sample size is modest, multivariable models can overfit and reduce power.  
+
+- When this test should NOT be used:  
+  - If sample size is too small to support models with several covariates (rule of thumb: ≥10–15 subjects per parameter).  
+  - When there is extreme collinearity (e.g., if tooth type and another collected covariate are highly correlated).
+
+- Alternative if assumptions are violated:  
+  - Use stratified analyses: perform sealer comparisons separately within anterior/premolar and molar strata and possibly combine using a stratified test (e.g., Cochran–Mantel–Haenszel for binary endpoints, or stratified Wilcoxon tests for continuous outcomes).
+
+CATEGORY B – RECOMMENDED TESTS
+
+B1. Time-to-event analysis: time to pain resolution
+
+- Test name:  
+  - Kaplan–Meier curves + log-rank test;  
+  - Cox proportional hazards regression (adjusting for preoperative pain and tooth type).
+
+- Purpose:  
+  - Compare how quickly pain resolves in the two sealer groups, treating time to sustained zero pain as a survival endpoint.
+
+- Why appropriate (≥2 reasons):  
+  1) Time until pain resolution is clinically meaningful and uses all available information about duration of pain, not just intensity.  
+  2) Survival methods can handle censoring (e.g., if a patient is lost before pain resolution) and non-uniform follow-up within 7 days.  
+
+- Why it may not be appropriate (≥1 reason):  
+  - The follow-up window is short (7 days), and many patients may have pain resolved early, leading to heavy ties in event times.  
+  - Event definition (first day with VAS=0 that stays zero) may be sensitive to small fluctuations or missing data.
+
+- When this test should NOT be used:  
+  - If pain trajectories are too irregular or incomplete to define a clear resolution time.  
+  - If nearly all patients are pain-free by day 1–2, providing minimal variation.
+
+- Alternative if assumptions are violated:  
+  - Compare proportion pain-free at key time points (e.g., day 3, day 7) using chi-square/Fisher tests.  
+  - Use discrete-time survival models (e.g., complementary log–log models) if proportional hazards assumptions fail.
+
+B2. Longitudinal modeling of pain incidence (binary outcome over time)
+
+- Test name:  
+  - Generalized estimating equations (GEE) with logit link, or  
+  - Generalized linear mixed model (GLMM) for binary data.
+
+- Purpose:  
+  - Assess whether the odds of having pain over 7 days differ between sealers while accounting for repeated measurements and time trends.
+
+- Why appropriate (≥2 reasons):  
+  1) Accounts for within-subject correlation in daily incidence (yes/no) and allows testing of sealer effect, time effect, and their interaction.  
+  2) GEE focuses on population-average effects, which are useful for clinical interpretation in this context.  
+
+- Why it may not be appropriate (≥1 reason):  
+  - With a small sample (n=67) and potentially low daily incidence on later days, convergence and precision may be limited.  
+  - Model complexity may be disproportionate to available data.
+
+- When this test should NOT be used:  
+  - When sample size is too low to fit stable models (e.g., extremely sparse events in later days).  
+  - When missingness is substantial and non-random, jeopardizing model validity.
+
+- Alternative if assumptions are violated:  
+  - Use simpler repeated cross-sectional comparisons at selected days (e.g., day 1 and day 7) with chi-square/Fisher tests and adjust for multiplicity.  
+  - Use LMM on transformed VAS (e.g., log(VAS+1)) instead of binary incidence.
+
+B3. Tooth-type subgroup analyses and interaction testing
+
+- Test name:  
+  - Interaction term in regression models (e.g., sealer*tooth-type in LMM or logistic regression).  
+  - Stratified analysis: separate comparisons in group 1 and group 2.
+
+- Purpose:  
+  - Investigate whether the effect of sealer on postoperative pain differs between anterior/premolar vs molar teeth.
+
+- Why appropriate (≥2 reasons):  
+  1) Randomization was stratified by tooth type; it is reasonable to explore effect modification by this stratification factor.  
+  2) Anatomical and procedural differences between molars and anterior/premolars could plausibly affect pain and response to sealers.  
+
+- Why it may not be appropriate (≥1 reason):  
+  - Sample size per stratum and per sealer is small (e.g., n=17 vs 15 in group 1; n=18 vs 17 in group 2), limiting power for interaction detection and making estimates unstable.
+
+- When this test should NOT be used:  
+  - When the goal is purely confirmatory and sample size does not support formal interaction testing (risk of false negatives or overinterpretation).  
+
+- Alternative if assumptions are violated:  
+  - Present stratified descriptive statistics and effect estimates with wide confidence intervals, interpret cautiously as exploratory.  
+  - Use Bayesian shrinkage models to partially pool estimates if sophisticated modeling is possible.
+
+B4. Modeling intensity with baseline adjustment and covariates
+
+- Test name:  
+  - ANCOVA at key time points (e.g., day 1, day 7 VAS) adjusting for baseline pain, using linear regression or nonparametric ANCOVA.
+
+- Purpose:  
+  - Provide adjusted estimates of treatment effect at clinically relevant days accounting for preoperative pain.
+
+- Why appropriate (≥2 reasons):  
+  1) Common, interpretable method for comparing groups while controlling for baseline covariates.  
+  2) Improves precision vs unadjusted comparisons and corrects any residual imbalance in baseline pain.
+
+- Why it may not be appropriate (≥1 reason):  
+  - Treating VAS as normally distributed may be inaccurate if data are heavily skewed or ordinal; with small sample sizes, linear ANCOVA may misrepresent uncertainty.
+
+- When this test should NOT be used:  
+  - If VAS is extremely non-normal (e.g., many zeros and a few high values) and transformations do not help.  
+
+- Alternative if assumptions are violated:  
+  - Use rank-based ANCOVA (e.g., van Elteren test stratified by covariate categories) or robust regression methods.
+
+CATEGORY C – OPTIONAL (SUPPLEMENTARY) ANALYSES
+
+C1. Responder analysis
+
+- Test name:  
+  - Chi-square/Fisher’s exact test comparing proportion of “responders,” e.g.:  
+    - Patients with maximum VAS ≤ 2 over 7 days; or  
+    - Patients with ≥50% reduction from baseline preoperative VAS.
+
+- Purpose:  
+  - Provide binary responder outcomes easily interpretable by clinicians and patients.
+
+- Why appropriate (≥2 reasons):  
+  1) Reflects clinically meaningful improvement thresholds rather than small mean differences.  
+  2) Particularly useful when VAS distributions are skewed or ceiling/floor effects occur.
+
+- Why it may not be appropriate (≥1 reason):  
+  - Dichotomization leads to loss of information and reduced statistical power.  
+  - Threshold choice is somewhat arbitrary.
+
+- When this test should NOT be used:  
+  - As the sole primary analysis; it should remain supplementary.  
+
+- Alternative if assumptions are violated:  
+  - Use ordinal logistic models with multiple categories (none/mild/moderate/severe) instead of dichotomizing.
+
+C2. Nonparametric repeated-measures comparisons
+
+- Test name:  
+  - Friedman test within each group for change over time, and  
+  - Mann–Whitney tests on change scores (e.g., day 1–baseline, day 7–baseline) between groups.
+
+- Purpose:  
+  - Provide assumption-light checks on time trends and between-group differences.
+
+- Why appropriate (≥2 reasons):  
+  1) Does not assume normality and can handle ordinal VAS interpretations.  
+  2) Useful as a robustness check if parametric repeated-measures models yield borderline results.
+
+- Why it may not be appropriate (≥1 reason):  
+  - Cannot easily incorporate covariates (baseline pain, tooth type) or handle unequal time spacing and missing data.  
+
+- When this test should NOT be used:  
+  - As the primary approach in a confirmatory RCT when more informative models (LMM/GLMM) are feasible.  
+
+- Alternative if assumptions are violated:  
+  - Use permutation-based repeated-measures tests.
+
+C3. Sensitivity analyses for missing data
+
+- Test name:  
+  - Best-case / worst-case imputation scenarios;  
+  - Multiple imputation for missing daily VAS if missing within the 7 days;  
+  - Complete-case vs imputed analysis comparisons.
+
+- Purpose:  
+  - Assess robustness of results to different assumptions about missing pain data.
+
+- Why appropriate (≥2 reasons):  
+  1) Several participants were lost to follow-up; though they were excluded from analysis, sensitivity analyses help understand potential bias.  
+  2) Missingness may correlate with pain (e.g., patients with severe pain seek treatment elsewhere); explicitly exploring this increases credibility.
+
+- Why it may not be appropriate (≥1 reason):  
+  - Implementing multiple imputation for small samples and complex longitudinal structure may be technically demanding and yield unstable imputations.
+
+- When this test should NOT be used:  
+  - If missing data are minimal within analyzed sample (most missingness is due to pre-7-day dropout already excluded).  
+
+- Alternative if assumptions are violated:  
+  - Perform qualitative bias analysis: discuss plausible directions/magnitudes of bias rather than formal MI.
+
+---
+
+TASK 3: INAPPROPRIATE TESTS FOR THIS STUDY
+
+T1. Independent-samples t-test on daily VAS without accounting for repeated measures (for all days simultaneously)
+
+- Why inappropriate:  
+  - Ignores the within-subject correlation across days; inflated type I error and incorrect standard errors.  
+  - Treating all daily observations as independent heavily violates data structure.
+
+- Prefer:  
+  - Linear mixed-effects model or RM-ANOVA for repeated measures; or per-day tests with acknowledgment of multiplicity.
+
+T2. Paired t-test between groups (Endoseal vs AH Plus)
+
+- Why inappropriate:  
+  - Groups are independent, not paired; paired t-tests assume within-subject pairing (e.g., split-mouth design), which this study does not have.
+
+- Prefer:  
+  - Independent t-test (or Mann–Whitney) for between-group comparisons.
+
+T3. One-way ANOVA across multiple days treating “day” as independent group
+
+- Why inappropriate:  
+  - Days are repeated within the same patient, not independent groups; violates the independence assumption of standard one-way ANOVA.
+
+- Prefer:  
+  - RM-ANOVA or mixed models.
+
+T4. Pearson correlation used to infer group differences
+
+- Why inappropriate:  
+  - Correlation is for association between two continuous variables, not for direct group comparison; using correlation coefficients to infer sealer differences would be conceptually incorrect.
+
+- Prefer:  
+  - Group comparison tests (t-test, Mann–Whitney, mixed models).
+
+T5. Simple linear regression of postoperative pain on sealer type ignoring baseline and repeated measures
+
+- Why inappropriate:  
+  - Does not account for repeated measures or baseline pain; residuals will be correlated and model mis-specified.  
+
+- Prefer:  
+  - Mixed models (for repeated measures) and ANCOVA (with baseline pain) as specified above.
+
+T6. Using parametric tests on VAS without checking assumptions in this small sample
+
+- Why inappropriate:  
+  - VAS may be skewed or heavily zero-inflated; blindly applying parametric tests can lead to misleading inferences.
+
+- Prefer:  
+  - At minimum, inspect distributions and use nonparametric or transformed methods if needed.
+
+---
+
+TASK 4: SUMMARY – OVERALL ANALYTICAL APPROACH
+
+- The study is a stratified, single-blind RCT comparing Endoseal MTA vs AH Plus on postoperative pain incidence and intensity after nonsurgical root canal treatment.  
+- Pain is measured repeatedly via VAS (rest and biting) daily for 7 days, yielding longitudinal continuous and binary (incidence) outcomes.  
+- The core analysis should therefore:  
+  - Use mixed-effects or repeated-measures methods to account for within-subject correlation over time.  
+  - Compare sealer groups on both pain intensity (VAS) and incidence (presence/absence) while examining time effects and potential sealer*time interactions.  
+  - Adjust for important covariates (preoperative pain, tooth-type stratum), at least in sensitivity/confirmatory analyses.  
+  - Provide simpler summaries (e.g., maximum pain, AUC, proportion with pain at key days) to support interpretability and corroborate model-based findings.  
+
+This combination of repeated-measures modeling, baseline-adjusted comparisons, and carefully chosen descriptive and inferential statistics will make the analysis statistically valid, clinically interpretable, and aligned with the randomized design and research question.

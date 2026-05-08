@@ -1,0 +1,127 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_IEJ-16-210.pdf
+Status : ok
+Time   : 20260508_131220
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Double-blind randomized clinical trial.
+2. **Objective**: To evaluate the effect of adding clonidine to articaine/epinephrine on post-operative pain relief in patients with irreversible pulpitis.
+3. **Groups**:
+   - **Case Group**: Received 0.2 mL clonidine (30 µg) + 1.8 mL 4% articaine with 1:100,000 epinephrine.
+   - **Control Group**: Received 0.2 mL distilled water + 1.8 mL 4% articaine with 1:100,000 epinephrine.
+4. **Sample Size**:
+   - Total: 100 patients (50 per group).
+   - Excluded: 5 patients during eligibility screening.
+   - Final analysis: 98 patients (49 per group after exclusions due to failed blocks or analgesic consumption).
+5. **Variables**:
+   - **Primary Outcome**: Post-operative pain intensity measured using the Heft-Parker Visual Analog Scale (VAS) at 6, 12, 24, 48, and 72 hours.
+   - **Secondary Outcomes**: Adverse effects (nausea, vomiting, dizziness, drowsiness, headache), analgesic consumption, and blood pressure/heart rate changes.
+6. **Measurements**:
+   - Pain intensity: VAS categorized into no pain (0 mm), mild pain (>0 mm to ≤54 mm), moderate pain (>54 mm to <114 mm), and severe pain (≥114 mm).
+   - Blood pressure and heart rate: Measured before and 5 minutes after anesthetic administration.
+   - Adverse effects: Self-reported via phone/text follow-ups.
+7. **Data Collection Methods**:
+   - Pain assessment: VAS at multiple time points (6, 12, 24, 48, and 72 hours).
+   - Adverse effects and analgesic consumption: Follow-up phone calls/text messages.
+   - Randomization: Dice roll (odd/even) to allocate patients to groups.
+   - Double-blinding: Anesthetic solutions prepared and encoded by a third party; both patients and investigators were blinded.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Independent Samples t-test (or Mann-Whitney U test if non-normal distribution).
+   - **Purpose**: Compare mean post-operative pain scores between the case and control groups at each time point.
+   - **Why Appropriate**:
+     - The study involves two independent groups (case and control).
+     - Pain scores are continuous variables suitable for parametric or non-parametric analysis.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normality and homogeneity of variance; may be violated.
+   - **When NOT to Use**: If pain scores are heavily skewed or sample sizes are unequal.
+   - **Alternative**: Mann-Whitney U test for non-parametric data.
+
+2. **Test Name**: Repeated Measures ANOVA (or Friedman test if non-normal distribution).
+   - **Purpose**: Assess changes in pain scores over time within each group.
+   - **Why Appropriate**:
+     - Pain scores are measured at multiple time points (6, 12, 24, 48, and 72 hours).
+     - Suitable for within-group comparisons of continuous data.
+   - **Why It May Not Be Appropriate**:
+     - Assumes sphericity; may be violated.
+   - **When NOT to Use**: If data are non-normal or sphericity assumption fails.
+   - **Alternative**: Friedman test for non-parametric data.
+
+3. **Test Name**: Chi-Square Test (or Fisher’s Exact Test for small sample sizes).
+   - **Purpose**: Compare categorical variables (e.g., adverse effects) between groups.
+   - **Why Appropriate**:
+     - Adverse effects are categorical (presence/absence).
+     - Suitable for comparing proportions between independent groups.
+   - **Why It May Not Be Appropriate**:
+     - Small sample sizes may lead to inaccurate results.
+   - **When NOT to Use**: If expected cell counts are <5.
+   - **Alternative**: Fisher’s Exact Test.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Mixed-Effects Model.
+   - **Purpose**: Analyze pain scores over time while accounting for repeated measures and group effects.
+   - **Why Appropriate**:
+     - Accounts for both within-subject (time) and between-subject (group) variability.
+     - Handles missing data effectively.
+   - **Why It May Not Be Appropriate**:
+     - Requires advanced statistical software and expertise.
+   - **When NOT to Use**: If data collection is incomplete or assumptions of linearity fail.
+   - **Alternative**: Generalized Estimating Equations (GEE).
+
+2. **Test Name**: Logistic Regression.
+   - **Purpose**: Assess predictors of adverse effects (binary outcome).
+   - **Why Appropriate**:
+     - Suitable for binary outcomes (presence/absence of adverse effects).
+     - Can include covariates (e.g., age, gender).
+   - **Why It May Not Be Appropriate**:
+     - Requires large sample size for reliable estimates.
+   - **When NOT to Use**: If adverse effects are rare (<10% prevalence).
+   - **Alternative**: Exact Logistic Regression.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Kaplan-Meier Survival Analysis.
+   - **Purpose**: Evaluate time to pain resolution (VAS = 0 mm) in each group.
+   - **Why Appropriate**:
+     - Suitable for time-to-event data.
+     - Provides insights into pain resolution trends.
+   - **Why It May Not Be Appropriate**:
+     - Pain resolution may not be consistently reported.
+   - **When NOT to Use**: If censoring is excessive or data are incomplete.
+   - **Alternative**: Cox Proportional Hazards Model.
+
+2. **Test Name**: Subgroup Analysis (e.g., stratified by age or gender).
+   - **Purpose**: Explore differences in outcomes within demographic subgroups.
+   - **Why Appropriate**:
+     - Provides deeper insights into potential effect modifiers.
+     - Useful for hypothesis generation.
+   - **Why It May Not Be Appropriate**:
+     - Reduces statistical power due to smaller sample sizes.
+   - **When NOT to Use**: If subgroup sizes are too small (<10 per group).
+   - **Alternative**: Pooling subgroups or meta-regression.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: Paired Samples t-test.
+   - **Why NOT Appropriate**: The study involves independent groups, not paired data.
+2. **Test Name**: One-Way ANOVA.
+   - **Why NOT Appropriate**: Only two groups are compared, making this test redundant.
+3. **Test Name**: Pearson Correlation.
+   - **Why NOT Appropriate**: Correlation does not assess group differences or time effects.
+
+---
+
+### TASK 4: SUMMARY
+The statistical analysis plan combines robust mandatory tests to address primary objectives (pain intensity comparison and adverse effects) with recommended and optional tests to enhance rigor and provide supplementary insights. Mixed-effects models and survival analyses are recommended for their ability to handle repeated measures and time-to-event data. The plan avoids inappropriate tests that do not align with the study design or data structure. Overall, this approach ensures a comprehensive evaluation of the intervention’s efficacy and safety.

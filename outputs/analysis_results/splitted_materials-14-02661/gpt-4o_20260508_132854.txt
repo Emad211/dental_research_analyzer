@@ -1,0 +1,134 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_materials-14-02661.pdf
+Status : ok
+Time   : 20260508_132854
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Single-blind, randomized controlled clinical trial.
+2. **Objective**: To compare the effects of Endoseal MTA (bioceramic sealer) and AH Plus (resin-based sealer) on the incidence and intensity of postoperative pain after nonsurgical root canal treatment.
+3. **Groups**:
+   - Group 1 (Anterior teeth/premolars): Subgroups 1En (Endoseal MTA) and 1AH (AH Plus).
+   - Group 2 (Molars): Subgroups 2En (Endoseal MTA) and 2AH (AH Plus).
+4. **Sample Size**:
+   - Total enrolled: 108 patients.
+   - Group 1: 41 randomized (22 to Endoseal MTA, 19 to AH Plus); analyzed: 17 (Endoseal MTA) and 15 (AH Plus).
+   - Group 2: 47 randomized (24 to Endoseal MTA, 23 to AH Plus); analyzed: 18 (Endoseal MTA) and 17 (AH Plus).
+5. **Variables**:
+   - **Primary Outcome**: Postoperative pain intensity (VAS scores) at rest and while biting over 7 days.
+   - **Secondary Outcome**: Incidence of postoperative pain.
+   - **Covariates**: Preoperative pain intensity, tooth type (anterior/premolar vs molar), obturation technique (single-cone vs continuous-wave), and patient demographics (age, gender).
+6. **Measurements**:
+   - Pain intensity: Visual Analog Scale (VAS) scores (0–10 scale).
+   - Pain assessment: Preoperative (baseline) and postoperative (daily for 7 days).
+7. **Data Collection Methods**:
+   - Randomization: Block randomization.
+   - Pain assessment: Self-reported VAS scores recorded daily and at the 7-day recall visit.
+   - Treatment standardization: Single practitioner performed all procedures.
+   - Follow-up: Recall visit on day 7.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Independent Samples t-Test (or Mann-Whitney U Test if assumptions are violated)
+   - **Purpose**: Compare mean VAS pain scores between Endoseal MTA and AH Plus groups.
+   - **Why Appropriate**:
+     - The study aims to compare pain intensity between two independent groups.
+     - VAS scores are continuous variables suitable for parametric or non-parametric comparison.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normality and homogeneity of variance, which may not hold for VAS scores.
+   - **When This Test Should NOT Be Used**:
+     - If VAS scores are highly skewed or sample sizes are small.
+   - **Alternative**: Mann-Whitney U Test (non-parametric).
+
+2. **Test Name**: Chi-Square Test (or Fisher’s Exact Test)
+   - **Purpose**: Compare the incidence of postoperative pain between groups.
+   - **Why Appropriate**:
+     - Incidence is a categorical variable (presence/absence of pain).
+     - Suitable for analyzing proportions in independent groups.
+   - **Why It May Not Be Appropriate**:
+     - Requires sufficient sample size in each cell; may be inappropriate for small subgroups.
+   - **When This Test Should NOT Be Used**:
+     - If expected frequencies in any cell are <5.
+   - **Alternative**: Fisher’s Exact Test.
+
+3. **Test Name**: Repeated Measures ANOVA (or Friedman Test if assumptions are violated)
+   - **Purpose**: Analyze changes in VAS scores over time (days 1–7) within and between groups.
+   - **Why Appropriate**:
+     - Accounts for repeated measurements of pain intensity over time.
+     - Suitable for comparing trends between groups.
+   - **Why It May Not Be Appropriate**:
+     - Assumes sphericity and normality of residuals.
+   - **When This Test Should NOT Be Used**:
+     - If data violates sphericity or normality assumptions.
+   - **Alternative**: Friedman Test (non-parametric).
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Mixed-Effects Model
+   - **Purpose**: Account for both fixed effects (group, time) and random effects (patient variability).
+   - **Why Appropriate**:
+     - Handles unbalanced data due to dropouts.
+     - Accounts for repeated measures and inter-patient variability.
+   - **Why It May Not Be Appropriate**:
+     - Requires advanced statistical software and expertise.
+   - **When This Test Should NOT Be Used**:
+     - If sample size is insufficient for model convergence.
+   - **Alternative**: Repeated Measures ANOVA.
+
+2. **Test Name**: Logistic Regression
+   - **Purpose**: Assess predictors of postoperative pain incidence (categorical outcome).
+   - **Why Appropriate**:
+     - Allows adjustment for covariates (e.g., preoperative pain, tooth type).
+     - Suitable for binary outcomes.
+   - **Why It May Not Be Appropriate**:
+     - Requires sufficient events per predictor variable.
+   - **When This Test Should NOT Be Used**:
+     - If sample size is insufficient for reliable estimates.
+   - **Alternative**: Chi-Square Test with stratification.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Subgroup Analysis (e.g., stratified t-tests or ANOVA)
+   - **Purpose**: Explore differences within subgroups (e.g., anterior/premolar vs molar).
+   - **Why Appropriate**:
+     - Provides insights into subgroup-specific effects.
+     - May reveal differential effects of sealers by tooth type.
+   - **Why It May Not Be Appropriate**:
+     - Reduces statistical power due to smaller subgroup sample sizes.
+   - **When This Test Should NOT Be Used**:
+     - If subgroup sample sizes are too small.
+   - **Alternative**: Pooled analysis with interaction terms.
+
+2. **Test Name**: Correlation Analysis (e.g., Spearman’s Rank Correlation)
+   - **Purpose**: Assess relationship between preoperative pain and postoperative pain intensity.
+   - **Why Appropriate**:
+     - Explores potential predictors of postoperative pain.
+     - Suitable for ordinal or non-normally distributed data.
+   - **Why It May Not Be Appropriate**:
+     - Does not account for confounding variables.
+   - **When This Test Should NOT Be Used**:
+     - If data is dichotomized (presence/absence of pain).
+   - **Alternative**: Logistic Regression.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: Paired t-Test
+   - **Why Inappropriate**: Groups are independent, not paired.
+2. **Test Name**: One-Way ANOVA
+   - **Why Inappropriate**: Does not account for repeated measures or time effects.
+3. **Test Name**: Kaplan-Meier Survival Analysis
+   - **Why Inappropriate**: Not relevant for pain intensity or incidence outcomes.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach is designed to address the primary and secondary objectives of the study while accounting for the study design and data structure. Mandatory tests focus on group comparisons for pain intensity and incidence, while recommended and optional tests enhance rigor and provide supplementary insights. The plan ensures robustness by incorporating alternatives for assumption violations and avoids inappropriate tests that could lead to misleading conclusions.

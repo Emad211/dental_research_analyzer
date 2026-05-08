@@ -1,0 +1,1035 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splittd_JOCPD45.3.3.pdf
+Time : 20260508_130020
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1: INFORMATION EXTRACTION (Study characteristics)
+
+### Study identification
+- **Title/Topic:** Comparative evaluation of indirect pulp therapy (IPT) agents in young permanent teeth.
+- **Design:** **Randomized clinical trial**, parallel **3-arm**.
+- **Setting/period:** Department of Pediatric and Preventive Dentistry; **Dec 2016–May 2019**.
+- **Registration/ethics:** CTRI/2018/02/014782; IRB approval ITSCDSR/L/2018/136.
+- **Blinding:** Described as “double blinded,” but operationally:
+  - **Participant blinded** to material.
+  - **Operator not blinded** (different handling).
+  - **Outcome assessor blinded** to material.
+
+### Objective
+- **Primary aim:** Evaluate and compare **Biodentine**, **TheraCal LC**, and **Dycal** as **indirect pulp therapy liners** in young permanent molars with deep caries.
+
+### Participants / sampling frame
+- **Population:** Children **7–15 years** with ≥1 deeply carious **permanent molar** (young permanent teeth with **open apices**).
+- **Clinical pre-op characteristics:** sensitivity to cold and pain on mastication; deep dentinal caries approaching pulp without anticipated exposure.
+- **Eligibility (key points):**
+  - Permanent posterior teeth, deep dentinal caries **ICDAS 5–6**
+  - **Open apices**
+  - Radiographic caries depth **>70% / ≥2/3 dentin thickness**
+  - **No** periapical pathology, internal/external resorption, pulp calcification
+
+### Unit of randomization and analysis implications
+- **Randomization performed per tooth**: if a child had >1 eligible tooth, each tooth was randomized separately.
+- Therefore: **clustered data** possible (multiple teeth within a child) → requires methods accounting for **intra-patient correlation**.
+
+### Interventions (3 groups)
+- **Group 1:** Biodentine (Septodont)
+- **Group 2:** TheraCal LC (Bisco)
+- **Group 3:** Dycal (Dentsply Caulk)
+
+### Clinical procedure (standardized)
+- Baseline cold pulp test using Endo Frost (−50°C) cotton pellet on buccal surface.
+- Caries excavation: remove enamel caries (bur #330), remove soft infected dentin with spoon excavator; stop at hard/affected dentin to avoid exposure.
+- Irrigation: **1% NaOCl every 3 minutes**.
+- **Exclusion during treatment:** accidental pulp exposure → excluded.
+- Liner placed per random assignment; restoration with **GIC base + resin composite** bulk.
+
+### Follow-up and outcomes
+- **Follow-up times:** **3 weeks, 3, 6, 12, 18, 24 months**.
+- **Outcome definition:** IPT result classified as **Success vs Failure** using:
+
+**Clinical (primary) success/failure criteria**
+- Postoperative pain
+- Sensitivity to palpation/percussion
+- Mobility
+- Soft tissue inflammation / sinus tract / fistula
+
+**Radiographic (secondary) criteria**
+- External/internal resorption
+- PDL widening
+- Periapical involvement
+- Root apex development (continued)
+
+**Radiograph standardization:** same settings, contrast/brightness, paralleling technique.
+
+### Sample size and realized sample
+- **Planned:** minimum 45 (15/group) based on α=0.05, power=80%, 10% outcome difference, 10% dropout.
+- **Enrolled:** increased to **60 teeth** (20/group).
+- **Loss to follow-up:** 2 teeth per group (10% each) → **final = 54 teeth**.
+- **Patients:** 49 children (23 male, 26 female); mean age 12.36±2.29.
+- Tooth location: 17 mandibular (33.3%), 37 maxillary (66.7%).
+
+### Examiner reliability
+- “Inter examiner agreement” reported: **0.91 baseline**, **0.94 final** (excellent). (Statistic not specified; likely kappa/ICC; p<0.05 reported.)
+
+---
+
+## TASK 2: STATISTICAL ANALYSIS PLAN
+
+### General principles (before listing tests)
+- **Analysis set:** Prefer **intention-to-treat (ITT)** at the tooth level (all randomized teeth), with sensitivity **per-protocol** excluding major protocol deviations (e.g., pulp exposures excluded at time of procedure—note this is post-randomization exclusion risk).
+- **Clustering:** Because randomization could assign multiple teeth per child, analyses comparing groups should use **cluster-robust methods** or **mixed models/GEE**.
+- **Repeated follow-up:** Outcomes assessed at multiple times; consider:
+  - Primary endpoint at **24 months** (binary success/failure), plus
+  - Longitudinal trajectory / time-to-failure as secondary.
+- **Multiplicity:** If performing pairwise comparisons among 3 groups, control family-wise error (e.g., Holm) or report adjusted p-values.
+- **Missing data:** 10% LTFU per group. Use approaches appropriate for binary longitudinal outcomes (multiple imputation / inverse probability weighting / sensitivity “worst-case” bounds).
+
+---
+
+### CATEGORY A – MANDATORY tests (core to answer the trial question)
+
+#### A1) Baseline comparability across groups (descriptive + appropriate tests)
+- **Test name:** Chi-square test / Fisher’s exact test (categorical); ANOVA or Kruskal–Wallis (continuous)
+- **Purpose:** Describe and check **baseline balance** across randomized groups (age, sex, arch, tooth type if available, baseline symptoms).
+- **Why appropriate:**
+  1. RCT reporting standards require baseline summary by arm.
+  2. Helps identify major chance imbalances that may motivate adjusted analyses.
+- **Why it may not be appropriate:**
+  - Significance testing baseline variables is not required and may be misleading (randomization already justifies exchangeability).
+- **When NOT to use:**
+  - As a gatekeeper to decide whether adjustment is “allowed.”
+- **Alternative if assumptions violated:**
+  - For sparse tables use **Fisher’s exact**; for non-normal continuous variables use **Kruskal–Wallis**.
+
+#### A2) Primary efficacy comparison at 24 months (binary outcome: success/failure)
+- **Test name:** **Log-binomial regression** (or **modified Poisson with robust SE**) with **cluster-robust standard errors** (patient as cluster)
+- **Purpose:** Compare **risk of success (or failure)** at 24 months among 3 materials; estimate **Risk Ratios (RR)** with 95% CI.
+- **Why appropriate:**
+  1. Outcome is **binary** at a fixed timepoint (24 months).
+  2. RR is clinically interpretable; robust SE handles mild model misspecification and clustering by patient.
+- **Why it may not be appropriate:**
+  - Log-binomial may have convergence issues; modified Poisson can overestimate variance if extremely small samples.
+- **When NOT to use:**
+  - If endpoint is time-to-event with censoring as the primary estimand (then survival analysis is preferable).
+- **Alternative if assumptions violated:**
+  - **GEE (binomial, log link)** for clustered binary; or **logistic regression with cluster-robust SE** (yields OR).
+
+#### A3) Overall 3-arm hypothesis test for primary endpoint
+- **Test name:** **Wald test / Likelihood Ratio Test** for treatment effect in regression model
+- **Purpose:** Global test of any difference among the 3 groups at 24 months.
+- **Why appropriate:**
+  1. Directly addresses “any material differs” before pairwise contrasts.
+  2. Compatible with adjusted/clustered modeling framework.
+- **Why it may not be appropriate:**
+  - With small samples, asymptotic p-values may be inaccurate.
+- **When NOT to use:**
+  - If sample sizes are extremely small with separation; consider exact methods.
+- **Alternative if assumptions violated:**
+  - **Permutation test** at cluster level (patient) or **exact** methods (limited feasibility with clustering).
+
+#### A4) Pairwise comparisons among materials (if global test suggests differences)
+- **Test name:** Model-based contrasts + **multiplicity adjustment** (Holm/Bonferroni)
+- **Purpose:** Identify which pairs differ (Biodentine vs TheraCal, Biodentine vs Dycal, TheraCal vs Dycal).
+- **Why appropriate:**
+  1. Three-arm trials typically require pairwise estimates for clinical interpretation.
+  2. Adjustment controls inflated type I error from multiple testing.
+- **Why it may not be appropriate:**
+  - Overly conservative adjustments can reduce power in small trials.
+- **When NOT to use:**
+  - If only one pre-specified primary comparison exists (not stated here).
+- **Alternative if assumptions violated:**
+  - Report **confidence intervals** emphasizing estimation; or use **Tukey-type** adjustments for multiple contrasts.
+
+---
+
+### CATEGORY B – RECOMMENDED tests (improves rigor/interpretability)
+
+#### B1) Longitudinal analysis of success/failure over all follow-ups
+- **Test name:** **GEE logistic regression** (or GEE with log link) with **time**, **treatment**, and **treatment×time**; cluster = patient; repeated = tooth-within-patient over time
+- **Purpose:** Use all repeated outcome measurements to compare patterns over time and account for within-tooth correlation.
+- **Why appropriate:**
+  1. Outcomes measured at 6 timepoints; avoids discarding intermediate data.
+  2. GEE provides population-averaged effects; robust to correlation misspecification.
+- **Why it may not be appropriate:**
+  - Complex correlation structure (time within tooth within patient) may be hard to specify with sparse data.
+- **When NOT to use:**
+  - If the only clinically meaningful endpoint is final 24-month success and intermediate outcomes are not comparable.
+- **Alternative if assumptions violated:**
+  - **Mixed-effects logistic regression** with random intercepts for patient and tooth; or simplify to survival analysis.
+
+#### B2) Time-to-failure analysis (accounts for censoring due to LTFU)
+- **Test name:** **Kaplan–Meier curves** + **log-rank test**; and **Cox proportional hazards model** with **shared frailty** (patient) or cluster-robust SE
+- **Purpose:** Compare **time until failure** (first occurrence of failure) among groups; estimate hazard ratios.
+- **Why appropriate:**
+  1. Handles **right-censoring** (dropouts before 24 months).
+  2. Uses timing of failures, not just whether failure occurred by 24 months.
+- **Why it may not be appropriate:**
+  - Failure time may be **interval-censored** (detected only at visits), not exact.
+- **When NOT to use:**
+  - If exact event times are unknown and interval censoring is substantial but ignored.
+- **Alternative if assumptions violated:**
+  - **Discrete-time survival model** (complementary log-log with visit intervals) or **interval-censored survival models**.
+
+#### B3) Adjusted primary analysis (covariate adjustment)
+- **Test name:** Multivariable regression (modified Poisson/logistic) adjusting for **age**, **sex**, **arch (max/mand)**, baseline symptoms, caries depth proxy if available
+- **Purpose:** Improve precision and address any chance imbalance.
+- **Why appropriate:**
+  1. Covariate adjustment in RCTs can increase power/precision.
+  2. Clinically plausible predictors (arch, age) may affect healing/apex development.
+- **Why it may not be appropriate:**
+  - Overfitting risk with small sample and few events.
+- **When NOT to use:**
+  - If events are too few (rule-of-thumb limitations) or covariates are post-randomization.
+- **Alternative if assumptions violated:**
+  - **Penalized regression** (Firth logistic) or pre-specify a minimal adjustment set.
+
+#### B4) Analysis of radiographic apex development (if coded ordinal/binary)
+- **Test name:** **Ordinal logistic regression** (proportional odds) or binary regression, with clustering
+- **Purpose:** Compare continued root development across groups.
+- **Why appropriate:**
+  1. Radiographic endpoint is clinically important in young teeth.
+  2. Regression handles covariates and clustering.
+- **Why it may not be appropriate:**
+  - If apex development is not measured on a validated scale or has poor reliability.
+- **When NOT to use:**
+  - If outcome is continuous but forced into arbitrary categories.
+- **Alternative if assumptions violated:**
+  - **Nonparametric trend tests** or **generalized ordered logit** if proportional odds violated.
+
+#### B5) Inter-examiner reliability (reported; should be clearly analyzed)
+- **Test name:** **Cohen’s kappa** (binary/nominal) or **weighted kappa** (ordinal); **ICC** if continuous
+- **Purpose:** Quantify agreement between examiners on clinical/radiographic outcomes.
+- **Why appropriate:**
+  1. Outcomes include judgment-based radiographic signs; reliability supports validity.
+  2. Kappa/ICC are standard agreement metrics beyond raw agreement.
+- **Why it may not be appropriate:**
+  - Kappa is sensitive to outcome prevalence (can be low despite high agreement).
+- **When NOT to use:**
+  - When categories are extremely imbalanced; interpret with caution.
+- **Alternative if assumptions violated:**
+  - **Gwet’s AC1/AC2** for prevalence paradox; report percent agreement with CIs.
+
+---
+
+### CATEGORY C – OPTIONAL tests (supplementary insights)
+
+#### C1) Sensitivity analyses for missing outcomes (LTFU)
+- **Test name:** Best–worst / worst–best case bounds; **multiple imputation** for binary; **inverse probability of censoring weights (IPCW)**
+- **Purpose:** Assess robustness of conclusions to missing follow-up.
+- **Why appropriate:**
+  1. 10% attrition could bias results if not MCAR.
+  2. Provides transparency on how much missingness could change inference.
+- **Why it may not be appropriate:**
+  - MI requires correct model; bounds can be overly pessimistic.
+- **When NOT to use:**
+  - If missingness is negligible or fully explained and addressed by design.
+- **Alternative if assumptions violated:**
+  - Prefer **IPCW** if dropout depends on observed history.
+
+#### C2) Subgroup/interaction analyses (pre-specified only)
+- **Test name:** Treatment×subgroup interaction in regression (e.g., arch, age group)
+- **Purpose:** Explore effect modification (e.g., maxillary vs mandibular).
+- **Why appropriate:**
+  1. Biological plausibility that location/root development differs.
+  2. Helps tailor clinical recommendations.
+- **Why it may not be appropriate:**
+  - Underpowered; high false-positive risk.
+- **When NOT to use:**
+  - Post hoc “data dredging.”
+- **Alternative if assumptions violated:**
+  - Report descriptive subgroup estimates without inferential claims.
+
+#### C3) Number needed to treat (NNT)
+- **Test name:** NNT derived from absolute risk difference at 24 months with CI
+- **Purpose:** Clinical interpretability of benefit versus Dycal.
+- **Why appropriate:**
+  1. Communicates magnitude in practice-friendly terms.
+  2. Based directly on primary endpoint.
+- **Why it may not be appropriate:**
+  - Unstable with small samples; wide CIs.
+- **When NOT to use:**
+  - If risk difference crosses 0 substantially.
+- **Alternative if assumptions violated:**
+  - Emphasize RR/ARD with CI rather than NNT.
+
+---
+
+## TASK 3: INAPPROPRIATE TESTS (should NOT be used)
+
+1. **Independent-samples t-test / one-way ANOVA on “success/failure” coded 0/1**
+   - Why inappropriate: binary outcome violates normality/variance assumptions; yields misleading inference.
+
+2. **Multiple separate chi-square tests at each follow-up without accounting for repeated measures**
+   - Why inappropriate: ignores within-tooth correlation over time and inflates type I error (multiple testing).
+
+3. **Simple logistic regression treating each tooth as independent (no clustering by patient)**
+   - Why inappropriate: some children contribute >1 tooth; standard errors and p-values will be anticonservative.
+
+4. **Paired t-test / McNemar test for comparing groups**
+   - Why inappropriate: groups are not paired/matched by design.
+
+5. **Pearson correlation between material group (coded 1/2/3) and outcome**
+   - Why inappropriate: group is categorical; correlation imposes artificial linearity/order.
+
+6. **Repeated-measures ANOVA for binary longitudinal outcomes**
+   - Why inappropriate: assumes continuous normally distributed outcomes and sphericity.
+
+---
+
+## TASK 4: SUMMARY (overall analytical approach)
+
+A 3-arm randomized clinical trial with a **binary clinical/radiographic success** endpoint measured repeatedly through **24 months** should be analyzed primarily by comparing **24-month success proportions** across materials using **regression for binary outcomes** that **accounts for clustering by child** (because randomization occurred per tooth and some children contributed multiple teeth). Rigor is strengthened by modeling **time-to-failure or longitudinal repeated outcomes**, reporting **effect sizes with confidence intervals**, adjusting for **multiplicity** in pairwise contrasts, and performing **missing-data sensitivity analyses** given observed follow-up loss.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Randomized Clinical Trial (RCT)  
+   - Double-blinded (participant and outcome assessor blinded; clinician not blinded due to material-specific manipulation requirements).
+
+2. **Objective**:  
+   - To evaluate the efficacy of Biodentine, Theracal, and Dycal as indirect pulp therapy (IPT) agents in young permanent teeth.
+
+3. **Groups**:  
+   - Group 1: Biodentine  
+   - Group 2: Theracal  
+   - Group 3: Dycal  
+
+4. **Sample Size**:  
+   - Initial sample size: 60 teeth (20 per group).  
+   - Final sample size after follow-up loss: 54 teeth (18 per group).  
+
+5. **Population**:  
+   - Children aged 7–15 years with deep dentinal caries in permanent molars.  
+   - Male-to-female ratio: 0.88:1.00.  
+   - Mean age: 12.36 ± 2.29 years.  
+   - Teeth distribution: 33.33% mandibular, 66.66% maxillary.
+
+6. **Inclusion Criteria**:  
+   - Permanent posterior teeth with deep dentinal caries (ICDAS 5 & 6) and open apices.  
+   - Clinical symptoms: sensitivity to cold and pain on mastication.  
+   - Radiographic criteria: >70% or 2/3 of dentin thickness affected without periapical pathology, external/internal root resorption, or pulp calcification.
+
+7. **Sampling Technique**:  
+   - Simple randomization using coded colored balls for material allocation.  
+   - Randomization performed separately for each tooth if multiple teeth met inclusion criteria.
+
+8. **Variables**:  
+   - **Primary Outcome**: Clinical success (absence of postoperative pain, mobility, inflammation, sinus tract, or fistula).  
+   - **Secondary Outcome**: Radiographic success (absence of resorption, PDL widening, periapical involvement, and evidence of root apex development).
+
+9. **Measurements and Data Collection**:  
+   - Clinical evaluations at 3 weeks, 3 months, 6 months, 12 months, 18 months, and 24 months.  
+   - Radiographic evaluations using standardized paralleling technique.  
+   - Inter-examiner agreement: Baseline (0.91) and final follow-up (0.94), with significant p-values (<0.05).
+
+10. **Statistical Considerations**:  
+    - Baseline agreement and follow-up agreement were statistically significant.  
+    - Sample size calculation accounted for 10% dropout rate and aimed for 80% power with a 5% Type I error.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### **CATEGORY A – MANDATORY**
+1. **Test Name**: Chi-Square Test or Fisher’s Exact Test  
+   - **Purpose**: To compare the success rates (clinical and radiographic) across the three groups.  
+   - **Why Appropriate**:  
+     - Categorical outcome (success vs. failure).  
+     - Comparing proportions between independent groups.  
+   - **Why It May Not Be Appropriate**:  
+     - Small sample size in subgroups may violate assumptions of Chi-Square.  
+   - **When This Test Should NOT Be Used**:  
+     - When expected frequencies in contingency tables are <5.  
+   - **Alternative**: Fisher’s Exact Test.
+
+2. **Test Name**: Repeated Measures ANOVA or Mixed-Effects Model  
+   - **Purpose**: To evaluate changes in clinical and radiographic outcomes over time (3 weeks, 3 months, 6 months, etc.).  
+   - **Why Appropriate**:  
+     - Longitudinal data with repeated measures.  
+     - Accounts for within-subject correlation.  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes normality of residuals and homogeneity of variances.  
+   - **When This Test Should NOT Be Used**:  
+     - If data are non-normal or variances are unequal.  
+   - **Alternative**: Non-parametric alternatives like Friedman Test.
+
+#### **CATEGORY B – RECOMMENDED**
+1. **Test Name**: Kaplan-Meier Survival Analysis  
+   - **Purpose**: To assess the time-to-failure (clinical or radiographic) for each material.  
+   - **Why Appropriate**:  
+     - Accounts for censored data (e.g., dropout cases).  
+     - Provides insights into durability of materials over time.  
+   - **Why It May Not Be Appropriate**:  
+     - Assumes proportional hazards, which may not hold.  
+   - **When This Test Should NOT Be Used**:  
+     - If follow-up intervals are irregular or data are sparse.  
+   - **Alternative**: Cox Proportional Hazards Model.
+
+2. **Test Name**: Inter-Rater Reliability (Kappa Statistic)  
+   - **Purpose**: To validate the agreement between examiners for clinical and radiographic evaluations.  
+   - **Why Appropriate**:  
+     - Measures consistency between raters.  
+     - Accounts for chance agreement.  
+   - **Why It May Not Be Appropriate**:  
+     - If sample size is small or raters are inconsistent.  
+   - **When This Test Should NOT Be Used**:  
+     - If data are ordinal rather than categorical.  
+   - **Alternative**: Weighted Kappa for ordinal data.
+
+#### **CATEGORY C – OPTIONAL**
+1. **Test Name**: Logistic Regression  
+   - **Purpose**: To identify predictors of success (e.g., material type, tooth location, age).  
+   - **Why Appropriate**:  
+     - Binary outcome (success vs. failure).  
+     - Adjusts for confounding variables.  
+   - **Why It May Not Be Appropriate**:  
+     - Requires large sample size for reliable estimates.  
+   - **When This Test Should NOT Be Used**:  
+     - If sample size is insufficient or predictors are highly correlated.  
+   - **Alternative**: Exact Logistic Regression.
+
+2. **Test Name**: Subgroup Analysis (e.g., stratified by tooth location or age group).  
+   - **Purpose**: To explore differential effects of materials in subgroups.  
+   - **Why Appropriate**:  
+     - Provides insights into heterogeneity of treatment effects.  
+     - Useful for clinical decision-making.  
+   - **Why It May Not Be Appropriate**:  
+     - Risk of Type I error due to multiple comparisons.  
+   - **When This Test Should NOT Be Used**:  
+     - If subgroup sizes are too small.  
+   - **Alternative**: Meta-regression (if applicable).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1. **Independent Samples t-Test**:  
+   - **Why Not Appropriate**:  
+     - Outcomes are categorical (success vs. failure), not continuous.  
+
+2. **Pearson Correlation**:  
+   - **Why Not Appropriate**:  
+     - Correlation is not suitable for categorical or longitudinal data.  
+
+3. **Paired t-Test**:  
+   - **Why Not Appropriate**:  
+     - Groups are independent, not paired.
+
+---
+
+### TASK 4: SUMMARY
+
+The statistical analysis plan prioritizes robust methods to evaluate the efficacy of three IPT materials. Mandatory tests focus on comparing success rates and analyzing longitudinal data. Recommended tests enhance rigor by accounting for time-to-failure and inter-rater reliability. Optional tests provide supplementary insights into predictors and subgroup effects. Inappropriate tests are excluded to ensure methodological validity. This approach ensures comprehensive evaluation of clinical and radiographic outcomes while adhering to best practices in biostatistics.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1: INFORMATION EXTRACTION  
+===============================
+
+Study design
+------------
+
+- Design: Prospective, parallel‐group, randomized clinical trial, double‑blinded (patient and outcome assessor; operator not blinded).
+- Setting: Department of Pediatric and Preventive Dentistry, I.T.S Dental College and Hospital, India.
+- Registration / Ethics:
+  - Institutional Review Board & Ethics approval: ITSCDSR/L/2018/136.
+  - Trial registration: CTRI/2018/02/014782.
+- Study period: December 2016 – May 2019.
+
+Objectives
+----------
+
+From the text:
+
+- Overall aim: “evaluation of Biodentine, Theracal and Dycal as indirect pulp therapy agents in young permanent teeth.”
+- Implied primary objective:
+  - To compare the clinical and radiographic success rates of three IPT materials (Biodentine, Theracal, Dycal) in young permanent molars up to 24 months.
+- Implied secondary objectives:
+  - To describe time course of success/failure at multiple follow‑up points (3 weeks, 3, 6, 12, 18, 24 months).
+  - To compare calcium silicate–based materials (Biodentine, Theracal) vs calcium hydroxide (Dycal) for IPT.
+  - To assess inter-examiner reliability for clinical and radiographic evaluations.
+
+Study population
+----------------
+
+- Target population: Children with deep dentinal caries in young permanent posterior teeth.
+- Age: 7–15 years (mean age 12.36 ± 2.29 years).
+- Sex: 23 males, 26 females (M:F ≈ 0.88:1).
+- Units of analysis:
+  - Primarily: teeth (54 young permanent molars at final follow-up).
+  - 49 patients contributed 54 teeth (thus 5 patients had 2 teeth; clustered data).
+
+Inclusion criteria
+------------------
+
+- Patient level:
+  - Children aged 7–15 years.
+- Tooth level:
+  - Permanent posterior teeth (molars) with:
+    - Deep dentinal caries: ICDAS 5 & 6.
+    - Open apices (immature young permanent teeth).
+    - Clinical symptoms: sensitivity to cold and pain on mastication.
+    - Cold test performed with ENDO FROST (−50°C gas-spray on cotton on buccal surface).
+  - Radiographic criteria:
+    - Caries involving >70% or 2/3 of dentin thickness.
+    - No periapical pathology.
+    - No pathologic external or internal root resorption.
+    - No pulp calcification.
+
+Exclusion criteria (implied)
+----------------------------
+
+- Teeth with:
+  - Periapical pathology.
+  - Pathologic external/internal resorption.
+  - Pulp calcification.
+  - Pulp exposure during caries removal (excluded intraoperatively).
+- Patients/teeth with insufficient follow-up (lost at any point).
+
+Sample size and groups
+----------------------
+
+- Initial planned sample size:
+  - Calculation assumptions:
+    - Type I error (α): 0.05 (two-sided implied).
+    - Power: 80%.
+    - Expected outcome difference: 10%.
+    - Anticipated dropout: 10%.
+  - Required: 45 teeth (15 per group).
+  - Increased to: 60 teeth (20 per group) “to improve validity and compensate for possible follow-up loss.”
+- Actual analyzed sample:
+  - Loss to follow-up: 2 teeth per group (10% loss in each arm), 6 teeth total.
+  - Final: 54 teeth (18/group) from 49 patients.
+- Group allocation (interventions):
+  - Group 1: Biodentine (Septodont, France).
+  - Group 2: Theracal LC (Bisco Inc, Schaumburg, IL).
+  - Group 3: Dycal (calcium hydroxide cement; Dentsply Caulk, Milford, DE, USA).
+
+Randomization and blinding
+--------------------------
+
+- Randomization:
+  - Unit: tooth (if patient had more than one eligible tooth, randomization done separately for each tooth).
+  - Method: simple randomization using 3 different colored balls, each color coded to one of the three materials.
+  - Allocation concealment: ball selection by patient until each group’s planned size was achieved; once a group reached its target, its color was removed, effectively moving to restricted randomization with equal group sizes.
+- Blinding:
+  - Double-blind:
+    - Participant: blinded to material.
+    - Outcome assessor(s) (the two investigators doing evaluations): blinded to material.
+  - Operator: not blinded (different manipulation requirements).
+- CONSORT: conduct aligned with CONSORT 2010 guidelines (at least for randomization and reporting).
+
+Clinical procedures and interventions
+-------------------------------------
+
+- Operator: single trained investigator (had piloted procedure on 8 similar patients).
+- Preoperative procedures:
+  - Cold pulp testing using ENDO FROST® on cotton pellet on buccal surface, to confirm vitality/sensitivity.
+  - Clinical and radiographic evaluation to confirm eligibility.
+- Operative steps:
+  1. Local anesthesia and rubber dam isolation.
+  2. Removal of enamel caries:
+     - Diamond fissure bur No. 330 in high-speed handpiece with copious water.
+  3. Caries removal:
+     - Soft infected dentin removed with sharp spoon excavator, guided by hardness, tactile and visual criteria.
+     - Excavation stopped when dentin showed increased resistance (affected dentin retained near pulp).
+  4. Irrigation:
+     - 1% NaOCl solution applied every 3 minutes to wash debris.
+  5. Accidental pulp exposure → tooth excluded.
+  6. IPT liner placement:
+     - Assigned material (Biodentine, Theracal, or Dycal), manipulated per manufacturer instructions, applied over remaining dentin layer.
+  7. Final restoration:
+     - Liner covered with a layer of glass ionomer cement (GIC).
+     - Bulk restoration with resin composite.
+
+Outcome measurement and follow‑up
+---------------------------------
+
+- Follow-up schedule: clinical and radiographic evaluation at:
+  - 3 weeks.
+  - 3 months.
+  - 6 months.
+  - 12 months.
+  - 18 months.
+  - 24 months.
+- Examiners: two investigators (blinded to intervention) evaluated outcomes at each timepoint.
+- Radiographic acquisition:
+  - Paralleling technique with standardized angulation, exposure settings, and presumably same equipment to control contrast and brightness.
+
+Primary outcomes (clinical success/failure)
+-------------------------------------------
+
+- Overall IPT success defined by combined clinical and radiographic criteria.
+- Clinical (primary) criteria:
+  - Presence/absence of:
+    - Postoperative pain.
+    - Sensitivity to palpation.
+    - Sensitivity to percussion.
+    - Abnormal mobility.
+    - Soft tissue pathology:
+      - Inflammation.
+      - Sinus tract.
+      - Fistula.
+- These variables likely coded binary (present/absent) at each visit; combined into a clinical success (all absent) vs failure (any present).
+
+Secondary outcomes (radiographic success/failure)
+-------------------------------------------------
+
+- Radiographic (secondary) criteria:
+  - Presence/absence of:
+    - External resorption.
+    - Internal resorption.
+    - Widening of periodontal ligament (PDL) space.
+    - Periapical involvement (radiolucency).
+    - Root apex development (continued root formation and apex closure).
+- Operationalization likely:
+  - Radiographic success: absence of resorption, PDL widening, periapical pathology, and evidence of continued root development (for open apices).
+  - Radiographic failure: presence of any pathological changes.
+- Overall success for IPT is stated as “analysed as success or failure according to clinical and radiographic criteria” – typically defined as simultaneous clinical and radiographic success.
+
+Reliability / inter‑examiner agreement
+--------------------------------------
+
+- Baseline agreement:
+  - Kappa: 0.91 (excellent).
+  - p-value < 0.05 (significant).
+- Final follow‑up agreement:
+  - Kappa: 0.94 (excellent).
+  - p-value < 0.05.
+- Variables assessed for agreement: likely dichotomized clinical and radiographic classifications (success/failure, presence/absence of specific signs).
+
+Loss to follow‑up
+-----------------
+
+- Lost teeth: 2 in each group (10% per group) due to failure to report for follow-up.
+- Final numbers:
+  - Biodentine: 18 teeth.
+  - Theracal: 18 teeth.
+  - Dycal: 18 teeth.
+- No indication that loss was related to outcome, but this is unknown.
+
+Baseline descriptive characteristics (teeth)
+-------------------------------------------
+
+- Total teeth: 54.
+- Jaw distribution:
+  - Mandibular: 17 (33.33%).
+  - Maxillary: 37 (66.66%).
+- Other possible baseline variables (not fully described but plausible):
+  - Specific tooth (first vs second molar).
+  - Caries extent (within ICDAS 5 vs 6, percentage of dentin involvement).
+  - Baseline apex status (degree of root development).
+  - Baseline symptom pattern (severity/duration).
+  - Baseline radiographic parameters (PDL space, stage of root formation).
+
+Data structure and key variables
+--------------------------------
+
+- Level: Tooth (with clustering within patients); repeated measures over time.
+- Between‑group factor:
+  - Material: 3 levels (Biodentine, Theracal, Dycal).
+- Within‑tooth repeated factor:
+  - Time: 6 visits (3w, 3m, 6m, 12m, 18m, 24m).
+- Primary binary outcome variables per tooth:
+  - Clinical success (yes/no) at each timepoint.
+  - Radiographic success (yes/no) at each timepoint.
+  - Combined success (yes/no) at each timepoint.
+- Time‑to‑event variables:
+  - Time from IPT to first failure (in months); censored at 24 months if no failure.
+- Other binary/ordinal variables:
+  - Presence of each individual symptom/sign at each visit.
+  - Apex status (e.g., open/closing/closed).
+- Patient-level covariates:
+  - Age (continuous).
+  - Sex.
+- Tooth-level covariates:
+  - Jaw (maxillary/mandibular).
+  - Possibly type of molar, side, etc.
+
+TASK 2: STATISTICAL ANALYSIS PLAN  
+=================================
+
+Assumptions for planning:
+- Primary analysis: intention‑to‑treat at tooth level, with sensitivity per‑protocol analysis.
+- Main scientific question: Is the success rate of IPT at 24 months (and/or over time) different among Biodentine, Theracal, and Dycal?
+
+CATEGORY A – MANDATORY ANALYSES
+--------------------------------
+
+1. Descriptive statistics of baseline characteristics
+----------------------------------------------------
+
+- Test/Method:
+  - For continuous variables (age): mean ± SD, median (IQR), range; by group.
+  - For categorical variables (sex, jaw, tooth type if available, baseline symptoms): counts and percentages; by group.
+- Purpose:
+  - Describe the study sample and assess comparability of groups after randomization.
+- Why appropriate:
+  1. Essential for interpreting any comparative analyses (context, external validity).
+  2. Randomization should balance groups, but small samples need explicit check for major imbalances.
+- Why it may not be appropriate:
+  - Not a “test” per se, but necessary; formal hypothesis testing of baseline differences is often discouraged in RCTs.
+- When not to use:
+  - Never omit descriptive summaries in a trial.
+- Alternatives if assumptions violated:
+  - For skewed continuous data, emphasize median and IQR instead of mean and SD.
+
+2. Primary endpoint comparison at 24 months (overall success rate)
+------------------------------------------------------------------
+
+- Test name:
+  - Pearson’s Chi‑square test for independence (3×2 table: 3 materials × success/failure at 24 months).
+  - If any expected cell count <5: Fisher–Freeman–Halton exact test (exact test for RxC tables).
+- Purpose:
+  - Compare IPT success rates at 24 months among three material groups.
+- Why appropriate:
+  1. Outcome is binary (success/failure) and group variable is categorical with three levels.
+  2. Randomization with independent teeth (approximately; with minimal clustering) justifies a standard between‑group comparison.
+- Why it may not be appropriate:
+  - Ignoring clustering (multiple teeth in some patients) may underestimate variance slightly; with 5/49 patients having 2 teeth, effect is probably small but non‑zero.
+- When this test should NOT be used:
+  - If sample size is very small with multiple cells having expected counts < 5 (then use exact methods).
+  - If data are not independent (e.g., many correlated teeth per patient) – then a mixed model or GEE is more appropriate.
+- Alternative if assumptions violated:
+  - Fisher–Freeman–Halton exact test (or exact multinomial test).
+  - Logistic regression with robust standard errors clustered by patient.
+
+3. Pairwise comparisons of 24‑month success rates (post‑hoc)
+------------------------------------------------------------
+
+- Test name:
+  - Pairwise Chi‑square or Fisher’s exact tests between:
+    - Biodentine vs Theracal.
+    - Biodentine vs Dycal.
+    - Theracal vs Dycal.
+  - Adjust for multiple comparisons (e.g., Bonferroni or Holm).
+- Purpose:
+  - Identify which specific materials differ in success rates if global test is significant.
+- Why appropriate:
+  1. Clinical conclusion requires knowing which materials are superior or inferior, not just that there is some difference.
+  2. Maintains control of Type I error across multiple comparisons.
+- Why it may not be appropriate:
+  - With small group sizes, power is limited and multiple testing further reduces power.
+- When not to use:
+  - If global 3‑group test is clearly non‑significant and there is no a priori hierarchy; post‑hoc testing could be omitted or labelled exploratory.
+- Alternatives if assumptions violated:
+  - Exact pairwise tests (Fisher’s exact).
+  - Logistic regression with planned contrasts and multiplicity adjustment.
+
+4. Time‑to‑failure analysis (Kaplan–Meier + log‑rank test)
+----------------------------------------------------------
+
+- Test name:
+  - Kaplan–Meier survival analysis and log‑rank test (3 groups).
+- Purpose:
+  - Compare the timing of failures (not just status at 24 months).
+  - Estimate survival curves (probability of remaining successful IPT) over 24 months for each material.
+- Why appropriate:
+  1. Outcome (failure) can occur at different follow‑up times; survival methods utilize all available time‑to‑event data and handle right‑censoring (patients without failure by 24 months, or lost to follow‑up).
+  2. Provides clinically interpretable survival probabilities and median time‑to‑failure (if applicable).
+- Why it may not be appropriate:
+  - Requires a clear definition and recorded timing of first failure; if failures are only recorded as present/absent at visits without known exact time (interval censoring), standard survival methods are approximate.
+- When not to use:
+  - If exact or interval failure times are not available or cannot be approximated by follow‑up visit times.
+  - If number of failures is extremely low (e.g., almost all successes), then survival curves are uninformative.
+- Alternative if assumptions violated:
+  - Discrete‑time survival models using complementary log‑log regression or logistic regression with time as a factor (panel data).
+  - Repeated‑measures binary models (see GEE below) describing longitudinal success probabilities.
+
+5. Longitudinal analysis of success over time (GEE for repeated binary outcomes)
+-------------------------------------------------------------------------------
+
+- Test/Model:
+  - Generalized Estimating Equations (GEE) with:
+    - Dependent variable: binary success at each timepoint (clinical, radiographic, or combined).
+    - Link: logit.
+    - Correlation structure: exchangeable (or unstructured if feasible).
+    - Covariates: material, time (categorical), material × time interaction.
+    - Cluster: tooth within patient (to account for multiple teeth in same patient).
+- Purpose:
+  - Evaluate how success probability changes over time and whether this trajectory differs by material.
+- Why appropriate:
+  1. Accounts for repeated measures on the same tooth and clustering within patient, providing robust standard errors and valid inference.
+  2. Makes efficient use of all available follow‑up data, including teeth with some missed visits (if missingness is reasonably random).
+- Why it may not be appropriate:
+  - Sample size (54 teeth, 6 timepoints) may not support a complex correlation structure; sparse failures may lead to convergence issues.
+- When not to use:
+  - If there are too few failures or timepoints with near‑complete success/failure, leading to quasi‑separation.
+  - If the main interest is only 24‑month outcome, and longitudinal pattern is not critical.
+- Alternatives if assumptions violated:
+  - Mixed‑effects logistic regression (random intercept for tooth and/or patient).
+  - Simpler analyses: separate cross‑sectional comparisons at selected timepoints with exact tests.
+
+6. Inter‑examiner reliability analysis (Cohen’s kappa)
+------------------------------------------------------
+
+- Test name:
+  - Cohen’s kappa coefficient with 95% confidence interval.
+- Purpose:
+  - Quantify agreement between the two examiners for the categorization of clinical and radiographic findings (success/failure or presence/absence).
+- Why appropriate:
+  1. Outcomes are categorical; kappa corrects for agreement due to chance.
+  2. Reliability is critical to ensure that measurement error does not bias group comparisons.
+- Why it may not be appropriate:
+  - If outcomes are ordinal with multiple categories and distances matter, weighted kappa would be more appropriate.
+- When not to use:
+  - If only one examiner is used (no inter‑rater variability).
+- Alternatives if assumptions violated:
+  - Weighted kappa for ordinal scales.
+  - Intraclass correlation coefficient (ICC) if using continuous rating scales.
+
+CATEGORY B – RECOMMENDED ANALYSES
+---------------------------------
+
+7. Adjusted analysis of 24‑month success (multivariable logistic regression)
+---------------------------------------------------------------------------
+
+- Test/Model:
+  - Logistic regression:
+    - Outcome: success (yes/no) at 24 months.
+    - Predictors: material (3‑level factor with dummy coding) and potentially baseline covariates:
+      - Age, sex, jaw (max/mand), baseline symptom intensity if available, baseline apex stage.
+- Purpose:
+  - Estimate adjusted odds ratios for success for each material relative to a reference (e.g., Dycal), adjusting for any imbalances or prognostic factors.
+- Why appropriate:
+  1. Helps control for residual confounding, especially important in small RCTs where randomization may not fully balance all characteristics.
+  2. Provides effect estimates (ORs) with confidence intervals, more informative than p‑values alone.
+- Why it may not be appropriate:
+  - Limited total number of failures may restrict the number of covariates (risk of overfitting; rule of thumb ~10 events per predictor).
+- When not to use:
+  - If there are very few failures (e.g., <10 in total) or near‑perfect separation in a group.
+- Alternatives if assumptions violated:
+  - Exact logistic regression for sparse data.
+  - Collapsing covariates or limiting to 1–2 key covariates.
+
+8. Comparison of individual clinical and radiographic signs by material
+-----------------------------------------------------------------------
+
+- Test name:
+  - Fisher’s exact or Chi‑square tests for each sign (e.g., postoperative pain, PDL widening) at 24 months.
+- Purpose:
+  - Identify which specific failure patterns are driven by each material (e.g., more periapical pathology with Dycal).
+- Why appropriate:
+  1. Gives clinically granular insight beyond overall success/failure.
+  2. May reveal distinct material profiles (e.g., more resorption vs more persistent symptoms).
+- Why it may not be appropriate:
+  - Multiple testing inflates Type I error; small numbers in each category may render tests underpowered or unstable.
+- When not to use:
+  - If dataset is too sparse (most signs are rare), or if limited interest and risk of overinterpretation is high.
+- Alternatives if assumptions violated:
+  - Descriptive reporting of numbers and percentages without formal hypothesis testing.
+
+9. Analysis of continued root development (apex closure)
+--------------------------------------------------------
+
+- Test/Model:
+  - Binary outcome (apex closed vs not closed at 24 months):
+    - Chi‑square / Fisher’s exact for between‑group comparison.
+  - Or ordinal outcome (baseline vs degree of closure) with:
+    - Cochran–Armitage trend test or ordinal logistic regression.
+- Purpose:
+  - Evaluate whether calcium silicate materials vs calcium hydroxide differ in promoting root maturation.
+- Why appropriate:
+  1. Apex development is an important secondary outcome in young permanent teeth with open apices.
+  2. Materials may mechanistically differ in bioactivity and effect on root formation.
+- Why it may not be appropriate:
+  - If apex status was not formally graded or recorded across time, or if virtually all teeth showed closure (ceiling effect).
+- When not to use:
+  - Lack of reliable, standardized apex measurements.
+- Alternatives if assumptions violated:
+  - Qualitative description or visual documentation (e.g., radiographic examples) rather than formal statistical test.
+
+10. Sensitivity analyses for loss to follow‑up
+----------------------------------------------
+
+- Method:
+  - Best‑case / worst‑case imputation:
+    - Assume all lost teeth in a given group were successes vs failures, and recalculate success rates and key tests.
+  - Pattern‑mixture description: compare baseline characteristics and observed interim outcomes of those lost vs retained.
+- Purpose:
+  - Assess robustness of conclusions to assumptions about missing outcomes (loss to follow‑up).
+- Why appropriate:
+  1. Loss is 10% per group; though moderate, it can bias results if informative.
+  2. Sensitivity analyses increase credibility of findings.
+- Why it may not be appropriate:
+  - With small numbers, extreme imputation can give unrealistic scenarios; interpretation must be cautious.
+- When not to use:
+  - If no loss to follow‑up occurred (not the case here).
+- Alternatives:
+  - Multiple imputation for binary outcomes (though in RCTs, simple sensitivity scenarios often more transparent).
+
+11. Cluster‑robust standard errors
+----------------------------------
+
+- Method:
+  - For all regression models (logistic, GEE), specify clustering by patient ID to account for correlation between teeth in the same patient.
+- Purpose:
+  - Correct variance estimates for intra‑patient correlation.
+- Why appropriate:
+  1. 49 patients with 54 teeth (some with 2 teeth) create a small amount of clustering that, if ignored, slightly overstates precision.
+  2. Robust variance estimators are straightforward to implement.
+- Why it may not be appropriate:
+  - With few clusters (if many patients had multiple teeth; here they do not), robust estimation can be biased; but with 49 clusters this is acceptable.
+- When not to use:
+  - If one tooth per patient (not here).
+- Alternatives:
+  - Mixed models with random intercept per patient.
+
+CATEGORY C – OPTIONAL / SUPPLEMENTARY ANALYSES
+----------------------------------------------
+
+12. Per‑protocol analysis
+-------------------------
+
+- Method:
+  - Restrict analysis to teeth with complete follow‑up and no major protocol deviations.
+- Purpose:
+  - Explore efficacy under ideal adherence (complementary to ITT).
+- Why appropriate:
+  1. May show whether non‑adherence or missingness diluted observed effects.
+- Why it may not be appropriate:
+  - Excluding data breaks randomization and can introduce bias.
+- When not to use:
+  - As primary analysis; should only supplement ITT.
+- Alternatives:
+  - As‑treated analysis (if crossovers occurred; none reported).
+
+13. Subgroup analyses (exploratory)
+-----------------------------------
+
+- Possible subgroups:
+  - Jaw: maxillary vs mandibular.
+  - Age groups: e.g., 7–11 vs 12–15 years.
+  - Baseline symptom severity (if recorded).
+- Test/Model:
+  - Stratified analyses using Chi‑square / Fisher’s exact.
+  - Interaction term (material × subgroup) in logistic regression.
+- Purpose:
+  - Explore whether material effects differ in different clinical contexts.
+- Why appropriate:
+  1. Could generate hypotheses about situations where certain materials perform better.
+- Why it may not be appropriate:
+  - Small sample size leads to very limited power; high risk of spurious findings.
+- When not to use:
+  - If not pre‑specified in the protocol; if used, must be clearly labelled as exploratory.
+- Alternatives:
+  - Present descriptive subgroup summaries without formal testing.
+
+14. Effect size and confidence interval reporting
+-------------------------------------------------
+
+- Method:
+  - For binary outcomes:
+    - Risk difference, risk ratio, and odds ratio with 95% CI.
+- Purpose:
+  - Quantify magnitude and precision of differences between materials.
+- Why appropriate:
+  1. Clinically interpretable; distinguishes statistically significant but clinically trivial vs substantial effects.
+  2. Aligns with CONSORT recommendations to report effect sizes and CIs.
+- Why it may not be appropriate:
+  - None; this should be standard, but I list it here as “analytic formatting” rather than a test.
+- When not to use:
+  - n/a.
+- Alternatives:
+  - Bayesian credible intervals if a Bayesian framework is used.
+
+15. Graphical presentations
+---------------------------
+
+- Method:
+  - Kaplan–Meier curves for survival.
+  - Line plots of success proportion over time per group with 95% CI.
+  - Bar charts of 24‑month success rates with CIs.
+- Purpose:
+  - Aid interpretation and communication of longitudinal and group differences.
+- Why appropriate:
+  1. Visualizes trends and differences that are not as obvious from tables.
+  2. Helps detect anomalies or patterns (e.g., early clustering of failures).
+- Why it may not be appropriate:
+  - None; but requires care to avoid misleading scales.
+- When not to use:
+  - n/a.
+- Alternatives:
+  - Table‑only presentation (less intuitive).
+
+TASK 3: INAPPROPRIATE TESTS AND WHY
+===================================
+
+1. Independent‑samples t‑test / ANOVA on binary success outcomes
+-----------------------------------------------------------------
+
+- Why inappropriate:
+  - Success/failure is binary; t‑tests and ANOVA assume continuous, approximately normally distributed outcomes with homogeneous variances.
+  - Applying them to proportions at the individual level violates core assumptions and yields incorrect inferences.
+
+2. Repeated‑measures ANOVA on binary longitudinal outcomes
+----------------------------------------------------------
+
+- Why inappropriate:
+  - Repeated‑measures ANOVA assumes normally distributed continuous outcomes and sphericity; the IPT success variable is binary at each timepoint.
+  - This model ignores the binomial nature and leads to invalid p‑values and confidence intervals.
+
+3. Paired t‑test for comparing baseline vs follow‑up success
+------------------------------------------------------------
+
+- Why inappropriate:
+  - Again, the outcome is binary; paired t‑test is meant for continuous repeated measurements.
+  - Longitudinal binary changes are more appropriately modeled with McNemar’s test (2 timepoints) or GEE/mixed models (multiple timepoints).
+
+4. Simple (unclustered) analyses treating multiple teeth per patient as independent without any correction
+----------------------------------------------------------------------------------------------------------
+
+- Why inappropriate:
+  - Independence assumption is violated when some patients contribute two teeth; this leads to underestimated standard errors and inflated Type I error rate.
+  - While effect may be small here, methodologically it is incorrect.
+- Preferred:
+  - Cluster‑robust SEs, GEE, or mixed models.
+
+5. Non‑parametric tests like Kruskal–Wallis or Mann–Whitney U for primary binary outcomes
+-----------------------------------------------------------------------------------------
+
+- Why inappropriate:
+  - These tests are aimed at comparing distributions of *ordinal or continuous* variables across groups.
+  - With binary data, exact tests or logistic regression are specifically tailored and more interpretable.
+
+6. Correlation coefficients (Pearson/Spearman) as main analysis of success vs material
+--------------------------------------------------------------------------------------
+
+- Why inappropriate:
+  - Material is a nominal 3‑level categorical factor; correlation coefficients assume at least ordinal or continuous variables and cannot appropriately model such group effects.
+  - This ignores the randomized group structure.
+
+7. Linear regression with success as a continuous dependent variable
+--------------------------------------------------------------------
+
+- Why inappropriate:
+  - Linear probability models can be used in some contexts, but they violate assumptions (heteroskedasticity, predicted probabilities outside [0,1]) and are not generally recommended when logistic regression is available.
+  - For a small trial, this is especially problematic.
+
+TASK 4: SUMMARY OF OVERALL ANALYTICAL APPROACH
+==============================================
+
+The trial compares three IPT materials in young permanent teeth with deep caries, using binary clinical and radiographic success defined at multiple timepoints over 24 months. The core outcomes are binary (success/failure), measured repeatedly on the same tooth and with mild clustering within patients.
+
+The primary analytical strategy should therefore:
+
+- Use a 3‑group comparison of 24‑month success rates with Chi‑square or exact tests, supplemented by adjusted logistic regression to estimate effect sizes.
+- Account for time‑to‑failure using survival methods (Kaplan–Meier and log‑rank tests) to utilize all follow‑up information and handle censoring.
+- Model longitudinal success trajectories with GEE or mixed‑effects logistic regression to capture repeated measures and intra‑patient clustering.
+- Validate measurement reliability using kappa statistics.
+- Address missing data via transparent sensitivity analyses.
+
+This approach respects the trial’s randomized design, binary and longitudinal nature of outcomes, modest clustering, and limited sample size, while providing clinically interpretable comparisons of Biodentine, Theracal, and Dycal as IPT materials in young permanent teeth.

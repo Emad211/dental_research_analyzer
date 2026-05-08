@@ -1,0 +1,260 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_27ff6e4355fec8a32b5635c0431178cf.pdf
+Status : ok
+Time   : 20260508_130731
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design and setting
+- **Design:** Randomized controlled clinical trial; **double-blinded** (operator blinding described: endodontist blinded at RCT visit; periodontist blinded at surgery visit; allocation disclosed to endodontist/periodontist only on appointment day).
+- **Setting:** Dental University Hospital, King Saud University, Riyadh, Saudi Arabia.
+- **Recruitment period:** October 2017 to November 2018.
+- **Registration/ethics:** ClinicalTrials.gov **NCT04274498**; IRB No. **E-18-3540**.
+
+### Objective and hypothesis
+- **Aim:** To evaluate and compare **clinical periodontal parameters** in patients with **true combined endodontic–periodontal lesions (EPL)** treated with:
+  1) GP obturation alone,  
+  2) MTA obturation alone,  
+  3) GP obturation + bone grafting,  
+  4) MTA obturation + bone grafting.
+- **Null hypothesis:** Evaluation parameters remain the same across the four modalities.
+
+### Population
+- **Eligibility:** Saudi patients aged **25–55** with **upper anterior, single-rooted, non-vital tooth** with **true combined EPL**.
+- **Diagnostic confirmation:** **CBCT** (limited FOV; voxel 0.200 mm; 96 kV; 11 mA; 12 s; Planmeca ProMax).
+- **Exclusion (patient-level):** uncontrolled systemic disease/altered bone metabolism (e.g., diabetes, osteoporosis, osteopenia, hyperparathyroidism, Paget), history oral cancer/sepsis/adverse outcomes to oral procedures, antibiotics >2 weeks in last 2 months, meds affecting bone metabolism (bisphosphonates, corticosteroids); history of orthodontic/periodontal/prosthodontic treatment.
+- **Exclusion (tooth-level):** fracture, external/internal resorption, pathological cysts.
+
+### Interventions / groups (parallel 4-arm)
+- **Group I (n=30):** Conventional non-surgical RCT, **GP obturation** (Obtura II) + sealer.
+- **Group II (n=30):** Conventional non-surgical RCT, **MTA obturation** (ProRoot MTA).
+- **Group III (n=30):** Conventional RCT with **GP** + **bone grafting**.
+- **Group IV (n=30):** Conventional RCT with **MTA** + **bone grafting**.
+- **Bone grafting procedure:** Flap, granulation removal; defect dimensions measured; **DFDBA cortico-cancellous** packed + **resorbable collagen membrane**; suturing; suture removal 7–10 days.
+
+### Visit sequence / timing
+- Visit 1: exam, assignment to group.
+- Visit 2: scaling and root planing + RCT (blinded endodontist).
+- Visit 3 (1 week after RCT completion): periodontal surgery for groups III/IV (blinded periodontist).
+- **Follow-up visits:** **1, 3, 6, 12 months** post full completion; clinical periodontal parameters recorded at **baseline, 3, 6, 12 months**.
+- **Radiographs:** CBCT + standardized vertical periapical at **baseline and 6 months** (text also mentions success rate assessed at 6 months and 1 year).
+
+### Outcomes / variables (as described)
+**Clinical periodontal outcomes** (continuous unless noted):
+- **Probing depth (PD)** (mm)
+- **Relative clinical attachment level (rCAL)** (mm; CEJ to probing resistance point)
+- **Gingival recession** (mm; CEJ to free gingival margin)
+- **Keratinized tissue width (KTW)** (mm)
+- **Gingival phenotype (G.Ph.)** (likely categorical/ordinal; not further defined)
+
+**Radiographic outcomes:**
+- **CBCTPAI** (Cone Beam CT Periapical Index; ordinal score)
+- **Success rate** (binary): defined as change toward **CBCTPAI level 0 or 1** at **6 months and 1 year**.
+
+**Other collected intra-surgical measure (mentioned):**
+- **Defect dimensions** measured with periodontal probe (unclear if used analytically; likely baseline descriptor/covariate).
+
+### Sample size and randomization
+- **Planned sample size:** **120 teeth** total; **30/group**.
+- **Sample size basis:** G*Power; 95% confidence level, 80% power, moderate effect size (details not given).
+- **Randomization:** computer-generated (Minitab), **blocked randomization** (block size=3), allocation concealment via sealed envelopes.
+
+### Unit of analysis
+- Stated as **teeth (n=120)**; each patient appears to contribute one eligible tooth (implied but should be verified). Repeated measures over time within tooth.
+
+---
+
+## TASK 2 — Statistical analysis plan (SAP)
+
+### 2.1 Core principles and data handling (applies to all analyses)
+- **Analysis populations**
+  - **Intention-to-treat (ITT):** all randomized teeth analyzed in assigned group.
+  - **Per-protocol (PP) (recommended):** exclude major protocol deviations (e.g., missing primary endpoint, non-receipt of allocated procedure).
+- **Descriptive statistics**
+  - Continuous: mean(SD) if ~normal; median(IQR) if skewed.
+  - Categorical/ordinal: n(%).
+- **Baseline comparability:** summarize baseline PD, rCAL, recession, KTW, G.Ph., CBCTPAI; assess imbalance descriptively (do not over-emphasize hypothesis tests).
+- **Primary time point(s):** must be pre-specified. Given text emphasizes clinical parameters through 12 months and radiographic at 6 months, a defensible primary endpoint is:
+  - **Change in rCAL from baseline to 12 months** (clinical) and/or
+  - **Radiographic success at 12 months** (binary) and/or
+  - **CBCTPAI change baseline→6 months** (ordinal).
+  (Choose one primary to control Type I error; others secondary.)
+- **Missing data**
+  - Explore patterns and reasons by group/time.
+  - Mixed models handle missing-at-random (MAR); for binary success use multiple imputation (MI) or conservative sensitivity (e.g., treat missing as failure) as sensitivity analysis.
+- **Multiplicity**
+  - Four-arm trial with repeated measures → predefine contrasts (e.g., factorial main effects and interaction) and adjust (Holm) for multiple pairwise comparisons when needed.
+
+### 2.2 Recommended modeling strategy (reflects 2×2 factorial structure)
+Groups map to two factors:
+- **Obturation:** GP vs MTA
+- **Bone graft:** No vs Yes
+- **Interaction:** Obturation × Bone graft
+
+This is more efficient than 6 pairwise comparisons and directly answers the clinical questions.
+
+---
+
+## CATEGORY A — Mandatory tests/models
+
+### A1) Linear mixed-effects model (LMM) for repeated clinical measures (PD, rCAL, recession, KTW)
+- **Purpose:** Compare trajectories and changes over time among groups while accounting for within-tooth repeated measures.
+- **Why appropriate (≥2):**
+  1. Outcomes measured at **baseline, 3, 6, 12 months** → correlated repeated observations; LMM models this correlation via random effects.
+  2. Handles **unequal follow-up/missing visits** under MAR without listwise deletion.
+- **Why may not be appropriate (≥1):**
+  - If residuals are highly non-normal with strong floor effects (e.g., PD bounded at 0) and transformations fail.
+- **When NOT to use:**
+  - If only one post-baseline measurement exists (not the case here) or if data are strictly ordinal with few categories.
+- **Model specification (recommended):**
+  - Fixed effects: time (categorical), obturation, graft, obturation×graft, and interactions with time (especially treatment×time).
+  - Random effect: subject/tooth intercept (and possibly random slope for time if supported).
+  - Primary estimand: difference in **mean change from baseline** at 12 months (estimated marginal means).
+- **Alternative if assumptions violated:**
+  - **Robust LMM** (sandwich/Huber-White SE), **transformation** (e.g., log(PD+0.5)), or **generalized linear mixed model (GLMM)** with appropriate distribution (e.g., gamma).
+
+### A2) Ordinal regression (preferred) or nonparametric comparison for CBCTPAI
+- **Test/model:** **Ordinal logistic regression** (proportional odds) with baseline adjustment; or **ordinal mixed model** if repeated (baseline and 6 months).
+- **Purpose:** Compare CBCTPAI healing severity across groups/time.
+- **Why appropriate:**
+  1. CBCTPAI is **ordinal**, not continuous; ordinal model respects ordering without assuming equal intervals.
+  2. Can adjust for baseline CBCTPAI and estimate odds of being in a better healing category.
+- **Why may not be appropriate:**
+  - Proportional odds assumption may be violated.
+- **When NOT to use:**
+  - If CBCTPAI is dichotomized into success/failure exclusively (then logistic regression is better).
+- **Alternative if assumptions violated:**
+  - **Partial proportional odds model**, **multinomial logistic regression**, or **Wilcoxon/Mann–Whitney/Kruskal–Wallis** on change scores (less ideal).
+
+### A3) Logistic regression for “success rate” (binary) at 6 months and/or 12 months
+- **Purpose:** Compare probability of radiographic success between modalities.
+- **Why appropriate:**
+  1. Outcome defined as **success vs not** → binary.
+  2. Allows estimation of **risk/odds differences** and adjustment (e.g., baseline CBCTPAI, defect size).
+- **Why may not be appropriate:**
+  - If success is extremely common/rare causing separation or unstable estimates.
+- **When NOT to use:**
+  - If outcome is time-to-event (not defined here) or if repeated success over time is jointly modeled without independence (then GEE/GLMM).
+- **Alternative if assumptions violated:**
+  - **Firth penalized logistic regression** (for separation), or **log-binomial/Poisson with robust SE** to estimate risk ratios.
+
+---
+
+## CATEGORY B — Recommended tests/models
+
+### B1) Factorial (2×2) hypothesis testing via contrasts within LMM/GLM framework
+- **Purpose:** Quantify **main effects** (MTA vs GP; graft vs no graft) and **interaction**.
+- **Why appropriate:**
+  1. Trial is naturally a **2×2 factorial**; increases power/clarity.
+  2. Reduces multiple testing relative to all pairwise group comparisons.
+- **Why may not be appropriate:**
+  - If strong qualitative interaction exists and main effects become misleading.
+- **When NOT to use:**
+  - If randomization or protocol deviates such that factorial structure is broken (e.g., substantial crossovers only in one cell).
+- **Alternative if assumptions violated:**
+  - Report **simple effects** (pairwise group differences) with multiplicity correction.
+
+### B2) ANCOVA-style baseline adjustment (embedded within models)
+- **Purpose:** Improve precision for continuous outcomes at follow-up (e.g., 12-month rCAL) by adjusting for baseline.
+- **Why appropriate:**
+  1. Baseline clinical status strongly predicts follow-up → improves efficiency.
+  2. Protects against chance baseline imbalance even under randomization.
+- **Why may not be appropriate:**
+  - If baseline is measured with substantial error and induces regression dilution.
+- **When NOT to use:**
+  - If baseline is post-randomization (not the case).
+- **Alternative if assumptions violated:**
+  - Use **change-score models** (less efficient typically) or measurement-error methods (rarely needed here).
+
+### B3) Generalized estimating equations (GEE) as sensitivity for repeated outcomes
+- **Purpose:** Population-averaged estimates for repeated PD/rCAL or repeated binary success.
+- **Why appropriate:**
+  1. Robust to misspecification of random-effects distribution.
+  2. Provides valid SE with correct working correlation (or robust sandwich).
+- **Why may not be appropriate:**
+  - Less efficient with small samples and missing data not MCAR; needs adequate clusters.
+- **When NOT to use:**
+  - If interest is subject-specific inference (then mixed models preferred).
+- **Alternative if assumptions violated:**
+  - Mixed-effects models with robust SE; MI + GLM.
+
+### B4) Multiplicity control for post-hoc pairwise comparisons
+- **Test/procedure:** **Holm correction** (or Tukey for all pairwise if balanced and model-based means).
+- **Purpose:** Control family-wise error when comparing multiple groups/time points.
+- **Why appropriate:**
+  1. Four groups → many possible contrasts.
+  2. Prevents inflation of false positives in secondary analyses.
+- **Why may not be appropriate:**
+  - Overly conservative if many exploratory outcomes.
+- **When NOT to use:**
+  - For a single pre-specified primary contrast only.
+- **Alternative if assumptions violated:**
+  - Control **FDR** (Benjamini–Hochberg) for exploratory endpoints.
+
+---
+
+## CATEGORY C — Optional (supplementary insight)
+
+### C1) Mediation/causal pathway exploration (e.g., radiographic healing mediating clinical improvements)
+- **Purpose:** Explore whether CBCTPAI change mediates rCAL/PD improvements.
+- **Why appropriate:**
+  1. Mechanistic insight linking radiographic and clinical outcomes.
+  2. Useful for hypothesis generation for future trials.
+- **Why may not be appropriate:**
+  - Requires strong assumptions (no unmeasured confounding) and sufficient sample size.
+- **When NOT to use:**
+  - As confirmatory evidence in this trial without pre-specification.
+- **Alternative if assumptions violated:**
+  - Report correlations/associations descriptively.
+
+### C2) Survival/time-to-event analysis for tooth retention (if collected)
+- **Test/model:** Kaplan–Meier, Cox regression.
+- **Purpose:** Compare tooth survival/retention over follow-up.
+- **Why appropriate:**
+  1. Clinically meaningful endpoint.
+  2. Handles censoring.
+- **Why may not be appropriate:**
+  - Not described as collected; follow-up may be too short/too few events.
+- **When NOT to use:**
+  - If no event-time data exist.
+- **Alternative:**
+  - Binary retention at 12 months via logistic regression.
+
+### C3) Subgroup analyses (pre-specified only): baseline defect dimension, baseline CBCTPAI severity
+- **Purpose:** Assess heterogeneity of treatment effect.
+- **Why appropriate:**
+  1. Defect size/severity plausibly modifies benefit of grafting/material.
+  2. Helps personalize therapy.
+- **Why may not be appropriate:**
+  - Low power; high false-positive risk.
+- **When NOT to use:**
+  - If not pre-specified or if cells become sparse.
+- **Alternative:**
+  - Continuous interaction terms; present as exploratory.
+
+---
+
+## TASK 3 — Tests that should NOT be used (and why)
+
+1. **Multiple independent-samples t-tests** across groups/time (e.g., comparing each pair at each visit)
+   - Ignores repeated-measures correlation; massive multiplicity; inflated Type I error.
+
+2. **One-way ANOVA on post-treatment values without accounting for baseline**
+   - Loses precision; vulnerable to chance baseline imbalance; does not use longitudinal information.
+
+3. **Paired t-tests within each group (baseline vs follow-up) as primary evidence**
+   - Answers “did it change?” not “did groups differ?”; cannot attribute differences to treatment.
+
+4. **Chi-square tests for CBCTPAI treated as nominal categories**
+   - CBCTPAI is ordinal; chi-square discards ordering and is less powerful/less interpretable.
+
+5. **Simple correlation (Pearson) as substitute for treatment-effect modeling**
+   - Does not estimate causal group differences; confounded by time and baseline severity.
+
+---
+
+## TASK 4 — Summary justification of overall approach
+
+A four-arm randomized trial with repeated periodontal measurements requires **longitudinal modeling** to correctly handle **within-tooth correlation**, baseline differences, and missing follow-up. A **factorial (GP vs MTA) × (graft vs no graft)** framework tested within **mixed-effects models** (continuous outcomes) and **ordinal/logistic regression** (CBCTPAI and success) provides unbiased, efficient estimates of treatment effects, supports clinically interpretable contrasts (main effects and interaction), and limits multiplicity compared with many pairwise tests.

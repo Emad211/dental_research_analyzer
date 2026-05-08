@@ -1,0 +1,302 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_materials-14-02661.pdf
+Status : ok
+Time   : 20260508_132854
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study design, setting, timeline
+- **Design:** Single-blind, randomized controlled clinical trial (parallel-group).
+- **Setting:** Department of Conservative Dentistry, Ewha Womans University Hospital (Korea).
+- **Enrollment period:** March 2019–May 2020.
+- **Ethics/registration:** IRB no. 2018-01-021.
+- **Blinding:** “Single-blind” (not fully specified in text; allocation concealed from operator until obturation by assistant; patient blinding unclear given different techniques).
+
+### Objective
+- **Primary objective:** Compare **Endoseal MTA (bioceramic sealer)** vs **AH Plus (resin-based sealer)** on:
+  - **Incidence** and **intensity** of postoperative pain after nonsurgical root canal treatment.
+
+### Population and eligibility
+- **Target population:** Adults requiring primary root canal treatment.
+- **Inclusion:**
+  - Need RCT and can comply with protocol and pain evaluation
+  - Age **19–70**
+- **Exclusion:**
+  - Uncontrolled systemic disease
+  - Pregnancy
+  - Refusal
+  - Open apex
+  - Retreatment cases
+  - Treatment initiated elsewhere
+
+### Grouping / randomization structure
+- Patients were first categorized by **tooth type**:
+  - **Group 1:** anterior teeth or premolars
+  - **Group 2:** molars
+- Within each tooth-type stratum: **block randomization** to sealer:
+  - Group 1En (Endoseal MTA) vs Group 1AH (AH Plus)
+  - Group 2En vs Group 2AH
+- Allocation administered by assistant immediately before obturation.
+
+### Interventions (note: sealer is confounded with obturation technique)
+- **Endoseal MTA group:** **single-cone technique**
+- **AH Plus group:** **continuous-wave technique**
+- Other procedures standardized:
+  - Anesthesia: 2% lidocaine w/ epi 1:100,000
+  - Rubber dam isolation
+  - WL: Root ZX apex locator
+  - Instrumentation: ProTaper Next
+  - Irrigation: NaOCl during shaping; on obturation day 5% NaOCl 5 min, 17% EDTA 1 min, then NaOCl + saline; dried with paper points
+  - Post-obturation radiograph taken
+- **Operator:** Single practitioner (reduces operator variability)
+
+### Outcomes and measurements
+- **Preoperative pain (baseline):**
+  - VAS at rest and while biting (before treatment)
+- **Postoperative pain (primary outcome):**
+  - VAS at rest and while biting, recorded **daily for 7 days** after obturation
+  - Day 7 clinic recall; pain noted
+- **Outcome constructs available from VAS series:**
+  - Daily VAS trajectories (0–100 likely, but scale range not stated)
+  - Incidence of pain (e.g., VAS>0 or clinically meaningful threshold—threshold not specified)
+  - Peak pain, time-to-resolution, AUC over 7 days, etc. (not stated but derivable)
+
+### Sample size / participant flow (as reported in figure text)
+Two strata (tooth type); randomized and analyzed:
+
+**Group 1 (anterior/premolar):**
+- Assessed: 51; excluded 10; declined 10; randomized 41
+- Allocated: Endoseal 22; AH 19
+- Lost: 5 (Endoseal arm) + 4 (AH arm)
+- **Analyzed:** Endoseal 17; AH 15 (**n=32**)
+
+**Group 2 (molar):**
+- Assessed: 57; excluded 10; declined 10; randomized 47
+- Allocated: Endoseal 24; AH 23
+- Lost: 6 + 6
+- **Analyzed:** Endoseal 18; AH 17 (**n=35**)
+
+**Total analyzed:** 32 + 35 = **67 participants**
+- Endoseal analyzed: 17+18=**35**
+- AH analyzed: 15+17=**32**
+- **Attrition:** substantial; reasons: continued treatment elsewhere.
+
+### Covariates explicitly mentioned
+- Tooth type stratum (anterior/premolar vs molar)
+- Baseline pain at rest and on biting (measured)
+
+---
+
+## TASK 2: Statistical analysis plan (tests by category)
+
+### General analysis principles (apply to all categories)
+- **Analysis population:** Prefer **intention-to-treat (ITT)**; however, pain outcomes require follow-up—plan:
+  - Primary: **modified ITT** including all randomized with ≥1 postoperative pain measurement.
+  - Sensitivity: per-protocol (completed 7-day diary).
+- **Primary estimand:** Difference in postoperative pain course between sealers, accounting for repeated measures and stratification by tooth type.
+- **Alpha:** 0.05 (two-sided). Control multiplicity (see recommended tests).
+- **Descriptives:** CONSORT flow; baseline comparability by arm within strata; report effect sizes with 95% CI.
+- **Missing data:** repeated VAS likely incomplete; use mixed models (valid under MAR) and sensitivity analyses (pattern-mixture / MI).
+- **Key design caveat:** **Sealer and obturation technique are perfectly confounded**, so inference is formally about the **treatment package** (sealer+technique), unless explicitly justified otherwise.
+
+---
+
+### CATEGORY A – MANDATORY (analysis would be incomplete without these)
+
+#### A1) Linear mixed-effects model (LMM) for repeated VAS (or GLMM if non-normal)
+- **Purpose:** Compare **postoperative pain intensity trajectories** over 7 days between arms, using all repeated VAS data.
+- **Why appropriate:**
+  1. Handles **correlated repeated measures** (daily pain within patient).
+  2. Uses **incomplete follow-up** efficiently under MAR (less biased than complete-case).
+  3. Allows inclusion of **time**, **treatment**, and **treatment×time** interaction (tests whether trajectories differ).
+- **Why may not be appropriate:**
+  - VAS distributions can be **zero-inflated / skewed**; LMM residual normality may be violated.
+- **When NOT to use:**
+  - If outcome is better treated as categorical (e.g., none/mild/moderate/severe) or if residual diagnostics show extreme non-normality not fixable by transformation.
+- **Alternative if assumptions violated:**
+  - **GLMM** with appropriate family (e.g., Gamma with log link for positive VAS; or hurdle/zero-inflated models),
+  - **Rank-based mixed model** / **GEE with robust SE**,
+  - **Ordinal mixed model** if VAS categorized.
+
+*Model specification (minimum):*
+- Outcome: VAS (rest) and VAS (biting) analyzed **separately** (two primary endpoints) or jointly (recommended below).
+- Fixed effects: treatment arm, day (categorical), treatment×day, tooth-type stratum, baseline pain (corresponding rest/biting), possibly day-of-week if relevant.
+- Random effects: patient random intercept (and possibly random slope for day).
+- Primary contrast: overall treatment effect across days (marginal means) and/or interaction (difference in trajectories).
+
+#### A2) Baseline comparability and descriptive statistics (no hypothesis emphasis)
+- **Test name:** Descriptive comparisons; if testing is done: **t-test/Mann–Whitney**, **chi-square/Fisher** as appropriate.
+- **Purpose:** Describe baseline characteristics (age/sex/tooth type, baseline pain).
+- **Why appropriate:**
+  1. Confirms randomization plausibly balanced key factors (especially with attrition).
+  2. Informs covariate adjustment needs (baseline pain strongly related to postoperative pain).
+- **Why may not be appropriate:**
+  - Significance testing of baseline is often **misleading**; differences can occur by chance.
+- **When NOT to use:**
+  - Do not use p-values to “prove” balance or decide inclusion of confounders.
+- **Alternative if assumptions violated:**
+  - Use **standardized mean differences (SMDs)** instead of tests.
+
+#### A3) Primary binary endpoint analysis: incidence of postoperative pain
+- **Test name:** **Logistic regression** (or mixed logistic if defined daily).
+- **Purpose:** Compare **incidence of any postoperative pain** over 7 days between arms.
+- **Why appropriate:**
+  1. Incidence is a stated objective; logistic regression yields **odds ratio** with CI.
+  2. Can adjust for **tooth type** and **baseline pain**, and handle unequal follow-up definitions.
+- **Why may not be appropriate:**
+  - “Incidence” definition not specified; different thresholds change results.
+- **When NOT to use:**
+  - If incidence is computed per-day per-subject (repeated binary), simple logistic ignoring within-subject correlation is invalid.
+- **Alternative if assumptions violated / repeated structure:**
+  - **GEE logistic** for repeated daily binary pain,
+  - **Mixed-effects logistic regression** with patient random intercept.
+
+*Operational definition to pre-specify (needed):*
+- “Any pain” = VAS > 0 on any day post-obturation (or ≥10mm as minimal clinically important difference; choose and justify).
+
+---
+
+### CATEGORY B – RECOMMENDED (enhance rigor/quality)
+
+#### B1) ANCOVA-style comparison of summary measures (AUC, peak pain)
+- **Test name:** **Linear regression / ANCOVA** for:
+  - **AUC(0–7)** of VAS,
+  - **Peak VAS**, and/or **mean VAS** over 7 days.
+- **Purpose:** Provide clinically interpretable single-number summaries of postoperative pain burden.
+- **Why appropriate:**
+  1. AUC captures overall pain experience and avoids multiple day-wise tests.
+  2. ANCOVA adjustment for baseline pain improves precision.
+- **Why may not be appropriate:**
+  - AUC requires reasonably complete diaries; missingness can bias unless handled carefully.
+- **When NOT to use:**
+  - If missing diary days are frequent and not handled by imputation/model-based estimation.
+- **Alternative if assumptions violated:**
+  - **Quantile regression** (median AUC/peak),
+  - **Permutation tests** for summary measures,
+  - Model-based AUC estimated from mixed model.
+
+#### B2) Multiplicity control across endpoints and time
+- **Test name:** **Holm–Bonferroni** (familywise) or **Benjamini–Hochberg** (FDR), plus prespecified primary endpoint hierarchy.
+- **Purpose:** Control inflated Type I error due to:
+  - rest vs biting pain,
+  - multiple days,
+  - multiple contrasts.
+- **Why appropriate:**
+  1. The study measures pain repeatedly and in two conditions → many potential comparisons.
+  2. Prevents overstating “significant” isolated findings.
+- **Why may not be appropriate:**
+  - Overly conservative with small sample sizes may increase Type II error.
+- **When NOT to use:**
+  - If only a single primary estimand is tested (e.g., treatment effect from mixed model) and everything else is explicitly exploratory.
+- **Alternative if assumptions violated:**
+  - Use a **single mixed-model primary test** (treatment or interaction) and limit secondary tests.
+
+#### B3) Sensitivity analyses for missing data
+- **Test name:** **Multiple imputation (MI)** with Rubin’s rules; **pattern-mixture** sensitivity.
+- **Purpose:** Evaluate robustness to attrition and incomplete diaries.
+- **Why appropriate:**
+  1. Attrition occurred after randomization; ignoring it risks bias.
+  2. MI can incorporate baseline predictors and partial outcomes.
+- **Why may not be appropriate:**
+  - MI depends on model specification; may be unstable with small n.
+- **When NOT to use:**
+  - If missingness is minimal (<5%) and mixed model already used with strong MAR plausibility.
+- **Alternative if assumptions violated:**
+  - **Inverse probability weighting (IPW)**,
+  - **Worst/best-case bounds** for binary incidence.
+
+#### B4) Stratified/interaction analysis by tooth type (effect modification)
+- **Test name:** In mixed model or regression: **treatment×tooth-type interaction**; report stratum-specific effects.
+- **Purpose:** Assess whether treatment differs for molars vs anterior/premolars.
+- **Why appropriate:**
+  1. Randomization was **stratified** by tooth type; effect may plausibly differ.
+  2. Helps interpret results clinically by tooth category.
+- **Why may not be appropriate:**
+  - Limited sample sizes per stratum → low power; interaction tests can be unstable.
+- **When NOT to use:**
+  - If pre-specified as exploratory only; do not over-interpret.
+- **Alternative if assumptions violated:**
+  - Present **stratum-specific estimates with CIs** without formal interaction testing.
+
+#### B5) Model diagnostics and assumption checks
+- **Test name:** Residual diagnostics; **Shapiro–Wilk** (limited usefulness), **Levene/Brown–Forsythe** for variance, influence diagnostics.
+- **Purpose:** Validate chosen parametric models.
+- **Why appropriate:**
+  1. VAS data often violate normality; diagnostics guide transformations/robust methods.
+  2. Identifies outliers/influential points.
+- **Why may not be appropriate:**
+  - Formal normality tests are oversensitive/undersensitive depending on n; should not be sole criterion.
+- **When NOT to use:**
+  - Don’t use Shapiro–Wilk to automatically switch to nonparametric without considering model robustness.
+- **Alternative if assumptions violated:**
+  - **Robust regression**, **bootstrap CIs**, **GEE robust SE**.
+
+---
+
+### CATEGORY C – OPTIONAL (supplementary insights)
+
+#### C1) Time-to-event analysis: time to pain resolution
+- **Test name:** **Kaplan–Meier** curves + **Cox proportional hazards model**
+- **Purpose:** Compare time until pain becomes 0 (or below threshold) and stays there.
+- **Why appropriate:**
+  1. Uses timing information; clinically intuitive (“how fast does pain resolve?”).
+  2. Handles censoring if diaries incomplete.
+- **Why may not be appropriate:**
+  - Requires clear definition of “resolution” and diary compliance; daily measurement leads to interval censoring.
+- **When NOT to use:**
+  - If pain fluctuates (0 then returns) and “resolution” is not well-defined.
+- **Alternative if assumptions violated:**
+  - **Accelerated failure time** models; **discrete-time survival** (complementary log–log).
+
+#### C2) Ordinal pain categories (none/mild/moderate/severe)
+- **Test name:** **Ordinal logistic regression** / **ordinal mixed model**
+- **Purpose:** Present results in clinically meaningful categories.
+- **Why appropriate:**
+  1. Avoids over-precision of VAS and accommodates skew/ceiling effects.
+  2. Easier clinical interpretation.
+- **Why may not be appropriate:**
+  - Requires validated cutpoints; proportional odds assumption may fail.
+- **When NOT to use:**
+  - If cutpoints are arbitrary and not justified.
+- **Alternative if assumptions violated:**
+  - **Partial proportional odds** models; **multinomial regression**.
+
+#### C3) Mediation-like exploration of obturation-related factors (not fully available)
+- **Test name:** Not a formal test here; exploratory adjustment if variables exist (e.g., sealer extrusion on radiograph).
+- **Purpose:** Explore mechanisms (e.g., extrusion → pain).
+- **Why appropriate:**
+  1. Mechanistically plausible.
+  2. Could explain heterogeneity.
+- **Why may not be appropriate:**
+  - These variables are not described as collected; and adjusting for post-randomization mediators can bias causal estimates.
+- **When NOT to use:**
+  - If the goal is causal effect of assigned treatment; do not adjust for mediators.
+- **Alternative:**
+  - Report descriptively; pre-specify future studies.
+
+---
+
+## TASK 3: Inappropriate tests (should NOT be used)
+
+1. **Multiple independent t-tests comparing arms at each day (7 days × 2 conditions) without correction**
+   - Inflates Type I error; ignores within-subject correlation.
+
+2. **Paired t-test between treatment arms**
+   - Groups are independent; pairing is incorrect.
+
+3. **One-way ANOVA treating all daily VAS observations as independent**
+   - Violates independence (repeated measures within person).
+
+4. **Simple chi-square test on “any pain” without accounting for stratification/covariates (if used as sole analysis)**
+   - Loses precision; cannot adjust for baseline pain; stratified randomization suggests at least stratified/adjusted analysis.
+
+5. **Linear regression on VAS with no handling of repeated measures and no diagnostics**
+   - Standard errors and p-values invalid if repeated structure ignored; risk of model misspecification.
+
+---
+
+## TASK 4: Summary justification of overall approach
+
+The study is a stratified parallel RCT with **daily repeated VAS pain measurements** (rest and biting) over 7 days plus baseline pain. The core analysis should therefore use **mixed-effects (or marginal) repeated-measures models** to (i) respect within-patient correlation, (ii) estimate treatment differences over time, and (iii) use partially observed diaries. Complementary analyses of **pain incidence** and **summary measures (AUC/peak)** provide clinically interpretable results, while multiplicity control and missing-data sensitivity analyses address the major validity threats (many comparisons and attrition).

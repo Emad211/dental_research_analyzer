@@ -1,0 +1,583 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_IEJ-16-210.pdf
+Status : ok
+Time   : 20260508_131220
+══════════════════════════════════════════════════════════════════════
+
+TASK 1 – INFORMATION EXTRACTION  
+===============================  
+
+Study design  
+- Type: Prospective randomized double‑blind clinical trial.  
+- Setting: Isfahan Dental School, Iran.  
+- Registration/Ethics: Ethics approval (IR.MUI.REC.1396.3.272); trial registration IRCT20201031049199N1; CONSORT followed.  
+
+Objective  
+- To determine the effect of adding clonidine to 4% articaine with 1:100,000 epinephrine for inferior alveolar nerve block (IANB) on post‑operative pain after root canal treatment in mandibular posterior teeth with symptomatic irreversible pulpitis.  
+- Secondary aims (implicit):  
+  - To compare incidence of adverse effects (nausea, vomiting, drowsiness, dizziness, headache).  
+  - To compare hemodynamic responses (blood pressure, heart rate) to anesthesia.  
+  - To examine post‑operative analgesic (ibuprofen) consumption.  
+
+Population  
+- Target: Patients with symptomatic irreversible pulpitis in mandibular posterior teeth undergoing single‑visit root canal therapy.  
+- Age: 15–60 years.  
+- Health status: ASA I (healthy).  
+
+Inclusion criteria  
+- Age 15–60 years.  
+- ASA I.  
+- Symptomatic irreversible pulpitis in a mandibular posterior tooth:  
+  - Intermittent or spontaneous pain.  
+  - Positive cold test (Endo Ice on cotton pellet on middle third of buccal surface up to 15 s).  
+  - Exaggerated reaction to cold and lingering discomfort >10 s after removal.  
+- Radiographic: No pathology except widened periodontal ligament space.  
+
+Exclusion criteria  
+- Medical: Diabetes, hypertension, other cardiovascular diseases, contraindication to clonidine, articaine, or epinephrine, pregnancy/lactation, drug abuse, β‑blocker use.  
+- Dental/diagnostic:  
+  - No response to cold test.  
+  - Periodontal problems.  
+  - Active oral infection/inflammation.  
+  - Radiographic signs of pulpal necrosis.  
+  - Non‑vital coronal pulp tissue on access (partial necrosis).  
+  - Need for multiple dental treatments.  
+  - Change in treatment plan.  
+- Analgesic/drug use:  
+  - Opioids in week before or within 72 h after procedure.  
+- Study process:  
+  - Lack of cooperation in pain assessment.  
+  - Need for additional anesthetic injections due to IANB failure (no profound lip numbness within 15 min).  
+  - For pain outcome analysis: consumption of ibuprofen post‑operatively (one patient in clonidine group excluded).  
+
+Sample size and flow  
+- Screened: 105.  
+- Excluded before randomization: 5 (did not meet inclusion).  
+- Randomized: 100.  
+  - Case (clonidine) group: 50 allocated, 50 received.  
+  - Control group: 50 allocated, 50 received.  
+- Follow‑up:  
+  - Each group: 1 lost to follow‑up, 1 discontinued intervention due to lack of lip numbness (block failure).  
+- Analysis:  
+  - Final numbers for primary pain outcome are not fully explicit, but from text: 1 clonidine patient excluded due to analgesic use; at least 1 per group excluded for block failure; 1 per group lost to follow‑up.  
+  - Reasonable to assume analyzed n ≈ 46–47 per group for pain (analysis set should be explicitly defined in new analysis plan).  
+
+Interventions / groups  
+- Group A: Clonidine group (“case group”, cartridge No. 1).  
+  - 0.2 mL clonidine (Catapressan, 150 μg/mL → dose 30 μg clonidine) + 1.8 mL of 4% articaine with 1:100,000 epinephrine.  
+  - Total volume ≈ 2.0 mL.  
+- Group B: Control group (cartridge No. 2).  
+  - 0.2 mL distilled water + 1.8 mL of 4% articaine with 1:100,000 epinephrine.  
+  - Total volume ≈ 2.0 mL.  
+
+Randomization and blinding  
+- Randomization:  
+  - Performed immediately before treatment using a 6‑sided die.  
+  - Odd number → cartridge No. 1 (clonidine); even number → cartridge No. 2 (control).  
+  - Unit of randomization: patient.  
+  - No reported allocation concealment beyond coded cartridges; potential selection bias acknowledged.  
+- Blinding:  
+  - Double‑blind:  
+    - Patient: unaware of group.  
+    - Treating endodontist: blind to content (cartridges labeled No. 1/No. 2 by an independent student).  
+  - Independent person (dental student) prepared and encoded anesthetic solutions; not involved in treatment or assessment.  
+
+Standardized procedures  
+- Pre‑treatment assessment:  
+  - Demographics, medical history.  
+  - Baseline pain intensity using 170‑mm Heft‑Parker visual analog scale (HP VAS).  
+  - Baseline blood pressure and heart rate using Omron M3 digital monitor.  
+- Anesthesia technique:  
+  - Topical 20% benzocaine gel for 1 min.  
+  - Standard IANB with 27‑gauge 1.5‑inch needle, by single experienced endodontist.  
+  - Anesthetic deposited over 2 min after negative aspiration.  
+  - Assessment of lip numbness within 15 min; failure → exclusion.  
+- Endodontic procedure:  
+  - Single‑visit root canal treatment with RaCe rotary system, following manufacturer’s instructions.  
+  - Temporary seal with eugenol‑based dressing; occlusion checked and adjusted.  
+
+Outcome variables  
+
+1. Primary outcome – pain  
+- Measurement tool: 170‑mm Heft‑Parker VAS (continuous; 0–170 mm).  
+- VAS categorized into 4 pain intensity levels:  
+  - 0 mm: no pain.  
+  - >0 – ≤54 mm: mild pain.  
+  - >54 – <114 mm: moderate pain.  
+  - ≥114 mm: severe pain.  
+- Time points: pain self‑reported at  
+  - Baseline (pre‑operative) in clinic.  
+  - Post‑operative: 6, 12, 24, 48, and 72 hours after treatment (via phone or text).  
+
+2. Secondary outcome – analgesic consumption  
+- Variable: Whether postoperative ibuprofen was used (yes/no) and possibly number of doses (not detailed).  
+- Instructions: Up to 400 mg ibuprofen as needed in case of emergency pain.  
+- Analytical note: One patient in clonidine group used analgesic and was excluded from pain analysis.  
+
+3. Secondary outcome – adverse effects  
+- Binary outcomes (yes/no at any time over 72 h):  
+  - Nausea.  
+  - Vomiting.  
+  - Drowsiness.  
+  - Dizziness.  
+  - Headache.  
+- Data collection: Asked at each follow‑up contact (6–72 h).  
+
+4. Secondary outcome – hemodynamics  
+- Continuous variables:  
+  - Systolic blood pressure (mmHg).  
+  - Diastolic blood pressure (mmHg).  
+  - Heart rate (beats/min).  
+- Time points:  
+  - Pre‑anesthesia (baseline).  
+  - 5 minutes after anesthetic administration.  
+
+Other variables  
+- Demographic/clinical covariates (likely collected but not fully specified in text):  
+  - Age (years), sex, tooth type (e.g., mandibular first molar vs second molar), baseline pain score, etc.  
+
+Data structure  
+- Between‑subject factor: Group (Clonidine vs Control).  
+- Within‑subject factor: Time for pain (repeated measures: baseline, 6, 12, 24, 48, 72 h).  
+- Repeated measures for SBP, DBP, HR (baseline, post‑5 min).  
+- Study design: parallel‑group repeated‑measures RCT, approximately equal group sizes.  
+
+Analysis population considerations  
+- Exclusions after randomization: block failure, analgesic consumption, loss to follow‑up.  
+- The trial appears to have used a per‑protocol analysis for pain. For an improved plan, both ITT and per‑protocol should be specified.  
+
+---
+
+TASK 2 – STATISTICAL ANALYSIS PLAN  
+==================================  
+
+General conventions  
+- Two‑sided α = 0.05.  
+- Report effect sizes with 95% confidence intervals.  
+- Check distributional assumptions using plots (histograms/QQ plots) and tests (e.g., Shapiro‑Wilk) for key continuous variables.  
+- Handle missing data explicitly: describe extent/pattern and use appropriate methods (e.g., mixed models or sensitivity analyses).  
+
+Define analysis populations  
+- Intention‑to‑treat (ITT): all randomized patients who received any portion of assigned IANB, analyzed by randomized group, regardless of block success, analgesic use, or protocol deviations.  
+- Per‑protocol (PP): patients with successful IANB (profound lip numbness), completed single‑visit treatment, provided pain data, and did not take rescue analgesics.  
+- Primary efficacy analysis for pain should ideally be ITT using a model that can handle missing repeated measures (e.g., mixed model); PP as sensitivity.  
+
+Primary endpoint  
+- Main endpoint: severity of post‑operative pain over time (HP VAS) from 6 to 72 hours post‑treatment, comparing clonidine vs control.  
+
+Secondary endpoints  
+- Pain at each time point separately.  
+- Proportion of patients with moderate/severe pain at each time point.  
+- Time course of pain reduction from baseline.  
+- Analgesic consumption (yes/no, and if available number of doses).  
+- Adverse events (each type separately, and combined occurrence).  
+- Hemodynamic changes from baseline to 5 min post anesthesia.  
+
+CATEGORY A – MANDATORY TESTS  
+-----------------------------  
+
+1. Descriptive statistics and baseline comparability  
+
+Test / approach  
+- Descriptive statistics; comparison of baseline characteristics.  
+
+Purpose  
+- Summarize the sample and assess whether randomization achieved comparable groups at baseline.  
+
+Why appropriate (≥2 reasons)  
+1. RCTs should document baseline comparability to interpret treatment effects credibly.  
+2. Helps identify potential confounders or imbalances that may require adjustment (e.g., baseline pain).  
+
+Why it may not be appropriate (≥1 reason)  
+- Formal hypothesis testing of baseline variables can be misleading in small–moderate samples (statistically non‑significant differences can still be clinically relevant; conversely, significant differences may be due to chance in large samples).  
+
+When NOT to use  
+- Avoid over‑interpreting multiple hypothesis tests on baseline variables as evidence for or against successful randomization.  
+
+Alternatives if assumptions violated  
+- Replace significance testing with standardized differences (e.g., absolute standardized mean difference, SMD) and descriptive comparison.  
+
+Implementation  
+- Continuous variables (age, baseline VAS, SBP/DBP/HR): mean ± SD (or median, IQR).  
+- Categorical variables (sex, tooth type, etc.): counts and percentages.  
+- For formal comparison (optional):  
+  - t‑test vs Mann–Whitney U for continuous.  
+  - Chi‑square vs Fisher’s exact for categorical.  
+
+2. Primary analysis of pain over time (continuous VAS)  
+
+Preferred Test  
+- Linear mixed‑effects model (LMM) for repeated measures.  
+
+Purpose  
+- To compare the trajectory of pain scores over time between clonidine and control, accounting for within‑patient correlation.  
+
+Why appropriate (≥2 reasons)  
+1. Pain measurements are repeated in the same individuals; LMM correctly models within‑subject correlation.  
+2. LMM can handle missing pain measurements under a missing at random assumption without excluding entire subjects (better than complete‑case repeated‑measures ANOVA).  
+3. Allows inclusion of baseline VAS and other covariates, increasing precision.  
+
+Why it may not be appropriate (≥1 reason)  
+- If VAS scores are highly skewed, show floor effects (many zeros), or the relationship to time is non‑linear, standard LMM assumptions (normal residuals, homoscedasticity) may be violated.  
+
+When NOT to use  
+- When sample size is very small (e.g., <10 per group) or convergence fails, making the model unstable.  
+- When the data are better represented as ordinal categories (e.g., most values clustered at discrete levels or floor/ceiling).  
+
+Alternatives if assumptions violated  
+- Transform VAS (e.g., log(x+1)) or use generalized linear mixed models (GLMM) with appropriate link (e.g., gamma, negative binomial, or cumulative logit for ordinal pain categories).  
+- Non‑parametric repeated measures methods (e.g., Brunner–Langer rank‑based ANOVA for longitudinal data).  
+
+Model specification (example)  
+- Outcome: HP VAS score.  
+- Fixed effects: group (clonidine vs control), time (categorical: baseline, 6, 12, 24, 48, 72 h), group × time interaction, baseline VAS (if baseline not included in repeated outcome).  
+- Random effects: random intercept for patient; consider random slope for time if data support.  
+- Key parameter of interest: group × time interaction and/or overall group difference across 6–72 h.  
+- Report estimated mean pain at each time by group, with differences and 95% CIs, and p‑values for main and interaction effects.  
+
+3. Secondary analysis of pain at each post‑operative time point  
+
+Test  
+- Two‑sample t‑test for continuous VAS at each time point (e.g., 6, 12, 24, 48, 72 h).  
+
+Purpose  
+- To compare mean pain intensity between groups at individual clinically relevant times.  
+
+Why appropriate (≥2 reasons)  
+1. Simple and transparent; complements longitudinal mixed‑model results by giving cross‑sectional snapshots.  
+2. Appropriate for continuous outcomes when distributions are approximately symmetric and sample sizes per group are similar.  
+
+Why it may not be appropriate (≥1 reason)  
+- Multiple testing at 5 time points inflates type I error if not adjusted.  
+- VAS distributions can be skewed or show heavy tails, violating the normality assumption.  
+
+When NOT to use  
+- When sample size at a time point becomes very small or highly unequal between groups.  
+- When distributions are markedly non‑normal and variances differ.  
+
+Alternatives if assumptions violated  
+- Mann–Whitney U test for VAS (robust to non‑normality).  
+- Use the estimates from LMM as primary and treat per‑time comparisons as exploratory, possibly with adjustment for multiple comparisons (e.g., Holm correction).  
+
+4. Comparison of categorical pain levels  
+
+Test  
+- Chi‑square test or Fisher’s exact test for pain categories (no/mild vs moderate/severe; or 4‑level classification) at each time point.  
+
+Purpose  
+- To compare the proportion of patients experiencing clinically significant pain between groups.  
+
+Why appropriate (≥2 reasons)  
+1. Pain categories are clinically interpretable and align with the VAS thresholds defined in the study.  
+2. Chi‑square test is standard for comparing proportions between two independent groups.  
+
+Why it may not be appropriate (≥1 reason)  
+- If expected cell counts are <5 (especially for severe pain), chi‑square assumptions are violated.  
+
+When NOT to use  
+- When the contingency table is sparse (many zeros or low counts) so that asymptotic chi‑square approximation is poor.  
+
+Alternatives if assumptions violated  
+- Fisher’s exact test (for 2×2 tables) or exact multinomial tests for larger tables.  
+- Collapsing categories (e.g., moderate/severe vs none/mild) to ensure adequate counts.  
+
+5. Hemodynamic changes (SBP/DBP/HR)  
+
+Test  
+- Within‑group: paired t‑test (pre vs 5 min) for SBP, DBP, HR.  
+- Between‑group:  
+  - Two‑sample t‑test on change scores (Δ = 5 min – baseline) for SBP, DBP, HR.  
+
+Purpose  
+- To assess whether clonidine produces different acute cardiovascular responses compared with control.  
+
+Why appropriate (≥2 reasons)  
+1. Measurements are continuous and likely approximately normal in this sample.  
+2. Paired t‑test appropriately accounts for within‑subject pairing (pre vs post).  
+3. Change score t‑test efficiently compares groups.  
+
+Why it may not be appropriate (≥1 reason)  
+- Distributions of BP or HR changes may be skewed or have outliers, violating normality assumptions.  
+
+When NOT to use  
+- When sample size is very small or repeated measures strongly non‑normal.  
+
+Alternatives if assumptions violated  
+- Wilcoxon signed‑rank test (within group) and Mann–Whitney U test (between group) on change scores.  
+- ANCOVA: post‑measure as outcome, group as factor, baseline as covariate (often preferred to change scores).  
+
+6. Adverse events  
+
+Test  
+- For each adverse event (nausea, vomiting, drowsiness, dizziness, headache):  
+  - Chi‑square test or Fisher’s exact test comparing proportions between groups over the entire 72‑h period.  
+
+Purpose  
+- To test whether clonidine increases, decreases, or has no effect on incidence of adverse effects.  
+
+Why appropriate (≥2 reasons)  
+1. Outcomes are binary (presence/absence of each symptom); chi‑square/Fisher’s are standard for binary comparisons.  
+2. Groups are randomized and independent; there is a clear effect of interest (risk difference or risk ratio).  
+
+Why it may not be appropriate (≥1 reason)  
+- Expected counts may be very low if events are rare, violating chi‑square assumptions.  
+
+When NOT to use  
+- For very rare or zero events leading to unstable estimates or non‑informative p‑values.  
+
+Alternatives if assumptions violated  
+- Fisher’s exact test for 2×2 tables.  
+- Combine events into “any adverse event” vs none to increase counts.  
+- Estimate risk difference and exact confidence intervals without hypothesis tests.  
+
+7. Analgesic consumption  
+
+Test  
+- Comparison of proportion using rescue analgesic (yes/no) between groups using Fisher’s exact or chi‑square.  
+
+Purpose  
+- To evaluate whether clonidine reduces the need for rescue pain medication.  
+
+Why appropriate (≥2 reasons)  
+1. Binary outcome with two independent groups.  
+2. Clinically meaningful endpoint complementing VAS pain intensity.  
+
+Why it may not be appropriate (≥1 reason)  
+- Extremely low usage rates may yield very small cell counts, undermining asymptotic tests.  
+
+When NOT to use  
+- When there are zero users in both groups (no information).  
+
+Alternatives if assumptions violated  
+- Descriptive comparison with risk difference and exact 95% CI; no formal test.  
+- If counts allow, logistic regression adjusting for baseline pain.  
+
+CATEGORY B – RECOMMENDED TESTS  
+-------------------------------  
+
+8. Model including baseline pain as covariate (ANCOVA / mixed model)  
+
+Test  
+- Linear mixed model or repeated‑measures ANCOVA including baseline VAS as a covariate.  
+
+Purpose  
+- To improve precision and control for any baseline imbalance in pain.  
+
+Why appropriate (≥2 reasons)  
+1. Baseline pain is strong predictor of post‑operative pain; accounting for it reduces residual variance.  
+2. Randomization does not guarantee perfect balance; adjusting for baseline increases robustness.  
+
+Why it may not be appropriate (≥1 reason)  
+- If the relationship between baseline and post‑operative pain is highly non‑linear, a simple linear covariate may be mis‑specified.  
+
+When NOT to use  
+- When baseline data are missing for a substantial portion and are not missing at random.  
+
+Alternatives if assumptions violated  
+- Include baseline as categorical (e.g., quartiles or categories of pain) in the model.  
+- Use change from baseline as outcome (less efficient but simpler).  
+
+9. Sensitivity analysis using non‑parametric methods  
+
+Test  
+- Brunner–Langer non‑parametric rank‑based ANOVA for longitudinal data (e.g., nparLD package in R).  
+
+Purpose  
+- To verify robustness of conclusions when normality of VAS is questionable.  
+
+Why appropriate (≥2 reasons)  
+1. Does not require normality; robust to outliers and skewed distributions.  
+2. Handles longitudinal design with group and time factors.  
+
+Why it may not be appropriate (≥1 reason)  
+- Interpretation in terms of rank effects is less intuitive for clinicians than mean VAS differences.  
+
+When NOT to use  
+- When sample size is too small or data structure complex (e.g., different time schedules) for available software.  
+
+Alternatives if assumptions violated  
+- Ordinal mixed models with pain category as outcome.  
+
+10. Logistic regression for “moderate/severe pain”  
+
+Test  
+- Binary logistic regression at a specified time (e.g., 24 h) with outcome: moderate/severe pain (VAS >54 mm) vs none/mild.  
+
+Purpose  
+- To estimate odds ratio (or risk ratio via log‑binomial/Poisson model) for clinically important pain, adjusting for covariates.  
+
+Why appropriate (≥2 reasons)  
+1. Aligns with clinically meaningful threshold for pain.  
+2. Allows adjustment for baseline VAS, age, sex, tooth type, etc.  
+
+Why it may not be appropriate (≥1 reason)  
+- If outcome is rare, logistic regression may produce unstable estimates and wide CIs.  
+
+When NOT to use  
+- With extremely low event counts (e.g., <5 events in a group).  
+
+Alternatives if assumptions violated  
+- Exact logistic regression; or report unadjusted risk difference with exact CIs.  
+
+11. Multiple comparisons adjustment  
+
+Test  
+- Holm–Bonferroni or Benjamini–Hochberg procedure applied to the set of secondary/time‑specific comparisons.  
+
+Purpose  
+- To control family‑wise error or false discovery rate given multiple pain time points and secondary endpoints.  
+
+Why appropriate (≥2 reasons)  
+1. Limits inflation of type I error across multiple tests.  
+2. Holm procedure is more powerful than simple Bonferroni while maintaining strong control of family‑wise error.  
+
+Why it may not be appropriate (≥1 reason)  
+- Can be overly conservative, potentially masking real differences when the number of tests is large relative to sample size.  
+
+When NOT to use  
+- For clearly pre‑specified primary endpoint(s), which should have a single main test; adjustments applied mainly to exploratory or secondary outcomes.  
+
+Alternatives if assumptions violated  
+- Control FDR (Benjamini–Hochberg) rather than FWER if emphasis is on discovery.  
+- Present unadjusted p‑values and interpret cautiously, emphasizing effect sizes and CIs.  
+
+12. Exploratory subgroup analyses  
+
+Test  
+- Interaction tests within mixed models or logistic regressions: group × age group, group × sex, group × baseline pain category.  
+
+Purpose  
+- To explore whether clonidine’s effect differs in specific subgroups (e.g., younger vs older patients).  
+
+Why appropriate (≥2 reasons)  
+1. Helps generate hypotheses for future studies and assess consistency of effect.  
+2. Uses existing data efficiently without inflating sample size.  
+
+Why it may not be appropriate (≥1 reason)  
+- Trial is not powered for subgroup analyses; risk of spurious findings is high.  
+
+When NOT to use  
+- When subgroups are small (e.g., <10 per cell) or imbalance is extreme.  
+
+Alternatives if assumptions violated  
+- Restrict subgroup analyses to a small number of clinically compelling hypotheses, and treat results as exploratory.  
+
+CATEGORY C – OPTIONAL TESTS  
+---------------------------  
+
+13. Area under the curve (AUC) for pain over 72 h  
+
+Test  
+- Compute individual AUC for VAS–time curves (e.g., trapezoidal rule) and compare between groups using t‑test or Mann‑Whitney.  
+
+Purpose  
+- Summarize overall pain burden over 72 h into a single metric per patient.  
+
+Why appropriate (≥2 reasons)  
+1. Captures both intensity and duration of pain.  
+2. Simplifies repeated measures into a single outcome for straightforward comparison.  
+
+Why it may not be appropriate (≥1 reason)  
+- Requires complete or near‑complete data; handling uneven missingness is not trivial.  
+
+When NOT to use  
+- When many patients have missing time points, especially early or late, or when pain trajectory is not well approximated by linear interpolation.  
+
+Alternatives if assumptions violated  
+- Use mixed models as the main analysis rather than AUC.  
+
+14. Time‑to‑event analysis: time to pain resolution  
+
+Test  
+- Kaplan–Meier analysis and log‑rank test for time to first occurrence of “no pain” (VAS = 0) or “no/mild pain” (VAS ≤54 mm).  
+
+Purpose  
+- To compare how quickly patients in each group achieve minimal pain.  
+
+Why appropriate (≥2 reasons)  
+1. Uses all available repeated pain assessments and handles right‑censoring naturally.  
+2. Clinically intuitive metric: time until relief.  
+
+Why it may not be appropriate (≥1 reason)  
+- Pain is measured at discrete times, not continuously; true event time is interval‑censored, while standard methods assume exact event times.  
+
+When NOT to use  
+- When time intervals between measurements are wide and pain fluctuates frequently between categories.  
+
+Alternatives if assumptions violated  
+- Discrete‑time survival models or multi‑state models, though may be overkill for this sample size.  
+
+15. Graphical diagnostics and visualization  
+
+Test / approach  
+- Residual diagnostics for mixed models; plots of mean VAS over time by group with error bars; individual spaghetti plots.  
+
+Purpose  
+- To visually assess model fit and to communicate results clearly.  
+
+Why appropriate (≥2 reasons)  
+1. Helps identify deviations from assumptions (non‑linearity, heteroscedasticity, outliers).  
+2. Facilitates clinical interpretation and dissemination.  
+
+Why it may not be appropriate (≥1 reason)  
+- With small sample sizes, graphs can be noisy; over‑interpretation of patterns is possible.  
+
+When NOT to use  
+- Never categorically inappropriate; but interpret cautiously.  
+
+Alternatives if assumptions violated  
+- Adjust model choices (e.g., transform data, change covariance structure) guided by diagnostics.  
+
+TASK 3 – INAPPROPRIATE TESTS  
+=============================  
+
+Tests that should NOT be used in this study (with reasons):  
+
+1. Independent samples t‑test on change scores only, ignoring repeated measures structure  
+- Reason: Loses information about intermediate time points and correlation among them; less efficient and potentially biased if missingness varies across time.  
+- Better: Mixed‑effects models or repeated‑measures ANOVA.  
+
+2. Simple pre‑post paired t‑test within each group, then comparing significance levels  
+- Reason: Comparing “significant vs non‑significant” within groups is an invalid way to compare groups; it does not directly test group differences.  
+- Better: Directly test group × time interaction or compare change scores between groups.  
+
+3. Multiple unadjusted t‑tests or Mann‑Whitney tests at each time point as the sole primary analysis  
+- Reason: Inflated type I error; does not account for the longitudinal nature of data; inefficient use of information.  
+- Better: Pre‑specified primary longitudinal model, with per‑time comparisons as secondary.  
+
+4. One‑way ANOVA treating each time point across all patients as independent observations  
+- Reason: Violates independence assumption; repeated measures on the same patients are correlated.  
+- Better: Repeated‑measures ANOVA or mixed‑effects models.  
+
+5. Pearson correlation between clonidine dose and pain  
+- Reason: Dose is fixed and identical in all clonidine patients (30 μg), with 0 in controls; correlation is meaningless; exposure is categorical, not continuous.  
+- Better: Group comparison analyses as outlined.  
+
+6. Linear regression treating VAS pain categories (no/mild/moderate/severe coded 0–3) as interval data without justification  
+- Reason: Ordinal categories do not necessarily have equal spacing; linear regression may misrepresent relationships.  
+- Better: Ordinal logistic regression or analyze original continuous VAS scores.  
+
+7. Parametric tests (t‑test/ANOVA) for proportions or counts without transformation or appropriate modeling  
+- Reason: Proportions and counts are bounded and often non‑normal, especially with low counts; assumptions of normality and homoscedasticity are violated.  
+- Better: Chi‑square/Fisher’s, logistic or Poisson/negative binomial regression.  
+
+8. Stepwise variable selection procedures (automatic stepwise regression) to choose covariates  
+- Reason: Data‑driven selection is unstable, inflates type I error, and yields biased estimates in small to moderate samples.  
+- Better: Pre‑specify a small set of clinically relevant covariates.  
+
+9. Per‑protocol analysis only, ignoring ITT  
+- Reason: Excluding participants after randomization may introduce bias and compromise randomization benefits.  
+- Better: Primary ITT analysis with PP as sensitivity.  
+
+TASK 4 – SUMMARY OF ANALYTICAL APPROACH  
+=======================================  
+
+- The study is a parallel‑group, double‑blind RCT with repeated pain measurements over 72 hours. The central question is whether adding a fixed low dose of clonidine to articaine/epinephrine reduces post‑operative pain after endodontic treatment.  
+- The proposed analysis plan:  
+  - Use descriptive statistics to document the sample and baseline comparability.  
+  - Conduct a primary longitudinal analysis of continuous HP VAS pain scores using a linear mixed‑effects model, including group, time, and their interaction, optionally adjusting for baseline pain and key covariates.  
+  - Complement this with time‑specific comparisons of mean VAS and proportions with clinically significant pain, while managing multiplicity and emphasizing effect sizes and CIs.  
+  - Analyze hemodynamic changes, adverse events, and analgesic use as secondary endpoints with appropriate tests for continuous and categorical data.  
+  - Perform sensitivity analyses using non‑parametric or ordinal methods if model assumptions are questionable, and explore AUC or time‑to‑relief as optional summaries.  
+- This approach respects the randomized design, properly handles the repeated measures nature of the data, limits bias through ITT analysis, and provides clinically interpretable results with quantified uncertainty.
