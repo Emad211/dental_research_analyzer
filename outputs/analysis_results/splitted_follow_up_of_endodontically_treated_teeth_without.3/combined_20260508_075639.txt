@@ -1,0 +1,988 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_follow_up_of_endodontically_treated_teeth_without.3.pdf
+Time : 20260508_075639
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study identification
+- **Title/Topic:** Long-term follow-up of **endodontically treated teeth (ETTs) without crown/cuspal coverage** in Vidarbha region (India).
+- **Setting:** Outpatient dental hospital in Vidarbha, Maharashtra, India (26 districts).
+- **Design:** **Observational retrospective cohort study** using dental records with clinical recall follow-up.
+- **Study period:** Records/data collected **2010–2020**.
+- **Follow-up schedule:** Recall planned **every 6 months**; also referenced at **6 months, 1, 2, 5 years up to 10.3 years**. Not all subjects attended all visits.
+- **Unit of analysis:** Primarily **tooth-level** outcomes; multiple teeth could belong to the same patient (clustering).
+
+### Objectives / aims
+1. **Evaluate survival criteria** of ETTs restored **without crown coverage** (no cuspal coverage).
+2. **Identify explanations/factors** associated with differences in observed outcomes (risk factors for failure).
+
+### Population / sample
+- **Screening:** 450 ETTs identified in files.
+- **Included:** **300 RC-treated teeth** evaluated meeting inclusion criteria, in **148 subjects**.
+- **Age:** stated inconsistently:
+  - Table indicates **19–67 years**; Methods: **20–45 years**. (Need to reconcile during analysis.)
+- **Sex distribution:** table shows **men 93, women 55** (but percentages shown appear inconsistent with n=148; likely a reporting error).
+- **Observation window:** **6 months to 10.3 years**.
+- **Status at 10 years:** **93 teeth intact** with restorations without full coverage.
+
+### Exposure/groups (restorative approach)
+- All teeth are **without crown coverage** (no definitive cuspal coverage/crowns).
+- **Restorative material groups** (tooth-level):
+  - **Composite:** 99 teeth
+  - **Silver amalgam:** 32 teeth
+  - **GIC:** 17 teeth
+  - (These sum to **148**, which conflicts with “300 teeth”; suggests either a subset analyzed for “events” table or reporting inconsistency.)
+- Other recorded restorative characteristics:
+  - **Number of restored surfaces**
+  - **Post placement** and **core build-up** (but inclusion says teeth had not received post/core at recall—needs clarification).
+
+### Inclusion criteria (as stated)
+- Permanent teeth.
+- No **provisional crowns**, no **definitive restorations with cuspal coverage**, no **post-and-core restorations**, and/or **crowns at time of recall**.
+- Restoration timing conditions:
+  1. Restoration placed **≥6 months before last recall visit**
+  2. Restoration placed **within 6 months after endodontic treatment**
+- Records contained info on ETTs and dentition.
+
+### Exclusion criteria (as stated)
+- Teeth lost due to **endodontic** or **periodontal reasons** excluded (i.e., failures of interest are mainly restorative/tooth-structure failures).
+- (Implicit) teeth with crowns/cuspal coverage and/or post-core excluded.
+
+### Outcome definition (time-to-event)
+- **Start time (time zero):** date of **completion of endodontic therapy**.
+- **End time:** date of **negative finding requiring restoration/tooth repair/extraction** OR date of **tooth extraction**.
+- **Censoring:** If not failed, censored at **date of data collection/last clinic visit**.
+- **Failure events include:**
+  - Recurrent caries at restoration margin
+  - Crack/fracture line
+  - Loss of restoration
+  - Fracture of tooth or restoration
+  - Vertical root fracture
+- Important: authors mention Kaplan–Meier in prior 3-year paper; current paper implies similar framework.
+
+### Candidate predictors/independent variables (recorded)
+- **Patient-level:** age, gender
+- **Tooth-level:**
+  - Tooth location in arch (upper/lower)
+  - Tooth type (incisor/canine/premolar/molar)
+  - Presence of **opposing dentition** (natural/crown/extracted)
+  - Adjacent teeth (mentioned but not tabulated)
+  - Remaining tooth structure
+  - Type of restorative material
+  - Baseline dentition descriptors (number of teeth; caries at entry; DMFT at time of endodontic treatment)
+  - Endodontic treatment factors: number of canals, sessions, filled canals
+  - Post-treatment interventions on ETT during follow-up (dates/types)
+
+### Data structure issues to plan for (based on text)
+- **Clustering:** multiple teeth per subject (300 teeth / 148 subjects).
+- **Unequal group sizes** and **unequal follow-up** (explicit limitation).
+- **Inconsistencies in counts/tables** (300 vs 148 teeth; “events” table shows 0 censored which is incompatible with survival follow-up). Analysis plan must include data cleaning/verification.
+
+---
+
+## TASK 2 — Statistical analysis plan (tests)
+
+### Primary analysis framework
+Because the outcome is explicitly **time-to-failure** with censoring, the core analysis should be **survival analysis**, with methods that account for **within-patient correlation** (shared frailty/robust SEs/GEE-type extensions).
+
+---
+
+# CATEGORY A — MANDATORY (analysis incomplete without these)
+
+## A1) Descriptive statistics (baseline and follow-up characterization)
+- **Test/Method:** Descriptive summaries (means/SD or medians/IQR; counts/%), plus standardized differences if comparing material groups.
+- **Purpose:** Describe sample, tooth characteristics, restorations, and follow-up time; identify imbalance and missingness.
+- **Why appropriate (≥2):**
+  1. Retrospective cohort requires transparency on baseline distributions and potential confounding.
+  2. Essential before modeling to understand variable types, sparsity, and feasibility of multivariable adjustment.
+- **Why may not be appropriate (≥1):** No formal inferential comparison; can be misused as “baseline significance testing.”
+- **When NOT to use:** Never “omit” descriptives; but **do not** use p-values to “prove” groups are comparable.
+- **Alternative if assumptions violated:** Use robust summaries (median/IQR) for skewed distributions; exact counts for sparse categories.
+
+## A2) Kaplan–Meier (KM) survival estimation (overall and by restorative material; possibly by tooth type)
+- **Test/Method:** **Kaplan–Meier survival curves** with survival probabilities at clinically relevant times (e.g., 1, 3, 5, 10 years) and median survival if reached.
+- **Purpose:** Nonparametric estimation of tooth/restoration survival over time.
+- **Why appropriate:**
+  1. Handles **right-censoring** (patients not failing by last visit).
+  2. Provides clinically interpretable survival estimates over long follow-up.
+- **Why may not be appropriate:** Standard KM assumes **independence** of observations; violated if multiple teeth per patient.
+- **When NOT to use:** When clustering is substantial and you intend to present inference without adjustment; KM still okay descriptively but inference should adjust clustering.
+- **Alternative if assumptions violated:** Use KM for descriptive plots but obtain CIs via **clustered bootstrap by patient**; or use marginal survival estimates from frailty models.
+
+## A3) Log-rank test (group comparison of survival curves), with clustering-aware inference if feasible
+- **Test/Method:** **Log-rank test** comparing KM curves across restorative materials (and other key categorical predictors).
+- **Purpose:** Unadjusted comparison of time-to-failure distributions between groups.
+- **Why appropriate:**
+  1. Standard first-pass comparison for survival outcomes.
+  2. Sensitive to persistent differences over time.
+- **Why may not be appropriate:** 
+  - Does not adjust for confounding (age, tooth type, remaining structure, opposing dentition).
+  - Independence assumption violated by multiple teeth per subject.
+- **When NOT to use:** If proportional hazards is grossly violated and differences are strongly time-dependent; if clustering cannot be addressed and inference would be misleading.
+- **Alternative if assumptions violated:** **Weighted log-rank tests** (e.g., Fleming–Harrington) for non-PH; or proceed directly to multivariable Cox with time-varying effects and robust SE.
+
+## A4) Cox proportional hazards regression with patient-level clustering adjustment (primary multivariable model)
+- **Test/Method:** **Cox PH model** with:
+  - **Robust sandwich SE clustered by subject** *or*
+  - **Shared frailty (random effect) for subject**.
+- **Purpose:** Estimate adjusted associations (hazard ratios) between predictors (especially **restorative material**) and time-to-failure.
+- **Why appropriate:**
+  1. Matches the cohort’s **time-to-event** structure with censoring.
+  2. Allows adjustment for key confounders (tooth type, jaw, opposing dentition, remaining structure, age/sex, etc.).
+- **Why may not be appropriate:**
+  - **Proportional hazards** assumption may not hold.
+  - Sparse events in some strata (e.g., small GIC group) can destabilize estimates.
+- **When NOT to use:** If event counts are too low per parameter (separation/overfitting), or if follow-up times are not reliably measured.
+- **Alternative if assumptions violated:**
+  - Non-PH: **Cox with time-varying coefficients** (interaction with log(time)) or stratified Cox.
+  - If functional form issues: use **restricted cubic splines** for continuous age.
+  - If very sparse: penalized Cox (e.g., **Firth penalization**) or reduce model complexity.
+
+---
+
+# CATEGORY B — RECOMMENDED (improves rigor)
+
+## B1) Proportional hazards (PH) assumption diagnostics
+- **Test/Method:** **Schoenfeld residual test** + graphical checks (log(-log) curves; time-varying residual plots).
+- **Purpose:** Validate Cox model assumptions.
+- **Why appropriate:**
+  1. Cox model validity depends on PH; violations bias HR interpretation.
+  2. Long follow-up increases chance of time-varying effects.
+- **Why may not be appropriate:** Global tests can be underpowered with few events; may flag trivial deviations with many events.
+- **When NOT to use:** Never skip entirely if reporting Cox HRs; but avoid over-interpreting p-values—use plots too.
+- **Alternative if assumptions violated:** Stratified Cox, time-varying effects, or parametric survival models (below).
+
+## B2) Parametric survival modeling (AFT or PH forms) for robustness and prediction
+- **Test/Method:** **Weibull**, **log-normal**, or **log-logistic** survival models (AFT or PH parameterization), optionally with frailty.
+- **Purpose:** Provide alternative effect measures (time ratios in AFT) and potentially better extrapolation/fit.
+- **Why appropriate:**
+  1. Can model baseline hazard shape explicitly; may fit dental failure processes better.
+  2. Enables estimation of absolute time metrics (e.g., predicted survival time) beyond Cox.
+- **Why may not be appropriate:** Misspecification of distribution leads to biased estimates.
+- **When NOT to use:** If no plausible parametric form fits (checked via AIC, residuals, probability plots).
+- **Alternative if assumptions violated:** Flexible parametric survival (Royston–Parmar splines) or Cox with splines for baseline hazard.
+
+## B3) Competing risks analysis (if endodontic/periodontal loss occurs and is observed)
+- **Test/Method:** 
+  - **Cumulative incidence function (CIF)** and **Gray’s test**
+  - **Fine–Gray subdistribution hazard model** (with clustering-robust SE if possible)
+- **Purpose:** Account for alternative causes of tooth loss that preclude restorative failure.
+- **Why appropriate:**
+  1. In real follow-up, teeth may be lost for reasons other than restorative/tooth fracture; treating them as simple censoring can bias failure incidence.
+  2. Provides clinically relevant absolute risk of specific failure types.
+- **Why may not be appropriate:** The paper says teeth lost for endodontic/periodontal reasons were excluded; if truly excluded, competing risks may not be applicable.
+- **When NOT to use:** If competing event types are not recorded or are structurally excluded from dataset.
+- **Alternative if assumptions violated:** Cause-specific Cox models (separate hazards per event type).
+
+## B4) Multi-level/marginal modeling choice justification (clustered teeth within patient)
+- **Test/Method:** Compare:
+  - Cox with **cluster-robust SE** (marginal inference) vs
+  - **Shared frailty Cox** (subject-specific inference)
+- **Purpose:** Ensure valid inference with correlated tooth outcomes.
+- **Why appropriate:**
+  1. 300 teeth within 148 subjects implies non-independence.
+  2. Effect estimates/SEs can change materially depending on correlation handling.
+- **Why may not be appropriate:** Frailty distribution assumptions (often gamma) may be wrong; robust SE may perform poorly with few clusters (though 148 is usually adequate).
+- **When NOT to use:** Frailty not advised with extremely small numbers of patients or minimal within-patient multiplicity.
+- **Alternative if assumptions violated:** Patient-level analysis (one tooth per patient) as sensitivity analysis.
+
+## B5) Missing data handling
+- **Test/Method:** **Multiple imputation** (e.g., MICE) for covariates + sensitivity analyses (complete-case vs imputed).
+- **Purpose:** Reduce bias and loss of precision due to incomplete covariates (common in retrospective records).
+- **Why appropriate:**
+  1. Retrospective charts often have missing predictors (remaining tooth structure, adjacent teeth).
+  2. Complete-case can bias associations if missingness relates to outcome/covariates.
+- **Why may not be appropriate:** Not valid if missingness is MNAR and cannot be reasonably modeled; complex with time-to-event (must include event indicator and log(time) in imputation model).
+- **When NOT to use:** If missingness is trivial (<~5%) or variables are structurally missing.
+- **Alternative if assumptions violated:** Pattern-mixture sensitivity analyses; missing-indicator approach (with caution).
+
+---
+
+# CATEGORY C — OPTIONAL (supplementary insights)
+
+## C1) Incidence rate estimation (failures per tooth-year) by material and tooth type
+- **Test/Method:** **Poisson** or **negative binomial regression** with offset = log(tooth-time), clustered SE.
+- **Purpose:** Provide simple rate-based summaries complementing survival curves.
+- **Why appropriate:**
+  1. Communicates event burden per exposure-time (useful with unequal follow-up).
+  2. Can handle multiple predictors similarly to Cox.
+- **Why may not be appropriate:** Assumes constant hazard within intervals; ignores exact event timing unless structured appropriately.
+- **When NOT to use:** If precise time-to-event is available and Cox is primary; use as supplement only.
+- **Alternative if assumptions violated:** Negative binomial (overdispersion), or piecewise exponential models.
+
+## C2) Subgroup / interaction analyses (pre-specified)
+- **Test/Method:** Interaction terms in Cox (e.g., restorative material × tooth type; material × opposing dentition).
+- **Purpose:** Assess effect modification (e.g., restorations behave differently in molars vs premolars).
+- **Why appropriate:**
+  1. Biomechanically plausible heterogeneity by tooth type/occlusal load.
+  2. Helps clinical decision-making for specific tooth classes.
+- **Why may not be appropriate:** Multiple testing inflation; small subgroup sizes (e.g., GIC n=17) lead to unstable interaction estimates.
+- **When NOT to use:** If not pre-specified or events per parameter are insufficient.
+- **Alternative if assumptions violated:** Combine categories (e.g., anterior vs posterior), or present stratified descriptive KM without formal interaction testing.
+
+## C3) Recurrent event analysis (only if multiple failures/interventions per tooth are recorded)
+- **Test/Method:** Andersen–Gill, Prentice–Williams–Peterson, or frailty recurrent-event models.
+- **Purpose:** Model repeated restorative interventions (repair/replacement) if teeth can fail multiple times.
+- **Why appropriate:**
+  1. The dataset mentions “all interventions after endodontic treatment.”
+  2. Captures restorative “burden,” not just first failure.
+- **Why may not be appropriate:** Outcome definition in the article appears “first failure”; recurrent event methods require clear event ordering and at-risk definitions.
+- **When NOT to use:** If only first failure is reliably captured or if later events are inconsistently recorded.
+- **Alternative if assumptions violated:** Analyze only time-to-first-failure (primary) plus count outcomes descriptively.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Independent-samples t-test / one-way ANOVA on “survival time” without censoring handling**
+   - **Why not:** Ignores right-censoring and unequal follow-up; biased means and invalid p-values.
+
+2. **Chi-square test comparing “failure yes/no” at 10 years without accounting for censoring**
+   - **Why not:** Many teeth will not have full 10-year observation; creates informative missingness and biased risk estimates.
+
+3. **Simple logistic regression for failure (binary) ignoring time-to-event**
+   - **Why not:** Discards timing information and mishandles censoring; also ignores within-patient clustering unless explicitly modeled (GEE/mixed).
+
+4. **Paired t-test / McNemar’s test**
+   - **Why not:** No paired/matched design described.
+
+5. **Pearson correlation between predictors and “survival”**
+   - **Why not:** Not appropriate for censored time-to-event outcomes and mixed variable types.
+
+6. **Standard KM/log-rank inference treating each tooth as independent without any clustering consideration**
+   - **Why not:** Underestimates SEs (inflated type I error) when multiple teeth come from the same subject.
+
+---
+
+## TASK 4 — Summary justification of overall approach
+
+The study is a retrospective cohort with **variable follow-up** and a clearly defined **time-to-failure** endpoint, so **survival analysis** is the appropriate core framework. The minimum complete analysis includes **KM estimation** (to describe survival) and **multivariable Cox regression** (to quantify adjusted associations with restorative material and tooth/patient factors), while accounting for **within-patient clustering** because multiple teeth are contributed by the same individuals. Recommended additions include explicit **PH diagnostics**, sensitivity analyses for clustering and missingness, and (if relevant) **competing risks** to avoid biased incidence estimates.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Retrospective cohort study.
+2. **Study Objective**: 
+   - To evaluate the survival criteria of endodontically treated teeth (ETTs) without crown coverage.
+   - To identify possible explanations for differences in survival outcomes.
+3. **Study Population**:
+   - **Sample Size**: 300 endodontically treated teeth (ETTs) in 148 patients.
+   - **Age Range**: 20–45 years.
+   - **Gender Distribution**: 93 men (62.83%) and 55 women (37.16%).
+   - **Location**: Vidarbha region, Maharashtra, India.
+4. **Observation Period**: 6 months to 10.3 years.
+5. **Inclusion Criteria**:
+   - Permanent teeth without provisional crowns, definitive restorations with cuspal coverage, post and core restorations, or crowns at the time of recall.
+   - Teeth with restorations placed at least 6 months before the last recall visit.
+   - Teeth with restorations placed within 6 months after endodontic treatment.
+6. **Exclusion Criteria**:
+   - Teeth lost due to endodontic or periodontal reasons.
+   - Teeth with negative findings requiring restoration, repair, or extraction.
+7. **Variables**:
+   - **Independent Variables**: Age, gender, tooth location (upper/lower jaw), tooth type (incisor, canine, premolar, molar), presence of opposing dentition (natural tooth, crown, extracted), type of restorative material (composite, silver amalgam, GIC), number of canals, number of sessions, and number of filled canals.
+   - **Dependent Variables**: Survival of ETTs, failure characteristics (recurrent caries, crack/fracture, loss of restoration, vertical root fracture, tooth loss).
+8. **Data Collection**:
+   - Retrospective review of patient records from 2010 to 2020.
+   - Follow-up data collected at 6 months, 1 year, 2 years, 5 years, and 10.3 years.
+   - Data on restoration type, number of surfaces, placement of post/core buildup, and interventions post-endodontic treatment.
+9. **Outcome Definition**:
+   - **Survival**: Teeth intact with restorations without full coverage.
+   - **Failure**: Negative findings requiring restoration, repair, or extraction.
+10. **Data Analysis**:
+    - Kaplan–Meier survival analysis was used to evaluate survival and success of ETTs.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Kaplan–Meier Survival Analysis
+   - **Purpose**: To estimate the survival probability of ETTs over time.
+   - **Why Appropriate**:
+     1. The study involves time-to-event data (e.g., time until failure or survival of ETTs).
+     2. Censoring is present (e.g., teeth that did not fail by the end of the study period).
+   - **Why It May Not Be Appropriate**: Assumes that censoring is non-informative, which may not always hold true.
+   - **When This Test Should NOT Be Used**: If the assumption of non-informative censoring is violated.
+   - **Alternative if Assumptions Are Violated**: Cox proportional hazards model with adjustments for informative censoring.
+
+2. **Test Name**: Chi-Square Test or Fisher’s Exact Test
+   - **Purpose**: To compare categorical variables (e.g., survival rates across different restorative materials or tooth types).
+   - **Why Appropriate**:
+     1. The study involves categorical independent variables (e.g., tooth type, restorative material).
+     2. It tests for associations between categorical variables and survival outcomes.
+   - **Why It May Not Be Appropriate**: Small sample sizes in subgroups can violate the assumptions of the chi-square test.
+   - **When This Test Should NOT Be Used**: When expected frequencies in any cell are less than 5.
+   - **Alternative if Assumptions Are Violated**: Fisher’s exact test for small sample sizes.
+
+#### CATEGORY B – RECOMMENDED
+3. **Test Name**: Cox Proportional Hazards Model
+   - **Purpose**: To identify independent predictors of survival while adjusting for covariates.
+   - **Why Appropriate**:
+     1. Allows for multivariable analysis of time-to-event data.
+     2. Accounts for the effect of multiple independent variables (e.g., age, gender, restorative material).
+   - **Why It May Not Be Appropriate**: Assumes proportional hazards, which may not be true for all variables.
+   - **When This Test Should NOT Be Used**: If the proportional hazards assumption is violated.
+   - **Alternative if Assumptions Are Violated**: Stratified Cox model or time-varying covariates.
+
+4. **Test Name**: Log-Rank Test
+   - **Purpose**: To compare survival distributions between groups (e.g., different restorative materials).
+   - **Why Appropriate**:
+     1. Non-parametric test suitable for comparing survival curves.
+     2. Does not require assumptions about the shape of the survival distribution.
+   - **Why It May Not Be Appropriate**: Sensitive to differences in survival rates at early or late time points.
+   - **When This Test Should NOT Be Used**: When survival curves cross significantly.
+   - **Alternative if Assumptions Are Violated**: Generalized Wilcoxon test.
+
+#### CATEGORY C – OPTIONAL
+5. **Test Name**: Logistic Regression
+   - **Purpose**: To model the probability of failure as a function of independent variables.
+   - **Why Appropriate**:
+     1. Suitable for binary outcomes (e.g., failure vs. survival).
+     2. Can include multiple predictors simultaneously.
+   - **Why It May Not Be Appropriate**: Does not account for time-to-event data.
+   - **When This Test Should NOT Be Used**: When time-to-event information is critical.
+   - **Alternative if Assumptions Are Violated**: Cox proportional hazards model.
+
+6. **Test Name**: Descriptive Statistics
+   - **Purpose**: To summarize baseline characteristics of the study population.
+   - **Why Appropriate**:
+     1. Provides an overview of the sample demographics and clinical variables.
+     2. Helps in understanding the distribution of key variables.
+   - **Why It May Not Be Appropriate**: Does not infer relationships or test hypotheses.
+   - **When This Test Should NOT Be Used**: Not applicable; always useful.
+   - **Alternative if Assumptions Are Violated**: None needed.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Paired t-Test**:
+   - **Why Not Appropriate**: The study does not involve paired or matched data.
+2. **ANOVA**:
+   - **Why Not Appropriate**: The outcome variable (survival/failure) is not continuous.
+3. **Correlation Analysis (e.g., Pearson/Spearman)**:
+   - **Why Not Appropriate**: The study does not focus on the strength of association between two continuous variables.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach is centered around survival analysis because the primary outcome is time-to-event data (e.g., survival of ETTs). Kaplan–Meier survival analysis and Cox proportional hazards modeling are the cornerstone methods for this study. Supplementary analyses, such as chi-square tests and logistic regression, enhance the understanding of categorical predictors and binary outcomes. The proposed plan ensures robust and comprehensive evaluation while addressing potential limitations in assumptions.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1: INFORMATION EXTRACTION  
+(Study characteristics, variables, measurements, data collection)
+
+1. Study design
+- Type: Observational retrospective cohort study.
+- Setting: Dental hospital in Vidarbha region, Maharashtra, India (26 districts).
+- Time frame:
+  - Initial data collection: 2010–2020.
+  - First 3‑year follow‑up (till 2013) already analyzed and published.
+  - Current analysis: long‑term follow‑up up to 10.3 years.
+- Unit of analysis: Tooth (root‑canal–treated tooth), with clustering within patients.
+- Population: Routine patients attending the outpatient department with endodontically treated teeth (ETTs) without crown coverage.
+
+2. Objectives
+- Primary aim: To evaluate long‑term longevity/survival of endodontically treated teeth (ETTs) without crown coverage in the Vidarbha region.
+- Secondary aims:
+  - To evaluate criteria for survival of ETTs without crown coverage.
+  - To identify possible explanations (risk/prognostic factors) for differences in survival.
+  - To assess survival of ETTs and restorations at tooth and restoration level.
+
+3. Cohort definition and eligibility
+- Source cohort: 450 ETTs identified from patient files.
+- Final analytic sample: 300 root‑canal–treated teeth in 148 subjects that satisfied the inclusion criteria.
+- Age of patients in final sample: 20–45 years (though Table 1 mentions 19–67 for “all patients [n=300]”; there is some internal inconsistency, but for the 10‑year cohort, age range is explicitly 20–45).
+- Inclusion criteria (tooth level):
+  - Permanent teeth.
+  - Root canal (RC) treatment completed.
+  - No provisional crowns, no definitive restorations with cuspal coverage, no post and core restorations, and no crowns at the time of recall.
+  - Restoration present:
+    - A restoration placed at least 6 months before the last recall visit, or
+    - A restoration placed within 6 months after endodontic treatment.
+  - Records contained adequate information on the ETT and dentition.
+- Exclusion criteria (tooth level):
+  - Teeth that had received provisional crowns, cusp‑coverage restorations, post and core, or crowns.
+  - ETTs lost due to endodontic and periodontal reasons (i.e., failures primarily due to endodontic/periodontal disease rather than restorative/tooth fracture outcomes).
+  - Teeth not meeting data completeness requirements.
+
+4. Follow‑up and data collection
+- Follow‑up schedule:
+  - Recall program scheduled every 6 months and at 1, 2, and 5 years, up to 10.3 years post‑endodontic treatment.
+  - Not all patients continued to attend; thus, loss to follow‑up and variable observation periods.
+- Start of follow‑up (time origin):
+  - Date of completion of endodontic therapy.
+- End of follow‑up:
+  - For failures: date of negative finding in tooth condition and/or tooth extraction.
+  - For non‑failures (survivors): date of data collection in the clinic (last available visit) → censored.
+- Data sources:
+  - Retrospective review of dental records.
+  - Checklist chart developed according to Skupien et al. guidelines.
+  - Clinical examination at recall with patient consent.
+  - Patient inquiry regarding any changes in tooth condition.
+
+5. Outcomes (dependent variables)
+
+Primary tooth‑level outcome: Survival vs. failure over time
+- Outcome definition: Treatment outcome defined as a failure if there were negative findings requiring restoration, tooth repair, or extraction.
+- Failure characteristics:
+  - Recurrent caries at restoration margin.
+  - Crack or fracture line.
+  - Loss of restoration.
+  - Fracture of tooth or restoration.
+  - Vertical root fracture.
+  - Tooth loss (extraction) related to these conditions.
+- Survival: ETT remaining in function without these negative events, and without crown coverage.
+- Time‑to‑event variable: Time (in years or months) from endodontic completion to:
+  - First failure event, or
+  - Censoring (last follow‑up without event).
+
+Restoration‑level outcomes:
+- Survival of the restoration itself (presence/absence of:
+  - Loss of restoration.
+  - Fracture of restoration.
+  - Recurrent caries at the restoration margin).
+- Time‑to‑event similarly defined as above, but specific to restoration failure (if distinguishable in data).
+
+Reported summary in text:
+- Observation period: 6 months to 10.3 years.
+- At end of 10 years: 93 teeth intact with restorations without full coverage.
+- Table 2 – “Number of events” by type of filling (composite, silver amalgam, GIC) shows “Total n, Number of events, Censored n(%)” but appears mis‑reported (all events and 0 censored); likely originally a survival table by material.
+
+6. Exposures / independent variables
+
+Patient‑level variables:
+- Age (continuous or categorical): 20–45 years in analysis cohort; earlier mention 19–67 for larger set.
+- Gender:
+  - Men.
+  - Women.
+- General dentition status (from checklist):
+  - Number of teeth.
+  - DMF (decayed/missing/filled) at time of endodontic treatment.
+  - Presence of caries at entry.
+
+Tooth‑level variables:
+- Jaw location:
+  - Upper.
+  - Lower.
+- Tooth type:
+  - Incisor.
+  - Canine.
+  - Premolar.
+  - Molar.
+- Presence of opposing teeth:
+  - Natural tooth.
+  - Crown.
+  - Extracted (no opposing tooth).
+- Adjacent teeth status (presence/absence; possibly type).
+- Remaining tooth structure (extent of remaining walls; likely categorical, though categories not specified in excerpt).
+- Existence of caries at baseline.
+- Number of canals in the tooth.
+- Number of treatment sessions.
+- Number of canals filled.
+- Characteristics of restoration:
+  - Type of restorative material:
+    - Composite.
+    - Silver amalgam.
+    - Glass‑ionomer cement (GIC).
+    - (Possibly others, but only these three are explicitly in Table 2.)
+  - Number of surfaces restored (size/complexity of restoration).
+  - Placement of a post (though recall includes only teeth without “post and core restorations”; single‑post without full core might be rare; unclear).
+  - Core build‑up presence/type.
+  - Date of follow‑up restoration placement.
+- Time between endodontic completion and restoration placement (≤6 months vs ≥6 months relative to last recall).
+
+7. Sample size and distribution
+- Patients: 148 subjects.
+- Teeth: 300 RC‑treated teeth included.
+- Age: 20–45 years (for these 148 subjects; some inconsistency with earlier 19‑67 mention).
+- Gender distribution (in Table 1, possibly of 148 subjects, but table header says “All patients (n=300)” – likely misprint; the numbers listed are 93 and 55 only, which sum to 148):
+  - Men: 93 (62.83%).
+  - Women: 55 (37.16%).
+- Jaw location (tooth‑level, n=148 shown in Table 1; but overall study has 300 teeth – suggests Table 1 may describe an initial subset or early cohort):
+  - Lower: 53 (35.81%).
+  - Upper: 95 (64.18%).
+- Tooth type (tooth‑level, n=148 in Table 1):
+  - Incisor: 13 (8.78%).
+  - Canine: 7 (4.72%).
+  - Premolar: 52 (35.13%).
+  - Molar: 76 (51.35%).
+- Opposing dentition (tooth‑level, n=148 in Table 1):
+  - Natural tooth: 80 (54.05%).
+  - Crown: 48 (32.43%).
+  - Extracted: 20 (13.51%).
+- Restoration type (Table 2, tooth/restoration‑level, presumably n=148; but overall teeth n=300, so again partial data shown):
+  - Composite: 99.
+  - Silver amalgam: 32.
+  - GIC: 17.
+
+8. Statistical methods mentioned in article
+- Kaplan–Meier statistics used in prior 3‑year follow‑up publication.
+- For this 10‑year follow‑up, the excerpt does not explicitly restate the methods, but implies continued survival analysis.
+
+9. Key design limitations noted by authors
+- Nonrandom allocation of treatments to teeth (choice of restorative material and other treatments decided by clinician/patient).
+- Unequal group sizes across categories (e.g., by material, tooth type).
+- Unequal observation periods (variable follow‑up times).
+- Lack of data on quality of endodontic treatment (no radiographic assessment included).
+
+---
+
+TASK 2: STATISTICAL ANALYSIS PLAN
+
+Overall framework: Time‑to‑event (survival) analysis at tooth and restoration level, with explanatory (prognostic) modeling of failure risk by patient‑, tooth‑, and restoration‑level factors, accounting for clustering of teeth within patients.
+
+Because you asked for tests in three categories, I’ll structure them accordingly and, for each, give:
+- Test name  
+- Purpose  
+- Why appropriate (≥2 reasons)  
+- Why it may not be appropriate (≥1 reason)  
+- When this test should NOT be used  
+- Alternative if assumptions are violated  
+
+Note: I treat “test” broadly to include associated models and plots, as in standard clinical research.
+
+------------------------------------
+CATEGORY A – MANDATORY ANALYSES
+------------------------------------
+
+A1. Kaplan–Meier Survival Analysis (overall and stratified)
+
+- Test / method name  
+  Kaplan–Meier (product‑limit) estimator with log‑rank test for group comparisons.
+
+- Purpose  
+  - Estimate survival function (time to tooth/restoration failure) for ETTs without crown coverage.  
+  - Compare unadjusted survival across key groups (e.g., restorative materials, tooth types, jaw, opposing dentition).
+
+- Why appropriate  
+  1) Time‑to‑event data with right censoring: Teeth are followed from endodontic completion until failure or last follow‑up without event; many have variable follow‑up duration. Kaplan–Meier is standard for such data.  
+  2) Nonparametric and robust: No assumption of an underlying survival distribution; suitable for observational dental data with heterogeneous risks.  
+  3) Existing precedent: The same cohort (or a subset) previously analyzed using Kaplan–Meier at 3 years, facilitating direct comparison of 3 vs 10‑year survival.  
+
+- Why it may not be appropriate  
+  - It does not adjust for confounding or multiple covariates. Comparisons across groups (e.g., composite vs amalgam) may be biased by differences in tooth type, jaw, patient age, etc.
+
+- When this test should NOT be used  
+  - When the goal is to simultaneously adjust for multiple predictors or to derive adjusted hazard ratios.  
+  - When there is heavy interval censoring (only known that event occurred between visits, but not exact date) and event time is very imprecise relative to visit schedule (then interval‑censored methods might be preferable).
+
+- Alternative if assumptions are violated  
+  - If proportional hazards assumption for log‑rank comparison seems untenable (crossing curves, very non‑proportional), use:  
+    - Fleming–Harrington weighted log‑rank test, or  
+    - Restricted mean survival time (RMST) comparison between groups (with t‑test / regression for RMST).  
+  - For interval‑censored data, use nonparametric Turnbull estimator or parametric interval‑censored survival models.
+
+A2. Cox Proportional Hazards Regression (tooth‑level)
+
+- Test / method name  
+  Cox proportional hazards model for time to tooth failure.
+
+- Purpose  
+  - Assess the association between multiple covariates and hazard of tooth failure, providing adjusted hazard ratios (HRs).  
+  - Identify prognostic factors for longevity of ETTs without crown coverage.
+
+- Why appropriate  
+  1) Time‑to‑event outcome with censoring: Cox regression naturally handles right‑censored survival data.  
+  2) Multivariable adjustment: Allows simultaneous adjustment for patient‑level (age, gender), tooth‑level (jaw, tooth type, opposing dentition, remaining structure, number of canals), and restoration‑level factors (material, surfaces). This is essential given nonrandom treatment allocation.  
+  3) Flexible baseline hazard: No need to specify a parametric form of the survival distribution, which suits heterogeneous clinical data.  
+
+- Why it may not be appropriate  
+  - Proportional hazards assumption may be violated (hazard ratios changing over time), especially if failure mechanisms differ early vs late.  
+  - Number of events may be limited relative to number of covariates, risking overfitting.
+
+- When this test should NOT be used  
+  - Very few events (e.g., <10–15 failures) relative to planned predictors.  
+  - Strongly non‑proportional hazards with no meaningful time‑averaged HR.  
+  - When there is strong clustering by patient and the cluster effect cannot be handled with robust variance/ frailty due to very small number of patients.
+
+- Alternative if assumptions are violated  
+  - Non‑proportional hazards:  
+    - Use time‑dependent covariates in Cox model, or  
+    - Use stratified Cox model (stratify on variables violating PH), or  
+    - Use parametric survival models allowing time‑varying effects or compute RMST differences.  
+  - If events per variable are too few:  
+    - Use simpler models with fewer predictors (guided by directed acyclic graph / clinical relevance), or  
+    - Firth‑penalized Cox regression or ridge penalization to reduce overfitting.
+
+A3. Handling Clustering of Teeth within Patients (Robust SE or Frailty)
+
+- Test / method name  
+  Cox model with robust (Huber–White) variance clustered at patient level, or shared frailty (random effect) Cox model.
+
+- Purpose  
+  - Account for correlation between multiple teeth from the same patient, which violates independence of observations.
+
+- Why appropriate  
+  1) Multiple teeth per patient: 300 teeth in 148 subjects → clear within‑patient clustering. Robust SE or frailty is required to avoid underestimation of standard errors and overly narrow CIs.  
+  2) Clinical plausibility: Unmeasured patient‑level factors (e.g., oral hygiene, occlusion, bruxism) may cause correlation of outcomes among teeth from the same person; frailty directly models this.  
+
+- Why it may not be appropriate  
+  - If most patients contribute only one tooth, the clustering effect may be minimal and estimation of frailty variance unstable.  
+  - Shared frailty models can be numerically unstable with small cluster sizes and few events.
+
+- When this test should NOT be used  
+  - When data have been aggregated to the patient‑level (e.g., one outcome per patient) such that clustering by tooth is irrelevant.  
+  - When there is only one tooth per patient (then clustering is moot).
+
+- Alternative if assumptions are violated  
+  - If shared frailty model fails to converge:  
+    - Use Cox model with robust cluster‑adjusted variance only.  
+  - If cluster sizes are very heterogeneous and some patients have many teeth, consider multilevel (mixed‑effects) parametric survival models or Bayesian frailty models.
+
+A4. Descriptive / Exploratory Analyses of Baseline Data
+
+- Test / method name  
+  Descriptive statistics (means, medians, SD, IQR, frequencies) and simple comparisons (chi‑square or Fisher’s exact test; t‑test / Mann–Whitney; one‑way ANOVA / Kruskal–Wallis) for baseline characteristics, primarily to describe rather than infer.
+
+- Purpose  
+  - Describe distribution of key covariates and check comparability of groups (e.g., by restorative material, tooth type).  
+  - Help identify potential confounders and plausible interactions before multivariable modeling.
+
+- Why appropriate  
+  1) Observational design: Need to understand how patients/teeth differ by treatment (e.g., composite vs amalgam).  
+  2) Clarifies extent of imbalance in key prognostic factors, informing need for adjustment in Cox models.  
+
+- Why it may not be appropriate  
+  - Formal significance testing of baseline differences can be misleading in observational studies (p‑values driven by sample size); the emphasis should be on effect sizes and clinical relevance, not on “testing” randomness.
+
+- When this test should NOT be used  
+  - As the primary basis for deciding whether to adjust for a covariate (adjustment should be based on subject‑matter knowledge and DAGs, not p‑values).  
+  - When cell counts are very small (e.g., <5) for chi‑square; use Fisher’s exact instead.
+
+- Alternative if assumptions are violated  
+  - For non‑normal continuous data: Use medians/IQR and nonparametric tests (Mann–Whitney U, Kruskal–Wallis).  
+  - For sparse categorical data: Use Fisher’s exact test or combine categories if clinically justifiable.
+
+------------------------------------
+CATEGORY B – RECOMMENDED ANALYSES
+------------------------------------
+
+B1. Multivariable Cox Model Including Treatment and Key Prognostic Factors
+
+- Test / method name  
+  Multivariable Cox proportional hazards model with cluster‑robust SE or frailty.
+
+- Purpose  
+  - Provide adjusted hazard ratios for:
+    - Type of restorative material (composite vs amalgam vs GIC).  
+    - Tooth type (molar vs premolar vs anterior).  
+    - Jaw (upper vs lower).  
+    - Opposing dentition (natural vs crown vs none).  
+    - Remaining tooth structure (extent of structure).  
+    - Age, gender, number of surfaces, number of canals, etc.  
+  - Identify independent predictors of failure for treatment planning guidance.
+
+- Why appropriate  
+  1) Nonrandom treatment allocation: Adjustment is essential to disentangle the effect of material vs underlying tooth characteristics.  
+  2) Multiple risk factors: Survival outcomes likely influenced by several factors; multivariable modeling is standard for prognostic research.  
+
+- Why it may not be appropriate  
+  - If events per variable (EPV) are too low: risk of overfitting, unstable estimates, wide CIs.  
+  - Missing data on key covariates (e.g., remaining tooth structure) can limit model inclusion or bias results if not handled appropriately.
+
+- When this test should NOT be used  
+  - When EPV < ~10 for the intended number of parameters (unless penalized methods are used).  
+  - If collinearity among predictors is severe (e.g., tooth type and number of surfaces perfectly correlated).
+
+- Alternative if assumptions are violated  
+  - Use reduced, parsimonious model focusing on key clinical predictors.  
+  - Apply penalized Cox regression (ridge, LASSO) to improve stability.  
+  - If PH assumption violates strongly for material type, model material as time‑dependent or use stratified Cox.
+
+B2. Stratified Kaplan–Meier Plots with Log‑Rank Tests
+
+- Test / method name  
+  Kaplan–Meier curves stratified by key covariates; log‑rank, Breslow (generalized Wilcoxon), or Tarone–Ware tests for group comparison.
+
+- Purpose  
+  - Visualize unadjusted survival differences across categories:  
+    - Restorative material.  
+    - Tooth type.  
+    - Jaw.  
+    - Opposing condition.  
+  - Provide clinically interpretable survival plots for readers.
+
+- Why appropriate  
+  1) Communication: Clinicians readily understand survival curves; valuable for translating results.  
+  2) Diagnostic: Can reveal non‑proportional hazards (curve crossing) and guide model specification (e.g., time interactions).  
+
+- Why it may not be appropriate  
+  - Small sample sizes per stratum lead to unstable curves and wide CIs.  
+  - Multiple testing across many strata increases type I error if interpreted inferentially without adjustment.
+
+- When this test should NOT be used  
+  - For categories with very few failures or very few teeth (e.g., a very small GIC group with minimal events).  
+  - As a substitute for multivariable modeling in presence of confounding.
+
+- Alternative if assumptions are violated  
+  - Use smoothed hazard plots or cumulative incidence functions.  
+  - For groups with few observations, report cumulative incidence estimates at fixed time points with wide CIs rather than full curves.
+
+B3. Proportional Hazards Assumption Checks
+
+- Test / method name  
+  Schoenfeld residuals test (global and covariate‑specific) and graphical checks (log–log survival plots, Schoenfeld residual plots vs time).
+
+- Purpose  
+  - Assess whether hazards are proportional over time for key covariates in Cox models.
+
+- Why appropriate  
+  1) Cox model validity: PH assumption underpins interpretation of HRs; it must be checked.  
+  2) Inform model refinement: Violations suggest the need for time‑dependent effects or stratified models.  
+
+- Why it may not be appropriate  
+  - With few events, tests can have low power and may not detect meaningful deviations; graphs can be noisy.
+
+- When this test should NOT be used  
+  - On tiny subgroups where model coefficients are poorly estimated.  
+  - For variables not included as covariates in the model.
+
+- Alternative if assumptions are violated  
+  - Incorporate time‑by‑covariate interaction terms in Cox model.  
+  - Stratify on variable violating PH (e.g., stratify by tooth type) and estimate separate baseline hazards.  
+  - Consider parametric survival models (e.g., Weibull with interaction terms) or RMST methods.
+
+B4. Competing‑Risk Sensitivity Analysis (if feasible)
+
+- Test / method name  
+  Competing risks analysis using Fine–Gray subdistribution hazards model or cause‑specific hazards if certain failure modes are considered competing.
+
+- Purpose  
+  - Evaluate whether exclusion/handling of teeth lost due to endodontic/periodontal reasons affects estimates of restorative failure risk.  
+  - If such teeth are included as competing risks, assess cumulative incidence of restorative failure versus endodontic/periodontal failure.
+
+- Why appropriate  
+  1) In reality, teeth can fail for multiple reasons; excluding some causes can bias survival estimates for others.  
+  2) Clinically, the overall probability of tooth loss from any cause is relevant, and competing risks better reflect this.  
+
+- Why it may not be appropriate  
+  - The current cohort explicitly excluded teeth lost for endodontic/periodontal reasons from the start; competing risks modeling may be impossible if those events are not recorded or are pre‑excluded.  
+  - Sample size and number of competing events might be too small for stable Fine–Gray estimates.
+
+- When this test should NOT be used  
+  - When competing events (e.g., periodontal failures) are systematically excluded and not recorded in the dataset.  
+  - When different event types cannot be reliably distinguished in records.
+
+- Alternative if assumptions are violated  
+  - If competing risks analysis is not feasible, at least discuss limitation qualitatively.  
+  - If some data on other failure causes exist, perform a descriptive sensitivity analysis (e.g., treat them as failures vs censored and compare results).
+
+B5. Inter‑Observer / Intra‑Observer Reliability Assessment (if reassessment done)
+
+- Test / method name  
+  Kappa statistics for categorical assessment of failure characteristics; intraclass correlation coefficient (ICC) if any continuous measurements were used.
+
+- Purpose  
+  - Evaluate the reliability of classification of tooth failure vs survival and specific failure modes (e.g., fracture vs caries) when clinical data are re‑assessed from records.
+
+- Why appropriate  
+  1) Retrospective chart review often entails subjective judgment; reliability quantification strengthens validity of outcomes.  
+  2) Ensures that misclassification of failure is limited, which directly impacts survival estimates.  
+
+- Why it may not be appropriate  
+  - If only a single examiner assessed all records and no replicate/independent assessments are available, reliability cannot be assessed post hoc.
+
+- When this test should NOT be used  
+  - When there are no repeated or independent ratings on a subset of teeth.  
+  - When the measurement scale or categories are not suited for kappa/ICC.
+
+- Alternative if assumptions are violated  
+  - For ordinal categories, use weighted kappa.  
+  - If reliability cannot be quantified, discuss this as a limitation and consider sensitivity analyses assuming different misclassification rates (conceptual).
+
+------------------------------------
+CATEGORY C – OPTIONAL ANALYSES
+------------------------------------
+
+C1. Parametric Survival Models (e.g., Weibull, Exponential, Log‑normal)
+
+- Test / method name  
+  Parametric survival regression (Weibull, log‑normal, log‑logistic).
+
+- Purpose  
+  - Estimate absolute survival probabilities and time quantiles (e.g., median survival time) under assumed parametric forms.  
+  - Provide alternative estimates of covariate effects and allow extrapolation beyond observed times (with caution).
+
+- Why appropriate  
+  1) Can yield more efficient (precise) estimates if the chosen distribution fits well.  
+  2) Provide direct estimates of acceleration factors (accelerated failure time models) which may be more interpretable in some contexts.  
+
+- Why it may not be appropriate  
+  - Mis‑specification of survival distribution can bias results.  
+  - Small sample sizes in some groups may prevent reliable estimation of distribution parameters.
+
+- When this test should NOT be used  
+  - When data clearly violate assumptions of chosen distribution (e.g., non‑monotonic hazards incompatible with Weibull).  
+  - When there is insufficient follow‑up to observe a reasonable fraction of failures.
+
+- Alternative if assumptions are violated  
+  - Stick to Cox (semi‑parametric) models.  
+  - Use flexible parametric survival models (e.g., Royston–Parmar spline‑based) that can approximate complex hazards.
+
+C2. Landmark Analyses / Time‑Window Analyses
+
+- Test / method name  
+  Landmark analysis at prespecified time points (e.g., 3, 5, 10 years), comparing survival conditional on being event‑free at earlier landmark.
+
+- Purpose  
+  - Understand conditional prognosis of teeth that have survived a certain period (e.g., teeth intact at 3 years – what is their risk up to 10 years?).  
+  - Relate present 10‑year results to previously published 3‑year data.
+
+- Why appropriate  
+  1) Connects short‑term vs long‑term prognosis; clinically relevant for patients whose ETTs already survived several years.  
+  2) Uses existing 3‑year cohort as natural landmark.  
+
+- Why it may not be appropriate  
+  - Subset analysis reduces sample size and events, impairing power.  
+  - Selection bias: survivors at 3 years may be systematically different (healthier teeth) than initial cohort.
+
+- When this test should NOT be used  
+  - When number of events beyond landmark is very small.  
+  - If follow‑up beyond landmark is sparse or heavily censored.
+
+- Alternative if assumptions are violated  
+  - Present conditional survival probabilities from the full KM curves without formal landmark modeling.  
+  - Use time‑varying coefficients in Cox model instead.
+
+C3. Subgroup Analyses (e.g., by Tooth Type or Jaw)
+
+- Test / method name  
+  Stratified analyses and interaction tests within Cox model.
+
+- Purpose  
+  - Explore whether effects of material or other factors differ by tooth type (molar vs premolar vs anterior) or jaw (upper vs lower).
+
+- Why appropriate  
+  1) Biomechanical considerations differ between molars/premolars/anterior; effect of restorative material may not be uniform.  
+  2) May guide material choice by tooth category.  
+
+- Why it may not be appropriate  
+  - Multiple subgroups inflate risk of false positives; results exploratory only.  
+  - Small sample sizes per subgroup.
+
+- When this test should NOT be used  
+  - As confirmatory evidence unless pre‑specified and adequately powered.  
+  - When subgroup cell counts are very small.
+
+- Alternative if assumptions are violated  
+  - Model interaction terms in the main Cox model and interpret cautiously.  
+  - Use descriptive subgroup KM curves without formal inference.
+
+C4. Sensitivity Analyses for Censoring Mechanism
+
+- Test / method name  
+  Sensitivity analyses varying assumptions about loss‑to‑follow‑up (e.g., best‑case/worst‑case scenarios).
+
+- Purpose  
+  - Assess robustness of survival estimates to informative vs non‑informative censoring (patients who stop attending may have different failure risk).
+
+- Why appropriate  
+  1) Retrospective cohort with variable follow‑up and incomplete attendance → censoring may not be random.  
+  2) Explicitly shows how conclusions might change under different assumptions.  
+
+- Why it may not be appropriate  
+  - Requires assumptions that cannot be empirically verified; results may be speculative.
+
+- When this test should NOT be used  
+  - For strict hypothesis testing; it’s more for understanding robustness.  
+  - When loss to follow‑up is minimal.
+
+- Alternative if assumptions are violated  
+  - Use inverse probability of censoring weights (IPCW) in survival analyses if predictors of censoring are known.
+
+---
+
+TASK 3: INAPPROPRIATE TESTS FOR THIS STUDY
+
+Below are tests that should NOT be used, with reasons.
+
+1. Simple Proportion Comparisons Ignoring Time (e.g., Chi‑square on Failure Yes/No at 10 years only)
+
+- Why inappropriate  
+  - Ignores differing follow‑up times and censoring; teeth with shorter follow‑up cannot be fairly compared to those followed for 10 years.  
+  - Overestimates or underestimates failure risks in groups with systematically shorter/longer follow‑up.
+
+- Better alternative  
+  - Time‑to‑event methods (Kaplan–Meier, Cox regression).
+
+2. Standard Logistic Regression on Failure Status (Ever vs Never) Without Time
+
+- Why inappropriate  
+  - Discards time‑to‑event information and censoring; biases estimates when follow‑up is not uniform.  
+  - Cannot distinguish early vs late failures.
+
+- Better alternative  
+  - Cox regression or parametric survival models.
+
+3. Student’s t‑Test / ANOVA for Comparing “Survival Time” Across Groups Using Only Observed Times
+
+- Why inappropriate  
+  - Censoring: Many teeth will not have observed failure times; using observed time (with censoring treated as if no event) in t‑test/ANOVA leads to biased means.  
+  - Survival times typically skewed; normality assumption violated.
+
+- Better alternative  
+  - Survival analysis; if summary at fixed time needed, use RMST or survival probabilities at fixed time.
+
+4. Repeated‑Measures ANOVA for Longitudinal Outcomes
+
+- Why inappropriate  
+  - Outcome is not a continuous repeated measure but time to event with censored observations.  
+  - Measurement times are irregular, with variable follow‑up; repeated‑measures ANOVA requires balanced or at least clearly structured repeated continuous measures.
+
+- Better alternative  
+  - Survival models; if using discrete time intervals, discrete‑time survival (e.g., complementary log‑log regression).
+
+5. Treating Each Tooth as Independent with No Adjustment for Clustering in Hypothesis Tests
+
+- Why inappropriate  
+  - Multiple teeth per patient violate independence of observations; standard errors and p‑values will be too optimistic.  
+  - Patient‑level factors (e.g., occlusal forces) create correlation.
+
+- Better alternative  
+  - Clustered robust SE or frailty models.
+
+6. Using Paired Tests (Paired t‑test, McNemar) As if Teeth Were Matched Pairs
+
+- Why inappropriate  
+  - Teeth are not necessarily matched within patient by design (e.g., one composite vs one amalgam per patient); largely independent.  
+  - Pairing assumptions (one‑to‑one correspondence with controlled confounders) are not met.
+
+- Better alternative  
+  - Multivariable Cox with cluster adjustment for patients.
+
+7. Using Cox Model Without Checking PH or Without Any Form of Cluster Adjustment
+
+- Why inappropriate  
+  - Violated assumptions can lead to incorrect inference (biased HR interpretation; standard errors too small).
+
+- Better alternative  
+  - Use robust SE, frailty, and PH diagnostics as outlined above.
+
+---
+
+TASK 4: SUMMARY – OVERALL ANALYTICAL APPROACH
+
+The data structure (tooth‑level time‑to‑event outcomes with right censoring, variable follow‑up, and clustering within patients) calls for survival analysis methods.
+
+The core analytic strategy should be:
+
+1) Descriptive statistics to characterize patients, teeth, and restorations, highlighting imbalances across materials and other covariates.  
+2) Kaplan–Meier survival curves to estimate and visualize overall and group‑specific survival of ETTs without crown coverage and their restorations, with log‑rank‑type tests for unadjusted comparisons.  
+3) Multivariable Cox proportional hazards regression, with cluster‑robust variance or shared frailty at patient level, to quantify adjusted hazard ratios for key prognostic factors (restorative material, tooth type, jaw, opposing dentition, remaining tooth structure, etc.).  
+4) Diagnostic checks of proportional hazards and sensitivity analyses (e.g., alternative specifications, handling of censoring) to assess the robustness of findings.  
+
+This approach respects the longitudinal nature of the data, appropriately handles censoring and clustering, and provides clinically meaningful estimates of long‑term survival and its determinants for ETTs without crown coverage.

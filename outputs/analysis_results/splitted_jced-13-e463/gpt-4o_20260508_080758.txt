@@ -1,0 +1,156 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_jced-13-e463.pdf
+Status : ok
+Time   : 20260508_080758
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: 
+   - Prospective, randomized, two-arm, parallel clinical study with a 1:1 allocation ratio.
+
+2. **Study Objective**:
+   - To evaluate and compare the treatment outcomes of Advanced Platelet-Rich Fibrin (A-PRF) and Platelet-Rich Fibrin (PRF) as scaffolds in regenerative endodontic treatment (RET) of traumatized immature non-vital teeth.
+
+3. **Study Groups**:
+   - Group 1: A-PRF scaffold (n = 15).
+   - Group 2: PRF scaffold (n = 15).
+
+4. **Sample Size**:
+   - Total: 30 patients (15 in each group).
+   - 9 patients were excluded during the 12-month follow-up period.
+
+5. **Study Population**:
+   - Inclusion Criteria:
+     - Patients aged 8–30 years.
+     - Cooperative patients with an immature single-rooted non-vital tooth with apical width >1 mm.
+     - Teeth with or without periapical lesions, trauma as an etiology, and no systemic diseases.
+   - Exclusion Criteria:
+     - Teeth with mature apex, internal/external resorption, mobility, ankylosis, root fracture, periodontal pocket, or unrestorable structure.
+     - Patients with known allergies to antibiotics or local anesthetics.
+
+6. **Variables**:
+   - **Independent Variable**: Type of scaffold (A-PRF vs. PRF).
+   - **Dependent Variables**:
+     - Clinical outcomes (healed, healing, diseased).
+     - Radiographic outcomes:
+       - Periapical healing (Periapical Index [PAI] scores: 1–2 = healed, 3–4 = healing, >4 = diseased).
+       - Root length changes (preoperative vs. postoperative).
+       - Root dentin thickness changes (preoperative vs. postoperative).
+
+7. **Measurements**:
+   - **Clinical evaluation**: Signs and symptoms of infection.
+   - **Radiographic evaluation**:
+     - Periapical healing assessed using PAI scores.
+     - Root length and dentin thickness measured preoperatively and postoperatively.
+
+8. **Data Collection Methods**:
+   - Clinical and radiographic evaluations were conducted at baseline, 6 months (±2 weeks), and 12 months (±2 weeks).
+   - Radiographs were taken using the same X-ray device and paralleling technique by the same operator.
+   - PAI scores were assigned by a single investigator.
+
+9. **Randomization**:
+   - Patients were randomly allocated to the A-PRF or PRF groups.
+
+10. **Ethical Considerations**:
+    - Conducted in accordance with the Declaration of Helsinki.
+    - Approved by the institutional ethics committee (Protocol ID: JSS/DCH/IEC/MD-17/2017-2018).
+    - Informed consent/assent obtained from participants or parents.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Paired t-test (or Wilcoxon signed-rank test if non-parametric).
+   - **Purpose**: To compare preoperative and postoperative changes in root length and dentin thickness within each group (A-PRF and PRF).
+   - **Why Appropriate**:
+     1. The data involves paired measurements (pre- and post-treatment) for continuous variables (root length and dentin thickness).
+     2. The study aims to assess changes over time within the same group.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normal distribution of differences; if violated, a non-parametric test (Wilcoxon signed-rank test) should be used.
+   - **When This Test Should NOT Be Used**:
+     - If the sample size is too small to reliably assess normality.
+   - **Alternative if Assumptions Are Violated**:
+     - Wilcoxon signed-rank test.
+
+2. **Test Name**: Independent t-test (or Mann-Whitney U test if non-parametric).
+   - **Purpose**: To compare changes in root length and dentin thickness between the A-PRF and PRF groups.
+   - **Why Appropriate**:
+     1. The study involves comparing two independent groups.
+     2. The dependent variables (root length and dentin thickness) are continuous.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normality and homogeneity of variances; if violated, a non-parametric test (Mann-Whitney U test) should be used.
+   - **When This Test Should NOT Be Used**:
+     - If the sample sizes are highly unequal or the data is heavily skewed.
+   - **Alternative if Assumptions Are Violated**:
+     - Mann-Whitney U test.
+
+3. **Test Name**: Chi-square test (or Fisher’s exact test if expected cell counts are <5).
+   - **Purpose**: To compare categorical treatment outcomes (healed, healing, diseased) between the A-PRF and PRF groups.
+   - **Why Appropriate**:
+     1. The dependent variable (treatment outcome) is categorical.
+     2. The study involves comparing proportions between two independent groups.
+   - **Why It May Not Be Appropriate**:
+     - If the sample size is too small, leading to low expected frequencies in contingency table cells.
+   - **When This Test Should NOT Be Used**:
+     - If more than 20% of cells have expected counts <5.
+   - **Alternative if Assumptions Are Violated**:
+     - Fisher’s exact test.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Repeated measures ANOVA (or Friedman test if non-parametric).
+   - **Purpose**: To assess changes in PAI scores across time points (baseline, 6 months, 12 months) within each group.
+   - **Why Appropriate**:
+     1. The data involves repeated measurements of the same variable (PAI scores) over time.
+     2. Allows for assessment of trends over time within each group.
+   - **Why It May Not Be Appropriate**:
+     - Assumes sphericity; if violated, adjustments (e.g., Greenhouse-Geisser correction) are needed.
+   - **When This Test Should NOT Be Used**:
+     - If the sample size is too small for reliable estimation of variance components.
+   - **Alternative if Assumptions Are Violated**:
+     - Friedman test.
+
+2. **Test Name**: Logistic regression.
+   - **Purpose**: To assess the association between scaffold type (A-PRF vs. PRF) and treatment outcomes (healed, healing, diseased) while adjusting for potential confounders (e.g., age, baseline PAI score).
+   - **Why Appropriate**:
+     1. The outcome variable is categorical.
+     2. Allows adjustment for covariates.
+   - **Why It May Not Be Appropriate**:
+     - Requires a sufficient number of events per variable to avoid overfitting.
+   - **When This Test Should NOT Be Used**:
+     - If the sample size is too small for reliable model estimation.
+   - **Alternative if Assumptions Are Violated**:
+     - Exact logistic regression.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Kaplan-Meier survival analysis.
+   - **Purpose**: To evaluate the time to healing (or failure) for each scaffold type.
+   - **Why Appropriate**:
+     1. Provides insights into the timing of treatment outcomes.
+     2. Accounts for censored data (e.g., patients lost to follow-up).
+   - **Why It May Not Be Appropriate**:
+     - Requires precise documentation of time-to-event data.
+   - **When This Test Should NOT Be Used**:
+     - If time-to-event data is not available or incomplete.
+   - **Alternative if Assumptions Are Violated**:
+     - N/A (not applicable without time-to-event data).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: Pearson correlation.
+   - **Reason**: Correlation is not suitable for comparing groups or assessing categorical outcomes.
+2. **Test Name**: ANOVA (without repeated measures).
+   - **Reason**: The study involves repeated measurements, so standard ANOVA would not account for within-subject correlations.
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan incorporates both mandatory and recommended tests to address the study's objectives comprehensively. Paired and independent t-tests (or their non-parametric counterparts) will evaluate changes within and between groups, while chi-square tests will assess categorical outcomes. Repeated measures ANOVA and logistic regression add rigor by evaluating trends over time and adjusting for confounders. Optional tests, such as survival analysis, can provide supplementary insights. This approach ensures robust and valid conclusions while accommodating potential violations of statistical assumptions.

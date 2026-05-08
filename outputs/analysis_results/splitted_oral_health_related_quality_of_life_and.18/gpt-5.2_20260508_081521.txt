@@ -1,0 +1,285 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_oral_health_related_quality_of_life_and.18.pdf
+Status : ok
+Time   : 20260508_081521
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study design and setting
+- **Design:** Prospective **longitudinal** observational study (pre–post assessment), with comparison by **operator expertise**.
+- **Setting:** Outpatient wing, dental clinics, College of Dentistry, Jouf University (Saudi Arabia).
+- **Study period:** **August–February 2019**.
+- **Ethics:** Local Institutional Committee for Bioethics and Research (approval no. **9-16-8/39**).
+
+### Objectives
+- Primary aim (as stated): Investigate **factors affecting oral health-related quality of life (OHRQoL)** and **patient satisfaction** **before and after root canal treatment**, and how these outcomes differ by **operator expertise** (students, postgraduates, specialists).
+
+### Participants
+- **Eligibility:** Patients referred for root canal treatment.
+- **Inclusion:** Age **18–60**, medically and mentally fit to consent.
+- **Exclusion:** Uncontrolled diabetes, hypertension, blood disorders, pregnancy, undergoing orthodontic treatment, and **failed RCT requiring retreatment**.
+- **Withdrawal:** Allowed any time without consequences.
+
+### Sample size
+- **Planned/Included:** **N = 250** patients.
+- **Sample size method:** “method of Liu et al.” (no parameters provided in text).
+
+### Groups / exposure
+- **Primary grouping variable:** **Operator expertise** with **3 levels**:
+  1. Undergraduate **students**
+  2. **Postgraduates**
+  3. **Specialists** (endodontic specialists)
+- Note: Allocation method (random vs convenience vs clinic scheduling) **not stated**.
+
+### Outcomes, variables, instruments, timing
+1. **OHRQoL (primary outcome)**
+   - **Instrument:** **OHIP-17** (Arabic version).
+   - **Administration:** Independent examiner **interviewed** each patient.
+   - **Time points:** **Before treatment (baseline)** and **2 weeks after treatment**.
+   - **OHIP-17 response format:** Likert-type frequency options (Never → Very often).
+   - **Validation in this study:** Arabic OHIP-17 validity assessed using **kappa = 0.95** (they label as validity; it’s an agreement/reliability metric).
+
+2. **Patient satisfaction (secondary outcome)**
+   - **Instrument:** **Semantic differential scale**
+   - **Timing:** **2 weeks after treatment only**.
+
+3. **Radiographic assessment**
+   - **Instrument:** **Radiographic assessment sheet**
+   - **Timing:** Not explicitly stated in Methods excerpt (likely peri-treatment; unclear whether baseline and/or 2-week follow-up).
+   - **Outcomes extracted from radiographs:** Not specified in provided text.
+
+4. **Sociodemographic variables**
+   - Indicated by “Table 1: Sociodemographic distribution of patients” (details not visible in provided excerpt).
+   - Likely covariates (e.g., age, sex, education), but specific fields are not provided here.
+
+### Data structure implications
+- **Repeated measures:** OHIP-17 measured **twice per patient** → within-subject correlation.
+- **Between-group factor:** operator expertise (3 groups).
+- **Potential confounding:** Non-random assignment to operator groups is likely; baseline differences may exist.
+
+---
+
+## TASK 2: Statistical analysis plan (SAP)
+
+### 2.1 Core analysis principles
+- **Analysis population:** All consented participants with baseline data; define:
+  - **Primary analysis set:** participants with baseline OHIP-17 and 2-week OHIP-17 (complete-case), plus sensitivity with missing-data handling (recommended below).
+- **Unit of analysis:** Patient.
+- **Alpha:** 0.05 (two-sided).
+- **Effect sizes + CI:** Always report (not only p-values).
+- **Primary outcome operationalization (must be pre-specified):**
+  - OHIP-17 can be analyzed as:
+    - **Total score** (sum of item scores) if scoring is consistent with OHIP-17 use; or
+    - **Mean item score**; and optionally domain scores if defined for OHIP-17 version used.
+  - Define **change score**: ΔOHIP = (2-week OHIP) − (baseline OHIP) (negative indicates improvement if higher OHIP is worse; confirm direction).
+
+---
+
+# CATEGORY A – MANDATORY tests (without these analysis is incomplete)
+
+## A1) Linear mixed-effects model (LMM) for OHIP-17 over time
+- **Test/model:** Linear Mixed-Effects Model (restricted maximum likelihood) with random intercept for participant.
+- **Purpose:** Estimate **pre–post change** in OHIP-17 and whether change differs by **operator expertise**.
+- **Why appropriate (≥2):**
+  1. Handles **repeated measures** (baseline and 2-week) while accounting for **within-person correlation**.
+  2. Tests the key scientific question via **Time × Operator** interaction (differential improvement by expertise).
+- **Why it may not be appropriate (≥1):**
+  - OHIP-17 totals may be **non-normal**, bounded, or heavily skewed; LMM assumes approximately normal residuals.
+- **When NOT to use:**
+  - If OHIP-17 is treated strictly as **ordinal** and distributional assumptions are untenable even after transformation, or if only item-level ordinal data are to be modeled.
+- **Alternative if assumptions are violated:**
+  - **Generalized linear mixed model (GLMM)** (e.g., gamma or negative binomial if score is count-like), or
+  - **Ordinal mixed model** (cumulative link mixed model) at item-level, or
+  - **Rank-based mixed model / nonparametric longitudinal methods**.
+
+**Minimum fixed effects to specify:**
+- Time (baseline vs 2-week), Operator group (3 levels), and **Time×Operator**.
+**Recommended covariates (if available):**
+- baseline pain/complaint severity (not provided), age, sex, education, tooth type/diagnosis (not provided), baseline OHIP (implicitly included via repeated measures).
+
+**Primary estimands to report:**
+- Mean change within each operator group with 95% CI.
+- Difference-in-differences (interaction contrasts): (Δ specialist − Δ student), (Δ specialist − Δ postgraduate), etc.
+
+---
+
+## A2) Descriptive statistics + baseline comparability across operator groups
+- **Tests:**  
+  - Continuous: **ANOVA** (or **Kruskal–Wallis** if non-normal)  
+  - Categorical: **Chi-square** test (or **Fisher’s exact** for small expected counts)
+- **Purpose:** Describe sample and assess whether operator groups differ at baseline (important due to likely non-random allocation).
+- **Why appropriate (≥2):**
+  1. Operator expertise groups may differ in demographics/clinical characteristics → potential confounding.
+  2. Provides transparency for interpreting adjusted vs unadjusted effects.
+- **Why it may not be appropriate (≥1):**
+  - “Significance testing” baseline differences can be misleading; imbalance is better handled by **standardized differences** and modeling.
+- **When NOT to use:**
+  - Do not use baseline p-values as a basis to include/exclude covariates (“p<0.05 rule”).
+- **Alternative if assumptions are violated:**
+  - For continuous: **Kruskal–Wallis** or permutation ANOVA.
+  - For categorical with small cells: **Fisher’s exact**.
+
+---
+
+## A3) Compare satisfaction (2-week) across operator groups
+- **Test:** Depends on the semantic differential scale format:
+  - If treated as approximately continuous: **One-way ANOVA** (with post-hoc multiple comparisons).
+  - If ordinal: **Kruskal–Wallis** with Dunn’s post-hoc tests.
+- **Purpose:** Test whether **patient satisfaction differs** by operator expertise.
+- **Why appropriate (≥2):**
+  1. Satisfaction measured **once** post-treatment; independent groups comparison is needed.
+  2. Operator expertise is a 3-level exposure suited to one-way group comparisons.
+- **Why it may not be appropriate (≥1):**
+  - If satisfaction has ceiling effects / strong skew, ANOVA may be inappropriate.
+- **When NOT to use:**
+  - Do not use ANOVA if satisfaction is clearly ordinal with few categories and non-normal residuals.
+- **Alternative if assumptions are violated:**
+  - **Kruskal–Wallis** (ordinal/non-normal), or **ordinal logistic regression** (see Recommended).
+
+---
+
+# CATEGORY B – RECOMMENDED tests (increase rigor/quality)
+
+## B1) ANCOVA / regression of 2-week OHIP adjusting for baseline OHIP and covariates
+- **Test/model:** Linear regression (or GLM) with **2-week OHIP** as outcome, predictors: operator group + baseline OHIP + covariates.
+- **Purpose:** Provide an **adjusted** estimate of group differences at follow-up controlling for baseline status.
+- **Why appropriate (≥2):**
+  1. Generally **more efficient and less biased** than analyzing change scores when baseline differs.
+  2. Allows incorporation of confounders (age/sex/education, etc., if collected).
+- **Why it may not be appropriate (≥1):**
+  - If follow-up missingness is substantial and not MCAR, complete-case ANCOVA may bias results.
+- **When NOT to use:**
+  - If outcome distribution makes linear model unsuitable and no adequate transformation/GLM is used.
+- **Alternative if assumptions are violated:**
+  - Robust regression; GLM (gamma/negative binomial); quantile regression.
+
+---
+
+## B2) Ordinal logistic regression for satisfaction (if ordinal)
+- **Test/model:** **Proportional odds model** (ordinal logistic regression), predictor: operator group (+ covariates).
+- **Purpose:** Model satisfaction while respecting its **ordinal** nature and adjust for confounders.
+- **Why appropriate (≥2):**
+  1. Semantic differential scales are commonly ordinal; ordinal regression avoids forcing interval assumptions.
+  2. Produces interpretable **odds ratios** for higher satisfaction across expertise levels.
+- **Why it may not be appropriate (≥1):**
+  - **Proportional odds assumption** may be violated.
+- **When NOT to use:**
+  - When satisfaction is truly continuous/interval with many values, linear regression may be preferable.
+- **Alternative if assumptions are violated:**
+  - **Partial proportional odds model** or multinomial logistic regression.
+
+---
+
+## B3) Multiple-comparison adjustment for pairwise group contrasts
+- **Test/procedure:** Tukey HSD (ANOVA context), Holm correction, or FDR depending on number of contrasts.
+- **Purpose:** Control Type I error when comparing student vs postgraduate vs specialist.
+- **Why appropriate (≥2):**
+  1. Three groups implies multiple pairwise comparisons.
+  2. Prevents overstating evidence across many outcomes/items.
+- **Why it may not be appropriate (≥1):**
+  - Overly conservative if only a small number of pre-specified contrasts exist.
+- **When NOT to use:**
+  - If only a **single pre-specified primary contrast** is tested (e.g., specialist vs non-specialist).
+- **Alternative if assumptions are violated:**
+  - Permutation-based adjusted p-values.
+
+---
+
+## B4) Reliability/internal consistency of OHIP-17 in the study sample
+- **Test:** **Cronbach’s alpha** (or preferably **McDonald’s omega**).
+- **Purpose:** Assess internal consistency of OHIP-17 total score in this population.
+- **Why appropriate (≥2):**
+  1. Supports interpretability of a **summed score** as a scale.
+  2. Kappa reported in paper is not internal consistency; alpha/omega addresses a different measurement property.
+- **Why it may not be appropriate (≥1):**
+  - Alpha can be inflated by many items and assumes tau-equivalence; OHIP domains may be multidimensional.
+- **When NOT to use:**
+  - If analyzing OHIP at item/domain level without using a total score.
+- **Alternative if assumptions are violated:**
+  - Omega, confirmatory factor analysis-based reliability.
+
+---
+
+## B5) Missing data assessment and sensitivity analyses
+- **Tests/approach:**  
+  - Compare baseline characteristics of completers vs non-completers (chi-square/t-test)  
+  - If missingness meaningful: **multiple imputation** (MI) or mixed models (which can handle MAR under likelihood).
+- **Purpose:** Evaluate and mitigate bias from loss to follow-up at 2 weeks.
+- **Why appropriate (≥2):**
+  1. Longitudinal studies commonly have missing follow-up outcomes.
+  2. MI/sensitivity improves credibility of conclusions.
+- **Why it may not be appropriate (≥1):**
+  - MI requires correct imputation model; can be unstable with small sample or many variables missing.
+- **When NOT to use:**
+  - If missing data are extremely sparse and clearly MCAR, MI adds complexity without benefit.
+- **Alternative if assumptions are violated:**
+  - Pattern-mixture sensitivity analyses; worst/best-case bounds.
+
+---
+
+# CATEGORY C – OPTIONAL tests (supplementary insights)
+
+## C1) Effect size metrics for clinical relevance
+- **Measures:** Cohen’s d / standardized mean difference for change, partial eta-squared for group effects, ORs for ordinal models.
+- **Purpose:** Quantify magnitude beyond p-values.
+- **Why appropriate (≥2):**
+  1. OHRQoL changes can be statistically significant but clinically trivial.
+  2. Enables comparison with other studies.
+- **Why it may not be appropriate (≥1):**
+  - If distribution is highly non-normal, standardized metrics may mislead.
+- **When NOT to use:**
+  - When outcome scale is not interval-like and effect size is uninterpretable.
+- **Alternative if assumptions are violated:**
+  - Rank-biserial correlation, Cliff’s delta.
+
+## C2) Item-level OHIP-17 analysis
+- **Test/model:** Ordinal mixed models per item or multivariate methods; or summarize prevalence of “fairly/very often”.
+- **Purpose:** Identify which aspects (pain, function, psychological) drive overall change.
+- **Why appropriate (≥2):**
+  1. Total score may mask domain-specific effects.
+  2. Clinically actionable insights.
+- **Why it may not be appropriate (≥1):**
+  - Multiple testing burden (17 items) and correlation among items.
+- **When NOT to use:**
+  - If study is not powered for item-level inference.
+- **Alternative if assumptions are violated:**
+  - Aggregate to domains; control FDR.
+
+## C3) Association between radiographic outcomes and patient-reported outcomes
+- **Test/model:** Correlation/regression between radiographic assessment and OHIP change/satisfaction.
+- **Purpose:** Explore whether clinical/radiographic measures align with patient perception.
+- **Why appropriate (≥2):**
+  1. Bridges clinical outcome and PROs.
+  2. May help explain dissatisfaction despite radiographic success.
+- **Why it may not be appropriate (≥1):**
+  - Radiographic variable definition/timing not provided; 2-week radiographic change may be minimal.
+- **When NOT to use:**
+  - If radiographic outcomes are not measured consistently or are not meaningful at 2 weeks.
+- **Alternative if assumptions are violated:**
+  - Spearman correlation; ordinal association measures.
+
+---
+
+## TASK 3: Tests that should NOT be used (and why)
+
+1. **Independent-samples t-test** for comparing OHIP pre vs post  
+   - Wrong because measurements are **paired within the same patient**; ignores within-subject correlation and inflates variance.
+
+2. **Multiple separate paired t-tests within each operator group without an interaction model** (as the primary approach)  
+   - Does not directly test whether **changes differ between groups** and increases multiplicity.
+
+3. **Chi-square tests on summed OHIP-17 total score categorized ad hoc (e.g., “good/bad QOL”) as primary analysis**  
+   - Unnecessary dichotomization reduces power and interpretability and introduces threshold arbitrariness.
+
+4. **Pearson correlation between operator expertise (coded 1/2/3) and outcomes as main analysis**  
+   - Treats a nominal exposure as continuous/linear and fails to properly compare groups or adjust for confounding.
+
+5. **Simple one-way ANOVA on change scores as the only longitudinal method** (without checking baseline imbalance or using repeated-measures modeling)  
+   - Change-score ANOVA can be less efficient and may be biased if baseline differs systematically across operator groups.
+
+---
+
+## TASK 4: Summary justification of the overall approach
+A valid analysis must (1) respect the **paired pre–post** OHIP-17 structure, (2) compare **three independent operator expertise groups**, and (3) directly test whether improvement differs by expertise via a **Time × Group** effect while reporting interpretable effect sizes and uncertainty. Mixed-effects (or ANCOVA-style) modeling provides the most defensible framework, with appropriate nonparametric/ordinal alternatives if the scale properties or assumptions do not hold.

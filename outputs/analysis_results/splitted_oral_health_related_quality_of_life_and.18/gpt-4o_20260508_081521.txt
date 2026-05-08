@@ -1,0 +1,160 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_oral_health_related_quality_of_life_and.18.pdf
+Status : ok
+Time   : 20260508_081521
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: 
+   - Longitudinal prospective study.
+
+2. **Objective**: 
+   - To investigate the factors affecting oral health-related quality of life (OH-QOL) and satisfaction of patients before and after root canal treatment (RCT) performed by operators with varying levels of expertise (students, postgraduates, and specialists).
+
+3. **Groups**:
+   - Patients were grouped based on the expertise level of the operator performing the RCT:
+     - Undergraduate students.
+     - Postgraduate students.
+     - Specialists.
+
+4. **Sample Size**:
+   - 250 patients.
+
+5. **Inclusion Criteria**:
+   - Patients aged 18–60 years.
+   - Medically and mentally fit to provide informed consent.
+
+6. **Exclusion Criteria**:
+   - Patients with uncontrolled diabetes, hypertension, blood disorders, pregnancy, orthodontic treatment, or failed RCTs requiring retreatment.
+
+7. **Variables**:
+   - **Independent Variables**:
+     - Operator expertise level (students, postgraduates, specialists).
+   - **Dependent Variables**:
+     - Oral health-related quality of life (OH-QOL) measured using the OHIP-17 questionnaire.
+     - Patient satisfaction measured using a semantic differential scale.
+   - **Covariates**:
+     - Sociodemographic factors (e.g., age, gender, education level).
+
+8. **Measurements**:
+   - **OHIP-17 Questionnaire**:
+     - Used to assess OH-QOL before and 2 weeks after RCT.
+     - Validated Arabic version with a kappa statistic of 0.95.
+   - **Semantic Differential Scale**:
+     - Used to assess patient satisfaction 2 weeks after RCT.
+   - **Radiographic Assessment**:
+     - Used to evaluate clinical outcomes.
+
+9. **Data Collection Methods**:
+   - OHIP-17 questionnaire and semantic differential scale administered by an independent examiner.
+   - Baseline data collected before treatment and follow-up data collected 2 weeks after treatment.
+
+10. **Ethics**:
+    - Ethical clearance obtained (approval no. 9-16-8/39).
+    - Informed consent obtained from all participants.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Paired t-test (or Wilcoxon signed-rank test if non-normal data).
+   - **Purpose**: To compare OH-QOL scores before and after RCT within the same group.
+   - **Why Appropriate**:
+     1. The study involves pre- and post-treatment comparisons for the same patients.
+     2. OHIP-17 scores are continuous and paired data.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normality of the difference scores, which may not hold.
+   - **When This Test Should NOT Be Used**:
+     - If the data are not normally distributed.
+   - **Alternative**: Wilcoxon signed-rank test (non-parametric).
+
+2. **Test Name**: One-way ANOVA (or Kruskal-Wallis test if non-normal data).
+   - **Purpose**: To compare OH-QOL improvement across the three operator expertise groups.
+   - **Why Appropriate**:
+     1. The study compares more than two independent groups.
+     2. OHIP-17 improvement scores are continuous.
+   - **Why It May Not Be Appropriate**:
+     - Assumes homogeneity of variance and normality.
+   - **When This Test Should NOT Be Used**:
+     - If assumptions of ANOVA are violated.
+   - **Alternative**: Kruskal-Wallis test (non-parametric).
+
+3. **Test Name**: Chi-square test (or Fisher’s exact test for small sample sizes).
+   - **Purpose**: To compare categorical variables (e.g., satisfaction levels) across operator expertise groups.
+   - **Why Appropriate**:
+     1. Satisfaction levels are categorical.
+     2. Operator groups are independent.
+   - **Why It May Not Be Appropriate**:
+     - Requires sufficient sample size in each category.
+   - **When This Test Should NOT Be Used**:
+     - If expected frequencies in contingency tables are too low.
+   - **Alternative**: Fisher’s exact test.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Multiple linear regression.
+   - **Purpose**: To assess the impact of operator expertise and other covariates (e.g., age, gender) on OH-QOL improvement.
+   - **Why Appropriate**:
+     1. Allows adjustment for potential confounders.
+     2. Quantifies the independent effect of operator expertise.
+   - **Why It May Not Be Appropriate**:
+     - Assumes linear relationships between predictors and outcome.
+   - **When This Test Should NOT Be Used**:
+     - If multicollinearity or non-linearity is present.
+   - **Alternative**: Generalized additive models (GAM).
+
+2. **Test Name**: Repeated measures ANOVA (or mixed-effects model).
+   - **Purpose**: To analyze changes in OH-QOL over time and across operator expertise groups.
+   - **Why Appropriate**:
+     1. Accounts for within-subject correlations.
+     2. Suitable for longitudinal data.
+   - **Why It May Not Be Appropriate**:
+     - Assumes sphericity, which may not hold.
+   - **When This Test Should NOT Be Used**:
+     - If sphericity assumption is violated.
+   - **Alternative**: Mixed-effects model.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Mediation analysis.
+   - **Purpose**: To explore whether satisfaction mediates the relationship between operator expertise and OH-QOL improvement.
+   - **Why Appropriate**:
+     1. Provides insights into indirect effects.
+     2. Enhances understanding of causal pathways.
+   - **Why It May Not Be Appropriate**:
+     - Requires large sample size for reliable estimates.
+   - **When This Test Should NOT Be Used**:
+     - If sample size is insufficient.
+   - **Alternative**: Path analysis.
+
+2. **Test Name**: Subgroup analysis.
+   - **Purpose**: To explore whether the effect of operator expertise differs by sociodemographic factors (e.g., age, gender).
+   - **Why Appropriate**:
+     1. Identifies effect modifiers.
+     2. Provides targeted insights for specific subgroups.
+   - **Why It May Not Be Appropriate**:
+     - Risk of multiple testing and Type I error.
+   - **When This Test Should NOT Be Used**:
+     - If subgroup sizes are too small.
+   - **Alternative**: Interaction terms in regression models.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-test**:
+   - **Reason**: Not suitable for comparing more than two groups (e.g., operator expertise groups).
+2. **Pearson correlation**:
+   - **Reason**: Does not account for group differences or longitudinal design.
+3. **Logistic regression**:
+   - **Reason**: Not suitable for continuous outcomes like OH-QOL scores.
+
+---
+
+### TASK 4: SUMMARY
+The proposed analytical approach combines mandatory, recommended, and optional tests to comprehensively evaluate the impact of operator expertise on OH-QOL and satisfaction. The use of both parametric and non-parametric tests ensures robustness, while regression models allow adjustment for confounders. This approach aligns with the study's longitudinal design and patient-centered objectives.

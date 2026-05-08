@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_oral_health_related_quality_of_life_and.18.pdf",
+  "timestamp": "20260508_081521",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 16033
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 6822
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 25304
+    }
+  }
+}

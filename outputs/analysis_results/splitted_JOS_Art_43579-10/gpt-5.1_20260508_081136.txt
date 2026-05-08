@@ -1,0 +1,370 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_JOS_Art_43579-10.pdf
+Status : ok
+Time   : 20260508_081136
+══════════════════════════════════════════════════════════════════════
+
+TASK 1 – INFORMATION EXTRACTION  
+===============================  
+
+1. Study design  
+- Type: Single-arm longitudinal study (pre–post within-subjects design).  
+- Setting: Dental clinic, Universidad Peruana Cayetano Heredia, Lima, Peru.  
+- Period: Data collected over 8 months; reference clinical caseload 2011–2017 (~35 microsurgery patients/year).  
+- Ethical approval: Ethics Committee of Universidad Peruana Cayetano Heredia (file No. 215-10-19).  
+
+2. Objectives  
+- Primary objective:  
+  - To measure and compare dental anxiety before and after endodontic microsurgery using a visual analogue scale (VAS).  
+- Implicit hypotheses:  
+  - H0: No difference in mean anxiety (VAS) before vs. after microsurgery.  
+  - H1: Anxiety differs before vs. after microsurgery (direction not explicitly stated, but clinically we might expect a decrease).  
+
+3. Participants  
+- Population: Adult patients scheduled to undergo endodontic microsurgery at the university dental clinic.  
+- Sampling: Non-probabilistic (convenience) sample.  
+- Flow:  
+  - Target based on previous years’ annual caseload (~35 patients/year).  
+  - 41 participants initially recruited over 8 months.  
+  - 6 excluded for incomplete scales.  
+  - Final analyzed sample: n = 35.  
+- Inclusion criteria (explicit/implicit):  
+  - Scheduled for endodontic microsurgery at the clinic.  
+  - Age ≥ 18 years.  
+  - Provided written informed consent.  
+- Exclusion criteria:  
+  - Any psychiatric or neurological disease reported in the medical record.  
+  - Age < 18 years.  
+  - Incomplete VAS data (pre or post).  
+
+4. Groups / comparison structure  
+- No parallel groups (no control or intervention arms).  
+- Each participant provides two repeated measures:  
+  - VAS_before: Anxiety while waiting for microsurgery.  
+  - VAS_after: Anxiety after microsurgery while waiting for medical prescription.  
+- Primary comparison: Within-subject change in VAS (pre vs. post).  
+
+5. Variables  
+
+5.1 Primary outcome  
+- Name: Dental anxiety score (VAS).  
+- Instrument: Single-item visual analogue scale, 0–10 cm line.  
+- Anchors: “Not anxious at all” to “Worst experience ever”.  
+- Type: Continuous (interval-like), measured in cm (0–10).  
+- Time points:  
+  - T1 (pre-operative): Before endodontic microsurgery, in waiting room.  
+  - T2 (post-operative): After microsurgery, while waiting for prescription.  
+- Derived variables:  
+  - Change score: ΔVAS = VAS_post – VAS_pre (could be used).  
+  - Categorical anxiety status:  
+    - VAS ≥ 3 considered “anxious” according to external cut-off [8].  
+    - This can be applied at T1 and T2 separately, yielding binary variables:  
+      - Anxiety_pre (yes/no).  
+      - Anxiety_post (yes/no).  
+
+5.2 Potential covariates / descriptive variables  
+Not detailed in the provided text (e.g., age, sex, prior dental experiences, tooth type, operative details etc. are not reported here). If they exist in the full article or data collection forms, they could be:  
+- Demographic: Age (years, continuous), sex (male/female).  
+- Clinical: Tooth location, type of microsurgery, duration of surgery (2–3 hours on average), operator (postgraduate student) etc.  
+However, none are explicitly stated, so we must assume only anxiety measures are available for analysis in this text.  
+
+6. Measurements and data collection  
+- Instrument administration:  
+  - VAS completed by patients themselves.  
+  - Administered by the same researcher at both time points.  
+  - Locations:  
+    - Pre: Waiting room before the microsurgery.  
+    - Post: Recovery/waiting area after microsurgery, before receiving prescription.  
+- Measurement method:  
+  - Patient marks a point on a 10-cm line.  
+  - Distance in cm from the “not anxious at all” anchor to the mark is measured (0–10, likely to one decimal).  
+  - This numerical value is recorded for each time point.  
+- Classification into categories:  
+  - Cut-off score: VAS = 3 used as threshold for dental anxiety (reference [8]).  
+  - For statistical purposes, anxiety may be treated as:  
+    - Continuous (0–10);  
+    - Binary (anxious vs. not anxious) based on cut-off.  
+
+7. Sample size considerations  
+- No formal sample size or power calculation described.  
+- Sample size determined pragmatically:  
+  - Aim to approximate annual number of microsurgery patients (~35) and use that as target.  
+- Final n = 35 is small-to-moderate.  
+
+8. Statistical issues implied by design  
+- Paired data: VAS_before and VAS_after are paired measurements on the same subject.  
+- Distributions: VAS scores may be skewed, especially in anxiety research (often right-skewed pre-treatment).  
+- Small sample size (n=35) may limit normality assumptions and power.  
+- Non-probability sampling may limit generalizability; inferential statistics still feasible but external validity is limited.  
+
+---
+
+TASK 2 – STATISTICAL ANALYSIS PLAN  
+==================================  
+
+Overall analytic structure:  
+1. Descriptive statistics for VAS_pre and VAS_post.  
+2. Main inferential comparison of pre vs. post anxiety (continuous).  
+3. Secondary analyses using categorical anxiety status (cut-off ≥ 3).  
+4. Basic diagnostic checks (normality, outliers).  
+
+CATEGORY A – MANDATORY TESTS  
+-----------------------------  
+
+A1. Descriptive statistics and visualization  
+- Purpose:  
+  - Summarize central tendency and variability of anxiety scores before and after microsurgery; help assess distributional assumptions.  
+- What to do:  
+  - For VAS_pre and VAS_post:  
+    - Mean, standard deviation, median, interquartile range, minimum, maximum.  
+  - For ΔVAS = VAS_post – VAS_pre:  
+    - Mean, SD, median, IQR.  
+  - For binary anxiety (≥3):  
+    - n (%) anxious pre and post.  
+  - Graphs:  
+    - Boxplots or violin plots for VAS_pre vs VAS_post.  
+    - Histogram or kernel density of ΔVAS.  
+    - Paired line plot (spaghetti plot) to show individual changes.  
+- Why appropriate (≥2 reasons):  
+  1. Necessary to understand central tendency and variability before choosing/in­terpreting inferential tests.  
+  2. Helps assess normality and potential outliers, guiding choice between parametric and non-parametric tests.  
+- Why it may not be appropriate:  
+  - Some descriptive indices (e.g., mean/SD) may be misleading if distribution is highly skewed; in such case, median/IQR more informative.  
+- When not to use:  
+  - Never “not use” descriptives; they are always appropriate, but certain summaries (like mean) shouldn’t be emphasized when assumptions are clearly violated.  
+- Alternatives if assumptions are violated:  
+  - Emphasize medians and non-parametric visualizations (e.g., median with IQR, empirical cumulative distribution function).  
+
+A2. Paired t-test (for continuous VAS: pre vs post)  
+- Purpose:  
+  - Test whether the mean dental anxiety score differs before and after microsurgery.  
+- Why appropriate (≥2 reasons):  
+  1. Data are paired measurements (same subjects measured twice), exactly matching the paired t-test structure.  
+  2. VAS scores are often treated as approximately continuous, and with n ≈ 35, the t-test is reasonably robust to mild non-normality of the difference scores.  
+- Why it may not be appropriate (≥1 reason):  
+  - The distribution of ΔVAS (post – pre) might be markedly non-normal (e.g., heavy skew, outliers, ceiling/floor effects), making the t-test less valid.  
+- When this test should NOT be used:  
+  - If ΔVAS is highly skewed or has extreme outliers and transformations do not yield approximate normality.  
+  - If the scale is deemed strictly ordinal and analysis must respect that.  
+- Alternative if assumptions are violated:  
+  - Wilcoxon signed-rank test (see B1) for comparing matched pairs using only rank information.  
+
+A3. Effect size estimation for pre–post difference  
+- Purpose:  
+  - Quantify the magnitude of change in anxiety, not just statistical significance.  
+- What to do:  
+  - Compute mean difference: MD = mean(VAS_post – VAS_pre) with 95% confidence interval.  
+  - Standardized effect size for paired data (Cohen’s d for paired samples) = MD / SD(ΔVAS).  
+- Why appropriate (≥2 reasons):  
+  1. Effect sizes are necessary to interpret the clinical relevance of any difference, especially in small samples where p-values alone may be misleading.  
+  2. Paired Cohen’s d is standard for pre–post continuous outcomes and can be compared with other studies.  
+- Why it may not be appropriate:  
+  - With strongly skewed data or prominent floor/ceiling effects, Cohen’s d may not reflect clinically meaningful change.  
+- When not to use:  
+  - When the distribution is extremely non-normal and only non-parametric summaries are considered acceptable; then rank-based effect sizes might be preferred.  
+- Alternative if assumptions are violated:  
+  - Report non-parametric effect size measures such as:  
+    - Rank-biserial correlation for Wilcoxon signed-rank test.  
+    - Median difference with Hodges–Lehmann estimate and 95% CI.  
+
+CATEGORY B – RECOMMENDED TESTS  
+-------------------------------  
+
+B1. Wilcoxon Signed-Rank Test (pre vs post VAS)  
+- Purpose:  
+  - Test whether the distribution of VAS_post differs from VAS_pre for paired data without assuming normality.  
+- Why appropriate (≥2 reasons):  
+  1. Appropriate for paired or matched samples when the difference scores are not normally distributed.  
+  2. VAS is ordinal/continuous; Wilcoxon uses rank information and is robust to outliers and non-normality with small–moderate n.  
+- Why it may not be appropriate:  
+  - Less powerful than the paired t-test when normality holds.  
+  - It tests differences in distributions (medians), not strictly mean differences.  
+- When this test should NOT be used:  
+  - When differences have many exact ties (e.g., many patients mark exactly same pre and post scores), which reduces the effective sample size and can distort p-values.  
+  - When the variable is binary (then McNemar’s test is appropriate).  
+- Alternative if assumptions are violated:  
+  - If discrete outcomes with many ties or small sample: sign test (very conservative).  
+  - If more time points are available (not in this study), Friedman test.  
+
+B2. McNemar’s Test (for change in binary anxiety status)  
+- Purpose:  
+  - Evaluate whether the proportion of patients classified as “anxious” (VAS ≥ 3) changes from pre to post microsurgery, accounting for pairing.  
+- Implementation:  
+  - Construct 2×2 table:  
+    - Rows: Anxiety_pre (yes/no).  
+    - Columns: Anxiety_post (yes/no).  
+  - Apply McNemar’s test to discordant pairs.  
+- Why appropriate (≥2 reasons):  
+  1. Designed for paired nominal data with two categories, which is the case for anxiety status (yes/no) measured twice.  
+  2. Incorporates within-subject correlation properly, unlike an unpaired chi-square.  
+- Why it may not be appropriate:  
+  - If nearly all patients are either anxious at both times or not anxious at both times, there may be too few discordant pairs to support the test.  
+- When this test should NOT be used:  
+  - When sample size is extremely small or when no discordant pairs exist (then no inference about change is possible).  
+  - When the outcome has more than two categories (then use Bowker’s test of symmetry).  
+- Alternative if assumptions are violated:  
+  - Exact McNemar’s test (binomial-based) for small samples or few discordant pairs.  
+  - For multi-category ordinal outcomes (e.g., categorized VAS in >2 levels), use Stuart–Maxwell or Bowker’s test.  
+
+B3. Normality and distribution checks (Shapiro–Wilk test + Q–Q plots)  
+- Purpose:  
+  - Objectively and visually assess whether the differences ΔVAS approximate normality, supporting or discouraging use of the paired t-test.  
+- Why appropriate (≥2 reasons):  
+  1. Shapiro–Wilk is standard for small–moderate sample sizes and has good power to detect non-normality.  
+  2. Q–Q plots provide visual assessment that complements formal tests (which can be overly sensitive or insensitive depending on n).  
+- Why it may not be appropriate:  
+  - With n = 35, Shapiro–Wilk might flag minor deviations from normality that do not materially affect the t-test; decision should not be based on p-value alone.  
+- When this test should NOT be used:  
+  - For extremely small n (e.g., ≤10) where such tests have very low power.  
+- Alternative if assumptions are violated:  
+  - Use non-parametric tests (Wilcoxon signed-rank) and focus on medians.  
+
+B4. Sensitivity analyses (parametric vs non-parametric comparison)  
+- Purpose:  
+  - Assess robustness of conclusions by comparing results of paired t-test and Wilcoxon signed-rank test.  
+- Why appropriate (≥2 reasons):  
+  1. Ensures that conclusions (e.g., “no significant difference”) are not heavily dependent on modeling assumptions.  
+  2. With borderline normality, consistent results across tests strengthen confidence.  
+- Why it may not be appropriate:  
+  - Multiplicity of tests could confuse interpretation if results diverge; must pre-specify main analysis and label others as sensitivity checks.  
+- When this should NOT be used:  
+  - When sample size is extremely small and one of the tests is clearly invalid; choose most appropriate approach and stick with it.  
+- Alternative if assumptions are violated:  
+  - If non-parametric and parametric results conflict, prioritize the test whose assumptions are better supported (often Wilcoxon) and discuss reasons.  
+
+B5. Confidence intervals for proportions (pre and post anxiety prevalence)  
+- Purpose:  
+  - Quantify uncertainty around proportion of anxious patients (VAS ≥3) before and after microsurgery.  
+- Why appropriate (≥2 reasons):  
+  1. Complements McNemar’s test by providing interpretable ranges for pre- and post-anxiety prevalence.  
+  2. Useful for comparing with other studies or planning future trials.  
+- Why it may not be appropriate:  
+  - With very small n in a group (e.g., very few anxious subjects), standard Wald CIs may be inaccurate.  
+- When this should NOT be used:  
+  - Never omit CIs entirely; but avoid naive Wald intervals in small samples.  
+- Alternative if assumptions are violated:  
+  - Use exact (Clopper–Pearson) or Wilson score confidence intervals for proportions.  
+
+CATEGORY C – OPTIONAL TESTS  
+---------------------------  
+
+C1. Sign Test (for pre–post difference)  
+- Purpose:  
+  - Simple non-parametric test for paired data that uses only the direction of change (ignores magnitude).  
+- Why appropriate (≥2 reasons):  
+  1. Requires minimal assumptions; robust when data have many ties or are ordinal with questionable spacing.  
+  2. Simple to compute and interpret as number of increases vs decreases.  
+- Why it may not be appropriate:  
+  - Less powerful than Wilcoxon signed-rank test because it discards magnitude information.  
+- When this test should NOT be used:  
+  - When sample size is limited and more efficient non-parametric tests (Wilcoxon) are available and valid.  
+- Alternative if assumptions are violated:  
+  - Wilcoxon signed-rank test is generally preferable unless assumptions of symmetry are grossly violated.  
+
+C2. Exploratory regression of post anxiety on pre anxiety  
+- Purpose:  
+  - Describe the relationship between pre- and post-microsurgery anxiety quantitatively (e.g., is post anxiety strongly predicted by pre anxiety?).  
+- Model:  
+  - Simple linear regression: VAS_post = β0 + β1 × VAS_pre + ε.  
+- Why appropriate (≥2 reasons):  
+  1. Provides insight into how much variation in post anxiety is explained by baseline anxiety (R²).  
+  2. Can help inform whether baseline anxiety alone is a sufficient predictor or whether other covariates (if available) should be considered in future studies.  
+- Why it may not be appropriate:  
+  - With only 35 patients and no additional predictors, clinical utility may be limited; regression assumptions (linear relationship, homoscedasticity) may not hold.  
+- When this should NOT be used:  
+  - To infer causal effects (pre → post) beyond what the design allows; regression here is purely descriptive.  
+- Alternative if assumptions are violated:  
+  - Use non-parametric correlation (Spearman’s rho) between VAS_pre and VAS_post.  
+
+C3. Non-parametric effect size for Wilcoxon (rank-biserial correlation)  
+- Purpose:  
+  - Quantify magnitude of change when using Wilcoxon signed-rank test.  
+- Why appropriate (≥2 reasons):  
+  1. Provides an interpretable effect size that aligns with the Wilcoxon test’s rank-based approach.  
+  2. Useful for meta-analyses or comparisons across studies that also used non-parametric methods.  
+- Why it may not be appropriate:  
+  - Interpretation can be less intuitive for clinicians compared to mean differences or Cohen’s d.  
+- When this should NOT be used:  
+  - If the primary analysis is parametric and the audience is unfamiliar with rank-based measures; may be unnecessary.  
+- Alternative if assumptions are violated:  
+  - Use Hodges–Lehmann estimator (median of pairwise differences) with CI as a more intuitive summary.  
+
+C4. Graphical exploratory analyses  
+- Purpose:  
+  - Provide qualitative understanding of data patterns.  
+- What to do:  
+  - Paired spaghetti plot to show individual trajectories.  
+  - Bland–Altman plot for pre vs post VAS to inspect agreement and systematic bias.  
+- Why appropriate (≥2 reasons):  
+  1. Visual inspection may reveal subgroups (patients whose anxiety increases vs decreases).  
+  2. Supports transparency and understanding for readers beyond p-values.  
+- Why it may not be appropriate:  
+  - With only 35 points, some plots may be less informative or look noisy.  
+- When this should NOT be used:  
+  - Graphs should not be used to replace formal inferential tests for main claims.  
+- Alternative if assumptions are violated:  
+  - None needed; graphical methods are flexible; they just need careful interpretation.  
+
+---
+
+TASK 3 – INAPPROPRIATE TESTS  
+=============================  
+
+Tests that should NOT be used for this study, with rationale:  
+
+1. Independent (unpaired) t-test for comparing pre vs post VAS  
+- Why inappropriate:  
+  - Pre and post measurements are on the same individuals; observations are not independent.  
+  - Using an independent t-test ignores within-subject correlation, underestimates standard error, and can yield misleading p-values and CIs.  
+
+2. Pearson’s chi-square test for independent proportions (for pre vs post anxiety prevalence)  
+- Why inappropriate:  
+  - Pre and post anxiety states are paired within the same subjects; using a standard chi-square test for independence assumes independent groups.  
+  - Proper method is McNemar’s test (paired binary outcome).  
+
+3. One-way ANOVA (between-group)  
+- Why inappropriate:  
+  - No multiple independent groups; only one group measured twice.  
+  - Repeated-measures ANOVA would be theoretically possible for >2 time points, but with only 2 time points, paired t-test suffices and is equivalent to a 2-level repeated-measures ANOVA.  
+
+4. Repeated-measures ANOVA with more than two levels or factors  
+- Why inappropriate:  
+  - Study has only two time points; a 1-factor (time) repeated-measures ANOVA would be identical to a paired t-test but unnecessarily complex.  
+  - No additional within- or between-subject factors are specified.  
+
+5. Logistic regression for change in binary anxiety (pre vs post)  
+- Why inappropriate:  
+  - With only 35 subjects and no covariates, logistic regression modeling change is overkill and may mis-handle pairing unless sophisticated longitudinal modeling is used.  
+  - The correct simple test is McNemar’s, specifically designed for paired binary outcomes.  
+
+6. Survival analysis methods (Kaplan–Meier, Cox regression)  
+- Why inappropriate:  
+  - No time-to-event outcome; only two fixed time-point measures of anxiety.  
+
+7. Correlation test between “pre vs post” scores as a means to evaluate change  
+- Why inappropriate:  
+  - Correlation between VAS_pre and VAS_post reflects association, not change. High correlation can exist even if the mean changes substantially, and vice versa; it does not answer the primary research question.  
+
+8. Parametric tests assuming more complex distributional structures (e.g., mixed-effects models)  
+- Why inappropriate for this dataset:  
+  - Only two time points, no random clustering beyond subject, no additional covariates described; mixed models add complexity without gain.  
+
+---
+
+TASK 4 – SUMMARY AND JUSTIFICATION OF OVERALL APPROACH  
+======================================================  
+
+The study is a simple pre–post, within-subject design with a single continuous outcome (VAS anxiety score) measured in 35 dental patients undergoing endodontic microsurgery. The principal inferential objective is to determine whether anxiety differs before and after the procedure.
+
+The core analysis should therefore:  
+- Treat VAS as a continuous paired outcome;  
+- Use a paired t-test as the primary method, supported by:  
+  - Distributional checks of the difference scores;  
+  - A Wilcoxon signed-rank test as a non-parametric sensitivity analysis;  
+- Quantify the magnitude of change with:  
+  - Mean paired difference and 95% CI;  
+  - Standardized effect size;  
+- Complement these with binary classification of anxiety (VAS ≥3) analyzed via McNemar’s test to communicate clinically relevant shifts in the proportion of anxious patients.
+
+This approach is fully aligned with the longitudinal, paired nature of the data, uses methods that are standard and interpretable in clinical research, and includes appropriate robustness checks and effect size estimation to go beyond mere hypothesis testing.

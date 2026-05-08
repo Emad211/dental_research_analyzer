@@ -1,0 +1,302 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_jced-13-e463.pdf
+Status : ok
+Time   : 20260508_080758
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study identification
+- **Title/Topic:** Comparison of Advanced PRF (A‑PRF) vs PRF as scaffold in regenerative endodontic treatment (RET) of traumatized immature non‑vital permanent anterior teeth.
+- **Setting:** Single center, Department of Conservative Dentistry and Endodontics (with recruitment also from Pediatric Dentistry OPD).
+- **Study period:** April 2018–September 2019.
+- **Ethics:** IEC approval (Protocol ID: JSS/DCH/IEC/MD-17/2017-2018); Helsinki compliant.
+
+### Objective
+- **Primary aim (as stated):** Evaluate and compare **treatment outcomes** of **A‑PRF vs PRF** used as scaffold in RET for traumatized immature non‑vital teeth.
+
+### Design
+- **Design:** Prospective **randomized**, **two‑arm parallel** clinical study.
+- **Allocation:** 1:1.
+- **Blinding:** Not described; radiographs scored by a **single investigator** (not stated as blinded).
+- **Unit of analysis:** Tooth/case. (Text allows **two teeth per participant**, implying possible clustering.)
+
+### Participants
+- **Age:** 8–30 years.
+- **Inclusion (key):**
+  - Cooperative patients.
+  - Immature single‑rooted non‑vital tooth (trauma etiology).
+  - **Apical width > 1 mm**.
+  - With or without periapical lesion.
+  - No systemic diseases.
+  - Teeth with attempted access without intracanal medicament placement allowed.
+  - **Up to two teeth per participant** allowed.
+- **Exclusion (key):**
+  - Mature apex, internal/external resorption, mobility, ankylosis, root fracture, periodontal pocket, unrestorable tooth.
+  - Allergy to antibiotics/local anesthetic.
+
+### Groups / Interventions
+- **Group 1: A‑PRF scaffold** (n=15 allocated initially)
+  - Blood centrifugation: **1500 rpm, 14 min**, no anticoagulant.
+- **Group 2: PRF scaffold** (n=15 allocated initially)
+  - Blood centrifugation: **2700 rpm, 12 min**, no anticoagulant.
+- **Common RET protocol (both groups):**
+  - Two‑visit RET per AAE guidelines.
+  - Visit 1: irrigation (1.5% NaOCl, saline, 17% EDTA), minimal debridement, modified triple antibiotic paste (ciprofloxacin + metronidazole + cefaclor; final conc 1 mg/mL), temporary seal; recall 4 weeks.
+  - Visit 2: if asymptomatic; EDTA irrigation; **induce intracanal bleeding**; place prepared scaffold (A‑PRF/PRF); cap with **Biodentine**; GIC + Cavit.
+- **Rescue handling:** If intracanal bleeding not achieved → “rescue group” treated with conventional Biodentine apexification (not clear if included/excluded from analysis; must be specified in SAP).
+
+### Follow-up and data collection timepoints
+- **Clinical review:** 6 months (±2 weeks) and 12 months (±2 weeks).
+- **Radiographs:** standardized device + paralleling technique; same operator.
+- **Attrition:** **9 patients excluded during 12 months follow-up** (reasons not provided in excerpt). Final analyzed n not stated here.
+
+### Outcomes / Variables
+
+#### Clinical outcomes
+- “Clinical signs/symptoms” referenced for outcome categorization (not itemized in excerpt). Typically pain, swelling, sinus tract, tenderness, etc. Need explicit definitions in SAP.
+
+#### Radiographic outcomes
+1. **Periapical status**
+   - **Periapical Index (PAI, Ørstavik)** scored pre- and post-operatively.
+   - Outcome categorization:
+     - **Healed:** normal clinical + PAI 1–2
+     - **Healing:** reduced radiolucency, PAI 3–4 + normal clinical
+     - **Diseased:** radiolucency increased/unchanged or any clinical signs/symptoms
+   - PAI scored by **single investigator** (no reliability reported).
+
+2. **Change in root length and dentin thickness**
+   - Pre- vs post-operative measurements from radiographs (method details truncated in provided text).
+   - Variables likely continuous (mm) or percentage change; must predefine.
+
+### Other important methodological notes for SAP
+- Possible **within-subject correlation** if two teeth from same patient.
+- Repeated measurements (baseline, 6 months, 12 months) suggest **longitudinal** structure, though “three radiographic evaluations at end of 12 months” is inconsistently worded.
+
+---
+
+## TASK 2 — Statistical Analysis Plan (SAP)
+
+### 2.1 Analysis populations (define explicitly)
+1. **Intention-to-treat (ITT)** (MANDATORY): analyze all randomized teeth in assigned group, regardless of protocol deviations.
+   - Specify how to treat “rescue group” cases: ideally **remain in assigned arm** under ITT, with outcome coded appropriately (e.g., failure), or analyze separately as sensitivity.
+2. **Per-protocol (PP)** (RECOMMENDED): include only teeth completing RET as planned and with evaluable follow-up.
+3. **Safety population** (OPTIONAL): all treated participants for adverse events (not described but should be captured).
+
+### 2.2 Endpoints (pre-specify)
+- **Primary endpoint (suggested):**
+  - **Treatment outcome category at 12 months** (Healed/Healing/Diseased), or binary **success** (Healed+Healing vs Diseased) depending on power and clinical relevance.
+- **Key secondary endpoints:**
+  - **PAI change** from baseline to 12 months (ordinal change).
+  - **Root length change** baseline→12 months.
+  - **Dentin thickness change** baseline→12 months.
+  - Corresponding changes at **6 months** (if available).
+- **Exploratory endpoints:**
+  - Time trend (baseline/6/12) for PAI and continuous measures.
+
+### 2.3 Descriptive statistics (MANDATORY)
+- Baseline comparability by group:
+  - Participant-level: age, sex, trauma details (if available).
+  - Tooth-level: tooth type, baseline apical width, baseline PAI, presence/size of lesion.
+- Report:
+  - Continuous: mean(SD) if ~normal; median(IQR) otherwise.
+  - Categorical: n (%).
+- Flow diagram: randomized, treated, followed, analyzed; reasons for exclusions.
+
+### 2.4 Handling clustering and repeated measures (MANDATORY decision)
+- Because **two teeth per participant may be included**, observations may be **non-independent**.
+- Preferred modeling framework:
+  - **Mixed-effects models** (random intercept for participant) or **GEE** with robust SEs.
+- If only one tooth per participant actually enrolled, clustering is moot—but must be verified and stated.
+
+### 2.5 Missing data (MANDATORY)
+- Describe missingness by group and reason.
+- Primary approach:
+  - Mixed models (MAR) for continuous longitudinal outcomes.
+  - For categorical primary endpoint at 12 months: multiple imputation (MI) or conservative imputation (e.g., missing=failure) as sensitivity.
+- Sensitivity analyses: best/worst case for missing primary endpoint.
+
+---
+
+### CATEGORY A — MANDATORY tests/models
+
+#### A1) Mixed-effects ordinal logistic regression (cumulative logit) **or** GEE ordinal model
+- **Purpose:** Compare **12‑month ordinal treatment outcome** (Healed/Healing/Diseased) between A‑PRF and PRF, accounting for clustering (two teeth/person).
+- **Why appropriate:**
+  1. Outcome is **ordered categorical** with 3 levels; ordinal model uses ordering efficiently.
+  2. Can incorporate **patient-level clustering** (random effects) and adjust for baseline covariates (e.g., baseline PAI).
+- **Why may not be appropriate:**
+  - **Proportional odds assumption** may be violated; small sample may yield unstable estimates.
+- **When NOT to use:**
+  - If outcome categories are sparse (e.g., near-zero in one category) causing separation/non-convergence.
+- **Alternative if assumptions violated:**
+  - **Partial proportional odds model**, or **multinomial logistic regression** with cluster-robust SEs, or collapse to binary success/failure and use mixed/GEE logistic regression.
+
+#### A2) Mixed-effects linear model (LMM) for continuous change in root length and dentin thickness (baseline→12 months; and/or repeated timepoints)
+- **Purpose:** Compare mean **change** in root length and dentin thickness between groups, accounting for baseline value and clustering.
+- **Why appropriate:**
+  1. Continuous endpoints; LMM handles **correlated observations** (two teeth/person; repeated time).
+  2. Can adjust for **baseline** measurement, improving precision (ANCOVA-type).
+- **Why may not be appropriate:**
+  - Change scores may be **non-normal** or contain outliers; measurement error in radiographs may be large.
+- **When NOT to use:**
+  - If residuals are extremely non-normal with heavy tails and transformation fails, or strong heteroscedasticity unaddressed.
+- **Alternative if assumptions violated:**
+  - **Robust regression**, **rank-based ANCOVA**, **quantile regression**, or analyze transformed outcomes; for repeated measures use **GEE with robust SEs**.
+
+#### A3) Fisher’s exact test (or Chi-square if adequate counts) for binary success at 12 months (if chosen as primary or key secondary)
+- **Purpose:** Compare **success proportion** (Healed+Healing) between A‑PRF and PRF.
+- **Why appropriate:**
+  1. Simple, transparent comparison of proportions in small samples.
+  2. Fisher’s exact is valid with **small expected cell counts**.
+- **Why may not be appropriate:**
+  - Ignores **clustering** (two teeth/person) and ignores covariates.
+- **When NOT to use:**
+  - When multiple teeth per subject exist (non-independence) or when adjustment for baseline imbalance is needed.
+- **Alternative if assumptions violated:**
+  - **Mixed-effects logistic regression** or **GEE logistic regression** with robust SEs.
+
+#### A4) Baseline group comparability: standardized mean differences (SMD) + appropriate unadjusted tests
+- **Purpose:** Describe whether randomization achieved balance (not for “significance of baseline” per se, but to inform adjustment).
+- **Why appropriate:**
+  1. SMD is not driven by sample size; recommended in RCT reporting.
+  2. Identifies potential covariates for adjusted analyses.
+- **Why may not be appropriate:**
+  - Hypothesis testing baseline differences is often misinterpreted.
+- **When NOT to use:**
+  - Do not use baseline p-values to decide inclusion/exclusion of covariates mechanically.
+- **Alternative:**
+  - Report SMDs and clinically relevant imbalances; adjust using multivariable models regardless of baseline p-values.
+
+---
+
+### CATEGORY B — RECOMMENDED tests/models
+
+#### B1) ANCOVA (linear regression) for 12-month root length/thickness adjusting for baseline (if only baseline and 12-month available)
+- **Purpose:** Compare groups on **12‑month measurement** controlling for baseline (more efficient than change-score t-test).
+- **Why appropriate:**
+  1. Controls for baseline measurement error/regression to mean.
+  2. Improves power with small samples.
+- **Why may not be appropriate:**
+  - If clustering (two teeth/person) exists and is ignored.
+- **When NOT to use:**
+  - When repeated measures beyond baseline/12 months exist and are ignored; when within-patient clustering exists unmodeled.
+- **Alternative:**
+  - **Mixed-effects ANCOVA** (random patient effect) or GEE.
+
+#### B2) Nonparametric alternatives for continuous outcomes: Mann–Whitney U (between-group) / Wilcoxon signed-rank (within-group)
+- **Purpose:** Compare distributions when normality is doubtful.
+- **Why appropriate:**
+  1. Works with skewed data and outliers.
+  2. Simple for small samples.
+- **Why may not be appropriate:**
+  - Tests medians/ranks, not mean difference; cannot easily adjust for baseline/covariates; ignores clustering.
+- **When NOT to use:**
+  - When adjustment for baseline or clustering is required.
+- **Alternative:**
+  - **Rank-based mixed models**, **quantile regression**, or robust mixed models.
+
+#### B3) Ordinal within-group change over time: Wilcoxon signed-rank or marginal ordinal models (baseline→6→12)
+- **Purpose:** Assess improvement in PAI or ordinal status over time within each arm and compare trajectories.
+- **Why appropriate:**
+  1. PAI is ordinal; these respect scale type.
+  2. Longitudinal ordinal models can estimate time×group interaction.
+- **Why may not be appropriate:**
+  - Small sample and sparse categories across time.
+- **When NOT to use:**
+  - If PAI treated incorrectly as continuous without justification.
+- **Alternative:**
+  - Collapse PAI to binary (healed vs not) and use mixed logistic/GEE.
+
+#### B4) Inter-rater / intra-rater reliability (if feasible): weighted kappa (PAI) and ICC (continuous measures)
+- **Purpose:** Quantify measurement reliability of radiographic scoring/measurements.
+- **Why appropriate:**
+  1. PAI assignment by one investigator—reliability evidence strengthens validity.
+  2. Continuous measurements (root length/thickness) are prone to error; ICC quantifies repeatability.
+- **Why may not be appropriate:**
+  - Requires repeated scoring or second rater; may not be available retrospectively.
+- **When NOT to use:**
+  - When only single measurement exists and cannot be replicated.
+- **Alternative:**
+  - Bland–Altman analysis for continuous repeated measurements.
+
+#### B5) Adjusted primary analysis (covariate-adjusted models)
+- **Purpose:** Increase precision and handle residual imbalance: adjust for baseline PAI, age, apical width, presence of lesion.
+- **Why appropriate:**
+  1. Clinically relevant prognostic factors can reduce residual variance.
+  2. With attrition, adjustment helps mitigate chance imbalance.
+- **Why may not be appropriate:**
+  - Overfitting risk with small n.
+- **When NOT to use:**
+  - When events are too few (e.g., <10 failures) for multivariable logistic models.
+- **Alternative:**
+  - Penalized regression (Firth) for binary outcomes; prespecify few covariates.
+
+---
+
+### CATEGORY C — OPTIONAL analyses
+
+#### C1) Time-to-event analysis (Kaplan–Meier + Cox) for “time to failure/symptoms” (if dates available)
+- **Purpose:** Incorporate timing of failures/symptoms, not just 12-month status.
+- **Why appropriate:**
+  1. Uses partial follow-up information.
+  2. Handles censoring.
+- **Why may not be appropriate:**
+  - Follow-up times are essentially fixed (6 and 12 months) and failure timing may be unknown.
+- **When NOT to use:**
+  - If event times are interval-censored without sufficient resolution.
+- **Alternative:**
+  - Discrete-time survival model; or analyze status at 6 and 12 months with mixed models.
+
+#### C2) Effect sizes and CIs (always useful): risk difference, risk ratio, odds ratio; mean difference; standardized effect size
+- **Purpose:** Quantify magnitude with uncertainty.
+- **Why appropriate:**
+  1. Clinically interpretable.
+  2. More informative than p-values alone.
+- **Why may not be appropriate:**
+  - Some effect sizes unstable with very small samples.
+- **When NOT to use:**
+  - Avoid standardized effects when measurement scale is clinically interpretable and preferred.
+- **Alternative:**
+  - Bootstrap CIs.
+
+#### C3) Subgroup / interaction (exploratory): presence of baseline periapical lesion, age group, baseline apical width
+- **Purpose:** Hypothesis-generating effect modification.
+- **Why appropriate:**
+  1. Trauma severity/lesion status may influence regeneration.
+  2. Guides future trials.
+- **Why may not be appropriate:**
+  - Severe multiplicity and very low power.
+- **When NOT to use:**
+  - Do not claim definitive subgroup effects in this small trial.
+- **Alternative:**
+  - Report stratified descriptives only.
+
+---
+
+## TASK 3 — Tests that should NOT be used (and why)
+
+1. **Independent-samples t-test on tooth-level outcomes without checking clustering**
+   - Violates independence if two teeth per patient; inflates type I error.
+
+2. **Paired t-test between A‑PRF and PRF**
+   - Groups are parallel, not paired/matched.
+
+3. **Multiple separate within-group pre/post tests (baseline vs 6, baseline vs 12) without multiplicity control**
+   - Inflates false-positive rate; ignores correlation and group×time structure.
+
+4. **Pearson correlation between treatment group and outcomes**
+   - Treatment is categorical; correlation is not the right estimand and ignores confounding/clustering.
+
+5. **Treating PAI as continuous and using standard linear regression/ANOVA without justification**
+   - PAI is ordinal; linear methods can misrepresent effects unless strong justification/sensitivity analyses are provided.
+
+6. **One-way ANOVA across the three outcome categories (Healed/Healing/Diseased) as if they were groups**
+   - Outcome categories are not independent groups; this reverses predictor/outcome roles.
+
+---
+
+## TASK 4 — Summary justification of overall approach
+
+A two-arm randomized parallel design with ordinal and continuous radiographic outcomes requires (i) **between-group comparisons** at clinically relevant follow-up (12 months), (ii) methods that respect **outcome scale** (ordinal for PAI/outcome category), and (iii) models that handle potential **non-independence** (multiple teeth per participant) and **repeated measures** (baseline/6/12). Therefore, the core analysis should use **mixed-effects or GEE frameworks** for ordinal and continuous endpoints, report **effect sizes with confidence intervals**, and include **missing-data and sensitivity analyses** given notable attrition.

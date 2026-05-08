@@ -1,0 +1,124 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_JOS_Art_43579-10.pdf
+Status : ok
+Time   : 20260508_081136
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Design**  
+- **Type:** Longitudinal study  
+- **Setting:** Dental clinic at Universidad Peruana Cayetano Heredia, Lima, Perú  
+- **Ethics Approval:** Approved by the Ethics Committee of Universidad Peruana Cayetano Heredia (file No. 215-10-19)
+
+**Objective**  
+- To measure and compare dental anxiety before and after endodontic microsurgery using the Visual Analogue Scale (VAS).
+
+**Participants**  
+- **Population:** Patients scheduled for endodontic microsurgery.  
+- **Sample Size:** 35 participants (41 initially recruited; 6 excluded for incomplete scales).  
+- **Sampling Method:** Non-probabilistic sampling.  
+- **Inclusion Criteria:** Patients scheduled for endodontic microsurgery.  
+- **Exclusion Criteria:** Patients with psychiatric or neurological diseases and those aged under 18.  
+- **Recruitment Period:** Eight months.  
+
+**Variables**  
+- **Primary Variable:** Dental anxiety (quantitative, measured using VAS).  
+- **Categorical Classification:** Anxiety levels classified using a cutoff score of 3 (based on a prior study).  
+
+**Measurements**  
+- **Tool:** Visual Analogue Scale (VAS, 0-10 cm).  
+  - Scale ranges from "not anxious at all" to "worst experience ever."  
+  - Anxiety score determined by measuring the distance (in cm) from "not anxious at all" to the patient’s mark.  
+- **Time Points:**  
+  - Pre-surgery: While waiting for the procedure in the clinic’s waiting room.  
+  - Post-surgery: After the procedure, while waiting for the medical prescription.  
+
+**Procedure**  
+- Microsurgery performed by 2nd-year postgraduate endodontic students under supervision.  
+- Duration of microsurgery: 2-3 hours on average.  
+- The same researcher conducted all VAS assessments to ensure consistency.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS  
+1. **Paired t-test**  
+   - **Purpose:** To compare mean anxiety levels before and after surgery.  
+   - **Why Appropriate:**  
+     1. The primary variable (VAS score) is continuous.  
+     2. The study design involves repeated measures (pre- and post-surgery) on the same participants.  
+   - **Why It May Not Be Appropriate:** Assumes normal distribution of the differences in anxiety scores.  
+   - **When This Test Should NOT Be Used:** If the assumption of normality is violated.  
+   - **Alternative:** Wilcoxon signed-rank test (non-parametric equivalent).  
+
+2. **Descriptive Statistics**  
+   - **Purpose:** To summarize the data (e.g., mean, standard deviation, median, range) for pre- and post-surgery anxiety scores.  
+   - **Why Appropriate:**  
+     1. Provides a clear overview of the data distribution.  
+     2. Necessary for understanding the central tendency and variability of anxiety scores.  
+   - **Why It May Not Be Appropriate:** Not a hypothesis-testing method; does not infer statistical significance.  
+   - **When This Test Should NOT Be Used:** N/A (always applicable).  
+   - **Alternative:** None (descriptive statistics are fundamental).  
+
+#### CATEGORY B – RECOMMENDED TESTS  
+1. **Effect Size Calculation (e.g., Cohen’s d)**  
+   - **Purpose:** To quantify the magnitude of the change in anxiety levels.  
+   - **Why Appropriate:**  
+     1. Complements the paired t-test by providing practical significance.  
+     2. Useful for interpreting the clinical relevance of the findings.  
+   - **Why It May Not Be Appropriate:** Does not test statistical significance.  
+   - **When This Test Should NOT Be Used:** If the paired t-test or Wilcoxon signed-rank test is not performed.  
+   - **Alternative:** Non-parametric effect size measures (e.g., rank-biserial correlation).  
+
+2. **Shapiro-Wilk Test**  
+   - **Purpose:** To test the normality of the differences in pre- and post-surgery anxiety scores.  
+   - **Why Appropriate:**  
+     1. Necessary to validate the assumptions of the paired t-test.  
+     2. Ensures the correct choice of statistical test.  
+   - **Why It May Not Be Appropriate:** Sensitive to small sample sizes; may falsely indicate non-normality.  
+   - **When This Test Should NOT Be Used:** If the sample size is extremely small (e.g., <10).  
+   - **Alternative:** Visual inspection of histograms or Q-Q plots.  
+
+#### CATEGORY C – OPTIONAL TESTS  
+1. **Chi-Square Test (or Fisher’s Exact Test)**  
+   - **Purpose:** To analyze the proportion of participants classified as anxious (score ≥3) before and after surgery.  
+   - **Why Appropriate:**  
+     1. Allows for categorical analysis of anxiety levels.  
+     2. Provides supplementary insights into the proportion of patients experiencing anxiety.  
+   - **Why It May Not Be Appropriate:** Does not utilize the full range of the continuous VAS scores.  
+   - **When This Test Should NOT Be Used:** If the sample size is too small for reliable chi-square results.  
+   - **Alternative:** Fisher’s exact test (for small sample sizes).  
+
+2. **Repeated Measures ANOVA**  
+   - **Purpose:** To analyze anxiety levels across multiple time points (if additional data points are collected).  
+   - **Why Appropriate:**  
+     1. Suitable for longitudinal data with repeated measures.  
+     2. Can account for within-subject variability.  
+   - **Why It May Not Be Appropriate:** Requires more than two time points; not applicable to the current dataset.  
+   - **When This Test Should NOT Be Used:** If only pre- and post-surgery data are available.  
+   - **Alternative:** Paired t-test or Wilcoxon signed-rank test.  
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1. **Independent t-test**  
+   - **Why Not Appropriate:** The study involves paired data (pre- and post-surgery anxiety scores from the same participants), not independent groups.  
+   - **Alternative:** Paired t-test or Wilcoxon signed-rank test.  
+
+2. **One-Way ANOVA**  
+   - **Why Not Appropriate:** ANOVA is designed for comparing means across three or more independent groups, which is not applicable here.  
+   - **Alternative:** Paired t-test or Wilcoxon signed-rank test.  
+
+3. **Pearson Correlation**  
+   - **Why Not Appropriate:** Correlation measures the relationship between two variables, not the difference between pre- and post-surgery scores.  
+   - **Alternative:** Paired t-test or Wilcoxon signed-rank test.  
+
+---
+
+### TASK 4: SUMMARY
+
+The analytical approach focuses on comparing pre- and post-surgery anxiety levels using paired statistical methods. Descriptive statistics and normality tests will provide an initial understanding of the data. The paired t-test (or its non-parametric alternative) will address the primary objective of the study. Effect size calculations will enhance the interpretation of clinical relevance, while optional tests (e.g., chi-square) can provide additional categorical insights. This approach ensures a robust and comprehensive analysis of the study’s primary research question.

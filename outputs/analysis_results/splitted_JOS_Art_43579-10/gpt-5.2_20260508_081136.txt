@@ -1,0 +1,243 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_JOS_Art_43579-10.pdf
+Status : ok
+Time   : 20260508_081136
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: Information extraction (study characteristics)
+
+**Study title/topic**
+- Dental anxiety before and after endodontic microsurgery.
+
+**Objective**
+- To *measure and compare* dental anxiety **before vs after** endodontic microsurgery using a **Visual Analogue Scale (VAS)**.
+
+**Study design**
+- **Longitudinal within-subject pre–post study** (single cohort measured twice).
+- Setting: Dental clinic, Universidad Peruana Cayetano Heredia, Lima, Peru.
+- Ethics approval: file No. 215-10-19.
+
+**Sampling and timeframe**
+- **Non-probabilistic (convenience) sample** of patients scheduled for microsurgery.
+- Recruitment period: **8 months** (exact dates not stated).
+- Context: microsurgery used for ~35 patients/year at the clinic (2011–2017 average mentioned as rationale for sample size).
+
+**Participants**
+- Initially gathered: **41**
+- Excluded: **6** (incomplete scales)
+- Final analyzed sample: **35**
+- Inclusion: scheduled for endodontic microsurgery; age ≥18; consented.
+- Exclusion: **psychiatric or neurological disease** in medical record; **<18 years**.
+
+**Groups / comparisons**
+- No parallel groups.
+- Two repeated measurements per participant:
+  - **Pre-microsurgery anxiety** (waiting room, before procedure)
+  - **Post-microsurgery anxiety** (after procedure, waiting for prescription)
+
+**Procedure-related notes**
+- Microsurgery performed by 2nd-year postgraduate endodontic students under supervisor.
+- Duration: average **2–3 hours**.
+- Same researcher administered both assessments (helps standardization; may increase social desirability bias).
+
+**Variables and measurement**
+- **Primary outcome (continuous):** Anxiety measured with **VAS 0–10 cm**.
+  - Anchors: “not anxious at all” to “worst experience ever”.
+  - Recorded as **distance (cm)** from “not anxious at all” to the patient mark (quantitative).
+- **Derived/categorical outcome (binary/ordinal):**
+  - For “statistical purposes and to classify variables,” prior cut-offs used.
+  - **Cut-off: score 3 identifies anxiety** (interpretable as VAS ≥3 = “anxious”; exact rule not explicitly stated but implied).
+- No other covariates described (e.g., sex, age, prior dental experiences) in provided text.
+
+**Data collection method**
+- Paper/scale completion in clinic; self-reported single-item VAS administered twice.
+
+---
+
+## TASK 2: Statistical analysis plan (SAP)
+
+### 1) General principles
+- **Analysis set:** complete-case participants with both VAS measures (n=35 per text). Report exclusions and reasons.
+- **Primary estimand:** mean/median **within-person change** in anxiety (post – pre).
+- **Significance level:** two-sided α = 0.05.
+- **Effect size reporting (mandatory):** mean difference with 95% CI (or median paired difference with CI), plus standardized effect size for paired data.
+- **Software:** any standard (R/Stata/SPSS); specify in final manuscript.
+
+### 2) Data preparation
+- Compute:
+  - `VAS_pre` (0–10 cm)
+  - `VAS_post` (0–10 cm)
+  - `ΔVAS = VAS_post − VAS_pre` (negative indicates reduction)
+  - `Anx_pre` and `Anx_post` using cut-off (e.g., VAS ≥3).
+- Check range violations, missingness patterns, and potential heaping (marks at integers).
+
+### 3) Descriptive statistics (mandatory)
+- Continuous VAS: mean (SD) and/or median (IQR), min–max, by time point.
+- Paired change: mean (SD) of ΔVAS and median (IQR) paired differences.
+- Categorical “anxiety present”: n (%) pre and post.
+- Graphs (recommended): paired dot plot (“spaghetti”), histogram/density of ΔVAS, Bland–Altman-style plot for pre vs post.
+
+---
+
+## CATEGORY A – MANDATORY tests
+
+### A1. Paired t-test (primary continuous comparison)
+- **Purpose:** Test whether mean anxiety differs **pre vs post** within the same individuals.
+- **Why appropriate (≥2):**
+  1. Design is **paired/repeated measures** (each participant measured twice).
+  2. Outcome (VAS distance) is treated as **approximately continuous**, commonly analyzed with parametric methods.
+- **Why it may not be appropriate (≥1):**
+  - ΔVAS may be **non-normal** with n=35, or VAS may show ceiling/floor effects.
+- **When NOT to use:**
+  - Clear strong non-normality of ΔVAS (e.g., heavy skew/outliers) that cannot be reasonably addressed, or VAS treated strictly as ordinal.
+- **Alternative if assumptions violated:**
+  - **Wilcoxon signed-rank test** (A2) and/or **bootstrap CI** for mean/median paired difference.
+
+### A2. Wilcoxon signed-rank test (nonparametric paired comparison)
+- **Purpose:** Test whether the **median** within-person change differs from 0.
+- **Why appropriate (≥2):**
+  1. Handles **non-normal** paired differences.
+  2. Suitable when VAS is considered **ordinal/non-Gaussian** or has outliers.
+- **Why it may not be appropriate (≥1):**
+  - Assumes the distribution of paired differences is **symmetrical** (often overlooked).
+- **When NOT to use:**
+  - Many ties/zero differences or markedly asymmetric differences; or if interest is specifically in the **mean** difference.
+- **Alternative if assumptions violated:**
+  - **Sign test** (less powerful but fewer assumptions) or **permutation test** for paired differences; report **bootstrap CI**.
+
+### A3. McNemar test (paired binary outcome: “anxious” yes/no)
+- **Purpose:** Compare proportion anxious **pre vs post** using the cut-off (e.g., VAS ≥3).
+- **Why appropriate (≥2):**
+  1. Same individuals classified twice → **paired nominal** data.
+  2. Specifically tests change in marginal proportions using **discordant pairs**.
+- **Why it may not be appropriate (≥1):**
+  - Dichotomizing VAS **loses information** and power; results depend on a possibly arbitrary cut-off.
+- **When NOT to use:**
+  - If any cell counts are extremely small without using an exact approach; or if the cut-off is not validated for this population/procedure.
+- **Alternative if assumptions violated:**
+  - **Exact McNemar test** (binomial exact) when discordant counts are small.
+
+---
+
+## CATEGORY B – RECOMMENDED tests/analyses
+
+### B1. Normality/outlier diagnostics on paired differences
+- **Test name:** Shapiro–Wilk test on `ΔVAS` (plus graphical checks: Q–Q plot).
+- **Purpose:** Assess whether paired differences are approximately normal to support paired t-test.
+- **Why appropriate (≥2):**
+  1. The parametric primary analysis relies on **normality of differences**, not of raw scores.
+  2. Helps justify choice between t-test vs nonparametric/robust methods.
+- **Why it may not be appropriate (≥1):**
+  - With n=35, normality tests can be **underpowered** or overly sensitive; decisions should not rely on p-values alone.
+- **When NOT to use:**
+  - As the sole criterion to choose the method; avoid “test then choose” as a rigid rule.
+- **Alternative if assumptions violated:**
+  - Use **robust methods** (bootstrap CI for mean difference; Yuen’s trimmed-mean test for paired data) and present both parametric and nonparametric results as sensitivity.
+
+### B2. Effect size estimation for paired designs
+- **Test/metric name:** Paired standardized mean difference (**Cohen’s dz**) with 95% CI.
+- **Purpose:** Quantify magnitude of change beyond statistical significance.
+- **Why appropriate (≥2):**
+  1. With small samples, p-values alone are misleading; effect sizes convey **clinical relevance**.
+  2. Paired effect sizes account for within-subject correlation.
+- **Why it may not be appropriate (≥1):**
+  - If VAS is heavily non-normal or treated as ordinal, dz may be less interpretable.
+- **When NOT to use:**
+  - When reporting only categorical outcomes; or when distribution makes mean/SD unrepresentative.
+- **Alternative if assumptions violated:**
+  - **Rank-biserial correlation** for Wilcoxon signed-rank; or **Cliff’s delta** on paired differences.
+
+### B3. Confidence intervals via bootstrap for paired change
+- **Test name:** Nonparametric bootstrap CI for mean or median ΔVAS.
+- **Purpose:** Provide robust uncertainty estimates without strong distributional assumptions.
+- **Why appropriate (≥2):**
+  1. Useful for small-to-moderate n and non-normal ΔVAS.
+  2. Produces interpretable **CI for change**, aligning with estimation-focused reporting.
+- **Why it may not be appropriate (≥1):**
+  - If data have many ties/limited unique values, bootstrap distributions can be unstable.
+- **When NOT to use:**
+  - Extremely small sample sizes or complex dependence structures (not the case here).
+- **Alternative if assumptions violated:**
+  - **Exact methods** (for medians) or **permutation CI** for paired differences.
+
+### B4. Agreement/association between pre and post VAS
+- **Test name:** Intraclass correlation coefficient (ICC) or Pearson/Spearman correlation (descriptive).
+- **Purpose:** Describe consistency/relationship of anxiety levels before and after.
+- **Why appropriate (≥2):**
+  1. Characterizes whether individuals retain rank/order (high pre tends to high post).
+  2. Helps interpret whether “no mean change” hides **individual variability**.
+- **Why it may not be appropriate (≥1):**
+  - Correlation/ICC does **not** test change and can be misinterpreted as treatment effect.
+- **When NOT to use:**
+  - As evidence of “no difference” or “effect”; it addresses association, not mean change.
+- **Alternative if assumptions violated:**
+  - Use **Spearman** instead of Pearson; report paired plots.
+
+---
+
+## CATEGORY C – OPTIONAL (supplementary) analyses
+
+### C1. Sign test (paired)
+- **Purpose:** Test whether more participants decreased vs increased anxiety (direction-only).
+- **Why appropriate (≥2):**
+  1. Minimal assumptions; robust to asymmetry/outliers.
+  2. Clinically intuitive (“how many improved vs worsened”).
+- **Why it may not be appropriate (≥1):**
+  - Low power; ignores magnitude of changes.
+- **When NOT to use:**
+  - As the primary analysis when magnitude matters.
+- **Alternative if assumptions violated:**
+  - Wilcoxon signed-rank or permutation test.
+
+### C2. Sensitivity analysis to cut-off choice
+- **Purpose:** Evaluate robustness of “anxious” prevalence change to alternative thresholds (e.g., ≥4, ≥5).
+- **Why appropriate (≥2):**
+  1. Cut-off transferred from another study; may not generalize.
+  2. Demonstrates robustness vs arbitrariness of dichotomization.
+- **Why it may not be appropriate (≥1):**
+  - Multiple thresholds inflate multiplicity; may look like p-hacking if not pre-specified.
+- **When NOT to use:**
+  - Without declaring exploratory nature and controlling interpretation.
+- **Alternative if assumptions violated:**
+  - Model anxiety continuously (preferred) rather than dichotomizing.
+
+### C3. Minimal clinically important difference (MCID)-type responder analysis
+- **Purpose:** Estimate % with change ≥1 cm or ≥2 cm (if clinically justifiable).
+- **Why appropriate (≥2):**
+  1. Connects outcomes to clinical meaning.
+  2. Complements mean/median change with patient-level interpretation.
+- **Why it may not be appropriate (≥1):**
+  - No MCID provided for this context; thresholds may be arbitrary.
+- **When NOT to use:**
+  - If no rationale/validation for responder threshold.
+- **Alternative if assumptions violated:**
+  - Report continuous change distribution and quantiles.
+
+---
+
+## TASK 3: Inappropriate tests (should NOT be used)
+
+1. **Independent-samples t-test / Mann–Whitney U**
+   - Wrong because observations are **paired** (same participants pre and post), violating independence.
+
+2. **One-way ANOVA for pre vs post**
+   - Overcomplicated and typically assumes independent groups; paired structure is not handled unless using **repeated-measures ANOVA** (but with only 2 time points, paired t-test is equivalent and clearer).
+
+3. **Chi-square test of independence (unpaired) for anxious yes/no pre vs post**
+   - Ignores pairing; correct approach is **McNemar** (or exact McNemar).
+
+4. **Pearson correlation between pre and post as a test of “difference”**
+   - Correlation measures association, not change; high correlation can coexist with large mean change and vice versa.
+
+5. **Linear regression treating pre and post rows as independent without subject ID**
+   - Violates independence; would underestimate SE and inflate type I error.
+
+6. **Multiple-comparisons post hoc tests (e.g., Tukey)**
+   - Not relevant: only two time points and no multiple groups described.
+
+---
+
+## TASK 4: Summary justification of overall approach
+
+The design is a **within-subject pre–post** study with a continuous primary outcome (VAS). The core analysis should therefore focus on **paired change** (post–pre) using a **paired t-test** when differences are approximately normal, with a **Wilcoxon signed-rank** (and/or bootstrap CI) as a robust alternative. If the VAS is dichotomized using the published cut-off, change in prevalence should be evaluated with **McNemar (exact if needed)**. Reporting **effect sizes and confidence intervals** is essential given the small sample and the clinical interpretability of anxiety change.

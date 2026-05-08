@@ -1,0 +1,235 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_Fonzar_2021;03(2)5-17.pdf
+Status : ok
+Time   : 20260508_080159
+══════════════════════════════════════════════════════════════════════
+
+The provided “ARTICLE TEXT” does **not contain the Introduction or Methods** (pages 1–11 are blank/redacted; pages 12–13 show only Conclusions and References). Because essentially all methodological details are missing, I cannot reliably extract key design/measurement features or build a study-specific SAP tied to the authors’ actual methods (eligibility criteria, unit of analysis, follow-up scheme, outcome definitions, radiographic criteria, handling of clustering, missing data, etc.).
+
+Below is (1) what can be extracted from the Conclusions, and (2) a **provisional, best-practice statistical analysis plan** consistent with what the Conclusions imply. If you paste the actual Introduction/Methods, I will rewrite the SAP to exactly match the paper.
+
+---
+
+## TASK 1: INFORMATION EXTRACTION (from Conclusions only; Methods not available)
+
+### Likely study type / setting
+- **Design (inferred):** Long-term **observational cohort** follow-up (likely retrospective/prospective) of endodontically treated/re-treated teeth.
+- **Follow-up horizon:** **20 years**.
+- **Population (stated):** Patients affected by **advanced periodontitis** undergoing **multidisciplinary rehabilitation** (perio–prosthetic context implied).
+- **Unit(s) of analysis (inferred):** Primarily **tooth-level** outcomes; patients contribute multiple teeth (clustering likely).
+
+### Interventions/exposures mentioned
+- **Endodontic treatment vs re-treatment** (re-treatment explicitly referenced as predictor).
+- **Number of sessions:** “two sessions” vs (presumably) one session.
+- **Indication:** “endodontic treatment for non-endodontic reasons” (e.g., prosthetic reasons) vs endodontic pathology.
+- **Baseline radiographic status:** “preoperative radiolucency” yes/no.
+
+### Outcomes mentioned (tooth-level)
+- **Primary outcome (implied):** **Clinical survival** at 20 years (reported survival rate **86%**).
+- **Failure outcome(s):**
+  - **Extraction** (12.9% of teeth extracted)
+  - **Extraction for endodontic reasons** (0.9%)
+  - **Complications** “successfully treated” (2.6%) — suggests intermediate events (e.g., complications requiring management but not extraction).
+- **Time-to-event structure (implied):** time until extraction/failure over 20 years.
+
+### Predictors of failure (stated)
+- **Ageing** (age at baseline; continuous or categorical not known) → predictor of failure.
+- **Two-session treatment** → predictor of failure.
+- **Non-endodontic reason indication** → predictor of failure.
+- **Not predictive (stated):** preoperative radiolucency, endodontic re-treatment “seem not to be”.
+
+### Missing critical items (cannot extract)
+- Sample size (patients, teeth), recruitment period, inclusion/exclusion criteria, definitions of “survival/failure/complication”, calibration/reliability of radiographic readings, follow-up schedule, censoring rules, how multiple teeth per patient handled, missing data handling, covariates recorded (tooth type, restoration, periodontal status, smoking, diabetes, etc.), and statistical methods actually used.
+
+---
+
+## TASK 2: STATISTICAL ANALYSIS PLAN (provisional; aligned to implied aims)
+
+### Overall analytic principles (proposed)
+- **Primary estimand:** 20-year **tooth survival** (probability of remaining in situ) and **risk factors** for failure.
+- **Data structure:** Teeth nested within patients → use **cluster-robust** methods or **frailty/mixed effects**.
+- **Censoring:** Teeth not extracted by last follow-up are **right-censored**; consider competing risks if extracting “endodontic” vs “non-endodontic/periodontal/prosthetic” is distinguished.
+
+---
+
+# CATEGORY A – MANDATORY
+
+## A1. Kaplan–Meier (KM) survival estimation (with 95% CI)
+- **Purpose:** Estimate tooth **survival function** over 20 years; report survival at 20 years.
+- **Why appropriate (≥2):**
+  1. Handles **right-censoring** (common in long follow-up).
+  2. Directly matches the reported endpoint “20-year clinical survival rate”.
+- **Why may not be appropriate (≥1):**
+  - Treats other event types (e.g., extraction for non-endodontic causes) as the same failure unless defined otherwise; also ignores clustering unless adjusted.
+- **When NOT to use:**
+  - When the primary question is **cause-specific failure** with substantial **competing risks** (KM overestimates incidence for specific causes).
+- **Alternative if assumptions/structure violated:**
+  - **Cumulative incidence function (CIF)** under competing risks; or use **marginal Cox with robust SE** if clustering is main concern for inference.
+
+## A2. Log-rank test (univariable survival comparisons)
+- **Purpose:** Compare survival curves across key groups (e.g., one- vs two-session; indication groups; radiolucency yes/no; primary vs retreatment).
+- **Why appropriate:**
+  1. Standard nonparametric test for **time-to-event** differences with censoring.
+  2. Useful screening prior to multivariable modeling.
+- **Why may not be appropriate:**
+  - Sensitive to **non-proportional hazards** and ignores covariate adjustment and clustering.
+- **When NOT to use:**
+  - Strong **non-proportional hazards** or when patient-level clustering is severe and unaddressed.
+- **Alternative:**
+  - **Weighted log-rank** (e.g., Fleming–Harrington) for non-PH patterns; or proceed directly to **Cox model with robust SE/frailty**.
+
+## A3. Multivariable Cox proportional hazards regression (with clustering adjustment)
+- **Purpose:** Estimate adjusted associations between predictors (age, sessions, indication, radiolucency, retreatment) and **hazard of failure/extraction**.
+- **Why appropriate:**
+  1. Models **time-to-event** with censoring and yields interpretable **hazard ratios**.
+  2. Allows **multivariable adjustment** for confounding; can account for clustering using **robust sandwich SE** (patient as cluster) or a **shared frailty** term.
+- **Why may not be appropriate:**
+  - If **proportional hazards (PH)** assumption is violated, or if exact event times are poorly known.
+- **When NOT to use:**
+  - If event times are only known in coarse intervals (then discrete-time models may be better), or if competing risks are central and cause-specific hazards are not the desired estimand.
+- **Alternative if assumptions violated:**
+  - For PH violation: **time-varying coefficients**, stratified Cox, or **accelerated failure time (AFT)** models.
+  - For competing risks: **Fine–Gray** (subdistribution) or **cause-specific Cox** depending on estimand.
+
+---
+
+# CATEGORY B – RECOMMENDED
+
+## B1. Competing risks analysis (CIF + Fine–Gray and/or cause-specific Cox)
+- **Purpose:** Separate risk of **extraction for endodontic reasons** vs **other reasons** (periodontal/prosthetic/fracture), if coded.
+- **Why appropriate:**
+  1. Prevents biased interpretation when multiple mutually exclusive failure causes exist.
+  2. Aligns with conclusion reporting “only 0.9% for endodontic reasons”.
+- **Why may not be appropriate:**
+  - If cause of extraction is unreliable/misclassified or not recorded.
+- **When NOT to use:**
+  - If only “extraction yes/no” is known with no valid cause attribution.
+- **Alternative:**
+  - Treat all extractions as a single composite endpoint (standard Cox/KM), and present cause breakdown descriptively.
+
+## B2. Model diagnostics and assumption checks
+### (i) PH assumption checks (Schoenfeld residuals, log–log plots)
+- **Purpose:** Validate Cox model assumptions.
+- **Why appropriate:**
+  1. Ensures hazard ratios are meaningful over time.
+  2. Detects time-varying effects (likely over 20 years).
+- **Why may not be appropriate:**
+  - With few events, tests have low power and may be unstable.
+- **When NOT to use:**
+  - Not “never”, but interpret cautiously with sparse events.
+- **Alternative:**
+  - Pre-specify clinically plausible time interactions; use AFT models.
+
+### (ii) Functional form for age (restricted cubic splines)
+- **Purpose:** Avoid incorrect linearity assumption for age.
+- **Why appropriate:**
+  1. Age effects are often **nonlinear**.
+  2. Improves fit and reduces residual confounding.
+- **Why may not be appropriate:**
+  - Requires adequate event counts to support flexible terms.
+- **When NOT to use:**
+  - Very small number of failures.
+- **Alternative:**
+  - Categorize age (with loss of information) or use fractional polynomials.
+
+## B3. Cluster handling sensitivity analysis (robust SE vs frailty)
+- **Purpose:** Assess robustness to within-patient correlation (multiple teeth per patient).
+- **Why appropriate:**
+  1. Tooth outcomes within a patient are not independent.
+  2. Frailty can quantify unobserved patient heterogeneity.
+- **Why may not be appropriate:**
+  - Frailty models can be unstable with small clusters or sparse events.
+- **When NOT to use:**
+  - If most patients contribute only one tooth (minimal clustering).
+- **Alternative:**
+  - Marginal Cox with **sandwich estimator** (often more stable).
+
+## B4. Multiple imputation for missing covariates (if applicable)
+- **Purpose:** Reduce bias and preserve power when baseline predictors are missing.
+- **Why appropriate:**
+  1. Long-term datasets often have missing covariates.
+  2. MI is generally preferable to complete-case analysis under MAR.
+- **Why may not be appropriate:**
+  - If missingness is MNAR and not addressable with available data; or if outcome times/censoring not properly incorporated.
+- **When NOT to use:**
+  - When missingness is trivial (<~5%) and complete-case is defensible.
+- **Alternative:**
+  - Inverse probability weighting; sensitivity analyses (best/worst case).
+
+---
+
+# CATEGORY C – OPTIONAL
+
+## C1. 20-year survival probability via complementary log–log discrete-time model
+- **Purpose:** If follow-up is recorded in **intervals** (annual visits), model discrete hazards.
+- **Why appropriate:**
+  1. Better when event times are interval-censored/visit-based.
+  2. Can incorporate time-varying covariates (e.g., restoration status).
+- **Why may not be appropriate:**
+  - Less familiar to dental audiences; needs proper time structure.
+- **When NOT to use:**
+  - When exact event dates are known and Cox is sufficient.
+- **Alternative:**
+  - Standard Cox / AFT.
+
+## C2. Net survival / multi-state model (tooth: complication → treated → extraction)
+- **Purpose:** Model “complications successfully treated” as intermediate states.
+- **Why appropriate:**
+  1. Separates pathways to extraction from reversible complications.
+  2. Quantifies transition intensities.
+- **Why may not be appropriate:**
+  - Requires detailed timing of complications and treatments.
+- **When NOT to use:**
+  - If complication onset/treatment dates are not recorded.
+- **Alternative:**
+  - Composite endpoint; or recurrent event methods if multiple complications.
+
+## C3. Interaction testing (effect modification)
+- **Purpose:** Evaluate whether predictors differ by, e.g., retreatment status, radiolucency, tooth type.
+- **Why appropriate:**
+  1. Clinically plausible heterogeneity (e.g., age effect differs by indication).
+  2. Improves clinical interpretability.
+- **Why may not be appropriate:**
+  - Inflates type I error; low power with limited events.
+- **When NOT to use:**
+  - Sparse events or many interactions.
+- **Alternative:**
+  - Pre-specified limited interactions; shrinkage/penalization.
+
+## C4. Penalized regression (ridge/LASSO/Firth correction) for sparse events
+- **Purpose:** Stabilize estimates if endodontic-cause extractions are rare (0.9% suggests sparsity).
+- **Why appropriate:**
+  1. Reduces overfitting with many covariates vs events.
+  2. Handles separation/small-sample bias.
+- **Why may not be appropriate:**
+  - Coefficients less straightforward; requires tuning choices.
+- **When NOT to use:**
+  - Adequate events per parameter and stable standard Cox is fine.
+- **Alternative:**
+  - Pre-specify limited covariates; combine categories.
+
+---
+
+## TASK 3: INAPPROPRIATE TESTS (and why)
+
+- **Independent-samples t-test / one-way ANOVA** for “survival rate at 20 years”  
+  - Survival is time-to-event with censoring; these ignore censoring and timing.
+- **Simple chi-square/Fisher’s exact** comparing extracted vs not at 20 years as the primary analysis  
+  - Discards time information and mishandles differential follow-up/censoring.
+- **Paired t-test / repeated-measures ANOVA**  
+  - Not applicable unless continuous repeated outcomes are measured; survival outcome is not continuous repeated measurement.
+- **Linear regression on time-to-extraction** among only extracted teeth  
+  - Selection bias (conditions on failure) and ignores censoring.
+- **Pearson correlation** between predictors and “survival”  
+  - Wrong outcome type; confounding and censoring not addressed.
+
+---
+
+## TASK 4: SUMMARY (overall approach)
+
+A complete analysis for 20-year prognosis of root-canal–treated teeth should be centered on **time-to-event methods** (KM + Cox), because they properly use follow-up time and **right-censoring**. Given likely multiple teeth per patient and multiple causes of extraction, the plan should additionally address **within-patient clustering** (robust SE/frailty) and, where causes are known, **competing risks** (CIF/Fine–Gray or cause-specific Cox). This framework directly supports estimation of long-term survival and identification of predictors of failure.
+
+---
+
+If you paste the actual **Introduction and Methods** (or upload the PDF pages containing them), I will (i) extract exact variables/outcome definitions/sample sizes and (ii) tailor the SAP (models, covariates, handling of teeth-within-patient, missing data rules, and planned tables/figures) to match the study precisely.

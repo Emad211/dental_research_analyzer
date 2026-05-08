@@ -1,0 +1,115 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_follow_up_of_endodontically_treated_teeth_without.3.pdf
+Status : ok
+Time   : 20260508_075639
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Retrospective cohort study.
+2. **Study Objective**: 
+   - To evaluate the survival criteria of endodontically treated teeth (ETTs) without crown coverage.
+   - To identify possible explanations for differences in survival outcomes.
+3. **Study Population**:
+   - **Sample Size**: 300 endodontically treated teeth (ETTs) in 148 patients.
+   - **Age Range**: 20–45 years.
+   - **Gender Distribution**: 93 men (62.83%) and 55 women (37.16%).
+   - **Location**: Vidarbha region, Maharashtra, India.
+4. **Observation Period**: 6 months to 10.3 years.
+5. **Inclusion Criteria**:
+   - Permanent teeth without provisional crowns, definitive restorations with cuspal coverage, post and core restorations, or crowns at the time of recall.
+   - Teeth with restorations placed at least 6 months before the last recall visit.
+   - Teeth with restorations placed within 6 months after endodontic treatment.
+6. **Exclusion Criteria**:
+   - Teeth lost due to endodontic or periodontal reasons.
+   - Teeth with negative findings requiring restoration, repair, or extraction.
+7. **Variables**:
+   - **Independent Variables**: Age, gender, tooth location (upper/lower jaw), tooth type (incisor, canine, premolar, molar), presence of opposing dentition (natural tooth, crown, extracted), type of restorative material (composite, silver amalgam, GIC), number of canals, number of sessions, and number of filled canals.
+   - **Dependent Variables**: Survival of ETTs, failure characteristics (recurrent caries, crack/fracture, loss of restoration, vertical root fracture, tooth loss).
+8. **Data Collection**:
+   - Retrospective review of patient records from 2010 to 2020.
+   - Follow-up data collected at 6 months, 1 year, 2 years, 5 years, and 10.3 years.
+   - Data on restoration type, number of surfaces, placement of post/core buildup, and interventions post-endodontic treatment.
+9. **Outcome Definition**:
+   - **Survival**: Teeth intact with restorations without full coverage.
+   - **Failure**: Negative findings requiring restoration, repair, or extraction.
+10. **Data Analysis**:
+    - Kaplan–Meier survival analysis was used to evaluate survival and success of ETTs.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Kaplan–Meier Survival Analysis
+   - **Purpose**: To estimate the survival probability of ETTs over time.
+   - **Why Appropriate**:
+     1. The study involves time-to-event data (e.g., time until failure or survival of ETTs).
+     2. Censoring is present (e.g., teeth that did not fail by the end of the study period).
+   - **Why It May Not Be Appropriate**: Assumes that censoring is non-informative, which may not always hold true.
+   - **When This Test Should NOT Be Used**: If the assumption of non-informative censoring is violated.
+   - **Alternative if Assumptions Are Violated**: Cox proportional hazards model with adjustments for informative censoring.
+
+2. **Test Name**: Chi-Square Test or Fisher’s Exact Test
+   - **Purpose**: To compare categorical variables (e.g., survival rates across different restorative materials or tooth types).
+   - **Why Appropriate**:
+     1. The study involves categorical independent variables (e.g., tooth type, restorative material).
+     2. It tests for associations between categorical variables and survival outcomes.
+   - **Why It May Not Be Appropriate**: Small sample sizes in subgroups can violate the assumptions of the chi-square test.
+   - **When This Test Should NOT Be Used**: When expected frequencies in any cell are less than 5.
+   - **Alternative if Assumptions Are Violated**: Fisher’s exact test for small sample sizes.
+
+#### CATEGORY B – RECOMMENDED
+3. **Test Name**: Cox Proportional Hazards Model
+   - **Purpose**: To identify independent predictors of survival while adjusting for covariates.
+   - **Why Appropriate**:
+     1. Allows for multivariable analysis of time-to-event data.
+     2. Accounts for the effect of multiple independent variables (e.g., age, gender, restorative material).
+   - **Why It May Not Be Appropriate**: Assumes proportional hazards, which may not be true for all variables.
+   - **When This Test Should NOT Be Used**: If the proportional hazards assumption is violated.
+   - **Alternative if Assumptions Are Violated**: Stratified Cox model or time-varying covariates.
+
+4. **Test Name**: Log-Rank Test
+   - **Purpose**: To compare survival distributions between groups (e.g., different restorative materials).
+   - **Why Appropriate**:
+     1. Non-parametric test suitable for comparing survival curves.
+     2. Does not require assumptions about the shape of the survival distribution.
+   - **Why It May Not Be Appropriate**: Sensitive to differences in survival rates at early or late time points.
+   - **When This Test Should NOT Be Used**: When survival curves cross significantly.
+   - **Alternative if Assumptions Are Violated**: Generalized Wilcoxon test.
+
+#### CATEGORY C – OPTIONAL
+5. **Test Name**: Logistic Regression
+   - **Purpose**: To model the probability of failure as a function of independent variables.
+   - **Why Appropriate**:
+     1. Suitable for binary outcomes (e.g., failure vs. survival).
+     2. Can include multiple predictors simultaneously.
+   - **Why It May Not Be Appropriate**: Does not account for time-to-event data.
+   - **When This Test Should NOT Be Used**: When time-to-event information is critical.
+   - **Alternative if Assumptions Are Violated**: Cox proportional hazards model.
+
+6. **Test Name**: Descriptive Statistics
+   - **Purpose**: To summarize baseline characteristics of the study population.
+   - **Why Appropriate**:
+     1. Provides an overview of the sample demographics and clinical variables.
+     2. Helps in understanding the distribution of key variables.
+   - **Why It May Not Be Appropriate**: Does not infer relationships or test hypotheses.
+   - **When This Test Should NOT Be Used**: Not applicable; always useful.
+   - **Alternative if Assumptions Are Violated**: None needed.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Paired t-Test**:
+   - **Why Not Appropriate**: The study does not involve paired or matched data.
+2. **ANOVA**:
+   - **Why Not Appropriate**: The outcome variable (survival/failure) is not continuous.
+3. **Correlation Analysis (e.g., Pearson/Spearman)**:
+   - **Why Not Appropriate**: The study does not focus on the strength of association between two continuous variables.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach is centered around survival analysis because the primary outcome is time-to-event data (e.g., survival of ETTs). Kaplan–Meier survival analysis and Cox proportional hazards modeling are the cornerstone methods for this study. Supplementary analyses, such as chi-square tests and logistic regression, enhance the understanding of categorical predictors and binary outcomes. The proposed plan ensures robust and comprehensive evaluation while addressing potential limitations in assumptions.

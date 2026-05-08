@@ -1,0 +1,504 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_oral_health_related_quality_of_life_and.18.pdf
+Status : ok
+Time   : 20260508_081521
+══════════════════════════════════════════════════════════════════════
+
+TASK 1: INFORMATION EXTRACTION  
+(Study characteristics, variables, measurements, data collection)
+
+1. Study design
+- Type: Prospective longitudinal observational study.
+- Setting: Outpatient dental clinics, College of Dentistry, Jouf University, Sakaka, Saudi Arabia.
+- Period: August 2018 (?) to February 2019 (exact year not fully clear but methods state “from August to February 2019”).
+- Follow‑up: Baseline (pre‑treatment) and 2‑week post‑treatment assessment.
+
+2. Study objectives
+- Primary: To investigate factors affecting oral health‑related quality of life (QOL) and satisfaction of patients before and after root canal treatment.
+- Key exposure of interest: Operator expertise (students, postgraduates, specialists).
+- Key outcomes:
+  - Change in oral health‑related QOL (OHIP‑17) before vs 2 weeks after treatment.
+  - Patient satisfaction with root canal treatment at 2 weeks after treatment.
+- Secondary/implicit objectives:
+  - Compare QOL outcomes and satisfaction between operator expertise levels.
+  - Describe distribution of OHIP‑17 item responses (Table 2 indicated).
+
+3. Participants
+- Target population: Adult patients referred for root canal treatment in the college dental clinics’ outpatient wing.
+- Inclusion criteria:
+  - Age 18–60 years.
+  - Medically and mentally fit to provide informed consent.
+  - Undergoing nonsurgical primary root canal treatment.
+- Exclusion criteria:
+  - Uncontrolled diabetes.
+  - Uncontrolled hypertension.
+  - Blood disorders.
+  - Pregnancy.
+  - Undergoing orthodontic treatment.
+  - Failed root canal‑treated teeth indicated for retreatment.
+- Consent and ethics:
+  - Ethical approval obtained from Local Institutional Committee for Bioethics and Research (approval no. 9-16-8/39).
+  - Written informed consent obtained.
+  - Participants free to withdraw without consequences.
+
+4. Sample size
+- Planned / achieved: 250 patients were included.
+- Sample size calculation: “Sample size was calculated using the method of Liu et al.[12]” (Liu et al. refer to an endodontic QOL paper—likely based on detectable change in OHIP scores or a similar continuous outcome).
+
+5. Grouping / exposure variables
+- Main grouping factor:
+  - Operator expertise (categorical, 3 levels):
+    - Undergraduate students.
+    - Postgraduate (graduate) students.
+    - Endodontic specialists.
+- Sociodemographic variables (from mention of “Table 1: Sociodemographic distribution of patients”):
+  - Likely variables (not fully visible, but typically include):
+    - Age (continuous or categorized).
+    - Sex.
+    - Education level (partly visible: “Edu... high…” suggests schooling/education categories).
+    - Possibly nationality, income, or other basic descriptors.
+- Clinical variables (implied, though not fully visible):
+  - Indication for root canal (pulpal exposure, related pathologies, intentional therapy are mentioned generally).
+  - Possibly tooth type, jaw, presence of preoperative pain, number of visits, complications, radiographic status – but not explicitly documented in the visible text.
+  - Radiographic assessment sheet used (implies some recording of periapical/radiographic status).
+
+6. Outcomes and measurement instruments
+
+6.1. Oral health‑related quality of life (primary outcome)
+- Instrument: Oral Health Impact Profile – OHIP‑17 (17 items).
+- Language: Arabic version.
+- Validity: Kappa statistic for Arabic version reported as 0.95 (excellent reliability).
+- Response format:
+  - Standard OHIP Likert scale (as indicated by Table 2 headings):
+    - Never.
+    - Hardly ever.
+    - Occasionally.
+    - Fairly often.
+    - Very often.
+- Measurement schedule:
+  - Baseline: Before root canal treatment.
+  - Follow‑up: 2 weeks after treatment.
+- Data type:
+  - Item‑level ordinal responses for 17 items.
+  - Total OHIP‑17 score (likely sum or average of item scores) – treated as continuous or ordinal.
+  - Possible domain/subscale scores (not explicitly stated; assume primary use is total score).
+
+6.2. Patient satisfaction (key secondary outcome)
+- Instrument: Semantic differential scale.
+- Timing: 2 weeks after treatment.
+- Format: Not described in detail, but typically:
+  - Multiple bipolar adjective pairs (e.g., satisfied–dissatisfied, painful–comfortable, etc.) rated on 5–7 point scales.
+  - Can yield a satisfaction score (continuous) or ordinal categories.
+- Data type:
+  - Individual item scores (ordinal).
+  - Aggregate satisfaction score (continuous/ordinal).
+
+6.3. Radiographic outcome / clinical assessment
+- Instrument: Radiographic assessment sheet.
+- Purpose: To evaluate clinical/radiographic treatment outcome (periapical status, quality of root canal, etc.).
+- Timing: Not clearly stated for 2 weeks; radiographic success is usually longer‑term. Here, likely documentation of technical quality, status pre‑/post‑treatment for descriptive/readiness purposes.
+- Data type (inferred):
+  - Categorical variables (e.g., presence/absence of periapical lesion, quality categories, etc.).
+
+7. Data collection methods
+- Administration:
+  - An independent examiner (not involved in treatment) interviewed each patient:
+    - Before treatment: administered OHIP‑17.
+    - 2 weeks after treatment: administered OHIP‑17 and semantic differential satisfaction scale.
+  - Radiographic assessment: completed on dedicated sheet (likely by clinician or calibrated examiner).
+- Design features:
+  - Prospective: exposures (operator expertise, baseline characteristics) recorded before outcomes.
+  - Longitudinal: repeated measures for OHIP‑17 per participant (paired baseline–2 week data).
+
+8. Variables – summary classification
+
+8.1. Independent variables / covariates
+- Operator expertise (3 categorical levels: student, postgraduate, specialist).
+- Sociodemographic variables:
+  - Age.
+  - Sex.
+  - Education level.
+  - Possibly others (nationality, etc. – not visible but may exist).
+- Clinical covariates (likely in data; not visible):
+  - Preoperative pain presence/intensity.
+  - Tooth type/location.
+  - Number/duration of appointments.
+  - Presence of intra‑/post‑operative complications.
+  - Radiographic pre‑treatment status (e.g., periapical index).
+
+8.2. Dependent variables (outcomes)
+- OHIP‑17 total score at baseline.
+- OHIP‑17 total score at 2 weeks.
+- Change in OHIP‑17 score (2 weeks – baseline).
+- OHIP‑17 item‑level responses at both timepoints.
+- Satisfaction score (semantic differential scale) at 2 weeks.
+- Radiographic/clinical outcomes (if analyzed; not clearly primary).
+
+8.3. Repeated‑measures structure
+- Level 1: Observation time (baseline, 2 weeks).
+- Level 2: Patient.
+- Grouping by operator expertise.
+
+---
+
+TASK 2: STATISTICAL ANALYSIS PLAN
+
+Assumptions:
+- 250 patients, roughly distributed across the three operator expertise groups.
+- OHIP‑17 total treated as quasi‑continuous (sum of 17 ordinal items, common in literature).
+- Satisfaction score treated as continuous or ordinal composite.
+- α = 0.05 (two‑sided).
+
+CATEGORY A – MANDATORY ANALYSES
+
+A1. Descriptive statistics
+
+Test/Procedure: Descriptive statistics (no inferential test)
+- Purpose:
+  - Summarize sample characteristics and key variables.
+- Why appropriate:
+  1. Essential to describe the sample (age, sex, education, operator group distribution, baseline OHIP‑17, satisfaction).
+  2. Provides context for all subsequent inferential analyses and helps assess balance between operator groups.
+- Why it may not be appropriate:
+  - Not a “test” per se; does not provide inferential conclusions.
+- When NOT to use:
+  - Not applicable; always needed in empirical work.
+- Alternatives if assumptions are violated:
+  - Use medians/IQRs for skewed continuous scores instead of means/SD; use frequencies/percentages for categorical variables.
+
+A2. Within‑subject change in OHIP‑17 (pre vs 2 weeks)
+
+Primary test (if distribution reasonably normal): Paired t‑test on OHIP‑17 total score
+- Purpose:
+  - Test whether mean OHIP‑17 total score changes from baseline to 2 weeks, across all patients.
+- Why appropriate:
+  1. Design is paired (same individuals measured twice).
+  2. OHIP‑17 total is a summed scale with many items; by CLT, often approximately normal in samples of n=250.
+- Why it may not be appropriate:
+  - If the distribution of differences is strongly non‑normal or has heavy outliers.
+- When NOT to use:
+  - For highly skewed or ordinal outcomes where the interval scale assumption is clearly violated.
+- Alternative if assumptions violated:
+  - Wilcoxon signed‑rank test on paired OHIP‑17 scores (non‑parametric).
+
+A3. Between‑group comparison of change in OHIP‑17 (operator expertise)
+
+Preferred parametric method: Repeated‑measures ANOVA or linear mixed model
+
+Option 1: Repeated‑measures ANOVA (2‑timepoint within‑subject factor; 3‑level between‑subject factor: operator group)
+- Purpose:
+  - Assess:
+    - Overall time effect (pre vs 2 weeks).
+    - Overall operator expertise effect.
+    - Time × operator interaction (whether change over time differs by operator expertise).
+- Why appropriate:
+  1. Natural modeling of within‑subject correlation with two repeated measures.
+  2. Allows formal testing of interaction (differential improvement by operator type).
+- Why it may not be appropriate:
+  - Assumes sphericity (trivial with two timepoints) and normally distributed residuals with homogeneous variance across groups.
+- When NOT to use:
+  - When the OHIP scores are markedly non‑normal or heteroskedastic, or when additional covariates must be controlled in a more flexible way.
+- Alternative if assumptions violated:
+  - Linear mixed‑effects model (LMM) with random intercept for patient and fixed effects for time, operator group, time×operator.
+  - Non‑parametric: change scores (ΔOHIP) analyzed via Kruskal–Wallis (see A4) and within each group by Wilcoxon signed‑rank.
+
+Option 2 (simpler if interaction is not the focus): One‑way ANOVA on change scores (ΔOHIP = 2‑week minus baseline)
+- Purpose:
+  - Compare mean change in OHIP‑17 across the three operator expertise levels.
+- Why appropriate:
+  1. Between‑group design with a continuous outcome (change score).
+  2. Straightforward interpretation of group differences in improvement.
+- Why it may not be appropriate:
+  - Does not explicitly model the paired nature beyond using change scores; sensitive to non‑normal distribution of ΔOHIP.
+- When NOT to use:
+  - When change scores are severely skewed or heteroskedastic, or if repeated‑measures ANOVA/LMM are feasible.
+- Alternative if assumptions violated:
+  - Kruskal–Wallis test on ΔOHIP.
+
+A4. Non‑parametric between‑group comparison of change in OHIP‑17 (if needed)
+
+Test: Kruskal–Wallis test on ΔOHIP across operator groups
+- Purpose:
+  - Compare distribution of change in OHIP‑17 across three operator expertise levels without assuming normality.
+- Why appropriate:
+  1. Handles non‑normal, ordinal, or skewed change scores.
+  2. Applicable to independent groups (patients treated by different operator types).
+- Why it may not be appropriate:
+  - Does not adjust for covariates; less powerful than parametric tests if assumptions of parametric tests are met.
+- When NOT to use:
+  - When group distributions have very different shapes or sample sizes are extremely imbalanced, interpretation of Kruskal–Wallis becomes tricky.
+- Alternative if assumptions violated:
+  - Ordinal regression on categorized change.
+  - Robust ANOVA (e.g., Welch or trimmed‑means methods).
+
+A5. Satisfaction between operator expertise groups
+
+Test (if satisfaction score treated as continuous & approximately normal): One‑way ANOVA
+- Purpose:
+  - Compare mean satisfaction scores across students, postgraduates, specialists.
+- Why appropriate:
+  1. Independent groups with a single continuous outcome (satisfaction).
+  2. Standard method for comparing >2 group means.
+- Why it may not be appropriate:
+  - If satisfaction scores are ordinal with few categories or strongly skewed, ANOVA’s assumptions may be violated.
+- When NOT to use:
+  - When the satisfaction measure is clearly non‑interval (e.g., a single 3‑level response).
+- Alternative if assumptions violated:
+  - Kruskal–Wallis test for ordinal scores.
+  - Ordinal logistic regression if controlling for covariates.
+
+A6. Association between satisfaction and change in OHIP‑17
+
+Test: Pearson correlation (or Spearman, see below)
+- Purpose:
+  - Assess whether greater improvement in QOL (ΔOHIP) is associated with higher satisfaction.
+- Why appropriate:
+  1. Both variables can be treated as continuous.
+  2. Provides a single measure of linear association with confidence interval.
+- Why it may not be appropriate:
+  - If either variable is clearly non‑normal or has outliers; or if relationship is non‑linear.
+- When NOT to use:
+  - For ordinal data with few categories or non‑linear relationships.
+- Alternative if assumptions violated:
+  - Spearman rank correlation (non‑parametric).
+  - Linear regression of satisfaction on ΔOHIP with robust SEs.
+
+CATEGORY B – RECOMMENDED ANALYSES (for rigor and depth)
+
+B1. Reliability analysis of OHIP‑17
+
+Test: Cronbach’s alpha (internal consistency)
+- Purpose:
+  - Evaluate internal consistency reliability of the OHIP‑17 items in this sample at baseline and/or 2 weeks.
+- Why appropriate:
+  1. OHIP‑17 is a multi‑item scale; internal consistency is important in each new sample.
+  2. Supports validity of interpreting total or subscale scores as coherent constructs.
+- Why it may not be appropriate:
+  - If OHIP‑17 items are known to represent multiple distinct domains and are not meant to be unidimensional, alpha may be misleading.
+- When NOT to use:
+  - When item set is very short, or known to be multi‑dimensional and analyzed by subscales instead.
+- Alternative if assumptions violated:
+  - McDonald’s omega or confirmatory factor analysis.
+
+B2. Multivariable analysis of change in OHIP‑17
+
+Preferred: Linear regression on ΔOHIP, or linear mixed model
+
+Option 1: Linear regression of ΔOHIP on operator group and covariates
+- Purpose:
+  - Estimate adjusted effect of operator expertise on QOL improvement while controlling for sociodemographic and clinical factors (age, sex, education, baseline OHIP, etc.).
+- Why appropriate:
+  1. ΔOHIP is continuous; regression allows adjustment for confounders.
+  2. Provides effect estimates (β coefficients) and CIs, not just p‑values.
+- Why it may not be appropriate:
+  - If ΔOHIP is non‑normal with heteroskedastic residuals.
+- When NOT to use:
+  - When sample size is small relative to number of covariates, risking overfitting.
+- Alternative if assumptions violated:
+  - Robust regression (e.g., Huber–White).
+  - Quantile regression.
+  - Non‑parametric ANCOVA methods.
+
+Option 2: Linear mixed‑effects model (LMM) on repeated OHIP scores
+- Purpose:
+  - Model OHIP‑17 scores over time, including fixed effects for time, operator group, their interaction, and covariates, with random intercept for patients.
+- Why appropriate:
+  1. Handles within‑subject correlation naturally.
+  2. Can include participants with missing data at one timepoint (if any).
+- Why it may not be appropriate:
+  - More complex; requires statistical expertise and assumptions about random effects distribution.
+- When NOT to use:
+  - When only two timepoints and analysis aims are simple; simpler methods may suffice.
+- Alternative if assumptions violated:
+  - Generalized estimating equations (GEE) with robust SEs.
+
+B3. Multivariable analysis of satisfaction
+
+Test: Linear regression (or ordinal logistic regression) with satisfaction as outcome
+- Purpose:
+  - Examine association of satisfaction with operator expertise, ΔOHIP, and covariates.
+- Why appropriate:
+  1. Allows simultaneous assessment of multiple predictors of satisfaction (operator group and QOL change).
+  2. Helps disentangle direct operator effect vs mediated by QOL improvement.
+- Why it may not be appropriate:
+  - If satisfaction is ordinal with few categories, linear model may not be ideal.
+- When NOT to use:
+  - When proportional odds assumptions for ordinal logistic regression fail (if using ordinal model).
+- Alternative if assumptions violated:
+  - Ordinal logistic regression with partial proportional odds model.
+  - Non‑parametric trend tests across ordered categories.
+
+B4. Item‑level analysis of OHIP‑17
+
+Test(s): McNemar/Bowker’s test (for change) or Wilcoxon signed‑rank (for ordinal scores per item)
+- Purpose:
+  - Assess change in frequency distribution of specific OHIP items (e.g., pain, functional limitation) before vs after treatment.
+- Why appropriate:
+  1. OHIP items are ordinal and may reflect different domains; item‑level change provides detailed clinical insight.
+  2. McNemar/Bowker tests handle paired categorical data.
+- Why it may not be appropriate:
+  - Multiple testing across 17 items inflates type I error; items have >2 categories (Bowker required).
+- When NOT to use:
+  - When sample sizes per cell are very small (sparse contingency tables).
+- Alternative if assumptions violated:
+  - Collapse categories (e.g., “never/hardly ever” vs “occasionally or more often”) to allow McNemar’s test.
+  - Use generalized linear mixed models for ordinal outcomes (cumulative logit).
+
+B5. Effect size measures and confidence intervals
+
+Procedures: Cohen’s d for paired change, η² or partial η² for ANOVA, CIs for differences
+- Purpose:
+  - Quantify magnitude of treatment‑related improvement and group differences, not just p‑values.
+- Why appropriate:
+  1. Clinically interpretable and aligns with QOL literature (e.g., minimal important difference).
+  2. Facilitates comparison with other studies.
+- Why it may not be appropriate:
+  - Very skewed distributions can make standard effect size formulas less meaningful.
+- When NOT to use:
+  - Never strictly “not to use”, but interpret cautiously when assumptions are violated.
+- Alternative if assumptions violated:
+  - Non‑parametric effect sizes (e.g., rank‑biserial correlation, Cliff’s delta).
+
+B6. Assumption checks
+
+Tests/Procedures:
+- Shapiro–Wilk test and Q–Q plots for normality of residuals/differences.
+- Levene’s test for homogeneity of variances.
+- Residual plots for regression models.
+- Purpose:
+  - Validate assumptions underlying t‑tests, ANOVA, and linear regression.
+- Why appropriate:
+  1. Essential to ensure chosen tests’ validity.
+  2. Guides selection of non‑parametric alternatives when needed.
+- Why it may not be appropriate:
+  - Over‑reliance on formal normality tests in large samples (they detect trivial deviations).
+- When NOT to use:
+  - Do not base decisions solely on p‑values of normality tests; always inspect plots.
+- Alternative if assumptions violated:
+  - Switch to non‑parametric tests or robust methods as described above.
+
+CATEGORY C – OPTIONAL ANALYSES (supplementary insights)
+
+C1. Subgroup analyses
+
+Test(s): Stratified analyses (e.g., by age group, sex, baseline OHIP severity)
+- Purpose:
+  - Explore whether the relationship between operator expertise and outcomes differs across key subgroups (effect modification).
+- Why appropriate:
+  1. Can identify groups who benefit more/less from treatment.
+  2. May generate hypotheses for further research.
+- Why it may not be appropriate:
+  - Increases risk of spurious findings due to multiple comparisons; limited power in subgroups.
+- When NOT to use:
+  - When subgroup sizes are small (< ~30 per cell) or not pre‑specified.
+- Alternative if assumptions violated:
+  - Model interactions in regression rather than multiple stratified tests.
+
+C2. Mediation analysis
+
+Test/Approach: Simple mediation (e.g., using regression) with ΔOHIP as mediator between operator group and satisfaction
+- Purpose:
+  - Assess whether operator effects on satisfaction are mediated through QOL improvement.
+- Why appropriate:
+  1. Conceptually plausible (operator competence → clinical experience/QOL change → satisfaction).
+  2. Deepens understanding of mechanisms behind satisfaction.
+- Why it may not be appropriate:
+  - Requires temporal ordering and adequate sample size; here, both mediator and outcome measured at 2 weeks.
+- When NOT to use:
+  - When data structure does not support causal interpretation (which is largely the case here; baseline mediator not available).
+- Alternative if assumptions violated:
+  - Report simple regression associations without formal mediation.
+
+C3. Ordinal regression on item scores
+
+Test: Cumulative logit models for OHIP item change
+- Purpose:
+  - Model odds of reporting lower symptom frequencies post‑treatment, by operator group and covariates.
+- Why appropriate:
+  1. Respect ordinal nature of item responses.
+  2. Provides interpretable ORs for item‑specific outcomes.
+- Why it may not be appropriate:
+  - Complex, and multiplicity of items makes interpretation unwieldy; proportional odds assumption must be checked.
+- When NOT to use:
+  - When sample size per category is insufficient.
+- Alternative if assumptions violated:
+  - Partial proportional odds models or collapsing categories.
+
+C4. Handling missing data (if present)
+
+Approach: Multiple imputation
+- Purpose:
+  - Address missing responses in OHIP items or satisfaction scores in a principled way.
+- Why appropriate:
+  1. Reduces bias compared to complete‑case analysis when data are missing at random.
+  2. Preserves sample size and power.
+- Why it may not be appropriate:
+  - Overkill if missingness is minimal (<5%) or non‑ignorable (MNAR) patterns.
+- When NOT to use:
+  - When missingness is extremely low and clearly random.
+- Alternative if assumptions violated:
+  - Sensitivity analyses with complete cases vs imputed data.
+
+---
+
+TASK 3: INAPPROPRIATE TESTS (for this study and why)
+
+1. Independent‑samples t‑test to compare pre‑ vs post‑treatment OHIP‑17
+- Why inappropriate:
+  - Pre and post measurements are from the same individuals (paired), violating independence.
+- Appropriate alternative:
+  - Paired t‑test or Wilcoxon signed‑rank test.
+
+2. Chi‑square test of independence for pre‑ vs post‑treatment OHIP items without pairing
+- Why inappropriate:
+  - Ignores the paired nature of responses; standard χ² assumes independent samples.
+- Appropriate alternative:
+  - McNemar’s test (binary) or Bowker’s test (multi‑category paired data); or paired ordinal tests.
+
+3. Simple Pearson χ² to compare mean OHIP scores among more than two operator groups (by categorizing OHIP)
+- Why inappropriate:
+  - Dichotomizing or categorizing continuous OHIP scores reduces power and misuses χ², which is meant for categorical outcomes.
+- Appropriate alternative:
+  - One‑way ANOVA or Kruskal–Wallis for continuous/ordinal OHIP scores.
+
+4. Multiple unadjusted pairwise t‑tests between all three operator groups for satisfaction or ΔOHIP without correction
+- Why inappropriate:
+  - Inflates type I error rate.
+- Appropriate alternative:
+  - One‑way ANOVA followed by post‑hoc tests with multiplicity adjustment (e.g., Tukey) or Kruskal–Wallis with Dunn’s test.
+
+5. Logistic regression treating OHIP‑17 total as binary (e.g., high vs low QOL) solely for convenience
+- Why inappropriate:
+  - Dichotomization wastes information and may create arbitrary thresholds.
+- Appropriate alternative:
+  - Linear regression for continuous OHIP or ordinal regression if meaningful categories exist.
+
+6. Survival analysis methods (Kaplan–Meier, Cox regression)
+- Why inappropriate:
+  - No time‑to‑event outcome is defined (e.g., no long‑term tooth survival endpoint reported).
+- Appropriate alternative:
+  - Longitudinal or repeated‑measures modeling of QOL.
+
+7. Repeated‑measures MANOVA on OHIP items as multiple outcomes (with n=250)
+- Why often inappropriate here:
+  - Very high dimensional outcome (17 items) relative to sample size; complex interpretation; strong multivariate normality assumptions unlikely met.
+- Appropriate alternative:
+  - Use total score or a small number of pre‑specified subscales; item‑level change via simpler paired tests.
+
+---
+
+TASK 4: SUMMARY – JUSTIFICATION OF OVERALL ANALYTICAL APPROACH
+
+- The core design is a prospective cohort with paired pre/post QOL measures and a categorical exposure (operator expertise). The central analytical tasks are:
+  1) quantify overall improvement in QOL after root canal treatment;
+  2) determine whether this improvement and resultant satisfaction differ by operator expertise; and
+  3) explore relationships between QOL change, satisfaction, and patient characteristics.
+
+- Paired t‑tests (or Wilcoxon signed‑rank) appropriately exploit the within‑subject comparison for overall QOL improvement. Repeated‑measures ANOVA or linear mixed models then incorporate both time and operator expertise to test for differential improvement across operator groups while respecting within‑subject correlation.
+
+- Between‑group comparisons of satisfaction and change scores via ANOVA/Kruskal–Wallis, supplemented by regression models adjusting for sociodemographics and baseline OHIP, provide a rigorous framework for testing operator effects while controlling for potential confounders.
+
+- Item‑level analyses and effect size estimation add clinical interpretability, while reliability checks confirm the scale’s performance in this population.
+
+Overall, the plan uses standard, well‑validated methods for longitudinal QOL data with a between‑group factor, maximizes information from the paired design, and specifies robust non‑parametric or regression‑based alternatives when assumptions of parametric tests are not met.
