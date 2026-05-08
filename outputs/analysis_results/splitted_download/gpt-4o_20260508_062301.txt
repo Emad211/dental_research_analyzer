@@ -1,0 +1,162 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_download.pdf
+Status : ok
+Time   : 20260508_062301
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: 
+   - Randomized clinical trial (RCT) with a parallel design.
+   - Allocation ratio: 1:1.
+
+2. **Objective**: 
+   - To compare the effects of gel and solution forms of 5.25% sodium hypochlorite (NaOCl) on postoperative pain in mandibular molar teeth with symptomatic irreversible pulpitis.
+
+3. **Groups**:
+   - **Group 1**: 5.25% NaOCl solution.
+   - **Group 2**: 5.25% NaOCl gel.
+
+4. **Sample Size**:
+   - Total: 114 participants (57 in each group).
+   - Power: 95.1%.
+   - Confidence level: 95%.
+   - Effect size: 0.1121.
+
+5. **Eligibility Criteria**:
+   - **Inclusion**:
+     - Healthy individuals aged 18–45 years.
+     - Mandibular molar teeth diagnosed with symptomatic irreversible pulpitis.
+     - Preoperative pain scores between moderate and severe (VAS: 4–10).
+     - Teeth with specific anatomical characteristics (e.g., canal inclination ≤25°).
+   - **Exclusion**:
+     - Recent analgesic/anti-inflammatory use.
+     - Pregnant or lactating patients.
+     - Teeth with periapical lesions, resorption, calcification, or open apices.
+     - Traumatic malocclusion or lack of occlusal contact.
+
+6. **Variables**:
+   - **Primary Outcome**: Postoperative pain levels measured using the Visual Analogue Scale (VAS) at 6, 24, 48, 72 hours, and 1 week post-treatment.
+   - **Secondary Outcomes**: None explicitly mentioned.
+
+7. **Measurements**:
+   - Pain levels classified as:
+     - No pain (VAS = 0).
+     - Mild pain (VAS = 1–3).
+     - Moderate pain (VAS = 4–6).
+     - Severe pain (VAS = 7–10).
+   - Pain scores collected via patient-reported forms and confirmed through follow-up phone calls.
+
+8. **Randomization and Blinding**:
+   - Randomization: Computer-generated sequence.
+   - Blinding: Patients were blinded; clinicians were not due to the nature of the intervention.
+
+9. **Interventions**:
+   - Both groups underwent single-session root canal treatment with standardized procedures (e.g., ProTaper Next files, apex locator, irrigation with EDTA and saline).
+   - Group-specific irrigants:
+     - Group 1: 5 mL of 5.25% NaOCl solution.
+     - Group 2: 5.25% NaOCl gel applied to files and canals, with saline irrigation.
+
+10. **Data Collection**:
+    - Pain scores recorded by patients on a detailed form at specified time points.
+    - Follow-up phone calls to confirm and record data.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Independent Samples t-test (or Mann-Whitney U test if non-parametric).
+   - **Purpose**: Compare mean VAS pain scores between the two groups at each time point.
+   - **Why Appropriate**:
+     1. The study involves two independent groups.
+     2. The primary outcome (VAS scores) is continuous.
+   - **Why It May Not Be Appropriate**:
+     - If VAS scores are not normally distributed.
+   - **When NOT to Use**: If assumptions of normality and homogeneity of variance are violated.
+   - **Alternative**: Mann-Whitney U test for non-parametric data.
+
+2. **Test Name**: Repeated Measures ANOVA (or Friedman Test if non-parametric).
+   - **Purpose**: Analyze changes in VAS pain scores over time within each group.
+   - **Why Appropriate**:
+     1. The study involves repeated measurements of the same outcome (VAS) over time.
+     2. It accounts for within-subject correlations.
+   - **Why It May Not Be Appropriate**:
+     - If sphericity is violated or data is non-parametric.
+   - **When NOT to Use**: If assumptions of normality or sphericity are violated.
+   - **Alternative**: Friedman Test for non-parametric data.
+
+3. **Test Name**: Chi-Square Test (or Fisher’s Exact Test).
+   - **Purpose**: Compare categorical pain levels (no pain, mild, moderate, severe) between groups at each time point.
+   - **Why Appropriate**:
+     1. The outcome is categorical.
+     2. The groups are independent.
+   - **Why It May Not Be Appropriate**:
+     - If expected cell counts are too low.
+   - **When NOT to Use**: If >20% of cells have expected counts <5.
+   - **Alternative**: Fisher’s Exact Test.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Mixed-Effects Model.
+   - **Purpose**: Analyze VAS pain scores over time, accounting for both within- and between-group effects.
+   - **Why Appropriate**:
+     1. It handles missing data more robustly than repeated measures ANOVA.
+     2. It accounts for both fixed (group, time) and random effects (individual variability).
+   - **Why It May Not Be Appropriate**:
+     - Requires advanced statistical software and expertise.
+   - **When NOT to Use**: If the dataset is too small for reliable model convergence.
+   - **Alternative**: Repeated Measures ANOVA or Friedman Test.
+
+2. **Test Name**: Effect Size Calculation (e.g., Cohen’s d).
+   - **Purpose**: Quantify the magnitude of differences in VAS scores between groups.
+   - **Why Appropriate**:
+     1. Provides clinically meaningful interpretation of results.
+     2. Complements p-values by assessing practical significance.
+   - **Why It May Not Be Appropriate**:
+     - If the sample size is too small for reliable effect size estimation.
+   - **When NOT to Use**: If data is highly skewed.
+   - **Alternative**: Non-parametric effect size measures (e.g., rank-biserial correlation).
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Kaplan-Meier Survival Analysis.
+   - **Purpose**: Assess time to pain resolution (VAS = 0) for each group.
+   - **Why Appropriate**:
+     1. Provides insight into the duration of postoperative pain.
+     2. Accounts for censored data (e.g., patients lost to follow-up).
+   - **Why It May Not Be Appropriate**:
+     - If time-to-event data is not well-defined or incomplete.
+   - **When NOT to Use**: If the majority of patients do not achieve pain resolution within the study period.
+   - **Alternative**: Descriptive analysis of time-to-resolution.
+
+2. **Test Name**: Subgroup Analysis.
+   - **Purpose**: Explore potential differences in outcomes based on baseline characteristics (e.g., age, gender).
+   - **Why Appropriate**:
+     1. Identifies potential effect modifiers.
+     2. Enhances understanding of subgroup-specific effects.
+   - **Why It May Not Be Appropriate**:
+     - Risk of Type I error due to multiple comparisons.
+   - **When NOT to Use**: If sample size is insufficient for reliable subgroup analysis.
+   - **Alternative**: Pool data and analyze overall trends.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1. **Paired t-test**:
+   - **Why Not Appropriate**: The groups are independent, not paired.
+2. **One-Way ANOVA**:
+   - **Why Not Appropriate**: Does not account for repeated measures over time.
+3. **Wilcoxon Signed-Rank Test**:
+   - **Why Not Appropriate**: Designed for paired data, not independent groups.
+
+---
+
+### TASK 4: SUMMARY
+
+The proposed analytical approach focuses on addressing the primary objective of comparing postoperative pain levels between two groups over time. Mandatory tests (e.g., independent t-tests, repeated measures ANOVA) ensure robust analysis of primary outcomes, while recommended and optional tests (e.g., mixed-effects models, survival analysis) enhance the depth and clinical relevance of the findings. Assumptions will be checked rigorously, and non-parametric alternatives will be employed as needed. This comprehensive plan ensures both statistical rigor and clinical applicability.

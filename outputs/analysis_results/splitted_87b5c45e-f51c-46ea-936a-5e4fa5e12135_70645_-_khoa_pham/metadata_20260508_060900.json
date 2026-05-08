@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_87b5c45e-f51c-46ea-936a-5e4fa5e12135_70645_-_khoa_pham.pdf",
+  "timestamp": "20260508_060900",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 17862
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 7198
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 32072
+    }
+  }
+}

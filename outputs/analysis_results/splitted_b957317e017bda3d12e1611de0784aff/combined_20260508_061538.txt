@@ -1,0 +1,938 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_b957317e017bda3d12e1611de0784aff.pdf
+Time : 20260508_061538
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1: INFORMATION EXTRACTION (study characteristics)
+
+### Study design and setting
+- **Design:** Prospective **randomized controlled clinical trial** (parallel-group), in vivo.
+- **Setting:** Department of Operative Dentistry and Endodontology, University of Marburg (Germany); microbiological analysis at external lab (Oro-Dentale Mikrobiologie ODM, Kiel).
+- **Allocation:** Randomly assigned after initial emergency treatment; **allocation predetermined and not influenceable** by operator/patient (implies allocation concealment by schedule; exact method not stated).
+- **Arms:** 3 groups (1:1:1).
+
+### Objectives / hypothesis
+- **Primary aim:** Assess disinfectant effect of **445-nm diode laser** as adjunct during root canal disinfection.
+- **Hypothesis:** Adjunctive laser irradiation **further reduces residual bacterial count** after conventional disinfection.
+
+### Participants
+- **Sample size:** **57 patients total**, **n=19 per group**.
+- **Population:** Adults with **irreversible pulpitis** (suspected irreversible pulpal disease; vital pulp), minimal/no radiographic changes.
+- **Inclusion:** ≥18 years; irreversible pulp disease; preservable root structure; written consent.
+- **Exclusion:** Pulp necrosis; acute pain after pulp removal; antibiotics in previous 6 months; periodontal-endodontic lesion (probing depths); previous endodontic treatment of tooth; pregnancy.
+
+### Interventions / procedures (common backbone)
+- **Initial emergency visit (before randomization):**
+  - Rubber dam isolation, trepanation.
+  - **NaOCl 3% 5 mL for 1 min** (conventional rinsing).
+  - **Calcium hydroxide** intracanal medicament; temporary seal.
+- **Second visit (1 week later; study sampling visit):**
+  - Isolation with rubber dam; tooth surface disinfection (H₂O₂ 30%); rubber dam disinfected with Lugol’s iodine 5% then inactivated with sodium thiosulfate 5%.
+  - Temporary filling removal.
+  - **Chemomechanical preparation**:
+    - Manual to 25.02 (Hedström files).
+    - Mechanical to 30.09 (ProTaper Gold F1–F3).
+    - Irrigation during prep: **NaOCl 3% total 5 mL** over preparation + **EDTA 15% 2 mL for 1 min**.
+  - **Group-specific adjunctive disinfection (3-arm factor):**
+    - **Group A (NaOCl adjunct):** additional **NaOCl 3% 5 mL for 1 min**.
+    - **Group B (Laser):** 445-nm diode laser (SiroLaser Blue), continuous wave, **0.6 W** (effective ~0.59 W), **4 × 10 s**, **200-µm fiber tip**, fiber bent 45°; power checked with meter.
+    - **Group C (Combination):** NaOCl adjunct + laser (as above).
+  - Then **final NaOCl rinse in all groups**; calcium hydroxide paste placed; temporary seal.
+- **Third visit (1 week later):** if asymptomatic, obturation with gutta-percha (no microbiology described here).
+
+### Outcomes (variables) and measurement
+- **Sampling time points:** “three time points” using **sterile paper points (ISO 30)** placed for **1 min** in canals flooded with saline. (Exact labels not provided in excerpt; infer likely: after temporary removal/baseline; after chemomechanical prep; after adjunctive protocol.)
+- **Primary endpoint (“main parameter”):**
+  - **Total Bacterial Load (TBL)** via **quantitative real-time PCR (qPCR)**.
+  - Unit: **genome equivalent CFU/mL** (per internal lab standards).
+- **Secondary microbiological endpoints (per-sample):**
+  - Presence/quantity of: *Porphyromonas endodontalis, Treponema denticola, Tannerella forsythia, Fusobacterium nucleatum, Porphyromonas gingivalis, Prevotella intermedia, Peptostreptococcus micros,* and *Enterococcus faecalis*.
+- **Other potential variables (not fully specified but relevant):**
+  - Baseline demographics/tooth type not described in excerpt.
+  - Clinical symptoms (pain) used for eligibility; not stated as analyzed outcome.
+
+### Data structure
+- **Repeated measures** within patient/tooth: 3 qPCR measurements over time.
+- **Between-subject factor:** randomized group (3 levels).
+- Outcomes likely **right-skewed**, potentially **zero-inflated** (especially post-disinfection species-specific loads).
+
+---
+
+## TASK 2: STATISTICAL ANALYSIS PLAN
+
+### General principles (applies to all categories)
+- **Analysis population:** Intention-to-treat (ITT) preferred; per-protocol as sensitivity (e.g., deviations in irrigation/laser application, missing samples).
+- **Significance:** two-sided α=0.05; adjust for multiple comparisons where applicable.
+- **Descriptives:**
+  - TBL/species: median (IQR) and/or geometric mean with CI after log-transform; counts/percent for detection.
+  - Baseline comparability across groups (age, sex, tooth type, baseline TBL) if available.
+- **Pre-processing:**
+  - Consider **log10(TBL + c)** transformation (c small constant) if zeros exist; or model distributions that accommodate zeros.
+  - Clearly define **primary contrast**: Group C vs Group A and/or Group C vs Group B, and/or overall group×time interaction.
+- **Missing data:** document reasons; mixed models handle MAR; consider multiple imputation if missingness is nontrivial and related to observed covariates.
+
+---
+
+### CATEGORY A – MANDATORY (analysis would be incomplete without these)
+
+#### A1. Linear mixed-effects model (LMM) for repeated measures (on log-transformed TBL)
+- **Purpose:** Test whether **change in TBL over time differs by group** (group×time interaction) and estimate adjusted mean differences at each timepoint and/or in change scores.
+- **Why appropriate (≥2):**
+  1. Handles **correlated repeated measures** (3 samples per patient).
+  2. Uses **all available data** under MAR and is robust to unequal variances/imbalance from missing samples.
+- **Why may not be appropriate (≥1):**
+  - If TBL distribution has many **zeros/extreme skew** not adequately normalized by log transform.
+- **When NOT to use:**
+  - When outcome is fundamentally **count/zero-inflated** and normality of residuals remains badly violated after transformation; or when only 1 time point exists.
+- **Alternative if assumptions violated:**
+  - **Generalized linear mixed model (GLMM)** (e.g., Gamma/lognormal mixed model), or **two-part/hurdle mixed model** (detection + positive load).
+
+#### A2. Pre-specified pairwise comparisons with multiplicity control (post hoc from mixed model)
+- **Purpose:** Identify which groups differ (e.g., **Combination vs NaOCl**, **Combination vs Laser**, **NaOCl vs Laser**) at the key post-adjunct time point or in change from baseline.
+- **Why appropriate:**
+  1. RCT has **3 arms**; clinical interpretation requires specific contrasts.
+  2. Controls **family-wise error** (e.g., Tukey, Holm) across multiple pairwise tests.
+- **Why may not be appropriate:**
+  - If not pre-specified, can inflate false positives; may be underpowered for multiple contrasts.
+- **When NOT to use:**
+  - When only an overall effect is of interest and sample is too small for multiple contrasts.
+- **Alternative if assumptions violated:**
+  - Pairwise comparisons from **rank-based** or **GLMM** framework; multiplicity via Holm/FDR accordingly.
+
+#### A3. Baseline comparability and CONSORT flow/descriptives (not “testing for balance” as a decision rule)
+- **Test name:** Descriptive comparisons; optionally standardized mean differences (SMD); avoid overreliance on p-values.
+- **Purpose:** Characterize randomization success and sample.
+- **Why appropriate:**
+  1. Supports interpretability and identifies chance imbalances needing covariate adjustment.
+  2. Required for transparent RCT reporting.
+- **Why may not be appropriate:**
+  - Null-hypothesis testing for baseline differences is often misused.
+- **When NOT to use:**
+  - Do not use baseline p-values to decide inclusion/exclusion or claim “equivalence.”
+- **Alternative if assumptions violated:**
+  - Use **SMDs** and graphical summaries instead of hypothesis tests.
+
+---
+
+### CATEGORY B – RECOMMENDED (improves rigor/quality)
+
+#### B1. GLMM / two-part mixed model for species-specific outcomes (qPCR)
+- **Purpose:** Model each species as (a) **detection** (present/absent) and/or (b) **positive load** among detected, across time and groups.
+- **Why appropriate:**
+  1. Species data commonly show **many zeros** post-treatment (non-detects).
+  2. Respects distinct clinical meaning of **eradication vs reduction**.
+- **Why may not be appropriate:**
+  - Small sample may yield sparse data for rare species (separation, unstable estimates).
+- **When NOT to use:**
+  - When detection is near 0% or 100% across arms/timepoints (no variability).
+- **Alternatives if assumptions violated:**
+  - **Firth-penalized logistic regression** for detection; **nonparametric paired methods** for loads; or analyze a **composite** (e.g., number of species detected).
+
+#### B2. Nonparametric sensitivity analysis: rank-based repeated-measures approach
+- **Test name:** Aligned Rank Transform (ART) ANOVA or rank-based mixed model / Friedman-type within-group + Kruskal–Wallis on change scores.
+- **Purpose:** Confirm robustness of TBL findings without relying on normality.
+- **Why appropriate:**
+  1. TBL is likely **skewed**; rank-based methods reduce sensitivity to outliers.
+  2. Provides supportive evidence if LMM assumptions are borderline.
+- **Why may not be appropriate:**
+  - Harder to incorporate missingness/covariates cleanly (depending on method).
+- **When NOT to use:**
+  - When missing data are substantial and not MCAR and method cannot handle it.
+- **Alternative if assumptions violated:**
+  - Use **GLMM with appropriate distribution** instead of rank methods.
+
+#### B3. Effect size estimation with confidence intervals
+- **Test name:** Model-based mean ratio / geometric mean ratio; partial η² for interaction; Cohen’s d on log scale (interpretable as ratios).
+- **Purpose:** Quantify magnitude (clinical relevance) beyond p-values.
+- **Why appropriate:**
+  1. Primary question is “how much additional reduction,” not only significance.
+  2. Ratios are natural for bacterial load.
+- **Why may not be appropriate:**
+  - Some effect sizes (e.g., Cohen’s d) less intuitive in microbiological units.
+- **When NOT to use:**
+  - Do not report untransformed mean differences if distribution is multiplicative/skewed.
+- **Alternative if assumptions violated:**
+  - **Median difference** with bootstrap CI; **Hodges–Lehmann** estimator for change.
+
+#### B4. Multiple testing control across many species outcomes
+- **Test name:** False Discovery Rate (Benjamini–Hochberg) or hierarchical testing strategy.
+- **Purpose:** Control inflated type I error from analyzing 8 species (and possibly multiple timepoints).
+- **Why appropriate:**
+  1. Many correlated secondary endpoints.
+  2. Maintains credibility of species-specific findings.
+- **Why may not be appropriate:**
+  - Conservative corrections reduce power; exploratory endpoints may prefer FDR.
+- **When NOT to use:**
+  - When there is a single clearly pre-specified primary endpoint only (TBL); then multiplicity not needed for that endpoint.
+- **Alternative if assumptions violated:**
+  - Pre-specify **hierarchical** testing (TBL first, then species) to preserve α.
+
+---
+
+### CATEGORY C – OPTIONAL (supplementary insights)
+
+#### C1. Mediation-style decomposition: effect of adjunct on final load via intermediate timepoint
+- **Purpose:** Explore whether adjunctive step explains additional reduction beyond chemomechanical prep.
+- **Why appropriate:**
+  1. There are **3 sequential sampling points** aligned with clinical steps.
+  2. Helps interpret mechanism (incremental benefit attributable to adjunct).
+- **Why may not be appropriate:**
+  - Strong assumptions (no unmeasured confounding between mediator and outcome) often unverifiable.
+- **When NOT to use:**
+  - When timepoints are not clearly aligned to mediator/outcome or sample is small.
+- **Alternative:**
+  - Report **stepwise change scores** (T1→T2, T2→T3) by group without causal mediation claims.
+
+#### C2. Responder/eradication analysis
+- **Test name:** Logistic regression (or mixed logistic) for “TBL below detection” at final sample; compare proportions across groups.
+- **Purpose:** Clinically interpretable endpoint: canal “negative” by qPCR threshold.
+- **Why appropriate:**
+  1. Provides patient-level “success” metric.
+  2. Robust to extreme skew of quantitative loads.
+- **Why may not be appropriate:**
+  - Requires defined detection limit/cutoff; may be arbitrary.
+- **When NOT to use:**
+  - If detection limits vary or are not reliably defined.
+- **Alternative:**
+  - Use **quantile regression** on continuous TBL or two-part model.
+
+#### C3. Adjustment for prognostic covariates (if measured)
+- **Test name:** Mixed model with covariates (tooth type, baseline bleeding, canal anatomy proxies, baseline load).
+- **Purpose:** Improve precision; address chance imbalance.
+- **Why appropriate:**
+  1. RCT + baseline adjustment can increase power.
+  2. Controls residual confounding from imbalance.
+- **Why may not be appropriate:**
+  - Overfitting risk with n=57 if too many covariates.
+- **When NOT to use:**
+  - If covariates are post-randomization or highly collinear.
+- **Alternative:**
+  - Adjust only for **baseline TBL** (strongest predictor) and a minimal covariate set.
+
+---
+
+## TASK 3: INAPPROPRIATE TESTS (should NOT be used)
+
+1. **Independent-samples t-test** applied repeatedly at each timepoint without accounting for repeated measures  
+   - Ignores within-subject correlation; inflates type I error; inefficient.
+
+2. **Multiple paired t-tests within each group across timepoints** without multiplicity correction  
+   - Family-wise error inflation; does not answer the key *between-group* question.
+
+3. **One-way ANOVA on post-treatment TBL only** (ignoring baseline and repeated measures)  
+   - Loses information; baseline imbalance can bias estimates; cannot evaluate group×time.
+
+4. **Chi-square tests on raw “presence/absence” for many species without sparse-data handling**  
+   - Expected counts may be <5; invalid asymptotics; logistic/Fisher/penalized methods are preferable.
+
+5. **Pearson correlation between treatment group (coded 1–3) and TBL**  
+   - Treats nominal group as ordinal/continuous; produces uninterpretable and potentially misleading results.
+
+---
+
+## TASK 4: SUMMARY (overall approach justification)
+
+A **mixed-effects modeling framework** is the appropriate core analysis because the trial is a **3-arm parallel RCT** with **three repeated qPCR measurements per patient**. The primary endpoint (TBL) is continuous but likely skewed, so analysis should use **log-scale (or GLMM/two-part models)**, estimate **group×time effects**, and report **effect sizes with CIs**. Species-specific outcomes should be treated as **secondary/exploratory** with **zero-inflation-aware models** and **multiplicity control**. This yields valid inference, efficient use of all repeated data, and clinically interpretable estimates of incremental bacterial reduction attributable to adjunctive laser irradiation.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+
+1. **Study Design:**
+   - Randomized Controlled Clinical Trial (RCT).
+
+2. **Objective:**
+   - To evaluate the disinfectant effect of a 445-nm diode laser as an adjunctive therapy for reducing bacterial load in root canals after conventional disinfection.
+
+3. **Study Groups:**
+   - Group A: Additional rinsing with sodium hypochlorite (NaOCl).
+   - Group B: Laser irradiation with a 445-nm diode laser.
+   - Group C: Combination of NaOCl rinsing and laser irradiation.
+
+4. **Sample Size:**
+   - Total: 57 patients.
+   - Group size: 19 patients per group.
+
+5. **Inclusion Criteria:**
+   - Patients aged ≥18 years.
+   - Teeth with irreversible pulp disease but endodontically preservable root structure.
+   - Written informed consent.
+
+6. **Exclusion Criteria:**
+   - Acute pain after pulp removal.
+   - Antibiotic use in the past 6 months.
+   - Periodontal-endodontic lesions.
+   - Previous endodontic treatment of the affected tooth.
+   - Pregnancy.
+
+7. **Variables:**
+   - **Primary Outcome Variable:** Total bacterial load (TBL) in genome-equivalent CFUs/mL.
+   - **Secondary Variables:** Presence of specific bacterial species (e.g., *Enterococcus faecalis*, *Porphyromonas gingivalis*, etc.).
+
+8. **Measurements:**
+   - Microbiological samples collected using sterile paper points at three time points:
+     1. Baseline (after removal of temporary filling).
+     2. Post-chemomechanical preparation.
+     3. Post-adjuvant disinfection.
+   - Quantitative real-time PCR (qPCR) used for bacterial analysis.
+
+9. **Data Collection Methods:**
+   - Random assignment of patients to groups.
+   - Standardized treatment protocol for all groups.
+   - Microbiological samples sent to an external laboratory for analysis.
+
+10. **Interventions:**
+    - Chemomechanical preparation with NaOCl and EDTA.
+    - Group-specific disinfection protocols:
+      - NaOCl rinsing (Group A).
+      - Laser irradiation (Group B).
+      - Combination of NaOCl and laser (Group C).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name:** Repeated Measures ANOVA (or Mixed-Effects Model)
+   - **Purpose:** To compare bacterial load reduction across the three groups over three time points.
+   - **Why Appropriate:**
+     1. The study involves repeated measurements (baseline, post-chemomechanical, post-adjuvant disinfection).
+     2. The design includes multiple groups and time-dependent changes.
+   - **Why It May Not Be Appropriate:** Assumes normality and sphericity, which may not hold for bacterial load data.
+   - **When This Test Should NOT Be Used:** If data are non-normal or sphericity is violated.
+   - **Alternative if Assumptions Are Violated:** Non-parametric Friedman test or Generalized Estimating Equations (GEE).
+
+2. **Test Name:** Post-hoc Pairwise Comparisons (e.g., Tukey’s HSD or Bonferroni)
+   - **Purpose:** To identify which groups differ significantly in bacterial load reduction.
+   - **Why Appropriate:**
+     1. Necessary to interpret significant group effects.
+     2. Controls for Type I error in multiple comparisons.
+   - **Why It May Not Be Appropriate:** May lack power if sample size is small.
+   - **When This Test Should NOT Be Used:** If the primary test (e.g., ANOVA) is not significant.
+   - **Alternative if Assumptions Are Violated:** Pairwise Wilcoxon rank-sum tests with Bonferroni correction.
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name:** Multivariate Analysis of Variance (MANOVA)
+   - **Purpose:** To assess the combined effect of group and time on multiple bacterial species.
+   - **Why Appropriate:**
+     1. Accounts for correlations among bacterial species.
+     2. Provides a more holistic view of treatment effects.
+   - **Why It May Not Be Appropriate:** Requires multivariate normality, which may not hold.
+   - **When This Test Should NOT Be Used:** If bacterial species data are highly skewed or sparse.
+   - **Alternative if Assumptions Are Violated:** Canonical correlation analysis or GEE.
+
+2. **Test Name:** Effect Size Analysis (e.g., Partial Eta Squared or Cohen’s d)
+   - **Purpose:** To quantify the magnitude of treatment effects.
+   - **Why Appropriate:**
+     1. Complements p-values by providing practical significance.
+     2. Helps compare the efficacy of interventions.
+   - **Why It May Not Be Appropriate:** Does not account for variability in small sample sizes.
+   - **When This Test Should NOT Be Used:** If primary tests are inconclusive.
+   - **Alternative if Assumptions Are Violated:** Bootstrap confidence intervals for effect sizes.
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name:** Logistic Regression
+   - **Purpose:** To assess the likelihood of detecting specific bacterial species post-treatment.
+   - **Why Appropriate:**
+     1. Suitable for binary outcomes (presence/absence of bacteria).
+     2. Adjusts for potential confounders (e.g., age, tooth type).
+   - **Why It May Not Be Appropriate:** Requires large sample sizes for stable estimates.
+   - **When This Test Should NOT Be Used:** If bacterial species are rare or data are sparse.
+   - **Alternative if Assumptions Are Violated:** Exact logistic regression.
+
+2. **Test Name:** Kaplan-Meier Survival Analysis
+   - **Purpose:** To evaluate symptom-free survival time post-treatment.
+   - **Why Appropriate:**
+     1. Useful for time-to-event data (e.g., symptom recurrence).
+     2. Accounts for censored observations.
+   - **Why It May Not Be Appropriate:** Not directly related to bacterial load outcomes.
+   - **When This Test Should NOT Be Used:** If no time-to-event data are available.
+   - **Alternative if Assumptions Are Violated:** Cox proportional hazards model.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Chi-Square Test of Independence**
+   - **Why Not Appropriate:** The primary outcome (bacterial load) is continuous, not categorical.
+2. **Independent t-test**
+   - **Why Not Appropriate:** The study involves three groups, not two.
+3. **Simple Linear Regression**
+   - **Why Not Appropriate:** Does not account for repeated measures or group effects.
+
+---
+
+### TASK 4: SUMMARY
+
+The proposed statistical analysis plan is designed to rigorously evaluate the study's primary and secondary objectives. Repeated measures ANOVA (or its alternatives) is essential for analyzing bacterial load reduction over time across groups. Additional tests, such as MANOVA and logistic regression, enhance the depth of analysis by examining secondary outcomes and bacterial species. Effect size analysis provides practical insights into treatment efficacy. The overall approach balances robustness, interpretability, and adherence to statistical assumptions, ensuring a comprehensive evaluation of the 445-nm diode laser's adjunctive efficacy in root canal disinfection.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1: INFORMATION EXTRACTION  
+
+1. Study design  
+- Type: Prospective randomized controlled clinical trial (parallel-group).  
+- Setting: Department of Operative Dentistry and Endodontology, University of Marburg, Germany.  
+- Time frame: Not explicitly stated, but all procedures embedded in routine endodontic care.  
+- Ethical aspects:  
+  - Conducted according to Declaration of Helsinki (version VI, 2002).  
+  - Approved by local ethics committee (reference 016/1749).  
+  - Informed consent obtained.  
+
+2. Study population  
+- Target population: Adult patients with irreversible pulpitis requiring endodontic treatment.  
+- Inclusion criteria:  
+  - Age ≥18 years.  
+  - Teeth with irreversible pulpal disease and endodontically preservable root structure.  
+  - Clinical signs: increased stimulus response or spontaneous pain; prolonged pain episodes up to continuous pain; prolonged pain on cold contact.  
+  - Radiographic signs: no or minimal radiographic changes.  
+  - Increased bleeding from the root canal after trepanation.  
+  - Written informed consent.  
+- Exclusion criteria:  
+  - Pulp necrosis.  
+  - Acute pain after removal of pulp tissue.  
+  - Antibiotic treatment in previous 6 months.  
+  - Periodontal‑endodontic lesions (probing depths indicating combined lesion).  
+  - Previous endodontic treatment of the affected tooth.  
+  - Pregnancy.  
+- Sample size:  
+  - Total N = 57 patients.  
+  - 3 groups, n = 19 per group.  
+- Tooth-level details:  
+  - Not fully described in text provided (likely single tooth per patient, but not explicitly stated).  
+
+3. Randomization and allocation  
+- Patients were “randomly assigned to the different groups”.  
+- Allocation: predetermined by the study plan; operator/patient could not influence allocation.  
+- No explicit mention of:  
+  - Randomization method (e.g., computer-generated sequence, block size).  
+  - Allocation concealment procedure.  
+- Blinding: Not described; likely unblinded (open-label) to operator; laboratory likely blinded (not stated).  
+
+4. Interventions (study arms)  
+All patients underwent a standard multi-step endodontic regimen, with an adjunctive disinfection step varying by group.
+
+Common baseline/emergency treatment for all:  
+- Endodontic pain treatment:  
+  - Rubber dam isolation.  
+  - Trepanation.  
+  - Conventional rinsing with 3% sodium hypochlorite (NaOCl), 5 mL, 1 min.  
+  - Temporary calcium hydroxide paste placed in canal.  
+  - Temporary sealing.  
+- After 1 week: main treatment visit, including re-isolation, disinfection of tooth surface, rubber dam disinfection/inactivation, and then the experimental protocol.
+
+Treatment sequence at main visit (same for all groups until step 3):  
+1) Removal of temporary filling material.  
+2) Chemomechanical preparation:  
+   - Manual: to size 25.02 using Hedström hand files (pulling movement only).  
+   - Mechanical: to size 30.09 with ProTaper Gold F1-F3 along a glide path, increasing insertion depth to working length.  
+   - Irrigation during preparation:  
+     - NaOCl 3%, total 5 mL over duration of preparation.  
+     - EDTA 15%, 2 mL, 1 min.  
+
+3) Group-specific adjunctive disinfection (adjuvant protocol):  
+   Group 1 – Additional NaOCl (chemical adjunct):  
+   - Additional rinsing with 5 mL 3% NaOCl for 1 min.  
+
+   Group 2 – Laser only (laser adjunct):  
+   - 445-nm diode laser (SiroLaser Blue; continuous-wave mode).  
+   - Power setting: 0.6 W at device; measured effective ~0.58–0.59 W.  
+   - Application: 4 × 10 s, with 200 µm fiber tip (Easy Tip Endo).  
+   - Fiber bent 45°; power output checked with power meter.  
+   - Power density ~3760 W/cm² (Gaussian profile assumption).  
+
+   Group 3 – Combination (NaOCl + laser):  
+   - Additional NaOCl rinsing (as in Group 1) plus laser irradiation (as in Group 2).  
+
+4) Final step (common to all groups):  
+- Final rinsing with NaOCl (concentration not explicitly restated; presumably 3%).  
+- Placement of calcium hydroxide paste (Calcicur).  
+- Sealing with foam pellet and glass ionomer cement (Ketac Cem).  
+- After another week: if symptom-free, removal of temporary filling and obturation with gutta-percha.
+
+5. Outcomes and variables  
+
+5.1 Primary microbiological outcome  
+- Main parameter:  
+  - Total bacterial load (TBL), measured by qPCR; expressed as genome-equivalent CFU/mL.  
+- Measurement platform:  
+  - External microbiological lab (Oro-Dentale Mikrobiologie ODM, Kiel).  
+  - DNA extraction, qPCR, internal lab standards.
+
+5.2 Secondary microbiological outcomes  
+- Bacterial species quantified individually (binary or quantitative):  
+  - Porphyromonas endodontalis  
+  - Treponema denticola  
+  - Tannerella forsythia  
+  - Fusobacterium nucleatum  
+  - Porphyromonas gingivalis  
+  - Prevotella intermedia  
+  - Peptostreptococcus micros  
+  - Enterococcus faecalis  
+
+5.3 Time points of measurement  
+Microbiological samples taken at 3 time points using sterile paper points (ISO 30) left in canal flooded with saline for 1 min:  
+- Time point 1: After removal of temporary filling material (baseline at main visit; reflects status after first visit with NaOCl + Ca(OH)2).  
+- Time point 2: After chemomechanical preparation (manual + mechanical instrumentation, NaOCl + EDTA).  
+- Time point 3: After adjunctive disinfection according to group (NaOCl, laser, or combination).  
+
+Thus, each patient has repeated measurements (within-subject factor: time, 3 levels) of TBL and bacterial species.
+
+5.4 Other potential variables (not fully described but likely recorded)  
+- Demographics: age, sex (not given in excerpt but usually collected).  
+- Tooth characteristics: tooth type (anterior/premolar/molar), arch (maxillary/mandibular), number of canals, etc. (not specified in text provided).  
+- Clinical outcomes: pain or symptoms at 1 week (used for decision to obturate; not clearly used as endpoint).  
+
+6. Data structure  
+- Level 1: patients (N=57) randomly assigned to 3 arms (n=19 per group).  
+- Level 2: repeated measures within each patient: 3 time points.  
+- Variables:  
+  - Group (3-level categorical: NaOCl, Laser, Combination).  
+  - Time (3-level within-subject).  
+  - TBL (continuous, positive; likely skewed, possibly log10-transformed).  
+  - Species-specific load or presence/absence (continuous or binary).  
+
+7. Sample size justification  
+- Not given in text section provided.  
+- Reference to Cohen (1988) suggests power considerations may be discussed in full article, but details not here.
+
+---
+
+TASK 2: STATISTICAL ANALYSIS PLAN  
+
+General principles  
+- Primary focus: compare the effectiveness of adjunctive strategies (NaOCl vs Laser vs Combination) in reducing bacterial load over time.  
+- Design: mixed (between-subject factor = Group; within-subject factor = Time).  
+- Main outcome: change in TBL; primarily within-patient reductions and between-group differences in those reductions.  
+- Distribution: TBL (CFU/mL) typically highly skewed; often log10-transformed or analyzed as changes in log10 TBL or proportionate reduction.  
+- Analysis set:  
+  - Primary: per-protocol for microbiological analysis, assuming complete data for 3 time points.  
+  - If missing samples: consider mixed models (handle missing under MAR) and sensitivity analyses.  
+
+Below, tests are grouped by priority category.
+
+CATEGORY A – MANDATORY ANALYSES  
+
+A1. Descriptive statistics and baseline comparability  
+
+Test/Tool: Descriptive summaries + baseline comparisons (ANOVA or Kruskal–Wallis for continuous; χ²/Fisher’s exact for categorical).  
+
+Purpose:  
+- Summarize participant and tooth characteristics and baseline microbiological measures.  
+- Assess whether randomization produced comparable groups at baseline (especially TBL at time point 1 and key demographics).
+
+Why appropriate:  
+1) Randomized trials still require documenting baseline balance; important for interpretation.  
+2) TBL at time point 1 may already differ due to first-visit treatment; baseline comparability ensures observed differences later are less likely due to baseline imbalance.
+
+Why it may not be appropriate:  
+- For small sample sizes, formal hypothesis testing of baseline differences may be underpowered and not very informative; descriptive emphasis is preferred.
+
+When NOT to use:  
+- Overemphasis on p-values for baseline variables (use descriptive interpretation rather than inferential statements).
+
+Alternative if assumptions violated:  
+- If normality for continuous variables is implausible, use nonparametric tests (Kruskal–Wallis) and report medians/IQR instead of means/SD.
+
+---
+
+A2. Transformation and assessment of TBL distribution  
+
+Test/Tool:  
+- Examine histograms, Q–Q plots, skewness.  
+- Possibly apply log10-transformation: log10(TBL + c) (c small constant if zeros exist).  
+
+Purpose:  
+- Decide whether parametric tests (ANOVA/linear mixed models) are appropriate.  
+- Stabilize variance and approximate normal distribution.
+
+Why appropriate:  
+1) Microbial CFU counts are typically log-normally distributed; log transformation is standard.  
+2) Improves interpretability (differences on log scale correspond to ratios on original scale).
+
+Why it may not be appropriate:  
+- If a large proportion of values are zero (below detection), log transformation can be problematic without adding arbitrary constants.
+
+When NOT to use:  
+- If the majority of observations are zero or near zero (floor effect); modeling approaches for zero-inflated or count data may be more suitable.
+
+Alternative if assumptions violated:  
+- Use nonparametric methods for repeated measures, or generalized linear mixed models (GLMM) with appropriate link (e.g., Poisson/negative binomial) for count data.
+
+---
+
+A3. Primary outcome analysis – repeated measures comparison of TBL  
+
+Primary test (parametric): Two-way repeated-measures ANOVA or Linear Mixed-Effects Model (LMM) on log10 TBL.  
+
+- Factors:  
+  - Between-subject: Group (NaOCl vs Laser vs Combination).  
+  - Within-subject: Time (3 levels: after temporary removal, after chemomechanical prep, after adjunct).  
+- Outcomes:  
+  - Group × Time interaction (primary): whether change over time differs between groups.  
+  - Within-group time effects: degree of reduction over steps.  
+  - Between-group differences at each time point, especially at time point 3.  
+
+Purpose:  
+- Evaluate if adjunctive laser (alone or combined with NaOCl) yields additional TBL reduction relative to NaOCl only.  
+- Account for within-patient correlation across repeated measurements.
+
+Why appropriate:  
+1) Data structure is clearly repeated measures with same patients evaluated at three time points; ANOVA/LMM handles within-subject correlation.  
+2) LMM can handle missing data at some time points and allows flexible modeling of covariance structure, which is important for clinical data.
+
+Why it may not be appropriate:  
+- With small sample in each group (n=19), assumptions of sphericity and normality may be difficult to verify; violations can affect ANOVA results.
+
+When NOT to use:  
+- If TBL distribution remains heavily non-normal even after transformation.  
+- If many patients have missing time points or unbalanced design.  
+- If sphericity is severely violated and corrections (Greenhouse–Geisser) still leave unstable estimates, particularly in small sample.
+
+Alternative if assumptions violated:  
+- Nonparametric: Friedman test (within-group) + post-hoc Wilcoxon signed-rank, combined with between-group tests on change scores via Kruskal–Wallis/Mann–Whitney.  
+- GLMM for counts (Poisson/negative binomial) or for log-transformed continuous with robust standard errors.  
+
+Implementation details (recommended):  
+- Prefer LMM over classical repeated-measures ANOVA:  
+  - Model: logTBL_ij = β0 + β1*Group_i + β2*Time_j + β3*Group_i*Time_j + random intercept (patient) + ε_ij.  
+  - Estimate marginal means at each time × group.  
+  - Use appropriate covariance structure (e.g., unstructured or compound symmetry), guided by AIC/BIC.  
+  - Report estimated mean differences and 95% CIs on log scale and back-transform to ratios.  
+
+---
+
+A4. Analysis of TBL reduction/change between key steps  
+
+Test: ANOVA (or Kruskal–Wallis) on change scores (ΔTBL).  
+
+- Define pre-specified contrasts:  
+  - ΔTBL_1-2: change from time 1 to time 2 (effect of chemomechanical preparation; same in all groups).  
+  - ΔTBL_2-3: change from time 2 to time 3 (effect of adjunctive protocol; primary comparison among groups).  
+
+Purpose:  
+- Provide clear, clinically interpretable measure of additional reduction attributable to adjunctive step.  
+- Serve as complementary analysis to LMM.
+
+Why appropriate:  
+1) Change scores are straightforward and directly reflect adjunct effect, especially ΔTBL_2-3.  
+2) Between-group ANOVA on ΔTBL_2-3 is effectively testing the group × time interaction using a simpler approach.
+
+Why it may not be appropriate:  
+- Change scores can have larger variance and may be less efficient than mixed models; potential regression to the mean when baseline differs between groups.
+
+When NOT to use:  
+- If baseline TBL (time point 2) is substantially imbalanced between groups; then an ANCOVA approach is preferable (post value adjusted for pre value).
+
+Alternative if assumptions violated:  
+- ANCOVA: model logTBL_3 as outcome, group as factor, logTBL_2 as covariate.  
+- Nonparametric: rank-based ANCOVA or compare rank changes (Kruskal–Wallis on Δ).
+
+---
+
+A5. Analysis of presence/absence of specific bacteria  
+
+Test: McNemar’s test (within-group over time) and χ²/Fisher’s exact tests (between groups at time point 3).  
+
+Purpose:  
+- Evaluate whether specific pathogens (e.g., E. faecalis, P. gingivalis) are eradicated more frequently in certain adjunctive protocols.  
+- Provide species-level insights complementing TBL.
+
+Why appropriate:  
+1) Presence/absence is a natural outcome when many counts are low or below detection.  
+2) McNemar’s test is suitable for paired binary data (within patient, over time); χ²/Fisher’s suitable for comparing proportions across groups.
+
+Why it may not be appropriate:  
+- With small numbers of positives for some species, χ² approximations may be poor; very sparse data can limit interpretability.
+
+When NOT to use:  
+- When event counts are extremely low (e.g., species present in only 1–2 patients), tests become unstable and outputs misleading.
+
+Alternative if assumptions violated:  
+- Fisher’s exact test for between-group comparisons.  
+- For repeated binary outcomes, consider logistic mixed-effects models (GLMM) with random intercept for patient.
+
+---
+
+CATEGORY B – RECOMMENDED ANALYSES  
+
+B1. Logistic regression / GLMM for species presence  
+
+Test: Logistic mixed-effects model for key bacteria (e.g., E. faecalis) over time and group.  
+
+Purpose:  
+- Quantify odds of persistence of specific bacteria at time 3 across groups, adjusting for baseline presence.  
+- Handle repeated measures and correlated binary outcomes.
+
+Why appropriate:  
+1) Provides adjusted odds ratios for group differences in bacterial persistence, improving interpretability over simple proportions.  
+2) Accounts for repeated measures and varying time effects; can incorporate covariates (e.g., tooth type, baseline TBL).
+
+Why it may not be appropriate:  
+- Sample size may be insufficient for stable logistic regression, particularly if species prevalence is low.
+
+When NOT to use:  
+- If observed events per group per time are <5–10, models may not converge or estimates become unstable.
+
+Alternative if assumptions violated:  
+- Collapse across time and report simple Fisher’s exact tests on presence at time point 3.  
+
+---
+
+B2. ANCOVA for final TBL  
+
+Test: ANCOVA on logTBL at time point 3, adjusting for logTBL at time point 2 (or 1).  
+
+Purpose:  
+- Compare final bacterial loads between groups while adjusting for any baseline differences.  
+- Complement LMM by focusing on clinically relevant final status.
+
+Why appropriate:  
+1) Adjusts for any imbalance in bacterial load just before adjunctive step.  
+2) Typically more powerful than ANOVA on change scores and interpretable as adjusted final difference.
+
+Why it may not be appropriate:  
+- With small sample sizes, ANCOVA may be sensitive to violation of homogeneity of regression slopes (group × baseline interaction).
+
+When NOT to use:  
+- If group × baseline interaction is significant (slopes differ) or baseline strongly non-linear relative to outcome.
+
+Alternative if assumptions violated:  
+- Use rank-based ANCOVA or nonparametric ANCOVA approaches (e.g., Quade’s test) or revert to stratified analyses by baseline strata.
+
+---
+
+B3. Nonparametric repeated measures analysis  
+
+Test:  
+- Within-group: Friedman test for TBL across 3 time points.  
+- Between-group: Kruskal–Wallis tests on change scores, with post-hoc pairwise Mann–Whitney U tests (Bonferroni-adjusted).  
+
+Purpose:  
+- Provide robustness to non-normality in TBL distributions, including outliers or heavy skewness.  
+- Serve as sensitivity analyses confirming conclusions of parametric methods.
+
+Why appropriate:  
+1) Doesn’t assume normal distribution; suitable for small sample sizes and skewed outcomes.  
+2) Simple and interpretable in terms of ranks and median changes.
+
+Why it may not be appropriate:  
+- Loses information about magnitude of differences on original scale; less powerful compared to parametric models when assumptions hold.
+
+When NOT to use:  
+- If there are many ties or zero values, interpretation of rank tests can be less precise (but still generally acceptable).
+
+Alternative if assumptions violated:  
+- Bootstrapped estimates of mean/median differences with confidence intervals, rather than formal nonparametric tests.
+
+---
+
+B4. Effect size estimation and confidence intervals  
+
+Tool:  
+- Report Cohen’s d (or f) for continuous outcomes and risk ratios/odds ratios for categorical outcomes, with 95% CIs.  
+
+Purpose:  
+- Quantify magnitude of differences and provide clinically meaningful interpretation beyond p-values.
+
+Why appropriate:  
+1) Effect sizes are crucial in clinical trials to assess practical significance.  
+2) Allows readers to compare effect magnitudes across interventions and with previous studies.
+
+Why it may not be appropriate:  
+- In very small samples, effect size estimates can be unstable; CIs may be wide.
+
+When NOT to use:  
+- Never “not use”; but interpret cautiously when N is small and variability high.
+
+Alternative if assumptions violated:  
+- Use nonparametric effect sizes (e.g., Hodges–Lehmann estimator, Cliff’s delta).
+
+---
+
+B5. Multiplicity control for multiple comparisons  
+
+Test:  
+- P-value adjustment (e.g., Bonferroni, Holm) for multiple pairwise comparisons (e.g., group comparisons at time 3, multiple species).  
+
+Purpose:  
+- Limit inflation of Type I error due to multiple hypothesis testing (e.g., multiple pairwise group comparisons, numerous bacterial species).
+
+Why appropriate:  
+1) The study evaluates several group contrasts and multiple bacterial species; multiplicity control helps prevent spurious significant findings.  
+2) Holm or Benjamini–Hochberg procedures balance error control and power.
+
+Why it may not be appropriate:  
+- Overly strict adjustment (e.g., Bonferroni) can reduce power in small studies, masking potential true effects.
+
+When NOT to use:  
+- For clearly pre-specified primary comparisons (e.g., primary outcome, primary contrast), strict adjustment is not necessary; but still recommended for exploratory secondary analyses.
+
+Alternative if assumptions violated:  
+- Use false discovery rate (FDR) methods where appropriate.
+
+---
+
+B6. Sensitivity analyses for missing data  
+
+Test/Approach:  
+- LMM under MAR assumption; compare with complete case analysis.  
+- If missingness appears non-random, conduct sensitivity analyses (e.g., worst-case imputation).  
+
+Purpose:  
+- Check robustness of primary conclusions to missing microbiological data (e.g., lost samples).
+
+Why appropriate:  
+1) In clinical settings, some samples might be lost or insufficient; proper handling is needed to avoid bias.  
+2) Mixed models naturally handle unbalanced data if MAR holds.
+
+Why it may not be appropriate:  
+- If missing data are extensive or clearly MNAR (e.g., missing because of high pain), standard methods may be inadequate.
+
+When NOT to use:  
+- If missing data are negligible (<5%); then simple complete case analysis may suffice.
+
+Alternative if assumptions violated:  
+- Pattern-mixture models, multiple imputation with sensitivity scenarios.
+
+---
+
+CATEGORY C – OPTIONAL ANALYSES  
+
+C1. Subgroup analyses  
+
+Test: LMM/ANCOVA stratified by tooth type (e.g., anterior vs posterior) or jaw (maxillary vs mandibular).  
+
+Purpose:  
+- Explore whether treatment effect differs by anatomical characteristics.
+
+Why appropriate:  
+1) Bacterial load and root canal anatomy vary by tooth type.  
+2) May guide tailored clinical use of laser adjunct in specific situations.
+
+Why it may not be appropriate:  
+- Sample size likely too small for credible subgroup analyses; high risk of spurious findings.
+
+When NOT to use:  
+- If subgroup counts <10 per subgroup per group, or if these analyses were not pre-specified.
+
+Alternative if assumptions violated:  
+- Present descriptive subgroup patterns without formal inferential testing.
+
+---
+
+C2. Time-to-event analysis for symptom-free status (if data exist)  
+
+Test: Kaplan–Meier curves and log-rank test for time to symptom resolution; Cox regression.  
+
+Purpose:  
+- Evaluate whether adjunctive strategies impact clinical course (e.g., time until symptom-free and obturation).
+
+Why appropriate:  
+1) Clinical outcome is ultimately patient-centered; if recorded, time-to-event methods are standard.  
+2) May reveal differences that microbiological outcomes alone do not.
+
+Why it may not be appropriate:  
+- The design as described uses a fixed 1-week period; no actual time-to-event variation may exist.
+
+When NOT to use:  
+- If time to symptom resolution is not measured precisely or is essentially identical by design.
+
+Alternative if assumptions violated:  
+- Compare simple proportions symptom-free at 1 week using χ²/Fisher’s exact tests.
+
+---
+
+C3. Correlation analyses between TBL and specific species  
+
+Test: Spearman’s rank correlation between total bacterial load and species-specific loads.  
+
+Purpose:  
+- Explore whether particular species dominate the TBL and whether reductions in TBL are driven by specific pathogens.
+
+Why appropriate:  
+1) Provides mechanistic insight.  
+2) Nonparametric correlation is robust to skewness.
+
+Why it may not be appropriate:  
+- Small N and measurement variability can make correlations unstable and not clinically actionable.
+
+When NOT to use:  
+- If species loads are frequently zero or below detection (floor effect), correlation metrics become uninformative.
+
+Alternative if assumptions violated:  
+- Descriptive plots (heatmaps) or simple presence-absence overlap tables.
+
+---
+
+TASK 3: INAPPROPRIATE TESTS  
+
+Tests that should NOT be used and why:
+
+1. Simple independent-samples t-test at each time point ignoring repeated measures  
+- Why inappropriate:  
+  - Ignores within-subject correlation; inflates Type I error and discards within-patient information.  
+  - Fails to jointly consider changes over time and group × time interaction.  
+
+2. Paired t-test within each group only (without between-group comparison)  
+- Why inappropriate:  
+  - Answers only whether each intervention reduces bacteria, not whether one is better than another.  
+  - Does not exploit trial’s comparative design; fails to answer primary research question.  
+
+3. One-way ANOVA on raw (non-transformed) TBL without checking assumptions  
+- Why inappropriate:  
+  - TBL is typically highly skewed; ANOVA on raw counts violates normality and homoscedasticity.  
+  - P-values and confidence intervals become unreliable.  
+
+4. Chi-square tests on small cell counts without exact methods  
+- Why inappropriate:  
+  - For species presence with small numbers, χ² approximations are poor; inflated Type I or II error.  
+  - Fisher’s exact is needed.  
+
+5. Multiple unadjusted pairwise tests on many species and time points  
+- Why inappropriate:  
+  - Severe multiplicity issues; high false-positive rate.  
+  - Misleading in a small trial, particularly for exploratory endpoints.  
+
+6. Non-inferiority/superiority testing without pre-specified margins and design  
+- Why inappropriate:  
+  - Trial appears designed as a superiority trial without explicit non-inferiority margins or power.  
+  - Post-hoc non-inferiority testing is not valid.  
+
+7. Logistic regression with numerous covariates relative to events  
+- Why inappropriate:  
+  - Small N (19 per group) cannot support multivariable logistic models with many predictors; high risk of overfitting.  
+
+8. Structural equation modeling or complex multivariate methods  
+- Why inappropriate:  
+  - Sample size is insufficient; complexity not justified by data or objectives.
+
+---
+
+TASK 4: SUMMARY AND JUSTIFICATION OF ANALYTICAL APPROACH  
+
+- The study is a randomized, parallel-group clinical trial with repeated measures of bacterial load at 3 time points. The primary scientific question is whether adjunctive 445-nm laser irradiation, alone or in combination with additional NaOCl, provides superior reduction in bacterial load compared with additional NaOCl alone, after standard chemomechanical preparation.
+
+- The proposed primary analysis uses a mixed-effects framework (or repeated-measures ANOVA on log-transformed TBL) that:  
+  - Incorporates the repeated-measures nature of the data;  
+  - Tests the critical group × time interaction;  
+  - Handles modest sample size and potential missing data more appropriately than simple repeated-measures ANOVA.
+
+- ANCOVA or change-score analyses focusing on the adjunctive step (time 2 to 3) offer a clear, clinically interpretable complement to the mixed model, quantifying the additional reduction attributable to each adjunct.
+
+- Secondary analyses on specific bacterial species using appropriate binary-outcome methods (McNemar, Fisher’s exact, logistic GLMM) enhance understanding of species-level effects while controlling for multiplicity.
+
+- Use of log transformation, nonparametric sensitivity analyses, and effect size estimation ensures that conclusions are robust to the non-normal, skewed nature of microbiological data and that effect magnitudes are clinically interpretable.
+
+Overall, this analytical strategy aligns with the study design, respects the structure and distribution of the data, and provides a rigorous and transparent framework for assessing the impact of adjunctive laser irradiation on root canal bacterial load.

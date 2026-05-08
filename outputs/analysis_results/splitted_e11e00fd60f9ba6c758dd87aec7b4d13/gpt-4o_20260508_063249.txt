@@ -1,0 +1,142 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_e11e00fd60f9ba6c758dd87aec7b4d13.pdf
+Status : ok
+Time   : 20260508_063249
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:
+   - Parallel, randomized clinical trial (RCT) with a 1:1 allocation ratio.
+   - Conducted in accordance with CONSORT guidelines.
+
+2. **Objective**:
+   - To compare the clinical and radiographic outcomes of potassium nitrate (KNO₃) in polycarboxylate cement versus mineral trioxide aggregate (MTA) as pulpotomy biomaterials in asymptomatic vital immature mandibular first molars.
+
+3. **Groups**:
+   - **Intervention Group**: 5% potassium nitrate in polycarboxylate cement as the pulpotomy material.
+   - **Control Group**: Mineral trioxide aggregate (MTA) as the pulpotomy material.
+
+4. **Sample Size**:
+   - 50 molars from 48 children (25 molars in each group).
+   - Sample size determined via power analysis (α = 0.05, power = 0.8).
+
+5. **Eligibility Criteria**:
+   - **Inclusion**: Children aged 6–9 years with asymptomatic vital immature mandibular first molars, extensive deep caries with pulp exposure during excavation, no preoperative acute pulp or periapical symptoms.
+   - **Exclusion**: Medically compromised children, necrotic pulp, acute pulp or periapical inflammation, abnormal tooth anatomy, furcation involvement, canal calcification, or nonrestorable teeth.
+
+6. **Variables**:
+   - **Primary Outcomes**:
+     - Clinical success: Absence of spontaneous pain, sensitivity to percussion/palpation, soft tissue swelling, or sinus tract.
+     - Radiographic success: Root maturogenesis progress, absence of periapical/interradicular lesions, and no internal/external root resorption.
+   - **Secondary Outcomes**:
+     - Radiometric analysis of root length and apical foramen diameter at preoperative, 6-month, and 12-month intervals.
+
+7. **Measurements**:
+   - Clinical evaluations at 1 week (via phone), 6 months, and 12 months.
+   - Radiographic evaluations at 6 and 12 months.
+   - Radiometric analysis using Photoshop software for root length and apical foramen diameter, with adjustments for magnification discrepancies.
+
+8. **Randomization and Blinding**:
+   - Random sequence generation using http://www.random.org/.
+   - Allocation concealment using sealed envelopes.
+   - Blinding: Participants, legal guardians, and data assessors were blinded. However, the operator was not blinded due to material handling differences.
+
+9. **Data Collection Methods**:
+   - Clinical evaluations: Binary outcomes (yes/no) for clinical signs and symptoms.
+   - Radiographic evaluations: Binary outcomes (yes/no) for root development and failure signs.
+   - Radiometric analysis: Measurements in pixels converted to millimeters.
+
+10. **Follow-Up**:
+    - Loss to follow-up: 1 case in each group.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Chi-Square Test (or Fisher’s Exact Test)**:
+   - **Purpose**: To compare the binary clinical and radiographic success rates between the two groups.
+   - **Why Appropriate**:
+     1. The primary outcomes are categorical (success/failure).
+     2. The study involves independent groups (intervention vs. control).
+   - **Why It May Not Be Appropriate**: If expected cell counts in the contingency table are <5, Fisher’s Exact Test should be used instead.
+   - **When NOT to Use**: For continuous outcomes or when assumptions of independence are violated.
+   - **Alternative**: Fisher’s Exact Test for small sample sizes.
+
+2. **Independent Samples t-Test (or Mann-Whitney U Test)**:
+   - **Purpose**: To compare the mean percentage change in root length and apical foramen diameter between the two groups.
+   - **Why Appropriate**:
+     1. The secondary outcomes are continuous variables.
+     2. The study design involves two independent groups.
+   - **Why It May Not Be Appropriate**: If the data are not normally distributed or if variances are unequal.
+   - **When NOT to Use**: For non-normal data or when sample size is too small to assume normality.
+   - **Alternative**: Mann-Whitney U Test for non-parametric data.
+
+3. **Kaplan-Meier Survival Analysis with Log-Rank Test**:
+   - **Purpose**: To assess the time to failure (e.g., clinical or radiographic failure) between the two groups.
+   - **Why Appropriate**:
+     1. Time-to-event data is relevant for follow-up outcomes.
+     2. Allows for censoring of cases lost to follow-up.
+   - **Why It May Not Be Appropriate**: If the proportional hazards assumption is violated.
+   - **When NOT to Use**: For non-time-to-event data.
+   - **Alternative**: Cox proportional hazards model if covariates need to be adjusted.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Repeated Measures ANOVA (or Mixed-Effects Model)**:
+   - **Purpose**: To analyze changes in root length and apical foramen diameter over time (preoperative, 6 months, 12 months) within and between groups.
+   - **Why Appropriate**:
+     1. Accounts for repeated measurements within the same subjects.
+     2. Tests both time and group effects simultaneously.
+   - **Why It May Not Be Appropriate**: Assumes sphericity, which may not hold.
+   - **When NOT to Use**: For non-normal data or unequal variances.
+   - **Alternative**: Mixed-effects model for non-sphericity or missing data.
+
+2. **Cohen’s d (Effect Size)**:
+   - **Purpose**: To quantify the magnitude of the difference in outcomes between the two groups.
+   - **Why Appropriate**:
+     1. Provides a standardized measure of effect size.
+     2. Complements p-values by indicating clinical significance.
+   - **Why It May Not Be Appropriate**: Does not account for confounding variables.
+   - **When NOT to Use**: For non-comparable scales.
+   - **Alternative**: Partial eta-squared for repeated measures.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Subgroup Analysis**:
+   - **Purpose**: To explore differences in outcomes based on age, gender, or other baseline characteristics.
+   - **Why Appropriate**:
+     1. Identifies potential effect modifiers.
+     2. Provides additional insights into treatment efficacy.
+   - **Why It May Not Be Appropriate**: Risk of type I error due to multiple comparisons.
+   - **When NOT to Use**: For small sample sizes or unbalanced subgroups.
+   - **Alternative**: Adjust p-values using Bonferroni correction.
+
+2. **Regression Analysis**:
+   - **Purpose**: To adjust for potential confounders (e.g., baseline root length, age).
+   - **Why Appropriate**:
+     1. Controls for covariates that may influence outcomes.
+     2. Provides adjusted effect estimates.
+   - **Why It May Not Be Appropriate**: Overfitting risk with small sample sizes.
+   - **When NOT to Use**: For unmeasured confounders or highly correlated predictors.
+   - **Alternative**: Propensity score matching for balancing covariates.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Paired t-Test**:
+   - **Why Inappropriate**: The study involves independent groups, not paired data.
+2. **One-Way ANOVA**:
+   - **Why Inappropriate**: Only two groups are being compared, so t-tests are more appropriate.
+3. **Pearson Correlation**:
+   - **Why Inappropriate**: The primary outcomes are categorical, not continuous.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach combines categorical and continuous data analysis methods to comprehensively evaluate the clinical and radiographic outcomes of the two pulpotomy materials. The plan prioritizes robust statistical tests (e.g., chi-square, t-tests, survival analysis) to address the primary objectives while recommending advanced methods (e.g., repeated measures ANOVA, regression) to enhance rigor. This ensures both clinical relevance and statistical validity while accounting for potential confounders and data limitations.

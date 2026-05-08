@@ -1,0 +1,586 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_87b5c45e-f51c-46ea-936a-5e4fa5e12135_70645_-_khoa_pham.pdf
+Status : ok
+Time   : 20260508_060900
+══════════════════════════════════════════════════════════════════════
+
+TASK 1 – INFORMATION EXTRACTION  
+(Study characteristics, design, variables, measurements)
+
+1. Study design
+- Type: Parallel-group randomized controlled clinical trial, two arms.
+- Objective:  
+  To compare postoperative pain after single-visit root canal treatment between:
+  - Group 1: Traditional endodontic motor with unconnected electronic apex locator (EAL).  
+  - Group 2: Endodontic motor with connected EAL (E Connect S + E-Pex Pro) providing continuous WL control.
+- Hypothesis: Null – no difference in pain intensities between groups.
+- Registration: Thai Clinical Trials Registry TCTR20200118001 (retrospective registration).
+- Setting: Department of Operative Dentistry and Endodontics, University of Medicine and Pharmacy at Ho Chi Minh City, Vietnam.
+- Period: May 2019 – March 2020.
+- Unit of randomization and analysis: Patient (one molar per patient).
+
+2. Sample size and flow
+- Sample size calculation:
+  - Formula for comparing means of two independent groups:
+    n = ((Z₁-β + Z₁-α/2)² (σ₁² + σ₂²) ) / (μ₁ − μ₂)²
+  - Parameters: α = 0.05 (two-sided), power = 80%, Z₁-α/2 = 1.96, Z₁-β = 0.84.
+  - Derived minimum n = 36 (total) from prior study (Arslan et al. 2017).
+  - Targeted n = 42 (to allow for loss to follow-up), allocation ratio 1:1.
+- Actual enrollment and follow-up:
+  - Assessed for eligibility: 100.
+  - Excluded: 58 (48 not meeting inclusion, 2 declined, 8 other reasons).
+  - Randomized: 42.
+  - Allocated to Group 1 (unconnected EAL): 21; all received intervention.
+  - Allocated to Group 2 (connected EAL): 21; all received intervention.
+  - Lost to follow-up: 0; Discontinued: 0.
+- Final analyzed sample: 42 patients (26 women, 16 men) and 42 molars.
+
+3. Participants: Eligibility and characteristics
+- Inclusion criteria:
+  - Healthy patients without systemic diseases.
+  - Healthy patients without allergic reactions.
+  - Symptomatic irreversible pulpitis OR symptomatic apical periodontitis.
+  - First or second molar (maxillary or mandibular) indicated for endodontic therapy.
+  - Age ≥18 years (explicitly mentioned).
+- Exclusion criteria:
+  - Systemic diseases.
+  - Sinus tract.
+  - Swelling.
+  - Clenching or bruxism.
+  - Severely damaged tooth.
+  - Severe periodontal disease.
+  - Resorption in related tooth.
+  - Previously endodontically treated related tooth.
+  - Root crack.
+  - Analgesic intake during past 24 hours.
+  - Absence of opposing tooth to the related tooth.
+- Baseline variables explicitly collected:
+  - Age (continuous, years).
+  - Gender (male/female).
+  - Number of teeth (effectively 1 per subject for this study, but recorded).
+  - Diagnosis (symptomatic irreversible pulpitis vs symptomatic apical periodontitis; possibly also jaw and tooth type).
+
+4. Interventions (per group)
+Common aspects
+- Operator: Single endodontist (C.M.H.), reducing inter-operator variability.
+- Anesthesia:
+  - 2% lidocaine + 1:100,000 epinephrine (Lignospan Standard).
+  - Techniques:
+    - Mandibular molars: Inferior alveolar nerve block + buccal infiltration.
+    - Maxillary molars: Buccal + palatal infiltrations.
+- Isolation: Rubber dam.
+- Canal exploration:
+  - Pre-enlargement of coronal third with PTN X1 to estimated length from preoperative radiograph.
+  - Exploration with ISO #10 K-file; patency maintained with #10 K-file passing slightly beyond apex (<0.5 mm amplitude) after each instrument change.
+- Irrigation:
+  - During instrumentation: 3% NaOCl (3% Canal Pro).
+  - Final irrigation: 5 mL 3% NaOCl followed by 5 mL 17% EDTA.
+- Working length (WL) confirmation: Radiographically in both groups.
+- Obturation:
+  - Matched single cone gutta-percha cones + AH Plus sealer.
+  - Radiographic check for obturation quality; cases with good obturation and no extrusion included.
+- Restoration:
+  - SDR flowable composite + Ceram X SphereTec composite resin.
+- Analgesic protocol:
+  - 400 mg ibuprofen (Stada, Vietnam) prescribed for “unbearable pain” (rescue medication).
+  - It is not clearly stated that use of analgesic led to exclusion; analgesic intake was recorded as a variable.
+
+Group 1 – Unconnected EAL (Traditional workflow)
+- WL determination: ProPex Pixi EAL + radiographic confirmation (0.5–1 mm short of radiographic apex).
+- Motor: WaveOne endodontic motor.
+- Files:
+  - ProGlider (glide path).
+  - ProTaper Next (PTN) sequence:
+    - X1, then X2 (upper buccal or lower mesial canals), X3 (upper palatal and lower distal canals).
+- Motor settings: 300 rpm, 2 N·cm torque.
+- Technique: Slow in-and-out pecking motions until reaching predetermined WL, using rubber stops set at radiographically confirmed WL.
+
+Group 2 – Connected EAL (E Connect S + E-Pex Pro)
+- WL control: E Connect S motor integrated with E-Pex Pro EAL, EAL set at apex (0.0). The motor slows/stops/reverses as instrument approaches apex.
+- WL confirmation: Radiographic confirmation still performed.
+- Motor: E Connect S endodontic motor.
+- Files: ProGlider + PTN X1, X2, X3 (as above).
+- Motor settings: 300 rpm, 2 N·cm torque.
+- Technique: Slow in-and-out pecking movement; instrumentation continues toward apex until automatic stop/reversal at EAL-defined apex.
+
+5. Outcomes and measurements
+Primary outcome (implied):
+- Postoperative pain intensity (self-reported) at multiple time points after single-visit root canal treatment.
+
+Pain assessment tool:
+- Heft-Parker Visual Analogue Scale (HP-VAS):
+  - 170 mm horizontal line.
+  - Categorical interpretation:
+    - 0 mm: no pain.
+    - 0–54 mm: mild pain (faint = 23 mm, weak = 36 mm).
+    - 55–113 mm: moderate pain.
+    - 114–170 mm: severe pain (strong = 114 mm, intense = 144 mm).
+  - Scale shown to patient with verbal descriptors only (no numerical markings).
+  - Patient places mark on line; distance measured in mm from left end (0–170 mm) with a ruler.
+- Time points for pain measurement:
+  - Preoperative baseline (before treatment).
+  - Postoperative:
+    - 6 hours.
+    - 24 hours.
+    - 48 hours.
+    - 72 hours.
+    - 1 week.
+- Additional pain assessment:
+  - Percussion pain at one week (preoperative and postoperative at 1 week) also recorded using HP-VAS.
+
+Other recorded outcomes/variables:
+- Analgesic intake after procedure (yes/no, and possibly timing/amount – at least binary recorded).
+- Diagnosis category (symptomatic irreversible pulpitis vs symptomatic apical periodontitis).
+- Tooth and jaw: Maxillary vs mandibular molars; first vs second molar (noted but not explicitly labeled as stratifiers).
+- No mention of recording WL, operative time, or number of canals as variables.
+
+6. Randomization, blinding, data collection
+- Randomization:
+  - Performed using online randomizer (www.randomizer.org).
+  - Equal allocation (1:1).
+  - Randomization unit = patient.
+- Allocation concealment: Not explicitly described, but not asked to design – assumed simple randomization.
+- Blinding:
+  - Patients were blinded to the modality of endodontic motor/EAL used.
+  - Operator not blinded (obvious from equipment).
+  - Outcome assessment:
+    - Pain: Self-reported by patients (blinded to group).
+    - No separate blinded assessor is described for pain measurement reading, but HP-VAS marks presumably measured by investigators.
+- Data collection:
+  - Baseline and perioperative data recorded in clinic.
+  - Postoperative HP-VAS at 6, 24, 48, 72 hours, and 1 week completed by patients at home; forms collected at 1-week recall appointment.
+  - At 1 week, percussion test performed and pain again scored on HP-VAS.
+  - Analgesic intake recorded (presumably via patient report at recall or telephone).
+
+7. Analysis-related information in text
+- They calculated sample size assuming comparison of mean pain scores between two independent groups.  
+- A reviewer notes: "the statistical analysis of the data is incomplete and could be better explored" – but the article text provided does not contain their actual statistical methods.  
+- Dataset is available in Mendeley (Khoa Cuong PO Pain).
+
+---
+
+TASK 2 – STATISTICAL ANALYSIS PLAN  
+
+I will structure the plan by aims and outcomes, then list statistical tests under the requested categories. I assume the main outcome is pain over time; data are continuous (0–170 mm) but are typically non-normally distributed and bounded, so both parametric and non-parametric options will be outlined.
+
+A. Objectives and endpoints
+
+Primary objective:
+- To compare postoperative pain intensity between Group 1 (unconnected EAL) and Group 2 (connected EAL) over the first week after single-visit root canal treatment.
+
+Primary endpoint:
+- Pain intensity at key early postoperative time point(s). Common choices:
+  - 24-hour HP-VAS (often peak pain in endodontic trials).
+  - Pain trajectory over time (6, 24, 48, 72 hours, 1 week) as area under the curve (AUC) or repeated-measures profile.
+
+Secondary endpoints:
+- HP-VAS pain intensity at each time point (6h, 24h, 48h, 72h, 1 week).
+- Change from baseline (preoperative HP-VAS) to each postoperative time point.
+- Proportion of patients with:
+  - Any postoperative pain vs no pain at each time point.
+  - Moderate/severe postoperative pain (HP-VAS ≥55 mm, or severe ≥114 mm).
+- Pre- vs postoperative percussion pain at 1 week within each group, and between groups.
+- Analgesic intake:
+  - Proportion of patients using rescue ibuprofen.
+  - Association between group and analgesic use.
+- Exploratory: Effect modification by diagnosis (pulpitis vs apical periodontitis), tooth type (maxillary vs mandibular), gender, age.
+
+B. General principles
+
+- Analysis population: All randomized patients (n=42) analyzed in the group to which they were randomized (intention-to-treat). Since there was no loss to follow-up, ITT ~ per protocol.
+- Descriptive statistics:
+  - Continuous variables: mean ± SD (and median [IQR] if skewed).
+  - Categorical variables: counts and percentages.
+- Significance level: α = 0.05 (two-sided).  
+- Adjustment for multiple comparisons:
+  - For multiple time points, control family-wise error via:
+    - Bonferroni, Holm, or primarily rely on global repeated-measures model, with time-specific p-values interpreted cautiously.
+- Assumption checks:
+  - Normality: Shapiro–Wilk or Kolmogorov–Smirnov for residuals; Q–Q plots.
+  - Homogeneity of variance: Levene’s test.
+  - Sphericity in repeated measures: Mauchly’s test.
+  - Linearity, homoscedasticity for regression models.
+
+---
+
+CATEGORY A – MANDATORY TESTS  
+
+These are needed to properly address the primary and key secondary objectives.
+
+1. Baseline comparability between groups
+
+1.1. Independent samples t-test (or Mann–Whitney U) for continuous baseline variables  
+- Purpose: Compare baseline characteristics (age, preoperative HP-VAS pain) between groups to assess balance after randomization.
+- Why appropriate:
+  1) Two independent groups (Group 1 vs Group 2) with continuous outcomes (age, pain scores).  
+  2) Randomization should balance means; confirming this supports internal validity and aids interpretation if imbalances arise.
+- Why it may not be appropriate:
+  - Pain scores are often skewed or ordinal-like; sample size per group is small (n=21), so normality may be questionable.
+- When NOT to use:
+  - If clear non-normality and presence of strong outliers or ordinal scale structure is more appropriate; or if sample sizes are very small (<10 per arm).
+- Alternative if assumptions violated:
+  - Mann–Whitney U test for continuous/ordinal data.
+
+1.2. Chi-square test (or Fisher’s exact test) for categorical baseline variables  
+- Purpose: Compare proportions (gender, diagnosis: pulpitis vs apical periodontitis; jaw: maxillary vs mandibular; first vs second molar) between groups.
+- Why appropriate:
+  1) Categorical variables with two independent groups.  
+  2) Tests randomization effectiveness and identifies potential confounders or covariates for adjustment.
+- Why it may not be appropriate:
+  - Some categories may have low expected counts (<5), especially if the distribution is uneven (e.g., few necrotic cases).
+- When NOT to use:
+  - If any cell has expected frequency <5 in a 2×2 table, standard chi-square approximation is unreliable.
+- Alternative if assumptions violated:
+  - Fisher’s exact test.
+
+2. Comparison of pain between groups at primary time point (e.g., 24 hours)
+
+2.1. Mann–Whitney U test for HP-VAS pain at 24 hours  
+- Purpose: Compare distribution of 24-h postoperative HP-VAS scores between Group 1 and Group 2.
+- Why appropriate:
+  1) HP-VAS data are bounded, non-negative, and often skewed; Mann–Whitney does not assume normality.  
+  2) Two independent groups with ordinal/continuous outcome; sample size per group (n=21) suits non-parametric comparison.
+- Why it may not be appropriate:
+  - Provides comparison of distributions (and medians) but not directly mean differences; may be less intuitive clinically if the clinical target is mean difference.
+- When NOT to use:
+  - If data are approximately normal with similar variances and the focus is on mean differences with confidence intervals.
+- Alternative if assumptions violated / parametric preferable:
+  - Independent samples t-test with or without Welch correction, after verifying approximate normality.
+
+2.2. Independent samples t-test (if pain at 24h is approximately normal)  
+- Purpose: Compare mean 24-h HP-VAS pain between groups.
+- Why appropriate:
+  1) Common, interpretable measure (mean difference) used in sample size planning.  
+  2) Randomized design; similar group sizes; t-test robust to mild deviations from normality with n≈20 per group.
+- Why it may not be appropriate:
+  - If strong skewness, ceiling/floor effects, or heteroscedasticity exist; t-test assumptions violated.
+- When NOT to use:
+  - Clear non-normal distribution, presence of extreme outliers, or highly unequal variances.
+- Alternative if assumptions violated:
+  - Mann–Whitney U test (as above).
+
+3. Repeated-measures comparison of pain trajectories over time
+
+3.1. Linear mixed-effects model (LMM) for HP-VAS over time (preferred)  
+- Purpose:
+  - Model pain trajectories from 6h, 24h, 48h, 72h, 1 week, comparing groups while accounting for within-subject correlation.
+- Specification:
+  - Outcome: HP-VAS (continuous, 0–170 mm).
+  - Fixed effects: group (2 levels), time (5 levels), group × time interaction.
+  - Random effects: subject-level intercept (and optionally slope for time).
+  - Optionally adjust for baseline pain and diagnosis as covariates.
+- Why appropriate:
+  1) Handles correlated repeated measures properly and can accommodate missing data under MAR (not present here but important in general).  
+  2) Tests both overall group effect and group × time interaction to see if pain evolves differently between groups.
+- Why it may not be appropriate:
+  - Requires modeling assumptions (normality of residuals, proper covariance structure) and more complex implementation; with small sample (n=42) and discrete time points, convergence or interpretability may be an issue.
+- When NOT to use:
+  - Very small N with unstable model fits, or when software/resources are limited and a simpler method is preferred.
+- Alternative if assumptions violated:
+  - Non-parametric repeated-measures tests (e.g., Friedman test within groups + Wilcoxon rank-sum at each time with multiplicity adjustment) or repeated-measures ANOVA with sphericity corrections.
+
+3.2. Repeated-measures ANOVA (RM-ANOVA) for HP-VAS over time (simpler alternative)  
+- Purpose:
+  - Compare mean pain profiles across time between groups.
+- Why appropriate:
+  1) Classical method for balanced repeated-measures data; design is balanced (no dropouts).  
+  2) Allows testing for main effects of time, group, and group × time interaction.
+- Why it may not be appropriate:
+  - Assumes sphericity; violations (likely with 5 time points) require corrections (Greenhouse–Geisser/Huynh–Feldt); also assumes normally distributed residuals.
+- When NOT to use:
+  - Severe violation of normality or non-sphericity that cannot be corrected; or if missing repeated measurements were present.
+- Alternative if assumptions violated:
+  - Linear mixed-effects model (if expertise/software available), or non-parametric repeated-measures approach (Friedman test within each group + between-group tests at each time).
+
+4. Categorical pain severity and “no pain” comparisons
+
+4.1. Chi-square / Fisher’s exact tests for proportions with pain categories  
+- Purpose:
+  - Compare, at clinically relevant time(s), the proportion of patients:
+    - with any pain (HP-VAS > 0) vs no pain;  
+    - with moderate/severe pain (≥55 mm) vs mild/none;  
+    - with severe pain (≥114 mm).
+- Why appropriate:
+  1) Clinically interpretable categorical outcomes (presence of moderate/severe pain).  
+  2) Two independent groups, dichotomous or multinomial outcomes.
+- Why it may not be appropriate:
+  - Some categories may have low counts (e.g., few severe pain cases), violating chi-square assumptions.
+- When NOT to use:
+  - Expected cell counts <5 for chi-square; or large number of categories relative to sample size.
+- Alternative if assumptions violated:
+  - Fisher’s exact test for 2×2 tables; collapsing categories to ensure adequate counts.
+
+5. Pre- vs postoperative percussion pain at 1 week
+
+5.1. Wilcoxon signed-rank test (within-group)  
+- Purpose:
+  - Assess change in HP-VAS percussion pain from preoperative to 1-week postoperative within each group.
+- Why appropriate:
+  1) Paired observations (same tooth before and after); HP-VAS often non-normal.  
+  2) Non-parametric, does not require normal differences.
+- Why it may not be appropriate:
+  - If differences are approximately normal and measurement considered continuous, paired t-test may offer more power and interpretable mean change.
+- When NOT to use:
+  - If data are normally distributed and a parametric paired comparison is desired.
+- Alternative if assumptions violated:
+  - Paired t-test (if normal); or sign test if many ties and non-normal differences.
+
+5.2. Mann–Whitney U or t-test on change scores between groups  
+- Purpose:
+  - Compare change in percussion pain from baseline to 1 week between Group 1 and Group 2.
+- Why appropriate:
+  1) Independent groups with continuous change scores.  
+  2) Helps identify whether either motor/EAL combination leads to more pronounced relief.
+- Why it may not be appropriate:
+  - Change scores can be noisy and non-normal; might be influenced by baseline imbalances.
+- When NOT to use:
+  - If strong baseline imbalance exists, or non-linear relation between baseline and follow-up.
+- Alternative if assumptions violated:
+  - ANCOVA (see Category B) adjusting for baseline percussion pain.
+
+6. Analgesic intake
+
+6.1. Fisher’s exact test for proportion using rescue ibuprofen  
+- Purpose:
+  - Compare percentages of patients who used 400 mg ibuprofen postoperatively between groups.
+- Why appropriate:
+  1) Binary outcome (used/not used) with relatively small n (21 per group).  
+  2) Direct clinical indicator of clinically significant pain.
+- Why it may not be appropriate:
+  - If all or almost all patients in one group used analgesics (complete separation), interpretation becomes difficult.
+- When NOT to use:
+  - If counts are very unbalanced with zeros in a group; standard inference may be unstable.
+- Alternative if assumptions violated:
+  - Exact logistic regression (see Category B) if a model-based approach is needed.
+
+---
+
+CATEGORY B – RECOMMENDED TESTS  
+
+These increase rigor and depth of analysis.
+
+1. ANCOVA at primary time point (e.g., 24-h pain)
+
+1.1. Analysis of covariance (ANCOVA)  
+- Purpose:
+  - Compare mean 24-h HP-VAS between groups while adjusting for baseline pain and other potential prognostic factors (e.g., diagnosis type, jaw).
+- Model:
+  - Outcome: 24-h HP-VAS.
+  - Covariates: baseline HP-VAS, diagnosis (pulpitis vs apical periodontitis), possibly age, jaw, gender.
+  - Predictor of interest: group (connected vs unconnected).
+- Why appropriate:
+  1) Adjusts for baseline pain differences, improving precision and controlling any residual imbalance despite randomization.  
+  2) Recommended approach over analysis of change scores; preserves randomization and reduces error variance.
+- Why it may not be appropriate:
+  - Requires linearity between covariate and outcome; must check for homogeneity of regression slopes (no interaction between baseline pain and group).
+- When NOT to use:
+  - If strong non-linear relationships or unequal slopes between groups; or if covariate measured unreliably.
+- Alternative if assumptions violated:
+  - Non-parametric ANCOVA methods (e.g., rank-based) or stratified analyses by baseline pain categories.
+
+2. Repeated-measures modeling with baseline
+
+2.1. Linear mixed-effects model including baseline pain  
+- Purpose:
+  - Model postoperative pain trajectories while accounting for baseline pain as covariate.
+- Why appropriate:
+  1) Improves accuracy by adjusting for the starting point; reduces random variability.  
+  2) Allows investigation of group × time interaction after adjusting for baseline.
+- Why it may not be appropriate:
+  - Same as for LMM above; plus potential collinearity between baseline and early postoperative measures.
+- When NOT to use:
+  - Very small sample or complex model leading to convergence issues.
+- Alternative if assumptions violated:
+  - Baseline-adjusted RM-ANOVA or analysis of change scores via mixed models.
+
+3. Ordinal analyses for pain severity
+
+3.1. Ordinal logistic regression (proportional odds model)  
+- Purpose:
+  - Analyze pain categorized into ordered severity levels (none, mild, moderate, severe) at key time points, comparing groups and adjusting for covariates.
+- Why appropriate:
+  1) HP-VAS categories are naturally ordered; ordinal logistic regression uses full ordinal structure.  
+  2) Provides odds ratios that are clinically interpretable (e.g., odds of being in higher pain category).
+- Why it may not be appropriate:
+  - Assumes proportional odds (same effect across all cutpoints); may be violated, especially with uneven distributions.
+- When NOT to use:
+  - If proportional odds assumption fails (tested with Brant test or likelihood ratio tests).
+- Alternative if assumptions violated:
+  - Partial proportional odds models or multinomial logistic regression (treating pain categories as nominal).
+
+4. Logistic regression for binary outcomes
+
+4.1. Logistic regression for analgesic use or moderate/severe pain  
+- Purpose:
+  - Evaluate effect of group on binary outcomes (e.g., moderate/severe pain at 24h vs less; any analgesic use vs none), adjusting for baseline pain, diagnosis, etc.
+- Why appropriate:
+  1) Model-based approach allows adjustment for multiple covariates.  
+  2) Produces adjusted odds ratios with 95% CIs, aiding clinical interpretation.
+- Why it may not be appropriate:
+  - Small sample size; with multiple predictors, risk of overfitting.
+- When NOT to use:
+  - If events per variable (EPV) are too low (<10 per predictor), leading to unstable estimates.
+- Alternative if assumptions violated:
+  - Exact logistic regression for very small samples; or simple stratified comparisons with Fisher’s exact tests.
+
+5. Effect size and interval estimation
+
+5.1. Cohen’s d and Hodges–Lehmann median difference  
+- Purpose:
+  - Quantify the magnitude of differences in HP-VAS pain between groups, beyond p-values.
+- Why appropriate:
+  1) Clinically interpretable; aids meta-analyses and evidence synthesis.  
+  2) Provides insight into whether non-significant results are due to small effects or insufficient power.
+- Why it may not be appropriate:
+  - For heavily skewed data, Cohen’s d may be misleading.
+- When NOT to use:
+  - If distributions are highly non-normal; use robust or non-parametric effect sizes instead.
+- Alternative if assumptions violated:
+  - Use Hodges–Lehmann estimator of median difference with confidence interval.
+
+6. Sensitivity analyses
+
+6.1. Sensitivity excluding patients using rescue analgesics  
+- Purpose:
+  - Assess whether analgesic use heavily influences observed pain differences; recalculate primary analyses excluding or censoring patients who took ibuprofen.
+- Why appropriate:
+  1) Rescue analgesics can mask true pain differences; sensitivity analysis tests robustness.  
+  2) Addresses reviewer concern about analgesic use not being clearly incorporated.
+- Why it may not be appropriate:
+  - Excluding patients may introduce selection bias and reduce power; ITT remains primary.
+- When NOT to use:
+  - If analgesic use is nearly universal or very rare; analysis uninformative.
+- Alternative if assumptions violated:
+  - Treat analgesic use as covariate or as an outcome, not exclusion criterion.
+
+---
+
+CATEGORY C – OPTIONAL TESTS  
+
+These provide supplementary insight but are not essential to answer the main question.
+
+1. Pain area under the curve (AUC)
+
+1.1. AUC calculation and comparison (Mann–Whitney U or t-test)  
+- Purpose:
+  - Summarize overall pain burden over time (6h–1 week) as a single number (AUC for HP-VAS vs time) and compare between groups.
+- Why appropriate:
+  1) Integrates pain over all measurements, capturing total experience rather than a single time point.  
+  2) Simplifies repeated-measures data to one continuous outcome per subject.
+- Why it may not be appropriate:
+  - Assumes regular time spacing and similar measurement schedules; may obscure time-specific patterns.
+- When NOT to use:
+  - If data missing at many time points or if clinical interest is strongly time specific.
+- Alternative if assumptions violated:
+  - Mixed-effects models on repeated data without reduction to AUC.
+
+2. Non-parametric repeated-measures tests
+
+2.1. Friedman test within each group  
+- Purpose:
+  - Assess whether pain changes over time within each group without parametric assumptions.
+- Why appropriate:
+  1) Non-parametric; only requires ordinal data and matched subjects.  
+  2) Demonstrates time course of pain independent of between-group comparison.
+- Why it may not be appropriate:
+  - Does not test group × time interaction; must be supplemented by between-group tests.
+- When NOT to use:
+  - When more complex modeling (mixed models) is available and preferable.
+- Alternative if assumptions violated:
+  - N/A, since Friedman is already non-parametric; if many ties, consider alternative rank-based approaches.
+
+3. Correlation and exploratory analyses
+
+3.1. Spearman correlation between preoperative pain and postoperative pain  
+- Purpose:
+  - Explore whether higher preoperative HP-VAS predicts higher postoperative pain.
+- Why appropriate:
+  1) HP-VAS is continuous/ordinal; Spearman’s rho does not assume normality.  
+  2) Useful for identifying prognostic markers for pain.
+- Why it may not be appropriate:
+  - Purely exploratory; correlation does not adjust for group or other confounders.
+- When NOT to use:
+  - If overinterpretation of exploratory correlations is likely; should be labeled exploratory.
+- Alternative if assumptions violated:
+  - Partial correlations or regression models.
+
+4. Subgroup analyses
+
+4.1. Interaction tests (group × diagnosis, group × jaw) in mixed models or ANCOVA  
+- Purpose:
+  - Examine if effect of motor/EAL differs by diagnosis type (pulpitis vs apical periodontitis) or jaw (maxillary vs mandibular).
+- Why appropriate:
+  1) Clinically relevant: pathology and tooth/jaw may influence pain.  
+  2) Tests whether there is heterogeneity of treatment effect.
+- Why it may not be appropriate:
+  - Trial not powered for subgroup analyses; high risk of false positives/negatives.
+- When NOT to use:
+  - If there are very few patients in certain categories (e.g., small number with apical periodontitis).
+- Alternative if assumptions violated:
+  - Present descriptive subgroup comparisons without formal interaction testing.
+
+---
+
+TASK 3 – INAPPROPRIATE TESTS  
+
+Tests that should NOT be used for this study, with rationale:
+
+1. Paired t-test or Wilcoxon signed-rank test to compare groups  
+- Why inappropriate:
+  - Groups are independent; paired tests assume measurements are paired within subjects.  
+  - Using paired tests across groups (as if each subject in Group 1 were paired with one in Group 2) is invalid and underestimates variance.
+
+2. One-way ANOVA ignoring repeated measures (treating each time as independent observation)  
+- Why inappropriate:
+  - Pain measurements at multiple times from the same patient are correlated.  
+  - Ignoring correlation inflates sample size artificially and underestimates standard errors (pseudoreplication), leading to misleading p-values.
+
+3. Simple multiple independent t-tests at all time points without correction  
+- Why inappropriate:
+  - Multiple comparisons (6h, 24h, 48h, 72h, 1 week) without any correction inflate type I error substantially.  
+  - Should be replaced by repeated-measures modeling and/or multiplicity-adjusted pairwise tests.
+
+4. Pearson correlation between HP-VAS and ordinal pain categories as if both were continuous  
+- Why inappropriate:
+  - Pain categories (e.g., mild/moderate/severe) are ordinal, not continuous; Spearman’s rho or ordinal models are more appropriate.
+
+5. Linear regression using group as a continuous numeric predictor (e.g., coded 1, 2 and interpreted as a numeric continuum)  
+- Why inappropriate:
+  - Group is a binary categorical variable; treat it as a categorical factor with two levels, not as a continuous numeric value with arbitrary ordering.
+
+6. Survival analysis (Kaplan–Meier/Cox) for time-to-pain-resolution using these data  
+- Why inappropriate:
+  - Pain was measured at discrete time points, not continuously; we don't have exact times of pain resolution, only intervals.  
+  - While interval-censored survival methods exist, data structure is simpler and better handled via repeated-measures models.
+
+7. Parametric tests assuming normality without checking (e.g., standard t-tests and RM-ANOVA on highly skewed HP-VAS)  
+- Why inappropriate:
+  - HP-VAS often non-normal, especially with many zeros at later time points.  
+  - No assumption checking would reduce credibility of p-values; non-parametric or transformed models preferable.
+
+8. McNemar’s test to compare proportions between groups  
+- Why inappropriate:
+  - McNemar’s test is for paired binary data (e.g., pre vs post within same subject).  
+  - Here, between-group comparisons (independent samples) should use chi-square or Fisher’s exact test.
+
+---
+
+TASK 4 – SUMMARY: Justification of Overall Analytical Approach  
+
+- The trial is a small, two-arm, parallel-group RCT with repeated measures of pain. The primary outcome is HP-VAS pain intensity, a continuous but often non-normal variable, measured across multiple postoperative time points.
+- The analytical strategy must:
+  - Respect the randomized, independent-group design (between-group comparisons).  
+  - Account for correlated repeated measurements within individuals (within-subject correlation).  
+  - Accommodate the bounded, potentially skewed nature of pain scores.  
+  - Provide clinically interpretable effect estimates (differences in pain and odds of moderate/severe pain and analgesic use).
+
+Therefore:
+
+- For the primary comparison at a key time point (e.g., 24 hours), non-parametric (Mann–Whitney) or ANCOVA (adjusted for baseline pain) is planned, depending on distribution.  
+- Repeated-measures linear mixed-effects models or RM-ANOVA are used to analyse pain trajectories across 6–168 hours, capturing group × time interactions and minimizing multiplicity issues.  
+- Categorical analyses (proportions with moderate/severe pain, analgesic intake) complement continuous analyses to inform clinical significance.  
+- Baseline comparability checks and adjusted models (ANCOVA, logistic regression) account for possible imbalances in diagnosis or other covariates, enhancing internal validity.  
+- Non-parametric and robust alternatives are specified whenever parametric assumptions may be questionable, which is likely with small sample size and skewed pain data.
+
+This plan ensures that the main hypothesis (no difference in pain between instrumentation with connected vs unconnected EAL) is tested appropriately, with adequate attention to the data structure, potential confounding, and clinical interpretability.

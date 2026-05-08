@@ -1,0 +1,394 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_2e82adef4e0e88e31522f81daaf92fe6.pdf
+Status : ok
+Time   : 20260508_060442
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design and setting
+- **Design:** Prospective **randomized clinical study** with **two parallel arms** and **double blinding** (patients + outcome assessors).
+- **Setting:** Department of Endodontics, Faculty of Dentistry, Cairo University (Egypt).
+- **Unit of randomization/analysis:** **Patient/tooth** (mandibular premolar with single oval canal).
+- **Treatment protocol:** **Single-visit** root canal treatment for all participants.
+
+### Objective(s)
+- To compare **XP-endo Shaper vs conventional rotary files (iRaCe)** regarding:
+  1. **Postoperative pain** (incidence/severity over time)
+  2. **Intracanal bacterial reduction** (culture-based CFU counts pre- vs post-instrumentation)
+- Also recorded: **flare-ups** and swelling severity; analgesic consumption.
+
+### Participants
+- **Target population:** Healthy adults, **20–60 years**, men and women.
+- **Tooth condition:** Mandibular premolars, **single oval canal**, **necrotic pulp**, with **<3 mm or no periapical radiolucency**.
+- **Preoperative pain eligibility:** **No to mild** preoperative pain.
+
+#### Inclusion criteria
+- Healthy adults (20–60)
+- Mandibular premolar with single oval root canal
+- Necrotic pulp confirmed by:
+  - history/chief complaint
+  - **negative thermal test**
+  - **negative electric pulp test** (Denjoy DY310)
+  - radiographic exam (Digora Optime)
+- No/mild preoperative pain
+- With <3 mm or without periapical radiolucency
+
+#### Exclusion criteria
+- Pregnancy
+- Analgesics or antibiotics within last **12 h**
+- No normal occlusal contact (articulating paper verification)
+- Acute periapical abscess
+- Periodontal pocket >5 mm
+- Mobility > grade I
+- Alveolar bone loss >50%
+- Nonrestorable teeth
+
+### Randomization and allocation concealment
+- **Sequence generation:** computer-generated numbers **1–60** (random.org) by a co-investigator.
+- **Allocation concealment:** opaque envelopes; patient selects envelope after access cavity and confirmation of diagnosis by absence of bleeding.
+- **Groups:** equal columns A and B (implies **1:1 allocation**).
+- **Blinding:** patients and outcome assessors blinded (operator presumably not).
+
+### Interventions (comparison groups)
+1. **XP-endo Shaper group (A)**
+   - Endodontic motor: 800 rpm, 1 Ncm
+   - Starts size 30/.01; enlarged to size 40/.04 with protocol described
+   - Irrigation during instrumentation: 3 mL 2.5% NaOCl after each 5 strokes; EDTA gel lubricant
+
+2. **iRaCe group (B, control)**
+   - Rotary iRaCe sequence: 15/.06, 25/.04, 30/.04, 40/.04
+   - 600 rpm, 1.5 Ncm
+   - Irrigation after each instrument
+
+**Common to both groups**
+- Same irrigant **type** and **volume:** total **30 mL of 2.5% NaOCl**, needle 27G placed 3 mm short of WL
+- Working length: apex locator + radiograph, **0.5 mm short of radiographic apex**
+- NaOCl neutralization: **5 mL of 5% sodium thiosulfate**
+- Obturation: modified single cone, resin sealer; coronal restoration composite; occlusion adjusted.
+
+### Outcomes, variables, and measurement schedule
+
+#### Primary/Key outcomes (implied by title and methods)
+1. **Postoperative pain**
+   - Instrument: **modified VAS** (10 cm line) recorded as **4 categories**:
+     - None = 0
+     - Mild = 1–3
+     - Moderate = 4–6
+     - Severe = 7–10
+   - Time points: **6, 12, 24 hours, and days 2, 3, 4, 5**
+   - Also recorded preoperative pain on same scale (baseline).
+
+2. **Bacterial reduction**
+   - Samples:
+     - **S1 (pre-instrumentation)** intracanal sample
+     - **S2 (post-instrumentation)** intracanal sample (after preparation, before obturation)
+   - Sampling method: BHI broth + **3 paper points** at 1 mm short of radiographic apex, 1 min each; transferred to BHI tube.
+   - Culture method: anaerobic culture on enriched BHI agar, incubated 5 days at 37°C; quantify **CFU/mL**, count plates with **30–300 colonies**; back-transform using dilution factors.
+
+#### Secondary outcomes
+- **Analgesic consumption**
+  - Ibuprofen 400 mg prescribed “if persistent moderate-to-severe pain”
+  - Patient-recorded: incidence and **number of tablets**
+- **Flare-up (binary Yes/No)**
+  - Definition: moderate–severe pain and/or moderate–severe swelling beginning 12–48h and lasting ≥48h
+- **Swelling severity** (ordinal 4-point): none/small/moderate/large; assessed by blinded assessor if swelling occurs
+- **Need for antibiotics/drainage** (binary/clinical decision; recorded)
+
+### Sample size
+- Random sequence **1–60** strongly implies **N = 60 total**, **30 per group** (consistent with “two equal columns”).
+- Sample size calculation details are not provided in the excerpt (software name is truncated).
+
+### Data structure considerations
+- Repeated pain measurements over time (longitudinal).
+- Bacterial counts measured twice (paired within subject).
+- Several outcomes are **ordinal** (pain categories; swelling) or **counts with skew** (CFU/mL; tablets).
+- Blinding: outcome assessor blinded for swelling/flare-up; pain self-reported.
+
+---
+
+## TASK 2 — Statistical Analysis Plan (tests by category)
+
+### General analysis principles (apply to all outcomes)
+- **Analysis population:** Intention-to-treat (ITT) preferred; per-protocol as sensitivity if protocol deviations occur.
+- **Two-sided alpha:** 0.05.
+- **Effect sizes with 95% CI** reported for all key outcomes.
+- **Baseline comparability:** describe, not “test for randomization success” as primary evidence; if large imbalance, adjust in models.
+- **Pain outcome scale choice:** because pain is recorded as **ordinal categories**, primary analysis should respect ordinality; optionally also analyze numeric 0–10 if raw VAS available (not just categories).
+
+---
+
+# CATEGORY A — Mandatory tests (core analyses)
+
+## A1) Mixed-effects ordinal logistic regression (cumulative logit mixed model)
+**Purpose:** Compare **postoperative pain severity over time** between groups while accounting for repeated measures.
+
+**Why appropriate (≥2 reasons):**
+1. Pain is recorded on an **ordered categorical** scale (none/mild/moderate/severe), so ordinal modeling matches outcome type.
+2. Repeated measurements per patient violate independence; **random subject effects** (or GEE correlation structure) handle within-subject correlation and use all time points efficiently.
+3. Allows inclusion of **time**, **group**, and **group×time interaction** (differential pain trajectories).
+
+**Why it may not be appropriate (≥1 reason):**
+- The **proportional odds assumption** may be violated (effects differ across cutpoints).
+
+**When this test should NOT be used:**
+- When pain is truly continuous and available as raw VAS (0–10 cm) and normality/linearity assumptions are acceptable (then a continuous mixed model may be preferable), or when sample size is too small for stable ordinal mixed model estimation.
+
+**Alternative if assumptions are violated:**
+- **Partial proportional odds mixed model**, or
+- **Multinomial mixed model**, or
+- **GEE with ordinal link** (robust SE), or
+- Collapse categories (e.g., none/mild vs moderate/severe) and use **mixed logistic regression** (with information loss acknowledged).
+
+**Key specification:** fixed effects for group, time (categorical), baseline pain, and group×time; random intercept for subject.
+
+---
+
+## A2) Between-group comparison of bacterial reduction using ANCOVA / linear model on log-transformed CFU
+**Test name:** Linear regression/ANCOVA on **log10(CFU+1)** with group as predictor and baseline log CFU as covariate (or analyze change score on log scale).
+
+**Purpose:** Assess whether instrumentation system differs in **post-instrumentation bacterial load**, adjusted for pre-instrumentation levels.
+
+**Why appropriate:**
+1. CFU/mL are typically **right-skewed**; log transform often yields approximately normal residuals and stabilizes variance.
+2. ANCOVA adjustment for baseline improves **precision** and accounts for any baseline imbalance, outperforming simple change-score comparisons in many settings.
+
+**Why it may not be appropriate:**
+- If there are **many zeros** post-instrumentation (zero-inflation), log(CFU+1) may still be problematic and normality may fail.
+
+**When this test should NOT be used:**
+- When distribution remains highly non-normal/heteroscedastic after transformation or there is severe zero-inflation making Gaussian models misleading.
+
+**Alternative if assumptions are violated:**
+- **Mann–Whitney U test** on change scores (nonparametric), or
+- **Quantile regression** (median change), or
+- **Negative binomial regression** (or **zero-inflated** NB) treating CFU as counts with offset for dilution/volume if modeled directly.
+
+---
+
+## A3) Within-group bacterial reduction (paired comparison)
+**Test name:** Paired t-test on log10(CFU+1) (or Wilcoxon signed-rank)
+
+**Purpose:** Confirm that each system produces **significant reduction** from S1 to S2.
+
+**Why appropriate:**
+1. Paired design (same canal before/after) -> **within-subject** comparison.
+2. Provides interpretable within-group reduction estimates (mean log reduction or median reduction).
+
+**Why it may not be appropriate:**
+- If post CFU includes many ties/zeros and distribution is very non-normal, paired t-test may mislead.
+
+**When this test should NOT be used:**
+- When using ANCOVA as the sole inferential framework and you want to avoid multiple testing; still, descriptive paired reductions should be shown.
+
+**Alternative if assumptions are violated:**
+- **Wilcoxon signed-rank test** (or sign test if many ties).
+
+---
+
+## A4) Flare-up incidence between groups
+**Test name:** Fisher’s exact test (or chi-square if expected counts adequate)
+
+**Purpose:** Compare **proportion with flare-up (Yes/No)** between instrumentation systems.
+
+**Why appropriate:**
+1. Outcome is **binary**.
+2. Sample size (≈30/group) and potentially **low event rate** → Fisher’s exact often safer than chi-square.
+
+**Why it may not be appropriate:**
+- Does not adjust for covariates (baseline pain, lesion presence).
+
+**When this test should NOT be used:**
+- When covariate adjustment is needed or there are multiple predictors.
+
+**Alternative if assumptions are violated / need adjustment:**
+- **Logistic regression** (possibly Firth penalized logistic if separation/rare events).
+
+---
+
+# CATEGORY B — Recommended tests (improves rigor)
+
+## B1) GEE ordinal model (population-averaged) as sensitivity to mixed model
+**Purpose:** Provide a robustness check for pain trajectory conclusions using marginal (population-average) inference.
+
+**Why appropriate:**
+1. Handles repeated ordinal outcomes with robust SE even if random effects distribution misspecified.
+2. Estimates **population-average effects**, often preferred for clinical interpretability.
+
+**Why it may not be appropriate:**
+- With small samples, robust SE can be biased downward.
+
+**When not to use:**
+- Very small sample or sparse outcome categories at some time points.
+
+**Alternative:**
+- Bootstrap SE for GEE; or rely on mixed model with careful diagnostics.
+
+---
+
+## B2) Model for analgesic tablet counts
+**Test name:** Negative binomial regression (or Poisson with overdispersion check)
+
+**Purpose:** Compare **number of ibuprofen tablets** between groups.
+
+**Why appropriate:**
+1. Tablets are **count data** (0,1,2,…) with likely **overdispersion**.
+2. Avoids inappropriate normal-based tests for skewed discrete outcomes; yields rate ratios.
+
+**Why it may not be appropriate:**
+- If nearly everyone takes 0 tablets (excess zeros), standard NB may fit poorly.
+
+**When not to use:**
+- If outcome is essentially binary (any vs none) due to extreme sparsity.
+
+**Alternative:**
+- **Zero-inflated negative binomial**, or
+- **Logistic regression** for any analgesic use (Yes/No).
+
+---
+
+## B3) Swelling severity comparison (ordinal)
+**Test name:** Ordinal logistic regression (or Fisher’s exact on collapsed categories)
+
+**Purpose:** Compare swelling grades between groups (among those assessed or overall with none included).
+
+**Why appropriate:**
+1. Swelling is **ordered categorical** (none/small/moderate/large).
+2. Can incorporate covariates and estimate odds of worse swelling.
+
+**Why it may not be appropriate:**
+- Likely sparse counts in moderate/large categories.
+
+**When not to use:**
+- If cell counts are too small for stable estimation.
+
+**Alternative:**
+- Collapse to **none vs any** and use Fisher/logistic, or use exact methods.
+
+---
+
+## B4) Baseline covariate-adjusted pain analysis
+**Test name:** Mixed-effects ordinal model including covariates (age, sex, periapical radiolucency presence, baseline pain)
+
+**Purpose:** Improve precision and address residual confounding/imbalance.
+
+**Why appropriate:**
+1. Pain is influenced by patient/tooth factors; adjustment can reduce unexplained variance.
+2. Enhances credibility if any baseline imbalances exist despite randomization.
+
+**Why it may not be appropriate:**
+- Overfitting risk with small sample and many covariates.
+
+**When not to use:**
+- If events per parameter are too low (sparse severe pain categories).
+
+**Alternative:**
+- Parsimonious adjustment (baseline pain + radiolucency only), penalized methods, or prespecified minimal covariate set.
+
+---
+
+## B5) Multiple comparisons control for pain at multiple time points (if doing time-point-specific tests)
+**Test name:** Holm correction (or Benjamini–Hochberg FDR)
+
+**Purpose:** Control inflated type I error if performing separate group comparisons at each time point.
+
+**Why appropriate:**
+1. Pain is measured at 7 postoperative times; naive testing at each time inflates false positives.
+2. Holm is simple and controls family-wise error.
+
+**Why it may not be appropriate:**
+- If the primary analysis is the **single mixed model** with interaction, multiplicity adjustment for time-point contrasts may be secondary.
+
+**When not to use:**
+- When only reporting model-based global tests without multiple pairwise contrasts.
+
+**Alternative:**
+- Report global interaction p-value; limit contrasts to prespecified clinically relevant times (e.g., 24h, 48h).
+
+---
+
+# CATEGORY C — Optional tests (supplementary insights)
+
+## C1) Time-to-event analysis for pain resolution
+**Test name:** Kaplan–Meier curves + log-rank test (and Cox model)
+
+**Purpose:** Compare time until pain becomes “none/mild” and stays there (define event).
+
+**Why appropriate:**
+1. Uses longitudinal data in a clinically intuitive way (duration of meaningful pain).
+2. Handles censoring (if dropouts before day 5).
+
+**Why it may not be appropriate:**
+- Requires a clear and valid definition of “resolution”; pain is intermittent and discretely measured.
+
+**When not to use:**
+- If follow-up is complete and short with minimal censoring; or if event definition is unstable.
+
+**Alternative:**
+- Area-under-the-curve (AUC) pain burden.
+
+---
+
+## C2) Pain burden summary: AUC comparison
+**Test name:** Compare **pain AUC** between groups (t-test or Mann–Whitney)
+
+**Purpose:** Summarize overall postoperative pain experience into one metric.
+
+**Why appropriate:**
+1. Captures both intensity and duration.
+2. Avoids multiple time-point testing.
+
+**Why it may not be appropriate:**
+- Requires numeric pain scores; if only categories available, conversion may be arbitrary.
+
+**When not to use:**
+- If VAS is only recorded as 4 categories and no raw values exist.
+
+**Alternative:**
+- Use ordinal mixed model as primary; or compute AUC on category midpoints with sensitivity analyses.
+
+---
+
+## C3) Agreement/quality checks for microbiology counts
+**Test name:** Descriptive diagnostics + outlier influence (Cook’s distance) on log CFU model
+
+**Purpose:** Assess robustness of bacterial outcome to extreme CFU values.
+
+**Why appropriate:**
+1. CFU counts can have extreme values driving results.
+2. Improves transparency and reproducibility.
+
+**Why it may not be appropriate:**
+- Not an inferential “test” per se; more diagnostic.
+
+**When not to use:**
+- Never strictly “not to use,” but do not present as hypothesis testing.
+
+**Alternative:**
+- Robust regression; trimmed means.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Independent-samples t-test on raw CFU/mL**
+   - CFU is typically highly skewed, non-negative, often zero-inflated; violates normality/variance assumptions and yields misleading inference.
+
+2. **Repeated-measures ANOVA on ordinal pain categories**
+   - Assumes continuous normally distributed outcomes and equal intervals; ordinal categories do not meet these requirements.
+
+3. **Multiple separate chi-square tests at each pain time point without multiplicity control**
+   - Inflates type I error; ignores within-subject correlation across times.
+
+4. **Pearson correlation between group (binary) and pain severity**
+   - Not appropriate for comparing groups on ordinal repeated outcomes; correlation does not address group effect over time.
+
+5. **Simple linear regression for tablet counts**
+   - Count outcome violates linear model assumptions; predictions can be negative; heteroscedasticity and non-normal residuals likely.
+
+---
+
+## TASK 4 — Summary justification of overall analytical approach
+
+The study is a two-arm randomized clinical trial with (i) **longitudinal ordinal pain outcomes**, (ii) **paired pre/post microbiological counts**, and (iii) **binary/ordinal adverse outcomes**. Therefore, the core analysis should use **(1) ordinal mixed-effects (or GEE) models** to properly handle repeated pain measurements and **(2) baseline-adjusted models on log-transformed CFU** (or appropriate count models) to compare bacterial reduction while respecting distributional properties. Binary endpoints (flare-up) should be compared using **exact/ logistic methods** suitable for small samples and rare events, complemented by effect sizes and sensitivity analyses.

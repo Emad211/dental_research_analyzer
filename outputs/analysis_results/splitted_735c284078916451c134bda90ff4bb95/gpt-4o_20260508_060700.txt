@@ -1,0 +1,152 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_735c284078916451c134bda90ff4bb95.pdf
+Status : ok
+Time   : 20260508_060700
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:
+   - Randomized, parallel-group, sham-controlled clinical trial with two arms.
+
+2. **Objective**:
+   - To compare the effect of low-level laser therapy (LLLT) on postoperative pain after single-visit endodontic retreatment (ER) of mandibular molars.
+
+3. **Groups**:
+   - **Intervention Group**: LLLT after single-visit retreatment.
+   - **Control Group**: Mock laser (sham) after single-visit retreatment.
+
+4. **Sample Size**:
+   - Total randomized: 36 participants.
+   - Intervention group: 18 participants.
+   - Control group: 18 participants.
+
+5. **Eligibility Criteria**:
+   - **Inclusion**:
+     - Patients in good health based on medical history and verbal questioning.
+     - Scheduled for root canal retreatment on symptomatic first or second mandibular molars.
+     - Mandibular molars with previous root canal treatment and a PAI (Periapical Index) score of 2 or 3.
+   - **Exclusion**:
+     - Patients who consumed analgesics during the study period were excluded and replaced.
+
+6. **Randomization**:
+   - Achieved using a web-based algorithm (www.random.org).
+
+7. **Intervention Details**:
+   - **LLLT Group**:
+     - 980-nm diode laser.
+     - Energy density: 6.89 W/cm².
+     - Power: 0.5 W.
+     - Tip diameter: 10 mm.
+     - Duration: 15 seconds.
+     - Laser applied to soft tissues covering mesial and distal apices of the tooth from the buccal side, with the tip held 10 mm from the mucosa.
+   - **Sham Group**:
+     - Laser handpiece positioned similarly but not activated.
+
+8. **Outcome Measures**:
+   - **Primary Outcome**: Postoperative pain levels measured using a Visual Analog Scale (VAS).
+     - Time points: 4, 8, 12, and 24 hours; 2, 3, and 7 days post-treatment.
+   - **Secondary Outcome**: Analgesic consumption (dosage and time).
+
+9. **Data Collection**:
+   - Pain levels recorded by patients on VAS scales.
+   - Patients contacted by phone to remind them to record pain levels.
+   - Analgesic consumption recorded in a home questionnaire.
+
+10. **Blinding**:
+    - Patients were blinded to the intervention (sham-controlled).
+    - Clinician administering the laser was different from the clinician recording the outcomes.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Independent Samples t-test (or Mann-Whitney U test if assumptions are violated).
+   - **Purpose**: Compare mean postoperative pain scores between the LLLT and sham groups at each time point.
+   - **Why Appropriate**:
+     1. The study involves two independent groups.
+     2. The primary outcome (VAS scores) is continuous and measured at multiple time points.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normality of data distribution, which may not hold for VAS scores.
+   - **When This Test Should NOT Be Used**:
+     - If the data are non-normally distributed or contain significant outliers.
+   - **Alternative**: Mann-Whitney U test (non-parametric).
+
+2. **Test Name**: Repeated Measures ANOVA (or Mixed-Effects Model if assumptions are violated).
+   - **Purpose**: Assess changes in pain scores over time within and between groups.
+   - **Why Appropriate**:
+     1. Pain scores are measured repeatedly over time.
+     2. Allows evaluation of both time and group effects, as well as their interaction.
+   - **Why It May Not Be Appropriate**:
+     - Assumes sphericity, which may not hold.
+   - **When This Test Should NOT Be Used**:
+     - If sphericity is violated and cannot be corrected using adjustments like Greenhouse-Geisser.
+   - **Alternative**: Mixed-effects model (handles missing data and does not require sphericity).
+
+3. **Test Name**: Chi-Square Test (or Fisher’s Exact Test if sample size is small).
+   - **Purpose**: Compare proportions of participants consuming analgesics between groups.
+   - **Why Appropriate**:
+     1. The variable (analgesic consumption) is categorical.
+     2. Suitable for comparing proportions between two independent groups.
+   - **Why It May Not Be Appropriate**:
+     - Requires a sufficiently large sample size for valid results.
+   - **When This Test Should NOT Be Used**:
+     - If expected cell counts are <5.
+   - **Alternative**: Fisher’s Exact Test.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Effect Size Analysis (e.g., Cohen’s d).
+   - **Purpose**: Quantify the magnitude of the difference in pain scores between groups.
+   - **Why Appropriate**:
+     1. Provides a standardized measure of the intervention effect.
+     2. Useful for interpreting clinical significance.
+   - **Why It May Not Be Appropriate**:
+     - Does not account for repeated measures or time effects.
+   - **When This Test Should NOT Be Used**:
+     - If the primary analysis shows no significant group difference.
+   - **Alternative**: None; effect size is a descriptive measure.
+
+2. **Test Name**: Kaplan-Meier Survival Analysis.
+   - **Purpose**: Analyze time to analgesic consumption between groups.
+   - **Why Appropriate**:
+     1. Accounts for censored data (e.g., participants who never consumed analgesics).
+     2. Suitable for time-to-event data.
+   - **Why It May Not Be Appropriate**:
+     - Assumes non-informative censoring, which may not hold.
+   - **When This Test Should NOT Be Used**:
+     - If the event (analgesic consumption) does not occur frequently.
+   - **Alternative**: Log-rank test.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Subgroup Analysis (e.g., stratified by PAI score).
+   - **Purpose**: Explore whether the effect of LLLT differs by baseline PAI score.
+   - **Why Appropriate**:
+     1. Provides insights into potential effect modifiers.
+     2. May guide future research on patient selection.
+   - **Why It May Not Be Appropriate**:
+     - Reduces statistical power due to smaller subgroup sizes.
+   - **When This Test Should NOT Be Used**:
+     - If subgroup sizes are too small to yield reliable results.
+   - **Alternative**: Interaction term in a regression model.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Paired t-test**:
+   - **Why Not**: The groups are independent, not paired.
+2. **ANOVA without repeated measures**:
+   - **Why Not**: Does not account for the repeated measures nature of the data.
+3. **Wilcoxon Signed-Rank Test**:
+   - **Why Not**: Designed for paired or matched data, not independent groups.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach is designed to address the primary objective of comparing postoperative pain between LLLT and sham groups while accounting for repeated measures and time effects. The inclusion of mandatory tests ensures robust primary analysis, while recommended and optional tests enhance interpretability and provide supplementary insights. Assumptions will be checked, and appropriate alternatives will be employed as needed. This comprehensive plan ensures the validity and reliability of the study’s findings.

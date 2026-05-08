@@ -1,0 +1,150 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_biology-10-00042_(2).pdf
+Status : ok
+Time   : 20260508_061806
+══════════════════════════════════════════════════════════════════════
+
+### **TASK 1: INFORMATION EXTRACTION**
+
+#### **Study Characteristics**
+1. **Study Design**: 
+   - Triple-armed, single-blinded, randomized controlled clinical trial.
+
+2. **Objective**: 
+   - To compare the instrumentation time and obturation quality of three root canal instrumentation techniques in primary molars:
+     - Adaptive XP-endo Shaper rotary files.
+     - Kedo-S pediatric rotary files.
+     - Manual hand K-files.
+
+3. **Groups**:
+   - Group 1: XP-endo Shaper rotary files (n=25).
+   - Group 2: Kedo-S pediatric rotary files (n=25).
+   - Group 3: Hand K-files (n=25).
+
+4. **Sample Size**:
+   - Total: 75 patients (25 per group).
+   - Inclusion criteria: Patients aged 4–9 years with necrotic primary molars containing three canals.
+
+5. **Variables**:
+   - **Primary Outcomes**:
+     - Instrumentation time (measured in minutes using a digital stopwatch).
+     - Quality of obturation (radiographically assessed as optimal, underfilled, or overfilled).
+   - **Independent Variable**:
+     - Type of instrumentation technique (XP-endo Shaper, Kedo-S, or Hand K-files).
+   - **Covariates**:
+     - Patient age, tooth type, and canal morphology.
+
+6. **Measurements**:
+   - **Instrumentation Time**:
+     - Measured from the introduction of the first file into the canal to the final saline irrigation.
+   - **Quality of Obturation**:
+     - Radiographic evaluation using O’Riordan and Coll’s classification:
+       - Optimal: 1 mm short of the apex.
+       - Underfilled: 2 mm short of the apex.
+       - Overfilled: Beyond the apex.
+
+7. **Data Collection Methods**:
+   - Randomization: Computer-generated randomization.
+   - Blinding: Single-blinded (evaluating observer and analyst were blinded; operator was not blinded due to the recognizable characteristics of the files).
+   - Ethical Approval: Approved by the Institutional Review Board (CDSH/IEC/2018-19/004).
+   - Informed Consent: Obtained from parents of all participants.
+
+8. **Instrumentation Protocols**:
+   - **XP-endo Shaper**:
+     - Speed: 800 rpm; Torque: 1 Ncm.
+     - Used with light vertical strokes and irrigation with 2.5% NaOCl and EDTA.
+   - **Kedo-S Rotary Files**:
+     - Speed: 250 rpm; Torque: 2.2 Ncm.
+     - Used with in-and-out motion and irrigation with 2.5% NaOCl and EDTA.
+   - **Hand K-files**:
+     - Quarter-turn-and-pull motion with sequential sizes (#15 to #30).
+     - Irrigation with 2.5% NaOCl and EDTA.
+
+---
+
+### **TASK 2: STATISTICAL ANALYSIS PLAN**
+
+#### **CATEGORY A – MANDATORY**
+1. **Test Name**: One-Way ANOVA.
+   - **Purpose**: To compare the mean instrumentation times across the three groups.
+   - **Why Appropriate**:
+     1. The study involves comparing means of a continuous variable (instrumentation time) across three independent groups.
+     2. The design assumes normal distribution and homogeneity of variances, which can be tested.
+   - **Why It May Not Be Appropriate**:
+     - If the assumption of homogeneity of variances is violated.
+   - **When This Test Should NOT Be Used**:
+     - If the data are not normally distributed and cannot be transformed.
+   - **Alternative**: Kruskal-Wallis test (non-parametric alternative).
+
+2. **Test Name**: Chi-Square Test of Independence.
+   - **Purpose**: To compare the distribution of obturation quality (categorical variable: optimal, underfilled, overfilled) across the three groups.
+   - **Why Appropriate**:
+     1. The outcome variable (obturation quality) is categorical.
+     2. The groups are independent, and the sample size is sufficient for chi-square analysis.
+   - **Why It May Not Be Appropriate**:
+     - If expected cell frequencies are too low (<5 in >20% of cells).
+   - **When This Test Should NOT Be Used**:
+     - If the sample size is too small for chi-square assumptions.
+   - **Alternative**: Fisher’s Exact Test (for small sample sizes).
+
+#### **CATEGORY B – RECOMMENDED**
+1. **Test Name**: Post-Hoc Pairwise Comparisons (e.g., Tukey’s HSD or Bonferroni correction).
+   - **Purpose**: To identify which specific groups differ in instrumentation time if the ANOVA test is significant.
+   - **Why Appropriate**:
+     1. Necessary to pinpoint group differences after a significant ANOVA result.
+     2. Controls for Type I error rate in multiple comparisons.
+   - **Why It May Not Be Appropriate**:
+     - If ANOVA assumptions are violated.
+   - **When This Test Should NOT Be Used**:
+     - If the overall ANOVA is not significant.
+   - **Alternative**: Pairwise Mann-Whitney U tests with Bonferroni correction.
+
+2. **Test Name**: Cohen’s d or Eta-Squared.
+   - **Purpose**: To calculate effect size for the differences in instrumentation time and obturation quality.
+   - **Why Appropriate**:
+     1. Provides a measure of the magnitude of the observed differences.
+     2. Complements hypothesis testing by quantifying practical significance.
+   - **Why It May Not Be Appropriate**:
+     - If data are not normally distributed.
+   - **When This Test Should NOT Be Used**:
+     - If the primary analysis (e.g., ANOVA) is invalid.
+   - **Alternative**: Rank-biserial correlation for non-parametric data.
+
+#### **CATEGORY C – OPTIONAL**
+1. **Test Name**: Logistic Regression.
+   - **Purpose**: To model the probability of achieving optimal obturation quality based on instrumentation technique and other covariates (e.g., age, tooth type).
+   - **Why Appropriate**:
+     1. Allows for adjustment of covariates.
+     2. Provides odds ratios for the likelihood of optimal obturation.
+   - **Why It May Not Be Appropriate**:
+     - If the sample size is insufficient for multivariable modeling.
+   - **When This Test Should NOT Be Used**:
+     - If the outcome variable has sparse categories.
+   - **Alternative**: Stratified analysis or subgroup analysis.
+
+2. **Test Name**: Kaplan-Meier Survival Analysis.
+   - **Purpose**: To assess the time to complete instrumentation across the three groups.
+   - **Why Appropriate**:
+     1. Useful for time-to-event data.
+     2. Provides a visual comparison of instrumentation time distributions.
+   - **Why It May Not Be Appropriate**:
+     - If there is no censoring in the data (e.g., all instrumentation times are recorded without interruption).
+   - **When This Test Should NOT Be Used**:
+     - If the data do not represent time-to-event outcomes.
+   - **Alternative**: Descriptive statistics or ANOVA.
+
+---
+
+### **TASK 3: INAPPROPRIATE TESTS**
+1. **Independent t-test**:
+   - **Why Not Appropriate**: This test is limited to comparing two groups, whereas the study involves three groups.
+2. **Paired t-test**:
+   - **Why Not Appropriate**: This test is for paired or dependent samples, whereas the groups in this study are independent.
+3. **Repeated Measures ANOVA**:
+   - **Why Not Appropriate**: This test is for within-subject designs, but this study involves between-subject comparisons.
+
+---
+
+### **TASK 4: SUMMARY**
+The analytical approach involves comparing instrumentation times and obturation quality across three independent groups using robust statistical methods. Primary analyses (ANOVA and chi-square tests) address the study's main objectives, while recommended and optional tests enhance the depth of analysis. The plan ensures adherence to assumptions, with alternatives provided for violations. This comprehensive approach balances rigor and practicality, ensuring valid and interpretable results.

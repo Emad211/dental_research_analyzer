@@ -1,0 +1,133 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_87b5c45e-f51c-46ea-936a-5e4fa5e12135_70645_-_khoa_pham.pdf
+Status : ok
+Time   : 20260508_060900
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: 
+   - Parallel group randomized controlled trial (RCT) with two arms.
+   - Conducted from May 2019 to March 2020.
+
+2. **Objective**: 
+   - To evaluate postoperative pain after root canal treatment using a traditional endodontic motor with unconnected EAL versus a motor with connected EAL.
+   - Null hypothesis: No difference in pain intensities between the two groups.
+
+3. **Groups**:
+   - **Group 1**: Instrumentation with traditional endodontic motor and unconnected EAL.
+   - **Group 2**: Instrumentation with endodontic motor connected to EAL.
+
+4. **Sample Size**:
+   - Calculated using a formula for comparison of means from two independent samples.
+   - Target sample size: 42 patients (21 per group), accounting for potential loss to follow-up.
+
+5. **Participants**:
+   - **Inclusion Criteria**: Healthy patients without systemic diseases, symptomatic irreversible pulpitis or apical periodontitis, first or second molars.
+   - **Exclusion Criteria**: Systemic diseases, sinus tract, swelling, clenching/bruxism, severely damaged teeth, severe periodontal disease, resorption, previously treated teeth, root cracks, analgesic use within 24 hours, absence of opposing tooth, age <18 years.
+
+6. **Randomization**:
+   - Patients were randomly assigned to groups using an online randomizer (www.randomizer.org).
+
+7. **Blinding**:
+   - Patients were blinded to the treatment modality.
+
+8. **Variables**:
+   - **Independent Variable**: Type of instrumentation (traditional motor with unconnected EAL vs. motor with connected EAL).
+   - **Dependent Variable**: Postoperative pain intensity.
+   - **Covariates**: Age, gender, tooth type, preoperative pain level, analgesic intake.
+
+9. **Measurements**:
+   - Pain intensity measured using the Heft Parker Visual Analogue Scale (HP-VAS), a 170-mm scale divided into four categories (no pain, mild, moderate, severe).
+   - Pain recorded at 6, 24, 48, 72 hours, and one week post-treatment.
+   - Percussion test performed at one week post-treatment.
+
+10. **Interventions**:
+    - Both groups underwent root canal treatment using Proglider and ProTaper Next (PTN) instruments.
+    - Group 1: Working length determined using ProPex Pixi EAL and confirmed radiographically.
+    - Group 2: Working length determined using E Connect S motor with E-Pex Pro EAL, which automatically adjusted motor speed upon reaching the apex.
+
+11. **Data Collection**:
+    - Preoperative and postoperative pain levels, analgesic intake, and demographic data were recorded.
+
+12. **Statistical Analysis**:
+    - Sample size calculation included power of 80% and significance level of 0.05.
+    - No specific statistical tests were explicitly mentioned in the provided text.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Independent Samples t-Test (or Mann-Whitney U Test if assumptions are violated).
+   - **Purpose**: Compare mean postoperative pain scores between the two groups at each time point.
+   - **Why Appropriate**: 
+     1. The outcome variable (pain score) is continuous.
+     2. The study design involves two independent groups.
+   - **Why It May Not Be Appropriate**: Assumes normal distribution and homogeneity of variances, which may not hold for pain scores.
+   - **When This Test Should NOT Be Used**: If data are not normally distributed or variances are unequal.
+   - **Alternative**: Mann-Whitney U Test for non-parametric data.
+
+2. **Test Name**: Repeated Measures ANOVA (or Friedman Test if assumptions are violated).
+   - **Purpose**: Analyze changes in pain scores over time within and between groups.
+   - **Why Appropriate**:
+     1. Pain scores are measured at multiple time points.
+     2. Allows for testing both within-subject (time) and between-subject (group) effects.
+   - **Why It May Not Be Appropriate**: Assumes sphericity and normality of residuals.
+   - **When This Test Should NOT Be Used**: If sphericity is violated or data are non-parametric.
+   - **Alternative**: Friedman Test for non-parametric repeated measures.
+
+3. **Test Name**: Chi-Square Test (or Fisher’s Exact Test).
+   - **Purpose**: Compare proportions of patients requiring analgesics between groups.
+   - **Why Appropriate**:
+     1. The variable (analgesic use) is categorical.
+     2. Compares proportions between two independent groups.
+   - **Why It May Not Be Appropriate**: Small sample size in some categories may lead to low expected frequencies.
+   - **When This Test Should NOT Be Used**: If expected cell counts are <5.
+   - **Alternative**: Fisher’s Exact Test.
+
+#### CATEGORY B – RECOMMENDED
+4. **Test Name**: Mixed-Effects Model.
+   - **Purpose**: Account for both fixed effects (group, time) and random effects (individual variability).
+   - **Why Appropriate**:
+     1. Handles repeated measures data with missing values.
+     2. Does not require sphericity assumption.
+   - **Why It May Not Be Appropriate**: Requires advanced statistical software and expertise.
+   - **When This Test Should NOT Be Used**: If the dataset is too small to estimate random effects reliably.
+   - **Alternative**: Repeated Measures ANOVA or Friedman Test.
+
+5. **Test Name**: Effect Size Calculation (e.g., Cohen’s d).
+   - **Purpose**: Quantify the magnitude of differences between groups.
+   - **Why Appropriate**:
+     1. Provides additional context to p-values.
+     2. Useful for clinical interpretation of results.
+   - **Why It May Not Be Appropriate**: Does not test statistical significance.
+   - **When This Test Should NOT Be Used**: If data are highly skewed.
+   - **Alternative**: Non-parametric effect size measures (e.g., rank-biserial correlation).
+
+#### CATEGORY C – OPTIONAL
+6. **Test Name**: Subgroup Analysis (e.g., stratified by gender or tooth type).
+   - **Purpose**: Explore potential effect modifiers.
+   - **Why Appropriate**:
+     1. Identifies whether group differences vary by demographic or clinical factors.
+     2. Provides insights into heterogeneity of treatment effects.
+   - **Why It May Not Be Appropriate**: Reduces statistical power due to smaller sample sizes in subgroups.
+   - **When This Test Should NOT Be Used**: If subgroup sizes are too small.
+   - **Alternative**: Interaction terms in regression models.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Paired t-Test**:
+   - **Reason**: This test is for paired data, but the study involves independent groups.
+2. **One-Way ANOVA**:
+   - **Reason**: This test is for comparing more than two groups, but the study has only two groups.
+3. **Pearson Correlation**:
+   - **Reason**: This test assesses the relationship between two continuous variables, not group differences.
+
+---
+
+### TASK 4: SUMMARY
+The statistical analysis plan is designed to address the primary objective of comparing postoperative pain between two groups while accounting for repeated measures over time. The plan includes robust tests to handle potential violations of assumptions and provides recommendations for enhancing the rigor of the analysis. By combining mandatory, recommended, and optional tests, the analysis ensures both statistical validity and clinical relevance.

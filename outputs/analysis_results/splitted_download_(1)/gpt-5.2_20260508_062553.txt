@@ -1,0 +1,240 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_download_(1).pdf
+Status : ok
+Time   : 20260508_062553
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — INFORMATION EXTRACTION (from Introduction/Methods)
+
+### Study identification
+- **Title/aim:** Economic evaluation (cost-minimization) of **four post-retained restorative strategies** for endodontically treated teeth.
+- **Design:** **Prospective health economic evaluation nested within a parallel-arm randomized clinical trial (RCT)**.
+- **Registration/ethics/reporting:** ClinicalTrials.gov **NCT01461239**; ethics protocol **122/2009**; reporting followed **CHEERS**.
+
+### Objectives/hypothesis
+- **Objective:** Economically assess and compare **costs** of four restorative strategies for endodontically treated teeth, under the premise that **clinical performance was similar** (required for cost-minimization).
+- **Hypothesis:** **Glass fiber post (GFP) + direct composite resin restoration** is **less expensive** than strategies using **cast post and core (CPC)** or **GFP + metal-ceramic crown**.
+
+### Setting/operators
+- **Setting:** Dental school clinic.
+- **Providers:** **25 undergraduate students**, supervised.
+
+### Participants/units and sample size
+- **Participants (patients):** **141**
+- **Teeth restored (analytic units potentially):** **225 teeth**
+- Implication: **clustered data** (multiple teeth within patient).
+
+### Eligibility criteria
+- **Inclusion:** good oral health (no active caries/periodontal disease); ≥1 endodontically treated anterior/posterior tooth **with or without ferrule** (2 mm or 0–0.5 mm) requiring intraradicular retention; **bilateral posterior occlusal contact**.
+- **Exclusion:** endodontically treated teeth with periodontal or occlusal problem; large prosthesis (Kennedy class I/II) in opposing arch.
+
+### Interventions/comparators (4 strategies; ferrule-dependent randomization)
+Randomization took **tooth type (anterior/premolar/molar)** into account.
+
+**Stratum 1: No ferrule (0–0.5 mm)**
+- Randomized to:
+  1) **GFP + metal-ceramic crown (MC)**: **n = 71 teeth**
+  2) **CPC + metal-ceramic crown (MC)**: **n = 79 teeth**
+- Note: *all received single MC crowns* in this stratum.
+
+**Stratum 2: Ferrule present (2 mm)**
+- All received **GFP**, then second randomization to:
+  3) **GFP + metal-ceramic crown (MC)**: **n = 36 teeth**
+  4) **GFP + direct composite resin restoration (CR)**: **n = 39 teeth**
+
+### Randomization/allocation
+- **Sequence generation:** computerized random number tables.
+- **Allocation concealment:** sealed opaque envelopes by third party.
+
+### Materials/procedures (relevant to costing)
+- Crowns: CoCr alloy; cement: self-adhesive resin cement (RelyX U100/U200).
+- Posts: GFP luted with regular or self-adhesive dual resin cement (RelyX ARC or U100/U200).
+
+### Outcomes/variables explicitly stated here
+- Economic outcome: **costs** (cost-minimization implies compare costs given similar clinical outcomes).
+- Clinical outcomes referenced (from parent RCT): **success and survival** (but exact definitions/time horizon not provided in excerpt).
+- Stratification variables: **ferrule status** (none vs 2 mm), **tooth type** (anterior/premolar/molar).
+
+### Sample size statement (as reported)
+- Under “no difference between treatments”: **64 participants** to achieve **90% confidence** that two-sided **90% CI** excludes difference >18% (clinical outcome context).
+- Also reports power: **90% power** (α=0.05) to detect incidence rate ratios ≥1.3 given success rates 97.14% vs 74.63% (suggests clinical endpoint considerations; not directly cost endpoint).
+
+---
+
+## TASK 2 — STATISTICAL ANALYSIS PLAN
+
+### General analysis principles (apply to all categories)
+- **Analysis population:** intention-to-treat at the **tooth level**, while accounting for **within-patient clustering** (multiple teeth per participant).
+- **Primary estimand (economic):** difference in **mean total cost per tooth restored** across the **four strategies**, and/or within relevant ferrule strata (because treatment options differ by ferrule).
+- **Key design feature to respect:** **stratified randomization** by tooth type; **two-stage randomization** conditional on ferrule status.
+- **Cost distribution:** expect **right-skewness**; plan methods robust to non-normality.
+- **Uncertainty reporting:** 95% CIs for cost differences (and medians if used), preferably via **bootstrap** with clustering.
+
+---
+
+### CATEGORY A — MANDATORY (analysis would be incomplete without)
+
+#### A1) Descriptive statistics by group (with clustering-aware summaries)
+- **Test/name:** Descriptive summaries (means/SD, medians/IQR; counts/%).
+- **Purpose:** Characterize baseline and outcomes by restorative strategy and ferrule stratum.
+- **Why appropriate (≥2):**
+  1) Required to interpret clinical/economic comparability and generalizability.
+  2) Cost data are skewed; reporting both mean and median is informative for decision-making and robustness.
+- **Why may not be appropriate (≥1):** Not inferential; cannot quantify uncertainty alone.
+- **When NOT to use:** Never “not used,” but avoid relying solely on means if extreme skew/outliers dominate.
+- **Alternative if assumptions violated:** Not applicable (no assumptions), but add robust summaries (trimmed mean).
+
+#### A2) Primary cost comparison using a regression model that accounts for clustering
+- **Test/name:** **Generalized Linear Model (GLM) for costs** with **cluster-robust SEs** or **GEE** (e.g., Gamma family, log link).
+- **Purpose:** Estimate adjusted mean cost differences between strategies while accounting for patient-level clustering and stratification factors.
+- **Why appropriate (≥2):**
+  1) **Costs are typically skewed and positive**; Gamma-log GLM is standard for cost outcomes.
+  2) **Multiple teeth per patient** violates independence; cluster-robust/GEE addresses correlation.
+- **Why may not be appropriate (≥1):** Gamma may fit poorly if costs include many zeros or have heavy tails not well captured.
+- **When this test should NOT be used:** If costs include **substantial zeros** (e.g., no follow-up/repair costs) requiring a two-part model; or if model diagnostics show severe misfit.
+- **Alternative if assumptions are violated:**
+  - **Two-part (hurdle) model**: logistic for any-cost + GLM for positive costs.
+  - **Log-normal model** with smearing estimator for retransformation.
+  - **Nonparametric cluster bootstrap** for mean difference.
+
+#### A3) Global comparison across four groups + pairwise comparisons with multiplicity control
+- **Test/name:** **Wald test / likelihood ratio test** for overall group effect in the GLM, plus **planned pairwise contrasts** with multiplicity adjustment (e.g., Holm).
+- **Purpose:** Determine whether costs differ among strategies and identify where differences lie.
+- **Why appropriate (≥2):**
+  1) Four-arm comparison requires a global test before/alongside pairwise inference.
+  2) Controls type I error inflation from multiple contrasts.
+- **Why may not be appropriate (≥1):** Multiplicity control reduces power; if study is explicitly decision-analytic with pre-specified primary contrast only, broad pairwise testing may be unnecessary.
+- **When NOT to use:** If only one **pre-specified primary comparison** is justified (e.g., GFP+CR vs all others) and others are exploratory.
+- **Alternative if assumptions are violated:** Bootstrap-based simultaneous CIs; permutation tests respecting clustering (less common but possible).
+
+#### A4) Verification that cost-minimization framework is justified (clinical equivalence/non-inferiority evidence from RCT)
+- **Test/name:** **Equivalence or non-inferiority analysis** for primary clinical outcome(s) (success/survival), consistent with the parent RCT margin (the text mentions an 18% margin context).
+- **Purpose:** Cost-minimization is valid only if outcomes are **clinically equivalent** (or non-inferior) across strategies.
+- **Why appropriate (≥2):**
+  1) Cost-minimization requires demonstrating no meaningful clinical differences, not merely “non-significant.”
+  2) The methods cite a margin-like concept (>18% difference excluded), aligning with equivalence framing.
+- **Why may not be appropriate (≥1):** The excerpt does not provide complete endpoint definitions/time horizon; equivalence margin must be clinically pre-specified.
+- **When NOT to use:** If the parent RCT was not designed for equivalence/non-inferiority and no credible margin exists; then use cost-effectiveness instead.
+- **Alternative if assumptions are violated:** If equivalence cannot be supported, switch to **cost-effectiveness analysis** (incremental cost per failure avoided; ICER).
+
+---
+
+### CATEGORY B — RECOMMENDED (improves rigor)
+
+#### B1) Mixed-effects model for costs (patient random intercept)
+- **Test/name:** **Generalized linear mixed model (GLMM)** (e.g., Gamma-log with random intercept for patient).
+- **Purpose:** Model tooth-level costs while explicitly modeling within-patient correlation.
+- **Why appropriate (≥2):**
+  1) Naturally handles **multiple teeth per participant**.
+  2) Provides subject-level variance estimates; may improve efficiency vs robust SEs.
+- **Why may not be appropriate (≥1):** Can be unstable with small cluster sizes or convergence issues under Gamma/log.
+- **When NOT to use:** If many patients contribute only one tooth and convergence/fit is poor; or if model complexity is not supported by data.
+- **Alternative if assumptions are violated:** GEE with robust SE; cluster bootstrap.
+
+#### B2) Cluster bootstrap for mean cost differences and CIs
+- **Test/name:** **Nonparametric bootstrap resampling at patient level**.
+- **Purpose:** Obtain CIs for mean/median cost differences without heavy distributional assumptions and preserving clustering.
+- **Why appropriate (≥2):**
+  1) Cost data are skewed; bootstrap CIs are often more reliable than normal approximations.
+  2) Resampling by patient preserves correlation among teeth.
+- **Why may not be appropriate (≥1):** With few clusters, bootstrap performance degrades.
+- **When NOT to use:** Very small number of patients (clusters) or extreme leverage points dominating.
+- **Alternative if assumptions are violated:** Use model-based robust SEs; Bayesian models.
+
+#### B3) Adjustment for stratification factors and prognostic covariates
+- **Test/name:** Multivariable GLM/GLMM including **tooth type**, ferrule stratum, and potentially other baseline factors available (not listed here).
+- **Purpose:** Improve precision and correct for any chance imbalance despite randomization.
+- **Why appropriate (≥2):**
+  1) Randomization was stratified by **tooth type**; including it respects design and improves efficiency.
+  2) Costs may differ by tooth type and ferrule, reducing residual variance.
+- **Why may not be appropriate (≥1):** Overfitting if too many covariates relative to sample.
+- **When NOT to use:** If covariate data are missing extensively or measured post-randomization.
+- **Alternative if assumptions are violated:** Penalized regression; covariate adjustment via ANCOVA-style models on transformed costs.
+
+#### B4) Interaction testing (effect modification by ferrule and tooth type)
+- **Test/name:** **Interaction terms** (group×ferrule, group×tooth type) in cost model.
+- **Purpose:** Evaluate whether cost differences depend on ferrule presence or tooth type.
+- **Why appropriate (≥2):**
+  1) Treatment options differ by ferrule status (two randomization pathways), so heterogeneity is plausible.
+  2) Cost drivers (crown vs composite) likely vary by tooth type.
+- **Why may not be appropriate (≥1):** Limited sample within subgroups yields low power and unstable estimates.
+- **When NOT to use:** If subgroup sizes are too small or not pre-specified.
+- **Alternative if assumptions are violated:** Stratified analyses with cautious interpretation; Bayesian hierarchical partial pooling.
+
+#### B5) Missing data handling with multiple imputation (if applicable)
+- **Test/name:** **Multiple imputation** (preferably multilevel MI if tooth-level and patient-level variables).
+- **Purpose:** Reduce bias and improve efficiency if cost/outcome data are missing.
+- **Why appropriate (≥2):**
+  1) Missing follow-up/repair costs can bias mean costs if not MCAR.
+  2) MI can incorporate predictors of missingness and outcome.
+- **Why may not be appropriate (≥1):** If missingness is MNAR and no sensitivity analysis is done.
+- **When NOT to use:** Very high missingness with weak predictors; structural missingness.
+- **Alternative if assumptions are violated:** Pattern-mixture or selection models; best/worst-case sensitivity analyses.
+
+---
+
+### CATEGORY C — OPTIONAL (supplementary insights)
+
+#### C1) Nonparametric comparison of cost distributions
+- **Test/name:** **Kruskal–Wallis test** (and Dunn’s post hoc).
+- **Purpose:** Compare group distributions (median ranks).
+- **Why appropriate (≥2):**
+  1) Costs are skewed and may have outliers.
+  2) Provides a distributional check complementing mean-based economic comparisons.
+- **Why may not be appropriate (≥1):** Ignores clustering and does not compare means (key for economic evaluation).
+- **When NOT to use:** When multiple teeth per patient are present and clustering is substantial (standard KW assumes independence).
+- **Alternative if assumptions are violated:** Cluster-level permutation tests; GEE/GLMM; bootstrap comparisons.
+
+#### C2) Time-to-event analysis for survival (if survival horizon available)
+- **Test/name:** **Kaplan–Meier curves + Cox proportional hazards model** with robust SE (shared frailty for patient).
+- **Purpose:** Describe/compare restoration/tooth survival over time and support the “similar performance” claim.
+- **Why appropriate (≥2):**
+  1) Handles censoring and varying follow-up.
+  2) Produces clinically interpretable hazard ratios and survival curves.
+- **Why may not be appropriate (≥1):** Requires event times and censoring indicators; not provided in excerpt.
+- **When NOT to use:** If only binary success at fixed time is available.
+- **Alternative if assumptions are violated:** Accelerated failure time model; restricted mean survival time.
+
+#### C3) Sensitivity analyses for costing assumptions (economic evaluation)
+- **Test/name:** **Deterministic one-way sensitivity analysis** and/or **probabilistic sensitivity analysis** (Monte Carlo) on key cost inputs (unit prices, time costs), if such inputs exist in full paper.
+- **Purpose:** Assess robustness of cost conclusions to plausible variation in cost parameters.
+- **Why appropriate (≥2):**
+  1) Costs are context-specific; sensitivity analysis increases external validity.
+  2) Identifies which parameters drive conclusions.
+- **Why may not be appropriate (≥1):** Requires explicit decomposition of costs into components and distributions.
+- **When NOT to use:** If only observed totals without cost-component data are available.
+- **Alternative if assumptions are violated:** Scenario analyses using alternative unit cost sources.
+
+#### C4) Agreement between costing approaches (if both micro- and gross-costing exist)
+- **Test/name:** **Bland–Altman** / concordance analyses.
+- **Purpose:** Compare two costing methods (if both were used).
+- **Why appropriate (≥2):** Evaluates bias and limits of agreement; informs method choice.
+- **Why may not be appropriate (≥1):** Not relevant unless two costing methods were actually applied.
+- **When NOT to use:** Single costing method only.
+- **Alternative:** Not applicable.
+
+---
+
+## TASK 3 — INAPPROPRIATE TESTS (should NOT be used)
+
+1) **Multiple independent-samples t-tests without multiplicity control**
+- **Why not:** Inflates type I error; ignores four-arm design and clustering of teeth within patients.
+
+2) **One-way ANOVA on raw costs assuming normality and independence**
+- **Why not:** Cost data are typically right-skewed/heteroscedastic; independence violated due to multiple teeth per participant.
+
+3) **Chi-square tests on tooth-level outcomes ignoring clustering**
+- **Why not:** Teeth within the same patient are correlated; standard chi-square yields incorrect SEs/p-values.
+
+4) **Simple linear regression on log(cost) with naive back-transformation**
+- **Why not:** Produces biased mean estimates unless a smearing correction (or appropriate model) is used; also must address clustering.
+
+5) **Stepwise variable selection as primary analytic strategy**
+- **Why not:** Unstable inference, inflated error rates, and undermines randomized design principles.
+
+---
+
+## TASK 4 — SUMMARY (overall analytical approach)
+
+Use a **cost-minimization framework** only after confirming **clinical equivalence/non-inferiority** of the restorative strategies on success/survival from the parent RCT. The primary economic analysis should compare **mean total costs per tooth** across the four strategies using **cost models (GLM/GLMM or GEE)** that properly handle **skewed cost data**, incorporate the **randomization structure/stratification (tooth type, ferrule pathway)**, and account for **within-patient clustering** (multiple teeth per participant). Report **adjusted cost differences with robust/bootstrapped CIs**, with sensitivity/subgroup analyses as supporting evidence.

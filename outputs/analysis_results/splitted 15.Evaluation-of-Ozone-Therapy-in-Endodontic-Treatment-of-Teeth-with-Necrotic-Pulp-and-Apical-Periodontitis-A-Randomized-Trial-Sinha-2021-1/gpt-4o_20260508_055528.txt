@@ -1,0 +1,148 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted 15.Evaluation-of-Ozone-Therapy-in-Endodontic-Treatment-of-Teeth-with-Necrotic-Pulp-and-Apical-Periodontitis-A-Randomized-Trial-Sinha-2021-1.pdf
+Status : ok
+Time   : 20260508_055528
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### **Study Characteristics**
+1. **Study Design**:  
+   - Randomized controlled trial (RCT) with a parallel design.
+   - Blinded for patients, assessor, and statistician; operator not blinded.
+
+2. **Study Objectives**:  
+   - **Primary Objective**: To evaluate and compare postendodontic pain in patients undergoing single-visit endodontics (SVE) after aqueous ozone application (no agitation, manual, sonic, and ultrasonic activation) versus no ozone treatment at baseline; 6, 12, 24, and 48 hours; and 7 days.  
+   - **Secondary Objective**: To analyze the effect of variables like sex (male/female), age group, and arch (maxilla/mandible) on postendodontic pain.
+
+3. **Study Groups**:  
+   - Group 1: Ozone treatment with no activation (NA).  
+   - Group 2: Ozone treatment with manual dynamic activation (MDA).  
+   - Group 3: Ozone treatment with passive ultrasonic activation (PUA).  
+   - Group 4: Ozone treatment with sonic activation (SA).  
+   - Group 5: No ozone treatment (Control Group).
+
+4. **Sample Size**:  
+   - Total: 120 patients randomized (24 per group).  
+   - Final analysis: Group 1 (n=21), Group 2 (n=22), Group 3 (n=21), Group 4 (n=23), Group 5 (n=23).  
+   - Power: 90%, Confidence Interval: 95%, Effect size: F = 0.383.
+
+5. **Variables**:  
+   - **Independent Variables**:  
+     - Treatment groups (NA, MDA, PUA, SA, Control).  
+     - Demographic variables: sex, age group, and arch (maxilla/mandible).  
+   - **Dependent Variable**:  
+     - Postendodontic pain measured using the Visual Analog Scale (VAS) at baseline; 6, 12, 24, and 48 hours; and 7 days.
+
+6. **Measurements**:  
+   - Pain intensity measured using a 10-cm Visual Analog Scale (VAS), ranging from "no pain" to "pain as bad as it could be."
+
+7. **Data Collection Methods**:  
+   - Pain diaries completed by patients at specified time intervals.  
+   - Blinded assessor recorded VAS scores in a master chart.
+
+8. **Randomization and Blinding**:  
+   - Randomization: Computer-generated random sequence with sealed opaque envelopes.  
+   - Blinding: Patients, assessor, and statistician blinded; operator not blinded.
+
+9. **Inclusion Criteria**:  
+   - Adults aged 18–65 years with good general health.  
+   - Single-rooted teeth with necrotic pulp and apical periodontitis.  
+   - Periapical index score <3, sound periodontal apparatus, and sufficient coronal tooth structure.
+
+10. **Exclusion Criteria**:  
+    - Systemic diseases, immunocompromised conditions, pregnancy, allergies to drugs/irrigants, sinus tracts, acute abscess, calcified canals, immature apex, mobility, and contraindications to ozone therapy.
+
+11. **Follow-Up**:  
+    - Patients followed up at 2 days and 7 days.  
+    - Exclusions: Patients taking reserve medication (ibuprofen) or with incomplete pain forms.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### **CATEGORY A – MANDATORY**
+1. **Test Name**: Repeated Measures ANOVA (RM-ANOVA).  
+   - **Purpose**: To compare VAS pain scores across time points (baseline, 6, 12, 24, 48 hours, and 7 days) within and between groups.  
+   - **Why Appropriate**:  
+     1. Longitudinal data with repeated measures for the same subjects.  
+     2. Multiple groups (5 groups) with continuous outcome (VAS scores).  
+   - **Why It May Not Be Appropriate**: Assumes sphericity, which may not hold.  
+   - **When NOT to Use**: If sphericity is violated and cannot be corrected.  
+   - **Alternative**: Mixed-effects model or Greenhouse-Geisser correction.
+
+2. **Test Name**: One-way ANOVA.  
+   - **Purpose**: To compare mean VAS scores between groups at specific time points.  
+   - **Why Appropriate**:  
+     1. Continuous outcome (VAS scores) with independent groups.  
+     2. Assesses differences between treatment protocols.  
+   - **Why It May Not Be Appropriate**: Assumes normality and homogeneity of variance.  
+   - **When NOT to Use**: If assumptions are violated.  
+   - **Alternative**: Kruskal-Wallis test.
+
+3. **Test Name**: Chi-square test.  
+   - **Purpose**: To analyze categorical variables like sex, age group, and arch distribution across groups.  
+   - **Why Appropriate**:  
+     1. Categorical data (sex, age group, arch).  
+     2. Tests for independence between variables.  
+   - **Why It May Not Be Appropriate**: Requires sufficient sample size in each category.  
+   - **When NOT to Use**: If expected cell counts are <5.  
+   - **Alternative**: Fisher’s exact test.
+
+---
+
+#### **CATEGORY B – RECOMMENDED**
+1. **Test Name**: Mixed-effects model.  
+   - **Purpose**: To analyze VAS scores over time, accounting for repeated measures and random effects.  
+   - **Why Appropriate**:  
+     1. Handles missing data and dropouts.  
+     2. Does not require sphericity assumption.  
+   - **Why It May Not Be Appropriate**: Computationally intensive.  
+   - **When NOT to Use**: If simpler models suffice.  
+   - **Alternative**: RM-ANOVA with corrections.
+
+2. **Test Name**: Post-hoc tests (e.g., Tukey’s HSD).  
+   - **Purpose**: To identify specific group differences after ANOVA.  
+   - **Why Appropriate**:  
+     1. Controls for Type I error in multiple comparisons.  
+     2. Provides pairwise comparisons.  
+   - **Why It May Not Be Appropriate**: Assumes normality and equal variances.  
+   - **When NOT to Use**: If ANOVA assumptions are violated.  
+   - **Alternative**: Pairwise Wilcoxon tests.
+
+---
+
+#### **CATEGORY C – OPTIONAL**
+1. **Test Name**: Mann-Whitney U test.  
+   - **Purpose**: To compare VAS scores between two groups at specific time points.  
+   - **Why Appropriate**:  
+     1. Non-parametric alternative for small sample sizes.  
+     2. Does not assume normality.  
+   - **Why It May Not Be Appropriate**: Less powerful than parametric tests.  
+   - **When NOT to Use**: If parametric assumptions are met.  
+   - **Alternative**: Independent t-test.
+
+2. **Test Name**: Kaplan-Meier survival analysis.  
+   - **Purpose**: To analyze time to pain resolution.  
+   - **Why Appropriate**:  
+     1. Time-to-event data (pain resolution).  
+     2. Censoring (e.g., dropouts).  
+   - **Why It May Not Be Appropriate**: Not designed for continuous outcomes like VAS scores.  
+   - **When NOT to Use**: If time-to-event is not a primary focus.  
+   - **Alternative**: Mixed-effects model.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-test**:  
+   - **Why Not Appropriate**: Compares only two groups, whereas this study has five groups.  
+2. **Pearson correlation**:  
+   - **Why Not Appropriate**: Correlation is not relevant for comparing group means or repeated measures.  
+3. **Logistic regression**:  
+   - **Why Not Appropriate**: Outcome is continuous (VAS scores), not binary or categorical.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach focuses on comparing pain scores across groups and time points while accounting for repeated measures and potential confounders. RM-ANOVA or mixed-effects models are the primary tools, supplemented by post-hoc tests and non-parametric alternatives if assumptions are violated. This ensures robust and comprehensive analysis while addressing the study's objectives.

@@ -1,0 +1,137 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_b957317e017bda3d12e1611de0784aff.pdf
+Status : ok
+Time   : 20260508_061538
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+
+1. **Study Design:**
+   - Randomized Controlled Clinical Trial (RCT).
+
+2. **Objective:**
+   - To evaluate the disinfectant effect of a 445-nm diode laser as an adjunctive therapy for reducing bacterial load in root canals after conventional disinfection.
+
+3. **Study Groups:**
+   - Group A: Additional rinsing with sodium hypochlorite (NaOCl).
+   - Group B: Laser irradiation with a 445-nm diode laser.
+   - Group C: Combination of NaOCl rinsing and laser irradiation.
+
+4. **Sample Size:**
+   - Total: 57 patients.
+   - Group size: 19 patients per group.
+
+5. **Inclusion Criteria:**
+   - Patients aged ≥18 years.
+   - Teeth with irreversible pulp disease but endodontically preservable root structure.
+   - Written informed consent.
+
+6. **Exclusion Criteria:**
+   - Acute pain after pulp removal.
+   - Antibiotic use in the past 6 months.
+   - Periodontal-endodontic lesions.
+   - Previous endodontic treatment of the affected tooth.
+   - Pregnancy.
+
+7. **Variables:**
+   - **Primary Outcome Variable:** Total bacterial load (TBL) in genome-equivalent CFUs/mL.
+   - **Secondary Variables:** Presence of specific bacterial species (e.g., *Enterococcus faecalis*, *Porphyromonas gingivalis*, etc.).
+
+8. **Measurements:**
+   - Microbiological samples collected using sterile paper points at three time points:
+     1. Baseline (after removal of temporary filling).
+     2. Post-chemomechanical preparation.
+     3. Post-adjuvant disinfection.
+   - Quantitative real-time PCR (qPCR) used for bacterial analysis.
+
+9. **Data Collection Methods:**
+   - Random assignment of patients to groups.
+   - Standardized treatment protocol for all groups.
+   - Microbiological samples sent to an external laboratory for analysis.
+
+10. **Interventions:**
+    - Chemomechanical preparation with NaOCl and EDTA.
+    - Group-specific disinfection protocols:
+      - NaOCl rinsing (Group A).
+      - Laser irradiation (Group B).
+      - Combination of NaOCl and laser (Group C).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name:** Repeated Measures ANOVA (or Mixed-Effects Model)
+   - **Purpose:** To compare bacterial load reduction across the three groups over three time points.
+   - **Why Appropriate:**
+     1. The study involves repeated measurements (baseline, post-chemomechanical, post-adjuvant disinfection).
+     2. The design includes multiple groups and time-dependent changes.
+   - **Why It May Not Be Appropriate:** Assumes normality and sphericity, which may not hold for bacterial load data.
+   - **When This Test Should NOT Be Used:** If data are non-normal or sphericity is violated.
+   - **Alternative if Assumptions Are Violated:** Non-parametric Friedman test or Generalized Estimating Equations (GEE).
+
+2. **Test Name:** Post-hoc Pairwise Comparisons (e.g., Tukey’s HSD or Bonferroni)
+   - **Purpose:** To identify which groups differ significantly in bacterial load reduction.
+   - **Why Appropriate:**
+     1. Necessary to interpret significant group effects.
+     2. Controls for Type I error in multiple comparisons.
+   - **Why It May Not Be Appropriate:** May lack power if sample size is small.
+   - **When This Test Should NOT Be Used:** If the primary test (e.g., ANOVA) is not significant.
+   - **Alternative if Assumptions Are Violated:** Pairwise Wilcoxon rank-sum tests with Bonferroni correction.
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name:** Multivariate Analysis of Variance (MANOVA)
+   - **Purpose:** To assess the combined effect of group and time on multiple bacterial species.
+   - **Why Appropriate:**
+     1. Accounts for correlations among bacterial species.
+     2. Provides a more holistic view of treatment effects.
+   - **Why It May Not Be Appropriate:** Requires multivariate normality, which may not hold.
+   - **When This Test Should NOT Be Used:** If bacterial species data are highly skewed or sparse.
+   - **Alternative if Assumptions Are Violated:** Canonical correlation analysis or GEE.
+
+2. **Test Name:** Effect Size Analysis (e.g., Partial Eta Squared or Cohen’s d)
+   - **Purpose:** To quantify the magnitude of treatment effects.
+   - **Why Appropriate:**
+     1. Complements p-values by providing practical significance.
+     2. Helps compare the efficacy of interventions.
+   - **Why It May Not Be Appropriate:** Does not account for variability in small sample sizes.
+   - **When This Test Should NOT Be Used:** If primary tests are inconclusive.
+   - **Alternative if Assumptions Are Violated:** Bootstrap confidence intervals for effect sizes.
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name:** Logistic Regression
+   - **Purpose:** To assess the likelihood of detecting specific bacterial species post-treatment.
+   - **Why Appropriate:**
+     1. Suitable for binary outcomes (presence/absence of bacteria).
+     2. Adjusts for potential confounders (e.g., age, tooth type).
+   - **Why It May Not Be Appropriate:** Requires large sample sizes for stable estimates.
+   - **When This Test Should NOT Be Used:** If bacterial species are rare or data are sparse.
+   - **Alternative if Assumptions Are Violated:** Exact logistic regression.
+
+2. **Test Name:** Kaplan-Meier Survival Analysis
+   - **Purpose:** To evaluate symptom-free survival time post-treatment.
+   - **Why Appropriate:**
+     1. Useful for time-to-event data (e.g., symptom recurrence).
+     2. Accounts for censored observations.
+   - **Why It May Not Be Appropriate:** Not directly related to bacterial load outcomes.
+   - **When This Test Should NOT Be Used:** If no time-to-event data are available.
+   - **Alternative if Assumptions Are Violated:** Cox proportional hazards model.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Chi-Square Test of Independence**
+   - **Why Not Appropriate:** The primary outcome (bacterial load) is continuous, not categorical.
+2. **Independent t-test**
+   - **Why Not Appropriate:** The study involves three groups, not two.
+3. **Simple Linear Regression**
+   - **Why Not Appropriate:** Does not account for repeated measures or group effects.
+
+---
+
+### TASK 4: SUMMARY
+
+The proposed statistical analysis plan is designed to rigorously evaluate the study's primary and secondary objectives. Repeated measures ANOVA (or its alternatives) is essential for analyzing bacterial load reduction over time across groups. Additional tests, such as MANOVA and logistic regression, enhance the depth of analysis by examining secondary outcomes and bacterial species. Effect size analysis provides practical insights into treatment efficacy. The overall approach balances robustness, interpretability, and adherence to statistical assumptions, ensuring a comprehensive evaluation of the 445-nm diode laser's adjunctive efficacy in root canal disinfection.

@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_15.Evaluation-of-Ozone-Therapy-in-Endodontic-Treatment-of-Teeth-with-Necrotic-Pulp-and-Apical-Periodontitis-A-Randomized-Trial-Sinha-2021-1.pdf",
+  "timestamp": "20260508_055806",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 17146
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 7260
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 29421
+    }
+  }
+}

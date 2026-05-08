@@ -1,0 +1,169 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_c49d589bc0ca8096e1389a0fc60935a9.pdf
+Status : ok
+Time   : 20260508_062020
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: 
+   - Single-blind, randomized controlled clinical trial.
+
+2. **Objective**: 
+   - To evaluate the effect of low-level laser therapy (LLLT) on the success rate of inferior alveolar nerve block (IANB) in mandibular molars with symptomatic irreversible pulpitis (SIP).
+
+3. **Study Groups**:
+   - **IANB + LLLT group**: Patients received standard IANB followed by LLLT.
+   - **IANB group**: Patients received standard IANB with a mock laser application (placebo).
+
+4. **Sample Size**:
+   - Total: 88 patients.
+   - Group 1 (IANB + LLLT): 44 patients.
+   - Group 2 (IANB): 44 patients.
+
+5. **Randomization**:
+   - Patients were randomly assigned to groups using a computer-generated random table with a 1:1 allocation ratio.
+
+6. **Inclusion Criteria**:
+   - Healthy individuals aged 18–65 years.
+   - Mandibular molar teeth diagnosed with SIP.
+   - ASA 1–2 patients (no systemic disease or mild systemic disease).
+   - Moderate or severe preoperative pain (VAS > 44 mm).
+   - Positive response to cold and electric pulp testing.
+   - No periapical radiolucency (except widened periodontal ligament with intact lamina dura).
+
+7. **Exclusion Criteria**:
+   - Recent use of analgesics or anti-inflammatory drugs (within 12 hours).
+   - Allergies to NSAIDs or articaine.
+   - Pregnant or breastfeeding women.
+   - Patients taking opioids or with gastrointestinal disease.
+   - Teeth with periodontal disease, periapical radiolucency, or no pulpal bleeding after access cavity preparation.
+   - Patients with more than one painful tooth.
+
+8. **Variables**:
+   - **Primary Outcome**: Success rate of IANB (defined as VAS ≤ 44 mm during access cavity preparation and canal shaping).
+   - **Secondary Outcome**: Pain scores on VAS (0–100 mm scale) at different stages of treatment.
+
+9. **Measurements**:
+   - Pain scores recorded using a 100-mm visual analog scale (VAS).
+   - Pain levels categorized as:
+     - No pain: 0–4 mm.
+     - Mild pain: 5–44 mm.
+     - Moderate pain: 45–74 mm.
+     - Severe pain: 75–100 mm.
+
+10. **Data Collection Methods**:
+    - Pain scores recorded preoperatively and during treatment.
+    - Success of anesthesia determined by VAS scores ≤ 44 mm.
+    - LLLT applied using a 940 nm diode laser (Epic 10, Biolase Inc.) with specific parameters (0.5 W power, 30 seconds per root area).
+
+11. **Statistical Power**:
+    - Based on a pilot study with α = 0.05, β = 0.80, and effect size = 0.782, a minimum of 40 patients per group was required.
+
+12. **Blinding**:
+    - Single-blind design: The operator performing the injections was blinded to the intervention.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Chi-Square Test (or Fisher’s Exact Test)**:
+   - **Purpose**: To compare the success rates of IANB between the two groups.
+   - **Why Appropriate**:
+     1. The outcome (success or failure of anesthesia) is categorical.
+     2. The data are from independent groups.
+   - **Why It May Not Be Appropriate**:
+     - If expected frequencies in any cell of the contingency table are <5.
+   - **When This Test Should NOT Be Used**:
+     - If the sample size is too small for valid chi-square application.
+   - **Alternative**: Fisher’s Exact Test (for small sample sizes).
+
+2. **Independent Samples t-Test**:
+   - **Purpose**: To compare mean VAS pain scores between the two groups.
+   - **Why Appropriate**:
+     1. The VAS scores are continuous data.
+     2. The study design involves two independent groups.
+   - **Why It May Not Be Appropriate**:
+     - If the assumption of normality is violated.
+   - **When This Test Should NOT Be Used**:
+     - If the VAS scores are not normally distributed.
+   - **Alternative**: Mann-Whitney U Test (non-parametric alternative).
+
+3. **Descriptive Statistics**:
+   - **Purpose**: To summarize baseline characteristics and outcomes (e.g., mean, standard deviation, frequency, percentage).
+   - **Why Appropriate**:
+     1. Provides an overview of the data distribution.
+     2. Essential for understanding the sample characteristics.
+   - **Why It May Not Be Appropriate**:
+     - Not applicable; descriptive statistics are always appropriate.
+   - **When This Test Should NOT Be Used**:
+     - Not applicable.
+   - **Alternative**: None.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Logistic Regression**:
+   - **Purpose**: To assess the effect of LLLT on the likelihood of successful anesthesia while adjusting for potential confounders (e.g., age, gender, baseline pain score).
+   - **Why Appropriate**:
+     1. The outcome (success/failure) is binary.
+     2. Allows adjustment for covariates.
+   - **Why It May Not Be Appropriate**:
+     - If the sample size is too small for reliable model estimation.
+   - **When This Test Should NOT Be Used**:
+     - If multicollinearity exists among covariates.
+   - **Alternative**: Stratified analysis.
+
+2. **Repeated Measures ANOVA (or Mixed-Effects Model)**:
+   - **Purpose**: To analyze changes in VAS scores over time within and between groups.
+   - **Why Appropriate**:
+     1. Accounts for repeated measures on the same individuals.
+     2. Tests for interaction effects (group × time).
+   - **Why It May Not Be Appropriate**:
+     - If sphericity assumption is violated.
+   - **When This Test Should NOT Be Used**:
+     - If data are not normally distributed.
+   - **Alternative**: Non-parametric alternatives like Friedman Test.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Effect Size Calculation (Cohen’s d)**:
+   - **Purpose**: To quantify the magnitude of the difference in VAS scores between groups.
+   - **Why Appropriate**:
+     1. Provides a standardized measure of effect size.
+     2. Useful for interpreting clinical significance.
+   - **Why It May Not Be Appropriate**:
+     - If the data are not normally distributed.
+   - **When This Test Should NOT Be Used**:
+     - If the sample size is too small for reliable estimation.
+   - **Alternative**: Rank-biserial correlation for non-parametric data.
+
+2. **Subgroup Analysis**:
+   - **Purpose**: To explore differences in outcomes based on baseline characteristics (e.g., age, gender, baseline pain score).
+   - **Why Appropriate**:
+     1. Identifies potential effect modifiers.
+     2. Provides additional insights into treatment effects.
+   - **Why It May Not Be Appropriate**:
+     - Risk of type I error due to multiple comparisons.
+   - **When This Test Should NOT Be Used**:
+     - If subgroup sample sizes are too small.
+   - **Alternative**: Interaction terms in regression models.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Paired t-Test**:
+   - **Reason**: The study involves independent groups, not paired data.
+2. **One-Way ANOVA**:
+   - **Reason**: Only two groups are being compared.
+3. **Kaplan-Meier Survival Analysis**:
+   - **Reason**: The outcome is not time-to-event data.
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan is designed to rigorously evaluate the effect of LLLT on IANB success rates and pain reduction. Mandatory tests (e.g., chi-square, t-test) address the primary objectives, while recommended and optional tests (e.g., logistic regression, effect size calculation) enhance the depth and clinical relevance of the analysis. The plan ensures robustness by including alternatives for assumption violations and avoids inappropriate tests that do not align with the study design or data structure.

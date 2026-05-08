@@ -1,0 +1,248 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_735c284078916451c134bda90ff4bb95.pdf
+Status : ok
+Time   : 20260508_060700
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — INFORMATION EXTRACTION (study characteristics)
+
+### Study identification
+- **Title/Topic:** Effect of low-level laser therapy (LLLT) on postoperative pain after **single-visit** root canal **retreatment** (ER) of mandibular molars  
+- **Design:** **Randomized**, **parallel-group**, **sham-controlled** clinical trial (2 arms)
+- **Setting:** Department of Endodontics, Faculty of Dentistry, Tehran Medical Sciences, Islamic Azad University, Iran
+- **Recruitment period:** March 2019 – March 2020
+- **Ethics/registration:** Ethics approval IR.IAU.DENTAL.REC.1397.028; trial registered IRCT20110212005804N5
+- **Funding/COI:** None / none declared
+
+### Objective
+- **Primary objective:** Compare the effect of **LLLT vs sham** on **postoperative pain** after single-visit mandibular molar endodontic retreatment.
+
+### Participants
+- **Eligibility pool:** Patients requiring root canal retreatment of mandibular first/second molars
+- **Inclusion criteria (as provided):**
+  - Good general health (medical history + verbal questioning)
+  - Scheduled for retreatment of **symptomatic** mandibular 1st/2nd molars
+  - Periapical radiographs taken
+  - Teeth with previous RCT and **PAI score 2 or 3** (Ørstavik index)
+- **Exclusion/withdrawal rule (important):**
+  - Patients who **took analgesics postoperatively were excluded and replaced** (this impacts estimands/ITT)
+
+### Sample size / flow
+- **Assessed:** 46  
+- **Excluded pre-randomization:** 10 (6 not meeting criteria; 4 declined)
+- **Randomized:** 36
+  - **LLLT:** n=18
+  - **Sham:** n=18
+- **Follow-up loss:** 0 reported
+- **Analysed:** 18 per group (as per flowchart)
+
+### Randomization / masking
+- **Allocation:** Web-based randomization (random.org)
+- **Control:** Sham laser (handpiece positioned identically; laser not activated)
+- **Blinding:** Not fully described in provided text; at minimum sham suggests participant blinding intended; pain assessor noted as specific clinician (S.E.)—unclear whether blinded.
+
+### Interventions
+- **Both groups:** Standardized single-visit retreatment procedure (details partly omitted in excerpt; obturation materials mentioned: gutta-percha + AH-Plus sealer; Cavit temporary fill; final radiograph).
+- **LLLT protocol:**
+  - Diode laser **980 nm** (Doctor Smile; Wiser, Lambda, Italy)
+  - **Energy density:** 6.89 W/cm²
+  - **Power:** 0.5 W
+  - **Tip diameter:** 10 mm
+  - **Duration:** 15 s
+  - **Application site:** Soft tissues over mesial & distal apices, **buccal** side
+  - **Distance:** ~10 mm from mucosa
+- **Sham protocol:** Same positioning/time, **not activated**
+
+### Outcomes and measurements
+- **Primary outcome:** Post-treatment pain intensity
+  - **Instrument:** **Graded Visual Analog Scale (VAS)**
+  - **Time points:** 4, 8, 12, 24 hours; 2, 3, 7 days post-treatment (**7 repeated measures**)
+  - **Collection method:** Home questionnaire; phone reminders at specified hours/days
+- **Analgesic use:** 10 tablets acetaminophen 500 mg provided PRN; patients record **dosage and exact time**
+  - **But:** If analgesic taken → **excluded and replaced** (creates a post-randomization exclusion mechanism)
+- **Baseline/demographics:** Demographic data recorded by clinician (variables not listed in excerpt; likely age/sex, etc.)
+
+### Data structure implications
+- Two-arm RCT with **longitudinal continuous (or semi-continuous) pain outcome**.
+- Repeated measures within subject (correlated), with potentially skewed/zero-inflated VAS at later times.
+- Protocol-driven exclusion for analgesic intake creates **nonrandom missingness / selection** unless handled explicitly.
+
+---
+
+## TASK 2 — STATISTICAL ANALYSIS PLAN (by category)
+
+### Core analysis principles to pre-specify
+- **Analysis population (recommend):**
+  - Primary: **Intention-to-treat (ITT)** including all randomized participants, regardless of analgesic intake (but the protocol says they were replaced; still, for a rigorous SAP, define ITT and handle analgesic use appropriately).
+  - Secondary: **Per-protocol** excluding major deviations (e.g., analgesic use) if such cases exist.
+- **Primary estimand:** Difference in postoperative pain trajectories between LLLT and sham across 7 time points.
+- **Two-sided α:** 0.05
+- **Effect sizes:** Report mean difference (MD) with 95% CI at each timepoint and/or overall (time-averaged) difference; consider standardized effect (Cohen’s d) only as supplemental.
+- **Multiplicity:** If making **multiple time-point** comparisons, control family-wise error (e.g., Holm) or pre-specify a single primary contrast (e.g., AUC 0–7d).
+- **Missing data:** Plan for incomplete VAS diaries; use model-based methods (MMRM/mixed models) as primary; sensitivity analyses if missing not at random.
+
+---
+
+# CATEGORY A — MANDATORY (analysis would be incomplete without these)
+
+## A1) Linear Mixed-Effects Model (LMM) / Mixed Model for Repeated Measures (MMRM)
+- **Purpose:** Test whether **pain over time** differs between **LLLT vs sham**, accounting for within-patient correlation.
+- **Why appropriate (≥2):**
+  1. Outcome is **repeated VAS** measures at fixed time points → correlation must be modeled.
+  2. Handles **unbalanced/missing** repeated measures under MAR without ad-hoc imputation.
+  3. Directly tests **group × time interaction** (treatment effect varies over time), which is clinically plausible.
+- **Why it may not be appropriate (≥1):**
+  - VAS may be **non-normal**, bounded, and potentially zero-inflated, making Gaussian residual assumptions questionable.
+- **When NOT to use:**
+  - When VAS distribution is highly non-Gaussian with heavy ceiling/floor effects and transformations don’t help, or when only ordinal categories exist rather than continuous scores.
+- **Alternative if assumptions violated:**
+  - **Generalized linear mixed model (GLMM)** with suitable family/link (e.g., Gamma with log link for positive skew; Tweedie; or **ordinal mixed model** if VAS treated as ordinal), or **rank-based mixed models**.
+
+**Implementation notes (recommended specification):**
+- Fixed effects: group, time (categorical), group×time
+- Random effects: subject-level random intercept (± random slope for time if supported)
+- Covariance: unstructured or AR(1) depending on fit/sample size
+- Primary hypothesis: joint test of group×time (Wald/F test)
+
+---
+
+## A2) Baseline comparability (descriptive + limited inferential checks)
+*(Even without baseline pain, demographics should be summarized; inferential “baseline testing” is debated, but some journals expect it.)*
+- **Test name:** Two-sample **t-test** (or **Mann–Whitney U**) for continuous baseline variables; **Chi-square/Fisher’s exact** for categorical variables.
+- **Purpose:** Describe/assess balance of key baseline covariates (e.g., age, sex, tooth type, PAI=2 vs 3).
+- **Why appropriate:**
+  1. RCT expects balance; reporting supports interpretability and detects gross anomalies.
+  2. Helps identify covariates for adjusted/sensitivity models.
+- **Why it may not be appropriate:**
+  - Significance testing at baseline can be misleading; imbalance may occur by chance and does not imply bias.
+- **When NOT to use:**
+  - Do not use baseline p-values to decide “whether randomization worked” or to select covariates mechanically.
+- **Alternative if assumptions violated:**
+  - Use **standardized mean differences (SMDs)** instead of p-values; for continuous skewed variables use medians/IQR.
+
+---
+
+# CATEGORY B — RECOMMENDED (adds rigor)
+
+## B1) Area Under the Curve (AUC) of pain over 0–7 days + group comparison
+- **Purpose:** Provide a **single summary** of pain burden over time (integrated pain experience).
+- **Why appropriate:**
+  1. Avoids multiple comparisons across 7 time points; clinically meaningful “overall pain experience”.
+  2. Uses full longitudinal information and is robust to short-term fluctuations.
+- **Why it may not be appropriate:**
+  - Requires reasonably complete measurement schedule; missing timepoints can complicate AUC estimation.
+- **When NOT to use:**
+  - When many participants have missing/irregular time measurements without a principled handling strategy.
+- **Alternative if assumptions violated:**
+  - Compare AUC using **Wilcoxon rank-sum** or model AUC via **robust regression**; or estimate AUC within a mixed-model framework (model-based marginal means integrated over time).
+
+## B2) Post-hoc (pre-specified) pairwise contrasts at each time point with multiplicity control
+- **Test name:** Estimated marginal means contrasts from LMM/MMRM + **Holm** (or Benjamini–Hochberg if controlling FDR)
+- **Purpose:** Identify **when** LLLT differs from sham (e.g., early hours vs days).
+- **Why appropriate:**
+  1. Clinically relevant to know the time window of benefit.
+  2. Uses model-based estimates that account for correlation.
+- **Why it may not be appropriate:**
+  - Multiple testing inflates Type I error if not adjusted; small sample may yield unstable estimates.
+- **When NOT to use:**
+  - If the study is underpowered for timepoint-specific effects and no multiplicity plan exists.
+- **Alternative if assumptions violated:**
+  - Nonparametric timepoint comparisons with Holm correction, or GLMM-based marginal contrasts.
+
+## B3) Responder analysis (clinically meaningful pain thresholds)
+- **Test name:** Logistic regression (or mixed logistic if repeated) comparing proportion with pain above a threshold (e.g., VAS ≥30/100) at key times.
+- **Purpose:** Translate findings into **clinically interpretable** outcomes (risk difference/odds ratio).
+- **Why appropriate:**
+  1. Pain scales can be hard to interpret; responder rates are intuitive.
+  2. Robust to non-normality of VAS.
+- **Why it may not be appropriate:**
+  - Requires **pre-specified** thresholds; dichotomization loses information and power.
+- **When NOT to use:**
+  - If no validated/justified threshold is available or sample size yields sparse cells.
+- **Alternative if assumptions violated:**
+  - Use **ordinal regression** on categorized pain (none/mild/moderate/severe) or keep continuous with robust models.
+
+## B4) Sensitivity analysis for analgesic use (protocol deviation / intercurrent event)
+- **Test name:** Sensitivity estimands via (i) include analgesic users with adjustment; (ii) treat analgesic use as outcome; (iii) worst-case imputation bounds.
+- **Purpose:** Address bias introduced by excluding/replacing participants who took analgesics.
+- **Why appropriate:**
+  1. Analgesic use is likely related to pain → post-randomization exclusion can bias treatment effect.
+  2. Provides transparency about robustness.
+- **Why it may not be appropriate:**
+  - If truly no one took analgesics (unclear from excerpt), it may be moot.
+- **When NOT to use:**
+  - When analgesic data are unreliable/unavailable.
+- **Alternative if assumptions violated:**
+  - Use **pattern-mixture models** or **tipping-point** analyses for missing-not-at-random scenarios.
+
+---
+
+# CATEGORY C — OPTIONAL (supplementary insights)
+
+## C1) Nonparametric longitudinal comparison (rank-based)
+- **Test name:** Brunner–Langer / rank-based mixed models (or nparLD methods)
+- **Purpose:** Compare groups over time without relying on normality.
+- **Why appropriate:**
+  1. VAS often skewed and bounded.
+  2. Provides robustness check against LMM assumptions.
+- **Why it may not be appropriate:**
+  - Less familiar; interpretation focuses on relative effects, not mean differences.
+- **When NOT to use:**
+  - When effect size on original scale (mm on VAS) is required as primary.
+- **Alternative if assumptions violated:**
+  - GLMM with appropriate distribution/link.
+
+## C2) Effect modification (interaction) analyses
+- **Test name:** Add interaction terms in mixed model (e.g., treatment×time×sex; treatment×PAI)
+- **Purpose:** Explore whether LLLT effect differs by baseline factors (sex, tooth type, PAI 2 vs 3).
+- **Why appropriate:**
+  1. Biological plausibility (pain perception differs by sex; disease severity may matter).
+  2. Can guide future stratified trials.
+- **Why it may not be appropriate:**
+  - Small sample (n=36) → high risk of spurious subgroup findings.
+- **When NOT to use:**
+  - If not pre-specified and power is inadequate; do not make confirmatory claims.
+- **Alternative if assumptions violated:**
+  - Descriptive stratified plots and estimation with wide CIs; Bayesian shrinkage models.
+
+## C3) Model diagnostics and robustness checks
+- **Tests/tools:** Residual plots; Q–Q plots; influence diagnostics; compare covariance structures using AIC/BIC.
+- **Purpose:** Validate model assumptions and stability.
+- **Why appropriate:**
+  1. Small trials are sensitive to outliers and mis-specification.
+  2. Supports credibility of inference.
+- **Why it may not be appropriate:**
+  - Some diagnostics have limited reliability in very small samples.
+- **When NOT to use:**
+  - Never “not use”; rather, avoid over-interpreting formal normality tests.
+- **Alternative if assumptions violated:**
+  - Robust mixed models; transformation; GLMM/ordinal models.
+
+---
+
+## TASK 3 — INAPPROPRIATE TESTS (should NOT be used)
+
+1. **Independent t-test at each time point without multiplicity adjustment**
+   - **Why inappropriate:** Inflates Type I error across 7 timepoints; ignores within-subject correlation; produces fragmented inference.
+
+2. **One-way ANOVA ignoring time (collapsing data)**
+   - **Why inappropriate:** Discards longitudinal structure and timing; reduces power and can bias conclusions.
+
+3. **Paired t-test within each group (pre/post)**
+   - **Why inappropriate:** There is no single baseline pain timepoint specified as pre-treatment comparator; and it doesn’t answer between-group causal question.
+
+4. **Simple linear regression treating repeated observations as independent**
+   - **Why inappropriate:** Violates independence; underestimates SEs → false positives.
+
+5. **Repeated-measures ANOVA (classical) as the primary method**
+   - **Why inappropriate:** Requires stronger assumptions (sphericity), handles missing data poorly, and is less flexible than MMRM for unequal covariance/missing diaries.
+
+6. **Correlation tests (Pearson/Spearman) between treatment group and pain**
+   - **Why inappropriate:** Treatment is binary randomized exposure; correlation is not the right framework for group comparisons.
+
+---
+
+## TASK 4 — SUMMARY (overall analytical approach)
+
+A two-arm sham-controlled RCT with **7 repeated VAS pain measurements** requires a **longitudinal model** that accounts for within-subject correlation and potential missing diary entries. The primary analysis should therefore be an **MMRM/linear mixed-effects model** testing the **treatment × time** effect, supplemented by **AUC (overall pain burden)** and **multiplicity-controlled time-specific contrasts**. Because the protocol excludes patients who take analgesics (a post-randomization event related to pain), the SAP should include **sensitivity analyses** addressing analgesic use to protect against biased estimates.

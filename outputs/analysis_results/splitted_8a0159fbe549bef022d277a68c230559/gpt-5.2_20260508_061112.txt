@@ -1,0 +1,222 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_8a0159fbe549bef022d277a68c230559.pdf
+Status : ok
+Time   : 20260508_061112
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: Information extraction (from provided text)
+
+### Study identification
+- **Title/Topic:** Combined effect of **oral ibuprofen 800 mg + oral dexamethasone 0.5 mg** on **success of inferior alveolar nerve block (IANB)** in **mandibular molars with symptomatic irreversible pulpitis (SIP)**.
+- **Design:** **Prospective, randomized, double-blind clinical trial** (CONSORT RCT).
+- **Setting/Population source:** Emergency patients at Department of Conservative Dentistry and Endodontics, JCD Dental College, Sirsa, India.
+- **Ethics:** Institutional approval (JCDV/DC/18/2152); written informed consent.
+
+### Objective and hypothesis
+- **Primary objective:** Determine whether **preoperative oral ibuprofen + dexamethasone** increases **IANB success rate** in mandibular molars with SIP.
+- **Null hypothesis:** The combination has **no effect** on IANB success.
+
+### Participants
+- **Sample size:** **N = 94 adults** (randomly selected and then randomized).
+- **Inclusion criteria (key):**
+  - Adult (≥18 years implied)
+  - **Moderate–severe pain:** **55–170 mm** on **Heft-Parker VAS**
+  - Mandibular molar with **normal periapical radiographic appearance**
+  - **ASA I or II**
+  - No analgesics for **≥12 hours**
+- **Exclusion criteria (key):**
+  - <18 years
+  - Allergy/hypersensitivity to study medications or local anesthetic/components
+  - Pregnant/nursing
+  - Immunocompromised
+  - Active pathosis at injection area
+  - Unable to consent
+- **Diagnosis confirmation of SIP:**
+  - **Electric pulp test** (Digitest; Parkell)
+  - **Cold test** (Endo Ice; tetrafluoroethane) with **early and prolonged painful response**
+
+### Interventions / groups
+The text clearly states the **experimental premedication** is **ibuprofen 800 mg + dexamethasone 0.5 mg** given **preoperatively**.  
+However, **the comparator group(s), timing of administration, anesthetic agent/volume, and operational definition of “IANB success” are not included in the provided excerpt** (methods are truncated after “For pain evaluation …”).
+
+### Outcomes and measurements (available from excerpt)
+- **Baseline pain measurement:** Heft-Parker VAS (mm), moderate–severe defined as 55–170 mm.
+- **Primary outcome (stated):** **IANB success rate** (binary), but **exact assessment method** not shown in excerpt.
+- **Other likely endpoints** (not extractable from text provided): intraoperative pain during endodontic procedures, need for supplemental anesthesia, etc. (cannot be assumed for SAP beyond noting as “not provided”).
+
+### Randomization/blinding
+- **Randomized** and **double-blind** (details of allocation concealment and random sequence generation not provided in excerpt).
+
+---
+
+## TASK 2: Statistical Analysis Plan (SAP)
+
+### Overview of analysis principles
+- **Analysis population (mandatory):**
+  - **Intention-to-treat (ITT):** analyze all randomized participants in assigned group.
+  - **Per-protocol (PP) (recommended):** exclude major protocol deviations (e.g., took analgesic <12h, wrong medication taken), used as sensitivity.
+- **Descriptive statistics:**
+  - Continuous (e.g., baseline VAS): mean (SD) if ~normal; median (IQR) if skewed.
+  - Categorical: counts and percentages.
+- **Alpha:** 0.05 (two-sided).
+- **Effect sizes:** emphasize **risk difference (RD)**, **risk ratio (RR)**, and/or **odds ratio (OR)** with **95% CI** for binary outcomes.
+- **Missing data:** document extent/reasons; for binary primary outcome consider **multiple imputation** or **best/worst case** sensitivity if missingness is non-trivial; if minimal, complete-case.
+
+---
+
+# CATEGORY A — MANDATORY tests
+
+## A1) Chi-square test of independence (or Fisher’s exact)
+- **Purpose:** Compare **IANB success proportion** between randomized groups.
+- **Why appropriate:**
+  1. Primary endpoint is a **binary success/failure rate**.
+  2. RCT with **independent groups** → direct comparison of proportions is core.
+- **Why it may not be appropriate:**
+  - If **expected cell counts are small** (e.g., <5), chi-square approximation may be inaccurate.
+- **When NOT to use:**
+  - Use of chi-square specifically should be avoided when sparse data lead to small expected counts.
+- **Alternative if assumptions violated:**
+  - **Fisher’s exact test** (exact p-value) for sparse tables.
+  - Report **RR/RD** with exact or Newcombe CIs.
+
+## A2) Effect size estimation for binary outcome (RR/RD/OR with 95% CI)
+- **Purpose:** Quantify treatment effect magnitude beyond p-values.
+- **Why appropriate:**
+  1. RCT interpretation requires **clinical effect size** (not just significance).
+  2. Binary outcomes are naturally expressed as **RR** or **RD** (often more interpretable than OR).
+- **Why it may not be appropriate:**
+  - OR can be misleading when outcome is common; RD may vary by baseline risk.
+- **When NOT to use:**
+  - Avoid interpreting **OR as RR** when success is common.
+- **Alternative if assumptions violated:**
+  - Use **log-binomial regression** (RR) or **Poisson with robust SE** (RR) if direct RR estimation has convergence issues.
+
+## A3) Baseline comparability checks (descriptive + standardized differences; no hypothesis testing preferred)
+- **Purpose:** Assess balance in baseline covariates (e.g., baseline VAS, age, sex if recorded).
+- **Why appropriate:**
+  1. Confirms randomization likely achieved balance.
+  2. Identifies covariates for potential **precision adjustment**.
+- **Why it may not be appropriate:**
+  - Formal hypothesis tests on baseline variables can be misleading (random imbalances can be “significant”).
+- **When NOT to use:**
+  - Do not use baseline p-values to decide “whether randomization worked.”
+- **Alternative:**
+  - **Standardized mean differences (SMDs)**; graphical balance plots.
+
+---
+
+# CATEGORY B — RECOMMENDED tests
+
+## B1) Multivariable logistic regression (adjusted analysis of IANB success)
+- **Purpose:** Estimate **adjusted OR** (and optionally adjusted RD/RR) for success, controlling for baseline predictors (e.g., baseline pain severity on VAS; other available covariates).
+- **Why appropriate:**
+  1. Outcome is **binary**; logistic model is standard.
+  2. Adjustment can **increase precision** and handle chance imbalances.
+- **Why it may not be appropriate:**
+  - With small samples/few events, model may be unstable/overfit.
+- **When NOT to use:**
+  - If events per parameter are too low (rule-of-thumb: ~10 events/parameter; use caution).
+- **Alternatives if assumptions/limitations arise:**
+  - **Penalized logistic regression** (Firth correction) for separation/small-sample bias.
+  - **Poisson regression with robust SE** to estimate adjusted RR.
+
+## B2) Comparison of baseline pain (VAS) between groups: t-test or Mann–Whitney U
+- **Purpose:** Describe/confirm similarity of **baseline pain intensity**.
+- **Why appropriate:**
+  1. Baseline VAS is continuous; two-group comparison is straightforward.
+  2. Helps contextualize results and guides covariate adjustment strategy.
+- **Why it may not be appropriate:**
+  - VAS distributions can be skewed or bounded; t-test may be sensitive to non-normality with small n.
+- **When NOT to use:**
+  - Don’t rely on baseline p-values for inclusion/exclusion of covariates.
+- **Alternatives if assumptions violated:**
+  - If non-normal/outliers: **Mann–Whitney U** and report median (IQR).
+  - Consider **robust t-test** (e.g., Welch) if variances differ.
+
+## B3) Interim/assumption checks for modeling: goodness-of-fit + influential points (logistic model)
+- **Purpose:** Validate adequacy of regression model.
+- **Why appropriate:**
+  1. Ensures conclusions are not driven by model misfit.
+  2. Identifies separation/influential observations in small RCTs.
+- **Why it may not be appropriate:**
+  - Some GOF tests (e.g., Hosmer–Lemeshow) have low power in small samples.
+- **When NOT to use:**
+  - Do not over-interpret non-significant GOF as “model is correct.”
+- **Alternatives:**
+  - Use **calibration plots**, **Brier score**, and **penalized methods** if unstable.
+
+## B4) Sensitivity analysis: Per-protocol (PP) vs ITT
+- **Purpose:** Assess robustness of findings to adherence/protocol deviations.
+- **Why appropriate:**
+  1. ITT is primary for unbiased causal inference; PP may show efficacy under adherence.
+  2. Helps interpret inconsistencies due to noncompliance.
+- **Why it may not be appropriate:**
+  - PP can be biased if nonadherence relates to prognosis.
+- **When NOT to use:**
+  - Do not replace ITT with PP as the main inference.
+- **Alternatives:**
+  - **Complier average causal effect (CACE)** methods if adherence data are strong (optional/advanced).
+
+---
+
+# CATEGORY C — OPTIONAL tests (supplementary insights)
+
+## C1) Subgroup analysis with interaction term (e.g., baseline pain severity strata)
+- **Purpose:** Explore whether treatment effect differs by baseline pain level (e.g., moderate vs severe within 55–170 mm range).
+- **Why appropriate:**
+  1. Biological plausibility: higher inflammation/pain may reduce block success.
+  2. Interaction modeling is preferable to separate within-subgroup tests.
+- **Why it may not be appropriate:**
+  - Underpowered; high false-positive risk if many subgroups.
+- **When NOT to use:**
+  - Avoid post-hoc subgroup fishing; avoid multiple unplanned interactions.
+- **Alternatives:**
+  - Pre-specify limited subgroups; adjust for multiplicity or treat as exploratory.
+
+## C2) Number needed to treat (NNT) with CI
+- **Purpose:** Translate RD into clinically interpretable metric: patients needed to premedicate for one additional successful IANB.
+- **Why appropriate:**
+  1. Enhances clinical interpretability.
+  2. Directly derived from RD.
+- **Why it may not be appropriate:**
+  - NNT unstable when RD near 0; CI can be wide or cross infinity.
+- **When NOT to use:**
+  - When RD not meaningfully estimated or CI includes 0 extensively.
+- **Alternatives:**
+  - Report **RD and CI** only.
+
+## C3) Bayesian analysis of success probability (optional)
+- **Purpose:** Provide posterior probability that combination improves success by clinically meaningful margin.
+- **Why appropriate:**
+  1. Small-to-moderate samples: Bayesian estimation can be more informative than dichotomous p-values.
+  2. Can incorporate skeptical/neutral priors based on prior RCTs.
+- **Why it may not be appropriate:**
+  - Requires priors; results may be sensitive and less familiar to readership.
+- **When NOT to use:**
+  - If priors cannot be justified or transparency cannot be ensured.
+- **Alternatives:**
+  - Frequentist CI-based inference (primary).
+
+---
+
+## TASK 3: Tests that should NOT be used (and why)
+
+1. **Paired t-test / Wilcoxon signed-rank test**
+   - **Why not:** Groups are randomized **independent samples**; not paired/repeated within-subject (per excerpt).
+2. **One-way ANOVA (for primary endpoint)**
+   - **Why not:** Primary outcome is **binary**; ANOVA assumes continuous normally distributed residuals.
+3. **Pearson correlation (as primary analysis)**
+   - **Why not:** Does not compare randomized groups or estimate causal treatment effect; also unsuitable for binary primary endpoint.
+4. **Multiple unadjusted subgroup-specific chi-square tests**
+   - **Why not:** Inflates type I error; interaction approach is superior.
+5. **Stepwise regression solely based on p-values**
+   - **Why not:** Unstable in small datasets; increases bias and false discoveries; covariate choice should be pre-specified.
+
+---
+
+## TASK 4: Summary justification of overall analytical approach
+
+Because this is a **double-blind RCT** with a **binary primary endpoint (IANB success)**, the core analysis should be an **ITT comparison of success proportions** between groups (chi-square/Fisher) with **effect sizes and 95% CIs**. A **covariate-adjusted logistic (or RR-based) model** is recommended to improve precision and address chance baseline imbalance (notably baseline pain on Heft-Parker VAS). Sensitivity (PP) and exploratory subgroup/clinical translation metrics (NNT) can supplement without replacing the primary ITT inference.
+
+If you share the missing part of the Methods (group definitions, timing, anesthetic protocol, exact definition of “success,” and any secondary outcomes), I can tailor the SAP precisely to every endpoint and measurement timepoint.

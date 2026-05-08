@@ -1,0 +1,148 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_e048947.full.pdf
+Status : ok
+Time   : 20260508_062830
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### **Study Characteristics**
+1. **Study Design**:  
+   - Two-arm parallel randomized controlled trial (RCT).
+
+2. **Study Objectives**:  
+   - To compare the antimicrobial efficacy of Calcipex (CH alone) and Metapex (CH with iodoform) in endodontic treatment of teeth presenting with chronic apical periodontitis.
+
+3. **Groups**:  
+   - **Group A (Control)**: Calcipex (CH alone).  
+   - **Group B (Intervention)**: Metapex (CH with iodoform).
+
+4. **Sample Size**:  
+   - Total: 60 teeth (30 in each group).  
+   - Based on population mean and SD (50.3 ± 13 CFU/mL) from prior studies, with 95% confidence level and 0.05 precision.
+
+5. **Sampling Technique**:  
+   - Block randomization with a block size of 6.
+
+6. **Blinding**:  
+   - Triple-blinded: Patient, analyzer, and statistician are blinded.  
+   - Investigator placing the medicament is not blinded due to color differences between the two medicaments.
+
+7. **Inclusion Criteria**:  
+   - Single-rooted permanent teeth with single root canal.  
+   - Diagnosed with chronic apical periodontitis.  
+   - No antibiotics use in the last 3 months.
+
+8. **Exclusion Criteria**:  
+   - Periodontally compromised teeth (Grade III mobility).  
+   - Endodontically non-salvageable teeth.  
+   - Immunocompromised patients or those with systemic illness.  
+   - Excessive root resorption.  
+   - History of allergy to CH or iodoform.  
+   - Endodontic retreatment cases.
+
+9. **Interventions**:  
+   - **Calcipex**: Water-based CH paste, applied for 7 days.  
+   - **Metapex**: Oil-based CH paste with iodoform, applied for 7 days.  
+   - Both medicaments placed using lentulo spiral fillers and sealed with temporary resin-based filling material.
+
+10. **Outcome**:  
+    - **Primary Outcome**: Reduction in bacterial load (CFU/mL) measured via microbial culture.  
+    - Samples collected at baseline (S1) and after 7 days (S2).
+
+11. **Data Collection Methods**:  
+    - Paper points used to collect samples from the root canal.  
+    - Samples processed in microbiology lab using Brain Heart Infusion Broth (BHIB) and blood agar for CFU quantification.
+
+12. **Follow-Up**:  
+    - 7 ± 3 days after initial intervention.
+
+13. **Ethical Considerations**:  
+    - Approved by the Ethical Review Committee (ERC) of Aga Khan University Hospital.  
+    - Informed consent obtained from participants.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### **CATEGORY A – MANDATORY**
+1. **Test Name**: Paired t-test (or Wilcoxon signed-rank test if non-parametric).  
+   - **Purpose**: To compare pre- and post-intervention CFU/mL values within each group (S1 vs. S2).  
+   - **Why Appropriate**:  
+     1. Continuous outcome variable (CFU/mL).  
+     2. Same participants measured at two time points (paired data).  
+   - **Why It May Not Be Appropriate**: Assumes normal distribution of differences.  
+   - **When This Test Should NOT Be Used**: If data are not normally distributed.  
+   - **Alternative**: Wilcoxon signed-rank test (non-parametric).
+
+2. **Test Name**: Independent t-test (or Mann-Whitney U test if non-parametric).  
+   - **Purpose**: To compare the mean CFU/mL reduction between the two groups (Calcipex vs. Metapex).  
+   - **Why Appropriate**:  
+     1. Two independent groups.  
+     2. Continuous outcome variable (CFU/mL).  
+   - **Why It May Not Be Appropriate**: Assumes normality and equal variances.  
+   - **When This Test Should NOT Be Used**: If data are not normally distributed or variances are unequal.  
+   - **Alternative**: Mann-Whitney U test (non-parametric).
+
+3. **Test Name**: Chi-square test (or Fisher’s exact test).  
+   - **Purpose**: To compare categorical adverse event rates between groups.  
+   - **Why Appropriate**:  
+     1. Categorical data (presence/absence of adverse events).  
+     2. Two independent groups.  
+   - **Why It May Not Be Appropriate**: Small sample size in one or more cells.  
+   - **When This Test Should NOT Be Used**: If expected cell counts are <5.  
+   - **Alternative**: Fisher’s exact test.
+
+#### **CATEGORY B – RECOMMENDED**
+1. **Test Name**: Repeated measures ANOVA (or Friedman test if non-parametric).  
+   - **Purpose**: To evaluate within-group changes in CFU/mL over time (S1 vs. S2) and interaction with group (Calcipex vs. Metapex).  
+   - **Why Appropriate**:  
+     1. Accounts for repeated measurements within participants.  
+     2. Tests for interaction effects between time and group.  
+   - **Why It May Not Be Appropriate**: Assumes normality and sphericity.  
+   - **When This Test Should NOT Be Used**: If assumptions are violated.  
+   - **Alternative**: Friedman test (non-parametric).
+
+2. **Test Name**: Effect size calculation (e.g., Cohen’s d).  
+   - **Purpose**: To quantify the magnitude of the difference in CFU/mL reduction between groups.  
+   - **Why Appropriate**:  
+     1. Provides practical significance of results.  
+     2. Complements p-values for better interpretation.  
+   - **Why It May Not Be Appropriate**: Not a hypothesis test, only descriptive.  
+   - **When This Test Should NOT Be Used**: If data are not interpretable or sample size is too small.  
+   - **Alternative**: Non-parametric effect size measures.
+
+#### **CATEGORY C – OPTIONAL**
+1. **Test Name**: Subgroup analysis (e.g., stratified by baseline CFU levels).  
+   - **Purpose**: To explore whether baseline CFU levels influence the efficacy of the medicaments.  
+   - **Why Appropriate**:  
+     1. Identifies potential effect modifiers.  
+     2. Provides additional insights into treatment efficacy.  
+   - **Why It May Not Be Appropriate**: Risk of overfitting with small sample size.  
+   - **When This Test Should NOT Be Used**: If sample size is insufficient for stratification.  
+   - **Alternative**: Regression models with interaction terms.
+
+2. **Test Name**: Regression analysis (e.g., linear regression).  
+   - **Purpose**: To adjust for potential confounders (e.g., age, baseline CFU).  
+   - **Why Appropriate**:  
+     1. Adjusts for covariates.  
+     2. Evaluates independent effect of the intervention.  
+   - **Why It May Not Be Appropriate**: Assumes linearity and independence of errors.  
+   - **When This Test Should NOT Be Used**: If assumptions are violated.  
+   - **Alternative**: Generalized linear models.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **ANOVA for independent groups**:  
+   - **Why Not Appropriate**: The study involves only two groups, so a t-test is more appropriate.  
+2. **Pearson correlation**:  
+   - **Why Not Appropriate**: The study is not examining relationships between two continuous variables.  
+3. **Logistic regression**:  
+   - **Why Not Appropriate**: The primary outcome (CFU/mL) is continuous, not binary.
+
+---
+
+### TASK 4: SUMMARY
+The statistical analysis plan is designed to rigorously evaluate the primary outcome (CFU/mL reduction) while accounting for the study design and data characteristics. Mandatory tests (paired t-test, independent t-test) address the primary objectives, while recommended and optional tests (e.g., effect size, regression) enhance the depth of analysis. Non-parametric alternatives are proposed to ensure robustness if assumptions are violated. This approach ensures a comprehensive and valid interpretation of the study results.

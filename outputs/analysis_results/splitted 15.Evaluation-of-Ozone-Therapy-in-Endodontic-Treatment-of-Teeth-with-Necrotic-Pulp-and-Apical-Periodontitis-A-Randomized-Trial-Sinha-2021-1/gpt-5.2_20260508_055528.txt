@@ -1,0 +1,285 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted 15.Evaluation-of-Ozone-Therapy-in-Endodontic-Treatment-of-Teeth-with-Necrotic-Pulp-and-Apical-Periodontitis-A-Randomized-Trial-Sinha-2021-1.pdf
+Status : ok
+Time   : 20260508_055528
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design and setting
+- **Design:** Blinded (patient-, assessor-, statistician-blinded), **parallel-group randomized controlled trial** (CONSORT).
+- **Setting/period:** Dept. of Conservative Dentistry & Endodontics, Pacific Dental College and Hospital, Udaipur (India); **Jan–Aug 2021**.
+- **Registration/ethics:** ClinicalTrials.gov (REF/2021/03/041572); IRB approval PDCH/19/EC-140.
+
+### Objectives / hypotheses
+- **Primary objective:** Compare **postendodontic pain** after **single-visit endodontics (SVE)** in necrotic teeth with apical periodontitis among:
+  - aqueous ozone **no agitation**
+  - aqueous ozone + **manual dynamic activation (MDA)**
+  - aqueous ozone + **passive ultrasonic activation (PUA/PSA)**
+  - aqueous ozone + **sonic activation (SA)**
+  - **no ozone** (control; saline placebo)
+  measured at **baseline, 6h, 12h, 24h, 48h, 7d**.
+- **Secondary objective:** Assess effects/associations of **sex, age group, arch (maxilla/mandible)** on pain.
+
+### Participants
+- **Eligibility (key):**
+  - Age **18–65**, generally healthy, available for follow-up/consent
+  - **Single-rooted** teeth with **necrotic pulp** + **apical periodontitis**
+  - **Periapical Index (PAI) < 3**
+  - sound periodontium, sufficient coronal structure
+- **Exclusions (key):**
+  - systemic disease/immunocompromised, pregnancy
+  - allergy to drugs/irrigants
+  - sinus tract, acute periapical abscess
+  - calcified canals, immature apex, mobility
+  - ozone contraindications (recent MI, acute intoxication, active bleeding, uncontrolled hyperthyroidism, thrombocytopenia, G6PD deficiency)
+
+### Randomization, allocation concealment, blinding
+- **Randomization:** computer-generated sequence; subjects drew **sealed opaque envelope** with group code.
+- **Allocation concealment:** envelope opened after shaping/cleaning, just before ozone step.
+- **Blinding:**
+  - **Participants blinded**; control received **saline** similarly to “no agitation” to mimic ozone procedure.
+  - **Outcome assessor blinded** (entered VAS scores into master chart without group knowledge).
+  - **Statistician blinded**.
+  - Operator not blinded (procedural necessity).
+
+### Interventions (5 groups; n planned 24 each)
+Common SVE protocol for all:
+- Local anesthesia (2% lidocaine + epinephrine), rubber dam, standard access.
+- Working length: apex locator + radiographic confirmation.
+- Rotary instrumentation (ProTaper) crown-down; apical prep 3 sizes larger than first binding.
+- Irrigation during instrumentation: **2 mL 5.25% NaOCl** each step, 27G side-vented needle; 17% EDTA per manufacturer.
+- Obturation same visit (AH Plus sealer + lateral condensation), reduced from occlusion, Cavit temporary.
+
+Group-specific final irrigation step:
+- **Ozonated water preparation:** ozone gas **4 mg/mL** bubbled into distilled water **15 min** (generator specified).
+- **Dose/application:** **15 mL ozonated water**, **3–5 min**, tip **2 mm short** of working length (each canal).
+- **Activation:**
+  - **Group 1 NA:** ozone, no activation
+  - **Group 2 MDA:** gutta-percha push–pull (~100 strokes/min)
+  - **Group 3 PUA/PSA:** ultrasonic ISO #10 file; **3 cycles × 20 s**, power setting 3
+  - **Group 4 SA:** Pro Agitator Tip System
+  - **Group 5 Control:** **saline** placebo similar to NA
+
+### Outcomes and measurement schedule
+- **Primary outcome:** **Pain intensity** by **Visual Analog Scale (VAS), 0–10 cm** line.
+- **Time points:** **baseline (pre-treatment), 6h, 12h, 24h, 48h, 7d** post-treatment.
+- **Data capture:** patients marked VAS in a pain diary; returned at **2 days** and **1 week**.
+- **Protocol deviation/exclusion:** No routine analgesics; “reserve” ibuprofen allowed for emergencies; **excluded if taken within 7 days**.
+
+### Sample size and achieved sample
+- **Pilot:** 40 participants (5 groups × 8).
+- **Effect size basis:** partial η² for group×time = 0.128 ⇒ **F = 0.383**.
+- **Planned sample:** 110 for 90% power, 95% CI; inflated by 10% to **121**, operationalized as **24/group** (total **120 randomized**).
+- **Flow:** 177 assessed; 57 excluded; **120 randomized**; some lost to follow-up and incomplete pain forms; at least **one excluded for taking medication**. (Exact final n per group not fully visible in provided text; plan should accommodate missingness.)
+
+### Key variables/covariates
+- **Treatment group (5-level)**
+- **Time (7 repeated measures)**
+- **Sex (M/F)**
+- **Age group** (categories not specified)
+- **Arch** (maxilla/mandible)
+- **Baseline pain** (VAS baseline)
+
+---
+
+## TASK 2 — Statistical analysis plan
+
+### General principles (apply to all analyses)
+- **Analysis population:** Prefer **intention-to-treat (ITT)** including all randomized participants with available outcomes; do **not** exclude for rescue medication—rather treat as an outcome-related event (see recommended analyses). If the published protocol mandates exclusion, report both **per-protocol** and **ITT sensitivity**.
+- **Outcome type:** VAS is bounded continuous (0–10 cm). Treat as continuous if distribution reasonable; otherwise consider robust/ordinal approaches.
+- **Repeated measures:** within-subject correlation across time must be modeled.
+- **Two-sided α = 0.05**; report **effect sizes** and **95% CIs**.
+- **Multiplicity:** Pre-specify the primary contrast and control family-wise error for multiple timepoints/pairwise group comparisons.
+
+---
+
+# CATEGORY A — Mandatory analyses/tests
+
+## A1. Linear mixed-effects model (LMM) for repeated VAS (primary analysis)
+- **Test/model:** LMM with fixed effects for **group**, **time**, and **group×time**; random intercept for subject (optionally random slope for time).
+- **Purpose:** Estimate and test whether **pain trajectories differ** across the 5 groups over 7 time points (primary objective).
+- **Why appropriate (≥2):**
+  1. Handles **correlated repeated measures** properly via random effects/covariance structure.
+  2. Uses **all available data** under missing-at-random (MAR), avoiding listwise deletion typical of repeated-measures ANOVA.
+  3. Directly targets the clinically relevant **group×time interaction** used in sample size planning.
+- **Why may not be appropriate (≥1):**
+  - If VAS residuals show severe non-normality/heteroskedasticity with strong floor effects (common at later times), LMM with Gaussian errors may misfit.
+- **When NOT to use:**
+  - When outcome is clearly **ordinal/discrete with heavy piling at 0** such that Gaussian assumptions are untenable and transformations fail.
+- **Alternatives if assumptions violated:**
+  - **Generalized linear mixed model (GLMM)** (e.g., beta regression after rescaling to (0,1), or Tweedie), or
+  - **Rank-based mixed models** / **Brunner–Langer nonparametric longitudinal model**, or
+  - **GEE with robust (sandwich) SEs** as a marginal model.
+
+**Implementation details**
+- Time as **categorical** (baseline, 6h, 12h, 24h, 48h, 7d) to avoid assuming linearity.
+- Primary hypothesis: **overall group×time interaction**.
+- If significant, proceed to pre-specified contrasts:
+  - (i) each ozone group vs control at each post-op time
+  - (ii) activated ozone (MDA/PUA/SA) vs NA
+  - (iii) PUA vs SA (if clinically motivated)
+
+## A2. Baseline comparability / randomization check (descriptive + appropriate tests)
+- **Tests:**  
+  - Continuous (e.g., age): **ANOVA** or **Kruskal–Wallis**  
+  - Categorical (sex, arch, age group): **Chi-square** or **Fisher’s exact**
+- **Purpose:** Describe whether groups appear balanced on key baseline characteristics.
+- **Why appropriate:**
+  1. Identifies gross imbalances that may require **covariate adjustment** or stratified reporting.
+  2. Supports transparency in CONSORT reporting.
+- **Why may not be appropriate:**
+  - Significance testing for baseline balance can be misleading because any differences are due to chance; emphasis should be on **standardized differences**.
+- **When NOT to use:**
+  - Do not use baseline p-values to decide inclusion/exclusion of covariates mechanistically.
+- **Alternatives if assumptions violated:**
+  - Use **standardized mean differences (SMDs)** and confidence intervals; for sparse tables use Fisher’s exact.
+
+## A3. Model-based post hoc comparisons with multiplicity control
+- **Test:** Estimated marginal means (EMMs) contrasts from LMM with **Holm** or **Tukey** adjustment (depending on contrast set).
+- **Purpose:** Identify **which groups differ** at specific time points and estimate mean differences with CIs.
+- **Why appropriate:**
+  1. Controls inflated Type I error from multiple pairwise/timepoint comparisons.
+  2. Uses the fitted repeated-measures model (consistent SEs accounting for correlation).
+- **Why may not be appropriate:**
+  - If the contrast family is very large, adjusted tests may be underpowered and hard to interpret.
+- **When NOT to use:**
+  - Avoid unplanned “fishing” across all pairwise comparisons and timepoints without pre-specification.
+- **Alternatives if assumptions violated:**
+  - If switching to nonparametric longitudinal methods, use **Dunn-type** or **rank-based** post hoc procedures with Holm/FDR.
+
+---
+
+# CATEGORY B — Recommended analyses/tests
+
+## B1. Covariate-adjusted mixed model (sex, age group, arch; and baseline pain handling)
+- **Model:** Extend LMM to include **sex, age group, arch**, and optionally interactions (e.g., covariate×time). Consider baseline pain either as:
+  - included as part of repeated outcome with time categorical (baseline included), or
+  - analyze post-baseline with **baseline VAS as covariate** (ANCOVA-style mixed model).
+- **Purpose:** Address secondary objective; improve precision; evaluate effect modification.
+- **Why appropriate:**
+  1. Directly tests stated secondary objective about demographic/clinical factors.
+  2. Adjusts for prognostic factors, potentially reducing residual variance.
+- **Why may not be appropriate:**
+  - Limited sample size per group may make higher-order interactions unstable.
+- **When NOT to use:**
+  - Avoid overfitting: do not include many interaction terms if events/observations per parameter are low.
+- **Alternatives if assumptions violated:**
+  - Use **GEE** with robust SEs; or simpler models per timepoint with multiplicity control.
+
+## B2. Sensitivity analysis for rescue analgesic use (intercurrent event)
+- **Test/model options:**
+  - **Time-to-first rescue analgesic**: Kaplan–Meier + **log-rank test**, and/or **Cox model** by group.
+  - Or treat rescue use as a binary endpoint: **logistic regression** by group.
+- **Purpose:** Avoid bias from excluding participants who take ibuprofen; quantify whether groups differ in need for rescue medication.
+- **Why appropriate:**
+  1. Rescue medication is clinically meaningful and likely related to high pain.
+  2. Exclusion can induce **informative missingness** and bias treatment effect estimates.
+- **Why may not be appropriate:**
+  - If very few participants take medication, models may be unstable.
+- **When NOT to use:**
+  - Do not run Cox models if proportional hazards is clearly violated or events are extremely sparse.
+- **Alternatives if assumptions violated:**
+  - **Fisher’s exact** for any/none rescue use; or **restricted mean survival time (RMST)** comparisons.
+
+## B3. Missing data diagnostics and appropriate handling
+- **Tests/approach:**  
+  - Describe missingness by group/time; test association of missingness with observed covariates (logistic regression).  
+  - Primary LMM assumes **MAR**; add **multiple imputation (MI)** as sensitivity if needed.
+- **Purpose:** Ensure inference robustness to dropout/incomplete pain forms.
+- **Why appropriate:**
+  1. Loss to follow-up and incomplete diaries occurred.
+  2. Missingness may be related to pain (MNAR risk).
+- **Why may not be appropriate:**
+  - Formal tests for MCAR (e.g., Little’s test) can be underpowered/misleading.
+- **When NOT to use:**
+  - Do not impute without including variables predictive of missingness/outcome.
+- **Alternatives if assumptions violated:**
+  - **Pattern-mixture** or **selection models**; **tipping-point** analyses.
+
+## B4. Effect size reporting
+- **Measures:**  
+  - From LMM: **mean differences** at each timepoint; **area under the curve (AUC)** difference (see optional); standardized effects (e.g., **Cohen’s d** at key times).  
+  - For interaction: **partial η²** or **marginal R²**.
+- **Purpose:** Clinical interpretability beyond p-values.
+- **Why appropriate:**
+  1. Pain differences need clinical context.
+  2. Aligns with CONSORT emphasis on estimation.
+- **Why may not be appropriate:**
+  - Standardized effects can be sensitive to SD choice in repeated measures.
+- **When NOT to use:**
+  - Avoid Cohen’s d if distributions are highly non-normal with floor effects.
+- **Alternatives if assumptions violated:**
+  - Report **median differences** or **Hodges–Lehmann** estimates.
+
+---
+
+# CATEGORY C — Optional (supplementary) analyses
+
+## C1. AUC (pain burden) comparison across groups
+- **Test:** Compute subject-level **AUC of VAS over time** (e.g., trapezoidal rule from baseline to day 7); compare groups via **ANOVA** or **Kruskal–Wallis**, or regression adjusting covariates.
+- **Purpose:** Summarize overall pain experience in a single clinically meaningful metric.
+- **Why appropriate:**
+  1. Reduces multiplicity vs many timepoint comparisons.
+  2. Captures both intensity and duration of pain.
+- **Why may not be appropriate:**
+  - AUC can obscure when differences occur (early vs late).
+- **When NOT to use:**
+  - If many missing timepoints prevent reliable AUC calculation.
+- **Alternatives if assumptions violated:**
+  - Use **mixed-model–based AUC estimates** or nonparametric comparisons.
+
+## C2. Clinically relevant pain categories (none/mild/moderate/severe)
+- **Test/model:** Define cutpoints (pre-specified) and analyze via **ordinal logistic regression** (proportional odds) or multinomial model at key times.
+- **Purpose:** Translate continuous VAS into clinically interpretable categories.
+- **Why appropriate:**
+  1. Facilitates clinical decision-making/communication.
+  2. Addresses non-normal VAS distributions with floor effects.
+- **Why may not be appropriate:**
+  - Cutpoints are arbitrary; loss of information.
+- **When NOT to use:**
+  - Do not create post hoc thresholds chosen to maximize significance.
+- **Alternatives if assumptions violated:**
+  - If proportional odds fails, use **partial proportional odds** or **multinomial**.
+
+## C3. Repeated-measures ANOVA (as legacy comparability only)
+- **Test:** RM-ANOVA with Greenhouse–Geisser correction.
+- **Purpose:** Provide comparability with traditional methods/literature.
+- **Why appropriate:**
+  1. Common in dental pain trials.
+  2. Directly tests time and interaction effects under strict assumptions.
+- **Why may not be appropriate:**
+  - Requires **complete cases** and **sphericity**; performs poorly with missing data.
+- **When NOT to use:**
+  - If any notable missingness/dropout or clear sphericity violations.
+- **Alternatives if assumptions violated:**
+  - Prefer **LMM** or **GEE**.
+
+---
+
+## TASK 3 — Tests that should NOT be used (and why)
+
+1. **Multiple independent t-tests at each timepoint without multiplicity correction**
+   - Inflates Type I error; ignores repeated-measures correlation; encourages selective reporting.
+
+2. **Simple one-way ANOVA on pooled/averaged post-op pain without accounting for time**
+   - Loses longitudinal structure; can mask early differences (clinically important here).
+
+3. **Paired t-tests within each group across time as the main analysis**
+   - Does not compare groups properly; multiplicity explosion; ignores interaction.
+
+4. **Chi-square tests applied to raw VAS values**
+   - VAS is not categorical; would require arbitrary categorization and wastes information.
+
+5. **Correlation (Pearson/Spearman) between group code and VAS**
+   - Group is categorical; correlation is not an appropriate inferential framework.
+
+6. **Linear regression treating repeated measures as independent observations**
+   - Violates independence; SEs biased downward → false positives.
+
+---
+
+## TASK 4 — Summary justification of overall approach
+
+The study is a 5-arm parallel RCT with **longitudinal continuous pain (VAS)** measured repeatedly through 7 days. The core inferential question is whether **pain trajectories differ by group**, which is best addressed using a **mixed-effects repeated-measures model** (group, time, and their interaction), supplemented by **multiplicity-controlled contrasts** for clinically relevant comparisons. Covariate-adjusted models address the pre-specified secondary objectives (sex/age group/arch), and sensitivity analyses for **missing data** and **rescue medication** protect against biased conclusions from dropout or protocol-driven exclusions.

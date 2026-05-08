@@ -1,0 +1,139 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_2e82adef4e0e88e31522f81daaf92fe6.pdf
+Status : ok
+Time   : 20260508_060442
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: 
+   - Randomized clinical trial (RCT), single-blinded (patients and outcome assessors were blinded).
+
+2. **Study Objectives**:
+   - To compare the effect of XP-endo Shaper and conventional rotary files (iRaCe) on postoperative pain and bacterial reduction in oval root canals with necrotic pulps.
+
+3. **Study Groups**:
+   - **Group A**: XP-endo Shaper instrumentation system.
+   - **Group B**: iRaCe rotary instrumentation system.
+
+4. **Sample Size**:
+   - Total of 60 participants, with 30 participants in each group.
+
+5. **Eligibility Criteria**:
+   - **Inclusion**: Healthy men and women aged 20–60 years, mandibular premolars with single oval root canals and necrotic pulps, with or without periapical radiolucency (<3 mm), and no/mild preoperative pain.
+   - **Exclusion**: Pregnant women, recent use of analgesics/antibiotics (past 12 hours), teeth with abnormal occlusal contact, acute periapical abscess, periodontal pockets >5 mm, mobility >grade I, alveolar bone loss >50%, and non-restorable teeth.
+
+6. **Variables**:
+   - **Primary Outcomes**:
+     - Postoperative pain (measured on a modified visual analogue scale [VAS]).
+     - Bacterial reduction (measured as colony-forming units [CFUs/mL]).
+   - **Secondary Outcomes**:
+     - Incidence of flare-ups (binary outcome: Yes/No).
+     - Analgesic consumption (number of tablets).
+   - **Covariates**:
+     - Patient-related factors (age, gender, tooth type, pulp vitality, periapical status).
+
+7. **Measurements**:
+   - **Postoperative Pain**: Assessed using a 10 cm modified VAS at 6, 12, 24 hours, and days 2, 3, 4, and 5.
+   - **Bacterial Reduction**: CFUs/mL quantified using bacterial culturing on BHI agar plates.
+   - **Flare-ups**: Assessed using a four-point swelling scale and recorded as a binary outcome.
+
+8. **Data Collection Methods**:
+   - Randomization: Computer-generated sequence with allocation concealed in opaque envelopes.
+   - Blinding: Patients and outcome assessors blinded to group allocation.
+   - Pre- and post-instrumentation bacterial samples collected using sterile paper points and cultured.
+   - Pain and analgesic use recorded by patients on provided charts.
+
+9. **Intervention Details**:
+   - **Group A (XP-endo Shaper)**: Single-file system with specific speed, torque, and brushing strokes.
+   - **Group B (iRaCe)**: Multi-file rotary system with specific speed, torque, and irrigation protocols.
+   - Both groups used the same irrigation volume (30 mL) and filling technique.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Independent Samples t-test (or Mann-Whitney U test if non-parametric).
+   - **Purpose**: Compare mean postoperative pain scores between the two groups at each time point.
+   - **Why Appropriate**:
+     1. Continuous outcome (VAS scores) with two independent groups.
+     2. Randomized design ensures comparability between groups.
+   - **Why It May Not Be Appropriate**: Assumptions of normality and homogeneity of variance may not hold.
+   - **When NOT to Use**: If VAS scores are heavily skewed or sample size is too small for parametric testing.
+   - **Alternative**: Mann-Whitney U test for non-parametric data.
+
+2. **Test Name**: Paired Samples t-test (or Wilcoxon Signed-Rank Test if non-parametric).
+   - **Purpose**: Compare pre- and post-instrumentation bacterial counts (CFUs/mL) within each group.
+   - **Why Appropriate**:
+     1. Paired data structure (pre- and post-measurements within the same group).
+     2. Continuous outcome (CFUs/mL).
+   - **Why It May Not Be Appropriate**: Non-normal distribution of bacterial counts.
+   - **When NOT to Use**: If CFUs/mL data are highly skewed or contain outliers.
+   - **Alternative**: Wilcoxon Signed-Rank Test.
+
+3. **Test Name**: Chi-Square Test (or Fisher’s Exact Test for small sample sizes).
+   - **Purpose**: Compare the incidence of flare-ups (binary outcome) between the two groups.
+   - **Why Appropriate**:
+     1. Binary categorical outcome (Yes/No).
+     2. Two independent groups.
+   - **Why It May Not Be Appropriate**: Small cell counts in contingency table.
+   - **When NOT to Use**: If expected frequencies in any cell are <5.
+   - **Alternative**: Fisher’s Exact Test.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Repeated Measures ANOVA (or Friedman Test if non-parametric).
+   - **Purpose**: Analyze changes in postoperative pain scores over time between groups.
+   - **Why Appropriate**:
+     1. Longitudinal data with repeated measures (pain scores at multiple time points).
+     2. Allows assessment of time-group interaction.
+   - **Why It May Not Be Appropriate**: Assumes sphericity, which may not hold.
+   - **When NOT to Use**: If sphericity assumption is violated and corrections (e.g., Greenhouse-Geisser) are not feasible.
+   - **Alternative**: Friedman Test (non-parametric).
+
+2. **Test Name**: Logistic Regression.
+   - **Purpose**: Assess predictors of flare-ups (e.g., group allocation, age, gender).
+   - **Why Appropriate**:
+     1. Binary outcome (flare-up: Yes/No).
+     2. Allows adjustment for covariates.
+   - **Why It May Not Be Appropriate**: Small sample size may lead to overfitting.
+   - **When NOT to Use**: If sample size per predictor variable is insufficient.
+   - **Alternative**: Exact Logistic Regression.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Kaplan-Meier Survival Analysis.
+   - **Purpose**: Analyze time to pain resolution between groups.
+   - **Why Appropriate**:
+     1. Time-to-event data (time to pain resolution).
+     2. Censored data (patients who do not report resolution within the study period).
+   - **Why It May Not Be Appropriate**: Requires precise time-to-event data, which may not be available.
+   - **When NOT to Use**: If time-to-resolution data are incomplete or unreliable.
+   - **Alternative**: Descriptive analysis of pain resolution rates.
+
+2. **Test Name**: Effect Size Calculation (e.g., Cohen’s d for continuous outcomes).
+   - **Purpose**: Quantify the magnitude of differences between groups.
+   - **Why Appropriate**:
+     1. Provides clinically meaningful interpretation of results.
+     2. Complements p-values by assessing practical significance.
+   - **Why It May Not Be Appropriate**: Does not account for variability in small samples.
+   - **When NOT to Use**: If data are highly skewed or sample sizes are unequal.
+   - **Alternative**: Non-parametric effect size measures (e.g., rank-biserial correlation).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: ANOVA (without repeated measures).
+   - **Why Not Appropriate**: Does not account for the repeated measures structure of pain data.
+2. **Test Name**: Pearson Correlation.
+   - **Why Not Appropriate**: Not suitable for comparing group differences or binary outcomes.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach combines robust hypothesis testing methods (e.g., t-tests, chi-square tests) with advanced techniques for longitudinal and categorical data (e.g., repeated measures ANOVA, logistic regression). This ensures a comprehensive evaluation of both primary and secondary outcomes while addressing potential confounders. Non-parametric alternatives are included to handle violations of assumptions, ensuring the validity and reliability of the results.

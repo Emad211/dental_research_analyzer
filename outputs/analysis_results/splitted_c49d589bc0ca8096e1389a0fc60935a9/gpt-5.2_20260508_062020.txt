@@ -1,0 +1,244 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_c49d589bc0ca8096e1389a0fc60935a9.pdf
+Status : ok
+Time   : 20260508_062020
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — INFORMATION EXTRACTION (study characteristics)
+
+### Study design and setting
+- **Design:** Single-blind, randomized, placebo-controlled, parallel-group clinical trial (1:1 allocation).
+- **Guideline:** PRIRATE reported.
+- **Registration:** clinicaltrials.in.th, ID **20201221002**.
+- **Ethics:** Approved (no: **2019/628**).
+- **Blinding:**
+  - Injection operator **blinded** to interventions.
+  - LLLT administered by a second operator.
+  - Endodontic treatment performed by a third operator **blinded** to allocation.
+  - Participants received either active LLLT or **mock laser** (placebo), implying participant blinding is intended, though not explicitly stated.
+
+### Objective
+- Evaluate whether **low-level laser therapy (LLLT)** increases the **success rate of inferior alveolar nerve block (IANB)** in mandibular molars with **symptomatic irreversible pulpitis (SIP)**.
+
+### Participants
+- **Assessed:** 352
+- **Randomized/analyzed:** 88 (44 per group), **no loss to follow-up**.
+- **Eligibility (key inclusion):**
+  - Age **18–65**
+  - Mandibular molar diagnosed with **SIP**
+  - **ASA 1–2**
+  - **Moderate or severe pain** preoperatively by VAS (≥45 mm)
+  - No periapical radiolucency (except widened PDL with intact lamina dura)
+  - SIP diagnosis confirmed by **cold test** + **electric pulp test** (positive EPT, prolonged cold response)
+- **Key exclusion:**
+  - Analgesic/anti-inflammatory within **12 h**
+  - NSAID allergy; pregnancy/lactation; opioid use; GI disease history
+  - Periodontal disease
+  - Systemic disorders / articaine sensitivity
+  - Periapical radiolucency
+  - >1 painful tooth
+  - Also excluded: no pulpal bleeding after access cavity
+
+### Randomization
+- **Method:** Computer random table generator (random.org)
+- **Allocation ratio:** 1:1
+- **Allocator:** One dental assistant
+
+### Interventions / groups
+1. **IANB + LLLT (active)**
+   - IANB: **3.6 mL 4% articaine HCl with 1:100,000 epinephrine**, slow injection over **1 min**
+   - After **15 min**, proceed if **lip numbness** and **two consecutive negative EPT** responses; otherwise excluded
+   - LLLT: **940 nm diode**, “Pain therapy” mode, **0.5 W**, tip ~**10 mm** from tissues near apices:
+     - **30 s** mesial root area
+     - **30 s** distal root area with circumferential movements
+2. **IANB + mock laser (control)**
+   - Same IANB protocol and eligibility after 15 min
+   - Tip positioned similarly but **not activated** (placebo)
+
+### Procedures and outcome measurement timing
+- Access cavity under rubber dam; canal shaping performed.
+- **Pain measurement:** **VAS 0–100 mm** (marks every 10 mm; labeled 0 and 10 at ends, but recorded in mm).
+  - Recorded **preoperative pain**
+  - Recorded **pain at time of operation**; if pain during access/shaping, patient marks VAS again.
+
+### Outcomes / variables
+
+**Primary endpoint (implied): IANB success**
+- **Definition:** Anaesthesia **unsuccessful** if pain **>44 mm** on VAS at **any stage** (access cavity preparation or canal shaping).
+- Therefore success = pain **≤44 mm** throughout operative steps (equivalent to “no pain”/“mild pain” categories).
+
+**Secondary/other variables available from text**
+- Post-anaesthesia pain category distribution (no/mild/moderate/severe) based on VAS:
+  - No pain 0–4; mild 5–44; moderate 45–74; severe 75–100.
+- Preoperative pain category (moderate vs severe) exists by eligibility but exact counts not given.
+- Supportive anaesthesia administered after failure (buccal, intraligamentary, intrapulpal) — could be additional outcomes.
+
+### Sample size / power
+- Based on pilot study:
+  - **α = 0.05**, **power = 0.80**, **effect size = 0.782**
+  - Minimum **≥40 per group** planned; **44 per group** enrolled.
+
+---
+
+## TASK 2 — STATISTICAL ANALYSIS PLAN (tests grouped by priority)
+
+### General analysis principles (apply to all categories)
+- **Analysis set:** Intention-to-treat among randomized participants **who met intraoperative inclusion**; however, note protocol excludes patients lacking lip numbness/negative EPT at 15 min. For rigor, define:
+  - **Primary estimand:** effect among those who proceed to treatment under protocol (modified ITT), and
+  - **Sensitivity estimand:** strict ITT including all randomized (count excluded as failures) if any occur.
+- **Two-sided α = 0.05**; report **effect sizes with 95% CI**.
+- **Descriptives:** mean (SD) or median (IQR) for continuous; n (%) for categorical.
+- **Assumption checks:** expected counts for χ²; distributional checks for any continuous modeling of VAS.
+
+---
+
+# CATEGORY A — MANDATORY (core to answer the research question)
+
+## A1) Pearson Chi-square test (or Fisher’s exact test) for primary success rate
+- **Test name:** Pearson **χ² test** (with **Fisher’s exact** as needed)
+- **Purpose:** Compare **proportion of IANB success** between IANB+LLLT vs IANB+placebo.
+- **Why appropriate (≥2):**
+  1. Primary outcome is **binary** (success vs failure defined by VAS threshold).
+  2. Two **independent parallel groups** with 1:1 randomization.
+- **Why it may not be appropriate (≥1):**
+  - If expected cell counts are small (e.g., <5), χ² approximation may be inaccurate.
+- **When NOT to use:**
+  - When any expected count is too low or sample is extremely small; or if data are paired/repeated (not here).
+- **Alternative if assumptions violated:**
+  - **Fisher’s exact test** (exact p-value).
+- **Report alongside p-value:**
+  - **Risk difference**, **risk ratio**, and/or **odds ratio** with **95% CI** (prefer RD/RR for interpretability).
+
+## A2) Effect size estimation for the primary outcome (binomial CI methods)
+- **Test/Method name:** **Two-proportion CI** (e.g., Newcombe/Wilson), **RR CI**, **RD CI**
+- **Purpose:** Quantify magnitude/precision of treatment effect on success.
+- **Why appropriate:**
+  1. RCT interpretation requires **effect size + CI**, not only hypothesis testing.
+  2. Binary endpoint supports direct computation of RD/RR/OR.
+- **Why may not be appropriate:**
+  - OR can be misleading when outcome is common (success ~34–57% here).
+- **When NOT to use:**
+  - Avoid OR-only reporting when clinicians may misinterpret; don’t use Wald CI if small n.
+- **Alternative if assumptions violated:**
+  - Use **exact** or **Wilson/Newcombe** CIs; for OR use **exact** or **profile likelihood** CI.
+
+---
+
+# CATEGORY B — RECOMMENDED (improves rigor, robustness, interpretability)
+
+## B1) Logistic regression (unadjusted and adjusted)
+- **Test name:** **Binary logistic regression**
+- **Purpose:** Estimate treatment effect on success as **odds ratio**, optionally adjusted for prognostic variables.
+- **Why appropriate:**
+  1. Handles **binary** outcome and yields adjusted estimates if imbalance occurs despite randomization.
+  2. Can include covariates such as **baseline pain severity (moderate vs severe)**, age, sex (if recorded), tooth type (1st/2nd molar if recorded).
+- **Why may not be appropriate:**
+  - With limited events, adjusted models risk **overfitting** / separation.
+- **When NOT to use:**
+  - When events per parameter are too low or quasi-complete separation occurs.
+- **Alternative if assumptions violated:**
+  - **Penalized logistic regression** (Firth) or **exact logistic regression**; or reduce covariates.
+
+## B2) Ordinal association test for post-anaesthesia pain categories
+- **Test name:** **Cochran–Armitage trend test** *or* **Ordinal logistic regression (proportional odds model)**
+- **Purpose:** Compare groups across ordered pain categories (no/mild/moderate/severe) after anaesthesia.
+- **Why appropriate:**
+  1. Outcome is **ordinal**, and ordering contains more information than collapsing to success/failure.
+  2. Can detect a **shift** toward lower pain categories with LLLT.
+- **Why may not be appropriate:**
+  - Proportional odds assumption may not hold for ordinal logistic regression.
+- **When NOT to use:**
+  - If categories are not truly ordered or proportional odds is badly violated without remedy.
+- **Alternative if assumptions violated:**
+  - **Partial proportional odds model**, or **nonparametric** approach (e.g., **Mann–Whitney U** on ranks) recognizing ties and ordinal nature; or multinomial logistic regression (ignores ordering but flexible).
+
+## B3) Baseline comparability (descriptive + targeted tests)
+- **Test name:** Descriptive balance assessment; optionally **t-test/Mann–Whitney** (continuous) and **χ²/Fisher** (categorical)
+- **Purpose:** Characterize whether randomization achieved reasonable balance (age, sex, baseline pain severity, tooth type).
+- **Why appropriate:**
+  1. Supports interpretation and detects chance imbalance that may motivate adjusted analyses.
+  2. Required for transparent RCT reporting.
+- **Why may not be appropriate:**
+  - Hypothesis testing for baseline differences is often discouraged (difference is by chance).
+- **When NOT to use:**
+  - Do not use baseline p-values to decide inclusion/exclusion of covariates mechanically.
+- **Alternative:**
+  - Use **standardized mean differences (SMDs)** and confidence intervals.
+
+## B4) Sensitivity analysis for protocol exclusions (estimand robustness)
+- **Method name:** **Sensitivity analysis** treating excluded patients as failures vs excluding them
+- **Purpose:** Assess whether results depend on the rule “exclude if no lip numbness / negative EPT”.
+- **Why appropriate:**
+  1. Exclusions after randomization can introduce bias; sensitivity checks robustness.
+  2. Aligns with CONSORT/estimand thinking.
+- **Why may not be appropriate:**
+  - If truly no post-randomization exclusions occurred, it adds little.
+- **When NOT to use:**
+  - Not needed if all randomized received intervention and were analyzed as randomized.
+- **Alternative:**
+  - **Multiple imputation** for missing outcomes (if any), or **best/worst case** bounds.
+
+---
+
+# CATEGORY C — OPTIONAL (supplementary insights)
+
+## C1) Analysis of continuous VAS (pain at operation)
+- **Test name:** **Mann–Whitney U** (preferred) *or* **t-test** (if approximately normal)
+- **Purpose:** Compare distribution/central tendency of **VAS pain scores** at operation between groups (as continuous).
+- **Why appropriate:**
+  1. Uses full VAS granularity instead of dichotomization.
+  2. Mann–Whitney is robust for skewed pain data and ceiling/floor effects.
+- **Why may not be appropriate:**
+  - VAS recorded multiple times (“if pain during access and shaping mark again”): unclear which value is primary (max? last?).
+- **When NOT to use:**
+  - When outcome definition is ambiguous or repeated measures are not handled appropriately.
+- **Alternative if assumptions violated:**
+  - If repeated values are available, use **mixed models** or define **maximum intraoperative VAS** and analyze that.
+
+## C2) Time-to-rescue/supportive anaesthesia (if timing recorded)
+- **Test name:** **Kaplan–Meier + log-rank**, or **Cox regression**
+- **Purpose:** Compare groups in time until need for supportive anaesthesia.
+- **Why appropriate:**
+  1. Captures both occurrence and timing (if timing exists).
+  2. Handles censoring if procedure ends without rescue.
+- **Why may not be appropriate:**
+  - Timing data not described; likely not recorded.
+- **When NOT to use:**
+  - If only “given/not given” is available.
+- **Alternative:**
+  - Binary comparison via **χ²/Fisher** for “any supportive anaesthesia”.
+
+## C3) Subgroup / interaction analysis by baseline pain severity
+- **Test name:** Logistic regression with **treatment × baseline severity interaction**
+- **Purpose:** Explore whether LLLT effect differs for baseline moderate vs severe pain.
+- **Why appropriate:**
+  1. Clinically plausible effect modification.
+  2. Model-based interaction formally tests heterogeneity.
+- **Why may not be appropriate:**
+  - Underpowered; increases false positives if many subgroups explored.
+- **When NOT to use:**
+  - When not prespecified or with sparse cells.
+- **Alternative:**
+  - Present stratified estimates with CIs (descriptive) and avoid definitive claims.
+
+---
+
+## TASK 3 — INAPPROPRIATE TESTS (should NOT be used)
+
+1. **Paired t-test / McNemar test**
+   - Data are **not paired** (parallel groups), so paired methods are invalid.
+2. **One-way ANOVA (as primary analysis)**
+   - Primary endpoint is **binary**; ANOVA assumes continuous normally distributed outcome.
+3. **Multiple independent t-tests on categorical pain categories**
+   - Category outcomes require **categorical/ordinal** methods; multiple t-tests inflate type I error and are conceptually wrong.
+4. **Correlation (Pearson/Spearman) between group and outcome**
+   - Treatment group is categorical; correlation is not the right framework for causal group comparisons in an RCT.
+5. **Linear regression on binary success (linear probability model) as the main analysis**
+   - Can yield predicted probabilities outside [0,1] and heteroskedasticity; acceptable sometimes as supplemental RD estimation, but not ideal as primary.
+
+---
+
+## TASK 4 — SUMMARY (overall analytical approach)
+
+A two-arm randomized parallel trial with a binary primary endpoint (“IANB success”) should be analyzed primarily by **comparing success proportions** between groups (χ²/Fisher) with **effect sizes and 95% CIs**. Rigor is improved by **logistic regression** (optionally adjusted), **ordinal methods** for pain-category shifts, and **sensitivity analyses** addressing any post-randomization exclusions. This combination directly answers the clinical question, respects outcome scale (binary/ordinal), and provides both statistical significance and clinically interpretable effect magnitude.

@@ -1,0 +1,288 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_e11e00fd60f9ba6c758dd87aec7b4d13.pdf
+Status : ok
+Time   : 20260508_063249
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design and setting
+- **Design:** Parallel-group **randomized clinical trial (RCT)**, **1:1 allocation**.
+- **Blinding:** **Participants, legal guardians, and data assessor blinded** to intervention; **operator not blinded**. **Radiographic assessor blinding not feasible** (materials distinguishable on radiographs). Operator did **treatment + clinical/radiographic assessments** (risk of detection bias).
+- **Guidelines/registration:** CONSORT; registered at ClinicalTrials.gov **NCT03166748**.
+- **Setting:** Outpatient clinic, Department of Pedodontics, Faculty of Dentistry, Cairo University (Egypt).
+
+### Objective
+- Compare **clinical and radiographic outcomes** of **5% potassium nitrate (KNO₃) in polycarboxylate cement** versus **mineral trioxide aggregate (MTA)** as **pulpotomy biomaterials** in **asymptomatic vital immature permanent mandibular first molars**.
+
+### Participants / eligibility
+- **Population:** Children **6–9 years**.
+- **Unit of randomization/analysis (as described):** **Molars**.
+- **Inclusion:** Asymptomatic, vital, immature mandibular first molar with **deep extensive caries** causing **pulp exposure during excavation**; no preoperative acute pulp/periapical symptoms; controlled bleeding after access (teeth with excessive uncontrolled bleeding or no bleeding excluded).
+- **Exclusion:** Medically compromised; necrotic pulp; acute pulp/periapical inflammation; abnormal anatomy; furcation involvement; canal calcification; nonrestorable tooth.
+
+### Sample size and flow
+- **Power analysis:** α=0.05, power=0.80; target **50 participants/teeth** (25/group), inflated for loss to follow-up. Mentions: 42 needed to exclude difference >10% in 95% CI (suggests **non-inferiority/equivalence-style** logic, though not explicitly stated).
+- **Enrolled:** 69 screened, 50 randomized.
+- **Analyzed sample:** 50 molars from **48 children** (i.e., **some clustering**: 2 children contributed 2 molars).
+- **Loss to follow-up:** **1 per group** (per CONSORT diagram).
+
+### Randomization and allocation concealment
+- **Sequence generation:** random.org by main supervisor.
+- **Concealment:** sequence in **sealed envelopes**; opened after hemostasis, at material placement step.
+
+### Interventions
+- **Common steps:** anesthesia, rubber dam, caries excavation → pulp exposure, access preparation, coronal pulp amputation, hemostasis with saline gauze + **ferric sulfate 15.5%** for 15 seconds, temporary GI; periapical radiograph to verify material level; final restoration composite.
+- **Group 1 (Intervention):** **5% KNO₃ + polycarboxylate cement**, mixed as 95 mg ZnO + 5 mg KNO₃ with polyacrylic acid, 1:1 powder:liquid; placed **3–4 mm**.
+- **Group 2 (Control):** **White MTA**, mixed per manufacturer, placed **3–4 mm**, moistened cotton pellet and temporized due to setting time; next-day revisit to remove cotton pellet and place RMGI base.
+
+### Outcomes and measurement schedule
+
+#### Primary outcomes (binary “yes/no”)
+1. **Clinical success/failure** at:
+   - **1 week** (phone)
+   - **6 months** (clinical visit)
+   - **12 months** (clinical visit)  
+   Failures: spontaneous pain, sensitivity to percussion/palpation, swelling/sinus tract.
+2. **Radiographic success/failure** at:
+   - **6 months**
+   - **12 months**  
+   Success: root maturogenesis progress. Failures include periradicular/interradicular lesion, internal/external root resorption.
+
+- **Protocol for emergencies:** pain/swelling → emergency visit → shifted to full RCT (root canal treatment) and **case excluded** (important for SAP: this is *not* ITT as described).
+
+#### Secondary outcomes (continuous/derived)
+- **Radiometric measures** from pre-op, 6m, 12m periapical radiographs (Photoshop):
+  - **Root length** (mesial and distal roots) in mm (pixel-to-mm conversion using ruler calibration).
+  - **Apical foramen diameter** (mesial and distal roots) in mm.
+  - **Magnification adjustment** using crown height to compute factor; apply to postoperative measures.
+  - **Derived endpoint:** **percentage difference** between preoperative and postoperative (6m and 12m) for mesial and distal roots.
+  - At 12m: count roots with **complete apical closure** vs incomplete.
+
+### Data structure considerations (important)
+- Repeated measures over time (baseline, 6m, 12m) for continuous outcomes.
+- Multiple correlated units:
+  - Some children contribute **two teeth**.
+  - Each tooth contributes **two roots** (mesial, distal) and repeated measures.
+  - Therefore: **hierarchical clustering** (root within tooth within child) + longitudinal correlation.
+
+---
+
+## TASK 2 — Statistical analysis plan (tests)
+
+### General analysis principles (apply to all categories)
+- **Analysis sets:**
+  - **Intention-to-treat (ITT):** analyze all randomized teeth as allocated. Handle missing outcomes via appropriate methods (see below).
+  - **Per-protocol (PP):** exclude major protocol deviations; include as sensitivity only.
+  - **Avoid excluding “emergency RCT” conversions from the analysis**; instead treat as **failures** for primary success endpoints (clinically conservative and consistent with efficacy evaluation).
+- **Baseline comparability:** describe age, sex, tooth characteristics (if available), pre-op radiographic status.
+- **Effect sizes:** report **risk difference, risk ratio**, and/or **odds ratio**, with **95% CI**, plus absolute success rates.
+- **Multiplicity:** primary outcomes are multiple (clinical + radiographic and multiple timepoints). Pre-specify hierarchy:
+  1) 12-month overall success (composite clinical+radiographic), then  
+  2) 12-month clinical, 12-month radiographic, then earlier timepoints; control family-wise error or clearly label secondary.
+- **Missing data:**
+  - For binary outcomes: multiple imputation (MI) or conservative imputation (missing=failure) as sensitivity.
+  - For continuous longitudinal outcomes: mixed models accommodate MAR; MI as sensitivity.
+- **Clustering:** because 50 molars from 48 children and 2 roots/tooth, use **mixed-effects** or **GEE** where relevant.
+
+---
+
+# CATEGORY A — MANDATORY tests (analysis incomplete without)
+
+## A1) Mixed-effects logistic regression (or GEE logistic) for binary primary outcomes
+- **Test/model:** Generalized linear mixed model (**GLMM**, logit link) *or* **GEE** logistic regression.
+- **Purpose:** Compare **probability of success/failure** between groups over time (6m, 12m; optionally include 1-week clinical) while accounting for correlation.
+- **Why appropriate (≥2):**
+  1. Primary outcomes are **binary** (yes/no).
+  2. Handles **correlated observations** (repeated follow-ups; possible 2 teeth/child).
+  3. Provides **adjusted effect sizes** (OR/RR via marginal models) with CI.
+- **Why may not be appropriate (≥1):**
+  - With **very few failures**, models can suffer from **separation**/unstable estimates.
+- **When NOT to use:**
+  - If there is only **one timepoint** and no clustering and events are adequate, a simpler risk comparison may suffice; or if event counts are too low for logistic modeling.
+- **Alternative if assumptions violated / sparse events:**
+  - **Firth penalized logistic regression** (for separation).
+  - **Exact logistic regression** (small samples).
+  - For single timepoint: **Fisher’s exact test** with risk difference CI.
+
+**Implementation suggestion:**  
+Outcome = failure (1/0). Fixed effects: group, time, group×time. Random intercept: child (and possibly tooth nested within child if >1 tooth/child), or use GEE with exchangeable correlation at child level and repeated within tooth.
+
+---
+
+## A2) Linear mixed-effects model (LMM) for continuous radiometric secondary outcomes
+- **Test/model:** **Linear mixed-effects model** for:
+  - Root length (mm) and/or % change
+  - Apical foramen diameter (mm) and/or % change
+- **Purpose:** Compare **changes over time** between materials, accounting for repeated measures and clustering of roots within teeth/children.
+- **Why appropriate (≥2):**
+  1. Outcomes are **continuous** with **baseline + follow-up** measures.
+  2. Handles **longitudinal correlation** and **unbalanced data** (loss to follow-up).
+  3. Can model **root (mesial/distal)** and time simultaneously.
+- **Why may not be appropriate (≥1):**
+  - If measurement distributions are highly non-normal with heavy tails and small n, LMM inference may be sensitive.
+- **When NOT to use:**
+  - If only a single post value exists and baseline is not available (not the case here), or if there is extreme non-normality with no workable transformation.
+- **Alternative if assumptions violated:**
+  - Transform outcome (e.g., log for foramen diameter if skewed).
+  - **Robust LMM** / **Huber-White sandwich SE**.
+  - **Nonparametric longitudinal methods** (e.g., rank-based mixed models) if severe.
+
+**Implementation suggestion:**  
+Model outcome at 6m and 12m with baseline as covariate (ANCOVA-style mixed model), fixed: group, time, group×time, root (mesial/distal), interactions as needed; random: child and tooth.
+
+---
+
+## A3) Fisher’s exact test (or Chi-square) for 12-month apical closure counts
+- **Test:** **Fisher’s exact test** (preferred) comparing proportion of roots/teeth with **complete apical closure** at 12 months between groups.
+- **Purpose:** Simple comparison of a key clinically meaningful binary milestone at final follow-up.
+- **Why appropriate (≥2):**
+  1. Binary endpoint at a single timepoint.
+  2. Sample size is modest and expected cell counts may be small → Fisher is reliable.
+- **Why may not be appropriate (≥1):**
+  - Ignores clustering (two roots per tooth; two teeth in some children).
+- **When NOT to use:**
+  - When clustering is non-negligible and inference must be cluster-adjusted.
+- **Alternative if assumptions violated / clustering important:**
+  - **Mixed-effects logistic regression** at root level (random intercept for tooth/child).
+  - **GEE logistic** with clustering by child/tooth.
+
+---
+
+# CATEGORY B — RECOMMENDED tests (improve rigor)
+
+## B1) Baseline comparability: standardized mean differences (SMD) + appropriate tests
+- **Tests:**  
+  - Continuous baseline: t-test or Mann–Whitney (descriptive), but emphasize **SMD**.  
+  - Categorical baseline: chi-square/Fisher (descriptive).
+- **Purpose:** Check balance after randomization and describe sample.
+- **Why appropriate (≥2):**
+  1. Confirms randomization achieved balance; informs need for covariate adjustment.
+  2. SMD is not driven by sample size and is preferred for RCT balance reporting.
+- **Why may not be appropriate (≥1):**
+  - Hypothesis tests of baseline differences can be misleading in RCTs (randomization already justifies exchangeability).
+- **When NOT to use:**
+  - Do not use baseline p-values to decide inclusion/exclusion of covariates mechanically.
+- **Alternative:**
+  - Report **SMD only** with clinical judgment; pre-specify adjustment covariates.
+
+---
+
+## B2) Adjusted analyses (covariate-adjusted GLMM/LMM)
+- **Test/model:** Add covariates to models: age, sex, baseline root length/foramen diameter, initial apex openness, caries extent (if recorded).
+- **Purpose:** Improve precision and address residual imbalance.
+- **Why appropriate (≥2):**
+  1. Covariate adjustment increases efficiency in small-to-moderate RCTs.
+  2. Baseline radiometric values are strong predictors of follow-up measures.
+- **Why may not be appropriate (≥1):**
+  - Overfitting risk if too many covariates relative to failures.
+- **When NOT to use:**
+  - If events are very sparse, keep models parsimonious.
+- **Alternative:**
+  - Use **penalized regression** (Firth) for sparse binary outcomes.
+
+---
+
+## B3) Time-to-failure analysis (if dates available)
+- **Test/model:** **Kaplan–Meier** curves + **log-rank test**, and/or **Cox proportional hazards** (with frailty/robust SE for clustering).
+- **Purpose:** Use timing of postoperative emergencies/failures rather than fixed timepoint success.
+- **Why appropriate (≥2):**
+  1. Handles censoring (lost to follow-up) naturally.
+  2. More informative when failures occur at varying times.
+- **Why may not be appropriate (≥1):**
+  - Only discrete assessment times (1w/6m/12m) and few failures may limit interpretability.
+- **When NOT to use:**
+  - If failure time cannot be reasonably ascertained.
+- **Alternative:**
+  - Discrete-time survival model (complementary log-log) using visit intervals.
+
+---
+
+## B4) Reliability analysis for radiographic measurements (if any re-measurement is feasible)
+- **Test:** **Intraclass correlation coefficient (ICC)** for continuous measures; **kappa** for binary radiographic outcomes.
+- **Purpose:** Quantify measurement repeatability (Photoshop-based measures; unblinded assessor).
+- **Why appropriate (≥2):**
+  1. Radiometric outcomes depend on operator measurements and magnification adjustment.
+  2. Supports credibility of measurement process.
+- **Why may not be appropriate (≥1):**
+  - If no replicate measurements or second assessor data exist.
+- **When NOT to use:**
+  - If only one measurement per image is available with no repeats.
+- **Alternative:**
+  - Bland–Altman limits of agreement for repeated continuous measures.
+
+---
+
+# CATEGORY C — OPTIONAL tests (supplementary insights)
+
+## C1) Non-inferiority/equivalence analysis framing (aligning with sample size logic)
+- **Test/model:** Non-inferiority test on **risk difference** (or risk ratio) with a **pre-specified margin** (suggested margin mentioned indirectly: 10%).
+- **Purpose:** If the intent is “similar outcomes,” formally test non-inferiority of KNO₃/polycarboxylate vs MTA.
+- **Why appropriate (≥2):**
+  1. Sample size text indicates excluding differences >10% (classic non-inferiority/equivalence language).
+  2. Clinically relevant if lower cost/easier handling is desired without worse outcomes.
+- **Why may not be appropriate (≥1):**
+  - Margin not explicitly justified in the text; post-hoc NI claims are weak.
+- **When NOT to use:**
+  - If the trial was designed/registered as superiority and NI margin not pre-specified.
+- **Alternative:**
+  - Report superiority with CI and interpret clinically.
+
+---
+
+## C2) Bayesian analysis (posterior probability of clinically relevant difference)
+- **Test/model:** Bayesian logistic/linear mixed models.
+- **Purpose:** Quantify probability that KNO₃ is better/worse within clinically meaningful bounds.
+- **Why appropriate (≥2):**
+  1. Small sample; Bayesian methods can provide stable interval estimates.
+  2. Direct probability statements aid clinical decision-making.
+- **Why may not be appropriate (≥1):**
+  - Requires priors; may be controversial if not pre-specified.
+- **When NOT to use:**
+  - If audience/regulators require frequentist-only inference.
+- **Alternative:**
+  - Frequentist CI with effect-size interpretation.
+
+---
+
+## C3) Subgroup/interaction analyses (exploratory only)
+- **Test/model:** Interaction terms in GLMM/LMM (e.g., age group 6–7 vs 8–9; baseline apex diameter).
+- **Purpose:** Explore effect modification.
+- **Why appropriate (≥2):**
+  1. Biological plausibility: more immature teeth may respond differently.
+  2. Helps generate hypotheses for future trials.
+- **Why may not be appropriate (≥1):**
+  - Underpowered; high false-positive risk.
+- **When NOT to use:**
+  - Do not treat as confirmatory; avoid multiple unplanned subgroups.
+- **Alternative:**
+  - Present stratified descriptive results only.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Multiple independent t-tests at each timepoint** for radiometric outcomes  
+   - Why inappropriate: ignores **repeated measures** and **root/tooth/child clustering**; inflates type I error; wastes baseline information.
+
+2. **Paired t-test within each group only (pre vs 12m) without between-group comparison**  
+   - Why inappropriate: answers the wrong question (within-group change ≠ treatment effect).
+
+3. **Simple chi-square tests for repeated binary outcomes at multiple follow-ups** without accounting for within-tooth correlation/time  
+   - Why inappropriate: violates independence; misleading p-values.
+
+4. **One-way ANOVA** treating timepoints as independent groups  
+   - Why inappropriate: time is within-subject; must use repeated measures/mixed modeling.
+
+5. **Stepwise regression to “select” covariates based on p-values**  
+   - Why inappropriate: unstable with small sample; increases bias; poor reproducibility.
+
+6. **Correlation (Pearson/Spearman) between treatment group and outcome**  
+   - Why inappropriate: treatment is categorical; correlation is not an effect estimate and does not address repeated measures.
+
+---
+
+## TASK 4 — Summary justification of the analytical approach
+
+A mixed-model framework is the most defensible approach because outcomes are (i) **binary clinical/radiographic success** measured at multiple follow-ups and (ii) **continuous radiometric measurements** collected longitudinally for **two roots per tooth**, with **possible multiple teeth per child**. GLMM/GEE for binary endpoints and LMM for continuous endpoints properly address **non-independence**, accommodate **missing follow-up**, and yield clinically interpretable **effect sizes with confidence intervals**. This plan also avoids the protocol’s problematic “exclude failures” approach by prioritizing **ITT** (with sensitivity analyses), preserving randomization and preventing bias.

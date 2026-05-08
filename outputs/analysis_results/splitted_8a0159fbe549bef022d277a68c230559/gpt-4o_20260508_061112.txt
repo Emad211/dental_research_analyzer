@@ -1,0 +1,153 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_8a0159fbe549bef022d277a68c230559.pdf
+Status : ok
+Time   : 20260508_061112
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### **Study Characteristics**
+1. **Study Design**: 
+   - Prospective, double-blind, randomized clinical trial (RCT).
+
+2. **Objective**: 
+   - To evaluate the combined effect of preoperative oral ibuprofen (800 mg) and dexamethasone (0.5 mg) on the success rate of inferior alveolar nerve block (IANB) in mandibular molars with symptomatic irreversible pulpitis (SIP).
+
+3. **Study Groups**: 
+   - Two groups:
+     - **Intervention group**: Patients receiving a combination of ibuprofen and dexamethasone as premedication.
+     - **Control group**: Likely receiving a placebo or standard treatment (not explicitly mentioned in the provided text but inferred from the study design).
+
+4. **Sample Size**: 
+   - 94 adult patients.
+
+5. **Inclusion Criteria**: 
+   - Adults (≥18 years old) with:
+     - Moderate to severe pain (55–170 mm on the Heft-Parker Visual Analog Scale [VAS]).
+     - Mandibular molars diagnosed with SIP (confirmed by electric pulp testing and cold testing).
+     - Normal periapical radiographic appearance.
+     - Good health (ASA class I or II).
+     - No analgesics taken in the last 12 hours.
+
+6. **Exclusion Criteria**: 
+   - Patients under 18 years old.
+   - Allergies/hypersensitivity to study medications or local anesthetics.
+   - Pregnant or nursing women.
+   - Immunocompromised patients.
+   - Active pathosis in the injection area.
+   - Patients unable to provide informed consent.
+
+7. **Variables**:
+   - **Primary outcome**: Success rate of IANB (likely measured by pain reduction on the VAS scale).
+   - **Independent variables**: Intervention (ibuprofen + dexamethasone) vs. control.
+   - **Covariates**: Baseline pain level, patient demographics (age, sex), and ASA classification.
+
+8. **Measurements**:
+   - Pain intensity measured using the Heft-Parker VAS (55–170 mm range for inclusion).
+   - Clinical diagnosis of SIP confirmed by:
+     - Electric pulp testing (Digitest; Parkell Inc).
+     - Cold testing (Endo Ice 1,1,1,2 tetrafluoroethane; Coltene).
+
+9. **Randomization**:
+   - Patients were randomly assigned to groups (details of randomization process not provided in the text).
+
+10. **Blinding**:
+    - Double-blind design (both patients and evaluators were blinded to group allocation).
+
+11. **Ethical Approval**:
+    - Approved by the Institutional Review and Ethical Committee of JCD Dental College, Sirsa, India (approval number JCDV/DC/18/2152).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### **CATEGORY A – MANDATORY**
+1. **Test Name**: Chi-square test or Fisher’s exact test.
+   - **Purpose**: To compare the success rates of IANB (categorical outcome: success vs. failure) between the intervention and control groups.
+   - **Why Appropriate**:
+     1. The primary outcome (success rate) is categorical.
+     2. The study involves two independent groups (intervention vs. control).
+   - **Why It May Not Be Appropriate**:
+     - If the sample size is small or if expected frequencies in any cell are less than 5, the Chi-square test may not be valid.
+   - **When This Test Should NOT Be Used**:
+     - When assumptions of the Chi-square test (e.g., minimum expected frequency) are violated.
+   - **Alternative if Assumptions Are Violated**:
+     - Fisher’s exact test.
+
+2. **Test Name**: Independent t-test or Mann-Whitney U test.
+   - **Purpose**: To compare the mean pain reduction (continuous variable) between the two groups.
+   - **Why Appropriate**:
+     1. Pain reduction is a continuous variable (measured on the VAS scale).
+     2. The study involves two independent groups.
+   - **Why It May Not Be Appropriate**:
+     - If the data are not normally distributed (for t-test).
+   - **When This Test Should NOT Be Used**:
+     - When normality assumptions for the t-test are violated.
+   - **Alternative if Assumptions Are Violated**:
+     - Mann-Whitney U test (non-parametric alternative).
+
+3. **Test Name**: Paired t-test or Wilcoxon signed-rank test.
+   - **Purpose**: To assess within-group changes in pain scores (pre- vs. post-treatment).
+   - **Why Appropriate**:
+     1. Pain scores are continuous and measured before and after treatment.
+     2. The test accounts for paired data (within-group comparison).
+   - **Why It May Not Be Appropriate**:
+     - If the data are not normally distributed (for paired t-test).
+   - **When This Test Should NOT Be Used**:
+     - When normality assumptions for the paired t-test are violated.
+   - **Alternative if Assumptions Are Violated**:
+     - Wilcoxon signed-rank test.
+
+#### **CATEGORY B – RECOMMENDED**
+1. **Test Name**: Logistic regression.
+   - **Purpose**: To evaluate the effect of the intervention on the success rate of IANB while adjusting for potential covariates (e.g., baseline pain level, age, sex, ASA classification).
+   - **Why Appropriate**:
+     1. The outcome (success of IANB) is binary.
+     2. Allows adjustment for confounding variables.
+   - **Why It May Not Be Appropriate**:
+     - If the sample size is too small for reliable estimation of regression coefficients.
+   - **When This Test Should NOT Be Used**:
+     - When there are insufficient events (successes/failures) in the dataset.
+   - **Alternative if Assumptions Are Violated**:
+     - Exact logistic regression (for small sample sizes).
+
+2. **Test Name**: Repeated measures ANOVA or mixed-effects model.
+   - **Purpose**: To compare pain scores over time (pre- and post-treatment) between groups while accounting for repeated measurements.
+   - **Why Appropriate**:
+     1. Pain scores are continuous and measured at multiple time points.
+     2. Accounts for within-subject correlations.
+   - **Why It May Not Be Appropriate**:
+     - If the data do not meet assumptions of sphericity (for repeated measures ANOVA).
+   - **When This Test Should NOT Be Used**:
+     - When the sample size is small or when sphericity is violated.
+   - **Alternative if Assumptions Are Violated**:
+     - Mixed-effects model.
+
+#### **CATEGORY C – OPTIONAL**
+1. **Test Name**: Subgroup analysis (e.g., stratified by baseline pain score).
+   - **Purpose**: To explore whether the effect of the intervention varies by baseline pain severity.
+   - **Why Appropriate**:
+     1. Provides additional insights into potential effect modifiers.
+     2. Helps identify subpopulations that may benefit more from the intervention.
+   - **Why It May Not Be Appropriate**:
+     - Risk of type I error due to multiple comparisons.
+   - **When This Test Should NOT Be Used**:
+     - When the sample size is too small to support subgroup analysis.
+   - **Alternative if Assumptions Are Violated**:
+     - None (subgroup analysis is exploratory).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **ANOVA**:
+   - **Reason**: The study involves only two groups (intervention and control), making ANOVA unnecessary. A t-test is more appropriate.
+2. **Pearson correlation**:
+   - **Reason**: The primary outcome is categorical (success/failure), not continuous, so correlation analysis is not appropriate.
+3. **Chi-square test for trend**:
+   - **Reason**: This test is used for ordinal data or trends, but the primary outcome is binary.
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan ensures rigorous evaluation of the primary and secondary outcomes of the study. The mandatory tests address the primary research question, while the recommended and optional tests provide additional insights and robustness. The overall approach balances simplicity with rigor, ensuring valid and reliable conclusions while accounting for potential confounders and violations of assumptions.

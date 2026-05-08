@@ -1,0 +1,290 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_biology-10-00042_(2).pdf
+Status : ok
+Time   : 20260508_061806
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: INFORMATION EXTRACTION (study characteristics)
+
+### Study design, setting, blinding, registration
+- **Design:** Triple-armed, parallel-group, randomized controlled clinical trial (RCT)
+- **Blinding:** **Single-blinded** trial; **outcome assessor and analyst blinded** to treatment; **operator not blinded** (recognizable instruments)
+- **Setting/ethics:** Single center (College of Dental Sciences and Hospital, Rau, Indore, India); IEC approval (CDSH/IEC/2018-19/004; dated 31/12/2019)
+- **Registration:** Clinical Trial Registry of India (CTRI/2019/12/022370)
+- **Reporting guideline:** CONSORT referenced
+
+### Objective
+- Compare **(1) instrumentation time** and **(2) obturation quality** among:
+  1) **Adaptive XP-endo Shaper** system  
+  2) **Kedo-S pediatric rotary** files  
+  3) **Manual hand K-files** (control)
+
+### Population
+- **Participants:** Children **4–9 years**, both genders
+- **Clinical indication:** Primary molars requiring pulpectomy with necrosis (≥1 necrotic canal) and abscess/sinus tract/furcation or periapical radiolucency
+- **Behavior requirement:** Modified Frankl scale **4(+) or 5(++)**
+
+### Unit of randomization / analysis
+- **Unit:** **Tooth** (primary molar) / patient appears to contribute **one tooth** (75 patients, 75 teeth analyzed)
+- **Standardization:** Only **teeth with 3 canals** included after access cavity to standardize instrumentation time
+
+### Sample size and flow
+- **Sample size calculation basis:** Prior mean instrumentation times (Kedo-S: 3.4827 ± 0.4866 min; Hand files: 6.2167 ± 0.3098 min)
+- **Planned:** 15 per group; **actual enrolled:** 25 per group
+- **Recruitment:** 90 assessed; excluded/refused/teeth >3 canals removed → **75 randomized**
+- **Allocation:** 25 teeth/group (1:1:1)
+- **Attrition:** none (0 lost; 0 discontinued)
+- **Final analyzed:** 75 (25/group)
+
+### Randomization
+- **Method:** Computer-generated randomization prepared before study start
+- **Allocation ratio:** stated 1:1 (but actually **1:1:1** across 3 arms)
+- **Balancing:** Each group had same number of each tooth type (maxillary/mandibular; first/second molars) for standardization
+
+### Inclusion/exclusion criteria (key)
+- **Inclusion:** necrotic posterior primary molars; adequate remaining root length (≥2/3); sufficient crown for rubber dam clamp + crown; cooperative behavior (Frankl ≥4); after access **exactly 3 canals**
+- **Exclusion:** no consent; Frankl <4; systemic illness; nonrestorable; perforated pulpal floor; undue mobility; pathological root resorption; **>3 canal orifices**
+
+### Interventions (instrumentation protocols)
+- **Common steps (all groups):**
+  - Single-visit pulpectomy by same operator
+  - LA + rubber dam isolation
+  - Working length radiographic: #15 K-file; WL = **1 mm short of apex**
+  - Irrigation during instrumentation: **2.5% NaOCl**; lubricant EDTA gel; final irrigation: **2 mL 17% EDTA + 4 mL saline**
+  - Mechanized files run using X-smart Plus endomotor
+
+- **Group 1: XP-endo Shaper**
+  - 21 mm XP-endo Shaper; glide path to #15 if needed; warm NaOCl
+  - Motor setting **800 rpm, 1 Ncm**
+  - Vertical strokes to WL; additional strokes per manufacturer
+
+- **Group 2: Kedo-S rotary**
+  - Kedo-S E1 files (16 mm)
+  - Motor setting **250 rpm, 2.2 Ncm**
+  - In-and-out + vertical pecking; completion after additional 5 strokes at WL
+
+- **Group 3: Hand K-files**
+  - Sequence #15, #20, #25, #30 (0.02 taper), quarter-turn-and-pull
+
+### Obturation (post-instrumentation; all groups)
+- Drying with #30 paper points (0.04 taper groups 1–2; 0.02 taper group 3)
+- Obturating material: **Metapex** (iodoform-based calcium hydroxide paste) via syringe; hand file used to push paste short of apex
+- Coronal restoration: glass ionomer; stainless steel crown cemented same visit
+
+### Outcomes (variables), measurement, timing
+1. **Primary/clinical outcome 1: Instrumentation time (continuous)**
+   - Measured by operator using **digital stopwatch**
+   - Start: first file introduced into first canal
+   - Stop: after final saline irrigation
+   - Recorded per tooth (minutes)
+
+2. **Primary/clinical outcome 2: Quality of obturation (ordinal categorical)**
+   - Post-obturation **radiograph**
+   - Classified by O’Riordan & Coll:
+     - **Optimal:** 1 mm short of apex
+     - **Underfilled:** 2 mm short of apex
+     - **Overfilled:** beyond apex
+
+### Potential covariates/stratifiers mentioned or implied
+- Tooth type (maxillary/mandibular; first/second molar; tooth number distribution provided)
+- Age, gender (collected at least at recruitment level; not explicitly stated as covariates)
+- Baseline pathology characteristics (abscess/sinus tract/radiolucency) not quantified
+
+---
+
+## TASK 2: STATISTICAL ANALYSIS PLAN (SAP)
+
+### General principles (applies to all analyses)
+- **Analysis population:** Intention-to-treat (ITT) is feasible because no attrition; if any protocol deviations occur, add per-protocol sensitivity analysis.
+- **Unit of analysis:** tooth/patient (assumed one tooth per child; if any child contributed >1 tooth, use mixed models/GEE).
+- **Two-sided alpha:** 0.05; report **effect sizes + 95% CI**.
+- **Descriptives:**
+  - Continuous: mean (SD) and/or median (IQR)
+  - Categorical: n (%)
+- **Assumption checks:**
+  - Normality of residuals (QQ plot; Shapiro–Wilk as supportive)
+  - Homogeneity of variances (Levene/Brown–Forsythe)
+- **Multiplicity:** Two primary outcomes → control family-wise error (e.g., Holm) **or** pre-specify co-primary outcomes and interpret accordingly. For post-hoc pairwise comparisons, adjust (Tukey/Holm).
+
+---
+
+### CATEGORY A — MANDATORY analyses
+
+#### A1) One-way ANOVA (with multiplicity-adjusted pairwise comparisons)
+- **Purpose:** Compare mean **instrumentation time** across 3 independent groups.
+- **Why appropriate:**
+  1. Outcome is **continuous** (minutes) with 3 **independent** treatment arms.
+  2. Directly tests the main RCT question about differences between instrumentation methods.
+- **Why it may not be appropriate:**
+  - Time data may be **skewed** and/or variances unequal; small n per arm (25) can worsen robustness.
+- **When NOT to use:**
+  - Clear non-normal residuals with strong skew/outliers **and** transformations fail, or severe heteroscedasticity.
+- **Alternative if assumptions violated:**
+  - **Welch ANOVA** (unequal variances) or **Kruskal–Wallis** (nonparametric). Consider log-transform and re-run ANOVA if appropriate.
+
+Pairwise comparisons (mandatory within A1):
+- If ANOVA significant: **Tukey HSD** (or Games–Howell if unequal variances) to identify which groups differ.
+
+#### A2) Chi-square test of independence (or Fisher–Freeman–Halton exact)
+- **Purpose:** Compare **obturation quality distribution** (optimal/underfilled/overfilled) across 3 groups.
+- **Why appropriate:**
+  1. Outcome is **categorical** with 3 levels; groups are independent.
+  2. Provides overall evidence of association between instrumentation method and obturation quality.
+- **Why it may not be appropriate:**
+  - Expected cell counts may be small (e.g., few “overfilled”), violating chi-square approximation.
+- **When NOT to use:**
+  - If >20% of expected counts <5 or any expected count <1.
+- **Alternative if assumptions violated:**
+  - **Fisher–Freeman–Halton exact test** (exact RxC) or Monte Carlo exact p-value.
+
+#### A3) Effect size estimation (not just p-values)
+- **For instrumentation time:** mean difference(s) with 95% CI; **eta-squared/omega-squared** for overall group effect.
+- **For obturation quality:** **Cramér’s V** overall; and/or risk ratios for “optimal” vs non-optimal.
+- **Purpose:** Quantify clinical magnitude.
+- **Why appropriate:**
+  1. RCT results require magnitude, not only significance.
+  2. Supports clinical interpretation and comparability to other trials.
+- **Why it may not be appropriate:**
+  - Some effect sizes unstable with sparse cells.
+- **When NOT to use:**
+  - For very sparse tables without collapsing categories.
+- **Alternative:**
+  - Collapse outcome to binary (optimal vs not) and estimate **risk ratio** with exact/robust CI.
+
+---
+
+### CATEGORY B — RECOMMENDED analyses (increase rigor)
+
+#### B1) Ordinal logistic regression (proportional odds model)
+- **Purpose:** Model obturation quality as an **ordered** outcome and estimate treatment effects (odds of better category).
+- **Why appropriate:**
+  1. Outcome is inherently **ordinal** (underfilled < optimal < overfilled is arguable; clinically you may prefer optimal as best—see note below).
+  2. Allows **covariate adjustment** (age, tooth type, jaw, first vs second molar) improving precision.
+- **Why it may not be appropriate:**
+  - The clinical ordering may not be strictly monotone if **overfill** is considered worse than underfill but both are “non-optimal”; proportional odds assumption may fail.
+- **When NOT to use:**
+  - If proportional odds assumption is violated and partial proportional odds not feasible; or if ordering is disputed.
+- **Alternative if assumptions violated:**
+  - **Multinomial logistic regression** (no ordering) or binary logistic regression (optimal vs non-optimal).
+
+*(Clinical note:* If “optimal” is best and both “underfilled/overfilled” are worse without a clear ranking between them, treat outcome as **multinomial** or binary.)
+
+#### B2) ANCOVA / linear regression for instrumentation time with covariates
+- **Purpose:** Estimate adjusted mean differences in time among groups.
+- **Why appropriate:**
+  1. Can adjust for imbalances (e.g., tooth type, age) despite randomization.
+  2. Provides **model-based estimates** and CIs; can incorporate heteroscedasticity-robust SEs.
+- **Why it may not be appropriate:**
+  - Overfitting risk with many covariates relative to n=75; and covariates may be poorly measured.
+- **When NOT to use:**
+  - If key covariates are unavailable or if model diagnostics show strong violations.
+- **Alternative if assumptions violated:**
+  - Robust regression, **quantile regression** (median differences), or transform time outcome.
+
+#### B3) Inter-rater/intra-rater reliability for radiographic obturation quality (Cohen’s kappa / weighted kappa)
+- **Purpose:** Assess consistency of radiographic categorical scoring.
+- **Why appropriate:**
+  1. Outcome depends on observer interpretation; reliability supports validity.
+  2. Blinded evaluator present; reliability quantifies measurement error.
+- **Why it may not be appropriate:**
+  - If only one rater and no repeat reads were done, cannot estimate reliability post hoc.
+- **When NOT to use:**
+  - When ratings are not duplicated or independence cannot be ensured.
+- **Alternative:**
+  - Plan duplicate scoring on a subset; use **Gwet’s AC1** if kappa paradox occurs.
+
+#### B4) Baseline comparability checks (descriptive + standardized differences)
+- **Purpose:** Demonstrate balance across groups (age, gender, tooth type/jaw).
+- **Why appropriate:**
+  1. Supports credibility of randomization and identifies chance imbalances.
+  2. Standardized differences avoid misuse of significance testing.
+- **Why it may not be appropriate:**
+  - If baseline variables were not recorded.
+- **When NOT to use:**
+  - Do not use null-hypothesis testing as “proof” of balance.
+- **Alternative:**
+  - Report **standardized mean differences (SMDs)** only.
+
+---
+
+### CATEGORY C — OPTIONAL analyses (supplementary insights)
+
+#### C1) Kruskal–Wallis test (and Dunn’s test)
+- **Purpose:** Nonparametric comparison of instrumentation time across groups.
+- **Why appropriate:**
+  1. Handles skewed time distributions/outliers.
+  2. Requires fewer distributional assumptions.
+- **Why it may not be appropriate:**
+  - Tests differences in distributions/medians, not means; less power if normality holds.
+- **When NOT to use:**
+  - When ANOVA assumptions are adequately met and mean differences are clinically targeted.
+- **Alternative if assumptions violated:**
+  - Welch ANOVA or log-transformed ANOVA.
+
+#### C2) Sensitivity analysis: binary obturation outcome (optimal vs non-optimal) with log-binomial/Poisson regression (robust SE)
+- **Purpose:** Provide clinically intuitive relative risk of optimal obturation.
+- **Why appropriate:**
+  1. Addresses sparse cells and ambiguous ordering.
+  2. Produces interpretable **risk ratios** rather than odds ratios.
+- **Why it may not be appropriate:**
+  - Collapsing categories loses detail (under vs over).
+- **When NOT to use:**
+  - If clinically important to distinguish underfilled from overfilled.
+- **Alternative:**
+  - Multinomial logistic regression.
+
+#### C3) Subgroup / interaction analysis by tooth type (maxillary vs mandibular; first vs second molar)
+- **Purpose:** Explore whether treatment effects differ by tooth characteristics.
+- **Why appropriate:**
+  1. Anatomy differs by jaw/tooth; could influence time/obturation.
+  2. Can generate hypotheses for future studies.
+- **Why it may not be appropriate:**
+  - Underpowered; multiple comparisons inflate false positives.
+- **When NOT to use:**
+  - If not pre-specified or if cell sizes become very small.
+- **Alternative:**
+  - Report descriptive stratified results only.
+
+#### C4) Model diagnostics and outlier influence (Cook’s distance, residual plots)
+- **Purpose:** Ensure robustness of regression/ANOVA conclusions.
+- **Why appropriate:**
+  1. Time outcomes can have influential points.
+  2. Improves transparency and reproducibility.
+- **Why it may not be appropriate:**
+  - Adds complexity without changing conclusions in clean data.
+- **When NOT to use:**
+  - N/A (generally safe).
+- **Alternative:**
+  - Robust regression / bootstrapped CIs.
+
+---
+
+## TASK 3: INAPPROPRIATE TESTS (should NOT be used)
+
+1. **Paired t-test / Wilcoxon signed-rank test**
+   - Not appropriate because groups are **independent** (parallel arms), not paired/repeated measures.
+
+2. **Repeated-measures ANOVA**
+   - No within-tooth repeated outcome measurements over time; only single measurement per tooth for each outcome.
+
+3. **Pearson correlation between group assignment and outcomes**
+   - Group is categorical; correlation is not the right framework and yields uninterpretable effect estimates.
+
+4. **Multiple two-sample t-tests without adjustment (XP vs Kedo-S, XP vs Hand, Kedo-S vs Hand)**
+   - Inflates Type I error; omnibus + adjusted post-hoc comparisons are required.
+
+5. **Linear regression treating obturation quality as numeric (e.g., 1/2/3)**
+   - Mis-specifies an ordinal/nominal outcome as continuous; violates model assumptions and interpretation.
+
+6. **One-way ANOVA on obturation quality codes**
+   - Same reason as above; categorical outcome needs chi-square/ordinal/multinomial models.
+
+7. **McNemar test**
+   - Requires paired binary outcomes (before/after or matched pairs), not present here.
+
+---
+
+## TASK 4: SUMMARY (overall analytical approach)
+
+A parallel 3-arm RCT with one continuous primary endpoint (instrumentation time) and one categorical/ordinal endpoint (obturation quality) should be analyzed using (i) **ANOVA/linear modeling** for time with assumption-appropriate variants and adjusted pairwise contrasts, and (ii) **chi-square/exact tests** and preferably **ordinal/multinomial regression** for obturation quality. Reporting **effect sizes with CIs**, checking assumptions, and using exact methods when cell counts are sparse provides valid inference aligned with the trial’s design and endpoints.

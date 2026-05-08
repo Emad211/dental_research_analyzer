@@ -1,0 +1,148 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_download_(1).pdf
+Status : ok
+Time   : 20260508_062553
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+
+1. **Study Design**:  
+   - Health economic evaluation nested within a parallel-arm randomized clinical trial (RCT).
+
+2. **Objective**:  
+   - To economically assess four post-retained restorative strategies for endodontically treated teeth using cost-minimization analysis.
+
+3. **Groups/Comparators**:  
+   - Four restorative strategies based on the type of post and restoration:
+     - **No ferrule present**:
+       - Glass fiber post (GFP) + metal-ceramic crown (MC) (n=71).
+       - Cast post and core (CPC) + metal-ceramic crown (MC) (n=79).
+     - **2-mm ferrule present**:
+       - GFP + metal-ceramic crown (MC) (n=36).
+       - GFP + direct composite resin restoration (CR) (n=39).
+
+4. **Sample Size**:  
+   - Total participants: 141.  
+   - Total teeth restored: 225.  
+   - Sample size calculation: 64 participants required to detect a difference >18% between groups with 90% confidence and 90% power.
+
+5. **Population**:  
+   - Inclusion criteria:  
+     - Good oral health (no active caries or periodontal disease).  
+     - Presence of one or more endodontically treated anterior or posterior teeth with or without ferrules (2 mm or 0–0.5 mm).  
+     - Bilateral posterior occlusal contact.  
+   - Exclusion criteria:  
+     - Periodontal or occlusal problems.  
+     - Large prosthesis (Kennedy class I or II) in the opposing arch.
+
+6. **Randomization**:  
+   - Stratified by tooth type (anterior, molar, premolar) to minimize bias.  
+   - Randomization sequence generated using computerized random number tables.  
+   - Allocation concealment with sealed opaque envelopes.
+
+7. **Variables**:  
+   - Independent variables: Type of post (GFP or CPC), type of restoration (MC or CR), ferrule presence (2 mm or none).  
+   - Dependent variables: Cost of intervention, success rates, survival rates.
+
+8. **Measurements**:  
+   - Primary clinical outcome: Success and survival rates of restorations.  
+   - Economic outcome: Cost-minimization analysis comparing costs of the four strategies.
+
+9. **Data Collection Methods**:  
+   - Clinical procedures performed by 25 supervised undergraduate students.  
+   - Costs calculated based on materials (e.g., CoCr alloy, resin cement) and operative techniques.  
+   - Success rates derived from the RCT.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Chi-Square Test (or Fisher’s Exact Test)**  
+   - **Purpose**: Compare categorical success rates between groups.  
+   - **Why Appropriate**:  
+     1. The primary outcome (success rates) is categorical.  
+     2. Groups are independent, and data are stratified by ferrule presence.  
+   - **Why It May Not Be Appropriate**: Small sample sizes in subgroups may violate assumptions.  
+   - **When NOT to Use**: If expected cell counts are <5.  
+   - **Alternative**: Fisher’s Exact Test for small sample sizes.
+
+2. **One-Way ANOVA (or Kruskal-Wallis Test)**  
+   - **Purpose**: Compare mean costs across the four groups.  
+   - **Why Appropriate**:  
+     1. Cost is a continuous variable.  
+     2. There are more than two independent groups.  
+   - **Why It May Not Be Appropriate**: If cost data are not normally distributed.  
+   - **When NOT to Use**: If data violate normality and homogeneity of variance.  
+   - **Alternative**: Kruskal-Wallis Test for non-normal data.
+
+3. **Kaplan-Meier Survival Analysis**  
+   - **Purpose**: Compare survival rates of restorations over time.  
+   - **Why Appropriate**:  
+     1. Survival analysis accounts for time-to-event data.  
+     2. Censoring (e.g., lost to follow-up) can be handled.  
+   - **Why It May Not Be Appropriate**: If follow-up times are inconsistent or incomplete.  
+   - **When NOT to Use**: If no time-to-event data are available.  
+   - **Alternative**: Cox proportional hazards model for multivariable analysis.
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Logistic Regression**  
+   - **Purpose**: Assess the association between success rates and predictors (e.g., ferrule presence, type of post).  
+   - **Why Appropriate**:  
+     1. Outcome is binary (success vs. failure).  
+     2. Adjusts for potential confounders.  
+   - **Why It May Not Be Appropriate**: Requires large sample sizes for stable estimates.  
+   - **When NOT to Use**: If sample size is insufficient.  
+   - **Alternative**: Exact logistic regression for small samples.
+
+2. **Cost-Effectiveness Analysis (CEA)**  
+   - **Purpose**: Evaluate the cost per unit of success for each strategy.  
+   - **Why Appropriate**:  
+     1. Integrates economic and clinical outcomes.  
+     2. Provides actionable insights for decision-making.  
+   - **Why It May Not Be Appropriate**: Requires detailed cost and effectiveness data.  
+   - **When NOT to Use**: If cost data are incomplete.  
+   - **Alternative**: Sensitivity analysis to address uncertainty.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Subgroup Analysis**  
+   - **Purpose**: Evaluate outcomes within specific subgroups (e.g., anterior vs. posterior teeth).  
+   - **Why Appropriate**:  
+     1. Identifies differential effects within subpopulations.  
+     2. Adds granularity to findings.  
+   - **Why It May Not Be Appropriate**: Risk of type I error due to multiple comparisons.  
+   - **When NOT to Use**: If sample sizes in subgroups are too small.  
+   - **Alternative**: Pool subgroups to increase power.
+
+2. **Sensitivity Analysis**  
+   - **Purpose**: Assess robustness of cost-minimization results to changes in key assumptions.  
+   - **Why Appropriate**:  
+     1. Addresses uncertainty in cost estimates.  
+     2. Enhances credibility of findings.  
+   - **Why It May Not Be Appropriate**: Requires detailed cost breakdowns.  
+   - **When NOT to Use**: If cost data are too aggregated.  
+   - **Alternative**: Scenario analysis for broader assumptions.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1. **Paired t-Test**  
+   - **Why Not Appropriate**: Groups are independent, not paired.  
+2. **Repeated Measures ANOVA**  
+   - **Why Not Appropriate**: No repeated measurements on the same subjects.  
+3. **Pearson Correlation**  
+   - **Why Not Appropriate**: Not assessing linear relationships between continuous variables.
+
+---
+
+### TASK 4: SUMMARY
+
+The proposed analytical approach integrates mandatory and recommended tests to comprehensively address the study objectives. The primary analyses focus on comparing success rates, costs, and survival outcomes across the four restorative strategies. Secondary analyses (e.g., logistic regression, CEA) enhance the rigor of the findings, while optional tests (e.g., sensitivity analysis) provide supplementary insights. The plan ensures robustness, accounts for potential confounders, and adheres to best practices for economic evaluations in clinical research.

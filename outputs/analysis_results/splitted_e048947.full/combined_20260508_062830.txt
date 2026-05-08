@@ -1,0 +1,1049 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_e048947.full.pdf
+Time : 20260508_062830
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1: INFORMATION EXTRACTION (study characteristics)
+
+### Study overview
+- **Design:** Two-arm, parallel-group, **randomised controlled trial**.
+- **Setting:** Dental Clinics, Aga Khan University Hospital (AKUH), Karachi.
+- **Duration:** 1 year after ethics approval.
+- **Objective:** Compare antimicrobial efficacy of **Calcipex (CH alone)** vs **Metapex (CH + iodoform in silicone oil)** as interappointment intracanal medicaments in infected root canals with **chronic apical periodontitis**.
+- **Hypothesis:** There is a difference in antimicrobial efficacy between Calcipex and Metapex.
+
+### Participants / units
+- **Unit of randomisation and analysis:** **Teeth** (single-rooted permanent teeth with single canal).
+- **Inclusion criteria:**
+  - Single rooted human permanent teeth with single root canal
+  - Clinically diagnosed chronic apical periodontitis
+  - No antibiotics in last 3 months
+- **Exclusion criteria:**
+  - Grade III mobility / periodontally compromised
+  - Endodontically non-salvageable
+  - Immunocompromised/systemic illness
+  - Excessive root resorption
+  - Allergy to CH/iodoform
+  - Retreatment cases
+
+### Interventions / groups
+- **Group A (control):** Calcipex (water-based calcium hydroxide paste), placed once at first visit, **left for 7 days**.
+- **Group B (intervention):** Metapex (oil-based CH + iodoform + silicone oil), placed once at first visit, **left for 7 days**.
+- **Placement method:** Lentulo spiral at ~5000 rpm; cotton pellet; temporary restoration (Dia-Temp).
+
+### Randomisation and blinding
+- **Randomisation:** **Block randomisation**, block size **6**, facilitated by CTU.
+- **Allocation concealment:** Allocation known only to a researcher not involved in outcome assessment (as stated).
+- **Blinding:**
+  - **Participant, analyser (microbiology), and statistician blinded**
+  - Operator placing medicament not blinded (color difference)
+  - Samples labelled only as Group A/B.
+
+### Outcome and measurements
+- **Primary outcome:** Antimicrobial efficacy measured as **bacterial load (CFU/mL)** by **culture**.
+- **Measurement time points:**
+  - **S1:** After chemomechanical preparation at first visit, before medicament
+  - **S2:** After 7 ± 3 days, after medicament removal
+- **Sampling method:** Sterile paper point (#20) to working length for **60 s**, then into BHIB.
+- **Microbiology protocol summary:**
+  - Vortex 60 s, serial dilution (to 10^5 described), plate on blood agar, incubate anaerobically 24 h at 37°C in CO₂ incubator, then **count colonies and compute CFU/mL**.
+
+### Procedural standardisation (potential covariates / sources of variability)
+- Irrigation: 1 mL NaOCl after each instrument; then saline at end.
+- Instrumentation: hand K-files initially, ProTaper Next to completion same appointment.
+- Follow-up timing: **7 ± 3 days** (introduces variable time gap).
+
+### Sample size
+- Calculated requirement: **26 teeth** (based on mean±SD 50.3±13 CFU/mL from prior study; 95% confidence; “absolute precision 0.05” stated).
+- Inflated to **30 per group** → **Total N = 60 teeth**.
+
+### Data collection/monitoring
+- Recruitment: consecutive patients at AKUH meeting criteria and consenting.
+- Data monitoring: PI and CTU review.
+- Adverse events: expected negligible; report to ERC.
+
+---
+
+## TASK 2: STATISTICAL ANALYSIS PLAN
+
+### General analysis principles (applies to all categories)
+- **Analysis set:** Prefer **intention-to-treat (ITT)** at tooth level (all randomised teeth analysed in assigned group). Also consider **per-protocol** sensitivity (received medicament, S2 obtained within window).
+- **Primary estimand (recommended):** Between-group difference in **bacterial reduction over time**.
+  - Define reduction as either:
+    - **Absolute change:** Δ = S2 − S1 (CFU/mL) (expect negative), or
+    - **Log-scale change / ratio:** log10(CFU/mL + c) difference, or percent reduction (less stable).
+- **Distribution handling:** CFU/mL is commonly **right-skewed, zero-inflated** at S2, and multiplicative; plan **log10 transform** with a small constant (e.g., +1) or use count models/robust methods.
+- **Two-sided alpha:** 0.05 for primary; adjust for multiplicity for secondary/exploratory analyses.
+- **Effect sizes:** Report **mean/median difference**, **ratio of geometric means**, and **95% CI**.
+- **Missing data:** Document reasons; if missing S2, use **multiple imputation** (recommended) or mixed models if additional timepoints existed (they do not). With only two timepoints, MI may be preferable; also do best/worst-case sensitivity for zeros/LOD.
+
+---
+
+# CATEGORY A — MANDATORY tests (core to answer the research question)
+
+## A1. ANCOVA (post-treatment CFU adjusting for baseline CFU)
+- **Test name:** Analysis of covariance (linear model): S2 ~ group + S1 (often on log10 scale).
+- **Purpose:** Compare groups at S2 while adjusting for baseline microbial load.
+- **Why appropriate (≥2):**
+  1. **Controls baseline imbalance** in S1 despite randomisation, improving precision.
+  2. With only two time points, ANCOVA is typically **more powerful and less biased** than comparing raw change scores when baseline correlates with follow-up.
+- **Why it may not be appropriate (≥1):**
+  - CFU/mL may be **non-normal, heteroscedastic, or zero-inflated**, violating linear model assumptions on the raw scale.
+- **When this test should NOT be used:**
+  - If S2 distribution has **excess zeros** and cannot be adequately normalized/handled (e.g., many culture-negative), and residual diagnostics show severe violations that robust alternatives can’t fix.
+- **Alternative if assumptions are violated:**
+  - **Rank-based ANCOVA** (e.g., Quade test) or **robust regression** (Huber/HC3 SE).
+  - If many zeros: **two-part (hurdle) model** or **zero-inflated negative binomial** (see B3).
+
+## A2. Between-group comparison of change (Δ) using appropriate parametric/nonparametric test
+- **Test name:** Independent samples **t-test** on log-change (e.g., log10(S2+1) − log10(S1+1)), or **Mann–Whitney U** on change if non-normal.
+- **Purpose:** Directly compare **within-tooth reduction** between medicaments.
+- **Why appropriate (≥2):**
+  1. The clinical question is reduction after 7 days; change score is an intuitive measure.
+  2. Uses paired structure implicitly through change calculation (baseline accounted for).
+- **Why it may not be appropriate (≥1):**
+  - Change scores can be **noisy** and less efficient than ANCOVA if baseline correlates with follow-up; also unstable with zeros and skewness.
+- **When this test should NOT be used:**
+  - If baseline differs meaningfully between groups and ANCOVA is feasible; relying only on change-score tests can be suboptimal.
+- **Alternative if assumptions are violated:**
+  - For skew/zeros: **Mann–Whitney U** on change, or **permutation test** for mean/median change difference.
+
+## A3. Within-group pre–post comparison (paired analysis)
+- **Test name:** **Paired t-test** on log-transformed CFU (S2 vs S1) within each group; or **Wilcoxon signed-rank**.
+- **Purpose:** Quantify whether each medicament significantly reduces CFU over 7 days (descriptive/confirmatory within arms).
+- **Why appropriate (≥2):**
+  1. Measurements are **paired within the same tooth** (S1 and S2).
+  2. Provides clinically interpretable evidence of reduction magnitude per medicament.
+- **Why it may not be appropriate (≥1):**
+  - Within-group significance is **not** the primary comparative question and can be misleading if over-emphasized.
+- **When this test should NOT be used:**
+  - As the sole basis to claim one group is better (you must compare **between groups**).
+- **Alternative if assumptions are violated:**
+  - **Wilcoxon signed-rank**; if heavy ties/zeros: **sign test**.
+
+---
+
+# CATEGORY B — RECOMMENDED tests (increase rigor/validity)
+
+## B1. Baseline comparability checks (descriptive + targeted testing)
+- **Test name:** Standardised mean differences (SMD) + (optional) t-test/Mann–Whitney for S1; chi-square/Fisher for categorical covariates if collected.
+- **Purpose:** Assess whether randomisation achieved balance and characterize sample.
+- **Why appropriate (≥2):**
+  1. Identifies **chance imbalances** (especially important with N=60).
+  2. Informs whether adjusted analyses (ANCOVA) are needed and which covariates might be considered.
+- **Why it may not be appropriate (≥1):**
+  - Significance tests for baseline can be over-interpreted; imbalance can occur by chance.
+- **When this test should NOT be used:**
+  - Do not use baseline p-values to decide “randomisation failed” or to exclude participants.
+- **Alternative if assumptions are violated:**
+  - Use **SMD** (distribution-free) and graphical checks.
+
+## B2. Model diagnostics / assumption checks for primary model
+- **Test name:** Residual plots; **Shapiro–Wilk** (normality), **Breusch–Pagan/White** (heteroscedasticity), influence (Cook’s distance).
+- **Purpose:** Validate linear-model assumptions and identify outliers/influential observations.
+- **Why appropriate (≥2):**
+  1. CFU data often violate assumptions; diagnostics prevent invalid inference.
+  2. Helps justify transformations or robust/alternative models.
+- **Why it may not be appropriate (≥1):**
+  - With modest sample size, formal tests (e.g., Shapiro–Wilk) can be under/over-sensitive; focus on plots.
+- **When this test should NOT be used:**
+  - Do not use normality tests as automatic “pass/fail” without considering robustness and clinical context.
+- **Alternative if assumptions are violated:**
+  - **Robust standard errors**, **bootstrapped CIs**, or **nonparametric/permutation** inference.
+
+## B3. Count-data regression (if CFU treated as counts and zeros are common)
+- **Test name:** **Negative binomial regression** (or Poisson if appropriate), potentially **zero-inflated/hurdle** variants; include baseline as covariate.
+- **Purpose:** Model CFU/mL outcome accounting for overdispersion and zeros; estimate group effect as **rate ratio**.
+- **Why appropriate (≥2):**
+  1. CFU are **counts** and often **overdispersed** vs Poisson.
+  2. Handles **non-normality** without needing log+constant transformations.
+- **Why it may not be appropriate (≥1):**
+  - CFU/mL involves dilution/plating and may not map cleanly to a single exposure/offset; also sample processing can create quasi-continuous values.
+- **When this test should NOT be used:**
+  - If CFU/mL values are not integer counts (e.g., already scaled/averaged) or if model fit is poor/unidentifiable with N=60.
+- **Alternative if assumptions are violated:**
+  - **Gamma regression with log link** for positive continuous outcomes; **two-part model** (logistic for any growth + continuous model for positive CFU).
+
+## B4. Analysis of “culture-negative” status at S2 (binary outcome)
+- **Test name:** **Chi-square** test or **Fisher’s exact**; plus **logistic regression** adjusting for S1.
+- **Purpose:** Compare groups on probability of complete eradication (CFU=0 or below detection).
+- **Why appropriate (≥2):**
+  1. Clinically meaningful endpoint: **no cultivable bacteria**.
+  2. Addresses zero-inflation by analyzing a binary success outcome.
+- **Why it may not be appropriate (≥1):**
+  - Requires a clear definition of “zero” and detection limit; lab protocol must support true zero vs below-LOD.
+- **When this test should NOT be used:**
+  - If “0 CFU” is not reliably measurable/recorded or detection limits vary across samples.
+- **Alternative if assumptions are violated:**
+  - **Exact logistic regression** (small cell counts) or **Firth penalized logistic regression**.
+
+## B5. Sensitivity analyses for follow-up window (7 ± 3 days)
+- **Test name:** Regression including **days-to-follow-up** as covariate; or restricted analysis to those exactly within a narrower window.
+- **Purpose:** Evaluate whether variable medicament duration influences CFU reduction.
+- **Why appropriate (≥2):**
+  1. Follow-up timing varies and could confound antimicrobial effect magnitude.
+  2. Improves interpretability and robustness.
+- **Why it may not be appropriate (≥1):**
+  - If days-to-follow-up is nearly constant or poorly recorded.
+- **When this test should NOT be used:**
+  - If follow-up duration is post-randomisation and affected by outcomes (unlikely here, but consider).
+- **Alternative if assumptions are violated:**
+  - **Stratified** analysis by follow-up duration categories; **nonparametric** trend tests.
+
+---
+
+# CATEGORY C — OPTIONAL tests (supplementary insights)
+
+## C1. Permutation (randomisation) test for primary comparison
+- **Test name:** **Permutation test** for group difference in adjusted outcome or change.
+- **Purpose:** Provide inference aligned with the randomisation without distributional assumptions.
+- **Why appropriate (≥2):**
+  1. Works well with small-to-moderate samples and skewed outcomes.
+  2. Minimizes reliance on parametric assumptions for CFU.
+- **Why it may not be appropriate (≥1):**
+  - More complex to implement for ANCOVA-style adjusted effects; requires careful specification.
+- **When this test should NOT be used:**
+  - If the randomisation scheme (block size 6) is not incorporated/unknown and implementation is naive.
+- **Alternative if assumptions are violated:**
+  - **Bootstrap** CIs with robust regression; **rank-based** methods.
+
+## C2. Bootstrap confidence intervals for effect size
+- **Test name:** Nonparametric **bootstrap** for mean/median difference or ratio of geometric means.
+- **Purpose:** More reliable CIs under non-normality.
+- **Why appropriate (≥2):**
+  1. CFU distributions are often irregular; bootstrap can approximate sampling distribution.
+  2. Provides CIs for complex estimands (e.g., percent reduction).
+- **Why it may not be appropriate (≥1):**
+  - With heavy zero-inflation or extreme discreteness, bootstrap may perform poorly without tailoring.
+- **When this test should NOT be used:**
+  - Very small effective sample after exclusions/missingness.
+- **Alternative if assumptions are violated:**
+  - **Exact** methods for binary outcomes; **robust sandwich SE** for regression.
+
+## C3. Subgroup/interaction analyses (exploratory, if covariates exist)
+- **Test name:** Interaction term in regression (group × baseline severity category).
+- **Purpose:** Explore effect modification (e.g., higher baseline CFU might respond differently).
+- **Why appropriate (≥2):**
+  1. Could inform clinical tailoring.
+  2. Uses continuous baseline CFU or categorized severity.
+- **Why it may not be appropriate (≥1):**
+  - Underpowered (N=60) and high false-positive risk.
+- **When this test should NOT be used:**
+  - As confirmatory without pre-specification and multiplicity control.
+- **Alternative if assumptions are violated:**
+  - Report **stratified descriptive** effects with CIs only.
+
+---
+
+## TASK 3: INAPPROPRIATE TESTS (should NOT be used)
+
+1. **Unpaired t-test comparing S2 only (without baseline adjustment) as the sole primary analysis**
+   - Ignores S1 and loses precision; vulnerable to chance baseline imbalance.
+
+2. **Chi-square test on raw CFU categories created post hoc (e.g., “low/medium/high”)**
+   - Arbitrary categorisation wastes information, reduces power, and can bias results.
+
+3. **One-way ANOVA across the two groups for repeated measurements**
+   - Does not account for within-tooth pairing (S1 and S2). If using ANOVA framework, it must be repeated-measures/mixed/ANCOVA.
+
+4. **Correlation (Pearson/Spearman) between S1 and S2 to claim treatment effect**
+   - Correlation does not compare groups and cannot estimate causal treatment differences.
+
+5. **Multiple paired t-tests within each group with no between-group comparison**
+   - Demonstrating within-group reductions does not establish superiority between medicaments.
+
+6. **Simple linear regression on raw CFU/mL without checking distribution/heteroscedasticity**
+   - Likely violates assumptions given CFU characteristics.
+
+---
+
+## TASK 4: SUMMARY (overall analytical approach)
+
+The study is a two-arm RCT with paired pre–post CFU/mL measurements. The primary analysis should quantify **between-group differences in post-medication bacterial load while accounting for baseline (S1)**—best done using **ANCOVA on a log scale or an appropriate count/zero-inflated model**. Supporting analyses should describe **within-group reductions**, examine **culture-negative rates**, and include **diagnostics and sensitivity analyses** for skewness/zeros and the **7 ± 3 day** follow-up window. This combination yields clinically interpretable effects with valid inference under realistic CFU distributions.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### **Study Characteristics**
+1. **Study Design**:  
+   - Two-arm parallel randomized controlled trial (RCT).
+
+2. **Study Objectives**:  
+   - To compare the antimicrobial efficacy of Calcipex (CH alone) and Metapex (CH with iodoform) in endodontic treatment of teeth presenting with chronic apical periodontitis.
+
+3. **Groups**:  
+   - **Group A (Control)**: Calcipex (CH alone).  
+   - **Group B (Intervention)**: Metapex (CH with iodoform).
+
+4. **Sample Size**:  
+   - Total: 60 teeth (30 in each group).  
+   - Based on population mean and SD (50.3 ± 13 CFU/mL) from prior studies, with 95% confidence level and 0.05 precision.
+
+5. **Sampling Technique**:  
+   - Block randomization with a block size of 6.
+
+6. **Blinding**:  
+   - Triple-blinded: Patient, analyzer, and statistician are blinded.  
+   - Investigator placing the medicament is not blinded due to color differences between the two medicaments.
+
+7. **Inclusion Criteria**:  
+   - Single-rooted permanent teeth with single root canal.  
+   - Diagnosed with chronic apical periodontitis.  
+   - No antibiotics use in the last 3 months.
+
+8. **Exclusion Criteria**:  
+   - Periodontally compromised teeth (Grade III mobility).  
+   - Endodontically non-salvageable teeth.  
+   - Immunocompromised patients or those with systemic illness.  
+   - Excessive root resorption.  
+   - History of allergy to CH or iodoform.  
+   - Endodontic retreatment cases.
+
+9. **Interventions**:  
+   - **Calcipex**: Water-based CH paste, applied for 7 days.  
+   - **Metapex**: Oil-based CH paste with iodoform, applied for 7 days.  
+   - Both medicaments placed using lentulo spiral fillers and sealed with temporary resin-based filling material.
+
+10. **Outcome**:  
+    - **Primary Outcome**: Reduction in bacterial load (CFU/mL) measured via microbial culture.  
+    - Samples collected at baseline (S1) and after 7 days (S2).
+
+11. **Data Collection Methods**:  
+    - Paper points used to collect samples from the root canal.  
+    - Samples processed in microbiology lab using Brain Heart Infusion Broth (BHIB) and blood agar for CFU quantification.
+
+12. **Follow-Up**:  
+    - 7 ± 3 days after initial intervention.
+
+13. **Ethical Considerations**:  
+    - Approved by the Ethical Review Committee (ERC) of Aga Khan University Hospital.  
+    - Informed consent obtained from participants.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### **CATEGORY A – MANDATORY**
+1. **Test Name**: Paired t-test (or Wilcoxon signed-rank test if non-parametric).  
+   - **Purpose**: To compare pre- and post-intervention CFU/mL values within each group (S1 vs. S2).  
+   - **Why Appropriate**:  
+     1. Continuous outcome variable (CFU/mL).  
+     2. Same participants measured at two time points (paired data).  
+   - **Why It May Not Be Appropriate**: Assumes normal distribution of differences.  
+   - **When This Test Should NOT Be Used**: If data are not normally distributed.  
+   - **Alternative**: Wilcoxon signed-rank test (non-parametric).
+
+2. **Test Name**: Independent t-test (or Mann-Whitney U test if non-parametric).  
+   - **Purpose**: To compare the mean CFU/mL reduction between the two groups (Calcipex vs. Metapex).  
+   - **Why Appropriate**:  
+     1. Two independent groups.  
+     2. Continuous outcome variable (CFU/mL).  
+   - **Why It May Not Be Appropriate**: Assumes normality and equal variances.  
+   - **When This Test Should NOT Be Used**: If data are not normally distributed or variances are unequal.  
+   - **Alternative**: Mann-Whitney U test (non-parametric).
+
+3. **Test Name**: Chi-square test (or Fisher’s exact test).  
+   - **Purpose**: To compare categorical adverse event rates between groups.  
+   - **Why Appropriate**:  
+     1. Categorical data (presence/absence of adverse events).  
+     2. Two independent groups.  
+   - **Why It May Not Be Appropriate**: Small sample size in one or more cells.  
+   - **When This Test Should NOT Be Used**: If expected cell counts are <5.  
+   - **Alternative**: Fisher’s exact test.
+
+#### **CATEGORY B – RECOMMENDED**
+1. **Test Name**: Repeated measures ANOVA (or Friedman test if non-parametric).  
+   - **Purpose**: To evaluate within-group changes in CFU/mL over time (S1 vs. S2) and interaction with group (Calcipex vs. Metapex).  
+   - **Why Appropriate**:  
+     1. Accounts for repeated measurements within participants.  
+     2. Tests for interaction effects between time and group.  
+   - **Why It May Not Be Appropriate**: Assumes normality and sphericity.  
+   - **When This Test Should NOT Be Used**: If assumptions are violated.  
+   - **Alternative**: Friedman test (non-parametric).
+
+2. **Test Name**: Effect size calculation (e.g., Cohen’s d).  
+   - **Purpose**: To quantify the magnitude of the difference in CFU/mL reduction between groups.  
+   - **Why Appropriate**:  
+     1. Provides practical significance of results.  
+     2. Complements p-values for better interpretation.  
+   - **Why It May Not Be Appropriate**: Not a hypothesis test, only descriptive.  
+   - **When This Test Should NOT Be Used**: If data are not interpretable or sample size is too small.  
+   - **Alternative**: Non-parametric effect size measures.
+
+#### **CATEGORY C – OPTIONAL**
+1. **Test Name**: Subgroup analysis (e.g., stratified by baseline CFU levels).  
+   - **Purpose**: To explore whether baseline CFU levels influence the efficacy of the medicaments.  
+   - **Why Appropriate**:  
+     1. Identifies potential effect modifiers.  
+     2. Provides additional insights into treatment efficacy.  
+   - **Why It May Not Be Appropriate**: Risk of overfitting with small sample size.  
+   - **When This Test Should NOT Be Used**: If sample size is insufficient for stratification.  
+   - **Alternative**: Regression models with interaction terms.
+
+2. **Test Name**: Regression analysis (e.g., linear regression).  
+   - **Purpose**: To adjust for potential confounders (e.g., age, baseline CFU).  
+   - **Why Appropriate**:  
+     1. Adjusts for covariates.  
+     2. Evaluates independent effect of the intervention.  
+   - **Why It May Not Be Appropriate**: Assumes linearity and independence of errors.  
+   - **When This Test Should NOT Be Used**: If assumptions are violated.  
+   - **Alternative**: Generalized linear models.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **ANOVA for independent groups**:  
+   - **Why Not Appropriate**: The study involves only two groups, so a t-test is more appropriate.  
+2. **Pearson correlation**:  
+   - **Why Not Appropriate**: The study is not examining relationships between two continuous variables.  
+3. **Logistic regression**:  
+   - **Why Not Appropriate**: The primary outcome (CFU/mL) is continuous, not binary.
+
+---
+
+### TASK 4: SUMMARY
+The statistical analysis plan is designed to rigorously evaluate the primary outcome (CFU/mL reduction) while accounting for the study design and data characteristics. Mandatory tests (paired t-test, independent t-test) address the primary objectives, while recommended and optional tests (e.g., effect size, regression) enhance the depth of analysis. Non-parametric alternatives are proposed to ensure robustness if assumptions are violated. This approach ensures a comprehensive and valid interpretation of the study results.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1: INFORMATION EXTRACTION  
+==============================
+
+1. Study design
+---------------
+
+- Type: Two-arm, parallel-group, randomized controlled clinical trial.
+- Objective:  
+  - Primary: To compare the antimicrobial efficacy of Calcipex (water-based calcium hydroxide paste) and Metapex (oil-based calcium hydroxide + iodoform + silicone oil) when used as interappointment intracanal medicaments in single-rooted teeth with chronic apical periodontitis.
+- Hypothesis:
+  - Alternate: There is a difference in antimicrobial efficacy between Calcipex and Metapex.
+
+2. Setting, duration, ethics
+----------------------------
+
+- Setting: Dental clinics, Aga Khan University Hospital (AKUH), Karachi.
+- Duration: 1 year after ethical approval.
+- Ethics: Approved by AKUH Ethics Review Committee (ERC Ref No: 2020-0304-9040). Conduct according to Declaration of Helsinki and GCP.
+
+3. Participants
+---------------
+
+### Population
+
+- Patients attending dental clinics at AKUH with:
+  - Single-rooted permanent teeth
+  - Single root canal
+  - Clinically diagnosed chronic apical periodontitis
+  - No antibiotic use in last 3 months
+
+### Inclusion criteria
+
+- Single rooted human permanent teeth with single root canal.
+- Clinically diagnosed chronic apical periodontitis.
+- No history of antibiotics use in last 3 months.
+
+### Exclusion criteria
+
+- Periodontally compromised teeth with grade III mobility.
+- Endodontically non-salvageable teeth.
+- Immunocompromised patients/systemic illness.
+- Excessive root resorption.
+- History of allergy to calcium hydroxide or iodoform.
+- Endodontic retreatment cases.
+
+4. Interventions / Groups
+-------------------------
+
+- Random allocation into two groups (block randomization, block size = 6).
+
+### Group A – Calcipex (Control)
+
+- Medicament: CalcipexII (Nishika, Japan).
+- Characteristics:
+  - Water-based calcium hydroxide paste.
+  - White, paste form, no radiocontrast agent (no barium sulfate).
+  - Single intracanal application at first visit; left in situ for 7 days.
+- Placement:
+  - Delivered using lentulo spiral fillers at low speed (~5000 rpm).
+  - Access sealed with temporary resin-based filling material (Dia-Temp).
+
+### Group B – Metapex (Intervention)
+
+- Medicament: Metapex (Meta Biomed, Korea).
+- Characteristics:
+  - Oil-based premixed paste.
+  - Contains calcium hydroxide + iodoform + silicone oil.
+  - Yellow paste.
+  - Single intracanal application at first visit; left in situ for 7 days.
+- Placement:
+  - Same delivery protocol as Group A (lentulo spiral, Dia-Temp seal).
+
+5. Randomisation, blinding and allocation
+-----------------------------------------
+
+- Randomization:
+  - Block randomisation, block size = 6.
+  - Facilitated by Clinical Trial Unit (CTU).
+- Allocation:
+  - 60 teeth total, 30 per group.
+- Blinding:
+  - Patient: Blinded to group.
+  - Analyzer (microbiology lab personnel): Blinded (samples labeled A/B).
+  - Statistician: Blinded.
+  - Operator: Not blinded (colour difference of medicaments).
+  - In case of adverse event, unblinding allowed.
+
+6. Sample size
+--------------
+
+- Calculation tool: WHO sample size calculator software v2.0.
+- Assumptions:
+  - From Dutta et al: mean CFU = 50.3, SD = 13 CFU/mL for CH-based medicaments (details: presumably baseline/endpoint CFU).
+  - Absolute precision = 0.05 (likely proportion or relative measure; somewhat unclear).
+  - Confidence level = 95%.
+- Result:
+  - Required: 26 teeth.
+  - Inflated to 30 per group (total 60 teeth, 30 in each arm).
+- Allocation ratio: 1:1.
+
+7. Data collection procedures
+-----------------------------
+
+### Clinical procedure
+
+- First visit:
+  - Local anesthesia (2% lidocaine with epinephrine 1:100,000).
+  - Rubber dam isolation.
+  - Access cavity preparation with burs.
+  - Removal of necrotic pulp (coronal and radicular) with barbed broaches.
+  - Initial hand instrumentation with K-files (sizes 8–20 NiTi).
+  - Irrigation: 1 mL sodium hypochlorite delivered via 23-gauge side-vented needle after each instrument size.
+  - Working length determination: apex locator + periapical radiograph.
+  - Root canal preparation: Protaper Next (Dentsply Sirona), standardized across cases.
+  - Final irrigation with saline and drying with paper points.
+
+### Microbiological sampling
+
+- Sampling time points:
+  - S1 (pre-medication sample): After chemomechanical preparation, before medicament placement.
+  - S2 (post-medication sample): At second visit after removal of medicament.
+
+- Sampling method:
+  - Sterile paper point size 20 inserted to working length and maintained for 60 seconds.
+  - Paper point removed and placed into 5 mL Eppendorf tube containing Brain-Heart Infusion Broth (BHIB).
+  - Immediately transported to microbiology lab.
+
+- Second visit (7 ± 3 days after first visit):
+  - Remove temporary filling and medicament.
+  - Canal irrigated with normal saline to wash out medicament.
+  - S2 sample taken with sterile paper point, same method as S1.
+  - After S2 sampling, canal obturated with gutta-percha and calcium hydroxide sealer (Sealapex) by lateral compaction.
+  - Definitive restoration subsequently.
+
+8. Microbiology lab procedures
+------------------------------
+
+- From BHIB tube:
+  - Paper point transferred to enhancement medium (BHIB), vortexed 60 seconds.
+  - 1 mL BHIB + 1 mL 0.9% NaCl, serial dilutions in five series down to 10^5 CFU level (description suggests serial 10-fold dilutions).
+  - Each dilution inoculated onto blood agar plates.
+  - Incubation: 24 hours, 37°C, anaerobic in CO2 incubator.
+  - Colony counting after 24 hours to estimate CFU/mL.
+
+9. Outcomes / variables
+-----------------------
+
+### Primary outcome
+
+- Antimicrobial efficacy measured as bacterial load (CFU/mL) via culture.
+- Time frame: 7 days.
+- Interpreted as:
+  - Higher CFU/mL → higher bacterial load (worse).
+  - Reduction in CFU/mL after intracanal medicament is expected.
+
+### Derived variables (likely)
+
+- CFU/mL at baseline (S1) for each tooth.
+- CFU/mL at 7 days (S2) for each tooth.
+- Change in CFU/mL:  
+  - Absolute reduction = S1 – S2.
+  - Relative/percent reduction = (S1 – S2)/S1 × 100%, if used.
+- Potential secondary outcomes (not explicitly stated, but implied):
+  - Within-group reduction in CFU/mL from S1 to S2.
+  - Between-group comparison of reduction magnitude.
+
+### Other collected data (likely, though not detailed here)
+
+- Demographics and clinical characteristics (likely: age, sex, tooth type, etc.).
+- Flow data: numbers assessed, excluded, randomized, and lost to follow-up (CONSORT figure).
+
+10. Data management / monitoring
+--------------------------------
+
+- Data collection and maintenance monitored by principal investigator and CTU.
+- Training:
+  - Single operator with ≥4 years experience; trained regarding trial procedures, sampling, and data logs.
+
+11. Design features relevant to analysis
+---------------------------------------
+
+- Parallel groups with repeated measures (S1 and S2) per tooth.
+- Unit of analysis: tooth (each tooth corresponds to one canal).
+- Randomization at tooth level (per-patient clustering not discussed; likely one tooth per patient).
+- Blinding of laboratory and analysis.
+- CFU counts are continuous, strictly positive, and potentially highly skewed (count data).
+- Primary comparison: Group A vs Group B on bacterial load reduction over 7 days.
+
+---
+
+TASK 2: STATISTICAL ANALYSIS PLAN
+=================================
+
+Core assumptions:  
+- Primary endpoint: change (reduction) in CFU/mL over 7 days, comparing Calcipex vs Metapex.  
+- Analysis population: intention-to-treat (ITT) where feasible, with per-protocol (PP) as sensitivity.  
+- Alpha = 0.05 (two-sided).
+
+I will structure the plan into:  
+(1) Data preparation;  
+(2) Descriptive analyses;  
+(3) Primary analysis;  
+(4) Secondary and sensitivity analyses;  
+(5) Handling of assumptions and missing data.
+
+For each specific test, I list under Categories A/B/C.
+
+A. MANDATORY TESTS / ANALYSES
+-----------------------------
+
+### A1. Descriptive statistics + baseline comparability
+
+**Test / methods:**
+- Descriptive statistics:
+  - Continuous: mean ± SD, median (IQR), min–max (e.g., CFU/mL).
+  - Categorical: n (%).
+- Baseline group comparison:
+  - For continuous covariates (e.g., baseline CFU): t-test or Mann–Whitney U.
+  - For categorical covariates (e.g., gender, tooth type): χ² test or Fisher’s exact.
+
+**Purpose:**
+- Summarize sample characteristics.
+- Assess success of randomization (baseline balance).
+- Describe distribution of CFU/mL at S1 and S2.
+
+**Why appropriate (≥2 reasons):**
+1. Randomized trial: important to confirm that randomization produced comparable groups at baseline.
+2. CFU/mL and patient characteristics are standard variables requiring descriptive statistics to interpret later inferential results.
+
+**Why it may not be appropriate (≥1 reason):**
+- Overemphasis on hypothesis tests for baseline balance can be misleading; randomization ensures comparability without needing significance tests.
+
+**When not to use:**
+- Avoid formal hypothesis tests for baseline differences if sample size is small and emphasis is incorrectly shifted from main outcome.
+
+**Alternatives if assumptions violated:**
+- For skewed continuous variables: report medians/IQR and use nonparametric tests (Mann–Whitney) instead of t-tests.
+- For sparse categorical data: Fisher’s exact instead of χ².
+
+---
+
+### A2. Primary comparative analysis of CFU reduction between groups
+
+There are two main analytic choices; both are acceptable. I recommend treating the *within-tooth change* as primary.
+
+#### Option A2a – Primary endpoint: change in log-transformed CFU
+
+**Test name:**
+- Two-sample t-test on change scores (or ANCOVA on log CFU at S2 adjusting for baseline log CFU).
+
+**Steps:**
+1. Transform CFU/mL using natural log (or log10) if distribution is highly skewed:
+   - logCFU_S1 = ln(CFU_S1 + c), logCFU_S2 = ln(CFU_S2 + c), with c small (e.g., 1) to handle zeros.
+2. Compute change: ΔlogCFU = logCFU_S2 – logCFU_S1.
+3. Compare mean ΔlogCFU between Calcipex vs Metapex using:
+   - Two-sample t-test; or
+   - Linear model: ΔlogCFU = β0 + β1*(Group) + ε.
+   Alternatively:
+   - ANCOVA: logCFU_S2 = β0 + β1*(Group) + β2*logCFU_S1 + ε.
+
+**Purpose:**
+- Quantify and compare antimicrobial effect (reduction in bacterial load) between the two medicaments.
+
+**Why appropriate (≥2 reasons):**
+1. Change in CFU directly reflects the clinical effect (bacterial reduction), aligned with primary objective.
+2. Log transformation helps approximate normality and stabilize variance, making parametric methods appropriate for skewed count data.
+
+**Why it may not be appropriate (≥1 reason):**
+- If CFU counts include many zeros (e.g., complete sterilization in many teeth), log transformation may be problematic and the distribution may remain non-normal.
+
+**When not to use:**
+- If the assumptions of normality and homoscedasticity for residuals remain seriously violated after transformation.
+- Sample size is too small to rely on asymptotic normality, especially with heavy skew or outliers.
+
+**Alternative if assumptions violated:**
+- Nonparametric alternative: Mann–Whitney U test on ΔCFU (or percentage change) (see A2b).
+- Or use generalized linear models with appropriate link (e.g., negative binomial regression with offset for baseline) (see B3).
+
+---
+
+#### A2b – Nonparametric comparison of CFU reduction
+
+**Test name:**
+- Mann–Whitney U test (Wilcoxon rank-sum) on:
+  - ΔCFU = CFU_S2 – CFU_S1 (absolute reduction), or
+  - % reduction = (CFU_S1 – CFU_S2)/CFU_S1 × 100%.
+
+**Purpose:**
+- Compare the magnitude of bacterial reduction between groups without assuming normality.
+
+**Why appropriate (≥2 reasons):**
+1. CFU distributions are usually skewed and heavy-tailed; nonparametric tests are robust to deviations from normality.
+2. Sample size per arm (n = 30) is modest; nonparametric tests perform well and are easy to interpret in terms of median reduction.
+
+**Why it may not be appropriate (≥1 reason):**
+- Mann–Whitney tests the difference in distributions, not strictly the difference in means; interpretation in terms of means can be misleading.
+
+**When not to use:**
+- If the primary endpoint is explicitly defined in terms of mean difference and assumptions for parametric tests hold; then t-test/ANCOVA may be preferred for interpretability and power.
+
+**Alternative if assumptions violated:**
+- For heavily censored or zero-inflated data, consider zero-inflated models or Fisher’s exact on binary endpoints (e.g., “sterile vs non-sterile”).  
+- If repeated measures correlation structure is central, use mixed-effects models as in B1.
+
+---
+
+### A3. Within-group pre–post analysis of CFU (paired)
+
+**Test name:**
+- Paired t-test (on logCFU) or Wilcoxon signed-rank test (on raw or transformed CFU) within each group.
+
+**Purpose:**
+- Assess whether each medicament reduces bacterial load over 7 days relative to its own baseline.
+
+**Why appropriate (≥2 reasons):**
+1. Directly quantifies the effect of each medicament; provides clinically relevant confirmation that each treatment is effective vs baseline.
+2. Repeated measures on the same tooth require paired methods that account for within-tooth correlation.
+
+**Why it may not be appropriate (≥1 reason):**
+- Does not address the comparative question (which is superior), only within-group change; may be misinterpreted if used in isolation.
+
+**When not to use:**
+- As the sole basis for claiming treatment superiority; comparative analysis is required for that.
+
+**Alternative if assumptions violated:**
+- Use Wilcoxon signed-rank test if log-transformed data still deviate from normality.
+- For count data with many zeros, consider McNemar’s test on a dichotomous endpoint (bacteria present vs absent at S1 vs S2).
+
+---
+
+### A4. Analysis of proportion of teeth achieving bacterial elimination
+
+**Test name:**
+- χ² test or Fisher’s exact test comparing the percentage of teeth with CFU_S2 = 0 between groups.
+
+**Purpose:**
+- Provide a clinically intuitive endpoint: proportion of canals rendered culture-negative.
+
+**Why appropriate (≥2 reasons):**
+1. Complete elimination of culturable bacteria is a clear and clinically meaningful indicator of success.
+2. Binary outcome (zero vs non-zero CFU) is often more robust and easier to interpret than differences in highly skewed counts.
+
+**Why it may not be appropriate (≥1 reason):**
+- Loss of information: ignores magnitude of reduction among non-zero CFUs.
+
+**When not to use:**
+- If almost all teeth either remain positive or all become negative; test becomes uninformative or unstable.
+
+**Alternative if assumptions violated:**
+- If expected cell counts <5, use Fisher’s exact test instead of χ².
+- For multivariable context, use logistic regression (see B2).
+
+---
+
+B. RECOMMENDED TESTS / ANALYSES
+--------------------------------
+
+These enhance rigor but are not absolutely required for minimal reporting.
+
+### B1. Repeated measures model (linear mixed-effects model)
+
+**Test name:**
+- Linear mixed-effects model (LMM) on logCFU:
+  - logCFU_ij = β0 + β1*Group_i + β2*Time_j + β3*(Group × Time)_ij + random intercept for tooth i.
+
+**Purpose:**
+- Model the temporal trajectory (S1 → S2) of CFU/mL in both groups simultaneously, accounting for within-tooth correlation and group-by-time interaction.
+
+**Why appropriate (≥2 reasons):**
+1. Properly utilizes the repeated-measures structure instead of analyzing change scores only; estimates time effect and group-by-time interaction (direct measure of differential treatment effect).
+2. Handles missing data under missing-at-random assumptions more flexibly than complete-case change-score analyses.
+
+**Why it may not be appropriate (≥1 reason):**
+- With only 2 time points and relatively small sample (60 teeth), the LMM may offer limited advantage over simple ANCOVA and could be overkill, especially if data are near complete.
+
+**When not to use:**
+- If there is nearly no missing follow-up data, and the design is simple; t-tests or ANCOVA provide equivalent results with simpler interpretation.
+
+**Alternative if assumptions violated:**
+- Generalized linear mixed model (e.g., negative binomial mixed model) if normality on log scale fails or if counts are discrete with overdispersion.
+
+---
+
+### B2. Logistic regression for binary outcome (CFU_S2 zero vs non-zero)
+
+**Test name:**
+- Binary logistic regression:
+  - outcome: 1 = CFU_S2 = 0, 0 = CFU_S2 > 0.
+  - predictor: Group (Metapex vs Calcipex), optionally adjust for baseline CFU and other covariates.
+
+**Purpose:**
+- Estimate odds ratio of achieving culture-negative canal with Metapex compared to Calcipex.
+
+**Why appropriate (≥2 reasons):**
+1. Provides adjusted measure of treatment effect (OR) accounting for baseline bacterial load or other confounders if needed (though RCT design minimizes confounding).
+2. Robust to skewness in underlying CFU values since it uses binary classification.
+
+**Why it may not be appropriate (≥1 reason):**
+- Requires sufficient events (CFU_S2 = 0 cases); with low event rate, may be underpowered or unstable.
+
+**When not to use:**
+- If almost all or almost none of the canals are culture-negative, logistic regression becomes uninformative.
+
+**Alternative if assumptions violated:**
+- Exact logistic regression in case of very small numbers or sparse data.
+- Fisher’s exact test (unadjusted) as a simple alternative.
+
+---
+
+### B3. Count data regression (negative binomial or Poisson)
+
+**Test name:**
+- Negative binomial regression (preferred) or Poisson regression with robust variance:
+  - Outcome: CFU_S2.
+  - Predictors: Group, baseline CFU_S1 as covariate (or use log CFU; or treat S1 as offset in a rate model).
+
+**Purpose:**
+- Model CFU counts explicitly as count data, estimating rate ratio of CFU_S2 between groups while adjusting for baseline CFU.
+
+**Why appropriate (≥2 reasons):**
+1. CFU are count data and often overdispersed; negative binomial accounts for variance > mean.
+2. Provides interpretable measure as incidence rate ratio or multiplicative effect of treatment on bacterial counts.
+
+**Why it may not be appropriate (≥1 reason):**
+- Requires careful modeling and diagnostics; with modest sample size and complex overdispersion, estimates may be unstable.
+
+**When not to use:**
+- If there is substantial zero inflation (many zero CFU values at S2) and the model does not adequately account for it.
+- If investigators prefer simpler and more familiar analyses (e.g., t-test/ANCOVA).
+
+**Alternative if assumptions violated:**
+- Zero-inflated negative binomial model to handle excess zeros.
+- Nonparametric methods (Mann–Whitney) if model fit is unsatisfactory.
+
+---
+
+### B4. Sensitivity analyses
+
+**Tests / methods:**
+1. Per-protocol analysis:
+   - Excluding dropouts or protocol violations to see if results are consistent with ITT.
+2. Robustness to transformation:
+   - Compare results using raw CFU, log CFU, and rank-based methods.
+
+**Purpose:**
+- Assess robustness of conclusions to analytic choices and missing data handling.
+
+**Why appropriate (≥2 reasons):**
+1. Increases credibility of findings by demonstrating consistency across reasonable analytic approaches.
+2. Helps identify whether conclusions rely heavily on specific transformations or assumptions.
+
+**Why it may not be appropriate (≥1 reason):**
+- Multiple analyses increase complexity and risk of confusion if results differ; must be interpreted cautiously.
+
+**When not to use:**
+- If sample size is extremely small, adding multiple analytic variants might be uninformative.
+
+**Alternative if assumptions violated:**
+- Pre-specified primary method with one planned sensitivity analysis to avoid data-driven fishing.
+
+---
+
+### B5. Handling missing data
+
+**Methods:**
+- If small amount of missing S2 data:
+  - Complete-case analysis for primary outcome, with sensitivity analysis:
+    - Last observation carried forward (conservative, though not ideal).
+    - Multiple imputation (if missing not negligible).
+
+**Purpose:**
+- Maintain validity in presence of lost to follow-up.
+
+**Why appropriate (≥2 reasons):**
+1. RCTs typically experience some loss to follow-up; pre-specified handling avoids bias.
+2. ITT principle recommends including all randomized teeth as far as possible.
+
+**Why it may not be appropriate (≥1 reason):**
+- In this short follow-up, missing data may be minimal; complex imputation may be unnecessary and disproportionately complicated.
+
+**When not to use:**
+- If no (or negligible) missing S2 data; default complete-case analysis suffices.
+
+**Alternative:**
+- Mixed-effects models (as in B1) inherently accommodate missing follow-up times under MAR.
+
+---
+
+C. OPTIONAL TESTS / ANALYSES
+----------------------------
+
+These provide supplementary insights but are not essential.
+
+### C1. Exploratory subgroup analyses
+
+**Test name:**
+- Linear model or nonparametric testing stratified by:
+  - Tooth type (e.g., incisor vs premolar), if available.
+  - Baseline CFU tertiles (high vs low initial load).
+
+**Purpose:**
+- Explore whether treatment effect differs by initial bacterial burden or other characteristics.
+
+**Why appropriate (≥2 reasons):**
+1. Could inform whether one medicament is more effective in heavily infected teeth.
+2. Hypothesis-generating for future studies.
+
+**Why it may not be appropriate (≥1 reason):**
+- Trial is not powered for subgroup analyses; risk of false positives and overinterpretation.
+
+**When not to use:**
+- If sample size within subgroups becomes very small (e.g., <10 per cell).
+
+**Alternative:**
+- Descriptive subgroup summaries rather than formal tests.
+
+---
+
+### C2. Effect size estimation and confidence intervals
+
+**Test name:**
+- Cohen’s d for continuous outcomes (logCFU change).
+- Risk difference or relative risk for binary outcomes (CFU_S2 = 0).
+
+**Purpose:**
+- Provide magnitude of treatment effect with CIs, not just p-values.
+
+**Why appropriate (≥2 reasons):**
+1. Clinical decisions rely on effect size more than p-values.
+2. Confidence intervals convey precision and potential clinical relevance.
+
+**Why it may not be appropriate (≥1 reason):**
+- Might be misinterpreted if sample size is small and CIs are wide.
+
+**When not to use:**
+- Never entirely inappropriate; at minimum, 95% CI should accompany primary outcome.
+
+**Alternative:**
+- Use bootstrap confidence intervals if parametric assumptions for CIs are questionable.
+
+---
+
+### C3. Graphical analyses
+
+**Methods:**
+- Boxplots of CFU_S1 and CFU_S2 by group (raw and log scale).
+- Individual Spaghetti plots (per tooth) for logCFU over time by group.
+- Histograms or density plots for CFU distributions.
+
+**Purpose:**
+- Visualize distribution, skewness, and treatment effect; detect outliers and check assumptions.
+
+**Why appropriate (≥2 reasons):**
+1. Aids in interpreting numerical results and diagnostic checking.
+2. Provides intuitive understanding for clinicians and readers.
+
+**Why it may not be appropriate (≥1 reason):**
+- None in principle, but may clutter reporting if space is limited.
+
+**When not to use:**
+- If journal space is extremely constrained (though supplementary material can house figures).
+
+**Alternative:**
+- Summarize graphically in online supplements.
+
+---
+
+TASK 3: TESTS THAT SHOULD NOT BE USED AND WHY
+=============================================
+
+### 1. Unpaired t-test on raw CFU counts without transformation or diagnostics
+
+**Why not:**
+- CFU counts are typically non-normal, heavily skewed, and often overdispersed; untransformed t-tests violate assumptions (normality, equal variances), leading to unreliable inferences.
+
+### 2. One-way ANOVA ignoring repeated measures (treating S1 and S2 as independent observations)
+
+**Why not:**
+- S1 and S2 are repeated measures on the same tooth; independence assumption is violated. ANOVA without accounting for within-tooth correlation mis-specifies the model and inflates Type I error.
+
+### 3. Multiple independent t-tests comparing all four combinations (Group × Time) without interaction modeling
+
+E.g., Calcipex S1 vs Metapex S1, Calcipex S2 vs Metapex S2, etc., without considering within-tooth pairing.
+
+**Why not:**
+- Increases multiple comparison burden and does not directly address the change over time.
+- Ignores within-tooth correlation; better captured via change scores or mixed models.
+
+### 4. Repeated measures ANOVA assuming sphericity, given only two time points
+
+**Why not:**
+- With only two time points, repeated measures ANOVA collapses to paired t-test; the sphericity assumption is irrelevant, and the method is unnecessarily complex.
+
+### 5. Pearson correlation as primary comparative analysis
+
+**Why not:**
+- Correlation does not address the treatment comparison; it only measures association between variables (e.g., baseline and follow-up CFU), not group differences.
+
+### 6. Survival analysis (Kaplan–Meier, Cox regression)
+
+**Why not:**
+- No time-to-event outcome is measured (e.g., time to infection resolution or failure); using survival methods would be wholly inappropriate.
+
+### 7. Multiple regression with many covariates given n=60
+
+**Why not:**
+- Overfitting risk is high; the trial is randomized, so adjustment for many covariates is unnecessary and can destabilize estimates.
+
+### 8. Parametric tests for proportions (e.g., z-test for large-sample normal approximation) where expected counts are small
+
+**Why not:**
+- With n=30 per arm, some proportions (e.g., culture-negative teeth) may be low. In such cases, asymptotic z-tests for proportions can be inaccurate; Fisher’s exact or exact methods are preferred.
+
+---
+
+TASK 4: SUMMARY AND OVERALL ANALYTICAL APPROACH
+===============================================
+
+- The study is a two-arm parallel randomized controlled trial with repeated CFU measurements per tooth (baseline and 7 days). The outcome is continuous count data (CFU/mL), likely skewed.
+- The primary analytical focus is on comparing the antimicrobial effectiveness of Calcipex vs Metapex; this is best captured by the change in CFU (absolute or relative) or by modeling the group × time interaction.
+- A pragmatic and statistically sound primary analysis is:
+  1. Transform CFU/mL using log transformation.
+  2. Use either:
+     - Two-sample t-test on change in logCFU; or  
+     - ANCOVA of logCFU_S2 adjusting for logCFU_S1 and group.
+  3. Complement with nonparametric Mann–Whitney analysis on change scores as a robustness check.
+- Within-group paired analyses (paired t or Wilcoxon signed-rank) confirm reduction in CFU for each medicament.
+- Additional clinically meaningful analysis compares proportions of culture-negative canals at 7 days using χ²/Fisher’s exact and logistic regression as appropriate.
+- Mixed-effects or count regression models (negative binomial) are recommended for advanced analysis to fully respect the repeated-measures and count nature of the data but are not strictly required.
+- Overall, the plan balances rigor with interpretability, uses appropriate methods for skewed repeated-measure count data, and maintains the randomized trial principles (minimal covariate adjustment, ITT focus, and clear primary endpoint).
