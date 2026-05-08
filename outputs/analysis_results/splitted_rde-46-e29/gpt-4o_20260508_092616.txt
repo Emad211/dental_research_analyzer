@@ -1,0 +1,134 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_rde-46-e29.pdf
+Status : ok
+Time   : 20260508_092616
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics
+1. **Study Design**: Retrospective cohort study.
+2. **Objective**: To compare the fracture survival rates of endodontically treated molars (ETT) restored with single-unit crowns versus direct resin composite restorations and identify potential risk factors associated with fracture survival.
+3. **Groups**:
+   - Group 1: ETT restored with single-unit full-coverage crowns.
+   - Group 2: ETT restored with direct resin composite restorations.
+4. **Sample Size**: Not explicitly provided in the text but derived from dental records spanning 2015–2019.
+5. **Variables**:
+   - **Independent Variables**:
+     - Type of restoration (crown vs. resin composite).
+     - Tooth structure loss (occlusal surface only vs. additional loss).
+     - Tooth type (first vs. second molars).
+     - Tooth location (upper vs. lower molars).
+     - Opposing dentition (natural tooth, fixed prosthesis, removable prosthesis, or none).
+     - Number of adjacent teeth.
+     - Type of post (no post, fiber post, metal post).
+   - **Dependent Variable**: Fracture survival (survival vs. non-survival).
+6. **Measurements**:
+   - Survival criteria:
+     - Survival: No fracture or restorable fracture.
+     - Non-survival: Unrestorable fracture.
+   - Recall period: Minimum of 12 months, with some cases extending up to 60 months.
+   - Fracture classification: Restorable vs. unrestorable.
+7. **Data Collection Methods**:
+   - Clinical and radiographic records from 2015–2019.
+   - Information extracted: Age, sex, recall period, tooth type/location, restoration type, opposing dentition, adjacent teeth, tooth structure loss, and post type.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Chi-Square Test
+   - **Purpose**: To assess the association between categorical variables (e.g., restoration type and fracture survival).
+   - **Why Appropriate**:
+     - Both variables (restoration type and survival) are categorical.
+     - Suitable for comparing proportions between groups.
+   - **Why It May Not Be Appropriate**:
+     - Assumes independence of observations, which may be violated if clustering exists (e.g., multiple teeth per patient).
+   - **When This Test Should NOT Be Used**: If expected frequencies in any cell are <5.
+   - **Alternative**: Fisher’s Exact Test (if sample size is small).
+
+2. **Test Name**: Kaplan-Meier Survival Analysis
+   - **Purpose**: To estimate survival probabilities over time for molars restored with crowns vs. resin composites.
+   - **Why Appropriate**:
+     - Survival data includes time-to-event information (fracture occurrence).
+     - Accounts for censored data (e.g., teeth lost due to other reasons).
+   - **Why It May Not Be Appropriate**:
+     - Assumes proportional hazards, which may not hold.
+   - **When This Test Should NOT Be Used**: If survival times are not available or improperly recorded.
+   - **Alternative**: Life Table Analysis.
+
+3. **Test Name**: Log-Rank Test
+   - **Purpose**: To compare survival distributions between groups (crown vs. resin composite).
+   - **Why Appropriate**:
+     - Designed for comparing survival curves.
+     - Accounts for censored data.
+   - **Why It May Not Be Appropriate**:
+     - Sensitive to violations of proportional hazards assumption.
+   - **When This Test Should NOT Be Used**: If survival curves cross significantly.
+   - **Alternative**: Breslow (Generalized Wilcoxon) Test.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Cox Proportional Hazards Regression
+   - **Purpose**: To identify risk factors associated with fracture survival while adjusting for covariates (e.g., tooth type, location, opposing dentition).
+   - **Why Appropriate**:
+     - Handles time-to-event data.
+     - Allows inclusion of multiple predictors.
+   - **Why It May Not Be Appropriate**:
+     - Assumes proportional hazards, which may not hold.
+   - **When This Test Should NOT Be Used**: If proportional hazards assumption is violated.
+   - **Alternative**: Stratified Cox Regression.
+
+2. **Test Name**: Logistic Regression
+   - **Purpose**: To model the probability of fracture survival (binary outcome) based on predictors like restoration type and tooth structure loss.
+   - **Why Appropriate**:
+     - Suitable for binary outcomes.
+     - Can include multiple predictors.
+   - **Why It May Not Be Appropriate**:
+     - Does not account for time-to-event data.
+   - **When This Test Should NOT Be Used**: If time-to-event data is critical.
+   - **Alternative**: Cox Regression.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Multilevel (Hierarchical) Modeling
+   - **Purpose**: To account for clustering effects (e.g., multiple teeth per patient).
+   - **Why Appropriate**:
+     - Accounts for non-independence of observations.
+     - Suitable for nested data structures.
+   - **Why It May Not Be Appropriate**:
+     - Requires complex modeling and larger sample sizes.
+   - **When This Test Should NOT Be Used**: If sample size is insufficient or clustering is negligible.
+   - **Alternative**: Generalized Estimating Equations (GEE).
+
+2. **Test Name**: Subgroup Analysis
+   - **Purpose**: To explore survival rates within specific subgroups (e.g., upper vs. lower molars).
+   - **Why Appropriate**:
+     - Provides detailed insights into subgroup-specific effects.
+     - Useful for hypothesis generation.
+   - **Why It May Not Be Appropriate**:
+     - Risk of overfitting or false positives due to multiple comparisons.
+   - **When This Test Should NOT Be Used**: If sample size within subgroups is too small.
+   - **Alternative**: Pooling subgroups for broader analysis.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: Independent Samples t-Test
+   - **Why Not Appropriate**:
+     - Designed for continuous data, whereas survival and restoration type are categorical.
+2. **Test Name**: Pearson Correlation
+   - **Why Not Appropriate**:
+     - Assumes linear relationship between two continuous variables, which is not applicable here.
+3. **Test Name**: ANOVA
+   - **Why Not Appropriate**:
+     - Designed for comparing means across groups, not survival rates or categorical data.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach prioritizes survival analysis methods (Kaplan-Meier, Log-Rank Test, Cox Regression) to address the study’s primary objective of comparing fracture survival rates between restoration types. Logistic regression and subgroup analyses are recommended to explore secondary objectives and risk factors. Multilevel modeling is suggested if clustering effects are significant. The plan avoids inappropriate tests and emphasizes robustness by considering alternatives for assumption violations.

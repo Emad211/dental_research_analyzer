@@ -1,0 +1,236 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_the_effect_of_payment_methods_on_dental_service.4.pdf
+Status : ok
+Time   : 20260508_093003
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design and setting
+- **Design:** Retrospective cohort / retrospective comparative study using routinely collected clinical records.
+- **Setting:** One dental clinic in suburbs of Tehran, Iran.
+- **Natural experiment/exposure change:** Clinic **changed payment method** from **salary** to **fee-for-service (FFS)** and outsourced management in **2018**.
+- **Ethics:** Approved by Tehran University of Medical Sciences (code **42794260**).
+
+### Objectives
+- **Primary aim:** Describe the **service mix** of private general practitioners.
+- **Primary analytic aim:** Investigate association between **payment method (salary vs FFS)** and **dental service mix**.
+
+### Units of analysis / clustering structure
+- **Dentist-level:** 36 dentists’ practice patterns compared.
+- **Patient-record-level:** sampled charts within dentist and time-period.
+- **Hierarchical structure:** records clustered within **dentist**, and (for some dentists) within **payment period** (repeated measures).
+
+### Study groups / comparison structure
+Dentists categorized by employment across payment periods:
+- **Worked in both periods:** 36 dentists’ records were reviewed overall; text states “36 dentists who worked in both periods,” but later numbering implies:
+  - **Dentists 1–12:** worked in **both** payment methods (paired within-dentist comparison).
+  - **Dentists 12–24:** worked **only salary** (salary-only; independent group).
+  - **Dentists 25–36:** worked **only FFS** (FFS-only; independent group).
+- Note: numbering overlap (“No 12”) suggests a reporting error; analysis plan should handle the **intended 3-group structure**: *both/paired*, *salary-only*, *FFS-only*.
+
+### Sampling frame and sample size
+- **Time windows sampled:**
+  - Salary period: **Oct 1–30, 2018**
+  - FFS period: **Mar 1–30, 2019**
+- **Sampling per dentist per period:** **85 patient records per dentist per period** (randomly selected).
+- **Total files reviewed:** **3060** records.
+  - This equals 36 dentists × 85 records = 3060 for **one period**, or 18 dentists × 2 periods × 85 = 3060. Because the paper reports 3060 total, it implies **not all dentists contributed both periods**; the plan should treat the realized dataset as **unbalanced**.
+
+### Eligibility/exclusion criteria (record-level)
+Excluded:
+- Records with **incomplete/ambiguous** information.
+- **Specialized services:** orthodontics, implants, crown lengthening surgery.
+- **Age < 18 years**.
+- **Charity services**.
+
+### Variables and outcomes
+- **Exposure (primary predictor):** Payment method (**salary vs FFS**), operationalized by time period and/or dentist employment category.
+- **Primary outcome concept:** **Dental service mix**.
+- **Service counts calculated** (per record/visit or per sampled chart—unclear; likely per chart in the sampled month):
+  - Single visits without treatment
+  - Restorations
+  - Endodontic treatments
+  - Extractions
+  - Impacted tooth surgery
+  - Radiography without treatment
+  - Scaling
+  - Referrals
+- **Derived categorical outcome:** services grouped into **4 categories**:
+  1. **No treatment** (visits, diagnostic radiography, referrals)
+  2. **Preventive** (simple restorations, scaling)
+  3. **Aggressive** (text contains an error “randomized controlled trial”; likely intended RCT = root canal treatment/endodontics; plus extraction and crown)
+  4. **Highly aggressive** (surgery)
+- **Comparisons stated:** “Differences in dental service mix were compared among 36 dentists.”
+
+### Data collection method
+- **Data source:** Paper + computerized archives.
+- **Data extraction:** Chart review; random selection of records for specified months.
+
+---
+
+## TASK 2 — Statistical Analysis Plan (SAP)
+
+### 2.1 Core principles and preprocessing (apply to all analyses)
+- **Define the analysis unit explicitly** (must be decided before testing):
+  - Option A (record-level): each sampled patient record contributes one observed service category (or multiple services).
+  - Option B (dentist-period-level): aggregate to **counts or proportions** of service categories per dentist per period (recommended for interpretability and to respect clustering).
+- **Primary estimand (suggested):** Difference in **proportion** of services in each category (or odds of being in more aggressive category) comparing **FFS vs salary**.
+- **Handle clustering / repeated measures:**
+  - Dentists working in both periods create **paired** observations (within-dentist).
+  - Dentists working in only one period contribute **independent** observations.
+- **Missing/Excluded records:** Report number excluded and reasons; do not impute outcomes unless missingness mechanism is defensible and documented.
+- **Multiplicity:** If analyzing all 4 categories (or many service types), pre-specify:
+  - primary contrast(s) (e.g., “highly aggressive vs all others” or ordinal shift),
+  - and apply multiplicity control (Holm or FDR) for secondary endpoints.
+
+---
+
+# CATEGORY A — MANDATORY tests/models
+
+### A1) Descriptive statistics with uncertainty (proportions, rates)
+- **Test/model:** Estimation of proportions with **95% CIs** (Wilson/binomial), and/or **rate** estimates for counts.
+- **Purpose:** Quantify service mix by payment method (and by dentist group).
+- **Why appropriate (≥2):**
+  1. Outcomes are categorical/count-based; proportions are the natural summary for “service mix.”
+  2. CIs communicate precision and are needed for interpretation beyond p-values.
+- **Why may not be appropriate (≥1):** If each record can contain multiple services and categories overlap, simple proportions per record may be ill-defined without a clear counting rule.
+- **When NOT to use:** When denominators differ in meaning across dentists (e.g., “services” vs “patients” vs “visits”) and have not been standardized.
+- **Alternative if assumptions violated:** Use dentist-level **compositional** summaries (e.g., multinomial proportions per dentist-period) with bootstrap CIs.
+
+### A2) Mixed-effects multinomial (or ordinal) regression for service category ~ payment method
+- **Test/model:**  
+  - **Multinomial mixed-effects logistic regression** (4-category nominal outcome), *or*  
+  - **Ordinal mixed-effects model** (cumulative logit) if categories can be justified as ordered by aggressiveness.
+  - Include **random intercept for dentist**; fixed effect for **payment method**; consider period indicator.
+- **Purpose:** Primary inferential test of association between payment method and service mix while accounting for clustering within dentist.
+- **Why appropriate (≥2):**
+  1. Outcome is multi-category; multinomial/ordinal models match the data-generating structure.
+  2. Random effects address non-independence of records within dentist and allow unequal records per dentist/period.
+- **Why may not be appropriate (≥1):**
+  - If the dataset is actually analyzed at dentist-period aggregated level only (36–72 rows), record-level mixed models may be unnecessary or unstable.
+- **When NOT to use:** When there are sparse cells (e.g., surgery extremely rare) causing separation/non-convergence.
+- **Alternatives if assumptions violated:**
+  - Collapse categories (e.g., combine aggressive + highly aggressive).
+  - Use **GEE multinomial** with robust SEs (population-average).
+  - Use **penalized multinomial logistic regression** (Firth-type / ridge) if separation.
+
+### A3) Within-dentist paired comparison for the “both periods” dentists
+- **Test/model (choose based on aggregation):**
+  - If using dentist-period proportions: **paired t-test** on proportion difference (with transformation if needed) *or* **Wilcoxon signed-rank**.
+  - If using counts by category: **McNemar test** is not directly applicable for >2 categories; instead use **paired multinomial modeling** (mixed model already covers this) or analyze a binary contrast (e.g., “aggressive-or-worse” vs not) with McNemar.
+- **Purpose:** Leverage the natural experiment (same dentist under two payment methods) to reduce confounding by dentist characteristics.
+- **Why appropriate (≥2):**
+  1. Controls for time-invariant dentist factors (skill, preferences).
+  2. Aligns with the study’s key design feature: payment method change.
+- **Why may not be appropriate (≥1):** Only a subset of dentists are paired; paired analysis alone would discard salary-only/FFS-only dentists.
+- **When NOT to use:** When the “both-period” group is too small to provide stable estimates or when the measure is not comparable across periods.
+- **Alternatives if assumptions violated:** Use the mixed-effects multinomial/ordinal model with a random dentist effect and a payment indicator (preferred unified approach).
+
+---
+
+# CATEGORY B — RECOMMENDED tests/models
+
+### B1) Two-part approach: dentist-period aggregation + regression on compositional outcomes
+- **Test/model:**  
+  - Compute per dentist-period the vector of proportions across 4 categories (summing to 1).  
+  - Fit **Dirichlet regression** (or multinomial logistic regression on aggregated counts with dentist as cluster).
+- **Purpose:** Model service mix as a composition and provide dentist-level inference.
+- **Why appropriate (≥2):**
+  1. “Service mix” is inherently compositional; categories compete for the same total.
+  2. Dentist-period is a clinically meaningful unit; reduces within-dentist record correlation concerns.
+- **Why may not be appropriate (≥1):** Dirichlet regression can struggle with zeros (e.g., no surgeries for many dentists).
+- **When NOT to use:** When many dentists have structural zeros in categories.
+- **Alternatives if assumptions violated:** Zero-inflated Dirichlet variants; or multinomial logistic regression on counts with small-sample robust SEs / bootstrap.
+
+### B2) Negative binomial (or Poisson) mixed model for counts of specific services
+- **Test/model:** **GLMM Poisson** or **negative binomial** for counts (e.g., number of extractions per dentist-period), with offset = total records/visits if needed; random intercept for dentist.
+- **Purpose:** Assess payment method effect on specific service volumes (e.g., surgery, extractions, scaling).
+- **Why appropriate (≥2):**
+  1. Outcomes are counts; NB handles overdispersion common in clinical service counts.
+  2. Allows differing exposure/denominator via offsets and accounts for dentist clustering.
+- **Why may not be appropriate (≥1):** If counts are bounded by sampling design (exactly 85 records) and represent proportions better than “rates.”
+- **When NOT to use:** When the count is extremely sparse with many zeros and model fit is unstable.
+- **Alternatives if assumptions violated:** Zero-inflated NB; hurdle model; or analyze as binary (any/none) with mixed logistic regression.
+
+### B3) Model diagnostics / assumption checks
+- **Test:**  
+  - For ordinal model: **proportional odds assumption** test (Brant-type) / graphical checks.  
+  - For GLMMs: residual/overdispersion checks; influence diagnostics at dentist level.
+- **Purpose:** Validate that the chosen model is credible.
+- **Why appropriate (≥2):**
+  1. Payment-method conclusions depend on correct link/variance assumptions.
+  2. Sparse categories and clustering can distort standard errors if unchecked.
+- **Why may not be appropriate (≥1):** Some formal tests are unreliable for mixed models; may rely on simulation-based diagnostics.
+- **When NOT to use:** When software/test is known invalid for the fitted mixed model.
+- **Alternatives:** Parametric bootstrap checks; posterior predictive checks (Bayesian).
+
+### B4) Sensitivity analysis for time-period confounding (seasonality/case-mix drift)
+- **Test/model:** Add **period indicator** (Oct vs Mar) and, if possible, patient-level covariates (age, sex) if available; otherwise acknowledge limitation.
+- **Purpose:** Distinguish payment-method effects from temporal changes.
+- **Why appropriate (≥2):**
+  1. Payment method is perfectly confounded with calendar time in this clinic.
+  2. Dental demand/service mix may vary seasonally or with management changes.
+- **Why may not be appropriate (≥1):** If no covariates beyond payment period exist, adjustment is limited.
+- **When NOT to use:** When period and payment are identical and no independent variation exists (cannot statistically separate).
+- **Alternatives:** Restrict inference to “combined change package” (payment+outsourcing+time), or analyze only dentists present in both periods (difference-in-differences not possible without a control clinic).
+
+---
+
+# CATEGORY C — OPTIONAL analyses
+
+### C1) Inter-rater reliability (if multiple abstractors)
+- **Test:** **Cohen’s kappa / weighted kappa** for category assignment; ICC for counts.
+- **Purpose:** Quantify extraction consistency.
+- **Why appropriate (≥2):**
+  1. Chart review is error-prone; reliability supports validity.
+  2. Service categorization contains subjective grouping.
+- **Why may not be appropriate (≥1):** Not feasible if only one extractor or no duplicate abstraction.
+- **When NOT to use:** When no repeated ratings exist.
+- **Alternatives:** Adjudication + audit sample with percent agreement.
+
+### C2) Nonparametric comparison across the 3 dentist groups (salary-only / FFS-only / both)
+- **Test:** **Kruskal–Wallis** (on dentist-level proportion of aggressive services), with Dunn post-hoc.
+- **Purpose:** Simple group comparison when modeling is not desired.
+- **Why appropriate (≥2):**
+  1. Dentist-level outcomes may be non-normal.
+  2. Provides an assumption-light check consistent with descriptive findings.
+- **Why may not be appropriate (≥1):** Ignores within-dentist pairing for the “both” group unless handled carefully.
+- **When NOT to use:** When pairing is central and you can fit mixed models.
+- **Alternatives:** Mixed models; permutation tests respecting clustering.
+
+### C3) Effect size reporting
+- **Test/metric:** **Odds ratios / relative risk ratios** (multinomial), marginal predicted probabilities, and absolute risk differences.
+- **Purpose:** Quantify magnitude, not only significance.
+- **Why appropriate (≥2):**
+  1. Policy-relevant interpretation for payment method effects.
+  2. Facilitates comparison across categories and studies.
+- **Why may not be appropriate (≥1):** ORs can exaggerate perceived effects when outcomes are common.
+- **When NOT to use:** When model fit is poor or separation exists.
+- **Alternatives:** Predicted probabilities; risk differences via marginal standardization.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Independent-samples t-test on record-level outcomes**  
+   - Why inappropriate: records are clustered within dentists (violates independence); outcome is categorical, not continuous.
+
+2. **Simple chi-square test of independence on all records (salary vs FFS)**  
+   - Why inappropriate: ignores dentist-level clustering and paired dentists; p-values will be anti-conservative.
+
+3. **One-way ANOVA on raw counts without offsets/denominators**  
+   - Why inappropriate: counts depend on number of sampled charts and dispersion; violates normality/constant variance; ignores clustering.
+
+4. **Pearson correlation between payment method (binary) and service category code (1–4)**  
+   - Why inappropriate: treats categorical/ordinal outcome as interval-scaled; correlation is not meaningful for multinomial structure.
+
+5. **McNemar test for the 4-category outcome**  
+   - Why inappropriate: McNemar is for paired **binary** outcomes only (unless you first create a justified binary contrast).
+
+---
+
+## TASK 4 — Summary justification of analytical approach
+
+Primary inference should treat **service mix as a multi-category outcome** and **account for clustering by dentist** and the presence of **within-dentist repeated observations** for dentists working under both payment methods. A **mixed-effects multinomial (or ordinal) regression** provides a unified analysis that uses all available records, yields interpretable effect estimates, and respects the hierarchical/paired elements of the design. Dentist-period aggregated and count-model sensitivity analyses strengthen robustness, while diagnostics and multiplicity control prevent overinterpretation of multiple service endpoints.

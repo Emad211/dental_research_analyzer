@@ -1,0 +1,892 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_rde-46-e29.pdf
+Time : 20260508_092616
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study design, setting, time frame
+- **Design:** Retrospective cohort study (record review) with time-to-event outcome (“fracture survival”).
+- **Setting:** University dental care (Mahidol University; Rangsit University).
+- **Record years / follow-up window:** Patients with recall visits **2015–2019**; **minimum recall ≥ 12 months**.
+- **Ethics:** MU-DT/PY-IRB 2020/019.3003; RSUERB2020-020.
+
+### Objective(s)
+1. **Primary:** Compare **fracture survival rates** of endodontically treated molars restored with:
+   - **Single-unit full-coverage crowns** vs
+   - **Direct resin composite restorations**
+2. **Secondary:** Identify **potential risk factors** associated with fracture survival.
+
+### Population and sampling unit
+- **Target teeth:** Endodontically treated **first and second molars** with **mature roots**.
+- **Sampling unit:** **Tooth (ETT molar)** (not explicitly patient-level).
+- **Recruitment/sampling:** Eligible teeth selected from dental records of recall attendees; some teeth drawn from a prior study with longer follow-up plus new teeth.
+
+### Inclusion / exclusion criteria
+- **Inclusion**
+  1. First/second molar, mature root formation
+  2. Restored with **single-unit full-coverage crown** OR **direct resin composite**
+  3. Recall examination period **≥ 12 months**
+  4. Adequate treatment, clinical, and radiographic documentation
+- **Exclusion**
+  1. Extracted for reasons other than **unrestorable fracture**
+  2. Chronic periodontitis with **bone loss > 1/2 root length**
+  3. **Preoperative cracks** or **radicular fracture**
+  4. Prior **surgical RCT**, hemisection, root amputation
+  5. Fixed orthodontic appliances
+
+### Interventions/exposures (groups)
+- **Group 1:** Full-coverage **single-unit crown** restoration (may include core build-up; may include post)
+  - Post recorded as: **no post / fiber post / metal post**
+- **Group 2:** **Direct resin composite** restoration (explicitly **no post**)
+  - For this group, **amount of tooth surface loss** recorded from charts (detail level not provided, but at least “occlusal surface only” is referenced).
+
+### Endodontic/restorative procedural context (potential confounding)
+- Endodontics performed by undergraduates/postgraduates/endodontists; multiple obturation methods; multiple sealers.
+- Restorations performed by undergraduates/postgraduates/prosthodontists.
+- Composite sometimes interim/long-term depending on prognosis/cost; crown commonly definitive. (Important: **non-random assignment → confounding by indication**.)
+
+### Outcomes
+- **Fracture incidence** and **fracture restorability** abstracted from clinical/radiographic records.
+- **Fracture classification:** restorable vs unrestorable.
+- **Primary endpoint definition (binary, time-to-event):**
+  - **Survival:** no fracture OR **restorable fracture**
+  - **Non-survival (event):** **unrestorable fracture**
+- **Time origin / time scale available:** “recall period (months)” collected; implies time from treatment completion to recall (or to event if documented). Exact time origin not fully specified in text.
+
+### Covariates collected
+From records:
+- **Age**
+- **Sex**
+- **Recall period (months)** (follow-up duration)
+- **Tooth type** (1st vs 2nd molar)
+- **Tooth location** (maxillary/mandibular)
+- **Coronal restoration type** (crown vs composite)
+- **Opposing dentition** (natural / fixed prosthesis / removable prosthesis / none)
+- **Number of adjacent teeth** (count)
+Additional, group-specific:
+- For **composite** group: **amount of tooth surface loss**
+- For **crown** group: **post type** (none/fiber/metal)
+
+### Sample size
+- **Not reported in provided text** (must be obtained from Results or dataset).
+
+### Data collection method
+- **Retrospective chart and radiograph review** using predefined variables and survival definition; methodology overview in Figure 1 (not provided here).
+
+---
+
+## TASK 2: Statistical analysis plan (SAP)
+
+### 2.1 Core analysis principles
+- **Analysis unit:** tooth.  
+  - If multiple teeth per patient are present, account for **clustering** (robust SE / frailty / GEE).
+- **Time-to-event framework:** event = **unrestorable fracture**; censoring = last follow-up when tooth is still “survived” (no fracture or restorable fracture).
+- **Effect measure(s):**
+  - Primary: **Hazard ratio (HR)** for crown vs composite.
+  - Also report **absolute survival** at clinically relevant time points (e.g., 12, 24, 60 months).
+- **Confounding control:** multivariable modeling; consider **propensity score** approaches due to non-random restoration assignment.
+- **Missing data:** describe extent/pattern; prefer **multiple imputation** if missing at random and non-trivial.
+- **Multiplicity:** pre-specify primary comparison (crown vs composite); treat other factors as exploratory or control FDR if many.
+
+---
+
+## CATEGORY A – MANDATORY tests/models
+
+### A1. Kaplan–Meier (KM) survival estimation + log-rank test
+- **Purpose:** Estimate and compare **fracture survival curves** between crown vs composite.
+- **Why appropriate (≥2):**
+  1. Outcome is **time-to-event** with likely **right censoring** at last recall.
+  2. Provides **nonparametric** survival estimates and visual comparison over time.
+- **Why it may not be appropriate (≥1):**
+  - If exact **event times** are not available (only “fractured vs not by recall”), KM/log-rank can be biased/misleading.
+- **When NOT to use:**
+  - When follow-up is only interval-censored without reliable event timing and you cannot approximate event times (then use interval-censored methods).
+- **Alternative if assumptions violated / data limitations:**
+  - If interval-censored: **Turnbull estimator** and **log-rank–type tests for interval-censored data**; or discrete-time survival models.
+
+### A2. Cox proportional hazards regression (multivariable)
+- **Purpose:** Estimate adjusted association between restoration type and hazard of **unrestorable fracture**, controlling for covariates.
+- **Why appropriate (≥2):**
+  1. Standard for **time-to-event** outcomes with censoring; yields interpretable **HRs**.
+  2. Allows adjustment for measured confounders (age, sex, tooth type/location, opposing dentition, adjacent teeth).
+- **Why it may not be appropriate (≥1):**
+  - **Proportional hazards (PH) assumption** may not hold (the paper’s conclusion suggests differences mainly at 12–24 months → possible non-PH).
+- **When NOT to use:**
+  - If strong non-PH exists and you cannot model it (or if event times are unreliable).
+- **Alternative if assumptions violated:**
+  - **Time-varying coefficients** (restoration × time interaction), **stratified Cox**, or **accelerated failure time (AFT)** models; or **restricted mean survival time (RMST)** comparison.
+
+### A3. PH assumption diagnostics (e.g., Schoenfeld residual test + plots)
+- **Purpose:** Verify whether Cox PH assumption is reasonable; guide modeling (time-varying effects/stratification).
+- **Why appropriate (≥2):**
+  1. Cox model validity depends on PH; diagnostics prevent incorrect inference.
+  2. The reported time-specific difference (12–24 months only) suggests potential non-PH.
+- **Why it may not be appropriate (≥1):**
+  - Low event counts reduce power and stability of PH diagnostics.
+- **When NOT to use:**
+  - When not fitting a Cox-type PH model.
+- **Alternative if assumptions violated:**
+  - Fit models that do not require PH (AFT, RMST, flexible parametric survival).
+
+### A4. Descriptive/baseline group comparisons (not “hypothesis tests” as primary, but required reporting)
+- **Tests:**  
+  - Categorical: **Chi-square** or **Fisher’s exact**  
+  - Continuous: **t-test** or **Wilcoxon rank-sum** (as appropriate)
+- **Purpose:** Describe imbalance between crown vs composite groups (confounding by indication).
+- **Why appropriate (≥2):**
+  1. Retrospective, non-randomized design: need to document baseline differences.
+  2. Helps justify covariate adjustment/propensity modeling.
+- **Why it may not be appropriate (≥1):**
+  - Overemphasis on p-values for baseline balance is discouraged; standardized differences often preferred.
+- **When NOT to use:**
+  - Do not use baseline p-values as evidence of “successful matching” or “no confounding.”
+- **Alternative if assumptions violated:**
+  - Use **standardized mean differences (SMDs)** and graphical balance diagnostics.
+
+---
+
+## CATEGORY B – RECOMMENDED tests/models
+
+### B1. Cox model with clustering/within-patient correlation handling (robust SE or frailty)
+- **Purpose:** Correct inference if multiple teeth per patient are included.
+- **Why appropriate (≥2):**
+  1. Teeth within the same patient share behaviors/occlusion/biology → correlated outcomes.
+  2. Ignoring clustering underestimates SEs and inflates type I error.
+- **Why it may not be appropriate (≥1):**
+  - If dataset truly has one tooth per patient, adds complexity without benefit.
+- **When NOT to use:**
+  - When clustering is absent or cannot be identified (no patient ID).
+- **Alternative if assumptions violated:**
+  - **Shared frailty Cox** (random effect), or **marginal Cox with robust sandwich SE**.
+
+### B2. Competing risks analysis (Fine–Gray) if extractions/deaths are treated as competing events
+- **Purpose:** If teeth can be lost for reasons other than unrestorable fracture (or patient-level loss to follow-up related to tooth condition), estimate subdistribution effects.
+- **Why appropriate (≥2):**
+  1. In dental survival, **extraction** can preclude observation of fracture.
+  2. Cox censoring assumes non-informative censoring; competing risks relax this.
+- **Why it may not be appropriate (≥1):**
+  - The study **excluded** teeth extracted for other reasons, which may reduce applicability; also event definition is specifically “unrestorable fracture.”
+- **When NOT to use:**
+  - When competing events are not observed/recorded or were removed by design in a way that makes interpretation unclear.
+- **Alternative if assumptions violated:**
+  - Cause-specific Cox models; sensitivity analysis treating excluded extractions as competing events if data available.
+
+### B3. Propensity score methods (matching, weighting, or covariate adjustment)
+- **Purpose:** Reduce confounding by indication for crown vs composite assignment.
+- **Why appropriate (≥2):**
+  1. Treatment choice is influenced by prognosis/cost/waitlist → strong confounding.
+  2. PS methods improve covariate balance and can complement multivariable Cox.
+- **Why it may not be appropriate (≥1):**
+  - Unmeasured confounding remains; small sample sizes or poor overlap can make PS unstable.
+- **When NOT to use:**
+  - When there is severe lack of common support (positivity violation) or too few events.
+- **Alternative if assumptions violated:**
+  - Penalized regression with key confounders; trimming non-overlap regions; instrumental variable methods (rarely feasible).
+
+### B4. Interaction (effect modification) testing in survival model
+- **Candidates (based on collected variables):**
+  - Restoration type × tooth location (upper/lower)
+  - Restoration type × tooth type (1st/2nd molar)
+  - Restoration type × opposing dentition
+  - Restoration type × adjacent teeth count
+  - For composites: restoration type × tooth surface loss category (if harmonizable)
+- **Purpose:** Assess whether crown benefit differs by clinical context.
+- **Why appropriate (≥2):**
+  1. Biological plausibility (occlusal forces differ by arch/opponent/contacts).
+  2. The paper’s conclusion suggests subgroup relevance (e.g., “occlusal-only loss”).
+- **Why it may not be appropriate (≥1):**
+  - Multiple testing and low power; risk of spurious findings.
+- **When NOT to use:**
+  - When sample size/events per parameter are insufficient.
+- **Alternative if assumptions violated:**
+  - Pre-specified limited interactions; use hierarchical modeling; present stratified descriptive survival.
+
+### B5. Flexible parametric survival modeling / RMST
+- **Purpose:** Address potential non-PH and provide absolute, time-specific effects.
+- **Why appropriate (≥2):**
+  1. If hazard difference is time-limited (12–24 months), RMST is robust and interpretable.
+  2. Flexible parametric models (Royston–Parmar) can model changing hazards smoothly.
+- **Why it may not be appropriate (≥1):**
+  - Requires more modeling choices; may be unstable with sparse events.
+- **When NOT to use:**
+  - Very small datasets with few events.
+- **Alternative if assumptions violated:**
+  - Stratified Cox + time-window analyses; discrete-time survival.
+
+---
+
+## CATEGORY C – OPTIONAL (supplementary)
+
+### C1. Time-window (landmark) analyses (e.g., 12–24 months, 24–60 months)
+- **Purpose:** Quantify differences in clinically relevant intervals (mirrors reported conclusion).
+- **Why appropriate (≥2):**
+  1. If effect differs early vs late, windowed HRs/rates can summarize.
+  2. Clinically interpretable for decision-making around early protection.
+- **Why it may not be appropriate (≥1):**
+  - Can introduce selection bias (conditioning on survival to landmark) if not carefully implemented.
+- **When NOT to use:**
+  - When landmarks are chosen post hoc based on observed data.
+- **Alternative if assumptions violated:**
+  - Time-varying coefficient Cox; RMST.
+
+### C2. Penalized Cox regression (e.g., ridge/LASSO; Firth correction for rare events)
+- **Purpose:** Stabilize estimates if few fractures relative to covariates.
+- **Why appropriate (≥2):**
+  1. Retrospective dental fracture events may be uncommon → separation/overfitting risk.
+  2. Penalization improves prediction/estimate stability.
+- **Why it may not be appropriate (≥1):**
+  - Coefficients become shrinkage-dependent; inference/p-values less straightforward.
+- **When NOT to use:**
+  - When goal is purely confirmatory inference with adequate events per variable.
+- **Alternative if assumptions violated:**
+  - Reduce model complexity; use pre-specified covariates; Bayesian shrinkage.
+
+### C3. Sensitivity analyses for outcome definition
+- **Purpose:** Test robustness to defining “failure” as **any fracture** (restorable + unrestorable) vs only unrestorable.
+- **Why appropriate (≥2):**
+  1. “Survival includes restorable fracture” is a design choice; alternate clinically relevant.
+  2. Checks whether results depend on restorability classification.
+- **Why it may not be appropriate (≥1):**
+  - Restorable fractures may be inconsistently documented.
+- **When NOT to use:**
+  - If restorable fracture data quality is poor.
+- **Alternative if assumptions violated:**
+  - Composite endpoint with clear definitions; adjudication rules.
+
+### C4. Agreement/reliability assessment (if multiple reviewers abstracted data)
+- **Test:** Cohen’s kappa / weighted kappa; ICC for continuous.
+- **Purpose:** Quantify chart-review reliability for fracture/restorability/tooth surface loss.
+- **Why appropriate (≥2):**
+  1. Retrospective abstraction is error-prone; reliability supports validity.
+  2. Key variables (restorability, surface loss) can be subjective.
+- **Why it may not be appropriate (≥1):**
+  - Not possible if only one abstractor or no duplicate abstraction.
+- **When NOT to use:**
+  - Single-rater extraction without re-review sample.
+- **Alternative if assumptions violated:**
+  - Percent agreement with prevalence-adjusted measures; adjudication workflow.
+
+---
+
+## TASK 3: Inappropriate tests (should NOT be used)
+
+1. **Simple independent-samples t-test/chi-square on “survived vs not” ignoring time**
+   - **Why not:** Discards censoring and varying follow-up; biased effect estimates.
+2. **Binary logistic regression of failure without incorporating follow-up time**
+   - **Why not:** Same issue—mixes 12-month and 60-month teeth as equivalent exposure time; odds ratio can be misleading.
+   - **If used at all:** only in a **fixed-time** analysis (e.g., 24-month failure among those with ≥24 months follow-up), clearly defined as a secondary/landmark analysis.
+3. **Paired tests (paired t-test, McNemar)**
+   - **Why not:** Groups are not paired/matched by design (unless an explicit matched PS design is implemented).
+4. **Repeated-measures ANOVA / linear regression for the primary endpoint**
+   - **Why not:** Outcome is not continuous and is time-to-event; assumptions violated.
+5. **Pearson correlation between “recall months” and fracture**
+   - **Why not:** Nonlinear/time-to-event structure and censoring make correlation uninterpretable.
+
+---
+
+## TASK 4: Summary justification of overall analytical approach
+
+A time-to-event framework is required because the endpoint is **unrestorable fracture** observed over variable recall durations with censoring. The analysis should (1) describe unadjusted survival using **Kaplan–Meier** and **log-rank**, and (2) estimate adjusted effects using **Cox regression**, checking **proportional hazards** and accounting for **clustering by patient** if applicable. Given non-random treatment allocation, rigor is improved by **propensity score** or careful multivariable adjustment, and by methods robust to **time-varying effects** (e.g., RMST or time-varying Cox) if hazards are not proportional.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics
+1. **Study Design**: Retrospective cohort study.
+2. **Objective**: To compare the fracture survival rates of endodontically treated molars (ETT) restored with single-unit crowns versus direct resin composite restorations and identify potential risk factors associated with fracture survival.
+3. **Groups**:
+   - Group 1: ETT restored with single-unit full-coverage crowns.
+   - Group 2: ETT restored with direct resin composite restorations.
+4. **Sample Size**: Not explicitly provided in the text but derived from dental records spanning 2015–2019.
+5. **Variables**:
+   - **Independent Variables**:
+     - Type of restoration (crown vs. resin composite).
+     - Tooth structure loss (occlusal surface only vs. additional loss).
+     - Tooth type (first vs. second molars).
+     - Tooth location (upper vs. lower molars).
+     - Opposing dentition (natural tooth, fixed prosthesis, removable prosthesis, or none).
+     - Number of adjacent teeth.
+     - Type of post (no post, fiber post, metal post).
+   - **Dependent Variable**: Fracture survival (survival vs. non-survival).
+6. **Measurements**:
+   - Survival criteria:
+     - Survival: No fracture or restorable fracture.
+     - Non-survival: Unrestorable fracture.
+   - Recall period: Minimum of 12 months, with some cases extending up to 60 months.
+   - Fracture classification: Restorable vs. unrestorable.
+7. **Data Collection Methods**:
+   - Clinical and radiographic records from 2015–2019.
+   - Information extracted: Age, sex, recall period, tooth type/location, restoration type, opposing dentition, adjacent teeth, tooth structure loss, and post type.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Chi-Square Test
+   - **Purpose**: To assess the association between categorical variables (e.g., restoration type and fracture survival).
+   - **Why Appropriate**:
+     - Both variables (restoration type and survival) are categorical.
+     - Suitable for comparing proportions between groups.
+   - **Why It May Not Be Appropriate**:
+     - Assumes independence of observations, which may be violated if clustering exists (e.g., multiple teeth per patient).
+   - **When This Test Should NOT Be Used**: If expected frequencies in any cell are <5.
+   - **Alternative**: Fisher’s Exact Test (if sample size is small).
+
+2. **Test Name**: Kaplan-Meier Survival Analysis
+   - **Purpose**: To estimate survival probabilities over time for molars restored with crowns vs. resin composites.
+   - **Why Appropriate**:
+     - Survival data includes time-to-event information (fracture occurrence).
+     - Accounts for censored data (e.g., teeth lost due to other reasons).
+   - **Why It May Not Be Appropriate**:
+     - Assumes proportional hazards, which may not hold.
+   - **When This Test Should NOT Be Used**: If survival times are not available or improperly recorded.
+   - **Alternative**: Life Table Analysis.
+
+3. **Test Name**: Log-Rank Test
+   - **Purpose**: To compare survival distributions between groups (crown vs. resin composite).
+   - **Why Appropriate**:
+     - Designed for comparing survival curves.
+     - Accounts for censored data.
+   - **Why It May Not Be Appropriate**:
+     - Sensitive to violations of proportional hazards assumption.
+   - **When This Test Should NOT Be Used**: If survival curves cross significantly.
+   - **Alternative**: Breslow (Generalized Wilcoxon) Test.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Cox Proportional Hazards Regression
+   - **Purpose**: To identify risk factors associated with fracture survival while adjusting for covariates (e.g., tooth type, location, opposing dentition).
+   - **Why Appropriate**:
+     - Handles time-to-event data.
+     - Allows inclusion of multiple predictors.
+   - **Why It May Not Be Appropriate**:
+     - Assumes proportional hazards, which may not hold.
+   - **When This Test Should NOT Be Used**: If proportional hazards assumption is violated.
+   - **Alternative**: Stratified Cox Regression.
+
+2. **Test Name**: Logistic Regression
+   - **Purpose**: To model the probability of fracture survival (binary outcome) based on predictors like restoration type and tooth structure loss.
+   - **Why Appropriate**:
+     - Suitable for binary outcomes.
+     - Can include multiple predictors.
+   - **Why It May Not Be Appropriate**:
+     - Does not account for time-to-event data.
+   - **When This Test Should NOT Be Used**: If time-to-event data is critical.
+   - **Alternative**: Cox Regression.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Multilevel (Hierarchical) Modeling
+   - **Purpose**: To account for clustering effects (e.g., multiple teeth per patient).
+   - **Why Appropriate**:
+     - Accounts for non-independence of observations.
+     - Suitable for nested data structures.
+   - **Why It May Not Be Appropriate**:
+     - Requires complex modeling and larger sample sizes.
+   - **When This Test Should NOT Be Used**: If sample size is insufficient or clustering is negligible.
+   - **Alternative**: Generalized Estimating Equations (GEE).
+
+2. **Test Name**: Subgroup Analysis
+   - **Purpose**: To explore survival rates within specific subgroups (e.g., upper vs. lower molars).
+   - **Why Appropriate**:
+     - Provides detailed insights into subgroup-specific effects.
+     - Useful for hypothesis generation.
+   - **Why It May Not Be Appropriate**:
+     - Risk of overfitting or false positives due to multiple comparisons.
+   - **When This Test Should NOT Be Used**: If sample size within subgroups is too small.
+   - **Alternative**: Pooling subgroups for broader analysis.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Test Name**: Independent Samples t-Test
+   - **Why Not Appropriate**:
+     - Designed for continuous data, whereas survival and restoration type are categorical.
+2. **Test Name**: Pearson Correlation
+   - **Why Not Appropriate**:
+     - Assumes linear relationship between two continuous variables, which is not applicable here.
+3. **Test Name**: ANOVA
+   - **Why Not Appropriate**:
+     - Designed for comparing means across groups, not survival rates or categorical data.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach prioritizes survival analysis methods (Kaplan-Meier, Log-Rank Test, Cox Regression) to address the study’s primary objective of comparing fracture survival rates between restoration types. Logistic regression and subgroup analyses are recommended to explore secondary objectives and risk factors. Multilevel modeling is suggested if clustering effects are significant. The plan avoids inappropriate tests and emphasizes robustness by considering alternatives for assumption violations.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+Below is a structured response following your tasks.
+
+---
+
+## TASK 1 – INFORMATION EXTRACTION
+
+### 1. Study design and objectives
+
+- **Design**: Retrospective cohort study.
+- **Setting**: Dental clinics associated with Mahidol University and Rangsit University, Thailand.
+- **Period of treatment / recall**: Patients who received nonsurgical endodontic treatment and restorative treatment and presented for recall between **2015–2019**.
+- **Follow-up requirement**: Minimum recall period **≥ 12 months**.
+- **Primary objective**: 
+  - Compare **fracture survival rates** of **endodontically treated molars (ETM)** restored with **single-unit full-coverage crowns** versus **direct resin composite restorations**.
+- **Secondary objective**:
+  - Identify **potential risk factors** associated with **fracture survival** in molar ETT.
+
+### 2. Study population
+
+- **Unit of analysis**: Endodontically treated molar tooth (ETT molar), not the patient (multiple teeth per patient possible; not explicitly restricted).
+- **Tooth types**: 
+  - First and second molars.
+- **Tooth development**: 
+  - Only teeth with **mature root formation**.
+
+#### Inclusion criteria (tooth level)
+
+1. First or second molars with mature root formation.
+2. Restored with **single-unit full-coverage crowns** or **direct resin composite restorations**.
+3. Recall examination period **≥ 12 months**.
+4. Adequate documentation of treatment procedures, clinical records, and radiographic records.
+
+#### Exclusion criteria (tooth level)
+
+1. Teeth extracted for reasons **other than unrestorable fracture**.
+2. Chronic periodontitis with bone loss > half of root length.
+3. Preoperative cracks or radicular fractures.
+4. History of surgical root canal treatment, hemisection, or root amputation.
+5. Presence of fixed orthodontic appliances.
+
+### 3. Exposure / group definition
+
+- **Main exposure**: Type of final coronal restoration on ETT molars.
+  - **Group 1 (Crown group)**: Molar ETT restored with **single-unit full-coverage crowns**, with or without:
+    - Core build-up
+    - Posts (none, fiber, or metal).
+  - **Group 2 (Composite group)**: Molar ETT restored with **direct resin composite restorations**, without posts.
+
+### 4. Clinical procedures (high-level, relevant for covariates)
+
+- **Endodontic treatment**:
+  - Providers: Undergraduates, postgraduates, or endodontists.
+  - Isolation: Rubber dam.
+  - Cleaning/shaping: Crown-down technique with:
+    - 0.02 taper stainless steel hand files and/or 0.04/0.06 rotary Ni-Ti files.
+  - Irrigants: 2.5% NaOCl, 17% EDTA.
+  - Interappointment medication: Calcium hydroxide.
+  - Obturation materials: Gutta-percha with root canal sealers (zinc oxide, epoxy resin, or calcium silicate-based).
+  - Obturation techniques: Lateral compaction, vertical compaction, or cold hydraulic (sealer-based) technique.
+
+- **Coronal restorations**:
+  - Providers: Undergraduates, postgraduates, or prosthodontists.
+  - Crowns:
+    - Indication: Typically final restoration; use of posts when remaining tooth structure insufficient for core retention.
+    - Post types: 
+      - None
+      - Cast metal posts
+      - Prefabricated fiber posts (D.T. LIGHT-POSTS; FRC Postec Plus).
+    - Post cementation: Adhesive resin cement (Panavia F 2.0) or core build-up material (MultiCore Flow).
+  - Direct resin composite:
+    - Used as long-term interim restoration if prognosis questionable or patient waiting for crown; occasionally used as permanent final restoration (e.g., tooth structure loss limited to occlusal surface, or financial constraints).
+    - No posts used.
+    - Base/liner: Temporary material (CAVITON) or glass ionomer liner (Vitrebond or GC Fuji VII) 1–2 mm.
+    - Composite: Z250 or Z350.
+    - Adhesive: Etch-and-rinse (Adper Single Bond 2) or self-etch (Clearfil SE Bond).
+
+### 5. Data collection and variables
+
+From clinical and radiographic records, the following variables are collected at the tooth level:
+
+#### Demographic / temporal
+
+- **Age** (continuous or categorical; patient level, assigned to tooth).
+- **Sex** (male/female).
+- **Recall period** (in months): time from completion of treatment/restoration to the recall exam or event (fracture).
+
+#### Tooth-related
+
+- **Tooth type**:
+  - First molar vs second molar.
+- **Tooth location**:
+  - Upper (maxillary) vs lower (mandibular).
+
+#### Main exposure / restorative variables
+
+- **Coronal restoration type** (primary exposure):
+  - Crown vs direct resin composite.
+- **For resin composite group**:
+  - **Amount of tooth surface loss** (categorical; from records):
+    - e.g., occlusal only vs involving one or more proximal surfaces (exact categories not specified in the excerpt but concept indicated).
+- **For crown group**:
+  - **Type of post**:
+    - No post
+    - Fiber post
+    - Metal post.
+
+#### Occlusal / arch-related
+
+- **Opposing dentition**:
+  - Natural tooth
+  - Fixed prosthesis
+  - Removable prosthesis
+  - None.
+- **Number of adjacent teeth**:
+  - Numeric; likely count of proximal neighbor teeth (e.g., 0, 1, 2).
+
+#### Outcome variables
+
+- **Primary outcome**: **Fracture survival**.
+  - **Fracture occurrence**: incidence of fracture (yes/no).
+  - **Fracture restorability**: classified as:
+    - Restorable
+    - Unrestorable.
+- **Survival status** (binary, defined for analysis):
+  - **Survival**:
+    - No fracture, or
+    - Restorable fracture.
+  - **Non-survival**:
+    - Unrestorable fracture.
+- **Time-to-event**:
+  - The recall period in months is available; survival analyses will treat time from restoration to:
+    - Event: unrestorable fracture (non-survival), or
+    - Censoring: no fracture or restorable fracture at last recall.
+
+### 6. Potential analytical structure
+
+- **Primary comparison**: Crown vs composite with respect to:
+  - Cumulative survival probability over time (fracture-free/unrestorable-fracture-free survival).
+  - Survival at specific time intervals (e.g., 12–24 months vs 24–60 months).
+- **Risk factor analysis**:
+  - Multivariable modeling of survival (fracture outcome) including:
+    - Age, sex, tooth type, tooth location, coronal restoration type, amount of tooth surface loss (for composite), type of post (for crown), opposing dentition, number of adjacent teeth.
+
+---
+
+## TASK 2 – STATISTICAL ANALYSIS PLAN
+
+Assume standard good practice: define α = 0.05 (two-sided) and report 95% confidence intervals (CI). Because it is a retrospective cohort with survival-time outcome, survival analysis methods are central.
+
+### CATEGORY A – MANDATORY TESTS
+
+#### A1. Descriptive statistics
+
+- **Test / Approach**: Descriptive summaries (not a test but necessary).
+- **Purpose**:
+  - Describe baseline characteristics of teeth and patients overall and by restoration group.
+- **Why appropriate**:
+  1. Essential to understand the sample: distributions of age, sex, tooth type, location, follow-up time, etc.
+  2. Helps identify imbalances between crown and composite groups and informs adjustment needs.
+- **Why it may not be appropriate**:
+  - Not a hypothesis test, so cannot provide inferential comparisons.
+- **When NOT to use**:
+  - Never omitted; but avoid relying solely on descriptives to draw causal inferences.
+- **Alternative if assumptions violated**:
+  - For non-normal continuous variables, use medians and IQR instead of means and SD, and graphical displays.
+
+#### A2. Kaplan–Meier survival analysis
+
+- **Test name**: Kaplan–Meier estimator with log-rank comparison.
+- **Purpose**:
+  - Estimate survival function (probability of **survival from unrestorable fracture** over time) for:
+    - Crown vs composite restoration groups.
+  - Produce survival curves and survival probabilities at specific time points/intervals (e.g., 12–24 months, 24–60 months).
+- **Why appropriate**:
+  1. Outcome is **time-to-unrestorable fracture** with right censoring (teeth without event at last recall), which is the standard setting for Kaplan–Meier analysis.
+  2. Allows visualization of survival curves and comparison across groups with different follow-up durations.
+- **Why it may not be appropriate**:
+  - Assumes independent censoring and does not adjust for covariates (unadjusted comparison can be confounded).
+- **When NOT to use**:
+  - If exact times to event/censoring are not available and only aggregate intervals are known.
+- **Alternative if assumptions violated**:
+  - If independence of censoring is strongly violated, consider sensitivity analyses or parametric survival models that can incorporate informative censoring (more complex).
+  - If only interval-censored data are available, use interval-censored survival methods (Turnbull estimator; parametric models for interval censoring).
+
+#### A3. Log-rank test for group comparison
+
+- **Test name**: Log-rank (Mantel–Cox) test.
+- **Purpose**:
+  - Compare survival distributions between:
+    - Crown vs composite.
+    - Potentially other categorical factors (e.g., post type, amount of tooth surface loss categories).
+- **Why appropriate**:
+  1. Designed to test equality of survival functions in the presence of censoring.
+  2. Non-parametric; does not require specifying a functional form of the hazard.
+- **Why it may not be appropriate**:
+  - Most powerful when hazards are proportional; if hazards cross heavily (e.g., large difference early, none later), interpretation can be difficult, and test may lose power or mislead.
+- **When NOT to use**:
+  - For covariate-adjusted comparisons (cannot handle multiple covariates).
+  - When the sample size within subgroups is very small (few events).
+- **Alternative if assumptions violated**:
+  - Use **Wilcoxon (Breslow) test** or **Tarone–Ware** test if early vs late differences are of particular interest.
+  - Use **Cox proportional hazards model** (adjusted and can handle non-proportional hazards with time-varying effects).
+
+#### A4. Cox proportional hazards regression
+
+- **Test name**: Cox proportional hazards (PH) model.
+- **Purpose**:
+  - Assess the effect of **restoration type** (crown vs composite) on the hazard of **unrestorable fracture**, adjusting for other risk factors:
+    - Age, sex, tooth type, tooth location, opposing dentition, number of adjacent teeth, post type (crown group), amount of tooth surface loss (composite group, if modeled appropriately), etc.
+- **Why appropriate**:
+  1. Gold-standard semi-parametric model for time-to-event data with censoring; yields hazard ratios (HRs) with 95% CI.
+  2. Allows simultaneous adjustment for multiple covariates to control confounding and to identify independent risk factors.
+- **Why it may not be appropriate**:
+  - Relies on the proportional hazards assumption (log hazard ratio constant over time) for each covariate.
+- **When NOT to use**:
+  - If proportional hazards assumption is grossly violated and cannot be remedied (e.g., time-varying effects) or if the number of events is too low relative to the number of predictors (overfitting).
+- **Alternative if assumptions violated**:
+  - If PH violated:
+    - Use **time-varying covariates** within Cox (include interaction with time).
+    - Use **stratified Cox models** for covariates violating PH.
+    - Use **parametric survival models** (e.g., Weibull, log-logistic) or **flexible parametric models**.
+  - If events are few:
+    - Use **penalized Cox** (Firth correction, ridge/LASSO) or reduce the model to fewer key covariates.
+
+#### A5. Group comparisons of baseline characteristics
+
+- **Test names**:
+  - For continuous variables (e.g., age, recall period): 
+    - **t-test** (if normal) or **Mann–Whitney U**.
+  - For categorical variables (e.g., sex, tooth type, tooth location, opposing dentition):
+    - **Chi-square test** or **Fisher’s exact test** (if small counts).
+- **Purpose**:
+  - Assess whether there are significant baseline differences between crown and composite groups that could act as confounders.
+- **Why appropriate**:
+  1. Helps interpret observed group differences in survival (imbalance may indicate confounding, affecting causal interpretation).
+  2. Guides choice of covariates to adjust for in multivariable models.
+- **Why it may not be appropriate**:
+  - These tests assume independence of observations; if multiple teeth per patient, clustering may violate this assumption.
+- **When NOT to use**:
+  - If there is substantial clustering and cluster-level correlation must be accounted for (e.g., many teeth per patient) and you are strictly interested in patient-level comparability; however, for descriptive purposes they are usually still reported.
+- **Alternative if assumptions violated**:
+  - Use **mixed models** or **GEE** for continuous outcomes to account for clustering when comparing baseline characteristics.
+  - Use cluster-adjusted chi-square or **Rao–Scott** test for survey-like clustered data.
+
+---
+
+### CATEGORY B – RECOMMENDED TESTS
+
+#### B1. Assessment of proportional hazards assumption
+
+- **Test name**: Schoenfeld residuals test and graphical diagnostics.
+- **Purpose**:
+  - Verify whether the proportional hazards assumption holds for the Cox model, particularly for the key exposure (crown vs composite).
+- **Why appropriate**:
+  1. PH assumption is critical for valid Cox model interpretation; must be checked rather than assumed.
+  2. Aids selection of appropriate model (PH vs time-varying, stratified, or parametric).
+- **Why it may not be appropriate**:
+  - With small sample size or few events, residual-based tests may have low power and produce unstable results.
+- **When NOT to use**:
+  - With extremely few events (<10–15); rely more on visual inspection and simplified models.
+- **Alternative if assumptions violated**:
+  - Implement **time-varying effects** for exposures (interaction with log(time)).
+  - Use **stratified Cox** for variables violating PH.
+  - Switch to **parametric models** that can model non-proportional hazards (e.g., accelerated failure time models).
+
+#### B2. Multivariable modeling with clustering (if multiple teeth per patient)
+
+- **Test name**:
+  - **Cox proportional hazards model with robust sandwich variance** (clustered by patient), or
+  - **Frailty model** (shared frailty for patient).
+- **Purpose**:
+  - Account for potential **intra-patient correlation** if patients have more than one included molar.
+- **Why appropriate**:
+  1. Retrospective tooth-level data often include multiple teeth per patient; ignoring correlation may underestimate standard errors and inflate type I error.
+  2. Cluster-robust SE or frailty models correct inference while preserving the main estimates (HRs).
+- **Why it may not be appropriate**:
+  - If almost all patients contribute only one tooth, clustering may be minimal and robust methods add little benefit.
+- **When NOT to use**:
+  - When data cannot be linked at patient level (no patient IDs) or when it is clear that each patient contributes only one tooth.
+- **Alternative if assumptions violated**:
+  - If frailty distribution assumptions (e.g., gamma) are questionable, revert to **robust variance** approach.
+  - If patient IDs are unknown, sensitivity analysis cannot be cluster-adjusted; report this as a limitation.
+
+#### B3. Subgroup survival analyses
+
+- **Test name**: Stratified Kaplan–Meier curves and stratified log-rank tests.
+- **Purpose**:
+  - Explore survival differences within subgroups, such as:
+    - Amount of tooth surface loss (composite group only).
+    - Type of post (crown group only).
+    - Tooth location (upper vs lower), tooth type (first vs second molar).
+- **Why appropriate**:
+  1. Helps identify specific situations where composite vs crown performs differently (e.g., occlusal-surface-only vs more extensive tooth loss).
+  2. Clinically relevant to refine treatment recommendations.
+- **Why it may not be appropriate**:
+  - Multiple subgroup tests raise multiplicity issues (inflated type I error).
+- **When NOT to use**:
+  - For very small subgroups with few events (unstable survival estimates).
+- **Alternative if assumptions violated**:
+  - Incorporate interactions in the **multivariable Cox model** (e.g., treatment × tooth surface loss) instead of multiple unadjusted subgroup comparisons.
+
+#### B4. Competing risk considerations (if other failure causes are recorded)
+
+- **Test name**: Competing risks analysis using **Fine–Gray subdistribution hazard model**.
+- **Purpose**:
+  - If other competing reasons for tooth loss (e.g., caries, periodontal reasons) or other definitive endpoints are recorded, analyze **unrestorable fracture** as a specific cause in the presence of competing events.
+- **Why appropriate**:
+  1. Standard Kaplan–Meier may overestimate cause-specific failure if competing events are common.
+  2. Fine–Gray subdistribution hazards directly model the cumulative incidence of unrestorable fracture in the presence of competing events.
+- **Why it may not be appropriate**:
+  - If the only endpoint is defined as unrestorable fracture and other causes of extraction are excluded as per inclusion/exclusion criteria (which is largely the case here), competing risks might be minimal.
+- **When NOT to use**:
+  - When there are essentially no recorded competing events or competing outcomes are excluded by design.
+- **Alternative if assumptions violated**:
+  - Use **cause-specific Cox models** as an alternative perspective (hazard of fracture in the presence of competing risk).
+
+#### B5. Sensitivity analyses by follow-up period
+
+- **Test name**: Stratified survival analysis (e.g., separate Cox models or restricted follow-up).
+- **Purpose**:
+  - Examine whether hazard ratios for crown vs composite differ between:
+    - 12–24 months
+    - 24–60 months (as mentioned in conclusions).
+- **Why appropriate**:
+  1. Authors report different significance by follow-up period; modeling this explicitly clarifies whether treatment effect is time-dependent.
+  2. Restricting follow-up helps to test early vs late effect hypotheses.
+- **Why it may not be appropriate**:
+  - Reduces the number of events within each interval, decreasing power.
+- **When NOT to use**:
+  - When event numbers are insufficient within the intervals to allow stable models.
+- **Alternative if assumptions violated**:
+  - Use a **Cox model with time-varying treatment effect** (treatment × time interaction) over the full follow-up period.
+
+---
+
+### CATEGORY C – OPTIONAL TESTS
+
+#### C1. Logistic regression (binary outcome without time component)
+
+- **Test name**: Multivariable logistic regression.
+- **Purpose**:
+  - Model **overall survival vs non-survival** (unrestorable fracture) as a binary endpoint ignoring time-to-event, e.g., at fixed minimum follow-up.
+- **Why appropriate**:
+  1. Simple model to estimate odds ratio of non-survival for crown vs composite.
+  2. Useful if follow-up times are relatively similar or if a simple sensitivity analysis is desired.
+- **Why it may not be appropriate**:
+  - Ignores differing follow-up durations and censoring; biased if follow-up differs between groups.
+- **When NOT to use**:
+  - When follow-up times vary widely and censoring is substantial.
+- **Alternative if assumptions violated**:
+  - Use **Cox proportional hazards model** (primary approach) instead of logistic regression.
+
+#### C2. Time-dependent ROC / discrimination metrics
+
+- **Test name**: Time-dependent ROC curves, C-statistic for survival models.
+- **Purpose**:
+  - Assess discrimination of multivariable survival model (how well it distinguishes teeth that fracture vs survive over time).
+- **Why appropriate**:
+  1. Provides a measure of predictive performance of the risk model.
+  2. Useful for evaluating clinical utility of risk factors.
+- **Why it may not be appropriate**:
+  - Requires adequate number of events; can be unstable with small datasets.
+- **When NOT to use**:
+  - Very low event rates or very small sample size.
+- **Alternative if assumptions violated**:
+  - Use **Harrell’s C-index** for survival data; simpler but still subject to data limitations.
+
+#### C3. Model calibration tests
+
+- **Test name**: Calibration plots or Hosmer–Lemeshow-type tests adapted to survival models.
+- **Purpose**:
+  - Evaluate how well predicted survival probabilities agree with observed outcomes.
+- **Why appropriate**:
+  1. Complements discrimination; a model could have good discrimination but poor calibration.
+  2. Important if the goal is to use the model for risk prediction.
+- **Why it may not be appropriate**:
+  - Requires sufficiently large sample to create meaningful deciles of risk.
+- **When NOT to use**:
+  - Small datasets where calibration curves become noisy.
+- **Alternative if assumptions violated**:
+  - Bootstrap calibration or internal validation techniques.
+
+#### C4. Multiple imputation (if missing data present)
+
+- **Test name**: Multiple imputation by chained equations (MICE).
+- **Purpose**:
+  - Handle missing covariate data (e.g., missing opposing dentition, number of adjacent teeth).
+- **Why appropriate**:
+  1. Reduces bias and loss of power from complete-case analysis if missing data are non-trivial and plausibly missing at random.
+  2. Allows inclusion of all available observations in multivariable models.
+- **Why it may not be appropriate**:
+  - Complex, requires assumption of missing at random; may be overkill if missingness is minimal.
+- **When NOT to use**:
+  - Missingness is rare (<5%) or clearly not at random with no auxiliary variables to support MAR.
+- **Alternative if assumptions violated**:
+  - Sensitivity analysis comparing complete-case analysis with simple imputation (e.g., missing category for categorical variables).
+
+---
+
+## TASK 3 – INAPPROPRIATE TESTS
+
+Below are commonly misused tests for this type of data and why they should not be used.
+
+### I1. Simple chi-square test on survival status ignoring time
+
+- **Test**: Chi-square comparing proportion of survival/non-survival between crown and composite, **without** accounting for time-to-event or censoring.
+- **Why inappropriate**:
+  - Follow-up times differ between teeth and between groups; ignoring time and censoring biases comparison.
+  - Kaplan–Meier/Cox are standard for such data and provide more informative estimates.
+
+### I2. Independent samples t-test on recall period as “survival analysis”
+
+- **Test**: Comparing mean recall period between fractured vs non-fractured teeth as a proxy for survival.
+- **Why inappropriate**:
+  - Censored teeth (no fracture at last recall) are not properly handled by a t-test; it assumes complete data.
+  - Time-to-event distributions are typically skewed and require survival methods.
+
+### I3. ANOVA on number of events per group without time
+
+- **Test**: ANOVA comparing counts or rates of fractures between groups without accounting for varying exposure time.
+- **Why inappropriate**:
+  - Does not account for person-time (tooth-time) at risk and censoring.
+  - Poisson or survival models are preferable if one wants incidence rates.
+
+### I4. Paired tests (paired t-test, McNemar) for between-group comparison
+
+- **Why inappropriate**:
+  - Data are not matched pairs; assignments to crown vs composite are not paired or cross-over; using paired tests would misrepresent the design.
+
+### I5. Standard linear regression on survival time (without transformation or censoring handling)
+
+- **Why inappropriate**:
+  - Survival time is right-censored and often non-normal; ordinary least squares regression cannot incorporate censored observations properly.
+  - Leads to biased estimates and invalid inference; survival models are required.
+
+### I6. Repeated-measures ANOVA for multiple follow-up times
+
+- **Why inappropriate**:
+  - Primary outcome is **time until first event**; repeated measures of fracture status at different times are not the object of interest.
+  - Event-time data with censoring are not suited to repeated-measures ANOVA.
+
+---
+
+## TASK 4 – SUMMARY / OVERALL ANALYTICAL APPROACH
+
+The study is a retrospective cohort of endodontically treated molar teeth with a **time-to-event outcome** (unrestorable fracture) and variable follow-up periods. The appropriate core framework is **survival analysis**.
+
+The main analytical strategy should be:
+
+1. **Describe** baseline characteristics of teeth and patients overall and by restoration type (crown vs composite).
+2. **Estimate and compare survival** from unrestorable fracture between crown and composite groups using **Kaplan–Meier curves** and **log-rank tests**.
+3. **Fit Cox proportional hazards models** to:
+   - Estimate hazard ratios for crown vs composite.
+   - Identify independent risk factors (age, sex, tooth type, location, amount of tooth surface loss, post type, opposing dentition, adjacent teeth).
+   - Adjust for potential confounding and account for clustering (if multiple teeth per patient).
+4. **Check model assumptions** (e.g., proportional hazards) and, if needed, use time-varying effects or stratified Cox models.
+5. **Conduct subgroup and sensitivity analyses**, especially by extent of tooth structure loss and by follow-up period (e.g., 12–24 vs 24–60 months).
+
+This approach aligns with the study’s objectives, properly handles censoring and differing follow-up times, and allows robust estimation of the impact of restoration type and other covariates on fracture survival of endodontically treated molars.

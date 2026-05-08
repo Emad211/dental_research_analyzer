@@ -1,0 +1,139 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_radiographic_evaluation_of_the_quality_of_root.15.pdf
+Status : ok
+Time   : 20260508_092119
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Retrospective observational study.
+
+2. **Objective**:  
+   - To assess the quality of root canal fillings and the frequency of procedural errors in endodontic treatment performed by undergraduate female dental students at Riyadh Elm University.
+
+3. **Study Population**:  
+   - Radiographs of 306 anterior and posterior teeth treated by female undergraduate dental students (4th, 5th, and 6th year) at Al Namuthajya Campus, Riyadh Elm University, between 2013 and 2019.
+
+4. **Sampling Method**:  
+   - Random selection of cases from patient charts.
+
+5. **Inclusion Criteria**:  
+   - Postendodontically treated teeth with complete treatment records and radiographs (preoperative, working length determination, and postoperative radiographs).
+
+6. **Exclusion Criteria**:  
+   - Teeth with incomplete treatment, missing or poor-quality radiographs, or radiographs with anatomical superimposition preventing proper evaluation.
+
+7. **Variables**:  
+   - **Independent Variables**:  
+     - Year of study (4th, 5th, 6th year).  
+     - Tooth type (anterior or posterior).  
+   - **Dependent Variables**:  
+     - Quality of root canal filling (acceptable or unacceptable).  
+     - Types of procedural errors (overfilling, underfilling, inadequate density).  
+
+8. **Outcome Measures**:  
+   - **Acceptable RCT**: Uniform density, no voids, 0–2 mm from apex, tapered filling.  
+   - **Unacceptable RCT**: Overfilling, underfilling (≥2 mm short of apex), or inadequate density (voids in filling mass or between filling and canal walls).
+
+9. **Data Collection Methods**:  
+   - Radiographic evaluation using SIDEXIS XG and Dentalplus software.  
+   - Evaluation criteria based on European Society of Endodontology guidelines.  
+   - Independent assessment by two senior endodontists with ≥5 years of experience.  
+   - Inter- and intra-examiner reliability assessed using kappa statistics (kappa = 0.89).
+
+10. **Sample Size**:  
+    - 306 teeth.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Descriptive Statistics  
+   - **Purpose**: Summarize the data (e.g., frequencies, percentages of acceptable vs. unacceptable RCTs, and types of errors).  
+   - **Why Appropriate**:  
+     1. Provides a clear overview of the quality of RCTs and error distribution.  
+     2. Essential for understanding the baseline characteristics of the data.  
+   - **Why It May Not Be Appropriate**: Not inferential; does not test hypotheses.  
+   - **When NOT to Use**: N/A (always needed for summarizing data).  
+   - **Alternative**: None.
+
+2. **Test Name**: Chi-Square Test of Independence  
+   - **Purpose**: Assess the association between categorical variables (e.g., year of study, tooth type, and quality of RCT).  
+   - **Why Appropriate**:  
+     1. Suitable for testing relationships between categorical variables.  
+     2. Non-parametric, does not assume normality.  
+   - **Why It May Not Be Appropriate**: Small expected frequencies in contingency tables may violate assumptions.  
+   - **When NOT to Use**: When >20% of expected counts are <5.  
+   - **Alternative**: Fisher’s Exact Test (for small sample sizes).
+
+3. **Test Name**: Kappa Statistic  
+   - **Purpose**: Assess inter- and intra-examiner reliability.  
+   - **Why Appropriate**:  
+     1. Measures agreement beyond chance.  
+     2. Already reported in the study (kappa = 0.89).  
+   - **Why It May Not Be Appropriate**: Not applicable for continuous data or when only one rater is involved.  
+   - **When NOT to Use**: When there is no variability in ratings.  
+   - **Alternative**: Weighted kappa or intraclass correlation coefficient (ICC) for ordinal/continuous data.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Logistic Regression  
+   - **Purpose**: Model the probability of acceptable vs. unacceptable RCT as a function of predictors (e.g., year of study, tooth type).  
+   - **Why Appropriate**:  
+     1. Handles binary outcome variables.  
+     2. Allows adjustment for multiple predictors simultaneously.  
+   - **Why It May Not Be Appropriate**: Requires a sufficient sample size for stable estimates.  
+   - **When NOT to Use**: When sample size is too small for the number of predictors.  
+   - **Alternative**: Exact logistic regression.
+
+2. **Test Name**: Mann-Whitney U Test  
+   - **Purpose**: Compare continuous variables (e.g., patient age) between two groups (e.g., acceptable vs. unacceptable RCT).  
+   - **Why Appropriate**:  
+     1. Non-parametric, does not assume normality.  
+     2. Suitable for small sample sizes.  
+   - **Why It May Not Be Appropriate**: Less powerful than parametric tests if data are normally distributed.  
+   - **When NOT to Use**: For more than two groups.  
+   - **Alternative**: Kruskal-Wallis test for >2 groups.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Subgroup Analysis (Stratified Chi-Square Tests)  
+   - **Purpose**: Explore differences in RCT quality within subgroups (e.g., anterior vs. posterior teeth).  
+   - **Why Appropriate**:  
+     1. Provides additional insights into subgroup-specific patterns.  
+     2. Helps identify areas for targeted interventions.  
+   - **Why It May Not Be Appropriate**: Increases the risk of Type I error due to multiple comparisons.  
+   - **When NOT to Use**: When subgroup sizes are too small.  
+   - **Alternative**: Combine subgroups or use a multivariate model.
+
+2. **Test Name**: Multinomial Logistic Regression  
+   - **Purpose**: Model the probability of different types of errors (e.g., overfilling, underfilling, inadequate density) as a function of predictors.  
+   - **Why Appropriate**:  
+     1. Handles categorical outcomes with more than two levels.  
+     2. Accounts for multiple predictors simultaneously.  
+   - **Why It May Not Be Appropriate**: Requires a larger sample size for stable estimates.  
+   - **When NOT to Use**: When sample size is insufficient.  
+   - **Alternative**: Collapsing categories into binary outcomes.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **T-Test or ANOVA**:  
+   - **Why Inappropriate**: These tests assume continuous dependent variables, whereas the primary outcomes (acceptable/unacceptable RCT, error types) are categorical.  
+
+2. **Pearson Correlation**:  
+   - **Why Inappropriate**: Assumes continuous variables and linear relationships, which do not apply to this study’s categorical data.
+
+3. **Linear Regression**:  
+   - **Why Inappropriate**: Assumes a continuous outcome variable, whereas the primary outcome is binary or categorical.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach focuses on descriptive statistics, hypothesis testing for associations, and modeling predictors of RCT quality. The plan prioritizes mandatory tests (descriptive statistics, chi-square, kappa statistic) to address the study’s primary objectives. Recommended tests (logistic regression, Mann-Whitney U) enhance the analysis by identifying predictors of RCT quality. Optional tests (subgroup analysis, multinomial logistic regression) provide additional insights but are contingent on sample size and research priorities. This approach ensures a robust and comprehensive evaluation of the study objectives while adhering to the data structure and statistical assumptions.
