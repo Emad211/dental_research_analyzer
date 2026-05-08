@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_sgarancini,+09_10_GIE_21_02_280.pdf",
+  "timestamp": "20260508_074542",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 18413
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 7164
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 28531
+    }
+  }
+}

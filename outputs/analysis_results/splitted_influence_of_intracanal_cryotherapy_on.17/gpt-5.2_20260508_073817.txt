@@ -1,0 +1,266 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_influence_of_intracanal_cryotherapy_on.17.pdf
+Status : ok
+Time   : 20260508_073817
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — INFORMATION EXTRACTION (study characteristics)
+
+### Study identification
+- **Title:** Influence of intracanal cryotherapy on postendodontic pain and interleukin-6 expression using different irrigation protocols
+- **Design:** **Randomized clinical trial**, **parallel-group**, **4-arm**, **double-blinded** (observer + statistician blinded; allocator unblinded)
+- **Setting:** Endodontics Outpatient Clinic, Faculty of Dentistry, Suez Canal University (Egypt)
+- **Registration/Ethics:** ClinicalTrials.gov **NCT04324398**; Ethics approval **56/2017**
+- **Population:** Adult patients with **symptomatic apical periodontitis (AP)**
+
+### Objectives (as stated)
+- Evaluate effect of **cold irrigants (intracanal cryotherapy)** on:
+  1) **Postendodontic pain**
+  2) **Inflammation**, specifically **interleukin-6 (IL‑6) expression**
+
+### Eligibility criteria
+- **Inclusion:**
+  - Age **20–50**
+  - Symptomatic AP per AAE definition
+  - **Preoperative pain score > 7** on **VAS**
+- **Exclusion:**
+  - Periapical abscess
+  - Immunosuppressive chemotherapy
+  - Anti-inflammatory drugs or antibiotics in past 2 months
+  - Medically compromised
+  - Pregnant/lactating
+
+### Randomization / allocation concealment / blinding
+- **Randomization:** Patients “randomly classified” into 4 groups (n=12 each)
+- **Allocation concealment:** **48 opaque tightly sealed envelopes** with patient coding; allocator knows mapping
+- **Blinding:** **Double-blind** (observer and statistician); allocator only unblinded
+
+### Sample size
+- **Total n = 48** (12 per group)
+- Power calculation:
+  - **Effect size f = 0.5**
+  - **Power 80%**
+  - **Alpha 0.05**
+  - Software: **IBM SamplePower v3.0.1**
+  - Based on prior studies
+
+### Intervention groups (irrigation protocols)
+All groups: during cleaning/shaping irrigation between files as specified; **side-vented 30G needle**; **total irrigation 30 mL per canal**. Final rinse: **20 mL for 5 minutes**.
+
+1. **Group I (Control):** 5% NaOCl **room temperature (RT)** throughout + final rinse **RT 5% NaOCl**
+2. **Group II:** 5% NaOCl **cold (2–5°C)** throughout + final rinse **cold 5% NaOCl**
+3. **Group III:** 5% NaOCl **RT** during instrumentation + final rinse **cold 5% NaOCl (2–5°C)**
+4. **Group IV:** 5% NaOCl **RT** during instrumentation + final rinse **cold saline (2–5°C)**
+
+### Outcomes / variables explicitly mentioned in provided text
+- **Primary clinical outcome:** **Postendodontic pain** (timing not provided in excerpt; intro suggests typical 24–48 h window)
+  - **Measure:** **Visual Analog Scale (VAS)** (preop VAS used for eligibility; postop VAS presumably used for outcome)
+- **Primary biomarker outcome:** **IL‑6 expression**
+  - **Assay approach inferred from references:** qPCR with **2^(-ΔΔCt)** method (Livak & Schmittgen cited), RNA quantification/storage cited
+  - **Specimen type and timepoints:** not provided in excerpt (must be prespecified in SAP or obtained from full paper)
+
+### Key design features affecting analysis
+- **4 independent parallel arms**
+- Likely **repeated measurements** for pain (preop and multiple postop times), but only preop threshold is explicit in excerpt
+- IL‑6 expression likely continuous, potentially **skewed** (gene expression ratios)
+
+---
+
+## TASK 2 — STATISTICAL ANALYSIS PLAN (tests)
+
+### General analysis principles (applies to all categories)
+- **Analysis population:** Intention-to-treat (ITT) as primary; per-protocol (PP) as sensitivity (Recommended)
+- **Alpha:** 0.05 (two-sided); adjust for multiplicity for multiple pairwise comparisons/timepoints
+- **Descriptives:**
+  - Continuous: mean±SD or median (IQR) depending on distribution
+  - Categorical: n (%)
+- **Assumption checks:** normality of residuals, homogeneity of variance, model diagnostics
+- **Primary comparisons:** between 4 irrigation protocols
+
+---
+
+# CATEGORY A — MANDATORY tests
+
+## A1) One-way ANOVA (or Welch ANOVA) for between-group comparisons of a single continuous endpoint at one timepoint
+- **Purpose:** Test whether mean outcome differs across 4 groups (e.g., IL‑6 at a specified timepoint; pain at a single specified postop timepoint or pain change score).
+- **Why appropriate (≥2):**
+  1) Study has **4 independent randomized groups** → standard omnibus comparison.
+  2) Outcomes (VAS, IL‑6) are typically treated as **continuous**; ANOVA yields an overall test before pairwise comparisons.
+- **Why may not be appropriate (≥1):**
+  - If outcome distribution is markedly non-normal (common for **ΔΔCt/2^-ΔΔCt**) or variances differ substantially.
+- **When NOT to use:**
+  - When there are **repeated measures** over time and correlation must be modeled (then use mixed models).
+- **Alternative if assumptions violated:**
+  - **Welch ANOVA** (unequal variances) or **Kruskal–Wallis** (nonparametric), or analyze **log-transformed** IL‑6.
+
+## A2) Post-hoc multiple comparisons with multiplicity control (Tukey / Games–Howell)
+- **Purpose:** Identify which groups differ after significant omnibus test.
+- **Why appropriate:**
+  1) Four groups imply multiple pairwise tests; control family-wise error.
+  2) Provides interpretable clinical contrasts (e.g., “final cold NaOCl” vs control).
+- **Why may not be appropriate:**
+  - If the omnibus test is not meaningful due to non-normality/outliers or if a priori contrasts were the sole interest.
+- **When NOT to use:**
+  - When you have **pre-specified primary contrasts only** (then use planned contrasts with adjusted alpha).
+- **Alternative if assumptions violated:**
+  - **Games–Howell** (heteroscedasticity), **Dunn test with Holm adjustment** after Kruskal–Wallis.
+
+## A3) Linear mixed-effects model (LMM) or repeated-measures ANOVA for postoperative pain measured at multiple timepoints
+*(Needed if pain is recorded at multiple postoperative times, which is typical in this topic; the excerpt doesn’t list times, but the trial objective “postendodontic pain” almost always implies repeated follow-up.)*
+- **Purpose:** Compare **pain trajectories over time** between groups; estimate group, time, and group×time interaction.
+- **Why appropriate:**
+  1) Handles **within-subject correlation** across repeated VAS measurements.
+  2) LMM accommodates **missing follow-up** under MAR assumptions better than RM-ANOVA.
+- **Why may not be appropriate:**
+  - If only one postoperative pain measurement exists (no repeated structure).
+- **When NOT to use:**
+  - When outcome is not approximately continuous and residual diagnostics fail badly (e.g., severe floor effects with many zeros).
+- **Alternative if assumptions violated:**
+  - **Generalized linear mixed model (GLMM)** (e.g., ordinal mixed model), or **rank-based mixed models**, or analyze **AUC pain** with Kruskal–Wallis/ANOVA.
+
+## A4) Missing data handling and reporting (not a “test,” but mandatory analytical component)
+- **Purpose:** Prevent biased estimates due to attrition.
+- **Why appropriate:**
+  1) RCT validity depends on transparent handling of missing outcomes.
+  2) Pain follow-ups commonly have missingness.
+- **Why may not be appropriate:**
+  - Complete-case only can be acceptable if missingness is negligible and balanced, but that must be demonstrated.
+- **When NOT to use (for simple imputation approaches):**
+  - Avoid last-observation-carried-forward for pain trajectories (can bias).
+- **Alternative if assumptions violated:**
+  - **Multiple imputation** (continuous) / **MI with predictive mean matching**, plus sensitivity analyses.
+
+---
+
+# CATEGORY B — RECOMMENDED tests
+
+## B1) Baseline comparability across groups (ANOVA/Kruskal–Wallis for continuous; Chi-square/Fisher for categorical)
+- **Purpose:** Describe (not “test”) balance in baseline characteristics (age, baseline VAS, etc. if collected).
+- **Why appropriate:**
+  1) Ensures transparency about randomization success and potential prognostic imbalance.
+  2) Identifies variables for **precision adjustment** (not for “fixing” randomization).
+- **Why may not be appropriate:**
+  - Significance testing of baseline can be misleading; emphasis should be on **clinical importance**.
+- **When NOT to use:**
+  - Do not use baseline p-values to decide covariate inclusion mechanically.
+- **Alternative if assumptions violated:**
+  - Use nonparametric counterparts; or present standardized mean differences (SMDs) instead of p-values.
+
+## B2) ANCOVA (or LMM with baseline as covariate) for pain outcomes
+- **Purpose:** Compare groups while adjusting for **baseline pain (VAS)** to improve precision.
+- **Why appropriate:**
+  1) Baseline VAS is available (eligibility used it) and is prognostic of postoperative pain.
+  2) ANCOVA generally increases power and reduces residual variance in RCTs.
+- **Why may not be appropriate:**
+  - If baseline measure is truncated by design (here **VAS > 7**), which can reduce linearity and normality.
+- **When NOT to use:**
+  - When baseline is not measured consistently or baseline is post-randomization.
+- **Alternative if assumptions violated:**
+  - Robust regression, rank ANCOVA, or analyze change scores with caution.
+
+## B3) Effect sizes with confidence intervals (mean difference, standardized effect, partial eta²)
+- **Purpose:** Quantify magnitude and precision beyond p-values.
+- **Why appropriate:**
+  1) Clinically interpretable (e.g., pain reduction in VAS units).
+  2) Facilitates meta-analysis and clinical decision-making.
+- **Why may not be appropriate:**
+  - If outcome scale is highly non-normal and effect size chosen is not robust.
+- **When NOT to use:**
+  - Avoid standardized effects alone when raw units are clinically meaningful.
+- **Alternative if assumptions violated:**
+  - Median differences with bootstrap CIs; Hodges–Lehmann estimate.
+
+## B4) Correlation/association between IL‑6 expression and pain (Spearman / Pearson; or regression)
+- **Purpose:** Assess whether higher IL‑6 is associated with higher pain.
+- **Why appropriate:**
+  1) Mechanistic coherence: IL‑6 described as marker of tissue damage and linked to pain.
+  2) Adds biological plausibility to clinical findings.
+- **Why may not be appropriate:**
+  - If IL‑6 and pain are measured at mismatched times or IL‑6 is only measured in a subset.
+- **When NOT to use:**
+  - When association could be distorted by group effects without adjustment.
+- **Alternative if assumptions violated:**
+  - Spearman correlation; or multivariable regression adjusting for group.
+
+---
+
+# CATEGORY C — OPTIONAL tests
+
+## C1) Pain summary measure: Area Under the Curve (AUC) over follow-up + one-way ANOVA/Kruskal–Wallis
+- **Purpose:** Provide a single overall burden-of-pain metric across time.
+- **Why appropriate:**
+  1) Reduces multiple testing across timepoints.
+  2) Clinically intuitive as cumulative pain experience.
+- **Why may not be appropriate:**
+  - If measurement times vary substantially between subjects or are sparse.
+- **When NOT to use:**
+  - When timing is inconsistent and AUC becomes incomparable.
+- **Alternative if assumptions violated:**
+  - Nonparametric comparison of AUC; bootstrap CIs.
+
+## C2) Responder analysis (e.g., proportion with VAS ≤3 at 24/48h) using Chi-square/Fisher + risk ratios
+- **Purpose:** Translate continuous pain into clinically meaningful success rates.
+- **Why appropriate:**
+  1) Clinicians often prefer “clinically acceptable pain” thresholds.
+  2) Complements mean differences (captures distributional shifts).
+- **Why may not be appropriate:**
+  - Dichotomization loses information and reduces power.
+- **When NOT to use:**
+  - As the sole primary analysis.
+- **Alternative if assumptions violated:**
+  - Exact methods; or ordinal models with multiple categories.
+
+## C3) Nonparametric omnibus for skewed endpoints: Kruskal–Wallis with Dunn–Holm
+- **Purpose:** Compare groups when distributions are non-normal/outlier-prone.
+- **Why appropriate:**
+  1) Robust to non-normality common in gene expression.
+  2) Works with small n (12/group), where normality is harder to verify.
+- **Why may not be appropriate:**
+  - Tests differences in distributions/medians, not means; less efficient when normality holds.
+- **When NOT to use:**
+  - When modeling covariates/time is essential (use regression/mixed models).
+- **Alternative if assumptions violated (ties/heavy discreteness):**
+  - Permutation tests; rank-based ANOVA methods.
+
+## C4) Permutation test for group differences
+- **Purpose:** Distribution-free inference for small samples.
+- **Why appropriate:**
+  1) Small sample size per arm (n=12) makes asymptotic approximations weaker.
+  2) Provides exact/near-exact p-values under exchangeability.
+- **Why may not be appropriate:**
+  - More complex with missing data and repeated measures.
+- **When NOT to use:**
+  - When data are not exchangeable (e.g., strong heteroscedasticity without stratification).
+- **Alternative if assumptions violated:**
+  - Robust regression / bootstrap.
+
+---
+
+## TASK 3 — INAPPROPRIATE TESTS (should NOT be used)
+
+1. **Paired t-test between groups**  
+   - Wrong because groups are **independent**; pairing does not exist.
+
+2. **Multiple independent t-tests for all pairwise group comparisons without correction**  
+   - Inflates Type I error substantially with 4 groups (6 pairwise tests).
+
+3. **Simple chi-square test on continuous VAS or continuous IL‑6 values**  
+   - Chi-square is for categorical counts; would require arbitrary binning (information loss).
+
+4. **One-way ANOVA on repeated pain measurements ignoring within-subject correlation**  
+   - Violates independence; underestimates SE → false positives.
+
+5. **Linear regression on raw 2^(-ΔΔCt) IL‑6 values without considering skewness/outliers**  
+   - Gene expression ratios are often highly right-skewed; may break model assumptions unless transformed/robust methods used.
+
+6. **Last Observation Carried Forward (LOCF) as primary missing data method**  
+   - Can bias pain trajectory estimates; not principled for longitudinal RCTs.
+
+---
+
+## TASK 4 — SUMMARY (overall analytical approach)
+
+A 4-arm parallel RCT should be analyzed with **between-group omnibus comparisons** plus **multiplicity-controlled post-hoc contrasts**, and—because postoperative pain is typically measured repeatedly—preferably with a **linear mixed-effects model** to compare **pain over time** while handling correlation and missing follow-up. IL‑6 (gene expression) should be analyzed as a continuous biomarker with appropriate transformation/robust or nonparametric methods if distributions are skewed. Effect sizes with CIs and sensitivity analyses (ITT/PP, missing data) provide clinically interpretable and methodologically sound inference.
+
+If you share the remainder of the Methods/Results (especially pain timepoints, IL‑6 sampling time, and assay details), I can tailor the SAP to exact endpoints, define primary/secondary outcomes, and specify the precise model formulas and contrasts.

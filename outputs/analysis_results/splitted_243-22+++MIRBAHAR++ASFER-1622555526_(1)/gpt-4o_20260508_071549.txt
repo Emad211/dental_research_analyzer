@@ -1,0 +1,135 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_243-22+++MIRBAHAR++ASFER-1622555526_(1).pdf
+Status : ok
+Time   : 20260508_071549
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Retrospective cohort study.
+2. **Objective**: To compare the clinical outcomes of periapical surgery performed by endodontists (Group A) and oral surgeons (Group B) at a teaching dental hospital.
+3. **Study Groups**:
+   - **Group A**: Patients operated on by endodontists (n = 60).
+   - **Group B**: Patients operated on by oral surgeons (n = 60).
+4. **Sample Size**: 120 patients (60 in each group).
+5. **Sampling Technique**: Non-probability consecutive sampling.
+6. **Inclusion Criteria**:
+   - Patients who underwent periapical surgery.
+   - All types of teeth included.
+   - Prerequisite: Coronal restoration and satisfactory root filling.
+7. **Exclusion Criteria**: Not explicitly mentioned but implied to exclude patients without coronal restoration or unsatisfactory root filling.
+8. **Variables**:
+   - **Independent Variable**: Operator type (endodontist vs. oral surgeon).
+   - **Dependent Variables**: Clinical and radiographic outcomes of periapical surgery.
+   - **Covariates**: Age, sex, tooth type, preoperative signs, presence of periapical radiolucency, and quality of root canal filling.
+9. **Outcome Measures**:
+   - Radiographic and clinical assessments.
+   - Success criteria not explicitly defined but likely based on healing and absence of symptoms.
+10. **Data Collection Methods**:
+    - Pre-designed proforma for recording outcomes.
+    - Radiographs during and after surgery.
+    - Clinical follow-ups biannually for two years.
+11. **Intervention Details**:
+    - **Group A**: Procedures performed by endodontists using high-speed handpieces, ultrasonic retro tips, and amalgam.
+    - **Group B**: Procedures performed by oral surgeons using slow-speed handpieces, tungsten carbide burs, and amalgam.
+    - Postoperative care: Analgesics, antibiotics, mouthwash, and suture removal (7 days for Group A, 14 days for Group B).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Chi-Square Test (or Fisher’s Exact Test if expected cell counts are small).
+   - **Purpose**: To compare categorical outcomes (e.g., success vs. failure) between Group A and Group B.
+   - **Why Appropriate**:
+     1. The outcome variable is categorical.
+     2. The groups are independent.
+   - **Why It May Not Be Appropriate**:
+     - If sample sizes are too small for valid chi-square approximation.
+   - **When This Test Should NOT Be Used**: If expected frequencies in any cell are <5.
+   - **Alternative if Assumptions Are Violated**: Fisher’s Exact Test.
+
+2. **Test Name**: Independent Samples t-Test (or Mann-Whitney U Test if data are non-normal).
+   - **Purpose**: To compare continuous variables (e.g., healing time) between Group A and Group B.
+   - **Why Appropriate**:
+     1. The independent variable (operator type) has two groups.
+     2. The dependent variable (e.g., healing time) is continuous.
+   - **Why It May Not Be Appropriate**:
+     - If the data are not normally distributed or variances are unequal.
+   - **When This Test Should NOT Be Used**: If data are heavily skewed or contain outliers.
+   - **Alternative if Assumptions Are Violated**: Mann-Whitney U Test.
+
+3. **Test Name**: Kaplan-Meier Survival Analysis (with Log-Rank Test).
+   - **Purpose**: To compare the time-to-event data (e.g., time to healing) between the two groups.
+   - **Why Appropriate**:
+     1. The study involves time-to-event data (e.g., healing time).
+     2. The groups are independent.
+   - **Why It May Not Be Appropriate**:
+     - If follow-up times are inconsistent or censored data are minimal.
+   - **When This Test Should NOT Be Used**: If there are no censored observations.
+   - **Alternative if Assumptions Are Violated**: Cox Proportional Hazards Model.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Logistic Regression.
+   - **Purpose**: To assess the effect of operator type on binary outcomes (e.g., success vs. failure) while adjusting for covariates (e.g., age, sex, tooth type).
+   - **Why Appropriate**:
+     1. The outcome variable is binary.
+     2. It allows adjustment for potential confounders.
+   - **Why It May Not Be Appropriate**:
+     - If the sample size is too small for reliable estimation of regression coefficients.
+   - **When This Test Should NOT Be Used**: If there are too many predictors relative to the sample size.
+   - **Alternative if Assumptions Are Violated**: Penalized Logistic Regression.
+
+2. **Test Name**: Repeated Measures ANOVA (or Mixed-Effects Model).
+   - **Purpose**: To analyze changes in radiographic and clinical outcomes over time (biannual follow-ups) between groups.
+   - **Why Appropriate**:
+     1. The data involve repeated measurements over time.
+     2. It accounts for within-subject correlations.
+   - **Why It May Not Be Appropriate**:
+     - If the data are not normally distributed or sphericity is violated.
+   - **When This Test Should NOT Be Used**: If there are missing data points at follow-ups.
+   - **Alternative if Assumptions Are Violated**: Mixed-Effects Model.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Subgroup Analysis (e.g., stratified by tooth type or age group).
+   - **Purpose**: To explore whether the effect of operator type varies across subgroups.
+   - **Why Appropriate**:
+     1. It provides additional insights into subgroup-specific effects.
+     2. It helps identify potential effect modifiers.
+   - **Why It May Not Be Appropriate**:
+     - Risk of type I error due to multiple comparisons.
+   - **When This Test Should NOT Be Used**: If subgroup sample sizes are too small.
+   - **Alternative if Assumptions Are Violated**: Bayesian Hierarchical Models.
+
+2. **Test Name**: Sensitivity Analysis.
+   - **Purpose**: To test the robustness of results under different assumptions (e.g., excluding patients with incomplete follow-up).
+   - **Why Appropriate**:
+     1. It helps assess the impact of missing data or outliers.
+     2. It strengthens the validity of conclusions.
+   - **Why It May Not Be Appropriate**:
+     - If the dataset is already too small for subgroup exclusions.
+   - **When This Test Should NOT Be Used**: If the exclusions lead to biased or unrepresentative samples.
+   - **Alternative if Assumptions Are Violated**: Multiple Imputation for Missing Data.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Paired t-Test**:
+   - **Reason**: The groups are independent, not paired.
+2. **ANOVA**:
+   - **Reason**: Only two groups are being compared; t-tests are more appropriate.
+3. **Pearson Correlation**:
+   - **Reason**: The study does not aim to measure the strength of linear relationships between continuous variables.
+4. **Chi-Square for Trend**:
+   - **Reason**: The independent variable (operator type) is not ordinal.
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan is designed to rigorously evaluate the primary objective of comparing clinical outcomes between endodontists and oral surgeons. The mandatory tests (e.g., chi-square, t-test, Kaplan-Meier) ensure the primary research question is addressed, while recommended tests (e.g., logistic regression, repeated measures ANOVA) adjust for confounders and account for longitudinal data. Optional tests (e.g., subgroup analysis, sensitivity analysis) provide deeper insights and robustness checks. The overall approach balances simplicity and rigor, ensuring valid and interpretable results.

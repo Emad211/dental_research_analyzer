@@ -1,0 +1,161 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_A_Prospective_Comparative_Randomized_Clinical_Trial_of_Three_Endodontic_Retrograde_Filling_Materials.pdf
+Status : ok
+Time   : 20260508_072048
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Prospective, comparative, randomized clinical trial.
+
+2. **Objective**:  
+   - To determine the most effective retrograde filling material (EndoSequence, ProRoot MTA, or Biodentine) in promoting healing of periapical lesions following apical microsurgery.
+
+3. **Study Groups**:  
+   - Group 1: EndoSequence (n = 13 at 6 months).  
+   - Group 2: ProRoot MTA (n = 14 at 6 months).  
+   - Group 3: Biodentine (n = 8 at 6 months).
+
+4. **Sample Size**:  
+   - Initial enrollment: 74 patients.  
+   - Final analysis: 35 patients completed 6-month follow-up.
+
+5. **Randomization**:  
+   - Block randomization using a software-based algorithm (www.random.org).  
+   - Allocation concealed from patients but not from surgeons due to material visibility.
+
+6. **Blinding**:  
+   - Patients and radiologists were blinded to the material used.  
+   - Surgeons were not blinded due to the visible differences in materials.
+
+7. **Inclusion Criteria**:  
+   - Adult patients (ASA classification I and II).  
+   - Single chronic periapical lesion requiring apical microsurgery.  
+   - Informed consent provided.
+
+8. **Exclusion Criteria**:  
+   - Drug/alcohol abuse.  
+   - Adjacent periapical lesion.  
+   - Periodontal disease.
+
+9. **Variables**:  
+   - **Primary Outcome**: Healing of the periapical lesion (measured by CBCT scans).  
+   - **Independent Variable**: Type of retrograde filling material (EndoSequence, ProRoot MTA, Biodentine).  
+   - **Covariates**: Time (2, 4, 6 months), patient demographics, lesion size.
+
+10. **Measurements**:  
+    - Radiolucent area size measured on CBCT scans (preoperative, postoperative, 2, 4, and 6 months).  
+    - Subjective healing classification (radiolucent, some healing, moderate healing, good healing).
+
+11. **Data Collection Methods**:  
+    - CBCT scans acquired using standardized protocols (Accuitomo 170 machine).  
+    - Measurements performed by a blinded, experienced radiologist using Invivo6 software.  
+    - Intraobserver reliability assessed by repeating measurements.
+
+12. **Statistical Tests Mentioned**:  
+    - Kruskal-Wallis test for group comparisons.  
+    - Mann-Whitney tests for pairwise comparisons.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Kruskal-Wallis Test  
+   - **Purpose**: Compare differences in healing outcomes among the three groups.  
+   - **Why Appropriate**:  
+     1. Non-parametric test suitable for small sample sizes.  
+     2. Does not assume normal distribution of data.  
+   - **Why It May Not Be Appropriate**:  
+     - Sensitive to unequal group sizes (e.g., Biodentine group has fewer patients).  
+   - **When NOT to Use**: If data are normally distributed and variances are equal.  
+   - **Alternative**: One-way ANOVA if assumptions of normality and homogeneity of variance are met.
+
+2. **Test Name**: Mann-Whitney U Test (Pairwise Comparisons)  
+   - **Purpose**: Identify specific group differences after Kruskal-Wallis test.  
+   - **Why Appropriate**:  
+     1. Non-parametric test suitable for comparing two independent groups.  
+     2. Handles ordinal or non-normally distributed data.  
+   - **Why It May Not Be Appropriate**:  
+     - Inflated Type I error rate if multiple comparisons are conducted without correction.  
+   - **When NOT to Use**: If Kruskal-Wallis test is not significant.  
+   - **Alternative**: Adjusted pairwise comparisons using Bonferroni correction.
+
+3. **Test Name**: Intraobserver Reliability (e.g., Intraclass Correlation Coefficient [ICC])  
+   - **Purpose**: Assess consistency of radiologist’s measurements.  
+   - **Why Appropriate**:  
+     1. Measures reliability for continuous data.  
+     2. Accounts for repeated measurements by the same observer.  
+   - **Why It May Not Be Appropriate**:  
+     - Requires at least two sets of measurements for each patient.  
+   - **When NOT to Use**: If only one measurement per patient is available.  
+   - **Alternative**: Bland-Altman analysis for agreement.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Kaplan-Meier Survival Analysis  
+   - **Purpose**: Evaluate time to healing (e.g., achieving “good healing” classification).  
+   - **Why Appropriate**:  
+     1. Accounts for censored data (patients lost to follow-up).  
+     2. Suitable for time-to-event outcomes.  
+   - **Why It May Not Be Appropriate**:  
+     - Requires clear definition of “event” (e.g., good healing).  
+   - **When NOT to Use**: If healing cannot be classified as an event.  
+   - **Alternative**: Logistic regression for binary outcomes.
+
+2. **Test Name**: Mixed-Effects Model  
+   - **Purpose**: Analyze changes in radiolucent area size over time, accounting for repeated measures.  
+   - **Why Appropriate**:  
+     1. Handles longitudinal data with repeated measures.  
+     2. Accounts for within-subject correlation.  
+   - **Why It May Not Be Appropriate**:  
+     - Complex model requiring sufficient sample size.  
+   - **When NOT to Use**: If data are not collected at consistent time points.  
+   - **Alternative**: Repeated-measures ANOVA if assumptions are met.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Effect Size Calculation (e.g., Cohen’s d, Eta-squared)  
+   - **Purpose**: Quantify the magnitude of differences between groups.  
+   - **Why Appropriate**:  
+     1. Provides practical significance of findings.  
+     2. Complements p-values by indicating clinical relevance.  
+   - **Why It May Not Be Appropriate**:  
+     - May be misleading with small sample sizes.  
+   - **When NOT to Use**: If no significant differences are found.  
+   - **Alternative**: Report confidence intervals for group differences.
+
+2. **Test Name**: Subgroup Analysis  
+   - **Purpose**: Explore differences in healing based on covariates (e.g., lesion size, age).  
+   - **Why Appropriate**:  
+     1. Identifies potential effect modifiers.  
+     2. Enhances understanding of treatment effects.  
+   - **Why It May Not Be Appropriate**:  
+     - Risk of Type I error due to multiple comparisons.  
+   - **When NOT to Use**: If sample size is insufficient for subgroup analysis.  
+   - **Alternative**: Include covariates in regression models.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **One-Way ANOVA**:  
+   - **Reason**: Assumes normality and equal variances, which may not hold for small, unequal group sizes.  
+   - **Alternative**: Kruskal-Wallis test.
+
+2. **Chi-Square Test**:  
+   - **Reason**: Not suitable for continuous or ordinal data like radiolucent area size or healing classification.  
+   - **Alternative**: Mann-Whitney U test for ordinal data.
+
+3. **Paired t-Test**:  
+   - **Reason**: Designed for paired data, not comparisons between independent groups.  
+   - **Alternative**: Mann-Whitney U test for independent groups.
+
+---
+
+### TASK 4: SUMMARY
+The overall analytical approach prioritizes non-parametric methods due to the small sample size and potential non-normality of the data. The Kruskal-Wallis test serves as the primary analysis for group comparisons, complemented by pairwise Mann-Whitney tests. Longitudinal changes are best analyzed using mixed-effects models or survival analysis, depending on the outcome of interest. Optional analyses, such as effect size and subgroup analysis, provide additional insights but should be interpreted cautiously given the limited sample size. This approach ensures robust and clinically meaningful conclusions while adhering to the study’s methodological constraints.

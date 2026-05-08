@@ -1,0 +1,1119 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_calchera,+476.pdf
+Time : 20260508_073339
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design and objective
+- **Design:** In vitro, randomized, parallel-group experimental study on extracted human teeth.
+- **Primary aim:** Compare **apical sealing ability (microleakage)** at the **apical third** between:
+  - **Sealers:** bioceramic sealer **BioRoot RCS** vs **ZOE sealer (Pulp Canal Sealer)**
+  - **Obturation techniques:** warm vs cold techniques (as implemented by the 3 techniques below)
+- **Null hypotheses:**
+  1. BioRoot RCS seals the apex **similarly** to ZOE sealer.
+  2. BioRoot RCS seals the apex **similarly** when used with cold vs warm obturation.
+
+### Samples / experimental units
+- **Specimens:** “Eigthy” (80) intact human **single-rooted maxillary premolars**, extracted for orthodontic reasons.
+- **Screening:** Excluded external radicular cracks via **stereomicroscope x4.5**.
+- **Storage:** 0.9% saline at **37°C** (anti-dehydration).
+
+### Root canal preparation (standardized across all teeth)
+- Working length via manual K-files (#8, #10).
+- Shaping: **Mtwo NiTi rotary** with motor at 250 rpm.
+- Irrigation: 5% NaOCl (2.5 mL after each instrument; **preheated to 50°C**), apical patency with #10 file.
+- Final irrigation: **17% EDTA 2 mL for 2 min**, then **5% NaOCl 5 mL for 5 min**.
+- Drying: paper points.
+- Operators: Two calibrated operators performed chemo-mechanical preparation.
+
+### Randomization and groups (interventions)
+Text states 5 groups with **n=20 each** (this contradicts the earlier “80 teeth”; see SAP note on this discrepancy).
+
+- **Group 1:** Thermafil obturators + **Pulp Canal Sealer** (ZOE), **n=20**
+- **Group 2:** Thermafil obturators + **BioRoot RCS**, **n=20**
+- **Group 3:** **Warm vertical condensation** + Pulp Canal Sealer, **n=20**
+- **Group 4:** **Single GP cone** + BioRoot RCS, **n=20**
+- **Group 5:** Warm vertical condensation + BioRoot RCS, **n=20**
+
+Conceptually:
+- Technique factor has 3 levels: **Thermafil (warm carrier-based)**, **warm vertical condensation**, **single cone (cold)**.
+- Sealer factor has 2 levels: **ZOE** vs **BioRoot** (but not fully crossed: single cone appears only with BioRoot).
+
+### Outcome (measurement method)
+- **Outcome:** “Apical leakage” / microleakage at the interface in the apical third.
+- **Tracer method:** ammoniacal **silver nitrate** penetration, then photo-developer to reduce/visualize tracer.
+  - Nail varnish coating everywhere except **2 mm around apex**.
+  - Immersion in diluted ammoniacal silver nitrate (1:4 with distilled water), **24 h** under lab light.
+  - Rinse; remove varnish; immersion in diluted photo-developer (1:10) **8 h**; rinse.
+- **Specimen processing:** embedded in acrylic; sectioned with low-speed diamond saw into **two slices** (long axis and perpendicular described; exact sectioning schema unclear).
+- **Scoring:** examined by digital microscope; **two observers independently scored** the amount of tracer along the interface.
+- **Scale/type of outcome:** Not provided in the excerpt. Likely **ordinal score** or possibly **continuous leakage length/area**, but this must be clarified before final analysis choices.
+
+### Data structure / dependencies to anticipate
+- One tooth randomized to one group (**between-specimen** comparisons).
+- Two observers per specimen → paired/clustered ratings.
+- Possibly multiple slices per tooth → within-tooth clustering (unclear from text; at least “two slices”).
+
+### Key limitations from provided text (must be handled in SAP)
+- **Sample size inconsistency:** 80 teeth mentioned, but 5×20 implies 100.
+- **Outcome scale unspecified:** continuous vs ordinal changes the core inferential model.
+- **Slice structure unclear:** whether leakage is summarized per tooth or analyzed per slice.
+
+---
+
+## TASK 2 — Statistical Analysis Plan (SAP)
+
+### 0) Pre-analysis decisions (required)
+1. **Resolve sample size discrepancy** from the paper:
+   - If truly **80 teeth**, then group sizes cannot all be 20; analysis must use actual n per group.
+2. **Define the analysis unit:**
+   - Prefer **tooth-level outcome** (e.g., mean/max leakage across slices; or predefined apical-third slice only) to avoid pseudo-replication.
+3. **Define the primary leakage variable:**
+   - If **ordinal score** → ordinal methods.
+   - If **continuous measurement** (e.g., mm of penetration) → continuous methods.
+4. **Observer ratings handling:**
+   - Predefine whether primary outcome is **consensus**, **average**, or **one rater**; alternatively use mixed models with rater as random effect.
+
+### 1) Descriptive statistics (all outcomes)
+- By group: n, mean±SD (if continuous & ~normal), median [IQR] (if skewed/ordinal), min–max.
+- Graphs: box/violin plots; jittered dotplots; for ordinal, stacked bar charts.
+
+---
+
+## CATEGORY A — Mandatory tests (analysis would be incomplete)
+
+### A1. Overall between-group comparison of apical leakage (5 groups)
+**Test name:**  
+- If leakage is **continuous**: **One-way ANOVA** (with Welch variant if variances unequal)  
+- If leakage is **ordinal/non-normal**: **Kruskal–Wallis test**
+
+**Purpose:** Test whether apical leakage differs among the 5 obturation/sealer combinations.
+
+**Why appropriate (≥2):**
+1. Outcome is compared across **>2 independent groups** (parallel design).
+2. Provides the essential global inference before pairwise comparisons (controls type I error structure).
+
+**Why may not be appropriate (≥1):**
+- ANOVA: sensitive to **non-normality** and **heteroscedasticity** with small/unequal n.
+- Kruskal–Wallis: tests distributional differences; not specifically differences in means; less informative for effect sizes on original scale.
+
+**When NOT to use:**
+- If multiple slices per tooth are analyzed as separate observations without accounting for clustering (violates independence).
+- If outcome is binary (e.g., leakage yes/no) → use logistic methods.
+
+**Alternative if assumptions violated:**
+- For continuous: **Welch ANOVA** (unequal variances), or **permutation ANOVA**.
+- For ordinal: **ordinal logistic regression** (see Recommended).
+
+---
+
+### A2. Multiple comparisons / planned contrasts aligned to hypotheses
+**Test name:**  
+- After ANOVA: **Tukey HSD** (all-pairs) or **planned contrasts** with multiplicity control  
+- After Kruskal–Wallis: **Dunn test** with Holm adjustment
+
+**Purpose:** Identify which groups differ; specifically test the study’s two null hypotheses.
+
+**Why appropriate (≥2):**
+1. Directly addresses clinically relevant contrasts (BioRoot vs ZOE; warm vs cold within BioRoot).
+2. Controls family-wise error or FDR when making multiple pairwise inferences.
+
+**Why may not be appropriate (≥1):**
+- Tukey assumes roughly normal residuals and homogeneity (less critical with equal n, but still).
+- Dunn on ordinal data may have reduced power and does not incorporate covariates.
+
+**When NOT to use:**
+- If only **pre-specified** comparisons are intended, do not use all-pairs Tukey (unnecessary multiplicity penalty).
+- If analysis is model-based (e.g., regression), use model-based contrasts instead.
+
+**Alternative if assumptions violated:**
+- **Permutation-based pairwise tests** with multiplicity correction.
+- **Bootstrap CIs** for pairwise differences.
+
+*Minimum planned contrasts to match hypotheses (examples):*
+- **Sealer effect within warm carrier-based:** Group 2 vs Group 1 (BioRoot vs ZOE with Thermafil)
+- **Sealer effect within warm vertical:** Group 5 vs Group 3 (BioRoot vs ZOE with warm vertical)
+- **Warm vs cold within BioRoot:** Group 4 (single cone BioRoot) vs Group 5 (warm vertical BioRoot) and/or vs Group 2 (Thermafil BioRoot)
+
+---
+
+### A3. Inter-rater agreement (two independent observers)
+**Test name:**  
+- If outcome is **ordinal**: **Weighted Cohen’s kappa**  
+- If outcome is **continuous**: **Intraclass correlation coefficient (ICC, two-way random, absolute agreement)**
+
+**Purpose:** Quantify reliability of leakage scoring between observers and justify combining/averaging ratings.
+
+**Why appropriate (≥2):**
+1. Two observers independently scored the same specimens → reliability is essential to validate measurement.
+2. Agreement affects inference (high disagreement inflates noise and may bias group comparisons).
+
+**Why may not be appropriate (≥1):**
+- Kappa is sensitive to **prevalence** and marginal distributions.
+- ICC assumes approximately continuous scale and can be distorted by restricted range.
+
+**When NOT to use:**
+- If a consensus score is produced *before* recording independent ratings (no longer independent).
+- If each observer scored different teeth (not the case here).
+
+**Alternative if assumptions violated:**
+- **Gwet’s AC1/AC2** (more stable than kappa under prevalence imbalance) for categorical/ordinal.
+- **Bland–Altman analysis** (Recommended) for continuous.
+
+---
+
+## CATEGORY B — Recommended tests (enhance rigor)
+
+### B1. Regression modeling to separate “sealer” and “technique” effects (partially crossed design)
+**Test name:**  
+- If continuous: **Linear model (ANCOVA/linear regression)** with factors for group or for technique+sealer (with careful parameterization)  
+- If ordinal: **Ordinal logistic regression (proportional odds model)**  
+- If clustering (slice-level or rater-level retained): **Mixed-effects model** (linear mixed model or cumulative link mixed model)
+
+**Purpose:** Estimate effect sizes for sealer/technique while accommodating the study’s design nuances and potential clustering.
+
+**Why appropriate (≥2):**
+1. The design is not a clean 2×3 factorial (missing ZOE+single cone), so modeling via **group indicators** or constrained contrasts is clearer than “factorial ANOVA”.
+2. Mixed models can correctly handle **multiple slices per tooth** and/or **two ratings per tooth** without violating independence.
+
+**Why may not be appropriate (≥1):**
+- Requires adequate sample size per parameter; with small n, models may be unstable.
+- Ordinal proportional odds assumption may be violated.
+
+**When NOT to use:**
+- If only one tooth-level summary is used and simple group comparisons fully address hypotheses (then regression is optional but still helpful).
+- If the ordinal scale has very few levels and sparse cells (model convergence issues).
+
+**Alternative if assumptions violated:**
+- For non-normal continuous residuals: **robust regression** or **quantile regression**.
+- For violated proportional odds: **partial proportional odds model** or **multinomial logistic regression**.
+
+---
+
+### B2. Assumption checks (for parametric analyses)
+**Test name:**  
+- **Shapiro–Wilk** (normality of residuals)  
+- **Levene’s test** or **Brown–Forsythe** (homogeneity of variances)
+
+**Purpose:** Validate whether ANOVA/linear model assumptions are reasonable.
+
+**Why appropriate (≥2):**
+1. Supports transparent choice of parametric vs nonparametric methods.
+2. Detects heteroscedasticity that can inflate type I error.
+
+**Why may not be appropriate (≥1):**
+- With moderate n, these tests can be over/under-powered; graphical diagnostics are often more informative.
+
+**When NOT to use:**
+- As the sole justification for modeling choice; do not “test your way” into analysis without considering effect sizes/robustness.
+
+**Alternative if assumptions violated:**
+- **Welch ANOVA**, **robust standard errors (HC3)**, transformations, or nonparametric/permutation methods.
+
+---
+
+### B3. Effect sizes and confidence intervals
+**Test name:**  
+- For ANOVA: **eta-squared / partial eta-squared**, **omega-squared**, plus **pairwise mean differences with 95% CI**  
+- For Kruskal–Wallis/Dunn: **Cliff’s delta** or **rank-biserial correlation** with CI
+
+**Purpose:** Quantify magnitude and precision beyond p-values.
+
+**Why appropriate (≥2):**
+1. Microleakage differences need clinical interpretation (not just significance).
+2. Facilitates comparison across techniques and future meta-analysis.
+
+**Why may not be appropriate (≥1):**
+- Some effect sizes are sensitive to distribution shape and outliers; interpretation may be less intuitive.
+
+**When NOT to use:**
+- Do not report only standardized effect sizes without raw-scale differences (clinical meaning lost).
+
+**Alternative if assumptions violated:**
+- **Bootstrap CIs** for mean/median differences and effect sizes.
+
+---
+
+### B4. Bland–Altman analysis (if continuous outcome)
+**Test name:** **Bland–Altman plot with limits of agreement**
+
+**Purpose:** Visualize observer agreement and any systematic bias across leakage magnitude.
+
+**Why appropriate (≥2):**
+1. Complements ICC by showing **bias** and **heteroscedastic disagreement**.
+2. Helps decide whether averaging observers is defensible.
+
+**Why may not be appropriate (≥1):**
+- Not suitable for purely ordinal scores.
+
+**When NOT to use:**
+- If leakage is scored categorically/ordinally.
+
+**Alternative if assumptions violated:**
+- For ordinal: agreement tables + weighted kappa / Gwet AC.
+
+---
+
+## CATEGORY C — Optional (supplementary insights)
+
+### C1. Trend/ordered alternatives across “warmness” or technique hierarchy (if prespecified)
+**Test name:** **Jonckheere–Terpstra test** (ordinal trend)
+
+**Purpose:** Test for a monotonic trend in leakage across an ordered set of techniques (if a credible order is prespecified).
+
+**Why appropriate (≥2):**
+1. More powerful than Kruskal–Wallis when an **a priori ordering** exists.
+2. Works well for ordinal outcomes.
+
+**Why may not be appropriate (≥1):**
+- Requires defensible ordering; may be arbitrary (Thermafil vs warm vertical not clearly “more/less”).
+
+**When NOT to use:**
+- If no pre-specified, scientifically justified order exists.
+
+**Alternative if assumptions violated:**
+- Pairwise contrasts or ordinal regression with appropriate coding.
+
+---
+
+### C2. Sensitivity analyses for how slice-level data are summarized
+**Test name:** Sensitivity comparisons using:
+- tooth-level **max**, **mean**, or **apical-most slice** leakage
+
+**Purpose:** Show robustness of conclusions to the outcome aggregation rule.
+
+**Why appropriate (≥2):**
+1. Sectioning yields potentially multiple measurements per tooth.
+2. Leakage is often clinically driven by worst-case (max) vs typical-case (mean).
+
+**Why may not be appropriate (≥1):**
+- Post hoc multiple analyses can inflate false positives if not clearly labeled as sensitivity.
+
+**When NOT to use:**
+- If only one standardized apical-third measure exists per tooth.
+
+**Alternative if assumptions violated:**
+- Mixed-effects model retaining all slices with tooth random effect.
+
+---
+
+### C3. Outlier and influence diagnostics (continuous models)
+**Test name:** **Cook’s distance / leverage / DFBetas**
+
+**Purpose:** Evaluate whether a small number of specimens drive results.
+
+**Why appropriate (≥2):**
+1. In vitro leakage data can be skewed with occasional extreme leakage.
+2. Enhances credibility of group difference findings.
+
+**Why may not be appropriate (≥1):**
+- With very small sample sizes, influence measures can be unstable.
+
+**When NOT to use:**
+- For purely ordinal models (different diagnostics needed).
+
+**Alternative if assumptions violated:**
+- Robust regression / trimming / winsorizing with transparent reporting.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Paired t-test / Wilcoxon signed-rank test** for group comparisons  
+   - Groups are **independent** (each tooth in only one group).
+
+2. **Chi-square test of independence** (as primary analysis)  
+   - Outcome is leakage score/amount (ordinal/continuous), not simple categorical counts unless it’s dichotomized (dichotomization would waste information).
+
+3. **Simple multiple t-tests without multiplicity correction**  
+   - Inflates type I error across 5-group comparisons.
+
+4. **Factorial two-way ANOVA (Sealer × Technique) as if fully crossed**  
+   - The design appears **incomplete** (no ZOE + single cone group), so standard interaction terms are not estimable/interpretable without constraints.
+
+5. **Treating slices or rater scores as independent replicates in ANOVA/KW**  
+   - Violates independence (pseudo-replication); requires clustering handling or tooth-level summary.
+
+6. **Pearson correlation** between groups/techniques  
+   - Not relevant: predictors are categorical experimental assignments.
+
+---
+
+## TASK 4 — Summary (overall analytical approach)
+
+Use a **tooth-level primary leakage outcome** (or a mixed-effects model if slice-level is retained), quantify **inter-observer reliability**, then perform a **global 5-group comparison** followed by **multiplicity-controlled planned contrasts** that directly test the two null hypotheses (BioRoot vs ZOE within warm techniques; BioRoot warm vs BioRoot cold). Prefer **regression/mixed models** to handle the partially crossed design and any clustering, and report **effect sizes with confidence intervals** for interpretability.
+
+If you share the missing “apical leakage evaluation procedure” section (the redacted part) or the scoring scale, I can lock the SAP to the exact outcome type and provide exact contrast coding.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Experimental, *in vitro* study.
+
+2. **Objective**:  
+   - To evaluate the sealing ability of a bioceramic endodontic sealer (BioRoot RCS) and a ZOE sealer (Pulp Canal Sealer) at the apical thirds when used in combination with three different obturation techniques.
+
+3. **Null Hypotheses**:  
+   - The bioceramic endodontic cement can seal the apex similarly to traditional ZOE cement.  
+   - The bioceramic endodontic cement can seal the apex similarly when used with either cold or warm obturation techniques.
+
+4. **Groups**:  
+   - **Group 1**: Thermafil® Obturators with Pulp Canal Sealer™ (n=20).  
+   - **Group 2**: Thermafil® Obturators with BioRoot™ RCS (n=20).  
+   - **Group 3**: Warm vertical condensation with Pulp Canal Sealer™ (n=20).  
+   - **Group 4**: Single GP cone with BioRoot™ RCS (n=20).  
+   - **Group 5**: Warm vertical condensation with BioRoot™ RCS (n=20).
+
+5. **Sample Size**:  
+   - Total = 80 intact human single-rooted maxillary premolars (n=20 per group).
+
+6. **Variables**:  
+   - **Independent Variables**:  
+     - Type of sealer (BioRoot RCS vs. Pulp Canal Sealer).  
+     - Obturation technique (Thermafil, warm vertical condensation, single GP cone).  
+   - **Dependent Variable**:  
+     - Sealing ability measured by apical leakage (via silver nitrate tracer penetration).
+
+7. **Measurements**:  
+   - Apical leakage assessed using ammoniacal silver nitrate penetration and digital microscopy.  
+   - Scoring of tracer penetration was performed independently by two observers.
+
+8. **Data Collection Methods**:  
+   - Teeth were prepared using standardized chemo-mechanical procedures.  
+   - Root canals were obturated with specified techniques and sealers.  
+   - Apical leakage was evaluated after exposure to silver nitrate and subsequent slicing of the teeth.  
+   - Observations were scored by two calibrated observers.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: One-Way ANOVA  
+   - **Purpose**: To compare the mean apical leakage scores across the five groups.  
+   - **Why Appropriate**:  
+     1. The dependent variable (apical leakage) is continuous.  
+     2. There are more than two groups being compared.  
+   - **Why It May Not Be Appropriate**: Assumes normal distribution of leakage scores and homogeneity of variances.  
+   - **When This Test Should NOT Be Used**: If assumptions of normality or homogeneity of variance are violated.  
+   - **Alternative if Assumptions Are Violated**: Kruskal-Wallis test (non-parametric equivalent).
+
+2. **Test Name**: Post-Hoc Pairwise Comparisons (e.g., Tukey’s HSD or Bonferroni)  
+   - **Purpose**: To identify which specific groups differ significantly in apical leakage.  
+   - **Why Appropriate**:  
+     1. Necessary to interpret significant results from ANOVA.  
+     2. Controls for Type I error when making multiple comparisons.  
+   - **Why It May Not Be Appropriate**: If ANOVA assumptions are violated.  
+   - **When This Test Should NOT Be Used**: If the overall ANOVA is not significant.  
+   - **Alternative if Assumptions Are Violated**: Pairwise Mann-Whitney U tests with Bonferroni correction.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Independent Samples t-Test (for each pair of sealers within the same obturation technique).  
+   - **Purpose**: To compare the sealing ability of BioRoot RCS vs. Pulp Canal Sealer within each obturation technique.  
+   - **Why Appropriate**:  
+     1. Directly tests the null hypothesis regarding sealers.  
+     2. Suitable for comparing two groups with continuous outcomes.  
+   - **Why It May Not Be Appropriate**: Assumes normality and equal variances.  
+   - **When This Test Should NOT Be Used**: If data are not normally distributed or variances are unequal.  
+   - **Alternative if Assumptions Are Violated**: Mann-Whitney U test.
+
+2. **Test Name**: Two-Way ANOVA  
+   - **Purpose**: To assess the interaction effect between sealer type and obturation technique on apical leakage.  
+   - **Why Appropriate**:  
+     1. Tests both main effects and interaction effects in a single model.  
+     2. Accounts for variability due to both factors.  
+   - **Why It May Not Be Appropriate**: Requires balanced sample sizes and assumes normality.  
+   - **When This Test Should NOT Be Used**: If interaction effects are not of interest or assumptions are violated.  
+   - **Alternative if Assumptions Are Violated**: Generalized linear models (GLMs) or non-parametric alternatives.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Intraclass Correlation Coefficient (ICC)  
+   - **Purpose**: To assess inter-observer reliability in scoring apical leakage.  
+   - **Why Appropriate**:  
+     1. Evaluates consistency between the two observers.  
+     2. Ensures reliability of the dependent variable measurement.  
+   - **Why It May Not Be Appropriate**: Not directly related to hypothesis testing.  
+   - **When This Test Should NOT Be Used**: If observer agreement is not a concern.  
+   - **Alternative if Assumptions Are Violated**: Cohen’s kappa (if scores are ordinal).
+
+2. **Test Name**: Effect Size Calculations (e.g., Cohen’s d or η²)  
+   - **Purpose**: To quantify the magnitude of differences between groups.  
+   - **Why Appropriate**:  
+     1. Provides additional context to statistical significance.  
+     2. Useful for interpreting clinical relevance.  
+   - **Why It May Not Be Appropriate**: Does not replace hypothesis testing.  
+   - **When This Test Should NOT Be Used**: If group differences are not statistically significant.  
+   - **Alternative if Assumptions Are Violated**: Non-parametric effect size measures.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1. **Chi-Square Test**:  
+   - **Why Not Appropriate**: The dependent variable (apical leakage) is continuous, not categorical.  
+
+2. **Paired Samples t-Test**:  
+   - **Why Not Appropriate**: The study design does not involve paired or repeated measurements.  
+
+3. **Linear Regression**:  
+   - **Why Not Appropriate**: The primary goal is group comparison, not prediction or modeling of relationships.
+
+---
+
+### TASK 4: SUMMARY
+
+The analytical approach focuses on comparing the sealing ability of different sealers and obturation techniques using appropriate statistical methods. One-Way ANOVA is the primary test for group comparisons, supplemented by post-hoc tests and two-way ANOVA to explore interaction effects. Reliability of measurements is assessed using ICC, and effect sizes are calculated to provide clinical context. Non-parametric alternatives are recommended if assumptions are violated. This comprehensive plan ensures robust and valid conclusions regarding the study objectives.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1: INFORMATION EXTRACTION  
+===============================  
+
+1. Study design  
+- Type: In vitro laboratory experimental study.  
+- Objective:
+  - Evaluate apical sealing ability (apical microleakage) of:
+    - A bioceramic endodontic sealer (BioRoot RCS) and
+    - A zinc oxide-eugenol (ZOE) sealer (Pulp Canal Sealer),
+    at the apical third when used with different obturation techniques.
+- Null hypotheses:
+  1) BioRoot RCS seals the apex similarly to traditional ZOE cement.  
+  2) BioRoot RCS provides similar apical sealing when used with cold vs warm obturation techniques.  
+
+2. Sample and allocation  
+- Specimens: 80 intact human single‑rooted maxillary premolars, extracted for orthodontic reasons.  
+- Inclusion criteria:
+  - Single-rooted maxillary premolars, intact.  
+  - No external radicular cracks (checked under 4.5× stereomicroscope).  
+- Storage:
+  - 0.9% saline, 37°C, to prevent dehydration.  
+- Randomization:
+  - Teeth randomly divided into 5 groups (n=20 per group).  
+- Groups:
+  - Group 1 (Thermafil + ZOE):
+    - Thermafil® Obturators + Pulp Canal Sealer™ (ZOE-based), n=20.
+  - Group 2 (Thermafil + BioRoot):
+    - Thermafil® Obturators + BioRoot™ RCS (bioceramic), n=20.
+  - Group 3 (Warm vertical + ZOE):
+    - Warm vertical condensation + Pulp Canal Sealer™, n=20.
+  - Group 4 (Single cone + BioRoot):
+    - Single GP cone (cold) + BioRoot™ RCS, n=20.
+  - Group 5 (Warm vertical + BioRoot):
+    - Warm vertical condensation + BioRoot™ RCS, n=20.
+
+3. Endodontic preparation (standardized across groups)  
+- Working length:
+  - Determined with pre-curved stainless steel manual K-files #8 and #10.  
+- Instrumentation:
+  - NiTi Mtwo File system, with endodontic motor (X-SMART™ Plus) at 250 rpm, following manufacturer’s instructions.
+- Irrigation:
+  - After each rotary instrument: 2.5 mL of 5% NaOCl (preheated to 50°C), delivered with 31-gauge needle.
+  - Apical patency maintained with #10 K-file after each larger file.
+  - Final irrigation:
+    - 2 mL of 17% EDTA for 2 minutes.
+    - Final rinse 5 mL of 5% NaOCl for 5 minutes.
+- Drying:
+  - Canals dried with paper points.
+- Operators:
+  - Two calibrated operators (GM and VV).
+
+4. Obturation  
+- Techniques and materials as per group definitions above:
+  - Warm techniques:
+    - Thermafil® carrier-based warm technique (Groups 1, 2).
+    - Warm vertical condensation (Groups 3, 5).
+  - Cold technique:
+    - Single cone (Group 4).
+  - Sealers:
+    - Pulp Canal Sealer™ (ZOE-based; Groups 1, 3).
+    - BioRoot™ RCS bioceramic sealer (Groups 2, 4, 5).
+
+5. Outcome: Apical sealing / microleakage  
+- Leakage model:
+  - Nail varnish applied on all tooth surfaces except 2 mm around apex.  
+  - Immersion in ammoniacal silver nitrate solution (1:4 with distilled water; filtered with 0.22 μm filter).
+  - Incubation:
+    - 24 h immersion in silver nitrate under laboratory light.
+    - Rinsed in water 3× for 10 min.
+  - Nail varnish removal with acetone.
+  - Immersion in diluted photo-developer (Kodak; 1:10 with distilled water) for 8 hours.
+  - Rinsed again 3× in water for 10 min.
+- Sectioning:
+  - Embedded in transparent self-curing acrylic resin.
+  - Sectioned with low-speed diamond saw (Isomet) under water:
+    - Into two slices along the long axis and perpendicular to the root (description suggests longitudinal and transverse planes; exact plane for scoring is not fully clear).
+- Measurement:
+  - Examined with digital microscope.
+  - Two observers (DP, MF) independently scored the amount of tracer along the interface.
+  - Apical leakage evaluated following a previously described procedure (details redacted, but most likely:
+    - either a ranked/ordinal score (e.g., 0–3 scale) or
+    - a continuous measurement (e.g., length of silver penetration in mm or % of interface).
+- Blinding:
+  - The text implies only that observers were independent; blinding to group is not explicitly stated but would be desirable.
+- Inter-rater assessment:
+  - Not described, but there are two independent raters → potential for assessment of interobserver reliability.
+
+6. Variables  
+- Primary independent variables:
+  - Sealer type (2 levels):
+    - BioRoot RCS vs ZOE (Pulp Canal Sealer).
+  - Filling/obturation technique (3 main conceptual levels):
+    - Carrier-based warm (Thermafil).
+    - Warm vertical condensation.
+    - Cold single cone.
+  - In practice, they are crossed but not fully factorial:
+    - ZOE occurs only with Thermafil and warm vertical.
+    - BioRoot occurs with Thermafil, warm vertical, and single cone.
+- Group variable:
+  - Five-level categorical factor (Groups 1–5 as defined).
+- Primary outcome:
+  - Apical microleakage score (amount of tracer along canal–filling interface at apical third).
+  - Likely continuous (e.g., mm of penetration) or ordered categorical (severity score). Exact scale is not shown in the excerpt, but figures indicate “results” per group, likely means or medians.
+- Rater variable:
+  - Two raters (binary factor); used to estimate reliability.
+
+7. Study questions (aligned with variables)  
+- Between-sealer comparison:
+  - Among comparable techniques (e.g., Thermafil with BioRoot vs ZOE; warm vertical with BioRoot vs ZOE).
+- Within-BioRoot comparison across techniques:
+  - BioRoot with Thermafil vs BioRoot with warm vertical vs BioRoot with single cone.
+- Overall group differences:
+  - Group 1 vs 2 vs 3 vs 4 vs 5 in apical leakage.
+
+8. Data structure  
+- Observational units:
+  - Teeth (n=80). Each tooth belongs to exactly 1 group.
+- Measurements:
+  - Likely one apical leakage score per tooth per rater (DP, MF), potentially averaged or reconciled into a final score.
+  - If multiple slices per tooth or multiple sites per root were scored, then:
+    - Nested structure (measurements within tooth; tooth within group).
+  - The text does not explicitly state averaging, but typical practice is either:
+    - average across slices, or
+    - use maximum leakage observed per tooth.
+
+---
+
+TASK 2: STATISTICAL ANALYSIS PLAN  
+=================================
+
+Below, I provide a detailed plan structured by outcome scale contingencies. When choices depend on whether the leakage variable is continuous vs ordinal, I state both options.
+
+Pre-analysis steps (all categories)  
+----------------------------------
+
+1) Data cleaning and checking  
+- Verify:
+  - Group labels (1–5) and sample sizes (should be 20 per group).
+  - Missing data; document reasons if any tooth/measurement is excluded.
+  - Outliers in leakage measurements (visualized by boxplots per group).
+
+2) Identify the nature of the leakage outcome  
+- From raw data or original scoring protocol:
+  - If measurement is in mm or µm (or % of interface) on a continuous scale → treat as continuous.  
+  - If a discrete ordinal score (e.g., 0–3, 0–4 scale) → treat as ordinal.  
+- This decision governs whether ANOVA vs nonparametric tests (e.g., Kruskal–Wallis) will serve as the primary analysis.
+
+3) Pre-specify primary contrasts  
+- Primary comparisons related to hypotheses:  
+  H1 (BioRoot vs ZOE):
+  - Thermafil + BioRoot (G2) vs Thermafil + ZOE (G1).  
+  - Warm vertical + BioRoot (G5) vs warm vertical + ZOE (G3).  
+  H2 (BioRoot with different techniques):
+  - BioRoot:
+    - Thermafil (G2) vs warm vertical (G5) vs single cone (G4).
+- Secondary global comparison:
+  - All five groups simultaneously (G1–G5).
+
+CATEGORY A – MANDATORY ANALYSES  
+--------------------------------
+
+A1. Descriptive statistics and visualization  
+
+Test: None (descriptive analysis).  
+
+Purpose  
+- Summarize the distribution of apical leakage by group (and by sealer/technique categories).  
+- Provide basis for later inferential tests and assumption checks.
+
+Implementation  
+- For continuous leakage:
+  - Mean, SD, median, IQR, range by group.
+  - Histograms and boxplots per group.
+- For ordinal leakage:
+  - Frequencies and percentages in each category by group.
+  - Stacked bar charts or violin plots (if underlying continuous measure exists).
+- If two raters:
+  - Present descriptive statistics by rater and by group.
+
+Why appropriate  
+1) Essential to understand central tendencies and dispersion before inferential tests.  
+2) Allows visual assessment of homogeneity of variance, skewness, and outliers.
+
+Why it may not be appropriate  
+- Not inappropriate per se; the issue is misinterpretation:
+  - Overreliance on means for heavily skewed ordinal data could be misleading.
+
+When NOT to use  
+- Never omitted; but avoid presenting means alone if the data are clearly ordinal with few categories.
+
+Alternative if assumptions are violated  
+- For skewed or ordinal data, emphasize medians, IQRs, and full distributions (e.g., frequency tables) instead of means.
+
+---
+
+A2. Inter-rater reliability assessment  
+
+Test (continuous outcome):  
+- Intraclass Correlation Coefficient (ICC), two-way random effects, absolute agreement (e.g., ICC(2,1)).  
+
+Test (ordinal outcome):  
+- Weighted Cohen’s kappa (e.g., quadratic weights).  
+
+Purpose  
+- Quantify agreement between the two independent observers who scored apical leakage.  
+- Validate that the final leakage measurement per tooth is reliable.
+
+Why appropriate  
+1) There are two independent raters per tooth for the same outcome.  
+2) Reliability assessment is crucial to justify pooling (e.g., averaging) or using consensus scores.
+
+Why it may not be appropriate  
+- If each rater scored a different set of teeth (not the case here) or if raw per-rater scores are unavailable.  
+- If leakage was already resolved by consensus and only a single final score per tooth is recorded, formal inter-rater analysis may not be feasible.
+
+When NOT to use  
+- When only a single rater’s scores exist, or when raters’ scores are not recorded separately.
+
+Alternative if assumptions are violated  
+- If assumptions for ICC (e.g., normality) are severely violated:
+  - Use nonparametric ICC estimates or Bland–Altman plots to assess agreement.
+- For categorical data with more than two raters:
+  - Use Fleiss’ kappa instead.
+
+---
+
+A3. Primary global comparison across five groups  
+
+If leakage is continuous and approximately normal with similar variances:  
+- Test: One-way ANOVA.  
+
+Purpose  
+- Test whether mean apical leakage differs between the five obturation/sealer groups (G1–G5).
+
+Why appropriate  
+1) The primary outcome is continuous, with one observation per tooth and five independent groups (n=20 each).  
+2) One-way ANOVA is designed for comparing means across more than two independent groups and allows post hoc contrasts.
+
+Why it may not be appropriate  
+- Data may not be normally distributed, or variances may be unequal, especially with leakage variables often skewed.  
+- The real design is partially factorial (sealer × technique), which ANOVA could handle better in a 2-way format if fully crossed; here, the crossing is incomplete.
+
+When NOT to use  
+- When violations of normality and homoscedasticity are severe and not corrected by transformation.  
+- When the leakage is clearly ordinal with few categories.
+
+Alternative if assumptions are violated  
+- Kruskal–Wallis test (nonparametric analogue) for five independent groups (see A3b).  
+- If variances unequal but normality acceptable: Welch’s ANOVA.
+
+If leakage is ordinal or non-normal:  
+- Test: Kruskal–Wallis test.  
+
+Purpose  
+- Nonparametric comparison of leakage distributions among the five groups.
+
+Why appropriate  
+1) Does not require normality; suitable for ordinal or skewed continuous outcomes.  
+2) Handles independent groups with similar sample sizes.
+
+Why it may not be appropriate  
+- Cannot easily adjust for covariates or model interactions (sealer × technique).  
+- Gives a global test; requires further multiple comparisons for pairwise differences.
+
+When NOT to use  
+- If data are clearly normal with equal variances and you wish to estimate model-based means with confidence intervals and interactions; ANOVA is more informative in that case.
+
+Alternative  
+- One-way ANOVA / Welch’s ANOVA, as above.
+
+---
+
+A4. Planned pairwise comparisons (hypothesis-driven)  
+
+Tests if leakage is continuous and ANOVA is valid:  
+- Post hoc multiple comparisons:
+  - Tukey’s HSD (for equal variances).
+  - Games–Howell (if variances unequal, or Welch’s ANOVA used).
+- Alternatively, pre-specified contrasts within ANOVA framework.  
+
+For ordinal leakage or ANOVA assumptions violated:  
+- Pairwise Mann–Whitney U tests (with multiple comparison correction) after a significant Kruskal–Wallis.  
+
+Primary contrasts  
+- For H1 (BioRoot vs ZOE under same technique):  
+  - Group 1 vs Group 2 (Thermafil+ZOE vs Thermafil+BioRoot).  
+  - Group 3 vs Group 5 (Warm vertical+ZOE vs Warm vertical+BioRoot).
+- For H2 (BioRoot across techniques):  
+  - Group 2 vs Group 4 vs Group 5 (BioRoot with Thermafil vs single cone vs warm vertical).  
+  - Pairwise comparisons among these 3 groups.
+
+Purpose  
+- Directly address the study’s null hypotheses with controlled type I error.
+
+Why appropriate  
+1) Hypotheses explicitly concern pairwise (and triad) comparisons among specific clinical combinations.  
+2) Post hoc tests (or preplanned contrasts) identify which groups differ when the global test is significant.
+
+Why it may not be appropriate  
+- Too many unstructured pairwise tests without correction can inflate type I error.  
+- If sample size is small and effect sizes modest, multiple comparison procedures can reduce power.
+
+When NOT to use  
+- If global test (ANOVA/Kruskal–Wallis) is not significant; pairwise tests may be unnecessary or should be interpreted cautiously.  
+- If the research question is only exploratory and no specific hypotheses exist, pre-specified contrasts should be fewer.
+
+Alternative if assumptions are violated  
+- Use permutation-based pairwise tests for robustness.  
+- For ordinal outcomes, use cumulative link models (ordinal regression) with group as predictor, instead of multiple pairwise tests (see Category B).
+
+---
+
+A5. Effect size estimation and confidence intervals  
+
+Test/statistic:  
+- For ANOVA: Partial eta-squared (η²p) or omega-squared (ω²).  
+- For pairwise comparisons:
+  - Cohen’s d (or Hedges’ g) for continuous outcomes.
+  - Cliff’s delta or rank-biserial correlation for nonparametric comparisons.
+  - For ordinal models: odds ratios from ordinal logistic regression.
+
+Purpose  
+- Quantify the magnitude of differences between groups, not just statistical significance.  
+- Provide uncertainty (95% CIs) around effect sizes.
+
+Why appropriate  
+1) Helps interpret clinical relevance of differences in leakage.  
+2) Standard in modern reporting guidelines to complement p-values.
+
+Why it may not be appropriate  
+- With small sample size and non-normal data, confidence intervals may be wide and unstable.  
+- If outcome is strictly ordinal and sample size limited, effect sizes like Cohen’s d may not be meaningful.
+
+When NOT to use  
+- Avoid Cohen’s d when distributions are heavily skewed or ordinal; use nonparametric effect sizes instead.
+
+Alternative  
+- Nonparametric effect sizes (Cliff’s delta, rank-biserial r).  
+- Present median differences with Hodges–Lehmann confidence intervals.
+
+---
+
+CATEGORY B – RECOMMENDED ANALYSES  
+----------------------------------
+
+B1. Factorial modeling of sealer and technique (where feasible)  
+
+Test (continuous outcome, if design allows):  
+- Two-way ANOVA (or generalized linear model) with factors:
+  - Sealer (BioRoot vs ZOE).
+  - Technique (Thermafil, warm vertical, single cone).
+- Note: The design is unbalanced/incomplete:
+  - Single cone only exists with BioRoot → interaction structure is constrained.
+
+Purpose  
+- Assess:
+  - Main effect of sealer.
+  - Main effect of technique.
+  - Interaction (sealer × technique), as far as data allow.  
+- Allows separation of the effect of sealer from the effect of obturation technique.
+
+Why appropriate  
+1) Reflects the conceptual 2-factor structure of the experiment (sealer and technique).  
+2) More parsimonious than treating each group as completely unrelated; uses shared information across levels.
+
+Why it may not be appropriate  
+- The design is not fully crossed: For ZOE, single cone is absent, so interaction is partially aliased.  
+- Assumes normality and equal variances across combinations; may not hold.
+
+When NOT to use  
+- If design is strongly unbalanced or if some combinations of sealer × technique are absent (as here), interpret interaction cautiously; it may be preferable to restrict analysis to the subset with complete crossing:
+  - Example: Use only Thermafil and warm vertical groups, both with ZOE and BioRoot (G1, G2, G3, G5).
+
+Alternative if assumptions are violated  
+- Fit a generalized linear model with appropriate link, or nonparametric factorial methods (e.g., aligned rank transform for nonparametric factorial ANOVA).  
+- Alternatively, run separate ANOVAs:
+  - For Thermafil only (G1 vs G2).
+  - For warm vertical only (G3 vs G5).
+  - For BioRoot only (G2, G4, G5).
+
+---
+
+B2. Ordinal regression (if leakage is on an ordered categorical scale)  
+
+Test:  
+- Cumulative link model (e.g., proportional odds ordinal logistic regression) with group as predictor.  
+- Optionally, model sealer and technique factors separately as in B1.
+
+Purpose  
+- Model the probability distribution of leakage scores across levels, accounting for ordering.  
+- Estimate odds ratios for higher leakage categories between groups.
+
+Why appropriate  
+1) Optimal for ordered categorical outcomes, more informative than treating them as continuous or nominal.  
+2) Provides interpretable odds ratios and can incorporate multiple predictors (sealer, technique).
+
+Why it may not be appropriate  
+- Requires proportional odds assumption; may not hold if effect differs across levels of leakage.  
+- Sample size (n=20 per group) may be limited if there are many leakage categories.
+
+When NOT to use  
+- When the outcome is truly continuous, not categorized.  
+- When the proportional odds assumption fails substantially and cannot be remedied (e.g., partial proportional odds models not feasible).
+
+Alternative  
+- Multinomial logistic regression (if proportional odds fails).  
+- Nonparametric tests like Kruskal–Wallis and pairwise Mann–Whitney tests.
+
+---
+
+B3. Inter-rater agreement via Bland–Altman plots (if continuous)  
+
+Test/Method:  
+- Bland–Altman analysis of differences between raters (DP vs MF).
+
+Purpose  
+- Visualize any systematic bias between observers.  
+- Check for patterns in disagreement across the measurement range.
+
+Why appropriate  
+1) Complements ICC by highlighting bias (one rater consistently higher) and heteroscedasticity.  
+2) Important for outcomes like leakage where measurement error may differ across severity.
+
+Why it may not be appropriate  
+- Requires continuous outcome.  
+- Less meaningful for strictly ordinal, discrete scores with few categories.
+
+When NOT to use  
+- If outcome is categorized or if only one final consensus score is available.
+
+Alternative  
+- For ordinal outcomes, focus on kappa statistics and cross-tabulations of rater scores.
+
+---
+
+B4. Sensitivity analyses  
+
+Examples  
+- Refit main analyses:
+  - Excluding outliers (defined a priori).
+  - Using median-based methods (e.g., median test, robust ANOVA) for skewed data.
+- Compare results using:
+  - Mean of raters vs maximum of raters vs consensus scores.
+
+Purpose  
+- Evaluate robustness of conclusions to analytic choices and potential measurement artifacts.
+
+Why appropriate  
+1) Confirms that main conclusions are not driven by a few extreme observations or measurement decisions.  
+2) Enhances credibility of findings in a relatively small in vitro study.
+
+Why it may not be appropriate  
+- With small dataset, repeated analyses can yield variable results and complicate interpretation.  
+- Without pre-specification, may be perceived as data-driven.
+
+When NOT to use  
+- If sample size is too limited to sustain multiple analytic variants (e.g., n per group <10).  
+- If sensitivity analyses were not pre-specified and risk overinterpretation.
+
+Alternative  
+- Present primary analysis only but with clear reporting of assumption checks and limitations.
+
+---
+
+CATEGORY C – OPTIONAL ANALYSES  
+-------------------------------
+
+C1. Exploratory variance decomposition or random effects modeling  
+
+Test/Model:  
+- Mixed-effects model (linear mixed model or generalized linear mixed model) if:
+  - Multiple sections per tooth, or multiple measurement points per tooth, were recorded.
+
+Purpose  
+- Account for clustering of multiple measurements within teeth (random intercept for tooth).  
+- Estimate between-tooth vs within-tooth variability in leakage.
+
+Why appropriate  
+1) Reflects the hierarchical structure of the data if multiple slices per tooth were coded separately.  
+2) Provides more efficient estimates by using all available observations.
+
+Why it may not be appropriate  
+- If the final dataset contains only one leakage value per tooth (averaged).  
+- Small sample size and limited numbers of sections per tooth can hinder convergence and stability.
+
+When NOT to use  
+- When one observation per tooth is recorded; no clustering to model.  
+- When the study did not record which slice belongs to which tooth.
+
+Alternative  
+- Use tooth-level summaries (e.g., maximum leakage per tooth) and analyze with simple ANOVA/Kruskal–Wallis as in Category A.
+
+---
+
+C2. Rank-based ANOVA-type statistics (nonparametric factorial analysis)  
+
+Test:  
+- Aligned Rank Transform (ART) for nonparametric factorial ANOVA, or  
+- Brunner–Munzel-type ANOVA-type statistics for rank-based factorial designs.
+
+Purpose  
+- Assess sealer and technique effects and their interaction in a factorial framework without requiring normality.
+
+Why appropriate  
+1) Allows analysis of sealer × technique factors under nonparametric assumptions.  
+2) Preserves interpretability of interactions, which is difficult with separate Kruskal–Wallis tests.
+
+Why it may not be appropriate  
+- Methods are more complex and less familiar to many readers.  
+- Require specialized software and careful interpretation.
+
+When NOT to use  
+- If journal audience is unlikely to be familiar and the added complexity outweighs interpretive gain.  
+- If simple tests already clearly address the main hypotheses.
+
+Alternative  
+- Stick to separate ANOVAs/Kruskal–Wallis and planned comparisons.
+
+---
+
+C3. Graphical summaries such as violin plots, raincloud plots  
+
+Purpose  
+- Visualize full distribution of leakage by group, including density, median, and raw data points.
+
+Why appropriate  
+1) Helpful in communicating variation and overlaps between groups.  
+2) Particularly valuable when sample sizes are small and distributions non-normal.
+
+Why it may not be appropriate  
+- Some journals may prefer simpler graphics (boxplots).  
+- Risk of overcomplication for readers.
+
+When NOT to use  
+- If space limitations or journal guidelines restrict figure types.
+
+Alternative  
+- Boxplots with jittered dotplots overlaid.
+
+---
+
+TASK 3: INAPPROPRIATE TESTS  
+============================
+
+Below are tests that should NOT be used for this study, with reasons.
+
+1) Independent-samples t-test applied multiple times for all pairwise comparisons without global test or correction  
+- Why inappropriate:
+  - There are five groups; doing all 10 pairwise t-tests without adjustment inflates type I error.
+  - Ignores structure of design (sealer × technique).
+- When not to use:
+  - When k > 2 groups; prefer ANOVA followed by controlled post hoc tests.
+- Alternative:
+  - One-way ANOVA with Tukey or Welch + Games–Howell (for continuous case).
+  - Kruskal–Wallis + corrected pairwise comparisons (for nonparametric).
+
+2) Paired t-test  
+- Why inappropriate:
+  - Observations are independent teeth across groups; not paired or matched.
+- When not to use:
+  - Any scenario without natural pairing (same tooth measured before and after, or matched pairs).
+- Alternative:
+  - Independent-sample t-tests or ANOVA (as appropriate) for between-group comparisons.
+
+3) Chi-square test of independence treating leakage as categorical but collapsing groups arbitrarily  
+- Why inappropriate:
+  - If leakage is ordinal or continuous, collapsing into binary categories (e.g., leakage vs no leakage) discards information and reduces power.
+  - Treats ordered data as nominal, ignoring ordering.
+- When not to use:
+  - When more informative analyses (ANOVA, ordinal regression) are possible.
+- Alternative:
+  - Ordinal logistic regression or Kruskal–Wallis if outcome is ordinal.
+
+4) Correlation analysis between sealer and leakage (e.g., Pearson correlation)  
+- Why inappropriate:
+  - Sealer is a categorical factor (ZOE vs BioRoot), not a continuous variable; correlation assumes continuous variables.
+- When not to use:
+  - When predictors are categorical and interest is in group differences, not linear associations.
+- Alternative:
+  - Group comparison tests (ANOVA, Mann–Whitney, etc.).
+
+5) Linear regression with leakage as predictor of sealer type (reverse causality, mis-specified model)  
+- Why inappropriate:
+  - Sealer is an experimental factor; analysis should treat sealer as predictor, not outcome.
+- When not to use:
+  - When research question is cause-effect from treatment to outcome.
+- Alternative:
+  - Regression with sealer (and technique) as predictors and leakage as outcome.
+
+6) Repeated measures ANOVA  
+- Why inappropriate:
+  - No repeated measures from the same tooth across time or conditions; each tooth belongs to one group only.
+- When not to use:
+  - When design is purely between-subjects.
+- Alternative:
+  - One-way or factorial ANOVA.
+
+7) Survival analysis (e.g., Kaplan–Meier, Cox regression)  
+- Why inappropriate:
+  - No time-to-event outcome; leakage is measured at a single endpoint.
+- Alternative:
+  - Standard group comparisons as detailed above.
+
+8) Logistic regression with binary leakage artificially defined (e.g., “high leakage vs low leakage”)  
+- Why inappropriate:
+  - Dichotomization of continuous or ordinal outcomes wastes information and can obscure group differences.
+- Alternative:
+  - Use full-scale outcome in ANOVA or ordinal regression.
+
+9) Parametric ANCOVA with covariates that do not exist  
+- Why inappropriate:
+  - In this in vitro study, patient-level covariates (age, sex, etc.) are absent; introducing unnecessary covariates would be artificial.
+- Alternative:
+  - Keep models simple (group factors only).
+
+---
+
+TASK 4: SUMMARY OF ANALYTICAL APPROACH  
+======================================
+
+- The study is a controlled, in vitro experiment with 5 independent groups of equal size, comparing apical sealing (microleakage) across combinations of sealer type and obturation technique.  
+- The core analytical strategy is:
+  1) Assess reliability of leakage measurements between two raters (ICC or weighted kappa).  
+  2) Choose outcome modeling framework based on actual measurement scale:
+     - Continuous: One-way ANOVA (or Welch’s ANOVA) with planned comparisons; effect sizes and CIs.  
+     - Ordinal: Kruskal–Wallis and/or ordinal logistic regression.  
+  3) Focus on two main scientific questions:
+     - Is BioRoot RCS comparable or superior to ZOE in sealing, under the same technique?  
+     - Does BioRoot’s sealing ability differ between warm and cold obturation techniques?  
+  4) Use appropriate post hoc/contrast methods to test specific group differences, while controlling for multiple comparisons.  
+  5) Supplement with effect size estimates and, optionally, factorial and sensitivity analyses to separate sealer from technique effects and check robustness.
+
+This approach respects the experimental design, accounts for measurement reliability, and uses statistical methods aligned with the nature of the leakage outcome, while avoiding inappropriate tests that misrepresent the structure of the data.

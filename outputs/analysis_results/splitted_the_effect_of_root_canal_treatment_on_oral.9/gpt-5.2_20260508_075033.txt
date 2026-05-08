@@ -1,0 +1,275 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_the_effect_of_root_canal_treatment_on_oral.9.pdf
+Status : ok
+Time   : 20260508_075033
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study overview
+- **Design:** Parallel-group clinical trial with **repeated measures** of the same outcome over time (pre/post within person), comparing **single-visit vs multiple-visit** root canal treatment (RCT).
+- **Setting/period:** Dental teaching hospital, Makkah, Saudi Arabia; **Sep 2019–Jan 2020**.
+- **Primary objective:** Assess the impact of RCT on **oral health-related quality of life (OHRQoL)** and compare change between **one-visit** vs **multiple-visit** treatment.
+- **Ethics:** IRB approved (132-19); written informed consent.
+
+### Participants
+- **Sampling:** Convenience sample.
+- **Planned sample size:** 16 per group (power calculation described).
+- **Enrolled sample size:** 32 total (stated explicitly).  
+  *Note:* Text also inconsistently states “assigned randomly into two groups of fifty patients each” (likely an error; plan should assume **n=32** unless full paper clarifies).
+- **Age range:** 16–60 years.
+- **Inclusion criteria:** Need RCT; diagnosed with **symptomatic irreversible pulpitis** and **normal periapical tissue**.
+- **Exclusion criteria:** Calcified canals; systemic diseases that may complicate RCT (e.g., endocarditis); any resorption.
+
+### Groups / interventions
+- **Group 1: Single-visit RCT**
+  - OHIP-14 completed **twice**:
+    1) at beginning of treatment (baseline)  
+    2) at the **second follow-up visit after obturation** (post-treatment)
+- **Group 2: Multiple-visit RCT**
+  - OHIP-14 completed **three times**:
+    1) baseline (beginning)  
+    2) next visit after access cavity + pulp extirpation  
+    3) after obturation
+
+### Outcomes, variables, measurements
+- **Primary outcome:** **OHIP-14 total score** (0–56), higher = worse OHRQoL.
+  - Each item coded 0–4 (never → very often), summed across 14 items.
+- **Secondary/other variables mentioned:** “Sociodemographic factors” were verified via questionnaire/interview (specific variables not listed in provided text).
+- **Measurement method:** Face-to-face interview using **Arabic OHIP-14**; “interview form” used to reduce information bias.
+
+### Randomization / bias control
+- **Allocation:** “Assigned randomly” to single vs multiple visits (method not described).
+- **Operator bias control:** Two undergraduate operators with similar performance; supervised by one endodontist.
+- **Selection bias:** Authors state they used **mixed-effect models** to reduce selection bias (more accurately: to account for correlation/repeated measures and possibly covariate imbalance).
+
+### Sample size / power basis
+- Targeted detection of **difference in mean changes = 8.0** OHIP points, **SD=6.0**, **power=82%**, **alpha=0.05** → **16 per group**.
+
+---
+
+## TASK 2: Statistical Analysis Plan (SAP)
+
+### A. Core analytic principles (apply to all analyses)
+1. **Analysis populations**
+   - **Intention-to-treat (ITT):** analyze all randomized participants in assigned group.
+   - **Per-protocol (PP):** optional sensitivity set (completed assigned visit schedule and outcome measures).
+2. **Outcome structure**
+   - OHIP-14 total is discrete/ordinal-sum but often treated as approximately continuous; nevertheless, check distribution.
+3. **Missing data**
+   - Describe extent/pattern by group and time.
+   - Prefer likelihood-based models (mixed models) that are valid under **MAR**; add sensitivity checks (see optional tests).
+4. **Descriptives**
+   - Baseline: age, sex (if collected), and other sociodemographics; baseline OHIP-14 by group.
+   - Outcome summaries: mean(SD) and median(IQR) OHIP by time and group.
+5. **Primary estimand**
+   - **Between-group difference in change** in OHIP-14 from baseline to “after obturation” (final measurement), accounting for repeated measures.
+
+---
+
+## CATEGORY A – MANDATORY tests/models
+
+### A1) Linear Mixed-Effects Model (LMM) for repeated OHIP-14
+- **Purpose:** Primary comparison of OHIP-14 trajectory over time between groups; estimate **group × time** interaction (difference-in-differences).
+- **Why appropriate (≥2):**
+  1. Handles **correlated repeated measures** within individuals (baseline/follow-ups).
+  2. Uses all available timepoints (especially important because groups have **different number of measurements**: 2 vs 3), without needing to discard intermediate data.
+  3. Provides directly interpretable estimates: change from baseline within each group and **between-group difference in change** at obturation.
+- **Why it may not be appropriate (≥1):**
+  - If OHIP-14 residuals are highly non-normal with strong floor effects, LMM assumptions may be poor (especially with small n).
+- **When NOT to use:**
+  - If outcome is extremely skewed/zero-inflated and transformation/robust methods are insufficient; or if timepoints are not comparable/clearly defined (e.g., “follow-up visit” timing varies drastically and is not recorded).
+- **Alternative if assumptions violated:**
+  - **Generalized Linear Mixed Model (GLMM)** with appropriate family (e.g., ordinal or Poisson/negative binomial if treated as counts), or **rank-based mixed models**, or **GEE with robust SE**.
+
+**Model specification (recommended minimum):**
+- Fixed effects: group (single vs multiple), time (categorical: baseline, extirpation [multi only], obturation), and **group×time**.
+- Random effects: subject-level random intercept; consider random slope for time if supported.
+- Primary contrast: difference between groups at obturation adjusted for baseline (via interaction/estimated marginal means).
+
+---
+
+### A2) Baseline comparability: two-sample tests for key baseline variables
+- **Purpose:** Describe baseline balance; identify major imbalances to consider as covariates (not for “proving” randomization).
+- **Why appropriate:**
+  1. Small samples can have chance imbalance; documenting it supports interpretability.
+  2. Helps justify covariate-adjusted sensitivity models (e.g., adjusting for age/sex/baseline OHIP).
+- **Why it may not be appropriate:**
+  - Significance testing of baseline differences can be misleading; emphasis should be on **standardized differences** rather than p-values.
+- **When NOT to use:**
+  - Do not use baseline p-values to decide whether randomization “worked” or to select covariates mechanically.
+- **Alternatives if assumptions violated:**
+  - For continuous: **Wilcoxon rank-sum** instead of t-test.  
+  - For categorical: **Fisher’s exact** instead of chi-square.
+
+(Include as part of the SAP: report standardized mean differences alongside these.)
+
+---
+
+### A3) Within-group pre–post change (paired analysis to support interpretation)
+- **Test name:** Paired t-test (baseline vs obturation within each group) *or* model-based estimated change from LMM
+- **Purpose:** Quantify whether OHRQoL improved from baseline within each treatment strategy.
+- **Why appropriate:**
+  1. Directly evaluates the clinical question “does OHRQoL improve after RCT?”
+  2. Accounts for within-person pairing (if paired t-test) or uses all data (if LMM-derived).
+- **Why it may not be appropriate:**
+  - Paired t-test ignores intermediate timepoint (multiple-visit group) and cannot compare trajectories.
+- **When NOT to use:**
+  - Do not use paired t-tests as the *primary* method for between-group inference.
+- **Alternative if assumptions violated:**
+  - **Wilcoxon signed-rank** test (within-group) or rely on robust/mixed modeling.
+
+---
+
+## CATEGORY B – RECOMMENDED tests/models
+
+### B1) Effect size estimation with confidence intervals
+- **Test/measure:** Mean change difference (Δ) with **95% CI** from LMM; optionally standardized effect (Hedges g for change scores).
+- **Purpose:** Provide magnitude/precision, not only p-values.
+- **Why appropriate:**
+  1. Clinical interpretability of OHIP improvement requires effect size.
+  2. Small trials benefit from CI-focused reporting.
+- **Why it may not be appropriate:**
+  - Standardized effects can be unstable with small samples and non-normality.
+- **When NOT to use:**
+  - Avoid over-interpreting standardized effects if distribution is highly non-normal.
+- **Alternative:**
+  - Report **median change** and CI via bootstrap if needed.
+
+### B2) Model diagnostics / assumption checks
+- **Tests/tools:** Residual plots; QQ-plots; check influential points; assess heteroscedasticity.
+- **Purpose:** Validate LMM assumptions.
+- **Why appropriate:**
+  1. OHIP totals may have floor effects; diagnostics guide robust alternatives.
+  2. Protects against misleading inference in small samples.
+- **Why not appropriate:**
+  - Formal normality tests (e.g., Shapiro–Wilk) have low interpretability in small n; should not drive decisions alone.
+- **When NOT to use:**
+  - Don’t use Shapiro–Wilk as a strict gatekeeper for parametric models.
+- **Alternative:**
+  - Robust SE, transformation, GLMM, or nonparametric/bootstrap.
+
+### B3) Covariate-adjusted mixed model (sensitivity / precision gain)
+- **Test/model:** LMM including prespecified covariates (e.g., age, sex, baseline OHIP, tooth type if collected).
+- **Purpose:** Improve precision and address chance imbalance.
+- **Why appropriate:**
+  1. Increases efficiency in small samples when covariates are prognostic.
+  2. Addresses potential residual confounding from convenience sampling and any imperfect randomization implementation.
+- **Why not appropriate:**
+  - Risk of overfitting with small n and many covariates.
+- **When NOT to use:**
+  - Do not include many predictors relative to sample size; avoid data-driven covariate fishing.
+- **Alternative:**
+  - Limit to 1–3 prespecified covariates; or use penalized regression (optional).
+
+### B4) Multiple comparisons control (if analyzing OHIP domains or items)
+- **Test:** Holm–Bonferroni (family-wise) or Benjamini–Hochberg (FDR).
+- **Purpose:** Control false positives if multiple OHIP subscales/items are tested.
+- **Why appropriate:**
+  1. OHIP-14 contains multiple items/domains; item-level testing inflates Type I error.
+  2. Encourages clear hierarchy: primary outcome first, secondary controlled.
+- **Why not appropriate:**
+  - Can reduce power in small samples.
+- **When NOT to use:**
+  - Don’t adjust the primary outcome; adjust only secondary/exploratory families.
+- **Alternative:**
+  - Pre-specify a small number of secondary endpoints; or use multivariate models.
+
+### B5) Categorical/ordinal responder analysis (clinically interpretable)
+- **Test/model:** Define “clinically meaningful improvement” (e.g., ≥X-point reduction) and compare proportions via Fisher’s exact; or logistic regression.
+- **Purpose:** Translate score changes into patient-level benefit.
+- **Why appropriate:**
+  1. OHIP change may be easier to interpret as “improved vs not”.
+  2. Robust to non-normal distributions.
+- **Why not appropriate:**
+  - Requires a validated minimal important difference (MID), which is not provided here.
+- **When NOT to use:**
+  - If MID is arbitrary or post hoc.
+- **Alternative:**
+  - Use distribution-based thresholds (e.g., 0.5 SD) explicitly labeled exploratory.
+
+---
+
+## CATEGORY C – OPTIONAL (supplementary) analyses
+
+### C1) Generalized Estimating Equations (GEE)
+- **Purpose:** Population-averaged effect of group, time, and interaction with robust SE.
+- **Why appropriate:**
+  1. Robust to some misspecification of random effects distribution.
+  2. Directly estimates average marginal effects.
+- **Why not appropriate:**
+  - With small n, robust SE can be unreliable; and unequal timepoints across groups complicate correlation structure.
+- **When NOT to use:**
+  - Very small sample with sparse repeated measures and missingness.
+- **Alternative:**
+  - LMM/GLMM with small-sample corrections (Kenward–Roger).
+
+### C2) Nonparametric longitudinal approach
+- **Test/model:** Rank-based longitudinal model (e.g., Brunner–Langer) or aligned-rank transform for interaction.
+- **Purpose:** Inference on group×time without normality.
+- **Why appropriate:**
+  1. Suitable when OHIP totals are strongly non-normal.
+  2. Less sensitive to outliers.
+- **Why not appropriate:**
+  - Less straightforward effect-size interpretation on original OHIP scale.
+- **When NOT to use:**
+  - If primary goal is estimating mean differences on original scale.
+- **Alternative:**
+  - Robust LMM or bootstrap CIs.
+
+### C3) Bootstrap confidence intervals
+- **Purpose:** Obtain CIs for mean change difference with fewer parametric assumptions.
+- **Why appropriate:**
+  1. Small samples and non-normality.
+  2. Flexible for derived quantities (e.g., change differences).
+- **Why not appropriate:**
+  - With very small n, bootstrap may be unstable; needs careful resampling at the **participant level**.
+- **When NOT to use:**
+  - Extremely small samples or heavy missingness.
+- **Alternative:**
+  - Profile likelihood CIs; robust sandwich estimators.
+
+### C4) Reliability/consistency of OHIP-14 in this sample
+- **Test:** Cronbach’s alpha or preferably McDonald’s omega (baseline).
+- **Purpose:** Document internal consistency of Arabic OHIP-14 in this trial sample.
+- **Why appropriate:**
+  1. Supports validity of summing items into a total score.
+  2. Useful if population differs from validation studies.
+- **Why not appropriate:**
+  - Not an outcome effect test; alpha can be misleading (tau-equivalence assumption).
+- **When NOT to use:**
+  - If sample size too small for stable reliability estimates.
+- **Alternative:**
+  - Omega; item-total correlations (descriptive).
+
+### C5) Time-to-event / pain analyses
+- Not available in provided methods (pain described in background only). Only consider if pain outcomes were actually collected.
+
+---
+
+## TASK 3: Inappropriate tests (should NOT be used)
+
+1. **Independent (unpaired) t-test comparing post-treatment OHIP between groups without adjusting for baseline**
+   - Ignores baseline differences and within-person change; lower power and potentially biased if baseline imbalanced.
+
+2. **Multiple separate t-tests at each timepoint (baseline, extirpation, obturation) without a repeated-measures framework**
+   - Inflates Type I error; ignores correlation; does not test the key **group×time** effect.
+
+3. **One-way ANOVA on change scores across more than two “times”**
+   - Change scores are not independent across time; also groups have different measurement schedules.
+
+4. **Chi-square tests applied to OHIP-14 total score (treating it as categorical without rationale)**
+   - Discards information and depends on arbitrary cutpoints.
+
+5. **Simple linear regression treating repeated observations as independent**
+   - Violates independence; underestimates SEs and inflates significance.
+
+6. **MANOVA with many OHIP items/domains as outcomes in this small sample**
+   - Requires large sample and multivariate normality; high risk of overfitting and unstable estimates.
+
+---
+
+## TASK 4: Summary justification of overall approach
+
+The primary scientific question is whether **change in OHRQoL over treatment** differs between **single-visit and multiple-visit RCT**. Because OHRQoL is measured **repeatedly within the same individuals** (and with **unequal numbers of assessments across groups**), a **mixed-effects repeated-measures model with a group×time interaction** is the most appropriate primary analysis: it accounts for within-subject correlation, uses all observed data, and directly estimates the between-group difference in improvement at obturation while allowing sensitivity analyses for non-normality and missingness.

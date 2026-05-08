@@ -1,0 +1,122 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_bharti-et-al-2021-antimicrobial-effectiveness-of-photodynamic-therapy-5-sodium-hypochlorite-and-2-chlorhexidine.pdf
+Status : ok
+Time   : 20260508_072716
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics
+1. **Study Design**: Triple-blind randomized clinical trial (RCT).
+2. **Objective**: To compare the antimicrobial effectiveness of photodynamic therapy (PDT), 5% sodium hypochlorite (NaOCl), and 2% chlorhexidine gluconate (CHO) in disinfecting previously root canal-treated teeth with apical periodontitis.
+3. **Null Hypothesis**: There is no difference in microbial elimination between PDT, NaOCl, and CHO.
+4. **Groups**:
+   - **Group 1**: 5% sodium hypochlorite (NaOCl) disinfection.
+   - **Group 2**: 2% chlorhexidine gluconate (CHO) disinfection.
+   - **Group 3**: Photodynamic therapy (PDT) disinfection.
+5. **Sample Size**: 
+   - Total: 54 patients (18 per group).
+   - Power = 80%, Confidence Interval = 95%.
+6. **Population**:
+   - Inclusion: Patients with previously root canal-treated teeth with apical periodontitis (periapical index ≥ 3), intact coronal restorations, no gingival recession, and no periodontal pocket > 4 mm.
+   - Exclusion: Patients with immunocompromising conditions, diabetes mellitus, chronic infections, rheumatoid arthritis, immunosuppressive therapy, pregnancy, or nursing.
+7. **Randomization**: Block randomization.
+8. **Blinding**: Triple-blind (patients, microbiological examiners, and data analysts were blinded).
+9. **Variables**:
+   - **Independent Variable**: Disinfection technique (PDT, NaOCl, CHO).
+   - **Dependent Variable**: Reduction in microbial load (measured as colony-forming units [CFU]).
+10. **Measurements**:
+    - Microbiological samples (S1 and S2) collected using sterile paper points.
+    - Reduction in CFU after disinfection.
+11. **Data Collection Methods**:
+    - Pre-treatment microbial sample (S1) collected before disinfection.
+    - Post-treatment microbial sample (S2) collected after disinfection.
+    - Microbial samples incubated at 37°C for 48 hours, and CFU counted using light microscopy (400× magnification).
+12. **Statistical Software**: OpenEpi used for sample size calculation.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Paired t-test (or Wilcoxon signed-rank test if data is non-parametric).
+   - **Purpose**: To compare pre- and post-treatment microbial counts (S1 vs. S2) within each group.
+   - **Why Appropriate**:
+     1. The study design involves comparing two related samples (S1 and S2) for each group.
+     2. The outcome variable (CFU reduction) is continuous.
+   - **Why It May Not Be Appropriate**: Assumes normality of the differences between S1 and S2.
+   - **When This Test Should NOT Be Used**: If the data is not normally distributed.
+   - **Alternative if Assumptions Are Violated**: Wilcoxon signed-rank test (non-parametric).
+
+2. **Test Name**: One-way ANOVA (or Kruskal-Wallis test if data is non-parametric).
+   - **Purpose**: To compare the mean microbial reduction (CFU) across the three groups (PDT, NaOCl, CHO).
+   - **Why Appropriate**:
+     1. The study involves comparing three independent groups.
+     2. The outcome variable (CFU reduction) is continuous.
+   - **Why It May Not Be Appropriate**: Assumes homogeneity of variances and normality.
+   - **When This Test Should NOT Be Used**: If data is not normally distributed or variances are unequal.
+   - **Alternative if Assumptions Are Violated**: Kruskal-Wallis test (non-parametric).
+
+3. **Test Name**: Post-hoc tests (e.g., Tukey’s HSD or Dunn’s test).
+   - **Purpose**: To identify which pairs of groups differ significantly after ANOVA or Kruskal-Wallis test.
+   - **Why Appropriate**:
+     1. Post-hoc tests are necessary to determine specific group differences.
+     2. They control for Type I error in multiple comparisons.
+   - **Why It May Not Be Appropriate**: Requires a significant result from ANOVA or Kruskal-Wallis test.
+   - **When This Test Should NOT Be Used**: If the overall test (ANOVA or Kruskal-Wallis) is not significant.
+   - **Alternative if Assumptions Are Violated**: Non-parametric pairwise comparisons (e.g., Dunn’s test).
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Chi-square test of independence (or Fisher’s exact test for small sample sizes).
+   - **Purpose**: To compare categorical outcomes (e.g., proportion of patients with complete microbial eradication) across groups.
+   - **Why Appropriate**:
+     1. The test is suitable for categorical data.
+     2. It allows comparison of proportions between groups.
+   - **Why It May Not Be Appropriate**: Requires a sufficient sample size for each category.
+   - **When This Test Should NOT Be Used**: If expected cell counts are less than 5.
+   - **Alternative if Assumptions Are Violated**: Fisher’s exact test.
+
+2. **Test Name**: Repeated measures ANOVA (or Friedman test if data is non-parametric).
+   - **Purpose**: To analyze the change in microbial counts (S1 vs. S2) across all three groups simultaneously.
+   - **Why Appropriate**:
+     1. Accounts for within-subject variability.
+     2. Suitable for comparing repeated measures across multiple groups.
+   - **Why It May Not Be Appropriate**: Assumes normality and sphericity.
+   - **When This Test Should NOT Be Used**: If data is not normally distributed or sphericity is violated.
+   - **Alternative if Assumptions Are Violated**: Friedman test (non-parametric).
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Effect size calculation (e.g., Cohen’s d, eta-squared).
+   - **Purpose**: To quantify the magnitude of differences between groups or pre- and post-treatment.
+   - **Why Appropriate**:
+     1. Provides additional context to statistical significance.
+     2. Useful for clinical interpretation of results.
+   - **Why It May Not Be Appropriate**: Does not test for statistical significance.
+   - **When This Test Should NOT Be Used**: If the primary focus is hypothesis testing.
+   - **Alternative if Assumptions Are Violated**: Non-parametric effect size measures.
+
+2. **Test Name**: Logistic regression.
+   - **Purpose**: To model the probability of complete microbial eradication as a function of treatment group.
+   - **Why Appropriate**:
+     1. Suitable for binary outcomes (e.g., eradication: yes/no).
+     2. Adjusts for potential confounders.
+   - **Why It May Not Be Appropriate**: Requires a larger sample size for reliable estimates.
+   - **When This Test Should NOT Be Used**: If the sample size is insufficient.
+   - **Alternative if Assumptions Are Violated**: Exact logistic regression.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-test**: Not suitable because there are more than two groups.
+2. **Pearson correlation**: Not appropriate as the study does not involve assessing the relationship between two continuous variables.
+3. **Linear regression**: Not suitable because the primary outcome (CFU reduction) is not modeled as a function of continuous predictors.
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan is designed to rigorously test the study’s hypotheses while accounting for the study design and data characteristics. Mandatory tests focus on hypothesis testing for microbial reduction within and between groups. Recommended tests enhance the robustness of the analysis by considering repeated measures and categorical outcomes. Optional tests provide supplementary insights into effect sizes and clinical relevance. Non-parametric alternatives are specified to ensure flexibility in case of assumption violations. This comprehensive approach ensures that the analysis is both statistically rigorous and clinically meaningful.

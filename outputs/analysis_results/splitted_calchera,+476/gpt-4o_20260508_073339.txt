@@ -1,0 +1,130 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_calchera,+476.pdf
+Status : ok
+Time   : 20260508_073339
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Experimental, *in vitro* study.
+
+2. **Objective**:  
+   - To evaluate the sealing ability of a bioceramic endodontic sealer (BioRoot RCS) and a ZOE sealer (Pulp Canal Sealer) at the apical thirds when used in combination with three different obturation techniques.
+
+3. **Null Hypotheses**:  
+   - The bioceramic endodontic cement can seal the apex similarly to traditional ZOE cement.  
+   - The bioceramic endodontic cement can seal the apex similarly when used with either cold or warm obturation techniques.
+
+4. **Groups**:  
+   - **Group 1**: Thermafil® Obturators with Pulp Canal Sealer™ (n=20).  
+   - **Group 2**: Thermafil® Obturators with BioRoot™ RCS (n=20).  
+   - **Group 3**: Warm vertical condensation with Pulp Canal Sealer™ (n=20).  
+   - **Group 4**: Single GP cone with BioRoot™ RCS (n=20).  
+   - **Group 5**: Warm vertical condensation with BioRoot™ RCS (n=20).
+
+5. **Sample Size**:  
+   - Total = 80 intact human single-rooted maxillary premolars (n=20 per group).
+
+6. **Variables**:  
+   - **Independent Variables**:  
+     - Type of sealer (BioRoot RCS vs. Pulp Canal Sealer).  
+     - Obturation technique (Thermafil, warm vertical condensation, single GP cone).  
+   - **Dependent Variable**:  
+     - Sealing ability measured by apical leakage (via silver nitrate tracer penetration).
+
+7. **Measurements**:  
+   - Apical leakage assessed using ammoniacal silver nitrate penetration and digital microscopy.  
+   - Scoring of tracer penetration was performed independently by two observers.
+
+8. **Data Collection Methods**:  
+   - Teeth were prepared using standardized chemo-mechanical procedures.  
+   - Root canals were obturated with specified techniques and sealers.  
+   - Apical leakage was evaluated after exposure to silver nitrate and subsequent slicing of the teeth.  
+   - Observations were scored by two calibrated observers.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: One-Way ANOVA  
+   - **Purpose**: To compare the mean apical leakage scores across the five groups.  
+   - **Why Appropriate**:  
+     1. The dependent variable (apical leakage) is continuous.  
+     2. There are more than two groups being compared.  
+   - **Why It May Not Be Appropriate**: Assumes normal distribution of leakage scores and homogeneity of variances.  
+   - **When This Test Should NOT Be Used**: If assumptions of normality or homogeneity of variance are violated.  
+   - **Alternative if Assumptions Are Violated**: Kruskal-Wallis test (non-parametric equivalent).
+
+2. **Test Name**: Post-Hoc Pairwise Comparisons (e.g., Tukey’s HSD or Bonferroni)  
+   - **Purpose**: To identify which specific groups differ significantly in apical leakage.  
+   - **Why Appropriate**:  
+     1. Necessary to interpret significant results from ANOVA.  
+     2. Controls for Type I error when making multiple comparisons.  
+   - **Why It May Not Be Appropriate**: If ANOVA assumptions are violated.  
+   - **When This Test Should NOT Be Used**: If the overall ANOVA is not significant.  
+   - **Alternative if Assumptions Are Violated**: Pairwise Mann-Whitney U tests with Bonferroni correction.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Independent Samples t-Test (for each pair of sealers within the same obturation technique).  
+   - **Purpose**: To compare the sealing ability of BioRoot RCS vs. Pulp Canal Sealer within each obturation technique.  
+   - **Why Appropriate**:  
+     1. Directly tests the null hypothesis regarding sealers.  
+     2. Suitable for comparing two groups with continuous outcomes.  
+   - **Why It May Not Be Appropriate**: Assumes normality and equal variances.  
+   - **When This Test Should NOT Be Used**: If data are not normally distributed or variances are unequal.  
+   - **Alternative if Assumptions Are Violated**: Mann-Whitney U test.
+
+2. **Test Name**: Two-Way ANOVA  
+   - **Purpose**: To assess the interaction effect between sealer type and obturation technique on apical leakage.  
+   - **Why Appropriate**:  
+     1. Tests both main effects and interaction effects in a single model.  
+     2. Accounts for variability due to both factors.  
+   - **Why It May Not Be Appropriate**: Requires balanced sample sizes and assumes normality.  
+   - **When This Test Should NOT Be Used**: If interaction effects are not of interest or assumptions are violated.  
+   - **Alternative if Assumptions Are Violated**: Generalized linear models (GLMs) or non-parametric alternatives.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Intraclass Correlation Coefficient (ICC)  
+   - **Purpose**: To assess inter-observer reliability in scoring apical leakage.  
+   - **Why Appropriate**:  
+     1. Evaluates consistency between the two observers.  
+     2. Ensures reliability of the dependent variable measurement.  
+   - **Why It May Not Be Appropriate**: Not directly related to hypothesis testing.  
+   - **When This Test Should NOT Be Used**: If observer agreement is not a concern.  
+   - **Alternative if Assumptions Are Violated**: Cohen’s kappa (if scores are ordinal).
+
+2. **Test Name**: Effect Size Calculations (e.g., Cohen’s d or η²)  
+   - **Purpose**: To quantify the magnitude of differences between groups.  
+   - **Why Appropriate**:  
+     1. Provides additional context to statistical significance.  
+     2. Useful for interpreting clinical relevance.  
+   - **Why It May Not Be Appropriate**: Does not replace hypothesis testing.  
+   - **When This Test Should NOT Be Used**: If group differences are not statistically significant.  
+   - **Alternative if Assumptions Are Violated**: Non-parametric effect size measures.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1. **Chi-Square Test**:  
+   - **Why Not Appropriate**: The dependent variable (apical leakage) is continuous, not categorical.  
+
+2. **Paired Samples t-Test**:  
+   - **Why Not Appropriate**: The study design does not involve paired or repeated measurements.  
+
+3. **Linear Regression**:  
+   - **Why Not Appropriate**: The primary goal is group comparison, not prediction or modeling of relationships.
+
+---
+
+### TASK 4: SUMMARY
+
+The analytical approach focuses on comparing the sealing ability of different sealers and obturation techniques using appropriate statistical methods. One-Way ANOVA is the primary test for group comparisons, supplemented by post-hoc tests and two-way ANOVA to explore interaction effects. Reliability of measurements is assessed using ICC, and effect sizes are calculated to provide clinical context. Non-parametric alternatives are recommended if assumptions are violated. This comprehensive plan ensures robust and valid conclusions regarding the study objectives.

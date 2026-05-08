@@ -1,0 +1,139 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_sgarancini,+09_10_GIE_21_02_280.pdf
+Status : ok
+Time   : 20260508_074542
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics
+1. **Study Design**:  
+   - Prospective, three-arm, parallel-group, single-blind, single-center, randomized clinical trial.
+
+2. **Objective**:  
+   - To compare the effects of depotphoresis and diode laser (DL) on microbial count, postoperative pain, and healing of periapical lesions after 6 months using CBCT.
+
+3. **Study Groups**:  
+   - **Depotphoresis group**: Cupral paste with electrical activation.  
+   - **Diode Laser (DL) group**: 940 nm diode laser irradiation.  
+   - **Control group**: Standard root canal treatment with calcium hydroxide as medicament.
+
+4. **Sample Size**:  
+   - 90 patients (30 per group).  
+   - Final analysis included 26 (depotphoresis), 25 (DL), and 16 (control) due to dropouts.
+
+5. **Population**:  
+   - Adults aged 18–60 years with pulp necrosis and chronic apical periodontitis.  
+   - Exclusion criteria: diabetic, immunocompromised, pregnant, recent analgesic/antibiotic use, periodontal disease, or inability to isolate the tooth with a rubber dam.
+
+6. **Randomization and Blinding**:  
+   - Simple randomization using an online system.  
+   - Patient blinding was implemented.  
+   - Independent, blinded examiners evaluated outcomes.
+
+7. **Variables**:  
+   - **Primary outcomes**:  
+     - Microbial load (CFU/ml) at three time points: pre-treatment (S1), post-treatment (S2), and after 6 months (S3).  
+     - Postoperative pain (VAS scores at 6, 12, 24, 48, and 72 hours).  
+     - Healing of periapical lesions (CBCT measurements of lesion diameter in apicocoronal, mesiodistal, and buccolingual directions).  
+   - **Secondary outcomes**: None explicitly stated.
+
+8. **Measurements and Data Collection**:  
+   - **Microbial load**: Colony-forming unit (CFU) counting from samples collected at S1, S2, and S3.  
+   - **Postoperative pain**: Visual Analog Scale (VAS) scores.  
+   - **Healing**: CBCT scans analyzed for lesion diameter at baseline and 6 months.  
+
+9. **Interventions**:  
+   - **Depotphoresis group**: Cupral paste with electrical activation (0.8–1.5 mA for 5 minutes).  
+   - **DL group**: 940 nm diode laser irradiation in pulse mode (2 W power, 20 s irradiation, repeated 3 times).  
+   - **Control group**: Calcium hydroxide medicament without adjunctive techniques.
+
+10. **Statistical Considerations**:  
+    - Sample size calculation based on an effect size of 0.82, power of 80%, and significance level of 0.05.  
+    - Dropout rates were accounted for in the initial sample size.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Repeated Measures ANOVA (or Mixed-Effects Model)**  
+   - **Purpose**: To compare microbial load (CFU/ml) across the three groups over three time points (S1, S2, S3).  
+   - **Why Appropriate**:  
+     1. The outcome (CFU/ml) is continuous and measured repeatedly over time.  
+     2. It accounts for within-subject correlations.  
+   - **Why It May Not Be Appropriate**: Assumes normality and sphericity of data.  
+   - **When NOT to Use**: If data are non-normal or sphericity is violated.  
+   - **Alternative**: Friedman test (non-parametric) or Generalized Estimating Equations (GEE).
+
+2. **Two-Way ANOVA**  
+   - **Purpose**: To compare lesion diameter changes (apicocoronal, mesiodistal, buccolingual) across groups and time points.  
+   - **Why Appropriate**:  
+     1. Continuous outcome (lesion diameter).  
+     2. Allows interaction analysis between group and time.  
+   - **Why It May Not Be Appropriate**: Requires normality and homogeneity of variance.  
+   - **When NOT to Use**: If assumptions are violated.  
+   - **Alternative**: Kruskal-Wallis test for group comparisons; Wilcoxon signed-rank test for paired data.
+
+3. **Repeated Measures ANOVA for VAS Scores**  
+   - **Purpose**: To compare postoperative pain (VAS scores) across groups and time points.  
+   - **Why Appropriate**:  
+     1. Continuous outcome (VAS scores).  
+     2. Accounts for repeated measures over time.  
+   - **Why It May Not Be Appropriate**: Assumes normality and sphericity.  
+   - **When NOT to Use**: If data are non-normal or sphericity is violated.  
+   - **Alternative**: Friedman test or GEE.
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Chi-Square Test (or Fisher’s Exact Test)**  
+   - **Purpose**: To compare dropout rates across groups.  
+   - **Why Appropriate**:  
+     1. Categorical outcome (dropout: yes/no).  
+     2. Tests for group differences in attrition.  
+   - **Why It May Not Be Appropriate**: Small sample sizes in some groups.  
+   - **When NOT to Use**: If expected cell counts are <5.  
+   - **Alternative**: Fisher’s Exact Test.
+
+2. **Effect Size Calculation**  
+   - **Purpose**: To quantify the magnitude of differences between groups.  
+   - **Why Appropriate**:  
+     1. Provides clinically meaningful interpretation.  
+     2. Complements p-values.  
+   - **Why It May Not Be Appropriate**: Not a statistical test; requires post hoc calculations.  
+   - **When NOT to Use**: If data are unreliable.  
+   - **Alternative**: None.
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Survival Analysis (Kaplan-Meier)**  
+   - **Purpose**: To analyze time to healing of periapical lesions.  
+   - **Why Appropriate**:  
+     1. Accounts for time-dependent outcomes.  
+     2. Handles censored data (e.g., patients lost to follow-up).  
+   - **Why It May Not Be Appropriate**: Requires precise time-to-event data.  
+   - **When NOT to Use**: If healing time is not recorded.  
+   - **Alternative**: Cox proportional hazards model.
+
+2. **Correlation Analysis**  
+   - **Purpose**: To assess relationships between microbial load reduction and lesion healing.  
+   - **Why Appropriate**:  
+     1. Explores potential associations.  
+     2. Adds depth to findings.  
+   - **Why It May Not Be Appropriate**: Assumes linear relationships.  
+   - **When NOT to Use**: If data are non-linear or non-normal.  
+   - **Alternative**: Spearman’s rank correlation.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-test**  
+   - **Why Not Appropriate**: The study involves three groups, not two.  
+2. **Paired t-test**  
+   - **Why Not Appropriate**: Does not account for repeated measures across three time points.  
+3. **Simple Linear Regression**  
+   - **Why Not Appropriate**: Does not account for repeated measures or group comparisons.
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan is designed to address the study’s primary objectives while ensuring robust and valid results. Repeated measures ANOVA or mixed-effects models are essential for analyzing longitudinal data (microbial load, lesion size, and VAS scores). Additional tests, such as chi-square for dropout rates and effect size calculations, enhance the rigor of the analysis. Optional tests, like survival analysis and correlation analysis, provide supplementary insights into time-to-healing and associations between outcomes. Assumptions of normality and sphericity will be tested, and non-parametric alternatives will be employed if necessary. This comprehensive approach ensures that the study’s findings are both statistically sound and clinically meaningful.

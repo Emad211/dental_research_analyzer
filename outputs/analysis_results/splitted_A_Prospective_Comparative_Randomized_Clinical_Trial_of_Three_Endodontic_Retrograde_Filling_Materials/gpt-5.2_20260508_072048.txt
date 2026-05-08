@@ -1,0 +1,301 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_A_Prospective_Comparative_Randomized_Clinical_Trial_of_Three_Endodontic_Retrograde_Filling_Materials.pdf
+Status : ok
+Time   : 20260508_072048
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study identification
+- **Design:** Prospective, comparative, **parallel-group randomized clinical trial** (block randomization); described as “double-blind” for radiologist/biostatistician, but **surgeon not blinded**; patients blinded to material selection during mixing/selection (though material appearance/packaging could unblind).
+- **Setting:** Endodontics Department, **University of Valparaíso (Chile)**; radiology at **Chilean Navy Dental Center**; coordination/IRB at **Finis Terrae University**.
+- **Objective:** Compare **healing after apical microsurgery** among **three retrograde root-end filling materials**:
+  - EndoSequence (E)
+  - ProRoot MTA (M)
+  - Biodentine (B)
+- **Follow-up schedule:** CBCT/clinical at **2, 4, 6 months** (and pre-op and immediate post-op imaging).
+
+### Participants
+- **Eligibility (inclusion):**
+  - Adults
+  - **ASA I–II**
+  - **Any tooth with a single chronic periapical lesion** of endodontic origin requiring apical microsurgery
+  - Informed consent
+- **Exclusion:**
+  - Drug/alcohol abuse history
+  - Adjacent periapical lesion
+  - Periodontal disease
+
+### Sample size and flow (as reported)
+- Assessed for eligibility: **n=84**
+- Excluded pre-surgery: **n=10** (unavailable for surgery)
+- Randomized & underwent surgery: **n=74**
+- Eliminated after surgery (fracture/fissures found or follow-up unavailability): **n=15**, leaving **59 eligible**
+- Follow-up completion (overall): 2 months **n=51**, 4 months **n=45**, 6 months **n=35**
+- **Final analyzed at 6 months by group (per figure):**
+  - EndoSequence: **n=13**
+  - ProRoot MTA: **n=14**
+  - Biodentine: **n=8**
+- **Randomization:** Block randomization, unpredictable software algorithm (random.org).
+
+### Intervention / procedure standardization
+- **Single trained endodontist** performed surgeries (assisted).
+- Standard microsurgical protocol (premedication, anesthesia, flap, osteotomy ≤5 mm, 3 mm apicoectomy, retroprep, retrofill, suturing, etc.).
+- Material was randomly selected by an assistant and prepared out of surgeon’s view; **surgeon not blinded**.
+
+### Outcomes, variables, and measurement methods
+**Primary measurable outcome (quantitative):**
+- **Lesion size (CBCT radiolucent area)** measured on each scan as **largest dimension** (continuous, likely mm).
+- Timepoints: **pre-op**, **immediate post-op**, **2 mo**, **4 mo**, **6 mo** (5 scans total).
+- **Measurement method:** Invivo6; MPR; repositioning for consistent orientation; largest dimension determined across axial/coronal/sagittal and cross-sectional views.
+- **Observer:** Board-certified oral & maxillofacial radiologist (>15 years), **blinded to material**.
+- **Reliability procedures:** Each evaluation **performed twice**; ≥1-week interval between any two scans in same patient to reduce bias.
+
+**Subjective (ordinal) outcome:**
+- **Healing category** on postoperative scans (ordinal):
+  1) Radiolucent/no healing  
+  2) Some healing  
+  3) Moderate healing  
+  4) Good healing/minimal radiolucency  
+- Note: Immediate post-op expected to be “no healing.”
+
+**Other data mentioned**
+- Baseline lab tests (CBC, PTT, PT, fasting glucose, bleeding time) prior to surgery—unclear if used analytically.
+- Clinical assessments were performed, but **specific clinical endpoints are not described** in the provided Methods.
+
+### Data handling / blinding
+- Patient IDs replaced by **6-digit codes**.
+- Radiologist and biostatistician blinded to identity and material until after analysis.
+
+---
+
+## TASK 2: Statistical Analysis Plan (SAP)
+
+### 2.1. Analysis populations
+- **Intention-to-treat (ITT):** All randomized who received intervention should be analyzed in assigned group. *However, the article removes patients post-surgery due to intraoperative findings and follow-up unavailability.* SAP should predefine:
+  - **Modified ITT (mITT):** randomized/treated teeth without vertical root fracture/fissure discovered intraoperatively (because the target condition “treatable lesion” is no longer present).  
+  - **Full ITT sensitivity** (recommended): treat those exclusions as protocol deviations and examine robustness (see missing data section).
+- **Per-protocol (PP):** Those with CBCT outcomes at each timepoint and no major deviations.
+
+### 2.2. Endpoints (recommendations)
+**Primary endpoint (recommended):**
+- **Change in lesion largest dimension from immediate post-op to 6 months** (Δ size), compared across materials.  
+  Rationale: immediate post-op establishes a common “post-surgical defect” baseline; pre-op reflects disease burden.
+
+**Key secondary endpoints:**
+- **Trajectory of lesion size over time** (post-op, 2, 4, 6 months).
+- **Ordinal healing score** at 2/4/6 months.
+- **Binary success** (optional but clinically interpretable): e.g., “good healing” vs not, or “at least moderate” vs not (must be defined a priori).
+
+### 2.3. Covariates / stratifiers (if available)
+Not provided, but if collected, prespecify adjustment for:
+- Baseline lesion size (pre-op and/or immediate post-op)
+- Tooth type / location (anterior vs posterior, maxilla vs mandible)
+- Age, sex
+- ASA class
+- Any surgical complexity markers (osteotomy size, etc., if recorded)
+
+### 2.4. Missing data & dropout
+- Follow-up attrition is substantial and differential is possible; therefore:
+  - Describe missingness by group/time.
+  - Primary longitudinal model should use methods valid under **MAR** (mixed models).
+  - Sensitivity: **pattern-mixture** or **multiple imputation**; and a **worst-case** sensitivity for ordinal success.
+
+---
+
+# CATEGORY A — MANDATORY tests/models
+
+## A1) Linear Mixed-Effects Model (LMM) for repeated lesion size
+- **Test/model name:** Linear mixed-effects model (random intercept for patient/tooth) with fixed effects for **material**, **time**, and **material×time**.
+- **Purpose:** Compare **healing trajectories** (continuous lesion dimension) across three materials over multiple timepoints while accounting for within-patient correlation.
+- **Why appropriate (≥2 reasons):**
+  1. Handles **repeated measures** (post-op, 2, 4, 6 months) without violating independence.
+  2. Uses **all available data** under MAR, reducing bias vs complete-case at 6 months only.
+  3. Directly tests **material×time interaction**, i.e., whether healing rates differ.
+- **Why it may not be appropriate (≥1 reason):**
+  - Lesion size distribution may be skewed/bounded and residuals may violate normality/homoscedasticity, especially with small n at 6 months.
+- **When NOT to use:**
+  - If outcome is clearly non-continuous (e.g., many zeros, heavy right-skew with floor effects) and transformation does not help; or if only one post-op timepoint exists.
+- **Alternative if assumptions are violated:**
+  - Transform lesion size (log or square-root), or use **Generalized Linear Mixed Model (GLMM)** with appropriate distribution (e.g., Gamma with log link), or **rank-based mixed models**.
+
+## A2) Global between-group comparison at 6 months for lesion size (with multiplicity control)
+- **Test name:** One-way **ANOVA** (if assumptions met) *or* **Kruskal–Wallis** (nonparametric), with **adjusted post-hoc pairwise comparisons**.
+- **Purpose:** Compare lesion size (or change score) across the three materials at the clinically relevant endpoint (6 months).
+- **Why appropriate:**
+  1. Three independent randomized groups; endpoint measured on a continuous/ordinal scale.
+  2. Provides a familiar, interpretable primary comparison at the final visit (often expected by readers).
+- **Why it may not be appropriate:**
+  - Complete-case 6-month analysis can be biased if dropout relates to outcome; Kruskal–Wallis does not adjust for baseline lesion size.
+- **When NOT to use:**
+  - If repeated measures modeling is the prespecified primary and 6-month complete-case is highly incomplete/differential; avoid making it the sole primary analysis.
+- **Alternative if assumptions are violated:**
+  - If ANOVA assumptions fail: **Kruskal–Wallis** with **Dunn** or **Holm-adjusted** pairwise tests.  
+  - If wanting baseline adjustment: **ANCOVA** (see Recommended).
+
+## A3) Ordinal outcome analysis for subjective healing categories
+- **Test/model name:** **Ordinal logistic regression** (proportional odds model) at each timepoint or as repeated measure via **mixed-effects ordinal logistic model / GEE**.
+- **Purpose:** Compare healing category distributions among materials.
+- **Why appropriate:**
+  1. Healing categories are **ordered**; ordinal models use the ordering efficiently.
+  2. Allows covariate adjustment and yields interpretable odds ratios of better healing.
+- **Why it may not be appropriate:**
+  - **Proportional odds assumption** may be violated; sparse categories (small n) can cause instability.
+- **When NOT to use:**
+  - If categories are extremely sparse (e.g., nearly all “good” at 6 months) or sample size is too small for stable ordinal modeling.
+- **Alternative if assumptions are violated:**
+  - **Partial proportional odds** model; or collapse to binary and use **logistic regression**; or use **exact** methods for small samples.
+
+## A4) Intraobserver reliability for CBCT measurements
+- **Test name:** **Intraclass Correlation Coefficient (ICC)** for continuous lesion measurements; **weighted kappa** for ordinal healing categories.
+- **Purpose:** Quantify measurement repeatability of the radiologist’s repeated readings.
+- **Why appropriate:**
+  1. Methods section states each scan evaluated twice; reliability must be reported.
+  2. ICC (continuous) and weighted kappa (ordinal) align with data types and clinical imaging standards.
+- **Why it may not be appropriate:**
+  - ICC type must match design (two-way vs one-way; absolute agreement vs consistency); mis-specification can mislead.
+- **When NOT to use:**
+  - If only one reading exists or repeated readings are not paired appropriately.
+- **Alternative if assumptions are violated:**
+  - For non-normal continuous data: report **concordance correlation coefficient** or **Bland–Altman** (Recommended) plus robust ICC.
+
+---
+
+# CATEGORY B — RECOMMENDED tests/models
+
+## B1) ANCOVA at 6 months (baseline-adjusted)
+- **Test/model name:** **ANCOVA / linear regression** of 6-month lesion size with predictors: material + baseline lesion size (pre-op or immediate post-op).
+- **Purpose:** Improve precision and address baseline imbalance; compare adjusted mean outcomes across materials.
+- **Why appropriate:**
+  1. Randomization does not guarantee perfect baseline balance with small samples; adjusting for baseline reduces residual variance.
+  2. Provides adjusted effect estimates and CIs, often more informative than change scores.
+- **Why it may not be appropriate:**
+  - If baseline measure is missing for many participants; or if relationship is non-linear and model is mis-specified.
+- **When NOT to use:**
+  - If baseline is post-randomization and could be affected by treatment (not the case for pre-op; immediate post-op might reflect surgical execution rather than material effect).
+- **Alternative if assumptions are violated:**
+  - Robust regression; transform outcome; or nonparametric ANCOVA (e.g., **rank ANCOVA**).
+
+## B2) Multiple comparisons correction for pairwise material contrasts
+- **Test name:** **Holm** adjustment (recommended) or **Bonferroni**; for mixed models use **estimated marginal means** with multiplicity adjustment.
+- **Purpose:** Control family-wise error across (E vs M, E vs B, M vs B).
+- **Why appropriate:**
+  1. Three-group trial implies multiple pairwise tests.
+  2. Prevents inflated Type I error.
+- **Why it may not be appropriate:**
+  - Overly conservative in small samples, risking Type II error.
+- **When NOT to use:**
+  - If only a single prespecified primary contrast is tested (then adjust only for secondary/exploratory).
+- **Alternative if assumptions are violated:**
+  - Control **FDR** (Benjamini–Hochberg) for exploratory endpoints.
+
+## B3) Sensitivity analysis for missing outcomes
+- **Test/model name:** **Multiple imputation (MI)** for continuous lesion size; and/or **pattern-mixture** sensitivity; plus dropout comparison tests.
+- **Purpose:** Evaluate robustness to attrition and potential informative missingness.
+- **Why appropriate:**
+  1. Follow-up loss is substantial; complete-case may be biased.
+  2. MI allows incorporating auxiliary predictors (baseline lesion size, demographics) to make MAR more plausible.
+- **Why it may not be appropriate:**
+  - If missingness is MNAR and cannot be justified as MAR; MI results depend on imputation model specification.
+- **When NOT to use:**
+  - When missingness is minimal; or when sample size is too small to support stable imputation models (still can be done cautiously).
+- **Alternative if assumptions are violated:**
+  - **Tipping-point** analysis; **selection models**; conservative bounds (best/worst case).
+
+## B4) Baseline comparability across groups
+- **Test name:** Descriptive balance assessment with **standardized mean differences (SMDs)**; optionally chi-square/Fisher for categorical and ANOVA/KW for continuous.
+- **Purpose:** Document whether randomization achieved balance on key baseline variables.
+- **Why appropriate:**
+  1. Small groups increase chance imbalance.
+  2. SMDs are not driven by sample size and are recommended for RCT reporting.
+- **Why it may not be appropriate:**
+  - Hypothesis testing of baseline differences is often discouraged as it misinterprets randomization.
+- **When NOT to use:**
+  - Do not use baseline p-values to decide covariate inclusion.
+- **Alternative if assumptions are violated:**
+  - Use SMDs and graphical summaries only.
+
+## B5) Model diagnostics and assumption checks
+- **Tests:** residual plots; Shapiro–Wilk (limited utility), Levene/Breusch–Pagan for heteroscedasticity; influence diagnostics.
+- **Purpose:** Validate LMM/ANCOVA assumptions.
+- **Why appropriate:**
+  1. Small samples are sensitive to outliers and heteroscedasticity.
+  2. Imaging-derived measures may have skew/outliers.
+- **Why it may not be appropriate:**
+  - Formal normality tests have low power and can mislead; emphasis should be on plots.
+- **When NOT to use:**
+  - Do not use Shapiro–Wilk to automatically switch methods without considering robustness and design.
+- **Alternative if assumptions are violated:**
+  - Robust SEs, transformation, GLMM.
+
+---
+
+# CATEGORY C — OPTIONAL analyses (supplementary insight)
+
+## C1) Bland–Altman analysis for measurement agreement
+- **Test name:** Bland–Altman plot with limits of agreement for repeated CBCT lesion measurements.
+- **Purpose:** Visualize systematic bias and agreement beyond ICC.
+- **Why appropriate:**
+  1. ICC can be high even with clinically meaningful disagreement; BA shows magnitude.
+  2. Standard in imaging measurement validation.
+- **Why it may not be appropriate:**
+  - Needs sufficient paired observations; interpretation can be noisy with small n.
+- **When NOT to use:**
+  - If repeated measures are not paired or if only ordinal categories exist.
+- **Alternative:**
+  - Concordance correlation coefficient.
+
+## C2) Time-to-event style “time to good healing”
+- **Test/model name:** Kaplan–Meier and log-rank; Cox model (if appropriate).
+- **Purpose:** Compare how quickly patients reach “good healing.”
+- **Why appropriate:**
+  1. Follow-up has discrete times; can treat first occurrence as event.
+  2. Handles censoring for dropout.
+- **Why it may not be appropriate:**
+  - Healing is assessed only at discrete visits and may not meet proportional hazards; small sample size.
+- **When NOT to use:**
+  - If event definition is subjective/unstable or too few events.
+- **Alternative:**
+  - Discrete-time survival model or ordinal longitudinal model.
+
+## C3) Responder analysis (binary) at each follow-up
+- **Test name:** Logistic regression or Fisher’s exact test comparing “success” proportions.
+- **Purpose:** Provide clinically interpretable success rates by material.
+- **Why appropriate:**
+  1. Clinicians often prefer success/failure summaries.
+  2. Works even if continuous lesion size is skewed.
+- **Why it may not be appropriate:**
+  - Dichotomization loses information and power; success threshold is arbitrary.
+- **When NOT to use:**
+  - As the only primary analysis.
+- **Alternative:**
+  - Ordinal model or continuous LMM.
+
+---
+
+## TASK 3: Inappropriate tests (should NOT be used)
+
+1. **Multiple independent t-tests** between materials without global test and multiplicity correction  
+   - Inflates Type I error; ignores 3-arm design.
+
+2. **Paired t-test** to compare groups  
+   - Groups are independent; pairing does not exist.
+
+3. **Simple repeated-measures ANOVA with listwise deletion** as primary  
+   - Requires complete data and sphericity; attrition is substantial and would discard many participants → biased/inefficient.
+
+4. **Chi-square test** for healing categories when expected cell counts are small (likely here at 6 months, n=8 in one group)  
+   - Violates expected count assumptions; use Fisher/exact or ordinal models.
+
+5. **Correlation (Pearson/Spearman) between material coded numerically (1/2/3) and outcome**  
+   - Treats nominal group as ordered/continuous; uninterpretable and potentially misleading.
+
+6. **Using baseline-difference p-values to “prove” randomization succeeded**  
+   - Not meaningful; randomization justifies causal inference regardless of baseline p-values.
+
+---
+
+## TASK 4: Summary justification of the overall approach
+
+A 3-arm randomized prospective design with **repeated CBCT measurements** requires (i) **longitudinal modeling** (mixed-effects/GLMM) to compare healing over time while accounting for within-patient correlation and attrition, (ii) a prespecified **endpoint comparison** (e.g., adjusted 6-month outcome), (iii) appropriate methods for the **ordinal healing score**, and (iv) reporting **measurement reliability** (ICC/weighted kappa) because imaging outcomes were read twice. This combination yields unbiased group comparisons (under stated missingness assumptions), maximizes use of available data, and aligns analyses with the actual measurement structure.

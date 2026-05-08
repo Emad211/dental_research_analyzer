@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_influence_of_intracanal_cryotherapy_on.17.pdf",
+  "timestamp": "20260508_073817",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 14798
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 7127
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 25106
+    }
+  }
+}

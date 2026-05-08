@@ -1,0 +1,131 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_the_effect_of_root_canal_treatment_on_oral.9.pdf
+Status : ok
+Time   : 20260508_075033
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: Clinical trial.
+2. **Objective**: To measure the impact of root canal treatment on oral health-related quality of life (OHRQoL) in single-visit versus multiple-visit treatments.
+3. **Study Setting**: Dental teaching hospital, Makkah, Saudi Arabia.
+4. **Study Period**: September 2019 to January 2020.
+5. **Ethical Approval**: Institutional Review Board (IRB) approval (IRB number: 132-19).
+6. **Participants**:
+   - **Inclusion Criteria**: Patients aged 16–60 years diagnosed with symptomatic irreversible pulpitis and normal periapical tissue.
+   - **Exclusion Criteria**: Cases with calcified canals, systemic diseases complicating root canal treatment (e.g., endocarditis), or any kind of resorption.
+7. **Sample Size**:
+   - Calculated to detect a mean difference of 8.0 in OHIP scores with SD = 6.0, power = 82%, and alpha = 0.05.
+   - 16 participants per group (total = 32 participants).
+8. **Randomization**: Patients were randomly assigned into two groups:
+   - **Group 1**: Single-visit root canal treatment.
+   - **Group 2**: Multiple-visit root canal treatment.
+9. **Outcome Measure**: OHRQoL assessed using the OHIP-14 questionnaire (Arabic version).
+   - **Scoring**: Each question scored 0–4, with a total score range of 0–56 (higher scores indicate worse OHRQoL).
+10. **Data Collection**:
+    - **Single-Visit Group**: OHIP-14 completed at baseline and at the second follow-up visit after obturation.
+    - **Multiple-Visit Group**: OHIP-14 completed at baseline, after the first visit (access cavity and pulp extirpation), and after obturation.
+    - Data collected via face-to-face interviews.
+11. **Intervention**:
+    - Root canal treatment performed by two undergraduate dental students under supervision.
+    - Standardized protocol for anesthesia, isolation, working length determination, irrigation, preparation, and obturation.
+    - Multiple-visit group received intracanal medication and temporary fillings between visits.
+12. **Bias Reduction**:
+    - Randomization to reduce selection bias.
+    - Mixed-effect models used for analysis.
+    - Standardized operator selection to reduce operator bias.
+    - Interview forms used to reduce information bias.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Paired t-test (or Wilcoxon signed-rank test if non-normal).
+   - **Purpose**: To compare pre- and post-treatment OHIP-14 scores within each group.
+   - **Why Appropriate**:
+     1. The outcome variable (OHIP-14 score) is continuous.
+     2. The study aims to assess within-group changes over time.
+   - **Why It May Not Be Appropriate**:
+     - Assumes normality of the difference scores, which may not hold.
+   - **When This Test Should NOT Be Used**:
+     - If the OHIP-14 score differences are non-normally distributed.
+   - **Alternative if Assumptions Are Violated**: Wilcoxon signed-rank test.
+
+2. **Test Name**: Independent t-test (or Mann-Whitney U test if non-normal).
+   - **Purpose**: To compare the mean change in OHIP-14 scores between the single-visit and multiple-visit groups.
+   - **Why Appropriate**:
+     1. The study compares two independent groups.
+     2. The outcome variable is continuous (change in OHIP-14 scores).
+   - **Why It May Not Be Appropriate**:
+     - Assumes equal variances and normality, which may not hold.
+   - **When This Test Should NOT Be Used**:
+     - If the data are non-normal or variances are unequal.
+   - **Alternative if Assumptions Are Violated**: Mann-Whitney U test or Welch’s t-test.
+
+3. **Test Name**: Mixed-effects model.
+   - **Purpose**: To account for repeated measures and assess the interaction between time and group.
+   - **Why Appropriate**:
+     1. Accounts for within-subject correlations due to repeated measures.
+     2. Can model the effect of group (single vs. multiple visits) and time simultaneously.
+   - **Why It May Not Be Appropriate**:
+     - Requires advanced statistical expertise and software.
+   - **When This Test Should NOT Be Used**:
+     - If the sample size is too small to fit a reliable model.
+   - **Alternative if Assumptions Are Violated**: Generalized estimating equations (GEE).
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Effect size calculation (e.g., Cohen’s d).
+   - **Purpose**: To quantify the magnitude of the difference in OHIP-14 scores.
+   - **Why Appropriate**:
+     1. Provides a standardized measure of the treatment effect.
+     2. Complements p-values by indicating clinical significance.
+   - **Why It May Not Be Appropriate**:
+     - Does not account for variability in small sample sizes.
+   - **When This Test Should NOT Be Used**:
+     - If the sample size is too small to provide meaningful effect size estimates.
+   - **Alternative if Assumptions Are Violated**: Non-parametric effect size measures (e.g., rank-biserial correlation).
+
+2. **Test Name**: Cronbach’s alpha.
+   - **Purpose**: To assess the internal consistency of the OHIP-14 questionnaire.
+   - **Why Appropriate**:
+     1. Ensures reliability of the questionnaire used for data collection.
+     2. Validates the use of OHIP-14 in the study population.
+   - **Why It May Not Be Appropriate**:
+     - Assumes unidimensionality of the scale, which may not hold.
+   - **When This Test Should NOT Be Used**:
+     - If the sample size is too small for reliable estimation.
+   - **Alternative if Assumptions Are Violated**: McDonald’s omega.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Subgroup analysis.
+   - **Purpose**: To explore differences in OHIP-14 score changes by age, gender, or other sociodemographic factors.
+   - **Why Appropriate**:
+     1. Provides additional insights into the impact of treatment on different subgroups.
+     2. May identify factors influencing treatment outcomes.
+   - **Why It May Not Be Appropriate**:
+     - Increases the risk of type I error due to multiple comparisons.
+   - **When This Test Should NOT Be Used**:
+     - If the sample size is too small to support subgroup analysis.
+   - **Alternative if Assumptions Are Violated**: Bayesian hierarchical models.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Chi-square test**:
+   - **Why Inappropriate**: The outcome variable (OHIP-14 score) is continuous, not categorical.
+2. **ANOVA**:
+   - **Why Inappropriate**: The study involves repeated measures, which require a mixed-effects model or repeated-measures ANOVA.
+3. **Pearson correlation**:
+   - **Why Inappropriate**: The study does not aim to assess the linear relationship between two continuous variables.
+
+---
+
+### TASK 4: SUMMARY
+The analytical approach focuses on comparing pre- and post-treatment OHIP-14 scores within and between groups using paired and independent t-tests (or non-parametric equivalents). A mixed-effects model is recommended to account for repeated measures and interactions. Effect size calculations and reliability testing enhance the rigor of the analysis, while subgroup analyses provide supplementary insights. This approach ensures robust and clinically meaningful results while addressing potential biases and limitations.

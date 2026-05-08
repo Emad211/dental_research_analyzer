@@ -1,0 +1,124 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_influence_of_intracanal_cryotherapy_on.17.pdf
+Status : ok
+Time   : 20260508_073817
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics
+1. **Study Design**:  
+   - Randomized clinical trial (RCT).  
+   - Double-blinded (observer and statistician blinded).  
+
+2. **Objective**:  
+   - To evaluate the effect of intracanal cryotherapy (cold irrigants) on postendodontic pain and interleukin-6 (IL-6) expression using different irrigation protocols.
+
+3. **Participants**:  
+   - Total sample size: 48 patients.  
+   - Inclusion criteria:  
+     - Age: 20–50 years.  
+     - Symptomatic apical periodontitis (AP) with preoperative pain score >7 on the visual analog scale (VAS).  
+   - Exclusion criteria:  
+     - Periapical abscess.  
+     - Use of immunosuppressive chemotherapy, anti-inflammatory drugs, or antibiotics in the past 2 months.  
+     - Medically compromised patients.  
+     - Pregnant or lactating females.  
+
+4. **Randomization**:  
+   - Patients were randomly assigned to one of four groups (12 patients per group) using opaque, sealed envelopes.  
+
+5. **Groups**:  
+   - **Group I (Control)**: Irrigation with 5% sodium hypochlorite (NaOCl) at room temperature (RT) throughout the procedure.  
+   - **Group II**: Irrigation with 5% cold NaOCl (2°C–5°C) throughout the procedure.  
+   - **Group III**: Irrigation with 5% NaOCl at RT throughout the procedure, followed by a final rinse with 20 mL of 5% cold NaOCl (2°C–5°C) for 5 minutes.  
+   - **Group IV**: Irrigation with 5% NaOCl at RT throughout the procedure, followed by a final rinse with 20 mL of cold saline (2°C–5°C) for 5 minutes.  
+
+6. **Variables**:  
+   - **Independent Variable**: Irrigation protocol (temperature and type of irrigant).  
+   - **Dependent Variables**:  
+     - Postendodontic pain (measured using VAS).  
+     - IL-6 expression (biological marker for inflammation).  
+
+7. **Measurements**:  
+   - **Postendodontic Pain**: Assessed using the VAS, which measures pain intensity on a scale of 0–10.  
+   - **IL-6 Expression**: Not explicitly described in the provided text, but likely measured using a laboratory assay (e.g., ELISA or qPCR).  
+
+8. **Data Collection Methods**:  
+   - Pain scores were recorded preoperatively and postoperatively (specific time points not provided in the text).  
+   - IL-6 levels were measured as a marker of inflammation (details on sample collection and analysis not provided).  
+
+9. **Ethical Considerations**:  
+   - Approved by the Ethics Committee of the Faculty of Dentistry, Suez Canal University (56/2017).  
+   - Registered on ClinicalTrials.gov (ID: NCT04324398).  
+   - Informed consent obtained from all participants.  
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Repeated Measures ANOVA (or Mixed-Effects Model).  
+   - **Purpose**: To compare postendodontic pain and IL-6 levels across the four groups over time.  
+   - **Why Appropriate**:  
+     1. The study involves repeated measurements (e.g., preoperative and postoperative pain/IL-6 levels).  
+     2. It accounts for within-subject correlations and between-group differences.  
+   - **Why It May Not Be Appropriate**: Assumes normality of residuals and sphericity, which may not hold.  
+   - **When This Test Should NOT Be Used**: If data are non-normal or if sphericity is violated.  
+   - **Alternative if Assumptions Are Violated**: Non-parametric equivalent (e.g., Friedman test for within-group comparisons, Kruskal-Wallis test for between-group comparisons).  
+
+2. **Test Name**: One-Way ANOVA (or Kruskal-Wallis Test).  
+   - **Purpose**: To compare mean pain scores or IL-6 levels between the four groups at a single time point.  
+   - **Why Appropriate**:  
+     1. The independent variable (irrigation protocol) has four levels.  
+     2. The dependent variables (pain, IL-6) are continuous.  
+   - **Why It May Not Be Appropriate**: Assumes normality and homogeneity of variances.  
+   - **When This Test Should NOT Be Used**: If data are non-normal or variances are unequal.  
+   - **Alternative if Assumptions Are Violated**: Kruskal-Wallis test.  
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Post-Hoc Pairwise Comparisons (e.g., Tukey’s HSD or Bonferroni).  
+   - **Purpose**: To identify specific group differences if the overall ANOVA is significant.  
+   - **Why Appropriate**:  
+     1. Provides detailed insights into which irrigation protocols differ.  
+     2. Adjusts for multiple comparisons to control Type I error.  
+   - **Why It May Not Be Appropriate**: Increases complexity and may reduce power if sample size is small.  
+   - **When This Test Should NOT Be Used**: If overall ANOVA is not significant.  
+   - **Alternative if Assumptions Are Violated**: Pairwise Mann-Whitney U tests with Bonferroni correction.  
+
+2. **Test Name**: Effect Size Calculation (e.g., Partial Eta-Squared).  
+   - **Purpose**: To quantify the magnitude of differences between groups.  
+   - **Why Appropriate**:  
+     1. Provides a measure of practical significance.  
+     2. Complements p-values, which only indicate statistical significance.  
+   - **Why It May Not Be Appropriate**: May not be meaningful if the sample size is very small.  
+   - **When This Test Should NOT Be Used**: If data are highly skewed or non-normal.  
+   - **Alternative if Assumptions Are Violated**: Non-parametric effect size measures (e.g., rank-biserial correlation).  
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Correlation Analysis (e.g., Pearson or Spearman).  
+   - **Purpose**: To explore the relationship between IL-6 levels and pain scores.  
+   - **Why Appropriate**:  
+     1. Both variables are continuous.  
+     2. May reveal insights into the biological mechanism of cryotherapy.  
+   - **Why It May Not Be Appropriate**: Assumes linearity (for Pearson correlation).  
+   - **When This Test Should NOT Be Used**: If data are non-linear or if there are outliers.  
+   - **Alternative if Assumptions Are Violated**: Spearman’s rank correlation.  
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Chi-Square Test**:  
+   - **Why Not Appropriate**: The dependent variables (pain, IL-6) are continuous, not categorical.  
+
+2. **Independent Samples t-Test**:  
+   - **Why Not Appropriate**: The study involves more than two groups, making this test insufficient.  
+
+3. **Paired t-Test**:  
+   - **Why Not Appropriate**: This test is designed for two related samples, whereas this study involves four groups.  
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan is designed to address the study’s objectives comprehensively. Repeated measures ANOVA (or its non-parametric alternatives) is the cornerstone of the analysis, as it accounts for both within-subject and between-group variations. Post-hoc tests and effect size calculations are recommended to provide additional insights into group differences and practical significance. Optional analyses, such as correlation, can further enhance understanding of the relationship between pain and inflammation. The plan ensures robustness by including alternatives for assumption violations and avoids inappropriate tests that do not align with the study design or data characteristics.

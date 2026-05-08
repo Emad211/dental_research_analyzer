@@ -1,0 +1,332 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_sgarancini,+09_10_GIE_21_02_280.pdf
+Status : ok
+Time   : 20260508_074542
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — INFORMATION EXTRACTION (study characteristics)
+
+### Study design and setting
+- **Design:** Prospective, **3-arm parallel-group randomized clinical trial**, **single-center**, **single-blind** (patients blinded; VAS evaluators blinded; operator not blinded).
+- **Setting:** Endodontics Department, Faculty of Dentistry, Zahedan University of Medical Sciences (Iran).
+- **Recruitment period:** December 2018–June 2020.
+- **Registration/ethics:** IRCT20180718040517N1; Ethics code IR.ZAUMS.REC.1397.278; CONSORT followed.
+
+### Objective(s)
+- Compare **depotphoresis vs diode laser vs control** regarding:
+  1. **Microbial count reduction** in root canals (CFU/mL),
+  2. **Postoperative pain** over 72 hours,
+  3. **Healing of periapical lesions** after **6 months** measured on **CBCT**.
+
+### Participants
+- **Population:** Patients requiring endodontic treatment of teeth with **pulp necrosis + chronic apical periodontitis**.
+- **Age:** 18–60 years.
+- **Diagnosis confirmation:** Radiographic exam + negative cold test and EPT + no bleeding on pulp exposure.
+
+#### Key inclusion criteria
+- 18–60 years; tooth with confirmed necrotic pulp and chronic apical periodontitis; rubber dam isolation possible.
+
+#### Key exclusion criteria
+- Diabetes, immunocompromised, pregnancy
+- Analgesic intake in past 3 days; antibiotic intake past month
+- Teeth with periodontal disease, previous access cavity, not isolatable with rubber dam
+
+### Randomization and concealment
+- **Simple randomization** via online system immediately before treatment.
+- **Allocation concealment:** computer-generated assignment after demographics entered; unique ID codes; codes not reused.
+- **Blinding procedures (patient blinding via sham):**
+  - Control: sham laser (fiber placed without activation) for some; sham depotphoresis clips without current for others.
+  - Laser group: depotphoresis clips placed **without current** (sham depotphoresis).
+  - Depotphoresis group: sham laser with power off.
+
+### Groups / interventions
+All groups received standard chemomechanical preparation and irrigation:
+- Instrumentation: Reciproc files (25/8 or 40/6) + Reciproc Silver motor
+- Irrigation: 2.5% NaOCl + 17% EDTA; then saline; agitation with #30 Hedstrom; sampling with paper points.
+
+**Arm 1: Depotphoresis**
+- Cupral paste (Cupral:Ca(OH)₂ = 1:9) placed in coronal third.
+- Electrodes applied; current increased to manufacturer range **0.8–1.5 mA for 5 min**.
+- Temporary Cavit; **calcium hydroxide-Cupral** intracanal medicament between sessions.
+
+**Arm 2: Diode laser**
+- 940 nm diode laser, 200 µm tip, inserted to 1 mm from apex and withdrawn helically (~2 mm/s)
+- **Pulse mode**, **2 W**, 20 s irradiation + 10 s rest; repeated **3 cycles**
+- Then **calcium hydroxide + saline** as medicament; Cavit.
+
+**Arm 3: Control**
+- No active adjunctive disinfection beyond standard care
+- **Calcium hydroxide + saline** medicament; Cavit.
+
+### Timing / repeated measures
+- **Pain (VAS 0–10):**
+  - Baseline (pre-treatment, session 1)
+  - Post-treatment at **6, 12, 24, 48, 72 hours**
+  - Recall at 7 days (visit mentioned; outcomes not clearly specified beyond VAS form collection)
+
+- **Microbial sampling (CFU/mL):**
+  - **S1:** after access/caries removal, **before** canal preparation (paper points 1 min)
+  - **S2:** after chemomechanical preparation (paper points 60 s).  
+    *Text suggests laser occurs after preparation; S2 collected after laser irradiation as well—timing needs prespecification in SAP.*
+  - **S3:** at second session, after removing intracanal medicament (paper points; same method)
+
+- **Radiographic healing (CBCT):**
+  - CBCT pre-treatment and **6-month** follow-up.
+  - Lesion **maximum diameter** measured in 3 orthogonal directions:
+    - **Apicocoronal (Ly)**
+    - **Mesiodistal (Lx)**
+    - **Buccolingual (Lz)**
+  - Additional CBCT “codes” based on Patel et al. (modified; codes 1 and 6 not applicable).
+  - **Readers:** 2 endodontists; third adjudicated disagreements.
+
+### Outcomes (as implied from intro/methods)
+- **Primary/Key outcomes** (not explicitly labeled, but central):
+  - Microbial load (CFU/mL) change across S1/S2/S3 and between groups
+  - Postoperative pain trajectory (VAS over time) between groups
+  - CBCT lesion size change (Lx, Ly, Lz) from baseline to 6 months; possibly categorical CBCT healing code
+
+### Sample size and flow
+- **Planned:** 30 per group (total 90), based on pilot: minimum 25/group; **effect size 0.82**, **power 80%**, alpha 0.05.
+- **Follow-up loss at 6 months (per CONSORT):**
+  - Depotphoresis: lost 4 → analyzed **n=26** (roots=27)
+  - Laser: lost 5 → analyzed **n=25** (roots=29)
+  - Control: lost 14 → analyzed **n=16** (roots=17)
+- **Unit of analysis issue:** both **patients** and **roots** reported; some patients contributed >1 root (clustered data).
+
+### Microbiology lab methods
+- CFU counting:
+  - Vortex 30 s; 10-fold serial dilutions 10^-1 to 10^-10 in PBS/saline
+  - Plate 1 mL onto BHI agar; incubate 37°C for 24h
+  - Count colonies; compute CFU/mL using dilution factor; discard “outer numbers” and average remaining (needs clarification/standardization).
+
+---
+
+## TASK 2 — STATISTICAL ANALYSIS PLAN
+
+### General principles (apply to all outcomes)
+- **Analysis populations**
+  - **Intention-to-treat (ITT)**: all randomized patients, analyzed by assigned group (recommended as primary for RCT).
+  - **Per-protocol (PP)**: those completing assigned protocol and follow-up (sensitivity).
+- **Unit of analysis**
+  - Prefer **patient-level** primary analyses.  
+  - If multiple teeth/roots per patient are included, use **mixed-effects models / GEE** to account for within-patient clustering.
+- **Multiplicity**
+  - Three groups → control family-wise error for pairwise comparisons (e.g., Tukey, Holm).
+  - Multiple endpoints and repeated timepoints → pre-specify primary endpoint(s) and control secondary multiplicity (e.g., hierarchical testing or FDR).
+- **Distribution handling**
+  - CFU/mL usually right-skewed/zero-inflated → analyze **log10(CFU+1)** or use count models if appropriate.
+  - VAS often non-normal and bounded → mixed model with robust SE; or ordinal methods as sensitivity.
+- **Missing data**
+  - 6-month attrition is substantial (especially control). Plan:
+    - Explore missingness patterns and predictors.
+    - Primary: mixed models (valid under MAR) + **multiple imputation** as sensitivity.
+    - Consider worst/best-case sensitivity for key outcomes.
+- **Reporting**
+  - Effect sizes with 95% CI (mean differences, standardized differences, ratios, odds ratios), not only p-values.
+
+---
+
+### CATEGORY A — MANDATORY tests/models
+
+#### A1) Linear Mixed-Effects Model (LMM) / Mixed Model for Repeated Measures (MMRM) — Pain (VAS over time)
+- **Purpose:** Compare **pain trajectories** across groups over repeated timepoints (baseline, 6–72h), accounting for within-subject correlation.
+- **Why appropriate:**
+  1. Handles **repeated measures** and uneven spacing (6/12/24/48/72h).
+  2. Can include **baseline pain** and estimate **group × time interaction** (treatment effect over time).
+- **Why it may not be appropriate:**
+  - VAS may be markedly non-normal/heavy-tailed or many zeros, making Gaussian assumptions poor.
+- **When NOT to use:**
+  - If pain is best treated as **ordinal** with strong ceiling/floor effects and residual diagnostics show severe violations not correctable.
+- **Alternative if assumptions violated:**
+  - **Robust LMM** (sandwich SE), **GEE with robust SE**, or **ordinal mixed model** (cumulative logit) treating VAS as ordered categories; or analyze area-under-curve (AUC) with nonparametric methods.
+
+**Model details to pre-specify:**
+- Fixed effects: group, time (categorical), group×time, baseline pain (if not part of outcome vector), tooth type/lesion baseline size (optional covariates).
+- Random effect: subject (patient); add random slope for time if justified.
+- Covariance: unstructured or AR(1) (choose via AIC/BIC).
+
+---
+
+#### A2) Mixed-Effects Model (or GEE) for Microbial Load across S1/S2/S3
+- **Test/model name:** LMM/MMRM on **log10(CFU/mL + 1)** with group×sampling-time interaction; or **GEE** with robust SE.
+- **Purpose:** Compare **bacterial reduction patterns** among groups across three sampling points.
+- **Why appropriate:**
+  1. Accounts for **within-tooth/patient correlation** across repeated samples.
+  2. Log-transform stabilizes variance and makes skewed CFU distributions more analyzable; interaction tests whether reductions differ by group.
+- **Why it may not be appropriate:**
+  - If CFU data are **zero-inflated** or counts are unreliable due to lab processing rules (“outer numbers thrown out”) causing nonstandard measurement error.
+- **When NOT to use:**
+  - If CFU are analyzed as raw counts with extreme overdispersion/zero inflation and log-transform does not resolve model fit.
+- **Alternative if assumptions violated:**
+  - **Negative binomial mixed model**; **zero-inflated negative binomial**; or nonparametric approaches on change scores (e.g., aligned ranks) as sensitivity.
+
+**Key derived endpoints to consider (pre-specify):**
+- ΔlogCFU S1→S2, S2→S3, and S1→S3 (overall disinfection).
+
+---
+
+#### A3) ANCOVA / Mixed Model for CBCT Lesion Size Change (baseline vs 6 months)
+- **Test/model name:** **ANCOVA** (follow-up lesion size as outcome, baseline lesion size as covariate, group as factor) for each dimension (Lx, Ly, Lz); or multivariate extension (see B2).
+- **Purpose:** Compare **6-month healing** across groups while adjusting for baseline lesion size.
+- **Why appropriate:**
+  1. ANCOVA is more efficient than change-score tests and controls **baseline imbalance**.
+  2. Straightforward interpretation: adjusted mean follow-up difference by group.
+- **Why it may not be appropriate:**
+  - If lesion measurements are highly non-normal, contain many zeros, or if missing follow-up is differential and not MAR.
+- **When NOT to use:**
+  - If baseline and follow-up are not measured comparably (e.g., inconsistent measurement protocol) or if clustering (multiple roots/patient) is ignored.
+- **Alternative if assumptions violated:**
+  - **Rank ANCOVA** (e.g., Quade), **robust regression**, or **mixed-effects model** with patient random effect; bootstrap CIs.
+
+---
+
+#### A4) Baseline comparability (descriptive + targeted tests)
+- **Test name:** One-way **ANOVA** or **Kruskal–Wallis** for continuous baseline variables; **Chi-square** or **Fisher’s exact** for categorical.
+- **Purpose:** Describe baseline characteristics and identify large imbalances to consider as covariates (not for “proof” of randomization).
+- **Why appropriate:**
+  1. Helps interpret results in presence of attrition and possible chance imbalances.
+  2. Guides covariate adjustment choices for sensitivity analyses.
+- **Why it may not be appropriate:**
+  - Overemphasis on p-values at baseline can be misleading in RCTs.
+- **When NOT to use:**
+  - Do not use baseline p-values to decide inclusion/exclusion or to claim groups are “equivalent”.
+- **Alternative if assumptions violated:**
+  - Use **standardized mean differences (SMDs)** instead of hypothesis tests; Fisher instead of Chi-square for sparse cells.
+
+---
+
+### CATEGORY B — RECOMMENDED tests/models
+
+#### B1) Cluster-adjusted modeling for “roots” (if multiple roots/teeth per patient)
+- **Model:** **Mixed-effects** models with random intercept for patient; or **GEE** with patient as clustering unit.
+- **Purpose:** Correct standard errors and inference when unit analyzed is tooth/root but randomization is at patient level.
+- **Why appropriate:**
+  1. Prevents **inflated type I error** due to within-patient correlation.
+  2. Aligns analysis with the actual data hierarchy reported (patients and roots).
+- **Why it may not be appropriate:**
+  - If truly only one tooth per patient is included (unclear), clustering may be unnecessary.
+- **When NOT to use:**
+  - When each patient contributes exactly one independent observation.
+- **Alternative:**
+  - Analyze **one pre-specified tooth per patient** (patient-level endpoint), or average within patient (with caution).
+
+---
+
+#### B2) Multivariate approach to lesion dimensions (Lx, Ly, Lz)
+- **Test/model name:** **MANOVA** on follow-up adjusted for baseline (or multivariate mixed model).
+- **Purpose:** Jointly test whether groups differ in overall 3D lesion healing profile.
+- **Why appropriate:**
+  1. Accounts for correlation among lesion dimensions.
+  2. Controls type I error vs three separate univariate tests.
+- **Why it may not be appropriate:**
+  - Sensitive to multivariate normality; may be underpowered with small n at follow-up (especially control).
+- **When NOT to use:**
+  - With very small group sizes or severe non-normality/outliers.
+- **Alternative if assumptions violated:**
+  - **Permutation MANOVA**, or control multiplicity across univariate ANCOVAs (Holm).
+
+---
+
+#### B3) Inter-rater reliability for CBCT categorical codes and/or continuous measures
+- **Test name:** **Cohen’s kappa / weighted kappa** (categorical codes), **ICC (intraclass correlation)** for continuous lesion dimensions.
+- **Purpose:** Quantify agreement between the two endodontist readers (and impact of adjudication).
+- **Why appropriate:**
+  1. Imaging outcomes depend on observer interpretation; reliability supports validity.
+  2. Helps justify combining/using adjudicated readings.
+- **Why it may not be appropriate:**
+  - If only adjudicated final values are stored and raw paired ratings are unavailable.
+- **When NOT to use:**
+  - When there is only one rating per scan with no duplicate reads.
+- **Alternative:**
+  - Bland–Altman plots for continuous measures; Gwet’s AC1 for kappa paradox scenarios.
+
+---
+
+#### B4) Sensitivity analyses for missing 6-month CBCT outcomes
+- **Test/model:** **Multiple imputation (MI)** + analysis model; and/or **inverse probability weighting (IPW)**.
+- **Purpose:** Assess robustness to differential dropout (notably high in control).
+- **Why appropriate:**
+  1. Attrition can bias healing comparisons; MI/IPW addresses missingness under MAR.
+  2. Provides more defensible inference than complete-case only.
+- **Why it may not be appropriate:**
+  - If missingness is MNAR and not explainable by observed covariates; MI may still be biased.
+- **When NOT to use:**
+  - When missingness is extreme with little auxiliary information (unstable imputations).
+- **Alternative:**
+  - Pattern-mixture / tipping-point analyses; bounded/worst-case sensitivity.
+
+---
+
+### CATEGORY C — OPTIONAL tests/models (supplementary)
+
+#### C1) Pain Area-Under-the-Curve (AUC) comparison
+- **Test name:** AUC (0–72h) computed per patient; compare groups via **ANOVA/ANCOVA** or **Kruskal–Wallis**.
+- **Purpose:** Provide a single summary of overall pain burden.
+- **Why appropriate:**
+  1. Clinically interpretable “total pain experience”.
+  2. Reduces multiple timepoint comparisons.
+- **Why it may not be appropriate:**
+  - Requires adequate completion of all timepoints; missing VAS points complicate AUC.
+- **When NOT to use:**
+  - When substantial intermittent missing pain ratings are present without a clear imputation rule.
+- **Alternative:**
+  - Mixed-model estimated marginal means over time; or imputed AUC using MI.
+
+---
+
+#### C2) Responder analyses (clinically meaningful thresholds)
+- **Test name:** **Logistic regression** (mixed/GEE if clustered) for outcomes like “moderate/severe pain” (e.g., VAS≥4) at each time or any time.
+- **Purpose:** Translate continuous VAS into clinically meaningful risk differences/ORs.
+- **Why appropriate:**
+  1. Supports clinical interpretability.
+  2. Can handle non-normal VAS distributions.
+- **Why it may not be appropriate:**
+  - Dichotomization loses information and power; threshold may be arbitrary.
+- **When NOT to use:**
+  - As the sole primary analysis of pain.
+- **Alternative:**
+  - Ordinal models or continuous mixed models.
+
+---
+
+#### C3) Mediation/exploratory association between bacterial reduction and pain/healing
+- **Test/model:** Regression/SEM exploring whether ΔlogCFU predicts pain AUC or lesion reduction, adjusted for group.
+- **Purpose:** Mechanistic insight (does disinfection relate to symptoms/healing?).
+- **Why appropriate:**
+  1. Addresses biological plausibility linking bacterial load to outcomes.
+  2. Generates hypotheses for future work.
+- **Why it may not be appropriate:**
+  - Not randomized for mediator; confounding; risk of overinterpretation.
+- **When NOT to use:**
+  - To make causal claims without strong assumptions.
+- **Alternative:**
+  - Stratified descriptive plots; partial correlations with caution.
+
+---
+
+## TASK 3 — INAPPROPRIATE TESTS (should NOT be used)
+
+1. **Multiple independent t-tests at each timepoint without correction** (pain or CFU)
+   - Inflates type I error; ignores within-subject correlation; wastes repeated-measures structure.
+
+2. **Paired t-test within each group only (pre/post) with no between-group comparison**
+   - Can show “significant improvement” in all groups yet fail to answer the RCT question (comparative efficacy).
+
+3. **Chi-square test on raw CFU counts categorized arbitrarily**
+   - CFU is quantitative/count; categorization is information-losing and thresholds are arbitrary.
+
+4. **Ordinary least squares regression treating each root as independent** (if multiple roots per patient)
+   - Violates independence; underestimates SE; false positives.
+
+5. **Using baseline significance tests to decide whether to adjust for covariates**
+   - Data-driven and not principled; adjustment should be pre-specified (e.g., baseline lesion size).
+
+6. **Repeated-measures ANOVA requiring complete cases only (listwise deletion)**
+   - With notable dropout/missingness, biases and reduces power; mixed models are preferable.
+
+---
+
+## TASK 4 — SUMMARY (overall analytical approach)
+
+The study is a 3-arm RCT with **longitudinal outcomes** (pain over 5 post-op timepoints; microbial load over 3 samplings) and a **baseline-to-6-month imaging endpoint**. The core approach should therefore use **mixed-effects/GEE frameworks** to (i) correctly model within-subject correlation, (ii) test **group differences over time** via interaction terms, (iii) adjust for key baselines (especially baseline CBCT lesion size), and (iv) appropriately address **attrition and possible clustering by patient** when multiple roots are analyzed. This yields valid comparative inference aligned with the trial’s objectives.

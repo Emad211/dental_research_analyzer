@@ -1,0 +1,571 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_the_effect_of_root_canal_treatment_on_oral.9.pdf
+Status : ok
+Time   : 20260508_075033
+══════════════════════════════════════════════════════════════════════
+
+TASK 1: INFORMATION EXTRACTION  
+
+1. Study design  
+- Type: Clinical trial (comparative, two-arm, parallel-group).  
+- Setting: Dental teaching hospital, Faculty of Dentistry, Umm Al-Qura University, Makkah, Saudi Arabia.  
+- Period: September 2019 to January 2020.  
+- IRB approval: Yes (IRB number: 132-19).  
+- Randomization: Patients randomly assigned into two groups (single-visit vs multiple-visit RCT).  
+- Blinding: Not described; likely open-label (operators and patients aware of number of visits).  
+- Operator standardization: Two undergraduate students with similar performance; supervised by a single endodontist (attempt to reduce operator bias).
+
+2. Objectives  
+Primary objective:  
+- To measure the impact of root canal treatment on oral health-related quality of life (OHRQoL) and to compare the effect between:  
+  - Single-visit root canal treatment  
+  - Multiple-visit root canal treatment  
+
+Implicit hypotheses:  
+- H1: OHRQoL improves after endodontic treatment (within-subject improvement).  
+- H2: The magnitude/time-course of improvement differs between single-visit and multiple-visit RCT (between-group difference).
+
+3. Participants  
+- Population: Patients attending a dental teaching hospital needing root canal treatment.  
+- Age: 16–60 years.  
+- Diagnosis inclusion:  
+  - Symptomatic irreversible pulpitis  
+  - Normal periapical tissue  
+- Exclusion criteria:  
+  - Calcified canals  
+  - Systemic diseases that may complicate root canal treatment (e.g., endocarditis)  
+  - Any kind of resorption  
+- Sample size justification (per text):  
+  - A priori: to detect a difference in mean change of 8.0 in OHIP scores with SD=6.0, power=82%, alpha=0.05, required 16 subjects per group (total n=32).  
+- Actual sample description is inconsistent:  
+  - First: “convenience sample of 32 patients”  
+  - Then: “patients were assigned randomly into two groups of fifty patients each” (this is incompatible with “32”; likely a reporting error or editing artifact).  
+- For planning purposes, design is two groups, target sample ~16–50 per group, random allocation.
+
+4. Groups (intervention arms)  
+- Group 1: Single-visit root canal treatment  
+  - Endodontic treatment completed in a single visit.  
+  - OHIP-14 data collection:  
+    - Baseline: at the beginning of treatment  
+    - Follow-up: second follow-up visit after obturation (post-treatment).  
+- Group 2: Multiple-visit root canal treatment  
+  - Endodontic treatment completed over multiple visits.  
+  - Intracanal medication (Calcium hydroxide paste) used between visits; temporary filling used between visits.  
+  - OHIP-14 data collection:  
+    - Baseline: at the beginning (pre-treatment)  
+    - Intermediate: next visit after access cavity and pulp extirpation (post-extirpation, pre-obturation)  
+    - Final: after obturation (post-treatment).
+
+5. Treatments / procedures (clinical protocol)  
+- Local anesthesia: Articaine 4% with epinephrine 1:100,000 (Septodont).  
+- Isolation: Rubber dam (medium thickness).  
+- Working length determination:  
+  - Apex locator (DentaPort ZX) with size 10 K-file  
+  - Confirmatory periapical radiograph.  
+- Irrigation:  
+  - 5% sodium hypochlorite via plastic syringe and 30G needle.  
+- Canal preparation:  
+  - ProTaper NEXT NiTi rotary system (X Smart Plus).  
+  - EDTA used as conditioner.  
+- Obturation:  
+  - Gutta-percha points  
+  - Resin-based sealer (ADSEAL).  
+- Multiple-visit specific:  
+  - Intracanal medication: Metapaste (Calcium Hydroxide with Barium Sulfate) between visits.  
+  - Temporary filling between visits.  
+
+6. Outcomes and measurements  
+
+Primary outcome  
+- Oral health-related quality of life (OHRQoL) measured using:  
+  - OHIP-14 (Arabic validated version).  
+- Instrument details:  
+  - 14 items, each coded on a 5-point Likert scale:  
+    - 0 = never  
+    - 1 = hardly ever  
+    - 2 = occasionally  
+    - 3 = fairly often  
+    - 4 = very often  
+  - Summary score: sum of item scores (0–56).  
+  - Interpretation: higher scores = greater negative impact on OHRQoL (worse oral health-related QoL).  
+- Administration:  
+  - Face-to-face interview (structured, to reduce information bias).  
+
+Time-points / repeated measures  
+- Single-visit group:  
+  - T0: Baseline (pre-treatment)  
+  - T1: Post-obturation follow-up  
+- Multiple-visit group:  
+  - T0: Baseline (pre-treatment)  
+  - T1: After access cavity and pulp extirpation  
+  - T2: After obturation  
+
+Derived variables of interest (for analysis planning)  
+- Total OHIP-14 score at each time-point.  
+- Change scores, e.g.:  
+  - ΔT1–T0 (short-term change)  
+  - ΔT2–T0 (overall change) in multiple-visit group  
+  - For both groups: “final – baseline” change.  
+- Potential subdomain scores (if desired, though not explicitly stated):  
+  - e.g., pain items vs functional limitation etc.  
+
+7. Covariates / other variables  
+- Sociodemographic variables:  
+  - Mentioned that questionnaire also verified sociodemographic factors; likely variables such as age, sex, education, employment, etc.  
+  - Specific list not provided, but they are available per methods.  
+- Clinical covariates not explicitly listed, but potentially recordable:  
+  - Tooth type, position, etc. (not described).  
+
+8. Randomization / allocation and bias control  
+- Randomization: “patients were assigned randomly into two groups.”  
+- Selection bias control:  
+  - Mixed-effect models were used “to reduce selection bias” (statement in methods; though mixed models per se don’t reduce selection bias but handle clustering/repeated measures; they may have planned to account for random effects: patient, possibly operator).  
+- Information bias:  
+  - Use of a standard interview form; face-to-face administration to standardize responses.  
+- Operator bias:  
+  - Two undergraduate students with similar performance, supervised by one endodontist, to reduce between-operator variability.  
+
+9. Data structure summary  
+- Unit of randomization: patient.  
+- Unit of analysis: OHIP-14 score per patient per time-point.  
+- Repeated measures: within-subject longitudinal OHIP-14 over 2 or 3 time-points depending on group.  
+- Group factor: single-visit vs multiple-visit.  
+- Possible random effect: patient ID; operator ID (two students) if needed.  
+
+
+TASK 2: STATISTICAL ANALYSIS PLAN  
+
+Overarching approach  
+- Primary analytic framework:  
+  - Compare OHRQoL trajectories and final change between single-visit and multiple-visit groups, accounting for repeated measures within patients.  
+  - Assess within-group improvements over time.  
+- Key considerations:  
+  - OHIP-14 total score is often treated as approximately continuous (sum of 14 Likert items; near-continuous, 0–56).  
+  - Data are longitudinal with unequal number of time-points across groups.  
+  - Sample size is modest; robust methods and assumption checks are important.  
+
+Below, tests are categorized as MANDATORY (A), RECOMMENDED (B), OPTIONAL (C). For each I provide purpose, reasons for appropriateness, limitations, conditions where not to use, and alternatives.
+
+----------------------------------
+CATEGORY A – MANDATORY ANALYSES  
+----------------------------------
+
+A1. Descriptive statistics and graphical summaries  
+
+Test / Step  
+- Descriptive statistics: means, SD, medians, IQR, and frequency distributions of OHIP-14 scores; baseline characteristics by group.  
+- Graphical: line plots of mean OHIP over time by group; boxplots; histograms.
+
+Purpose  
+- Characterize sample and distribution of OHIP scores; check balance between randomized groups; inspect trajectories over time.
+
+Why appropriate (at least two reasons)  
+1) Essential to understand data, identify outliers, missingness patterns, and baseline comparability between groups.  
+2) Helps assess plausibility of normality and homoscedasticity, guiding choice between parametric and nonparametric methods.  
+
+Why it may not be appropriate  
+- Not a limitation per se; but descriptive summaries alone cannot support inferential conclusions.
+
+When NOT to use  
+- Never omitted; descriptions are always needed, although exact form can vary.
+
+Alternatives if assumptions violated  
+- If distributions are highly skewed or multi-modal, emphasize medians/IQR and nonparametric visualizations (e.g., kernel density plots).  
+
+---
+
+A2. Primary inferential model: Linear Mixed-Effects Model (LMM) for repeated measures  
+
+Test name  
+- Linear Mixed-Effects Model (e.g., using restricted maximum likelihood).  
+
+Purpose  
+- Evaluate the effect of treatment group (single vs multiple visit), time, and group-by-time interaction on OHIP-14 scores, accounting for repeated measures within patients.  
+- Provide adjusted estimates of mean difference in change in OHRQoL between groups.
+
+Model specification (conceptual)  
+- Outcome: OHIP_total_it (patient i, time t).  
+- Fixed effects:  
+  - Group (single vs multiple)  
+  - Time (categorical: T0, T1, T2; T2 missing for single-visit)  
+  - Group × Time interaction  
+  - Optional: sociodemographic covariates if imbalances observed (age, sex, etc.).  
+- Random effects:  
+  - Random intercept for patient (and optionally random slope for time if data allow).  
+- Correlation structure: unstructured or AR(1), depending on fit and data.  
+- Analysis strategies for different time structures:  
+  - Primary comparison: final follow-up vs baseline (T_final – T0) for both groups (simpler model with two time-points per subject; T_final for single-visit = post-obturation; for multiple-visit = post-obturation).  
+  - Secondary: include intermediate timepoint for multiple-visit group only, possibly using a three-level time factor and allowing missing at T2 for single-visit, handled by mixed model’s capability for unbalanced repeated measures.
+
+Why appropriate (≥2 reasons)  
+1) Handles repeated measures and within-subject correlation properly, avoiding inflated type I error from treating observations as independent.  
+2) Accommodates unequal number of observations per subject (single-visit has 2 time-points; multiple-visit has 3) without discarding data.  
+3) Permits inclusion of covariates and random effects (e.g., operator as random effect) to adjust for potential confounders and clustering.  
+
+Why it may not be appropriate  
+- Sample size is modest; complex random-effects structures may be unstable or fail to converge, particularly with more parameters (group×time interactions, multiple random effects).  
+- OHIP-14 is bounded and mildly skewed; linear models assume approximate normality and homoscedastic residuals; if these are grossly violated, LMM may not be ideal.
+
+When this test should NOT be used  
+- When sample size is too small to support model complexity (e.g., <10 subjects per group) or convergence issues arise.  
+- If outcome is heavily skewed, with many zero scores (“floor effect”), and transformations do not improve normality; parametric LMM assumptions would be untenable.
+
+Alternative if assumptions violated  
+- Use a Generalized Linear Mixed Model (GLMM) with appropriate link and distribution (e.g., Poisson or negative binomial for count-like OHIP scores, or ordinal mixed model if item-level analysis).  
+- Use nonparametric longitudinal methods (e.g., Brunner–Langer rank-based approaches) if GLMM is not feasible.  
+- For simplified analysis, compute individual change scores and use nonparametric tests (e.g., Mann–Whitney U) as described below.
+
+---
+
+A3. Baseline comparison between groups  
+
+Test name  
+- Independent samples t-test (or Mann–Whitney U) for baseline OHIP-14 total score;  
+- Chi-square (or Fisher’s exact) tests for categorical sociodemographic variables;  
+- t-test or Mann–Whitney U for continuous covariates (e.g., age).
+
+Purpose  
+- Check randomization success and describe baseline equivalence between single- and multiple-visit groups.
+
+Why appropriate (≥2 reasons)  
+1) Ensures groups are comparable at baseline; imbalance may suggest need for covariate adjustment.  
+2) Helps interpret differences in change scores—if baseline differences are large, simple post-treatment comparisons can be misleading.  
+
+Why it may not be appropriate  
+- With small sample sizes, statistical significance tests for baseline comparability are often underpowered and not strictly necessary; descriptive comparison may suffice.
+
+When this test should NOT be used  
+- Some argue baseline hypothesis testing in randomized trials is conceptually inappropriate; focus should be on descriptive comparisons and adjusted analyses.  
+- If sample sizes are very small, p-values may be misleading; emphasizing effect sizes and confidence intervals is better.
+
+Alternative if assumptions violated  
+- Use nonparametric tests (Mann–Whitney U, Fisher’s exact) when normality or expected cell count assumptions fail.  
+
+---
+
+A4. Within-group change analysis  
+
+Test name  
+- Paired t-test (for baseline vs final OHIP-14) within each group;  
+- For multiple-visit group: repeated measures ANOVA (or LMM as above) to evaluate change across all three time-points.
+
+Purpose  
+- Assess whether OHRQoL improves significantly after treatment within each group.  
+
+Why appropriate (≥2 reasons)  
+1) Directly addresses primary question “OHRQoL improved after endodontic treatment.”  
+2) Provides simple, interpretable statistics (mean change, 95% CI) illustrating magnitude of improvement within each group.
+
+Why it may not be appropriate  
+- If OHIP differences are non-normal or sample size is small, paired t-test assumptions may not hold.
+
+When this test should NOT be used  
+- When distributions of change scores are severely skewed or contain many ties/outliers; parametric paired t-test is then questionable.
+
+Alternative if assumptions violated  
+- Use Wilcoxon signed-rank test (nonparametric) for paired data.  
+- Alternatively, rely on estimates from the LMM / GLMM rather than separate paired tests.
+
+---
+
+A5. Between-group comparison of change  
+
+Test name  
+- Independent samples t-test on change scores (Δ = final – baseline OHIP) or ANCOVA with baseline score as covariate;  
+- Preferred: ANCOVA model: Final OHIP = Group + Baseline OHIP + (covariates).
+
+Purpose  
+- Compare magnitude of improvement in OHIP between single-visit and multiple-visit groups.
+
+Why appropriate (≥2 reasons)  
+1) Directly tests the effect of visit pattern on net OHRQoL change.  
+2) ANCOVA adjusts for baseline OHIP differences, improving precision and reducing bias compared with simple post-treatment comparison.
+
+Why it may not be appropriate  
+- Assumes:  
+  - Linear relationship between baseline and outcome.  
+  - Homogeneity of regression slopes across groups.  
+- With small samples, ANCOVA estimates may be unstable.
+
+When this test should NOT be used  
+- If there is strong evidence of interaction between baseline OHIP and group (nonparallel slopes).  
+- If baseline distributions differ markedly and overlap is limited, making adjustment unreliable.
+
+Alternative if assumptions violated  
+- Use nonparametric methods:  
+  - Mann–Whitney U test on change scores.  
+  - Or rank ANCOVA (e.g., van Elteren or aligned-rank ANCOVA).  
+- Use LMM as described in A2, which inherently adjusts for baseline and repeated measures.
+
+----------------------------------
+CATEGORY B – RECOMMENDED ANALYSES  
+----------------------------------
+
+B1. Mixed-Effects Model including sociodemographic covariates  
+
+Test name  
+- Extended LMM (or GLMM) including covariates (age, sex, education, etc.).
+
+Purpose  
+- Explore whether sociodemographic factors influence baseline OHRQoL, magnitude of improvement, or modify the treatment effect.  
+
+Why appropriate (≥2 reasons)  
+1) OHRQoL is known to be influenced by sociodemographic variables; adjusting provides more accurate estimates of treatment effect.  
+2) Identifies subgroups (e.g., younger vs older) where treatment may have different impact, which may inform clinical practice.  
+
+Why it may not be appropriate  
+- Small sample size may not support multiple covariates (risk of overfitting, wide CIs, unstable estimates).
+
+When this test should NOT be used  
+- When events per parameter are too low (rule-of-thumb: <10–15 subjects per parameter).  
+- If covariate data are incomplete or of poor quality.
+
+Alternative if assumptions violated  
+- Limit to a few key covariates (e.g., age, sex) selected a priori.  
+- Use stratified analyses (e.g., descriptive comparisons by age group) instead of multivariable modeling.
+
+---
+
+B2. Nonparametric sensitivity analyses  
+
+Test name  
+- Wilcoxon signed-rank for within-group change;  
+- Mann–Whitney U (Wilcoxon rank-sum) for between-group differences in change;  
+- Friedman test for repeated measures in multiple-visit group.
+
+Purpose  
+- Provide robustness checks when normality assumptions are questionable, and confirm that conclusions do not depend on parametric assumptions.
+
+Why appropriate (≥2 reasons)  
+1) OHIP-14 is an ordinal composite score; nonparametric tests respect ordinal nature and are robust to non-normality.  
+2) Small samples benefit from distribution-free methods to avoid misleading parametric results.
+
+Why it may not be appropriate  
+- Less powerful than parametric tests when parametric assumptions hold.  
+- Do not readily adjust for covariates or complex designs (though some nonparametric ANCOVA-type methods exist).
+
+When this test should NOT be used  
+- When data are clustered beyond simple pairing (e.g., multi-level clusters) and nonparametric options cannot accommodate clustering.
+
+Alternative if assumptions violated  
+- Use permutation tests that can handle small N and non-normal distributions.  
+- Use GLMM if treating OHIP-14 as count/ordinal.
+
+---
+
+B3. Item-level or domain-level analyses  
+
+Test name  
+- For binary/ordinal items:  
+  - Repeated measures ordinal logistic mixed models;  
+  - McNemar test or Cochran’s Q for dichotomized items;  
+  - Nonparametric tests for ordered responses.  
+
+Purpose  
+- Investigate which specific aspects (e.g., physical pain, functional limitation) drive changes in OHRQoL.
+
+Why appropriate (≥2 reasons)  
+1) OHIP-14 has defined domains; analyzing domain or item-level changes gives clinically interpretable insights (e.g., pain vs psychological discomfort).  
+2) Identifies specific domains where single- vs multiple-visit treatments differ (if any).  
+
+Why it may not be appropriate  
+- Item- or domain-level tests increase multiplicity and risk of type I error; sample size may be insufficient for reliable item-level modeling.
+
+When this test should NOT be used  
+- When sample size is very small or item response distributions are extremely sparse (e.g., most zeros).
+
+Alternative if assumptions violated  
+- Present descriptive changes in domain scores without formal hypothesis testing, or use composite domain scores with nonparametric tests.  
+
+---
+
+B4. Internal consistency (reliability) of OHIP-14 in this sample  
+
+Test name  
+- Cronbach’s alpha (and if possible, McDonald’s omega).
+
+Purpose  
+- Verify internal consistency reliability of the OHIP-14 Arabic version in this specific sample.
+
+Why appropriate (≥2 reasons)  
+1) Even though a validated version exists, confirming reliability in the current context (endodontic patients in Saudi Arabia) adds credibility.  
+2) Demonstrates that the total score is a coherent construct, justifying use of a summed score.
+
+Why it may not be appropriate  
+- Sample size may be at the lower end for stable reliability estimates, particularly if data are highly skewed.
+
+When this test should NOT be used  
+- If item responses are highly restricted (e.g., almost all “never”), alpha will be artificially low; interpretation becomes difficult.
+
+Alternative if assumptions violated  
+- Report item-total correlations; consider Spearman–Brown or Guttman lambda coefficients.  
+
+---
+
+B5. Effect size and confidence intervals  
+
+Test name  
+- Calculation of standardized effect sizes:  
+  - Cohen’s d for within- and between-group differences.  
+  - Partial eta-squared for ANOVA/LMM;  
+  - 95% confidence intervals for all primary estimates.
+
+Purpose  
+- Quantify the magnitude, not just significance, of treatment effects and OHRQoL improvements.
+
+Why appropriate (≥2 reasons)  
+1) Clinically useful: helps determine whether observed differences are meaningful, not just statistically significant or non-significant.  
+2) Facilitates comparison with previous literature and meta-analyses.
+
+Why it may not be appropriate  
+- With small samples, effect size estimates may be imprecise (wide confidence intervals).
+
+When this test should NOT be used  
+- Not applicable; effect sizes are generally recommended but interpretation must consider sample size.
+
+Alternative if assumptions violated  
+- Use nonparametric effect sizes (e.g., Cliff’s delta) if using rank-based tests.
+
+----------------------------------
+CATEGORY C – OPTIONAL ANALYSES  
+----------------------------------
+
+C1. Mediation analysis via pain-related items  
+
+Test name  
+- Exploratory mediation models (e.g., path analysis) where physical pain items mediate the relationship between treatment and overall OHRQoL change.
+
+Purpose  
+- Explore whether reduction in pain (specific OHIP items) explains most of the improvement in OHRQoL.
+
+Why appropriate (≥2 reasons)  
+1) Conceptually aligned with literature suggesting pain is key in OHRQoL.  
+2) Provides mechanistic insights, potentially informing pain management strategies.
+
+Why it may not be appropriate  
+- Sample size likely inadequate for formal mediation analysis; results would be unstable and exploratory at best.
+
+When this test should NOT be used  
+- If key assumptions (no unmeasured confounding, temporal ordering) cannot be justified; with small N and limited time-points, mediation models can be misleading.
+
+Alternative if assumptions violated  
+- Instead of formal mediation, present descriptive statistics showing how pain-related items change relative to total score.
+
+---
+
+C2. Sensitivity analyses excluding protocol deviations  
+
+Test name  
+- Re-run primary analyses excluding patients with protocol deviations (e.g., incomplete treatment, major complications, missing follow-up).
+
+Purpose  
+- Assess robustness of conclusions to deviations and missing data.
+
+Why appropriate (≥2 reasons)  
+1) Ensures treatment effect estimates are not driven by anomalous or incomplete cases.  
+2) Differentiates intention-to-treat vs per-protocol perspectives.
+
+Why it may not be appropriate  
+- Small sample size limits ability to exclude cases without losing power; risk of biased per-protocol estimates.
+
+When this test should NOT be used  
+- If exclusion would remove a large fraction of sample (>20–30%), interpretations become unreliable.
+
+Alternative if assumptions violated  
+- Use multiple imputation for missing OHIP scores; present ITT as primary and note limitations.
+
+---
+
+C3. Stratified analyses by age or gender  
+
+Test name  
+- Separate analyses (descriptive or inferential) within age groups (e.g., ≤30 vs >30) or by sex.
+
+Purpose  
+- Explore whether treatment effects differ across key demographic strata.
+
+Why appropriate (≥2 reasons)  
+1) OHRQoL perceptions vary by age/gender; differential effects might be clinically important.  
+2) Generates hypotheses for future, larger trials.
+
+Why it may not be appropriate  
+- With small N, stratification leads to very small subgroup sizes and uninformative, unstable estimates.
+
+When this test should NOT be used  
+- When subgroup sizes fall below about 10 per cell; results would be highly uncertain.
+
+Alternative if assumptions violated  
+- Include interaction terms (Group × Age, Group × Sex) in mixed models but interpret cautiously, or present only descriptive subgroup summaries.
+
+----------------------------------
+TASK 3: INAPPROPRIATE TESTS  
+----------------------------------
+
+Tests that should NOT be used for this study, with reasons:
+
+1. Multiple independent-samples t-tests at each time-point without accounting for repeated measures  
+- Why not:  
+  - Treats repeated measures from the same patient as independent, violating independence assumption and inflating type I error.  
+  - Ignores within-subject correlations and changes over time; less efficient and can misrepresent longitudinal pattern.  
+- Preferred alternative:  
+  - LMM/GLMM for repeated measures; or analyze change scores with appropriate paired tests.
+
+2. Simple one-way ANOVA comparing groups using only final OHIP scores without adjusting for baseline  
+- Why not:  
+  - Baseline imbalance, even if small, can bias inference about treatment effect.  
+  - Randomization justifies adjusting for baseline to increase precision; unadjusted final comparisons are suboptimal and potentially misleading.  
+- Preferred alternative:  
+  - ANCOVA with baseline OHIP as covariate; or LMM including baseline as part of the repeated measures.
+
+3. Parametric repeated measures ANOVA assuming sphericity with complete-case data only  
+- Why not:  
+  - Requires sphericity and complete data; this design has unequal time-points and likely missing data; RM-ANOVA would drop partially observed cases.  
+  - Mixed models handle missingness and unequal spacing better.  
+- Preferred alternative:  
+  - LMM with appropriate covariance structure; if needed, nonparametric longitudinal methods.
+
+4. Treating each OHIP item as continuous and running multiple separate t-tests or chi-square tests without multiplicity control  
+- Why not:  
+  - Inflates type I error due to multiple testing; sample too small to support multiple comparisons.  
+  - Item-level data are ordinal and often sparse; simple t-tests/chi-square may be inappropriate.  
+- Preferred alternative:  
+  - Limit to pre-specified domains or summary scores; if items are analyzed, apply appropriate ordinal models and adjust for multiple comparisons.
+
+5. Simple Pearson correlations between group assignment (binary 0/1) and OHIP scores  
+- Why not:  
+  - Correlation does not account for repeated measures or covariates; yields a crude and potentially misleading measure of association.  
+- Preferred alternative:  
+  - Use regression or mixed models that reflect the design.
+
+6. Logistic regression treating OHIP-14 total as binary (e.g., “improved vs not improved”) with arbitrary cut-offs  
+- Why not:  
+  - Dichotomizing continuous/ordinal outcomes reduces information and power; arbitrary thresholds can bias results.  
+- Preferred alternative:  
+  - Analyze continuous OHIP scores; if categorization is clinically essential, choose pre-specified, validated thresholds and interpret cautiously.
+
+7. Student’s t-test for raw Likert item responses  
+- Why not:  
+  - Item-level responses are ordinal with 5 levels; t-tests assume continuous, approximately normal variables.  
+- Preferred alternative:  
+  - Use ordinal models (e.g., proportional odds) or nonparametric tests; or focus on total score which is closer to continuous.
+
+----------------------------------
+TASK 4: SUMMARY OF ANALYTICAL APPROACH  
+----------------------------------
+
+This trial compares OHRQoL outcomes (OHIP-14) in patients undergoing single- vs multiple-visit root canal treatment, with repeated measurements over time. The primary analytic approach should:
+
+- Treat OHIP-14 total score as the main continuous outcome, with careful descriptive analysis.  
+- Use linear mixed-effects models (or generalized mixed models) to account for:  
+  - Repeated measures within patients;  
+  - Unequal number and timing of measurements;  
+  - Random variability between patients (and potentially operators).  
+- Focus primary inference on:  
+  - Within-group improvement in OHRQoL from baseline to post-obturation;  
+  - Between-group differences in change (whether single vs multiple visits lead to different magnitudes of improvement).  
+- Use ANCOVA / LMM approaches that adjust for baseline OHIP and, where feasible, key sociodemographic covariates.  
+- Conduct assumption checks and supplement with nonparametric sensitivity analyses to ensure robustness.  
+- Avoid simplistic independent t-tests at each time-point and unadjusted end-point comparisons, which ignore the longitudinal and randomized nature of the data.
+
+This analytical plan aligns with the trial’s objectives, respects the structure of the OHIP-14 outcome and the repeated-measures design, and provides interpretable, clinically meaningful estimates of the effect of visit pattern on OHRQoL.

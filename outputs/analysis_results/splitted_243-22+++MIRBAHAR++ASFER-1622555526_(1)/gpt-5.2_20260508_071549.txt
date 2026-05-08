@@ -1,0 +1,243 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_243-22+++MIRBAHAR++ASFER-1622555526_(1).pdf
+Status : ok
+Time   : 20260508_071549
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design and setting
+- **Design:** Comparative **two-group clinical follow-up study** (most consistent with a **prospective cohort**/comparative effectiveness design; not randomized).
+- **Sampling:** **Non-probability consecutive sampling**.
+- **Setting:** Bibi Aseefa Dental College, Larkana (teaching dental hospital), Endodontic unit and Oral Surgery unit.
+- **Ethics/consent:** Ethical board approval; written informed consent; confidentiality assured.
+
+### Objective
+- **Primary objective:** Compare **clinical outcomes** of **periapical surgery** performed in:
+  - **Group A:** Endodontic unit (operated by **endodontist**)
+  - **Group B:** Oral surgery unit (operated by **oral surgeon**)
+
+### Participants
+- **Total sample size:** **N = 120**
+- **Allocation:** **60 per group** (A=60, B=60) — non-random, based on operator/unit.
+- **Eligibility/clinical prerequisites (explicit):**
+  - All tooth types included.
+  - All assessed in endodontic unit before surgery.
+  - **Prerequisites:** **Coronal restoration** and **satisfactory root filling** before surgery.
+
+### Interventions / procedural differences (exposure)
+- **Group A (Endodontist):**
+  - High-speed handpiece
+  - Ultrasonic retro tips
+  - Amalgam used
+  - Intraoperative radiographs to check material status/placement
+  - Sutures removed at **1 week**
+- **Group B (Oral surgeon):**
+  - Slow-speed handpiece
+  - Tungsten carbide burs
+  - Amalgam used
+  - Intraoperative radiographs
+  - Sutures removed at **14 days**
+- **Both groups postoperative care:** analgesics, antibiotics, mouthwash advised.
+
+### Follow-up and outcome assessment
+- **Follow-up duration:** **2 years**
+- **Follow-up schedule:** “biannually” (interpretable as every 6 months; exact number/timepoints not fully stated)
+- **Outcome assessment modalities:**
+  - **Radiographic** + **clinical** assessment
+  - Recorded on **predesigned proforma**
+- **Outcome definition:** Not provided in the excerpt (e.g., success/failure criteria, radiographic scoring system, clinical signs).
+
+### Variables identifiable from text
+- **Primary exposure/grouping variable:** Operator/unit (endodontist vs oral surgeon).
+- **Outcomes (implied):** “clinical outcome/healing” after periapical surgery; assessed clinically and radiographically.
+- **Potential covariates mentioned in intro (not confirmed collected):** age, sex, tooth type, preoperative signs, presence/size of radiolucency, quality of root filling/material. (These are *potential confounders* but not explicitly stated as recorded.)
+
+---
+
+## TASK 2 — Statistical analysis plan
+
+### A. MANDATORY analyses (needed for a complete analysis)
+
+#### A1) Descriptive statistics (baseline and follow-up)
+- **Test/Method:** Descriptive summaries (means/SD or medians/IQR; counts/%), plus group comparisons for baseline balance (see A2).
+- **Purpose:** Describe sample, procedures, and outcomes by group and overall.
+- **Why appropriate:**
+  1. Required to interpret outcome differences and generalizability.
+  2. Identifies imbalance and data quality issues (missingness/outliers).
+- **Why may not be appropriate:**
+  - If key baseline variables were not collected, balance assessment is limited.
+- **When NOT to use:**
+  - Not applicable (descriptives always needed); only avoid misleading summaries (e.g., mean for extreme skew).
+- **Alternative if assumptions violated:**
+  - Use medians/IQR, robust summaries, or transformations.
+
+#### A2) Primary between-group comparison of outcome at 2 years (binary success/failure)
+*(Most dental periapical surgery studies define a binary “success/healed vs failure/not healed”; since the definition is not shown, plan assumes a binary primary endpoint. If outcome is ordinal/continuous, see A4.)*
+- **Test:** **Chi-square test** (or **Fisher’s exact** if sparse counts)
+- **Purpose:** Compare proportion of successful outcomes at 2 years between groups.
+- **Why appropriate:**
+  1. Two independent groups (endodontist vs oral surgeon).
+  2. Outcome is categorical (success/failure), typical for clinical healing endpoints.
+- **Why may not be appropriate:**
+  - If outcome is not binary (ordinal radiographic categories or continuous scores).
+- **When this test should NOT be used:**
+  - If expected cell counts are small (e.g., <5 in any cell) → chi-square unreliable.
+- **Alternative if assumptions violated:**
+  - **Fisher’s exact test** (small samples) or **exact unconditional** methods.
+
+#### A3) Effect size estimation for primary endpoint
+- **Test/Method:** **Risk difference**, **Risk ratio**, and/or **Odds ratio** with **95% CI**
+- **Purpose:** Quantify magnitude and precision of group difference (not only p-values).
+- **Why appropriate:**
+  1. Clinically interpretable (absolute/relative differences in success).
+  2. Supports reporting standards and meta-analysis compatibility.
+- **Why may not be appropriate:**
+  - OR can overstate effects when outcome is common; RR/RD may be preferable.
+- **When NOT to use:**
+  - Avoid OR as “risk” when outcome common and audience may misinterpret.
+- **Alternative if assumptions violated:**
+  - Use **log-binomial** or **Poisson with robust SE** to estimate RR if logistic regression is used but RR desired.
+
+#### A4) If outcome is ordinal radiographic healing category at 2 years (instead of binary)
+- **Test:** **Wilcoxon rank-sum (Mann–Whitney U)** *or* **Ordinal logistic regression**
+- **Purpose:** Compare distribution of ordered healing categories between groups.
+- **Why appropriate:**
+  1. Handles ordinal outcomes without assuming normality.
+  2. Appropriate for independent groups.
+- **Why may not be appropriate:**
+  - If categories are nominal (unordered) or if proportional odds assumption fails (for ordinal regression).
+- **When NOT to use:**
+  - Do not use Mann–Whitney if many ties with few categories and you need model-based adjustment.
+- **Alternative if assumptions violated:**
+  - **Partial proportional odds model** or **multinomial logistic regression**.
+
+---
+
+### B. RECOMMENDED analyses (increase rigor/validity)
+
+#### B1) Multivariable regression to adjust for confounding (nonrandomized groups)
+- **Test/Model:**  
+  - **Logistic regression** (binary outcome)  
+  - **Ordinal logistic regression** (ordinal outcome)  
+  - **Linear regression** (continuous outcome, if applicable)
+- **Purpose:** Estimate adjusted effect of operator/unit on outcome controlling for baseline covariates (e.g., age, sex, tooth type, baseline radiolucency, pre-op symptoms).
+- **Why appropriate:**
+  1. Group assignment is not randomized → confounding likely.
+  2. Provides adjusted effect sizes and improves internal validity.
+- **Why may not be appropriate:**
+  - If important confounders were not measured (residual confounding remains).
+- **When NOT to use:**
+  - When events are too few for the number of predictors (overfitting); avoid naïve stepwise selection.
+- **Alternative if assumptions violated:**
+  - **Penalized regression** (Firth logistic, ridge/lasso) or reduced covariate set based on a priori confounders.
+
+#### B2) Repeated-measures / longitudinal analysis across follow-up visits (if outcomes recorded biannually)
+- **Test/Model:**  
+  - **GEE** (population-averaged) for binary/ordinal outcomes  
+  - **Mixed-effects models** (subject-specific)  
+- **Purpose:** Use all follow-up timepoints, account for within-patient correlation, evaluate healing trajectory.
+- **Why appropriate:**
+  1. Follow-up is longitudinal (“biannually”) → repeated measures correlated.
+  2. Increases power and uses partially observed follow-up data.
+- **Why may not be appropriate:**
+  - If only final (2-year) outcome was recorded, there is no longitudinal structure to model.
+- **When NOT to use:**
+  - When timing is inconsistent and not recorded; or when outcome only measured once.
+- **Alternative if assumptions violated:**
+  - **Robust (sandwich) SE**; or simplify to final-timepoint analysis.
+
+#### B3) Time-to-event analysis (if “failure” timing is available)
+- **Test/Model:** **Kaplan–Meier curves + log-rank test**, plus **Cox proportional hazards model**
+- **Purpose:** Compare time until failure/recurrence between groups over 2 years.
+- **Why appropriate:**
+  1. Handles censoring (loss to follow-up) appropriately.
+  2. Uses event timing rather than collapsing to a single endpoint.
+- **Why may not be appropriate:**
+  - If failure time is not captured (only status at 2 years).
+- **When NOT to use:**
+  - When follow-up times are essentially identical and no censoring and only final status known.
+- **Alternative if assumptions violated:**
+  - If proportional hazards fails → **restricted mean survival time (RMST)** or **time-varying Cox**.
+
+#### B4) Handling missing data
+- **Test/Method:** Missingness assessment + **Multiple imputation (MI)** (if appropriate)
+- **Purpose:** Reduce bias and improve precision if loss to follow-up or missing covariates occur.
+- **Why appropriate:**
+  1. Two-year follow-up commonly has attrition; complete-case may bias results.
+  2. MI can incorporate predictors of missingness and outcomes.
+- **Why may not be appropriate:**
+  - If missingness is minimal or clearly MNAR without plausible modeling.
+- **When NOT to use:**
+  - When outcome is missing not at random and no sensitivity analysis is planned.
+- **Alternative if assumptions violated:**
+  - **Inverse probability weighting**; **best/worst-case sensitivity**; MNAR sensitivity models.
+
+---
+
+### C. OPTIONAL analyses (supplementary insights)
+
+#### C1) Subgroup / interaction analysis (effect modification)
+- **Test/Model:** Regression with **interaction terms** (group × tooth type, group × arch, group × baseline lesion size/radiolucency, etc.)
+- **Purpose:** Determine whether operator effect differs by clinically relevant strata.
+- **Why appropriate:**
+  1. Operator technique differences may matter more in certain tooth types/lesion severities.
+  2. Generates hypotheses and clinical tailoring insights.
+- **Why may not be appropriate:**
+  - Underpowered; high multiplicity and false positives.
+- **When NOT to use:**
+  - When subgroup sizes are small or not pre-specified.
+- **Alternative if assumptions violated:**
+  - Report stratified descriptives with CIs; avoid formal interaction testing.
+
+#### C2) Sensitivity analyses for “success” definition
+- **Test/Method:** Re-analyze using alternative dichotomizations (e.g., “complete healing only” vs “complete+incomplete”)
+- **Purpose:** Check robustness to outcome definition ambiguity.
+- **Why appropriate:**
+  1. Success criteria not specified in excerpt and may vary.
+  2. Ensures conclusions not driven by a single classification rule.
+- **Why may not be appropriate:**
+  - If success definition is standardized and fixed a priori.
+- **When NOT to use:**
+  - When it becomes data-driven post hoc without disclosure.
+- **Alternative if assumptions violated:**
+  - Use ordinal modeling instead of dichotomizing.
+
+#### C3) Inter-rater reliability (if radiographs read by >1 assessor)
+- **Test:** **Cohen’s kappa / weighted kappa** (categorical/ordinal) or **ICC** (continuous score)
+- **Purpose:** Quantify agreement in radiographic/clinical outcome assessment.
+- **Why appropriate:**
+  1. Radiographic interpretation is subjective; reliability affects validity.
+  2. Supports measurement quality.
+- **Why may not be appropriate:**
+  - If only one assessor and no duplicate readings.
+- **When NOT to use:**
+  - When assessments are not independent (assessors not blinded; consensus reads only).
+- **Alternative if assumptions violated:**
+  - Gwet’s AC1/AC2 for kappa paradox; bootstrap CIs.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Paired t-test**
+   - **Why inappropriate:** Groups are independent (different patients/operators), not paired/repeated on same subject for the primary comparison.
+
+2. **One-way ANOVA (as the main analysis)**
+   - **Why inappropriate:** Only two groups; and outcome likely binary/ordinal, not continuous normal.
+
+3. **Multiple independent t-tests at each follow-up timepoint without correlation adjustment**
+   - **Why inappropriate:** Inflates Type I error and ignores within-subject correlation over time.
+
+4. **Pearson correlation (group vs outcome)**
+   - **Why inappropriate:** Group is categorical; correlation is not the right framework for group comparisons.
+
+5. **Simple linear regression for binary outcome**
+   - **Why inappropriate:** Violates assumptions (non-normal errors, heteroscedasticity), can predict outside [0,1].
+
+---
+
+## TASK 4 — Summary / justification of overall approach
+
+Because this is a **nonrandomized two-group comparative follow-up study**, the analysis should (1) describe the cohorts, (2) compare **2-year clinical/radiographic outcomes** between operator groups using **appropriate categorical/ordinal methods with effect sizes and CIs**, and (3) strengthen causal interpretation by **adjusting for confounding** (multivariable models and/or longitudinal/time-to-event methods if repeated data are available), with explicit handling of **missing follow-up** and sensitivity analyses where outcome definitions or measurements could vary.

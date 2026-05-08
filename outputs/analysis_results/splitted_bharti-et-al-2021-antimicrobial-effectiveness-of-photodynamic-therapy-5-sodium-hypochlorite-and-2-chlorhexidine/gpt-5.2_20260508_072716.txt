@@ -1,0 +1,278 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_bharti-et-al-2021-antimicrobial-effectiveness-of-photodynamic-therapy-5-sodium-hypochlorite-and-2-chlorhexidine.pdf
+Status : ok
+Time   : 20260508_072716
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1: Information extraction (study characteristics)
+
+### Study design and setting
+- **Design:** Triple-blind, randomized clinical trial (parallel-group), **3 arms**
+- **Setting/period:** King George’s Medical University, Lucknow; **Sep 2016–Jul 2017**
+- **Ethics:** University Ethics Committee approval (Ref. no. 77th ECMII-B IMR faculty/p15); Helsinki Declaration followed
+- **Randomization:** **Block randomization** (details not provided: block size/allocation concealment not stated)
+- **Blinding:** “Triple blind” (not explicitly described who was blinded; operator delivering treatment was the same practitioner; microbiological sampler was different practitioner)
+
+### Objectives and hypothesis
+- **Primary objective:** Compare antimicrobial effectiveness of:
+  1) **PDT** (photodynamic therapy),
+  2) **5% sodium hypochlorite (NaOCl)**,
+  3) **2% chlorhexidine gluconate (CHX/CHO)**
+  in **endodontic re-treatment** cases with apical periodontitis.
+- **Null hypothesis:** No difference in elimination of microbes among the three methods.
+
+### Participants / eligibility
+- **Population:** Patients referred for **root canal re-treatment**; one tooth per patient implied.
+- **Sample size:** **54 patients** total; **n=18 per group**
+  - Sex: 25 men, 29 women
+  - Age: 20–70 years; mean 38 years
+- **Inclusion:**
+  - Previously root canal treated teeth with **apical periodontitis**
+  - **Periapical index ≥ 3**
+  - Original RCT done **>3 years earlier**
+  - No overextended obturation
+  - Intact coronal restoration
+  - No gingival recession; periodontal pocket **≤4 mm**
+  - No antibiotics for **≥1 month** prior
+  - Diagnosis: chronic apical periodontitis on maxillary/mandibular **anterior teeth**
+- **Exclusion:**
+  - Immunocompromising conditions (including **diabetes**, chronic infections, rheumatoid arthritis)
+  - Immunosuppressive therapy
+  - Pregnant/nursing women
+- **Unit sampled:** To “constrain microbial assessment,” **a single root canal** sampled in each case.
+
+### Interventions (3 groups)
+All had standardized pre-sampling/retreatment steps (rubber dam isolation, removal of restoration/caries/plaque, gutta-percha removal with ProTaper retreatment files; no solvent).
+
+**Baseline sample (S1):**
+- Sterile saline placed then absorbed; **paper points** placed to working length for **1 min**
+- Paper points transferred to Eppendorf tube with **thioglycolate broth** (anaerobe transport medium)
+
+**Group 1: 5% NaOCl**
+- Irrigation: copious 5% NaOCl for **5 min** (5 mL syringe, 30G needle, 2 mm short WL)
+- Neutralization: **2 mL 5% sodium thiosulfate** then **2 mL saline**
+- Post-treatment sample (S2): paper point to WL **60 sec**, then into **1 mL 0.85% saline**, vortex **1 min**
+
+**Group 2: 2% CHX**
+- Irrigation: **5 mL 2% CHX** for **60 sec** (needle 2 mm short WL)
+- Neutralization: **2 mL 5% sodium thiosulfate** then **2 mL saline**
+- S2 sampling same as above
+
+**Group 3: PDT**
+- Device: **FotoSan** LED at **628 nm**; endodontic tip inserted up to **3 mm short WL**
+- Photosensitizer: **toluidine blue O 100 µg/mL**
+- Wait: **60 sec** after inoculation
+- Irradiation: **60 sec**
+- Neutralization: **2 mL 5% sodium thiosulfate** then **2 mL saline**
+- S2 sampling same as above
+
+### Outcomes and measurements
+- **Microbiological outcome:** **Colony-forming units (CFU)** (culture-based)
+- **Timing:** Two within-tooth repeated measures:
+  - **S1 (pre-disinfection)**
+  - **S2 (post-disinfection)**
+- **Laboratory handling:**
+  - Transport within **1 hour** in anaerobic jar with Gas Pack
+  - Incubation **37±1°C for 48 hours**
+  - Growth examined by light microscopy (400×)
+- **Derived outcome mentioned:** “**Average percentage reduction** of viable microorganisms” (implies percent reduction from S1 to S2 per subject)
+
+### Sample size planning (as reported)
+- Based on Asnaashari et al.; OpenEpi; **power 80%**, **confidence interval 95%**
+- Final: **18 per group** (no effect size/SD specified)
+
+---
+
+## TASK 2: Statistical Analysis Plan (SAP)
+
+### A. Core analysis framework (endpoints and estimands)
+**Primary endpoint (recommended to define explicitly):**
+- **Log-reduction in CFU:**  
+  \( \Delta = \log_{10}(CFU_{S1}+c) - \log_{10}(CFU_{S2}+c) \) with small constant \(c\) (e.g., 1) to handle zeros.
+  - This directly quantifies antimicrobial effect and is typically more statistically well-behaved than raw CFU or percent change.
+
+**Key comparison (primary estimand):**
+- Difference in mean (or median) **log-reduction** among **three groups**.
+
+**Secondary endpoints (as described / supportive):**
+- **Percent reduction**: \(100 \times (CFU_{S1}-CFU_{S2})/CFU_{S1}\) (requires handling CFU\(_{S1}=0\) and heavy skew)
+- **Post-treatment CFU (S2)** adjusted for baseline (S1)
+
+**Analysis populations:**
+- **Intention-to-treat (ITT)**: all randomized participants with any microbiological data (preferred)
+- **Per-protocol (PP)**: those completing assigned irrigation/PDT and sampling as planned (supportive)
+
+**Missing data:**
+- If S2 missing: avoid ad-hoc imputation; prefer **multiple imputation** (if missingness nontrivial) or analyze with mixed models if repeated-measures framework used and missing-at-random is plausible.
+
+---
+
+## CATEGORY A – MANDATORY tests
+
+### 1) One-way ANOVA on log-reduction (or ANCOVA on S2 with baseline S1)
+**Test name:** One-way ANOVA (primary) *or* ANCOVA (preferred if using S2 as outcome)  
+**Purpose:** Compare antimicrobial effectiveness across 3 groups.  
+**Why appropriate:**
+1. **Three independent groups** (parallel RCT) → ANOVA/ANCOVA matches design.
+2. Log-transformed CFU change is usually closer to **normality/homoscedasticity** than raw CFU or percent reduction.
+3. ANCOVA (S2 ~ group + S1) improves **precision** by adjusting for baseline bacterial load.  
+**Why may not be appropriate:**
+- CFU outcomes may remain **non-normal** or have **many zeros**, violating assumptions.  
+**When NOT to use:**
+- Strong non-normality after transformation, extreme outliers/zero-inflation that cannot be reasonably modeled, or major heteroscedasticity not correctable.  
+**Alternative if assumptions violated:**
+- **Kruskal–Wallis** test on log-reduction (or on rank-transformed change)
+- **Generalized linear model** for counts (negative binomial), possibly **zero-inflated**; or **robust regression** / Welch ANOVA if heteroscedasticity only.
+
+### 2) Paired within-group pre–post comparison (S1 vs S2)
+**Test name:** Paired t-test on log(CFU+1) (within each group) *or* Wilcoxon signed-rank test  
+**Purpose:** Confirm that each disinfection method significantly reduces microbial load.  
+**Why appropriate:**
+1. S1 and S2 are **paired** measures within the same tooth/patient.
+2. Clinically relevant to show **within-group reduction** in addition to between-group differences.  
+**Why may not be appropriate:**
+- Multiple within-group tests inflate **type I error**; also, significance within groups is not the primary RCT question.  
+**When NOT to use:**
+- If the primary analysis is a single mixed/ANCOVA model and you want to avoid redundant hypothesis testing; or if multiplicity isn’t controlled.  
+**Alternative if assumptions violated:**
+- Use **Wilcoxon signed-rank** (for non-normal differences) or a **mixed model** with time×group interaction (single unified analysis).
+
+### 3) Post-hoc pairwise comparisons with multiplicity control
+**Test name:** Tukey HSD (after ANOVA) / Bonferroni-Holm pairwise comparisons (after Kruskal–Wallis: Dunn test with adjustment)  
+**Purpose:** Identify which specific groups differ (PDT vs NaOCl, PDT vs CHX, NaOCl vs CHX).  
+**Why appropriate:**
+1. Three-arm trial requires **pairwise** interpretation after global test.
+2. Controls **family-wise error** across multiple comparisons.  
+**Why may not be appropriate:**
+- If the study has a **single pre-specified primary contrast** only (not stated here), full pairwise testing may be unnecessary.  
+**When NOT to use:**
+- When global test is not significant and strict gatekeeping is used (depending on protocol).  
+**Alternative if assumptions violated:**
+- **Dunn’s test** (nonparametric) with Holm adjustment; or **GLM contrasts** with robust SEs.
+
+---
+
+## CATEGORY B – RECOMMENDED tests (rigor/quality)
+
+### 4) Linear mixed-effects model (LMM) for repeated measures (time: S1/S2)
+**Test name:** LMM with fixed effects for group, time, and **group×time interaction**; random intercept for subject  
+**Purpose:** Unified inference on whether reduction over time differs by group (interaction).  
+**Why appropriate:**
+1. Explicitly models **paired structure** (S1/S2) and tests differential change via **interaction**.
+2. Handles **missing S2** more principled than complete-case paired tests (under MAR).
+3. Provides estimated marginal means and CIs for changes.  
+**Why may not be appropriate:**
+- With only two time points, ANCOVA/change-score models may be simpler; also LMM assumes approximate normal residuals on the chosen scale.  
+**When NOT to use:**
+- When outcome distribution is severely non-normal even after transformation and count models are more suitable.  
+**Alternative if assumptions violated:**
+- **Generalized linear mixed model (GLMM)** with negative binomial distribution for CFU counts; or nonparametric methods on change scores.
+
+### 5) Assumption checks (diagnostics) and variance-robust options
+**Tests/Procedures:** Shapiro–Wilk (residuals), Levene/Brown–Forsythe (homogeneity), influence/outlier diagnostics  
+**Purpose:** Verify suitability of parametric inference and guide model choice.  
+**Why appropriate:**
+1. CFU data often violate assumptions; diagnostics prevent invalid p-values/CIs.
+2. Supports transparent reporting and justifies transformations/robust methods.  
+**Why may not be appropriate:**
+- In moderate samples, normality tests can be underpowered/overly sensitive; focus should be on residual plots.  
+**When NOT to use:**
+- Do not use normality tests alone to decide; avoid mechanistic “p>0.05 means normal.”  
+**Alternative if assumptions violated:**
+- **Welch ANOVA**, robust SEs (HC3), transformation, or switch to **rank/GLM** approach.
+
+### 6) Effect size estimation with confidence intervals
+**Test/Metric:** Mean difference in log-reduction (and back-transformed ratios), partial eta-squared (ANOVA), or standardized effect (Hedges g)  
+**Purpose:** Quantify magnitude of antimicrobial differences beyond p-values.  
+**Why appropriate:**
+1. Aligns with clinical relevance (e.g., fold-reduction).
+2. Enables comparison with prior studies and supports meta-analysis.  
+**Why may not be appropriate:**
+- Standardized effects (g) can be hard to interpret clinically for skewed counts.  
+**When NOT to use:**
+- Avoid overemphasis on standardized measures if clinical scale is clearer.  
+**Alternative if assumptions violated:**
+- **Cliff’s delta** (nonparametric effect size) with bootstrap CIs.
+
+### 7) Baseline comparability across randomized groups (descriptive + limited testing)
+**Test name:** ANOVA/Kruskal–Wallis for age; chi-square/Fisher for sex; and importantly baseline **S1 CFU** comparisons  
+**Purpose:** Describe and assess potential imbalance.  
+**Why appropriate:**
+1. Ensures transparency about baseline equivalence and potential confounding.
+2. Baseline microbial load imbalance can affect S2 and percent reduction; informs ANCOVA.  
+**Why may not be appropriate:**
+- Significance testing of baseline variables is often discouraged; randomization already addresses expectation of balance.  
+**When NOT to use:**
+- Do not use baseline p-values to decide whether to adjust; pre-specify adjustment (at least for S1).  
+**Alternative if assumptions violated:**
+- Use **standardized mean differences (SMDs)** instead of p-values.
+
+---
+
+## CATEGORY C – OPTIONAL analyses (supplementary insights)
+
+### 8) Responder / eradication analysis (binary)
+**Test name:** Chi-square or Fisher’s exact test; logistic regression (adjusted)  
+**Endpoint:** e.g., **culture negative at S2** (CFU=0) or achieving ≥X log-reduction  
+**Purpose:** Provide clinically intuitive success rates.  
+**Why appropriate:**
+1. Binary outcomes are easy to interpret clinically.
+2. Addresses zero-inflation and highlights eradication.  
+**Why may not be appropriate:**
+- Dichotomization loses information and depends on threshold; culture methods have detection limits.  
+**When NOT to use:**
+- As the sole primary endpoint unless pre-specified and powered for it.  
+**Alternative if assumptions violated:**
+- Exact methods (Fisher), or use **Poisson/negative binomial** models without dichotomizing.
+
+### 9) Negative binomial regression (count model) for S2 with offset/baseline adjustment
+**Test name:** Negative binomial GLM (or zero-inflated NB)  
+**Purpose:** Model CFU counts directly while handling overdispersion.  
+**Why appropriate:**
+1. CFU are **counts**; NB handles **overdispersion** common in microbiology.
+2. Can incorporate baseline S1 as covariate and estimate **rate ratios**.  
+**Why may not be appropriate:**
+- With small sample size per group (18), complex models (especially zero-inflated) may be unstable.  
+**When NOT to use:**
+- When convergence issues arise or too many parameters relative to sample size.  
+**Alternative if assumptions violated:**
+- Simpler log-transform + ANCOVA; or **quasi-Poisson** with robust SEs.
+
+### 10) Sensitivity analyses for transformation constant and handling zeros
+**Method:** Repeat primary analysis with c=0.5 vs 1, or using log10(CFU+1) vs ln(CFU+1)  
+**Purpose:** Check robustness of conclusions.  
+**Why appropriate:**
+1. CFU zeros materially affect log-based analyses.
+2. Demonstrates stability of inference.  
+**Why may not be appropriate:**
+- May be seen as multiplicity if over-interpreted; keep as sensitivity, not fishing.  
+**When NOT to use:**
+- If protocol pre-specified a single approach and journal space is limited.  
+**Alternative:**
+- Use count models that naturally handle zeros.
+
+---
+
+## TASK 3: Inappropriate tests (should NOT be used)
+
+1. **Independent (unpaired) t-test for S1 vs S2 within a group**  
+   - Wrong because S1 and S2 are **paired** within the same tooth/patient.
+
+2. **Multiple separate t-tests for all pairwise group comparisons without adjustment**  
+   - Inflates **type I error** (multiplicity problem) in a 3-arm trial.
+
+3. **Chi-square test on raw CFU counts**  
+   - CFU is not categorical; chi-square would be a misuse unless CFU is meaningfully categorized (and even then information loss occurs).
+
+4. **Correlation (Pearson) between treatment group and CFU reduction**  
+   - Treatment group is categorical; correlation is not an appropriate primary inferential tool for group comparisons.
+
+5. **Simple “percent reduction” ANOVA without addressing non-normality/undefined values**  
+   - Percent reduction is often highly skewed and problematic when CFU\(_{S1}\)=0 or very small; would risk invalid inference unless carefully handled.
+
+---
+
+## TASK 4: Summary (overall analytical approach)
+
+The study is a **3-arm parallel RCT** with **paired pre/post CFU** measurements. The primary analysis should quantify antimicrobial effect as **log-reduction (or S2 adjusted for S1 via ANCOVA)** and compare groups with an overall 3-group test followed by **multiplicity-controlled pairwise contrasts**. Because CFU data are typically skewed and overdispersed, the plan must include **distribution checks** and prespecified **robust/nonparametric or count-model alternatives**, plus effect sizes and clinically interpretable secondary endpoints (e.g., culture negativity).
