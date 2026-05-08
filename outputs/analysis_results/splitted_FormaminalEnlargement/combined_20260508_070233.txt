@@ -1,0 +1,918 @@
+══════════════════════════════════════════════════════════════════════
+COMBINED STATISTICAL ANALYSIS REPORT
+PDF  : splitted_FormaminalEnlargement.pdf
+Time : 20260508_070233
+Models: 3
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+MODEL 1: OpenAI — gpt-5.2  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+## TASK 1: INFORMATION EXTRACTION (study characteristics)
+
+### Study identification
+- **Title/topic:** Effect of foraminal enlargement (FE) vs foraminal patency (FP) on **postoperative pain**, **analgesic intake**, and **sealer extrusion** after single-visit root canal treatment.
+- **Design:** **Prospective, parallel-group randomized clinical trial** (CONSORT stated).
+- **Setting:** Private practice clinical setting (Brazil), Feb 2019–Jan 2020.
+- **Ethics:** Approved (protocol #2.913.225). Written informed consent.
+
+### Objectives / hypotheses
+- **Primary aim (implied):** Compare **postoperative pain perception** between FE vs FP after single-visit endodontic treatment.
+- **Secondary aims:** Compare **use of pain relief medication** and **sealer extrusion** between groups.
+- **Exploratory aim:** Assess **correlation between sealer extrusion and postoperative pain**.
+- **Null hypothesis:** No differences between FE and FP for assessed variables.
+
+### Participants
+- **Age:** 19–55 years.
+- **Inclusion:** Asymptomatic necrotic **single-rooted**, straight canal; with/without apical radiolucency; periodontal probing depth ≤3 mm; ASA I.
+- **Exclusion:** Systemic disease; antibiotics/analgesics in last 10 days; swelling/sinus tract; internal/external resorption; previous endodontic treatment; intra-operative bleeding (would exclude; none occurred).
+
+### Randomization / masking
+- **Randomization method:** Patient-selected **sealed envelope** allocation to FP or FE.
+- **Blinding:** **Single-blind** (likely patient blinded; operator not).
+- **Groups:**
+  - **FP group:** Working length (WL) **1 mm short of foramen**.
+  - **FE group:** WL **at foramen** (0.0 reading on apex locator).
+
+### Interventions (standardized protocol)
+- **Anesthesia:** 3.6 mL 2% lidocaine + epinephrine 1:100,000.
+- **Instrumentation system:** WaveOne Gold reciprocating; X-Smart Plus motor.
+- **Irrigation:** NaOCl 2.5% throughout; final irrigation with ultrasonic activation; EDTA 17%; total **25 mL NaOCl** per tooth.
+- **Apical size:** Prepared to **25/.07** (“Primary”) or **45/.05** (“Large”) depending on initial apical diameter.
+- **Obturation:** Single-cone gutta-percha + **AH Plus** sealer; temporary seal Coltosol + glass ionomer.
+- **Radiograph:** Postoperative periapical radiograph for **sealer extrusion** assessment.
+- **Operators:** Two experienced endodontists; checklist; microscope 10×.
+
+### Outcomes and measurements
+1. **Postoperative pain intensity** (repeated over time)
+   - Instrument: **modified VAS 0–10** with faces.
+   - Time points: **24h, 48h, 72h, 1 week**.
+   - Recorded by patient; collected via phone by assistant; entered into spreadsheet.
+   - Pain also categorized: none (0), mild (1–3), moderate (4–7), severe (8–10).
+2. **Analgesic use**
+   - Rescue medication: **ibuprofen 400 mg q6h PRN**.
+   - At each follow-up, if any pain reported: asked **whether taken** and **number of tablets**.
+3. **Sealer extrusion**
+   - Determined from **postoperative periapical radiograph** (binary yes/no is implied; degree not specified).
+
+### Sample size
+- **Planned:** 69 per group based on ANOVA assumptions (difference in means 0.03, SD 0.05, power 0.80, alpha 0.05).
+- **Enrolled:** **70 per group** (total **N=140**), allowing ~1 loss to follow-up/group (actual attrition not provided here).
+
+### Key variables/covariates available from text (potential confounders/moderators)
+- Age, sex (mentioned in intro as pain-related factors but not stated as collected; likely available).
+- Tooth location (maxillary/mandibular via anesthesia type; may be recorded).
+- Presence of apical radiolucency (included).
+- Final apical preparation size (Primary vs Large).
+- Baseline pain: all **asymptomatic** (baseline pain essentially 0 by design).
+
+---
+
+## TASK 2: STATISTICAL ANALYSIS PLAN
+
+### General principles (apply to all analyses)
+- **Analysis set:** Primary = **intention-to-treat (ITT)** (all randomized). Sensitivity = per-protocol (received allocated WL strategy).
+- **Two-sided alpha:** 0.05. Report **effect sizes + 95% CIs**.
+- **Descriptives:** Mean/SD or median/IQR for pain; counts/percent for categorical outcomes.
+- **Missing data:** Describe extent by time point and group. Prefer mixed models (valid under MAR) rather than complete-case. If notable missingness, add multiple imputation sensitivity.
+
+---
+
+# CATEGORY A – MANDATORY (core analyses)
+
+## A1) Linear mixed-effects model (LMM) for repeated pain scores
+- **Purpose:** Test whether **pain trajectories over time differ** between FE and FP.
+- **Why appropriate (≥2):**
+  1. Pain is measured **repeatedly** within the same patient (correlated outcomes); LMM accounts for within-subject correlation.
+  2. Handles **unequal/missing follow-ups** without discarding all data (under MAR).
+- **Why it may not be appropriate (≥1):**
+  - Pain VAS 0–10 is **bounded and often skewed/zero-inflated**; normality may be poor.
+- **When NOT to use:**
+  - If residual diagnostics show severe non-normality/heteroscedasticity that cannot be remedied (and outcome clearly ordinal/zero-inflated).
+- **Alternative if assumptions violated:**
+  - **Generalized linear mixed model (GLMM)** with appropriate distribution (e.g., ordinal cumulative logit mixed model; or Poisson/negative binomial if treated as counts), or **nonparametric longitudinal methods** (e.g., rank-based mixed models).
+- **Implementation notes (recommended structure):**
+  - Fixed effects: **Group (FE/FP), Time (24/48/72/1w), Group×Time**.
+  - Random effects: subject-specific intercept (and possibly random slope for time).
+  - Primary estimand: difference in mean pain between groups at each time (model-based contrasts) and/or overall group×time test.
+
+## A2) Chi-square test (or Fisher’s exact) for sealer extrusion (FE vs FP)
+- **Purpose:** Compare **proportion with extrusion** between groups.
+- **Why appropriate:**
+  1. Outcome is **categorical (binary)** and groups are independent by randomization.
+  2. Provides a direct test of **association of treatment with extrusion**.
+- **Why it may not be appropriate:**
+  - If expected cell counts are small (rare extrusion), chi-square approximation may fail.
+- **When NOT to use:**
+  - When any expected cell count is too low (common rule: <5).
+- **Alternative if assumptions violated:**
+  - **Fisher’s exact test**; additionally report **risk ratio** (or odds ratio) with CI.
+
+## A3) Compare analgesic use between groups (binary “any use” and/or count “# tablets”)
+Two complementary mandatory outcomes are typical; choose based on how authors define the endpoint.
+
+### A3a) Logistic regression (or chi-square) for “any ibuprofen use” (yes/no)
+- **Purpose:** Test if FE increases probability of taking analgesics.
+- **Why appropriate:**
+  1. Outcome is **binary**.
+  2. Regression allows **adjustment** for prognostic factors (radiolucency, tooth location, apical size).
+- **Why it may not be appropriate:**
+  - If very low event rate, model may be unstable.
+- **When NOT to use:**
+  - Quasi-separation or extremely sparse outcomes.
+- **Alternative:**
+  - **Firth penalized logistic regression** or Fisher’s exact test (unadjusted).
+
+### A3b) Negative binomial regression (or Poisson with robust SE) for “number of tablets”
+- **Purpose:** Compare **analgesic consumption intensity** between groups.
+- **Why appropriate:**
+  1. Tablets are **count data** with expected right-skew.
+  2. Negative binomial handles **over-dispersion** common in medication counts.
+- **Why it may not be appropriate:**
+  - If most participants have **0 tablets** (zero inflation), standard NB may fit poorly.
+- **When NOT to use:**
+  - Clear excess zeros that dominate distribution without modeling that mechanism.
+- **Alternative:**
+  - **Zero-inflated negative binomial** or **hurdle model**; or analyze as binary any-use.
+
+## A4) Association between extrusion and pain (correlation/relationship)
+- **Test name:** Regression model linking extrusion to pain (preferred) OR Spearman correlation (simpler)
+- **Purpose:** Evaluate whether **extrusion is associated with higher pain**.
+- **Why appropriate:**
+  1. The question concerns a relationship between a **binary predictor (extrusion)** and pain outcome.
+  2. Regression permits **adjustment for randomized group and time** (important because FE may increase extrusion).
+- **Why it may not be appropriate:**
+  - If extrusion is rare, estimates will be imprecise; correlation may be misleading for mixed types.
+- **When NOT to use:**
+  - Do not use simple Pearson correlation (binary vs bounded non-normal pain) or unadjusted comparisons that ignore time structure.
+- **Alternative if assumptions violated:**
+  - For pain at specific time point: **Wilcoxon rank-sum** (extrusion yes/no) or **quantile regression**.
+  - For longitudinal pain: **mixed model** with extrusion as covariate and interactions (extrusion×time), robust SEs if needed.
+
+---
+
+# CATEGORY B – RECOMMENDED (improves rigor)
+
+## B1) Baseline comparability checks (descriptive + standardized differences)
+- **Test name:** Standardized mean difference (SMD); avoid p-value driven “baseline testing”
+- **Purpose:** Assess balance of baseline covariates after randomization.
+- **Why appropriate:**
+  1. RCTs should show **covariate balance**; SMD is not sample-size driven like p-values.
+  2. Helps decide if **adjusted analyses** are warranted for precision.
+- **Why it may not be appropriate:**
+  - If key covariates were not collected/available.
+- **When NOT to use:**
+  - Do not interpret imbalance testing as evidence randomization “failed.”
+- **Alternative:**
+  - None needed; present stratified descriptives if limited variables.
+
+## B2) Ordinal mixed model for categorized pain (none/mild/moderate/severe)
+- **Purpose:** Use the prespecified **pain categories** as an ordinal outcome over time.
+- **Why appropriate:**
+  1. Categories are **ordinal**; cumulative logit respects ordering.
+  2. Robust to non-normal VAS and communicates clinically interpretable shifts in severity.
+- **Why it may not be appropriate:**
+  - **Proportional odds assumption** may be violated.
+- **When NOT to use:**
+  - If categories are too sparse in upper levels (few severe cases), model unstable.
+- **Alternative:**
+  - **Partial proportional odds** model; or collapse categories (eg, moderate/severe vs none/mild) and use logistic mixed model.
+
+## B3) Adjusted primary analysis (precision gains)
+- **Test name:** ANCOVA-type adjustment within mixed model (include covariates)
+- **Purpose:** Increase precision and account for prognostic factors: apical radiolucency, tooth arch (max/mand), apical size (Primary/Large), age/sex if available.
+- **Why appropriate:**
+  1. In RCTs, covariate adjustment can **improve efficiency** without introducing bias if prespecified.
+  2. Addresses residual imbalance and improves interpretability.
+- **Why it may not be appropriate:**
+  - Overfitting if too many covariates relative to events (especially for extrusion/analgesic models).
+- **When NOT to use:**
+  - Small sample within strata or sparse outcomes.
+- **Alternative:**
+  - Use a **parsimonious** covariate set; penalized regression for sparse binary outcomes.
+
+## B4) Multiple-comparisons control for time-point contrasts
+- **Test name:** Holm correction (or Tukey for model-based pairwise comparisons)
+- **Purpose:** Control family-wise error when comparing groups at multiple time points.
+- **Why appropriate:**
+  1. There are **4 planned time-point comparisons**.
+  2. Reduces false positives while preserving power better than Bonferroni (Holm).
+- **Why it may not be appropriate:**
+  - If a single primary contrast is prespecified (e.g., 24h only), adjustment may be unnecessary.
+- **When NOT to use:**
+  - When only the global group×time interaction is the primary inference and time-point contrasts are exploratory.
+- **Alternative:**
+  - False discovery rate (Benjamini–Hochberg) for exploratory contrasts.
+
+## B5) Effect size reporting
+- **Measures:** Mean difference in pain (model-based), odds ratio/risk ratio for extrusion and any-analgesic use, incidence rate ratio for tablet counts.
+- **Purpose:** Quantify clinical relevance beyond p-values.
+- **Why appropriate:** Standard for RCT interpretation; allows meta-analysis.
+- **Why may not be appropriate:** If outcome distributions prevent stable estimates (rare events).
+- **Alternative:** Exact CIs, penalized methods.
+
+---
+
+# CATEGORY C – OPTIONAL (supplementary insights)
+
+## C1) Area-under-the-curve (AUC) summary of pain over 1 week + group comparison
+- **Test name:** Compare AUC via t-test/ANCOVA (or Mann–Whitney)
+- **Purpose:** Provide a single summary of cumulative pain burden.
+- **Why appropriate:**
+  1. Collapses longitudinal pain into **one clinically intuitive metric**.
+  2. Avoids multiple time-point testing.
+- **Why it may not be appropriate:**
+  - Requires reasonably complete repeated measures; imputation assumptions affect AUC.
+- **When NOT to use:**
+  - High missingness or irregular assessment timing.
+- **Alternative:**
+  - Model-based marginal mean pain over time from mixed model.
+
+## C2) Time-to-first analgesic intake
+- **Test name:** Kaplan–Meier + log-rank; Cox regression
+- **Purpose:** Evaluate **timing** of rescue medication use.
+- **Why appropriate:**
+  1. Accounts for **censoring** (no analgesic by 1 week).
+  2. Uses information on **when** medication was first taken (if collected).
+- **Why it may not be appropriate:**
+  - The study collected tablets at discrete calls; exact timing may be unknown.
+- **When NOT to use:**
+  - If only total tablets or yes/no per interval is known.
+- **Alternative:**
+  - Discrete-time survival model or interval-censored methods.
+
+## C3) Interaction / subgroup analyses (exploratory only)
+- **Examples:** group×radiolucency, group×apical size (Primary vs Large), group×arch.
+- **Purpose:** Explore effect modification.
+- **Why appropriate:** Clinically plausible heterogeneity.
+- **Why not appropriate:** Underpowered; inflation of type I error.
+- **When NOT to use:** If not prespecified; present as hypothesis-generating.
+- **Alternative:** Report stratified descriptives without formal claims.
+
+---
+
+## TASK 3: INAPPROPRIATE TESTS (should NOT be used)
+
+1. **Independent-samples t-test at each time point without accounting for repeated measures** (and no multiplicity control)  
+   - Ignores within-subject correlation; inflates type I error; inefficient.
+
+2. **One-way ANOVA treating the 4 pain measurements as independent observations**  
+   - Violates independence assumption; incorrect standard errors.
+
+3. **Pearson correlation between sealer extrusion (binary) and pain**  
+   - Pearson assumes continuous, approximately normal variables; binary predictor violates this; regression/point-biserial/Spearman or group comparison is preferable.
+
+4. **Simple linear regression on VAS without checking distribution / strong zero-inflation**  
+   - Can yield biased inference if residual assumptions are badly violated.
+
+5. **Using only pain categories and applying multinomial logistic regression ignoring ordinality and repeated measures**  
+   - Loses ordering information and ignores within-subject correlation.
+
+---
+
+## TASK 4: SUMMARY (overall analytical approach)
+
+Because pain was measured repeatedly (24h, 48h, 72h, 1 week), the primary analysis should be a **mixed-effects longitudinal model** estimating **group differences over time** (including group×time). Binary outcomes (extrusion; any analgesic use) should be analyzed with **2-group proportion tests and/or logistic regression**, and tablet counts with **count regression** (negative binomial/zero-inflated as needed). The extrusion–pain relationship should be assessed using **regression frameworks** that can adjust for treatment group and (ideally) time, providing effect sizes with confidence intervals and appropriate handling of missing repeated measures.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 2: OpenAI — gpt-4o  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics
+1. **Study Design**:  
+   - Prospective, randomized clinical trial (RCT).  
+   - Single-blind design (patients blinded to group allocation).  
+
+2. **Study Objectives**:  
+   - Primary: To assess postoperative pain, use of pain relief medication, and extrusion of filling material in single-visit root canal treatments with or without foraminal enlargement (FE).  
+   - Secondary: To investigate the correlation between sealer extrusion and postoperative pain.  
+
+3. **Study Groups**:  
+   - **Group 1 (FE)**: Teeth treated with foraminal enlargement.  
+   - **Group 2 (FP)**: Teeth treated with foraminal patency only.  
+
+4. **Sample Size**:  
+   - 70 patients per group (n = 140 total).  
+   - Sample size calculation based on ANOVA with parameters: mean difference = 0.03, SD = 0.05, power = 80%, alpha = 0.05.  
+
+5. **Inclusion Criteria**:  
+   - Asymptomatic, necrotic single-rooted teeth with fully formed and straight root canals.  
+   - Patients aged 19–55 years, ASA class I, with a maximum periodontal probing depth of 3 mm.  
+
+6. **Exclusion Criteria**:  
+   - Systemic diseases, recent antibiotic or painkiller use, teeth with swelling, sinus tract, root resorption, or prior endodontic treatment.  
+
+7. **Randomization**:  
+   - Patients randomly selected sealed envelopes indicating group allocation.  
+
+8. **Blinding**:  
+   - Single-blind (patients blinded).  
+
+9. **Variables**:  
+   - **Independent Variable**: Treatment type (FE vs. FP).  
+   - **Dependent Variables**:  
+     - Postoperative pain (measured using a modified visual analog scale, 0–10).  
+     - Pain relief medication use (number of ibuprofen tablets).  
+     - Sealer extrusion (radiographic assessment).  
+
+10. **Measurements**:  
+    - Pain scores recorded at 24, 48, 72 hours, and 1 week postoperatively.  
+    - Pain categories: No pain (0), mild pain (1–3), moderate pain (4–7), severe pain (8–10).  
+    - Sealer extrusion evaluated radiographically.  
+
+11. **Data Collection Methods**:  
+    - Pain scores recorded by patients using a visual analog scale.  
+    - Follow-up phone calls by a dental assistant to confirm pain scores and medication use.  
+    - Radiographic evaluation of sealer extrusion.  
+
+12. **Treatment Protocol**:  
+    - Standardized root canal treatment performed by two experienced endodontists.  
+    - Instrumentation with WaveOne Gold files and irrigation with sodium hypochlorite (NaOCl) and EDTA.  
+    - Final obturation with gutta-percha and AH Plus sealer.  
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Independent Samples t-Test (or Mann-Whitney U Test if non-normal).  
+   - **Purpose**: Compare mean pain scores between the FE and FP groups at each time point.  
+   - **Why Appropriate**:  
+     1. The study aims to compare two independent groups.  
+     2. Pain scores are continuous variables suitable for parametric or non-parametric testing.  
+   - **Why It May Not Be Appropriate**: Assumes normal distribution of pain scores, which may not hold.  
+   - **When NOT to Use**: If pain scores are heavily skewed or violate homogeneity of variance.  
+   - **Alternative**: Mann-Whitney U Test if assumptions are violated.  
+
+2. **Test Name**: Chi-Square Test (or Fisher’s Exact Test).  
+   - **Purpose**: Compare proportions of patients with sealer extrusion and pain relief medication use between groups.  
+   - **Why Appropriate**:  
+     1. Both variables are categorical (presence/absence of extrusion, medication use).  
+     2. Suitable for comparing proportions between independent groups.  
+   - **Why It May Not Be Appropriate**: Small cell counts may invalidate the Chi-Square test.  
+   - **When NOT to Use**: If expected frequencies in any cell are <5.  
+   - **Alternative**: Fisher’s Exact Test for small sample sizes.  
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Repeated Measures ANOVA (or Mixed-Effects Model).  
+   - **Purpose**: Assess changes in pain scores over time and between groups.  
+   - **Why Appropriate**:  
+     1. Pain scores are measured longitudinally at multiple time points.  
+     2. Accounts for within-subject correlations.  
+   - **Why It May Not Be Appropriate**: Assumes sphericity, which may not hold.  
+   - **When NOT to Use**: If sphericity assumption is violated and corrections (e.g., Greenhouse-Geisser) are insufficient.  
+   - **Alternative**: Mixed-Effects Model for more flexibility in handling missing data and unequal variances.  
+
+2. **Test Name**: Pearson or Spearman Correlation.  
+   - **Purpose**: Assess the correlation between sealer extrusion and pain scores.  
+   - **Why Appropriate**:  
+     1. Both variables are continuous or ordinal.  
+     2. Directly addresses a secondary objective of the study.  
+   - **Why It May Not Be Appropriate**: Assumes linearity and normality for Pearson correlation.  
+   - **When NOT to Use**: If data are non-linear or heavily skewed.  
+   - **Alternative**: Spearman correlation for non-parametric data.  
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Logistic Regression.  
+   - **Purpose**: Model the likelihood of sealer extrusion as a function of treatment group and other covariates (e.g., age, sex).  
+   - **Why Appropriate**:  
+     1. Sealer extrusion is a binary outcome.  
+     2. Allows adjustment for potential confounders.  
+   - **Why It May Not Be Appropriate**: Requires a larger sample size for reliable estimates.  
+   - **When NOT to Use**: If the number of events (extrusions) is too low.  
+   - **Alternative**: Exact logistic regression for small sample sizes.  
+
+2. **Test Name**: Kaplan-Meier Survival Analysis.  
+   - **Purpose**: Analyze time to pain resolution between groups.  
+   - **Why Appropriate**:  
+     1. Time-to-event data (pain resolution) is of interest.  
+     2. Accounts for censored data (e.g., patients lost to follow-up).  
+   - **Why It May Not Be Appropriate**: Assumes proportional hazards, which may not hold.  
+   - **When NOT to Use**: If follow-up times are inconsistent or incomplete.  
+   - **Alternative**: Cox Proportional Hazards Model.  
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Paired t-Test**:  
+   - **Reason**: Compares paired data, but the study involves independent groups.  
+
+2. **One-Way ANOVA**:  
+   - **Reason**: Designed for more than two groups, whereas this study has only two groups.  
+
+3. **Wilcoxon Signed-Rank Test**:  
+   - **Reason**: Used for paired or matched data, not independent groups.  
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan is designed to comprehensively address the study’s objectives while accounting for the data structure and assumptions. Mandatory tests focus on group comparisons for primary outcomes (pain scores, sealer extrusion, medication use). Recommended tests enhance rigor by analyzing longitudinal trends and correlations. Optional tests provide supplementary insights into secondary outcomes and time-to-event data. The plan ensures robustness by including alternatives for assumption violations, ensuring valid and interpretable results.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 3: OpenAI — gpt-5.1  [OpenAI SDK]
+──────────────────────────────────────────────────────────────────────
+
+TASK 1: INFORMATION EXTRACTION  
+(Study characteristics, design, variables, measurements)
+
+1. Study design
+- Type: Prospective, randomized clinical trial (CONSORT RCT).
+- Setting: Clinical setting of the private practice of one of the researchers.
+- Time frame: February 2019 to January 2020.
+- Blinding: Single-blind (patients blinded; operator not; allocation by sealed envelopes).
+- Randomization: At time of treatment, each patient selected a sealed envelope with allocation to:
+  - FP group: foraminal patency only.
+  - FE group: foraminal enlargement.
+- Ethics: Approved by local ethics committee (#2.913.225); informed consent obtained.
+
+2. Population and eligibility
+- Age: 19–55 years.
+- Health status: ASA I (no systemic disease).
+- Tooth-level inclusion:
+  - Asymptomatic necrotic teeth.
+  - Single, fully formed, straight root canal.
+  - With or without apical radiolucency.
+  - Periodontal probing depth ≤ 3 mm.
+- Exclusion:
+  - Chronic or acute systemic disease.
+  - Antibiotic or analgesic use in last 10 days.
+  - Teeth with swelling, sinus tract, root resorption (internal/external), or prior endodontic treatment.
+  - Any sign of bleeding from pulp chamber once accessed (none occurred).
+- Final sample size: Target 70 patients per group (n = 70) based on a priori sample size calculation.
+
+3. Sample size calculation
+- Based on previous study.
+- Planned analysis: ANOVA.
+- Assumptions:
+  - Difference among mean results: 0.03.
+  - Standard deviation: 0.05.
+  - Power: 0.80.
+  - Alpha: 0.05.
+- Required 69 patients per group; enrolled 70 per group.
+
+4. Interventions / Groups
+- Common treatment steps (both groups):
+  - Local anesthesia: 3.6 mL 2% lidocaine with 1:100,000 epinephrine (buccal infiltration or IANB).
+  - Rubber dam isolation; decontamination.
+  - Pulp chamber access with round diamond bur.
+  - Initial irrigation: 5 mL 2.5% NaOCl.
+  - Canal scouting and confirmation of single canal.
+  - Instrumentation system: WaveOne Gold reciprocating system, powered by X-Smart Plus engine.
+  - Patency check with #10 K-file after each 3 movements.
+  - Irrigation during shaping: 2.5 mL 2.5% NaOCl each cycle, needle 3 mm short of WL.
+  - Apical size:
+    - Up to size 25/.07 (“Primary”) when initial apical diameter = #15–20.
+    - Up to size 45/.05 (“Large”) when initial apical diameter ≥ #25.
+  - Final irrigation protocol:
+    - Ultrasonic agitation (Irrisonic insert, 10% power, 2 mm short of WL).
+    - 3 mL 17% EDTA (3 × 1 mL, 20 s each).
+    - 6 mL 2.5% NaOCl (3 × 2 mL, 20 s each).
+    - Final rinse: 5 mL 2.5% NaOCl (total NaOCl = 25 mL).
+  - Drying with paper cones.
+  - Obturation:
+    - Single-cone technique with gutta-percha cone matching last instrument at WL.
+    - AH Plus sealer; coronal material adjusted with heated plugger and cold vertical condensation.
+  - Coronal sealing:
+    - 2-mm Coltosol at canal orifice.
+    - Provisional restoration with glass ionomer cement.
+    - Occlusal adjustment.
+  - Radiograph:
+    - Postoperative periapical radiograph to assess sealer extrusion.
+  - Equipment: Dental operating microscope (10×) used for all procedures.
+  - Operators: Two experienced endodontists (>10 years) with standardized protocol/checklist.
+
+- Key difference between groups:
+  - FE group (foraminal enlargement):
+    - Working length (WL) = at apical foramen (“0.0” on apex locator).
+    - Aim: enlarge and shape full length through foramen.
+  - FP group (foraminal patency only):
+    - WL = 1 mm short of apical foramen.
+    - Patency maintained with #10 K-file, but no enlargement beyond foramen.
+
+5. Outcomes / variables
+
+5.1 Primary clinical outcomes (as described in methods and aim)
+- Postoperative pain (perception over time).
+- Use of pain relief medication (ibuprofen).
+- Sealer extrusion.
+- Correlation between sealer extrusion and pain.
+
+5.2 Pain measurement
+- Instrument: Modified visual analog scale (VAS) 0–10 with facial expression drawings.
+- Timing: 24 h, 48 h, 72 h, and 1 week postoperatively.
+- Recording:
+  - Patients given 4 copies of the instrument to record pain at each time point.
+  - Scale categories:
+    - 0: no pain.
+    - 1–3: mild pain.
+    - 4–7: moderate pain.
+    - 8–10: severe pain.
+- Data collection: Dental assistant (blinded to treatment) called patients at each time point, collected:
+  - Pain score (0–10; plus categorical class).
+  - Whether pain medication taken (yes/no).
+  - Number of ibuprofen tablets taken (count).
+
+5.3 Sealer extrusion
+- Assessed via immediate postoperative periapical radiograph.
+- Binary variable: sealer extrusion present vs absent (at minimum).
+- Potentially also categorized by extent, but not stated.
+
+5.4 Other implicit variables
+Collected or inferable:
+- Demographic: Age (19–55), sex not explicitly stated but typically collected.
+- Tooth-related:
+  - Tooth type (maxillary vs mandibular; possibly incisor/canine/premolar).
+  - Presence/absence of apical radiolucency (baseline).
+  - Initial apical size (Primary vs Large instruments).
+- Procedural factors: Operator (endodontist 1 vs 2), anesthesia type (maxillary vs mandibular).
+
+6. Data structure
+- Unit of randomization: Patient / tooth (each patient appears to contribute one tooth).
+- Groups: Two parallel arms, FE and FP, with ~70 participants each.
+- Repeated measures: Pain measured on the same subject at 4 time points.
+- Outcome types:
+  - Pain score: ordinal (0–10) but often treated as continuous; alternatively categorical (no/mild/moderate/severe).
+  - Analgesic use: binary (yes/no); counts (number of tablets).
+  - Sealer extrusion: binary (yes/no).
+  - Correlation: pain (continuous or ordinal) vs extrusion (binary).
+
+---
+
+TASK 2: STATISTICAL ANALYSIS PLAN
+
+I’ll structure this as:
+
+- Definition of analysis objectives.
+- Primary and secondary endpoints.
+- Statistical tests grouped into:
+  - CATEGORY A – MANDATORY
+  - CATEGORY B – RECOMMENDED
+  - CATEGORY C – OPTIONAL
+
+For each test, I will provide what you requested.
+
+A. Objectives and endpoints
+
+1. Primary objective
+- Compare postoperative pain between FE and FP groups at multiple time points (24, 48, 72 hours, 1 week).
+
+2. Secondary objectives
+- Compare:
+  - Frequency and intensity class of pain (no/mild/moderate/severe) between groups.
+  - Proportion of patients using pain medication and number of tablets between groups.
+  - Prevalence of sealer extrusion between groups.
+  - Correlation between sealer extrusion and pain intensity.
+  - Potential influence of covariates (age, sex, apical radiolucency, tooth type, apical size, operator) on pain.
+
+3. Analysis principle
+- Primary: Intention-to-treat (ITT), including all randomized patients with any post-treatment pain data.
+- Sensitivity: Per-protocol analysis excluding major protocol deviations (if any).
+
+---
+
+CATEGORY A – MANDATORY TESTS
+
+1. Comparison of pain scores between FE and FP at each time point
+
+1.1 Test: Mann–Whitney U Test (Wilcoxon rank-sum)  
+- Purpose:
+  - Compare distributions/medians of pain scores between FE and FP at each time point (24 h, 48 h, 72 h, 1 week), treating pain as ordinal/non-normal.
+- Why appropriate (≥2 reasons):
+  1) Pain scores (0–10, with categorical derivation) are ordinal and often skewed with many zeros; Mann–Whitney does not require normality.
+  2) Two independent groups (FE vs FP) with reasonably large sample sizes (≈70 per group) fit the test structure.
+- Why it may not be appropriate:
+  - If pain scores behave as approximately normal continuous variables and the interest is in mean differences with parametric inference, a t-test may be more interpretable.
+- When NOT to use:
+  - If sample size is very small or highly imbalanced and exact methods are preferred (then use exact Wilcoxon or permutation tests).
+  - If you transform pain into a binary outcome (pain vs no pain) at each time point; in that case, a chi-square or logistic regression is preferable.
+- Alternative if assumptions violated:
+  - If the assumption of similar shapes is strongly violated and data are categorical: use ordinal logistic regression, or Fisher’s exact test on categorized pain (e.g., none vs any).
+
+1.2 Test: Chi-square test (or Fisher’s exact) comparing pain categories  
+- Purpose:
+  - Compare distribution of pain categories (no/mild/moderate/severe) between FE and FP for each time point.
+- Why appropriate:
+  1) Outcomes are categorical; groups are independent; frequencies can be cross-tabulated.
+  2) Allows direct interpretation at the clinical decision level (e.g., proportion with moderate/severe pain).
+- Why it may not be appropriate:
+  - If some cells have very small expected counts (<5), chi-square approximations may be unreliable.
+- When NOT to use:
+  - When sample sizes are too small and expected counts are very low; then Fisher’s exact is preferable.
+- Alternative if assumptions violated:
+  - Fisher’s exact test; or collapsing categories (e.g., none/mild vs moderate/severe) to ensure adequate cell counts; or use ordinal logistic regression.
+
+2. Comparison of analgesic use between FE and FP
+
+2.1 Test: Chi-square test for proportions (analgesic use yes/no)  
+- Purpose:
+  - Compare proportion of patients needing ibuprofen at each time point and/or overall between FE and FP.
+- Why appropriate:
+  1) Binary outcome (use vs no use) in two independent groups.
+  2) Sample size is large enough for asymptotic chi-square approximations in most cells.
+- Why it may not be appropriate:
+  - If the number of patients using analgesics is very small, expected cell counts may be <5.
+- When NOT to use:
+  - When analgesic use is rare and probabilities are low; then exact tests are better.
+- Alternative if assumptions violated:
+  - Fisher’s exact test; or logistic regression if adjusting for covariates.
+
+2.2 Test: Mann–Whitney U Test for number of tablets  
+- Purpose:
+  - Compare distribution of number of tablets (count data, likely skewed and often zero) between FE and FP among those who took any medication, or including zeros (full sample).
+- Why appropriate:
+  1) Non-parametric comparison of two independent samples for skewed count data.
+  2) Robust to non-normality and unequal variances.
+- Why it may not be appropriate:
+  - If counts are very low and mostly zero, zero-inflated models may be more appropriate for detailed modeling.
+- When NOT to use:
+  - When the interest is specifically modeling rates or adjusting for covariates; then Poisson/negative binomial regression is more suitable.
+- Alternative if assumptions violated:
+  - Poisson or negative binomial regression; or exact tests on categorized “0 vs ≥1, ≥2 tablets”.
+
+3. Comparison of sealer extrusion between FE and FP
+
+3.1 Test: Chi-square test (or Fisher’s exact)  
+- Purpose:
+  - Compare proportion of teeth with sealer extrusion between FE and FP.
+- Why appropriate:
+  1) Binary outcome, two independent groups; standard 2×2 test.
+  2) Clinically direct measure of intervention effect on extrusion.
+- Why it may not be appropriate:
+  - If extrusion is very rare or very common in one group, leading to sparse data or quasi-complete separation.
+- When NOT to use:
+  - When significant imbalance or extremely small numbers prevent meaningful chi-square approximations.
+- Alternative if assumptions violated:
+  - Fisher’s exact test; or logistic regression with Firth correction if separation is an issue.
+
+4. Correlation between sealer extrusion and pain
+
+4.1 Test: Mann–Whitney U Test (pain vs extrusion status)  
+- Purpose:
+  - Compare pain scores between extruded vs non-extruded teeth.
+- Why appropriate:
+  1) Pain is ordinal; extrusion is binary; Mann–Whitney compares distributions across two independent groups.
+  2) Avoids parametric assumptions; robust with n≈140.
+- Why it may not be appropriate:
+  - If you want to control for group (FE vs FP) and other covariates; confounding may bias simple comparisons.
+- When NOT to use:
+  - When multivariable modeling is intended to adjust for treatment, baseline radiolucency, etc.
+- Alternative if assumptions violated:
+  - Ordinal logistic regression with extrusion as predictor and pain category as outcome; or logistic regression for moderate/severe pain vs none/mild.
+
+4.2 Test: Spearman’s rank correlation  
+- Purpose:
+  - Evaluate monotonic association between pain scores and a binary coded extrusion variable (0/1) or ordinal extent if available.
+- Why appropriate:
+  1) Non-parametric, suitable for at least ordinal variables.
+  2) Simple measure of association with interpretable effect size.
+- Why it may not be appropriate:
+  - Correlation with a binary predictor is essentially a transformation of group differences; logistic/ordinal regression might be more informative.
+- When NOT to use:
+  - When primary interest is causal effect or adjusted association; not just correlation.
+- Alternative if assumptions violated:
+  - Logistic/ordinal regression models (see Category B).
+
+5. Handling repeated measures (pain over time)
+
+5.1 Test: Friedman Test or Wilcoxon Signed-Rank (within-group time changes)  
+- Purpose:
+  - Within each group, assess change in pain over time (e.g., 24 h to 1 week).
+- Why appropriate:
+  1) Non-parametric test for repeated measures on same subjects (ordinal pain scores).
+  2) Accounts for paired nature of data.
+- Why it may not be appropriate:
+  - Does not directly compare between groups over time; just within-group trajectories.
+- When NOT to use:
+  - When interest focuses on interaction of time and group (different patterns over time between FE and FP).
+- Alternative if assumptions violated:
+  - Mixed-effects models for repeated measures (Category B), or generalized estimating equations.
+
+---
+
+CATEGORY B – RECOMMENDED TESTS (Enhance rigor and insight)
+
+1. Mixed-effects ordinal regression for repeated pain outcomes
+
+- Test: Mixed-effects cumulative logit (ordinal) model  
+  - Outcome: Pain category (no/mild/moderate/severe) at 24, 48, 72 h, 1 week.
+  - Fixed effects: Group (FE vs FP), time (4 levels), group × time interaction.
+  - Random effect: Patient (random intercept).
+- Purpose:
+  - Model the trajectory of pain over time and formally test differences in pain profiles between FE and FP.
+- Why appropriate:
+  1) Pain categories are ordered; ordinal mixed models respect that structure.
+  2) Handles intra-subject correlation of repeated measures, missing time points, and unbalanced data properly.
+- Why it may not be appropriate:
+  - Requires more complex modeling; convergence difficulties may appear if categories are sparse (e.g., few severe pain cases).
+- When NOT to use:
+  - When modeling resources or software availability is limited; or if there are too few non-zero pain observations to justify.
+- Alternative if assumptions violated:
+  - Generalized linear mixed model with binary outcome (any pain vs none), or GEE with robust standard errors; or simpler repeated-measures ANOVA on transformed pain scores (with caution).
+
+2. Logistic regression for moderate/severe pain
+
+- Test: Multivariable logistic regression  
+  - Outcome: Moderate/severe pain vs no/mild pain at key time point (e.g., 24 h).
+  - Predictors:
+    - Treatment group (FE vs FP, primary predictor).
+    - Baseline covariates: age, sex, apical radiolucency, tooth type (maxillary/mandibular), apical size (Primary vs Large), operator.
+- Purpose:
+  - Estimate adjusted odds ratio for clinically important pain, controlling for potential confounders.
+- Why appropriate:
+  1) Binary outcome; logistic regression is standard and gives interpretable ORs.
+  2) Adjusts for covariates, increasing precision and addressing imbalances (if any).
+- Why it may not be appropriate:
+  - If event numbers (moderate/severe pain) are small, model may be unstable; overfitting is a concern.
+- When NOT to use:
+  - With too many covariates relative to the number of events (rule-of-thumb at least ~10 events per coefficient).
+- Alternative if assumptions violated:
+  - Penalized logistic regression (Firth) or exact logistic regression; or reduce model to fewer covariates.
+
+3. Logistic regression for sealer extrusion
+
+- Test: Binary logistic regression  
+  - Outcome: Sealer extrusion (yes/no).
+  - Predictors: Group (FE vs FP), apical size category, operator, tooth type.
+- Purpose:
+  - Estimate odds ratio of extrusion in FE vs FP and evaluate other influencing factors.
+- Why appropriate:
+  1) Binary outcome; typical logistic regression application.
+  2) Allows exploration of whether FE effect is independent of other anatomical/procedural factors.
+- Why it may not be appropriate:
+  - If extrusion is extremely common or rare (near-constant); logistic models will be unstable.
+- When NOT to use:
+  - Very sparse events; or when simple 2×2 comparison sufficiently answers the question.
+- Alternative if assumptions violated:
+  - Fisher’s exact test; or exact logistic regression.
+
+4. Adjusted analysis of correlation between sealer extrusion and pain
+
+- Test: Ordinal logistic regression  
+  - Outcome: Pain category (no/mild vs moderate/severe or four-level).
+  - Predictor: Sealer extrusion (yes/no) plus group and covariates.
+- Purpose:
+  - Test whether extrusion is independently associated with pain level.
+- Why appropriate:
+  1) Pain is ordinal; logistic model accounts for ordered outcome.
+  2) Adjusts for group (FE/FP) to avoid confounding (extrusion more likely in FE).
+- Why it may not be appropriate:
+  - Same issues as above (sparse categories, convergence).
+- When NOT to use:
+  - When the primary conclusion is already that no correlation exists and sample is underpowered for this detailed modeling.
+- Alternative if assumptions violated:
+  - Binary logistic regression on moderate/severe vs no/mild; or non-parametric tests.
+
+5. Baseline comparability checks
+
+- Tests:
+  - Independent-samples t-test or Mann–Whitney U for continuous variables (e.g., age).
+  - Chi-square/Fisher’s exact for categorical variables (sex, apical radiolucency, tooth type, operator, apical size category).
+- Purpose:
+  - Assess whether randomization achieved balance across important baseline characteristics.
+- Why appropriate:
+  1) Standard RCT practice; ensures no substantial imbalance that might confound results.
+  2) Helps interpret any observed differences in outcomes.
+- Why it may not be appropriate:
+  - Some argue against hypothesis testing for baseline balance; descriptive comparisons and standardized differences might be preferred.
+- When NOT to use:
+  - When sample size is small and tests have low power; or if journal requires descriptive balance assessment only.
+- Alternative if assumptions violated:
+  - Present descriptive statistics and standardized mean differences without formal testing.
+
+---
+
+CATEGORY C – OPTIONAL TESTS (Supplementary insights)
+
+1. Effect-size statistics
+
+- Tests/metrics:
+  - For pain: Hodges–Lehmann median difference with 95% CI; Cohen’s d if using means.
+  - For proportions: Risk difference, risk ratio, odds ratio with 95% CIs.
+- Purpose:
+  - Quantify clinical magnitude of differences beyond p-values.
+- Why appropriate:
+  1) Clinical relevance needs effect size, not just significance.
+  2) Facilitates meta-analysis and comparison with other studies.
+- Why it may not be appropriate:
+  - If distribution is peculiar (e.g., heavily zero-inflated), some standard effect-size measures can be misleading.
+- When NOT to use:
+  - None in principle; but may be omitted due to space limitations.
+- Alternative:
+  - Use non-parametric effect size measures (e.g., Cliff’s delta).
+
+2. Time-to-event analysis (time to pain-free status)
+
+- Test: Kaplan–Meier survival curves and log-rank test  
+  - Outcome: Time from treatment to first report of no pain (score 0) and remaining pain-free thereafter.
+- Purpose:
+  - Evaluate speed of recovery (resolution of pain) comparing FE vs FP.
+- Why appropriate:
+  1) Captures temporal aspect of pain resolution more fully than separate cross-sections.
+  2) Handles censoring (e.g., missing some time points).
+- Why it may not be appropriate:
+  - Pain measurement schedule is discrete and limited (only 4 points), so classical survival analysis may not be very informative.
+- When NOT to use:
+  - When pain is not strictly monotone decreasing or measurement times are too coarse.
+- Alternative:
+  - Mixed-effects models described above.
+
+3. Subgroup analyses
+
+- Tests:
+  - Stratified comparisons (e.g., FE vs FP within apical radiolucency present vs absent).
+  - Interaction terms in regression models (group × radiolucency).
+- Purpose:
+  - Explore whether FE effect varies by baseline radiolucency, tooth type, or apical size (Primary vs Large).
+- Why appropriate:
+  1) Biological plausibility that pathology extent affects pain response to instrumentation.
+  2) May generate hypotheses for future trials.
+- Why it may not be appropriate:
+  - RCT likely not powered for multiple subgroup analyses; risk of false-positive findings.
+- When NOT to use:
+  - If there is no strong biological pre-specification; avoid post hoc multiplicity.
+- Alternative:
+  - Present as exploratory, clearly labeled, or avoid altogether.
+
+4. Sensitivity analyses for missing data
+
+- Tests:
+  - Multiple imputation vs complete-case analyses for missing pain scores.
+- Purpose:
+  - Assess robustness of conclusions if some patients miss one or more follow-up pain assessments.
+- Why appropriate:
+  1) Missingness is common in patient-reported outcomes.
+  2) Provides reassurance that missing data do not bias results.
+- Why it may not be appropriate:
+  - If missing data are minimal (e.g., <5%), simple complete-case analysis is sufficient.
+- When NOT to use:
+  - When data are nearly complete and the complexity offers little benefit.
+- Alternative:
+  - Simple last observation carried forward (with caution), or use mixed models inherently tolerant of missing at random.
+
+---
+
+TASK 3: INAPPROPRIATE TESTS (Specify and explain)
+
+1. One-way ANOVA for pain scores across FE and FP
+
+- Why not appropriate:
+  - Only two groups; t-test would be equivalent. But more importantly, pain scores are ordinal with marked skew and many zeros; ANOVA assumes approximate normality and equal variances of residuals, which are implausible here.
+- Problems:
+  - Violated assumptions may inflate type I error or reduce power; mean-based comparisons poorly reflect categories like “no vs severe pain”.
+- Better alternatives:
+  - Mann–Whitney U; or ordinal regression.
+
+2. Repeated-measures ANOVA with normally distributed residual assumptions
+
+- Why not appropriate:
+  - Pain is ordinal and very likely non-normal and heteroscedastic over time; repeated-measures ANOVA also requires sphericity assumption, which may be violated.
+  - Missing data are likely; repeated-measures ANOVA handles missing poorly.
+- Better alternatives:
+  - Mixed-effects models, GEE, or non-parametric repeated measures tests.
+
+3. Parametric correlation (Pearson’s correlation) between sealer extrusion and pain
+
+- Why not appropriate:
+  - One variable is binary and the other ordinal/possibly non-normal; Pearson’s correlation is not designed for such data and can misrepresent association.
+- Better alternatives:
+  - Spearman’s rank correlation; logistic or ordinal regression.
+
+4. Paired t-test between groups for pain scores
+
+- Why not appropriate:
+  - Groups are independent (different patients), not paired or matched; paired t-test assumes matched pairs.
+- Better alternatives:
+  - Independent-samples tests (Mann–Whitney, t-test if appropriate).
+
+5. Linear regression treating pain as continuous, without checking assumptions
+
+- Why not appropriate:
+  - Treating ordinal 0–10 pain as continuous and applying linear regression can be done, but only with careful assumption checks; residuals may be non-normal and heteroscedastic. Interpretation of predicted means may be less natural than odds of higher pain categories.
+- Better alternatives:
+  - Ordinal logistic regression; or transformation/robust regression if continuous modeling is insisted upon.
+
+6. Multiple unadjusted post hoc tests without correction
+
+- Why not appropriate:
+  - Conducting many unadjusted tests across time points and outcomes inflates family-wise error rates.
+- Better alternatives:
+  - Prespecify primary time point; use Bonferroni or Holm adjustments; or use global mixed-model tests.
+
+---
+
+TASK 4: SUMMARY OF ANALYTICAL APPROACH
+
+This randomized clinical trial compares two endodontic strategies (foraminal enlargement vs patency) on postoperative pain, analgesic use, and sealer extrusion in asymptomatic necrotic single-rooted teeth. The primary outcome—pain—is an ordinal, repeated measure with likely skew and many zeros, making non-parametric and/or ordinal regression methods more appropriate than simple ANOVA.
+
+The core (mandatory) analyses focus on:
+
+- Between-group comparisons of pain intensity at each time point using non-parametric tests and/or categorical analyses.
+- Between-group comparisons of analgesic use and sealer extrusion using chi-square/Fisher’s exact tests.
+- Association between sealer extrusion and pain using non-parametric comparisons and, where feasible, regression.
+
+Recommended enhancements include mixed-effects ordinal models and logistic regression to adjust for baseline covariates and to model pain trajectories over time. Optional analyses (effect sizes, survival-type time-to-pain-free, subgroup analyses, and sensitivity analyses for missing data) add interpretive depth and robustness but are not essential for answering the primary question.
+
+Overall, the plan respects the data’s structure (randomized, two-arm parallel design, repeated ordinal pain measures, binary secondary outcomes) and uses analytical methods that are appropriate for the measurement scale and distribution of the outcomes, while guarding against misuse of parametric techniques that assume normality and equality of variance.

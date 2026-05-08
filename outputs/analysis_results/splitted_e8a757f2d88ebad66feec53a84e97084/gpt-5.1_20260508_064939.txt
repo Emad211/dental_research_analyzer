@@ -1,0 +1,612 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_e8a757f2d88ebad66feec53a84e97084.pdf
+Status : ok
+Time   : 20260508_064939
+══════════════════════════════════════════════════════════════════════
+
+TASK 1: INFORMATION EXTRACTION  
+(Study characteristics and methods)
+
+1. Study design  
+- Type: Prospective randomized clinical trial (CONSORT RCT).  
+- Setting: Postgraduate section, Department of Conservative Dentistry and Endodontics, Postgraduate Institute of Dental Sciences, Rohtak, India.  
+- Period: December 2018 – June 2019.  
+- Registration: ClinicalTrials.gov ID NCT04358887.  
+- Ethics: Approved by Institutional Ethics Committee (PGIDS/IEC/2018/26).  
+- Parallel two-arm design with 1:1 allocation (piezo vs control).  
+- Blinding:  
+  - Patients blinded to group allocation.  
+  - Two independent observers for hemorrhage assessment blinded to group.  
+  - Sham setup with piezo device present for both groups to help blinding.  
+  - Operator not blinded (nature of intervention).  
+
+2. Objectives / outcomes  
+- Primary aim: Evaluate whether piezoelectric surgery impacts quality of life (QoL) during first week post-surgery.  
+- Secondary aim: Compare intraoperative hemorrhage control between piezosurgery vs carbide bur.  
+
+3. Population and eligibility  
+
+Inclusion criteria:  
+- Medically fit for oral surgery (ASA I or II).  
+- Age 16–55 years.  
+- Diagnosis: Symptomatic/asymptomatic apical periodontitis in previously treated teeth with:  
+  - Large periapical lesion (≥5 mm).  
+  - Intact buccal cortical plate on CBCT.  
+- Maxillary and mandibular anterior teeth only, with periradicular lesions <20 mm.  
+- Adequate previous root canal treatment (radiographically).  
+- Appropriate final restoration without coronal leakage.
+
+Exclusion criteria:  
+- Systemic disease: diabetes mellitus, uncontrolled grade III hypertension, hepatic/renal disease, systemic bleeding disorders.  
+- Pregnancy or lactation.  
+- Use of anticoagulant/antiplatelet drugs.  
+- Teeth: unrestorable, fractured/perforated, apicomarginal defects, periodontal pockets >4 mm.
+
+4. Sample size and randomization  
+
+Sample size basis:  
+- Primary variable for calculation: postoperative pain (QoL-related).  
+- From previous study:  
+  - Power: 80%.  
+  - α = 0.05 (two-sided).  
+  - Clinically significant difference: 0.8 (presumably standardized mean difference).  
+  - Pooled SD: 0.824.  
+- Required: 16 patients per group.  
+- Adjusted for 20% attrition → total planned: 40 patients.  
+
+Actual sample:  
+- 40 patients (21 women, 19 men).  
+- Total teeth: 74 (some patients had multiple teeth).  
+- Allocation: 20 patients per group (piezo n=20; control n=20).  
+
+Randomization method:  
+- Equal allocation using opaque sealed envelopes with concealed codes (block of equal number of envelopes; block size unspecified).  
+- Patient picks envelope immediately before surgery.
+
+5. Interventions  
+
+Group 1 – Piezo group  
+- Flap and anesthesia: identical in both groups (lidocaine 2% with epinephrine 1:100,000; full-thickness mucoperiosteal flap).  
+- Osteotomy:  
+  - Device: Woodpecker Ultrasurgery USII.  
+  - Power input: 100–240 V, 50/60 Hz; frequency 24–36 kHz; irrigation 25–110 mL/min.  
+  - Tip: US6 in bone mode, linear to-and-fro motion, continuous sterile saline.  
+  - Refinement: UL4 diamond insert.  
+- Lesion removal: UL1 (120°), UL2, UL5 (95°) piezo inserts for separating cyst/granulation tissue.  
+- Root-end resection:  
+  - 2–3 mm; angle 0°–10°.  
+  - Performed with US6 and refined with UL4 diamond insert.  
+
+Group 2 – Control group  
+- Osteotomy: surgical carbide bur (#557 SL; Brasseler USA).  
+- Lesion removal: surgical curettes.  
+- Root-end resection: cylindrical surgical carbide bur.
+
+Common to both groups  
+- Operating microscope used for most surgical stages.  
+- Root-end preparation:  
+  - Device: piezoelectric ultrasonic unit (P5 Booster, Acteon) in both groups.  
+  - Tips: double-angled S12-7D retro tips with diamond abrasives.  
+- Root end stained with 2% methylene blue.  
+- Retrograde filling: mineral trioxide aggregate (MTA).  
+- Wound closure: sutured with 5-0 silk after irrigation.  
+- Hemorrhage control during surgery: epinephrine-soaked cotton pellets applied as needed after hemorrhage scoring.  
+
+6. Postoperative management  
+
+- Instructions: avoid gargling, hard/hot/spicy food, heavy activity, smoking, and brushing on day of surgery.  
+- Mouthwash: chlorhexidine 0.2% twice daily for 1 week.  
+- Analgesia: ibuprofen 400 mg as needed; number of tablets recorded per day for 7 days.  
+- No antibiotics.  
+- Suture removal at day 5.
+
+7. Outcome measures and data collection  
+
+7.1. Intraoperative hemorrhage control (secondary outcome)  
+- Assessed after curettage, before additional hemostatic measures.  
+- Raters: principal surgeon + 2 blinded observers; the blinded observers’ ratings used for analysis. Differences resolved by consensus.  
+- Scoring (Vy et al scale, ordinal 0–2):  
+  - 0 = No hemorrhage control: continuous/intermittent bleeding obscuring surgical site and preventing root-end filling procedures.  
+  - 1 = Intermittent hemorrhage control: slight, apparent intermittent bleeding allowing root-end filling procedures.  
+  - 2 = Complete hemorrhage control: no bleeding, full visibility and ability to perform root-end filling.  
+- Dichotomization defined:  
+  - Scores 0 and 1 = inadequate hemorrhage control.  
+  - Score 2 = adequate hemorrhage control.  
+
+7.2. Quality of life (primary outcome)  
+- Instrument: Modified version of “patient perception questionnaire” (Del Fabbro et al).  
+- Domains:  
+  - Limitations of oral function: mouth opening, chewing, speaking.  
+  - Limitations of general function: sleeping, daily routine, work.  
+  - Presence/severity of symptoms: swelling, nausea, bad taste/breath.  
+- Response format: 5-point Likert scale per item:  
+  1 = not at all; 2 = very little; 3 = some; 4 = quite a bit; 5 = very much.  
+- Timing: Patients complete questionnaire daily from day 0 (surgery day) to day 7 post-op.  
+- Administration:  
+  - Patients trained by a single “analyzer” in their local language.  
+  - They can contact the analyzer by telephone for clarification.  
+  - Analyzer called each patient at least twice in the week as reminder and to clarify doubts.  
+  - Questionnaires returned after 7 days (self-completed at home).  
+
+7.3. Pain  
+- Instrument: Visual analog scale (VAS) 0–100.  
+  - 0 = no pain; 100 = worst possible pain.  
+- Frequency: Recorded daily from day 0 to day 7 post-op (same schedule as QoL).  
+- Mode: Self-reported by patient, using explained procedure.
+
+7.4. Analgesic consumption  
+- Variable: Number of ibuprofen 400 mg tablets taken per day (days 0–7).  
+- Type: Count data per day; can be summed over 7 days.  
+
+7.5. Demographic/clinical covariates (from Table 1 mentioned)  
+Though not visible in the text excerpt, typical descriptive statistics likely include:  
+- Age (years).  
+- Sex (male/female).  
+- Number of teeth per patient, possibly arches (maxillary/mandibular).  
+- Type of tooth (central, lateral, canine).  
+- Lesion size (mm, CBCT).  
+- Baseline characteristics presumably similar between groups (randomization).  
+
+7.6. Hierarchical data structure  
+- 40 patients; 74 teeth.  
+- Randomization by patient, not tooth.  
+- Surgical outcomes (hemorrhage) assessed at tooth/surgical site level.  
+- QoL, pain, analgesic use assessed at patient level.  
+
+8. Data features  
+- Main group factor: Intervention group (Piezo vs Control).  
+- Outcome types:  
+  - Ordinal (hemorrhage score; Likert QoL items).  
+  - Binary (adequate vs inadequate hemorrhage – derived).  
+  - Continuous (VAS pain; potentially summed Likert scores).  
+  - Count (number of analgesic tablets).  
+  - Repeated measures over time (days 0–7).  
+- Raters: multiple observers for hemorrhage → potential for inter-rater agreement analysis (kappa, ICC) although final outcome is consensus.
+
+---
+
+TASK 2: STATISTICAL ANALYSIS PLAN
+
+Core principles:  
+- Primary analysis by intention-to-treat (all randomized patients analyzed in assigned group).  
+- Unit of analysis:  
+  - Patient-level for QoL, pain, and analgesic use (since these are patient-reported outcomes and randomization was at patient level).  
+  - Tooth-level for hemorrhage control, but account for clustering of teeth within patients if multiple teeth per patient.  
+- Time dimension: repeated daily measures over 8 time points (day 0–7). Choose methods that properly handle within-patient correlation and missing daily entries.
+
+Below, tests are categorized as mandatory, recommended, or optional. For each, I include purpose, appropriateness, limitations, when not to use, and alternatives.
+
+---
+
+CATEGORY A – MANDATORY TESTS
+
+A1. Baseline comparability of groups  
+
+A1.1. Independent samples t-test / Mann–Whitney U test for continuous baseline variables  
+
+Purpose  
+- Compare baseline continuous characteristics (e.g., age, lesion size) between piezo and control groups to verify balance achieved by randomization.
+
+Why appropriate  
+1) Two independent groups with continuous variables; standard for baseline comparison.  
+2) Helps identify potential imbalances that may warrant adjusted analyses (e.g., age or lesion size influencing outcomes).
+
+Why it may not be appropriate  
+- Small sample (n=20 per group) and potential non-normality or outliers may violate t-test assumptions.
+
+When not to use  
+- When variable distribution is markedly skewed or has extreme outliers and transformation is not sensible.
+
+Alternative if assumptions violated  
+- Use Mann–Whitney U test (nonparametric) for skewed continuous baseline variables.
+
+A1.2. Chi-square test / Fisher’s exact test for categorical baseline variables  
+
+Purpose  
+- Compare categorical baseline characteristics (e.g., sex, arch, tooth type) between groups.
+
+Why appropriate  
+1) Baseline categorical variables with two or more categories; standard for RCT baseline check.  
+2) Sample sizes modest but likely adequate for 2x2 tables; Fisher’s exact can be used if expected counts are small.
+
+Why it may not be appropriate  
+- If some categories have very low counts (expected cell counts <5), chi-square assumptions are violated.
+
+When not to use  
+- Chi-square not used when expected counts are <5 in more than 20% of cells.
+
+Alternative if assumptions violated  
+- Fisher’s exact test.
+
+---
+
+A2. Primary outcome: QoL over 7 days  
+
+There are multiple ways; the most robust for small sample + repeated measures is a mixed model.
+
+A2.1. Linear mixed-effects model (LMM) for continuous QoL scores  
+
+(If QoL items are summed or domain scores treated as approximately continuous.)
+
+Purpose  
+- Compare trajectories of QoL (e.g., total score per day or domain scores) between piezo and control over 7 days, accounting for within-patient correlation.
+
+Why appropriate  
+1) Repeated daily measurements (day 0–7) on same patients; LMM handles correlated data and unbalanced/missing data.  
+2) Allows modeling of time, group, and time×group interaction to examine whether QoL improves differently over time between groups.
+
+Why it may not be appropriate  
+- If QoL outcomes are strictly ordinal with few categories and not reasonably approximated as continuous, LMM may not be ideal.  
+- Small sample size may limit complex random structures (e.g., random slopes).
+
+When not to use  
+- When the distribution is clearly ordinal and skewed and summation to a continuous score yields poor measurement properties (e.g., very few distinct values).  
+
+Alternative if assumptions violated  
+- Use a generalized linear mixed model (GLMM) with appropriate link (e.g., cumulative logit for ordinal data) or nonparametric repeated-measures tests (see A2.2).
+
+A2.2. Nonparametric repeated-measures test:  
+- For example, Brunner–Langer nonparametric ANOVA-type statistic (ATS) for longitudinal data, or separate Mann–Whitney comparisons at each day with correction for multiple testing.  
+
+Purpose  
+- Compare group differences in QoL over time without assuming normality.
+
+Why appropriate  
+1) QoL Likert scores are ordinal; nonparametric approaches better respect measurement level.  
+2) Suitable for small sample sizes and non-normal distributions.
+
+Why it may not be appropriate  
+- Nonparametric repeated-measures tools (Brunner–Langer, rank-based mixed models) may not be readily available or familiar; separate day-by-day tests inflate type I error.
+
+When not to use  
+- If you have reliable continuous domain scores that are approximately normal; LMM will be more interpretable.
+
+Alternative if assumptions violated  
+- If using day-by-day ranks, adjust for multiple comparisons (e.g., Holm–Bonferroni).  
+
+---
+
+A3. Pain outcome (VAS 0–100 over 7 days)  
+
+A3.1. Linear mixed-effects model for pain VAS  
+
+Purpose  
+- Compare longitudinal pain intensity between groups across days 0–7.
+
+Why appropriate  
+1) Pain VAS is continuous; longitudinal; LMM accounts for within-patient correlation and missing days.  
+2) Can estimate time×group interaction to test whether pain decreases more quickly in one group.
+
+Why it may not be appropriate  
+- VAS distributions may be skewed, especially at later days (floor effect: many 0s). LMM assumes normally distributed residuals.
+
+When not to use  
+- If pain data show severe non-normality (e.g., many zeros) and transformation does not help.
+
+Alternative if assumptions violated  
+- GLMM with appropriate link (e.g., gamma or log-normal for positive continuous, or two-part model for zero-inflation).  
+- Nonparametric repeated measures as above.
+
+A3.2. Summary measure approach with t-test / Mann–Whitney U  
+
+(Use if mixed models not feasible.)
+
+Purpose  
+- Derive summary statistics per patient (e.g., area under the curve [AUC] of pain over 7 days, or mean/max pain) and compare between groups.
+
+Why appropriate  
+1) Converts repeated measures into a single metric per patient, making analysis simpler (standard two-group test).  
+2) Still respects time dimension by integrating across it.
+
+Why it may not be appropriate  
+- Loses information about daily patterns and time×group interaction.  
+- Sensitive to missing days; requires imputation or partial AUC.
+
+When not to use  
+- When you aim to explicitly test interaction of time and group or when missing data pattern is non-random.
+
+Alternative if assumptions violated  
+- Use Mann–Whitney U for AUC if distribution is skewed; or rank-based ANCOVA.
+
+---
+
+A4. Analgesic consumption  
+
+A4.1. Poisson or negative binomial regression / GLMM for count data  
+
+Purpose  
+- Compare total number (or daily counts) of ibuprofen tablets between groups, adjusting for repeated daily counts if modeled longitudinally.
+
+Why appropriate  
+1) Analgesic use is count data; Poisson/negative binomial models are standard.  
+2) Can include group as predictor, and time if modeling daily counts, plus random intercept for patient.
+
+Why it may not be appropriate  
+- Poisson assumes mean = variance; overdispersion likely.  
+- Very low counts and excess zeros could compromise model fit.
+
+When not to use  
+- When counts are very low and distribution extremely sparse; complex models can be unstable.
+
+Alternative if assumptions violated  
+- Negative binomial model if overdispersion present.  
+- Zero-inflated Poisson/negative binomial if many patients never used analgesics.  
+- Wilcoxon/Mann–Whitney test on total 7-day counts if simple summary preferred.
+
+---
+
+A5. Hemorrhage control (secondary outcome – ordinal and binary)  
+
+A5.1. Ordinal logistic regression (proportional odds model)  
+
+Purpose  
+- Compare hemorrhage control scores (0,1,2) between groups, possibly adjusting for tooth or patient-level covariates.
+
+Why appropriate  
+1) Outcome is ordinal; ordinal logistic regression uses ordering information, more powerful than dichotomizing.  
+2) Provides odds ratio for better hemorrhage control (higher score) with piezosurgery vs control.
+
+Why it may not be appropriate  
+- Proportional odds assumption may be violated (effect not constant across cutpoints).  
+- Data may be clustered (multiple teeth per patient); simple model ignoring clustering may misestimate standard errors.
+
+When not to use  
+- When proportional odds assumption fails and alternative ordinal models are not implemented; or when sample size per category is too small.
+
+Alternative if assumptions violated  
+- Partial proportional odds model or generalized ordered logit.  
+- If clustering is a concern and sample small, use GEE with ordinal link or mixed-effects ordinal model.  
+- If necessary, dichotomize (adequate vs inadequate) and use logistic regression.
+
+A5.2. Chi-square / Fisher’s exact test for adequate vs inadequate hemorrhage  
+
+Purpose  
+- Compare proportion of teeth with “adequate” hemorrhage control (score 2) between groups.
+
+Why appropriate  
+1) Simple, interpretable comparison of key clinically relevant dichotomy.  
+2) Appropriate for small to moderate sample sizes; Fisher’s exact if expected counts small.
+
+Why it may not be appropriate  
+- Dichotomization discards information about intermediate category (score 1 vs 0).  
+- Multiple teeth per patient create clustering; simple chi-square assumes independence.
+
+When not to use  
+- If intra-patient clustering is strong and not accounted for.  
+
+Alternative if assumptions violated  
+- Mixed-effects logistic regression (random intercept for patient) or GEE with robust SEs to account for clustering.
+
+---
+
+CATEGORY B – RECOMMENDED TESTS
+
+B1. Inter-rater agreement for hemorrhage scoring  
+
+B1.1. Weighted kappa or ICC for ordinal hemorrhage score  
+
+Purpose  
+- Assess agreement between the two blinded observers before consensus.
+
+Why appropriate  
+1) Hemorrhage scoring is subjective; assessing reliability increases confidence in outcome measurement.  
+2) Weighted kappa respects ordinal nature of scores (0<1<2).
+
+Why it may not be appropriate  
+- If consensus scores only are recorded and original individual ratings are not stored, agreement cannot be estimated.
+
+When not to use  
+- When only consensus values are available and individual ratings discarded.
+
+Alternative if assumptions violated  
+- For more than two raters, use Fleiss’ kappa with weighting or ordinal ICC.
+
+---
+
+B2. Internal consistency of QoL instrument  
+
+B2.1. Cronbach’s alpha for QoL domains  
+
+Purpose  
+- Assess reliability (internal consistency) of the modified patient perception questionnaire in this sample.
+
+Why appropriate  
+1) Instrument is multi-item; alpha assesses whether items within domains are coherent.  
+2) Important because instrument is a modified version, and measurement properties may differ from original.
+
+Why it may not be appropriate  
+- Alpha assumes essentially tau-equivalent items; if domains are heterogeneous by design, alpha might be low even if instrument is valid.
+
+When not to use  
+- If each item is analyzed separately and total scores are not used, internal consistency is less critical for primary analysis.
+
+Alternative if assumptions violated  
+- Use omega (McDonald’s) or factor analysis to assess dimensionality.
+
+---
+
+B3. Additional modeling for QoL / pain  
+
+B3.1. Area-under-the-curve comparison for QoL and pain  
+
+Purpose  
+- Provide integrated summary (e.g., average daily burden) for QoL and pain, compared between groups.
+
+Why appropriate  
+1) AUC captures both intensity and duration; clinically intuitive.  
+2) Reduces repeated measures to a single metric enabling simple two-group comparisons.
+
+Why it may not be appropriate  
+- Requires complete or near-complete daily data; missing days complicate AUC computation.  
+- Less informative about pattern over time.
+
+When not to use  
+- When time pattern differences (e.g., early vs late pain) are central clinical interest.
+
+Alternative if assumptions violated  
+- Use LMM as primary; AUC as sensitivity analysis.
+
+---
+
+B4. Adjusted analyses  
+
+B4.1. Covariate-adjusted mixed models / regression  
+
+Purpose  
+- Adjust for potential baseline covariates (e.g., age, sex, lesion size, arch, number of teeth treated) to improve precision and assess robustness.
+
+Why appropriate  
+1) Even in RCTs, covariate adjustment can increase power and control for chance imbalance.  
+2) Helps interpret whether treatment effects are consistent across subgroups.
+
+Why it may not be appropriate  
+- Small sample size limits the number of covariates; overfitting risk.
+
+When not to use  
+- When sample is too small for reliable multivariable modeling (rule-of-thumb 10–15 patients per covariate).
+
+Alternative if assumptions violated  
+- Present unadjusted primary analyses, with only one key covariate if necessary.
+
+---
+
+CATEGORY C – OPTIONAL TESTS
+
+C1. Exploratory subgroup analyses  
+
+Purpose  
+- Explore whether treatment effects differ by sex, arch (maxilla/mandible), or multiple vs single tooth per patient.
+
+Why appropriate  
+1) May generate hypotheses (e.g., effect larger in mandibular teeth).  
+2) Useful for planning future studies.
+
+Why it may not be appropriate  
+- Underpowered; multiple comparisons increase false-positive risk; exploratory only.
+
+When not to use  
+- As primary evidence for differential effects; must be clearly labeled exploratory.
+
+Alternative if assumptions violated  
+- Omit subgroup analyses or pre-specify only one key subgroup.
+
+---
+
+C2. Sensitivity analyses handling clustering of teeth  
+
+Purpose  
+- Examine impact of within-patient clustering on hemorrhage outcome results (e.g., analyze only first tooth per patient vs all teeth).
+
+Why appropriate  
+1) Ensures that results are not driven by multi-tooth patients.  
+2) Clarifies independence assumption.
+
+Why it may not be appropriate  
+- Reducing to one tooth per patient may reduce sample size and power.
+
+When not to use  
+- If cluster-adjusted models already used in primary analysis.
+
+Alternative if assumptions violated  
+- Report both tooth-level cluster-adjusted and patient-level analyses.
+
+---
+
+C3. Graphical summaries  
+
+Purpose  
+- Visualize daily trajectories of pain, QoL scores, and analgesic use.
+
+Why appropriate  
+1) Enhances interpretability (e.g., line plots with mean ± SE per day).  
+2) Can highlight patterns (e.g., difference mainly first 3 days).
+
+Why it may not be appropriate  
+- None; graphs are generally useful.
+
+When not to use  
+- Not applicable; but ensure graphs don’t mislead (e.g., over-smoothing with small n).
+
+Alternative if assumptions violated  
+- Use nonparametric smoothers or medians instead of means when distributions skewed.
+
+---
+
+TASK 3: INAPPROPRIATE TESTS (AND WHY)
+
+1. Simple independent-samples t-tests at each day for QoL and pain without correction or modeling correlation  
+
+Why inappropriate  
+- Repeated daily measures violate independence; multiple daily t-tests inflate type I error and ignore within-patient correlation.  
+- Does not utilize structure of longitudinal data or time×group interaction.
+
+Better alternative  
+- Mixed models or repeated-measures frameworks, or correct for multiple comparisons if day-by-day comparisons are secondary.
+
+2. One-way ANOVA (between groups) ignoring repeated measures for daily outcomes  
+
+Why inappropriate  
+- Standard one-way ANOVA assumes independent observations; repeated measures per patient are correlated.  
+- Leads to incorrect standard errors and p-values.
+
+Better alternative  
+- Repeated-measures ANOVA or LMM.
+
+3. Paired t-test within each group to assess pre/post or day-to-day differences, then comparing p-values across groups  
+
+Why inappropriate  
+- Comparing p-values across groups is invalid; group differences must be directly tested.  
+- Multiple paired tests inflate type I error and ignore between-group randomization.
+
+Better alternative  
+- Mixed model with group, time, and interaction.
+
+4. Standard logistic regression on hemorrhage dichotomy treating each tooth as independent, ignoring clustering  
+
+Why inappropriate  
+- Multiple teeth per patient → correlated outcomes; standard logistic regression underestimates variance.  
+- Inflated type I error.
+
+Better alternative  
+- Mixed-effects logistic regression or GEE with cluster robust SEs; or restrict to one tooth per patient.
+
+5. Parametric tests treating individual Likert items as continuous and normal without verification  
+
+Why inappropriate  
+- Single Likert items with 5 points often non-normal, bounded; t-tests or ANOVA on raw item scores may be misleading especially with small n.
+
+Better alternative  
+- Use ordinal logistic regression or summarize multiple items into domain scores to approximate continuity.
+
+6. Bonferroni-uncorrected multiple significance tests across many QoL items and days  
+
+Why inappropriate  
+- High risk of type I error inflation when testing many endpoints without adjustment.  
+
+Better alternative  
+- Predefine primary QoL summary (e.g., total QoL score AUC over 7 days) and limit formal testing to this; use adjusted p-values for secondary endpoints.
+
+---
+
+TASK 4: SUMMARY – OVERALL ANALYTICAL APPROACH
+
+- Primary analysis:  
+  - Treat QoL and pain as longitudinal outcomes at patient level.  
+  - Use linear or generalized linear mixed-effects models to compare trajectories between piezo and control groups across 7 days (time, group, time×group).  
+  - Summarize main treatment effect in early postoperative period (e.g., days 0–3), since clinical emphasis is on first week postsurgery.
+
+- Secondary analysis:  
+  - Analyze intraoperative hemorrhage control at tooth level using ordinal logistic regression (or logistic regression for adequate vs inadequate), adjusting for clustering of teeth within patients via random intercepts or GEE.  
+  - Analyze analgesic consumption as count data using Poisson/negative binomial models or nonparametric comparisons of total counts.
+
+- Baseline and reliability:  
+  - Check baseline comparability between groups using t/Mann–Whitney and chi-square/Fisher tests.  
+  - (If data available) assess inter-rater agreement for hemorrhage scoring and internal consistency of QoL domains.
+
+- Sensitivity analyses:  
+  - Use summary measures (AUC) for QoL and pain as simpler checks.  
+  - Explore impact of potential covariates (age, sex, lesion size, arch) in adjusted models.  
+  - Conduct clustering-sensitive analyses for hemorrhage (per-patient vs per-tooth).
+
+This analytical framework aligns with the RCT design, respects data structure (longitudinal and clustered), adheres to measurement level (ordinal vs continuous), and provides robust, interpretable estimates of the impact of piezoelectric surgery on intraoperative hemorrhage control and short-term quality of life.

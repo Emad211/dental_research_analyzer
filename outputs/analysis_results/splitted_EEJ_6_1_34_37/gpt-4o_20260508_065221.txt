@@ -1,0 +1,138 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_EEJ_6_1_34_37.pdf
+Status : ok
+Time   : 20260508_065221
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Randomized controlled trial (RCT) with parallel groups.
+   - Single-blinded (patients were blinded to the groups).
+
+2. **Objective**:  
+   - To compare the effect of NaOCl gel versus NaOCl solution on postoperative pain after root canal treatment.
+
+3. **Groups**:  
+   - Group 1: NaOCl solution group (control group).  
+   - Group 2: NaOCl gel group (intervention group).
+
+4. **Sample Size**:  
+   - Initial calculation: 18 patients per group (alpha = 0.05, power = 0.8, effect size = 0.84).  
+   - Final sample size: 30 patients per group (to account for potential dropouts and increase statistical power).  
+   - Total sample size: 60 patients.
+
+5. **Participants**:  
+   - Inclusion criteria:  
+     - Healthy patients (ASA I classification).  
+     - Molar teeth diagnosed with symptomatic apical periodontitis and symptomatic irreversible pulpitis.  
+     - Preoperative pain >50 on a 10 cm visual analog scale (VAS).  
+   - Exclusion criteria:  
+     - Teeth with previous root canal treatment, root fracture, swelling, pathological mobility, or pocket depth >3 mm.  
+     - Patients <18 or >65 years old.  
+     - Patients who had taken antibiotics or analgesics within 1 month prior to the study.  
+     - Teeth with radiographic lesions.
+
+6. **Randomization**:  
+   - Performed using a web-based randomization program (www.randomizer.org).
+
+7. **Blinding**:  
+   - Patients were blinded to the group allocation.
+
+8. **Variables**:  
+   - **Independent Variable**: Type of NaOCl used (solution vs. gel).  
+   - **Dependent Variables**:  
+     - Postoperative pain levels (measured at 24, 48, and 72 hours, and 1 week post-treatment using VAS).  
+     - Analgesic consumption (binary outcome: yes/no).  
+     - Unscheduled appointments (binary outcome: yes/no).
+
+9. **Measurements**:  
+   - Pain levels: 10 cm VAS (continuous variable).  
+   - Analgesic consumption: Recorded in a questionnaire (binary variable).  
+   - Unscheduled appointments: Recorded in a questionnaire (binary variable).
+
+10. **Data Collection Methods**:  
+    - Pain levels recorded by participants at 24, 48, and 72 hours, and 1 week post-treatment.  
+    - Analgesic consumption and unscheduled appointments recorded in a questionnaire.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Independent Samples t-test (or Mann-Whitney U test if assumptions are violated).  
+   - **Purpose**: To compare mean postoperative pain levels (VAS scores) between the NaOCl solution and gel groups at each time point.  
+   - **Why Appropriate**:  
+     1. The study involves comparing two independent groups.  
+     2. The dependent variable (VAS score) is continuous.  
+   - **Why It May Not Be Appropriate**: If the VAS scores are not normally distributed.  
+   - **When This Test Should NOT Be Used**: If the sample size is too small to assume normality or if there are extreme outliers.  
+   - **Alternative**: Mann-Whitney U test (non-parametric equivalent).
+
+2. **Test Name**: Chi-Square Test (or Fisher’s Exact Test if expected cell counts are <5).  
+   - **Purpose**: To compare the proportion of patients who consumed analgesics or had unscheduled appointments between the two groups.  
+   - **Why Appropriate**:  
+     1. The dependent variables (analgesic consumption and unscheduled appointments) are categorical.  
+     2. The groups are independent.  
+   - **Why It May Not Be Appropriate**: If the sample size is too small for the chi-square test assumptions.  
+   - **When This Test Should NOT Be Used**: When expected frequencies in any cell are <5.  
+   - **Alternative**: Fisher’s Exact Test.
+
+3. **Test Name**: Repeated Measures ANOVA (or Friedman Test if assumptions are violated).  
+   - **Purpose**: To analyze changes in VAS scores over time (24, 48, 72 hours, and 1 week) within each group and compare the patterns between groups.  
+   - **Why Appropriate**:  
+     1. The study involves repeated measurements of the same variable (VAS) over time.  
+     2. It allows for testing both within-group and between-group effects.  
+   - **Why It May Not Be Appropriate**: If the data violates the assumption of sphericity.  
+   - **When This Test Should NOT Be Used**: If the data is not normally distributed.  
+   - **Alternative**: Friedman Test (non-parametric equivalent).
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Effect Size Calculation (e.g., Cohen’s d for t-tests or eta-squared for ANOVA).  
+   - **Purpose**: To quantify the magnitude of the difference between groups.  
+   - **Why Appropriate**:  
+     1. Provides additional context beyond p-values.  
+     2. Helps interpret the clinical relevance of findings.  
+   - **Why It May Not Be Appropriate**: If the sample size is too small, effect size estimates may be unstable.  
+   - **When This Test Should NOT Be Used**: When the primary analysis is inconclusive.  
+   - **Alternative**: None (effect size is a descriptive statistic).
+
+2. **Test Name**: Logistic Regression.  
+   - **Purpose**: To assess the relationship between group allocation and binary outcomes (analgesic consumption, unscheduled appointments), adjusting for potential confounders.  
+   - **Why Appropriate**:  
+     1. Allows adjustment for covariates (e.g., age, baseline pain).  
+     2. Provides odds ratios for binary outcomes.  
+   - **Why It May Not Be Appropriate**: If the sample size is too small for reliable model estimation.  
+   - **When This Test Should NOT Be Used**: When there are too few events in the binary outcomes.  
+   - **Alternative**: Stratified analysis by covariates.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Kaplan-Meier Survival Analysis (with Log-Rank Test).  
+   - **Purpose**: To compare the time to analgesic consumption between groups.  
+   - **Why Appropriate**:  
+     1. Accounts for the timing of analgesic use.  
+     2. Provides insight into the temporal pattern of pain relief.  
+   - **Why It May Not Be Appropriate**: If the timing of analgesic use is not accurately recorded.  
+   - **When This Test Should NOT Be Used**: When the timing data is incomplete or unreliable.  
+   - **Alternative**: None (specific to time-to-event data).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Paired t-test**:  
+   - **Why Not Appropriate**: The groups are independent, not paired.  
+2. **One-Way ANOVA**:  
+   - **Why Not Appropriate**: There are only two groups, so an independent t-test is more suitable.  
+3. **Pearson Correlation**:  
+   - **Why Not Appropriate**: The study does not aim to assess the relationship between two continuous variables.
+
+---
+
+### TASK 4: SUMMARY
+The overall analytical approach is designed to rigorously evaluate the primary and secondary outcomes of the study while accounting for the study design and data characteristics. The mandatory tests focus on hypothesis testing for group differences, while the recommended and optional tests enhance the interpretability and depth of the analysis. Non-parametric alternatives are proposed for situations where assumptions are violated, ensuring robust and valid conclusions.

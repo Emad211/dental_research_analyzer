@@ -1,0 +1,545 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_EEJ_6_2_155_159.pdf
+Status : ok
+Time   : 20260508_065501
+══════════════════════════════════════════════════════════════════════
+
+Below I first extract all methodological details, then propose a structured statistical analysis plan tailored to this trial, including mandatory, recommended, and optional analyses, plus tests that should not be used and a brief justification of the overall approach.
+
+---
+
+## TASK 1: INFORMATION EXTRACTION
+
+Because the Methods text is incomplete, I will extract everything that can be inferred from the provided sections and CONSORT flow diagram, clearly separating “explicit” from “inferred/likely” information.
+
+### 1. Study design and setting
+
+**Explicit:**
+- Study type: Double-blind randomized clinical trial.
+- Journal: European Endodontic Journal.
+- Population: Patients with maxillary premolars (outpatients in a dental setting).
+- Flow diagram: CONSORT 2010 flow chart is provided.
+
+**Inferred/likely:**
+- Parallel-group design (two groups) – the flow diagram shows “allocated to intervention (n=12)” and “allocated to intervention (n=13)” suggesting two arms.
+- Intervention group: 810 nm diode low-level laser therapy.
+- Control group: likely a sham laser or no laser, but still under double-blind conditions.
+- Data collection done in a dental school/clinic (Faculty of Dentistry, Guilan University of Medical Sciences).
+
+### 2. Objectives and hypotheses
+
+**Explicit:**
+- Objective: To evaluate the effects of diode low-level laser therapy at 810 nm on pulpal anesthesia of maxillary premolars.
+- Outcome concept: Pulpal anesthesia / pain during electric pulp test (EPT).
+
+**Inferred/likely primary hypothesis:**
+- 810 nm low-level laser therapy increases pulpal anesthesia (i.e., elevates pain threshold or reduces pain perception) compared to control, as assessed by an EPT-based outcome.
+
+### 3. Participants
+
+**Explicit:**
+- Assessed for eligibility: n = 40.
+- Excluded: n = 15
+  - Not meeting inclusion criteria: n = 10.
+  - Declined to participate: n = 5.
+- Randomized: n = 25.
+
+**Allocation:**
+- Group 1: Allocated to intervention (n = 12); all received allocated intervention.
+- Group 2: Allocated to intervention (n = 13); all received allocated intervention.
+  (The labels “to intervention” are generic; logically, one is laser, one is control.)
+
+**Follow-up:**
+- Group 1: Lost to follow-up (not attending) (n = 2); 0 discontinued intervention.
+- Group 2: Lost to follow-up (not attending) (n = 3); 0 discontinued intervention.
+
+**Inferred:**
+- Final analyzed sample likely: 10 in one arm (12 − 2) and 10 in the other arm (13 − 3), unless per-protocol or ITT rules differ.
+- Inclusion criteria: likely systemically healthy patients with vital maxillary premolars, but not explicitly stated here.
+- Exclusion criteria: likely teeth with pathology, systemic conditions interfering with laser, pregnancy, etc., but not explicitly available in the provided text.
+
+### 4. Interventions
+
+**Explicit:**
+- Experimental: Diode low-level laser therapy at 810 nm.
+- Outcome statement: “laser irradiation at 810 nm can significantly reduce pain during EPT assay in patients.”
+
+**Inferred/likely parameters:**
+- Laser is applied to the target maxillary premolar area (likely buccal mucosa or tooth surface).
+- Control arm: sham laser (device not emitting actual therapeutic energy) or no laser; both patients and outcome assessor blinded (double-blind).
+- Timing: EPT performed after laser application; exact time interval not given in the provided text.
+
+### 5. Outcomes and measurements
+
+**Explicit:**
+- Primary outcome concept: Pain during electric pulp test (EPT) assay.
+- Conclusion: Laser reduced pain during EPT.
+
+**Inferred/likely measurement details (based on typical protocols):**
+- EPT measures:
+  - Either: EPT threshold score (0–80 or similar scale) at which the patient first feels sensation.
+  - Or: A pain intensity rating (e.g., Visual Analog Scale, VAS) during EPT.
+- Pulpal anesthesia operationalization:
+  - Higher EPT threshold (requires higher stimulus for sensation) or lower pain score indicates better anesthesia.
+- Possible repeated measurements:
+  - Before and after laser application (baseline vs post).
+  - Possibly multiple time points (e.g., immediate, 5 minutes, 10 minutes).
+- Type of variable:
+  - EPT measurements: continuous/ordinal numeric.
+  - Pain (if VAS): continuous (0–10 cm).
+  - Anesthesia success: potentially dichotomous (yes/no) if a cutoff is used (e.g., EPT non-response or above threshold).
+
+### 6. Randomization and blinding
+
+**Explicit:**
+- Randomized clinical trial.
+- Double-blind.
+
+**Inferred:**
+- Randomization unit: likely patient/tooth.
+- Concealment: method not stated in the extracted text, but CONSORT suggests some formal method (sealed envelopes, random table).
+- Blinded parties: participants and outcome assessor (e.g., the operator performing EPT and recording responses) – typical for double-blind.
+
+### 7. Sample size and power
+
+**Explicit:**
+- Enrolled: 25 randomized, 22 completed (assuming 5 losses to follow-up).
+- No explicit sample size justification in the provided excerpt.
+
+**Inferred:**
+- Small sample, implying limited statistical power.
+- Likely no formal power calculation reported in the segment we see.
+
+### 8. Data structure summary
+
+- Design: Two-arm randomized parallel-group trial, double-blind.
+- Sample: n ≈ 22 analyzed; ~11 per group.
+- Main endpoints:
+  - Continuous EPT/pain variables (baseline, post, possibly repeated).
+  - Possibly binary success (adequate anesthesia vs not).
+- Grouping variable:
+  - Group: Laser (810 nm) vs Control (sham/no laser).
+- Time variable (if applicable):
+  - Within-subject comparison (pre vs post).
+
+---
+
+## TASK 2: STATISTICAL ANALYSIS PLAN
+
+I will structure the plan assuming:
+
+- Primary outcome is continuous (e.g., EPT threshold or VAS pain during EPT) measured at baseline and after intervention.
+- There are two parallel groups (laser vs control).
+- N is small (~10–12 per arm).
+
+If the real data structure differs (e.g., only post-treatment measurement, or multiple repeated time points), I note alternatives.
+
+### General principles
+
+- Use two-sided tests with α = 0.05.
+- Report effect sizes and confidence intervals.
+- Prefer parametric tests when assumptions reasonably hold; otherwise, use non-parametric counterparts.
+- Primary analysis by intention-to-treat (ITT) if possible (i.e., use all randomized participants with outcome data; consider simple imputation only if pre-specified).
+- Secondary per-protocol (PP) analysis excluding protocol deviations.
+
+---
+
+### CATEGORY A – MANDATORY TESTS
+
+These are necessary to properly address the main research question.
+
+#### A1. Baseline comparison of groups
+
+**Tests:**
+- For continuous baseline variables (age, baseline EPT, baseline pain):
+  - Test: Independent-samples t-test.
+  - If assumptions violated or N small with skewed data: Mann–Whitney U test.
+- For categorical baseline variables (sex, tooth type, etc.):
+  - Test: Chi-square test or Fisher’s exact test (if cell counts <5).
+
+**Purpose:**
+- To check balance between randomized groups at baseline.
+
+**Why appropriate (t-test/Chi-square):**
+1. Randomization should create comparable groups, but baseline comparisons help identify imbalances that may require adjustment.
+2. t-test and Chi-square are standard, easily interpretable tests for differences in means and proportions between two groups.
+
+**Why may not be appropriate:**
+- t-test assumes normality and homogeneity of variances; with n ≈ 10 per group, heavy skew or outliers can distort results.
+- Chi-square requires expected cell counts generally ≥5; small sample may violate this.
+
+**When NOT to use:**
+- t-test: if data are markedly non-normal, with clear outliers, or if variables are ordinal with few categories.
+- Chi-square: when expected frequencies are very small.
+
+**Alternatives if assumptions violated:**
+- t-test → Mann–Whitney U test (for continuous/ordinal variables).
+- Chi-square → Fisher’s exact test (for 2×2 or small contingency tables).
+
+---
+
+#### A2. Primary outcome analysis – between-group comparison post-intervention
+
+There are two main structural scenarios:
+
+1. Only post-treatment values recorded (no baseline).
+2. Both baseline and post-treatment values recorded.
+
+Given typical clinical protocols, I assume scenario 2 (baseline + post) is likely. I provide both options.
+
+##### Scenario 2A: Baseline and post-treatment continuous outcome
+
+**Primary Test: Analysis of covariance (ANCOVA)**
+
+- Dependent variable: Post-treatment EPT threshold (or post-treatment pain score).
+- Fixed factor: Group (Laser vs Control).
+- Covariate: Baseline EPT (or baseline pain score).
+
+**Purpose:**
+- To compare post-treatment outcome between groups while adjusting for baseline values.
+
+**Why appropriate:**
+1. Adjusting for baseline improves precision and power, especially in small randomized trials, by accounting for baseline variability.
+2. ANCOVA directly models the treatment effect on the final outcome, providing adjusted mean differences and CIs.
+
+**Why may not be appropriate:**
+- Requires approximate linear relationship between baseline and outcome, homogeneity of regression slopes, and normally distributed residuals. With small sample, these assumptions are harder to check and may be unstable.
+
+**When NOT to use:**
+- If the baseline measurement is missing for a large fraction of participants.
+- If the relationship between baseline and outcome differs dramatically between groups (interaction) and sample is too small to model this interaction.
+
+**Alternative if assumptions violated:**
+- Use non-parametric analysis of change scores:
+  - Calculate change = Post − Baseline for each subject.
+  - Compare change between groups using Mann–Whitney U test.
+  - Also report median and IQR of change.
+
+##### Scenario 2B: Only post-treatment outcome available
+
+**Primary Test: Independent-samples t-test**
+
+- Dependent variable: Post-treatment EPT (or pain) value.
+- Grouping variable: Laser vs Control.
+
+**Purpose:**
+- To compare mean post-treatment outcome between the two groups.
+
+**Why appropriate:**
+1. Straightforward comparison of continuous outcomes between two independent groups.
+2. Widely used; effect sizes (mean difference, Cohen’s d) are easily interpretable.
+
+**Why may not be appropriate:**
+- Violates assumptions if data are heavily skewed, non-normal, or variance differs significantly between groups.
+- Very small sample size increases sensitivity to outliers.
+
+**When NOT to use:**
+- When data are non-normal and transformations do not help.
+- When outcome is ordinal or heavily censored.
+
+**Alternative if assumptions violated:**
+- Mann–Whitney U test for between-group comparison of ordinal or non-normally distributed outcomes.
+- Bootstrap confidence intervals for the mean difference.
+
+---
+
+#### A3. Within-group pre–post comparison (if pre/post outcome)
+
+**Tests:**
+- Paired t-test (for continuous, approximately normal change).
+- Alternatively, Wilcoxon signed-rank test (if non-normal).
+
+**Purpose:**
+- To assess whether laser and control groups each show significant within-group change in EPT or pain from baseline to post-treatment.
+
+**Why appropriate:**
+1. Paired t-test accounts for within-subject correlation between baseline and post measures.
+2. Provides insight into magnitude of change within each group, complementing between-group analysis.
+
+**Why may not be appropriate:**
+- Paired t-test assumes normal distribution of change scores; violations common with small samples.
+
+**When NOT to use:**
+- When the distribution of differences (post − baseline) is highly skewed, or data are ordinal with few categories.
+
+**Alternative if assumptions violated:**
+- Wilcoxon signed-rank test for paired non-parametric data.
+
+---
+
+#### A4. Binary outcome – anesthesia success rate (if defined)
+
+If the study defines a binary outcome (e.g., successful pulpal anesthesia yes/no based on EPT threshold or pain score), this becomes a key primary or secondary endpoint.
+
+**Test:**
+- Chi-square test or Fisher’s exact test (2×2 table).
+
+**Purpose:**
+- To compare the proportion of patients achieving adequate pulpal anesthesia between laser and control groups.
+
+**Why appropriate:**
+1. Directly addresses clinically important question: proportion of successful anesthesia.
+2. Fisher’s exact test is robust and suitable for small samples.
+
+**Why may not be appropriate:**
+- Chi-square invalid when expected counts in any cell are <5.
+- Binary classification can lose information if the underlying outcome is continuous.
+
+**When NOT to use:**
+- Chi-square: with small cell counts or sparse data.
+- If success is extremely rare or extremely common, making inference difficult.
+
+**Alternative if assumptions violated:**
+- Fisher’s exact test instead of Chi-square.
+- Logistic regression modeling (with caution in small N) if adjustment for covariates is required.
+
+---
+
+### CATEGORY B – RECOMMENDED TESTS
+
+These enhance rigor but are not strictly required to demonstrate the primary effect.
+
+#### B1. Effect size estimation with confidence intervals
+
+**Tests/metrics:**
+- Mean difference with 95% CI (for continuous outcomes).
+- Standardized effect size (Cohen’s d) with CI.
+- Risk difference, risk ratio, or odds ratio with 95% CI (for binary outcomes).
+
+**Purpose:**
+- To quantify the magnitude and precision of treatment effects.
+
+**Why appropriate:**
+1. Effect sizes and CIs provide information beyond p-values, supporting clinical interpretation.
+2. Facilitates meta-analysis and comparison with other studies.
+
+**Why may not be appropriate:**
+- With very small sample sizes, CI estimates can be imprecise and wide; may be misinterpreted as “no effect” rather than “uncertain effect”.
+
+**When NOT to use:**
+- Never truly “not used”; but interpret with caution when N is tiny.
+
+**Alternative if assumptions violated:**
+- Use non-parametric effect size indices (e.g., Hodges–Lehmann median difference, Cliff’s delta) with bootstrap CIs.
+
+---
+
+#### B2. Multiple time-point analysis (if repeated EPT/pain measures)
+
+If EPT or pain is measured at several time points (e.g., baseline, immediate post, 5 min, 10 min):
+
+**Tests:**
+- Repeated measures ANOVA (RM-ANOVA) or Mixed-effects (linear) model:
+  - Outcome: EPT/pain.
+  - Fixed effects: Group, Time, Group×Time interaction.
+  - Random effect: Subject.
+
+**Purpose:**
+- To evaluate overall time-course of effect and whether the effect differs over time between groups.
+
+**Why appropriate:**
+1. Accounts for within-subject correlation of repeated measurements.
+2. Tests for interaction (whether laser effects differ across time points).
+
+**Why may not be appropriate:**
+- RM-ANOVA assumes sphericity and normally distributed residuals; small N makes these assumptions fragile.
+- Mixed models require more complex modeling and may be unstable with few subjects.
+
+**When NOT to use:**
+- When only two time points exist (baseline and one post point) – a simpler pre/post approach is sufficient.
+- When data are highly unbalanced or many missing values relative to sample size.
+
+**Alternative if assumptions violated:**
+- Non-parametric repeated measures methods (e.g., Friedman test) for within-group comparisons plus stratified between-group comparisons at each time point with adjusted α.
+- Use simpler pre/post change analysis instead.
+
+---
+
+#### B3. Adjusted analysis using multiple regression
+
+**Test:**
+- Linear regression:
+  - Outcome: continuous (post EPT / pain or change).
+  - Predictors: Group (laser vs control) + baseline value + potential confounders (age, sex, tooth type).
+
+**Purpose:**
+- To adjust for potential confounders or baseline imbalances beyond the primary ANCOVA.
+
+**Why appropriate:**
+1. Provides adjusted treatment effect while accounting for multiple covariates.
+2. Can explore effect modification (interaction terms) if sample allows.
+
+**Why may not be appropriate:**
+- Overfitting risk is high with small sample size; rule-of-thumb ~10–15 observations per predictor not met here.
+
+**When NOT to use:**
+- When sample is too small to support multiple predictors without severe overfitting.
+- When important covariates are missing or poorly measured.
+
+**Alternative if assumptions violated:**
+- Limit model to one or two key covariates (e.g., baseline outcome only).
+- Present unadjusted and baseline-adjusted analyses, but avoid heavily adjusted models.
+
+---
+
+#### B4. Sensitivity analyses for missing data and analysis population
+
+**Analyses:**
+- ITT vs per-protocol comparisons.
+- Simple sensitivity to missingness:
+  - E.g., Last Observation Carried Forward (if justified) or worst-case/best-case scenarios for missing outcomes.
+
+**Purpose:**
+- To assess robustness of findings to missing data and different analysis sets.
+
+**Why appropriate:**
+1. In RCTs, ITT is standard; per-protocol shows effect among adherent participants.
+2. Small N and non-trivial loss to follow-up (2 in one arm, 3 in the other) can distort results; sensitivity analyses are critical.
+
+**Why may not be appropriate:**
+- With very small numbers, different imputation approaches could produce unstable results and overcomplicate interpretation.
+
+**When NOT to use:**
+- When missingness is negligible or entirely random and cannot be realistically modeled; but here, loss is ~20%, so sensitivity is advisable.
+
+**Alternative:**
+- Descriptive comparison of those lost vs retained; explicit statement that primary analysis is complete-case, with qualitative discussion of potential bias.
+
+---
+
+### CATEGORY C – OPTIONAL TESTS
+
+These add supplementary insight but are not essential.
+
+#### C1. Subgroup analyses (exploratory)
+
+**Examples:**
+- Stratification by sex, age category, tooth type (first vs second premolar).
+
+**Test:**
+- Interaction terms in regression/ANCOVA, or separate analyses within subgroups.
+
+**Purpose:**
+- To explore whether the laser effect differs between subgroups.
+
+**Why appropriate:**
+1. Can generate hypotheses for future research.
+2. Could identify populations where laser is particularly effective.
+
+**Why may not be appropriate:**
+- Sample size is small, making subgroup analyses grossly underpowered and prone to spurious findings.
+
+**When NOT to use:**
+- When subgroup sample sizes drop below ~5 per group per arm.
+- When not pre-specified (risk of fishing expeditions).
+
+**Alternative:**
+- Descriptive subgroup summaries without formal testing.
+
+---
+
+#### C2. Correlation between EPT/pain outcomes and patient-reported measures
+
+If additional patient-reported metrics (e.g., anxiety, fear scores) were collected:
+
+**Test:**
+- Pearson or Spearman correlation between:
+  - change in EPT/pain and baseline anxiety, or
+  - anxiety reduction and pain reduction.
+
+**Purpose:**
+- To explore relationship between anxiety and pain threshold changes.
+
+**Why appropriate:**
+1. Helps understand the mechanism of laser effect (e.g., via anxiety reduction?).
+2. Provides context for interpreting the clinical significance of EPT changes.
+
+**Why may not be appropriate:**
+- Correlation assumes monotonic or linear relationships; may not hold.
+- With small sample, correlation estimates are unstable.
+
+**When NOT to use:**
+- When there are clear outliers or non-linear relationships.
+- When scales are not validated or data quality is poor.
+
+**Alternative:**
+- Scatterplots and descriptive summaries.
+
+---
+
+#### C3. Non-parametric bootstrap analyses
+
+**Test:**
+- Bootstrap estimation for confidence intervals of mean differences or medians.
+
+**Purpose:**
+- To obtain robust CI estimates under small-sample, non-normal conditions.
+
+**Why appropriate:**
+1. Less reliant on distributional assumptions.
+2. Useful when parametric CI assumptions are questionable.
+
+**Why may not be appropriate:**
+- Bootstrap with N~10 per group may still be unstable; resampling from a very small dataset can misrepresent population variability.
+
+**When NOT to use:**
+- When computational resources or statistical expertise are limited, and results would not change clinical conclusions.
+
+**Alternative:**
+- Report parametric CIs with caution, combined with non-parametric tests.
+
+---
+
+## TASK 3: INAPPROPRIATE TESTS
+
+These should NOT be used in this study, with reasons.
+
+### 1. One-way ANOVA for two-group comparisons
+
+- Reason: ANOVA collapses to t-test for two groups; using ANOVA is unnecessary and can confuse interpretation. With very small sample, simpler tests are preferable.
+
+### 2. Repeated measures MANOVA for single outcome with 2 time points
+
+- Reason: MANOVA for repeated measures is over-complex for a simple pre/post design and small sample; assumptions (multivariate normality) are unrealistic, and power is low.
+
+### 3. Non-paired tests for paired data (e.g., independent t-test on pre vs post within same group)
+
+- Reason: Pre and post data within the same participants are correlated; treating them as independent violates assumptions and misestimates variance.
+
+### 4. Multiple logistic regression with many predictors
+
+- Reason: With ~22 participants, models with more than 2–3 predictors will be severely overfitted, producing unreliable estimates and inflated type I errors.
+
+### 5. Time-to-event (survival) analyses (e.g., Kaplan–Meier, Cox regression)
+
+- Reason: Outcome is immediate pain/anesthesia during EPT; there is no follow-up time or event-time variable, so survival methods are inappropriate.
+
+### 6. Complex multilevel/hierarchical models (beyond simple random intercept for subject)
+
+- Reason: Experimental unit is likely single tooth per subject; no nested clusters such as multiple teeth per subject or centers. With small sample and simple structure, multilevel modeling is unnecessary and unstable.
+
+### 7. Multiple comparison procedures for numerous outcomes/time points without clear hypothesis
+
+- Reason: Sample size is small; performing many tests with Bonferroni or similar corrections will drastically reduce power without adding meaningful insights, unless pre-specified outcomes/time points exist.
+
+### 8. Parametric tests on ordinal scales with very few categories (e.g., 4-point pain scale)
+
+- Reason: If pain/anxiety is measured on a 3–4 category scale, treating it as continuous for t-tests may be inappropriate; better to use ordinal methods.
+
+---
+
+## TASK 4: SUMMARY OF OVERALL ANALYTICAL APPROACH
+
+- The study is a small double-blind randomized parallel-group clinical trial evaluating the effect of 810 nm low-level laser therapy on pulpal anesthesia, assessed by EPT/pain outcome(s).
+- The primary analytical focus should be a between-group comparison of post-treatment outcome, with adjustment for baseline via ANCOVA where baseline data exist, or via independent t-test/Mann–Whitney U when only post data are available.
+- Within-group pre–post analyses (paired tests) provide supportive evidence but should not replace the primary between-group comparison.
+- Binary success outcomes (if defined) should be analyzed with Fisher’s exact test or Chi-square, with risk estimates and their CIs.
+- Given the small sample size, emphasis should be on:
+  - robust, simple tests (t-test, non-parametric equivalents),
+  - clear effect size estimation with confidence intervals,
+  - careful checking (or acknowledging) of assumptions,
+  - transparency about missing data and sensitivity analyses.
+- Complex models and extensive subgroup or multivariable analyses should be minimized to avoid overfitting and misinterpretation.
+
+This plan provides a coherent, methodologically sound framework to analyze the effects of 810 nm laser therapy on pulpal anesthesia in this trial.

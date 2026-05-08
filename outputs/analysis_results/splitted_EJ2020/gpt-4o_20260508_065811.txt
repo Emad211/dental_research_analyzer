@@ -1,0 +1,145 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_EJ2020.pdf
+Status : ok
+Time   : 20260508_065811
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics
+1. **Study Design**:  
+   - Randomized controlled trial (RCT), prospective in nature.
+
+2. **Objective**:  
+   - To evaluate the effect of two calcium silicate-based root canal sealers (Endoseal MTA and EndoSequence BC Sealer) and one epoxy resin-based sealer (AH Plus) on postoperative pain following single-visit root canal treatment on mandibular molar teeth.
+
+3. **Null Hypotheses**:  
+   - The type of sealer used does not affect the incidence and intensity of postoperative pain.
+   - The analgesic intake does not differ among the three experimental groups.
+
+4. **Groups**:  
+   - Group 1: AH Plus (epoxy resin-based sealer).  
+   - Group 2: Endoseal MTA (calcium silicate-based sealer).  
+   - Group 3: EndoSequence BC Sealer (calcium silicate-based sealer).  
+   - Each group initially planned to include 32 patients, but after dropouts, 30 patients were analyzed per group.
+
+5. **Sample Size**:  
+   - Total: 96 patients enrolled, 90 completed the study (30 per group).  
+   - Sample size calculation: Based on a previous study, with α = 0.05, β = 0.15 (power = 85%), and a minimum of 24 participants per group. To account for dropouts, 32 participants were recruited per group.
+
+6. **Population**:  
+   - Inclusion criteria:  
+     - Adults aged 18–60 years with good oral hygiene.  
+     - Mandibular first or second molars diagnosed with asymptomatic irreversible pulpitis due to deep caries.  
+     - No recent use of analgesics or antibiotics (past 7 days).  
+     - Healthy periapical tissues confirmed radiographically.  
+   - Exclusion criteria:  
+     - Medically compromised patients, symptomatic teeth, advanced periodontal disease, open apex, calcifications, resorptions, systemic/allergic sensitivity to materials, pregnant/lactating women, and teeth with extensive coronal destruction.
+
+7. **Treatment Procedures**:  
+   - Single-visit root canal treatment performed by two experienced endodontists.  
+   - Standardized protocol for anesthesia, isolation, pulp vitality testing, canal preparation, irrigation, and obturation.  
+   - Random allocation to groups using a computer algorithm.  
+   - Root canal filling with single cone technique and sealer application.  
+   - Post-treatment restoration with composite resin.
+
+8. **Outcome Variables**:  
+   - **Primary Outcome**:  
+     - Postoperative pain intensity measured using the Visual Analog Scale (VAS) at 6, 12, 24, 48 hours, and on days 3–7.  
+   - **Secondary Outcome**:  
+     - Frequency of analgesic intake categorized into three levels (0 = no pain, 1 = moderate pain, 2 = severe pain).
+
+9. **Data Collection**:  
+   - Pain levels recorded by participants on VAS forms.  
+   - Analgesic intake recorded on a separate form.  
+   - Daily phone calls for 7 days to ensure compliance and collect data.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Repeated Measures ANOVA or Mixed-Effects Model  
+   - **Purpose**: To compare VAS pain scores over time across the three groups.  
+   - **Why Appropriate**:  
+     1. The outcome (VAS score) is continuous and measured repeatedly over time.  
+     2. It accounts for within-subject correlations due to repeated measures.  
+   - **Why It May Not Be Appropriate**: Assumes normality of residuals and sphericity (for ANOVA).  
+   - **When NOT to Use**: If data are non-normal or sphericity is violated.  
+   - **Alternative**: Non-parametric test (Friedman test) or Generalized Estimating Equations (GEE).
+
+2. **Test Name**: Chi-Square Test or Fisher’s Exact Test  
+   - **Purpose**: To compare the frequency of analgesic intake categories across groups.  
+   - **Why Appropriate**:  
+     1. The outcome (analgesic intake) is categorical.  
+     2. It evaluates differences in proportions among groups.  
+   - **Why It May Not Be Appropriate**: Small sample sizes in some categories may lead to inaccurate results.  
+   - **When NOT to Use**: If expected cell counts are <5.  
+   - **Alternative**: Fisher’s Exact Test.
+
+3. **Test Name**: One-Way ANOVA  
+   - **Purpose**: To compare mean VAS scores at specific time points across groups.  
+   - **Why Appropriate**:  
+     1. The outcome (VAS score) is continuous.  
+     2. It evaluates group differences at individual time points.  
+   - **Why It May Not Be Appropriate**: Assumes normality and homogeneity of variance.  
+   - **When NOT to Use**: If assumptions are violated.  
+   - **Alternative**: Kruskal-Wallis test.
+
+---
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Post-Hoc Pairwise Comparisons (e.g., Tukey’s HSD)  
+   - **Purpose**: To identify which groups differ significantly in pain intensity or analgesic intake.  
+   - **Why Appropriate**:  
+     1. Provides detailed insights into pairwise group differences.  
+     2. Controls for Type I error in multiple comparisons.  
+   - **Why It May Not Be Appropriate**: Increased risk of Type II error if sample size is small.  
+   - **When NOT to Use**: If overall group differences are not significant.  
+   - **Alternative**: Bonferroni correction.
+
+2. **Test Name**: Kaplan-Meier Survival Analysis  
+   - **Purpose**: To evaluate time to pain resolution across groups.  
+   - **Why Appropriate**:  
+     1. Accounts for censored data (e.g., patients dropping out).  
+     2. Suitable for time-to-event data.  
+   - **Why It May Not Be Appropriate**: Assumes proportional hazards, which may not hold.  
+   - **When NOT to Use**: If time-to-event data are not available.  
+   - **Alternative**: Cox Proportional Hazards Model.
+
+---
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Multivariable Regression Analysis  
+   - **Purpose**: To adjust for potential confounders (e.g., age, gender).  
+   - **Why Appropriate**:  
+     1. Identifies independent predictors of postoperative pain.  
+     2. Adjusts for baseline imbalances.  
+   - **Why It May Not Be Appropriate**: Requires larger sample size for multiple predictors.  
+   - **When NOT to Use**: If sample size is insufficient.  
+   - **Alternative**: Stratified analysis.
+
+2. **Test Name**: Effect Size Calculations (e.g., Cohen’s d)  
+   - **Purpose**: To quantify the magnitude of differences between groups.  
+   - **Why Appropriate**:  
+     1. Provides clinically meaningful interpretation.  
+     2. Complements p-values.  
+   - **Why It May Not Be Appropriate**: Does not test statistical significance.  
+   - **When NOT to Use**: If group differences are negligible.  
+   - **Alternative**: Confidence intervals for mean differences.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent t-test**:  
+   - **Reason**: Inappropriate for comparing more than two groups.  
+2. **Paired t-test**:  
+   - **Reason**: Not suitable for independent groups.  
+3. **Logistic Regression**:  
+   - **Reason**: Not suitable for continuous outcomes like VAS scores.
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan is designed to address the study’s objectives comprehensively. The primary analysis focuses on comparing pain intensity and analgesic intake across groups and over time, using appropriate methods for repeated measures and categorical data. Recommended and optional analyses enhance the rigor and provide additional insights, while inappropriate tests are avoided to ensure validity. The overall approach balances statistical rigor with clinical relevance.

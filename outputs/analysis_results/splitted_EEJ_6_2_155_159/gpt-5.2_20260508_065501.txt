@@ -1,0 +1,271 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_EEJ_6_2_155_159.pdf
+Status : ok
+Time   : 20260508_065501
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study identification
+- **Title**: Effects of Diode Low-Level Laser Therapy of 810 Nm on Pulpal Anesthesia of Maxillary Premolars  
+- **Design stated**: **Double-blind randomized clinical trial** (parallel-group implied)
+- **Setting**: Dental school clinics (Guilan University of Medical Sciences, Iran)
+
+### Objective (from title/intro)
+- Evaluate whether **810‑nm diode low-level laser therapy (LLLT)** affects **pulpal anesthesia / pain response** in **maxillary premolars**, assessed during an **electric pulp test (EPT)**.
+
+### Participants and flow
+- **Assessed for eligibility**: n=40  
+- **Excluded**: n=15  
+  - Not meeting inclusion criteria: n=10  
+  - Declined: n=5
+- **Randomized**: n=25
+- **Allocated**:
+  - Group 1 (intervention): n=12 (received all)
+  - Group 2 (control or other intervention): n=13 (received all)
+- **Lost to follow-up**:
+  - Group 1: n=2
+  - Group 2: n=3
+- **Analyzed sample size (inferred if complete-case)**: n=20 total (10 and 10) *unless an ITT method was used (not described in provided text)*
+
+### Study groups / interventions (what can be extracted)
+- **Experimental intervention**: **810 nm diode LLLT** applied to maxillary premolars (exact parameters not provided in the excerpt).
+- **Comparator**: another “intervention” is listed in CONSORT (likely **sham laser / placebo**), but details are **not present** in provided Methods text.
+
+### Outcomes / variables (from conclusion + intro)
+- **Primary outcome (most likely)**: **Pain during EPT assay** / “pulpal anesthesia” operationalized via EPT response.
+  - Outcome type is unclear from excerpt, but likely one of:
+    - **EPT pain score** (continuous/ordinal; e.g., VAS/NRS), and/or
+    - **EPT threshold/reading** at first sensation (continuous), and/or
+    - **Success of anesthesia** (binary: no pain vs pain / negative response vs response).
+- **Other variables**: none explicitly provided (e.g., age/sex/tooth side), but baseline comparability is typically needed in RCTs.
+
+### Data collection
+- **Instrument/procedure**: **Electric pulp testing (EPT)** used to assay pain/anesthesia.
+- **Timing**: not specified (pre/post laser; immediate; repeated measures unknown).
+- **Blinding**: **Double-blind** (likely participant + assessor), but blinding mechanism not described.
+
+### Key missing methodological elements (cannot be extracted from provided text)
+- Laser parameters (power, energy density, duration, application site, number of cycles)
+- Exact definition/scale of “pain during EPT”
+- Whether outcomes are measured **pre/post** within participant, or only post-intervention
+- Allocation concealment and randomization method
+- Statistical handling of missing data / ITT vs per-protocol
+- Whether one tooth per patient or multiple teeth (clustering)
+
+---
+
+## TASK 2 — Statistical analysis plan (SAP)
+
+### Overview of planned analysis
+- **Primary estimand**: difference between randomized groups in **EPT pain/anesthesia outcome** after intervention (or change from baseline if baseline EPT recorded).
+- **Analysis populations**
+  - **Primary**: **Intention-to-treat (ITT)** (all randomized, analyzed as assigned).  
+  - **Sensitivity**: **Per-protocol** (those with outcome data and no major protocol deviations).
+- **Missing data**
+  - Describe extent and reasons by group.
+  - If outcome missing is >~5–10%, perform **multiple imputation** (MI) or conservative sensitivity bounds; avoid complete-case only as sole analysis.
+- **Descriptive statistics**
+  - Continuous: mean (SD) or median (IQR) depending on distribution.
+  - Categorical: counts (%).
+- **Alpha / CI**
+  - Two-sided α=0.05; report **95% CI** and effect sizes.
+
+---
+
+# CATEGORY A — MANDATORY tests/analyses
+
+## A1) Independent-samples t-test (or Welch t-test)
+- **Purpose**: Compare **mean** primary outcome between laser vs control **post-intervention** (if outcome is continuous, approximately normal).
+- **Why appropriate**
+  1. RCT with **two independent groups**.
+  2. Directly estimates mean difference; aligns with common continuous endpoints (e.g., EPT threshold, VAS).
+- **Why may not be appropriate**
+  - Outcome is **ordinal**, strongly skewed, bounded, or has floor/ceiling effects (common with pain).
+- **When NOT to use**
+  - Severe non-normality with small n; clear ordinal scale; unequal variances without Welch; clustered observations (multiple teeth per patient).
+- **Alternative if assumptions violated**
+  - **Welch t-test** (unequal variances), or **Mann–Whitney U** (ordinal/non-normal), or **linear mixed model** if clustering/repeated measures.
+
+## A2) Mann–Whitney U test (Wilcoxon rank-sum)
+- **Purpose**: Compare distributions (often interpreted as location shift) of pain/EPT outcomes between groups when outcome is **ordinal or non-normal**.
+- **Why appropriate**
+  1. Robust for small samples and skewed distributions.
+  2. Appropriate for ordinal pain scores (if that is the scale).
+- **Why may not be appropriate**
+  - Does not directly estimate mean difference; interpretation depends on distributional assumptions; ties are common in bounded scales.
+- **When NOT to use**
+  - When the estimand is explicitly the **mean difference**; when there is heavy clustering or repeated measures without adjustment.
+- **Alternative if assumptions violated**
+  - **Permutation test** for difference in means/medians; **ordinal logistic regression** for ordinal outcomes; **mixed models** for clustered/repeated.
+
+## A3) Chi-square test or Fisher’s exact test (for binary “anesthesia success”)
+- **Purpose**: Compare proportion with “successful pulpal anesthesia / no pain response” between groups (if outcome is binary).
+- **Why appropriate**
+  1. Two-group RCT with categorical endpoint.
+  2. Provides hypothesis test for difference in proportions; can pair with risk difference/ratio.
+- **Why may not be appropriate**
+  - Expected counts may be small (likely with n≈10/group at analysis), making chi-square invalid.
+- **When NOT to use**
+  - Any cell expected count <5 → avoid chi-square.
+- **Alternative if assumptions violated**
+  - **Fisher’s exact test**; estimate **risk ratio** with exact or mid-P CI; or **logistic regression**.
+
+## A4) Primary effect size + 95% CI (mandatory reporting)
+- **Purpose**: Quantify clinical magnitude (not just p-values).
+- **Why appropriate**
+  1. CONSORT-aligned; essential with small trials.
+  2. Supports clinical interpretation and future sample size planning.
+- **Why may not be appropriate**
+  - If scale is poorly defined or outcome distribution makes standard effect sizes misleading.
+- **When NOT to use**
+  - Do not report standardized mean difference without clarifying units/scale and distribution.
+- **Alternative**
+  - Report **Hodges–Lehmann median difference** (with CI) for nonparametric; **risk ratio/risk difference** for binary.
+
+---
+
+# CATEGORY B — RECOMMENDED analyses
+
+## B1) ANCOVA (linear regression adjusting for baseline EPT/pain, if measured)
+- **Purpose**: Compare post-intervention outcome between groups **adjusting for baseline** value (and possibly other prespecified covariates).
+- **Why appropriate**
+  1. Increases precision vs analyzing change scores, especially in small RCTs.
+  2. Accounts for any baseline imbalance due to small sample.
+- **Why may not be appropriate**
+  - Baseline not measured; or baseline measure has poor reliability; or outcome is ordinal/non-normal.
+- **When NOT to use**
+  - If baseline outcome is not available or measured after randomization.
+- **Alternative if assumptions violated**
+  - **Rank ANCOVA**, **robust regression**, **quantile regression**, or **ordinal logistic regression** with baseline as covariate.
+
+## B2) Logistic regression (binary endpoint) / Ordinal logistic regression (ordinal pain)
+- **Purpose**: Estimate adjusted treatment effect (OR) and allow covariates (age/sex/baseline anxiety, etc.).
+- **Why appropriate**
+  1. Provides effect estimate with CI and adjustment, useful with small imbalances.
+  2. Handles categorical outcomes more naturally than dichotomizing continuous outcomes.
+- **Why may not be appropriate**
+  - With very small n and sparse events, standard logistic regression can be biased/unstable.
+- **When NOT to use**
+  - Separation or quasi-separation; too many covariates relative to events.
+- **Alternative if assumptions violated**
+  - **Firth penalized logistic regression** (binary), **exact logistic**, or reduce covariates (pre-specify minimal set).
+
+## B3) Mixed-effects model / GEE (if repeated EPT measurements or multiple teeth per subject)
+- **Purpose**: Account for within-subject correlation (repeated time points or clustered teeth).
+- **Why appropriate**
+  1. Prevents underestimated SEs if multiple correlated observations exist.
+  2. Can model time-by-treatment interaction if multiple post-treatment time points exist.
+- **Why may not be appropriate**
+  - If truly one observation per subject and one tooth only, this adds complexity without benefit.
+- **When NOT to use**
+  - When design is clearly independent with single endpoint per participant.
+- **Alternative if assumptions violated**
+  - **Cluster-robust SEs**, or analyze one prespecified tooth/summary per subject.
+
+## B4) Multiple imputation + sensitivity analyses for missing outcomes
+- **Purpose**: Reduce bias from attrition (2/12 and 3/13 lost).
+- **Why appropriate**
+  1. Attrition is non-trivial (~20% overall if complete-case), risking bias.
+  2. MI yields valid inference under MAR and uses all available data.
+- **Why may not be appropriate**
+  - With extremely small sample, MI models may be unstable.
+- **When NOT to use**
+  - When missingness is minimal and demonstrably MCAR, or no auxiliary variables exist.
+- **Alternative**
+  - **Best/worst-case bounds**, **pattern-mixture sensitivity**, or clearly labeled complete-case as sensitivity (not primary).
+
+## B5) Baseline comparability (descriptive + standardized differences)
+- **Purpose**: Assess balance of key baseline variables (not for “significance testing”).
+- **Why appropriate**
+  1. Small RCTs can have chance imbalances affecting precision.
+  2. Standardized differences are more informative than p-values.
+- **Why may not be appropriate**
+  - If baseline variables are not collected.
+- **When NOT to use**
+  - Avoid null-hypothesis “baseline p-value testing” as decision rule.
+- **Alternative**
+  - Present descriptive table and adjust for key prognostic covariates in ANCOVA/regression.
+
+---
+
+# CATEGORY C — OPTIONAL analyses
+
+## C1) Permutation (randomization) test
+- **Purpose**: Provide exact/near-exact inference consistent with randomization, useful in small samples.
+- **Why appropriate**
+  1. Does not rely on normality assumptions.
+  2. Particularly attractive with n≈10/group.
+- **Why may not be appropriate**
+  - More complex to implement/report; needs clear estimand (difference in means/medians).
+- **When NOT to use**
+  - When clustering/repeated measures unless permutation scheme respects dependence.
+- **Alternative**
+  - Nonparametric tests or bootstrap CIs.
+
+## C2) Bootstrap confidence intervals for effect size
+- **Purpose**: Robust CI for mean/median differences with small samples or non-normality.
+- **Why appropriate**
+  1. Handles skewness and unknown distributions.
+  2. Produces CIs for statistics without closed-form SEs (e.g., median difference).
+- **Why may not be appropriate**
+  - With very small n and many ties, bootstrap can be unstable.
+- **When NOT to use**
+  - Highly discrete outcomes with extreme sparsity.
+- **Alternative**
+  - Exact methods (Fisher/exact CI), or asymptotic CI with caution.
+
+## C3) Subgroup / interaction analysis (pre-specified only)
+- **Purpose**: Explore heterogeneity (e.g., by sex, baseline anxiety, tooth type/side).
+- **Why appropriate**
+  1. Can generate hypotheses for future trials.
+  2. Uses interaction terms rather than separate within-group tests.
+- **Why may not be appropriate**
+  - Severe underpowering; high false-positive risk.
+- **When NOT to use**
+  - Any post hoc subgrouping without prespecification and multiplicity control.
+- **Alternative**
+  - Report descriptively; plan adequately powered future study.
+
+## C4) Multiplicity adjustment (if multiple outcomes/time points)
+- **Purpose**: Control family-wise error or FDR when testing multiple endpoints.
+- **Why appropriate**
+  1. Prevents inflated type I error.
+  2. Encourages clear primary endpoint selection.
+- **Why may not be appropriate**
+  - If only one primary endpoint and few secondary endpoints (adjustment may be unnecessary if clearly labeled exploratory).
+- **When NOT to use**
+  - Do not adjust in a way that obscures the single primary endpoint analysis.
+- **Alternative**
+  - Hierarchical testing or report unadjusted with clear interpretation.
+
+---
+
+## TASK 3 — Inappropriate tests (should NOT be used)
+
+1. **Paired t-test** (unless there is true within-subject pairing, e.g., split-mouth or pre/post on same subject being analyzed as paired difference only)  
+   - Rationale: Trial appears **parallel-group**; groups are independent.
+
+2. **One-way ANOVA (single factor, >2 groups)** as the primary analysis  
+   - Rationale: Only **two groups**; ANOVA is equivalent to t-test but adds no value; if repeated measures exist, simple ANOVA is wrong.
+
+3. **Repeated-measures ANOVA** without verifying repeated measures and sphericity, or without mixed-model alternative  
+   - Rationale: Not justified by provided text; also fragile with missing data and small n.
+
+4. **Multiple unadjusted t-tests across time points/outcomes**  
+   - Rationale: Inflates type I error; should use mixed models or multiplicity strategy.
+
+5. **“Baseline significance testing” to decide whether to adjust**  
+   - Rationale: Adjustment should be prespecified based on prognostic relevance, not baseline p-values.
+
+6. **Correlation/regression ignoring clustering** (if multiple teeth per participant)  
+   - Rationale: Violates independence; underestimates SEs.
+
+---
+
+## TASK 4 — Summary justification of the analytical approach
+
+A two-arm double-blind RCT requires a **between-group comparison** of the primary EPT-derived pain/anesthesia endpoint with **effect size and 95% CI** as the core analysis. Given the **small sample and attrition**, the plan emphasizes (i) choosing a test aligned with the **outcome scale** (t/Welch for continuous normal-ish; Mann–Whitney for ordinal/skewed; Fisher/logistic for binary), (ii) **baseline-adjusted modeling (ANCOVA/regression)** when baseline outcome exists to improve precision, and (iii) **missing-data handling and sensitivity analyses** to protect validity.
+
+If you paste the actual Methods text (laser parameters, outcome scale, time points, baseline measures, unit of randomization), I can convert this into a fully specified SAP with exact primary endpoint definition, model formulae, and mock tables/figures.

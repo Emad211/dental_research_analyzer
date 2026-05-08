@@ -1,0 +1,138 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_FormaminalEnlargement.pdf
+Status : ok
+Time   : 20260508_070233
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics
+1. **Study Design**:  
+   - Prospective, randomized clinical trial (RCT).  
+   - Single-blind design (patients blinded to group allocation).  
+
+2. **Study Objectives**:  
+   - Primary: To assess postoperative pain, use of pain relief medication, and extrusion of filling material in single-visit root canal treatments with or without foraminal enlargement (FE).  
+   - Secondary: To investigate the correlation between sealer extrusion and postoperative pain.  
+
+3. **Study Groups**:  
+   - **Group 1 (FE)**: Teeth treated with foraminal enlargement.  
+   - **Group 2 (FP)**: Teeth treated with foraminal patency only.  
+
+4. **Sample Size**:  
+   - 70 patients per group (n = 140 total).  
+   - Sample size calculation based on ANOVA with parameters: mean difference = 0.03, SD = 0.05, power = 80%, alpha = 0.05.  
+
+5. **Inclusion Criteria**:  
+   - Asymptomatic, necrotic single-rooted teeth with fully formed and straight root canals.  
+   - Patients aged 19–55 years, ASA class I, with a maximum periodontal probing depth of 3 mm.  
+
+6. **Exclusion Criteria**:  
+   - Systemic diseases, recent antibiotic or painkiller use, teeth with swelling, sinus tract, root resorption, or prior endodontic treatment.  
+
+7. **Randomization**:  
+   - Patients randomly selected sealed envelopes indicating group allocation.  
+
+8. **Blinding**:  
+   - Single-blind (patients blinded).  
+
+9. **Variables**:  
+   - **Independent Variable**: Treatment type (FE vs. FP).  
+   - **Dependent Variables**:  
+     - Postoperative pain (measured using a modified visual analog scale, 0–10).  
+     - Pain relief medication use (number of ibuprofen tablets).  
+     - Sealer extrusion (radiographic assessment).  
+
+10. **Measurements**:  
+    - Pain scores recorded at 24, 48, 72 hours, and 1 week postoperatively.  
+    - Pain categories: No pain (0), mild pain (1–3), moderate pain (4–7), severe pain (8–10).  
+    - Sealer extrusion evaluated radiographically.  
+
+11. **Data Collection Methods**:  
+    - Pain scores recorded by patients using a visual analog scale.  
+    - Follow-up phone calls by a dental assistant to confirm pain scores and medication use.  
+    - Radiographic evaluation of sealer extrusion.  
+
+12. **Treatment Protocol**:  
+    - Standardized root canal treatment performed by two experienced endodontists.  
+    - Instrumentation with WaveOne Gold files and irrigation with sodium hypochlorite (NaOCl) and EDTA.  
+    - Final obturation with gutta-percha and AH Plus sealer.  
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Independent Samples t-Test (or Mann-Whitney U Test if non-normal).  
+   - **Purpose**: Compare mean pain scores between the FE and FP groups at each time point.  
+   - **Why Appropriate**:  
+     1. The study aims to compare two independent groups.  
+     2. Pain scores are continuous variables suitable for parametric or non-parametric testing.  
+   - **Why It May Not Be Appropriate**: Assumes normal distribution of pain scores, which may not hold.  
+   - **When NOT to Use**: If pain scores are heavily skewed or violate homogeneity of variance.  
+   - **Alternative**: Mann-Whitney U Test if assumptions are violated.  
+
+2. **Test Name**: Chi-Square Test (or Fisher’s Exact Test).  
+   - **Purpose**: Compare proportions of patients with sealer extrusion and pain relief medication use between groups.  
+   - **Why Appropriate**:  
+     1. Both variables are categorical (presence/absence of extrusion, medication use).  
+     2. Suitable for comparing proportions between independent groups.  
+   - **Why It May Not Be Appropriate**: Small cell counts may invalidate the Chi-Square test.  
+   - **When NOT to Use**: If expected frequencies in any cell are <5.  
+   - **Alternative**: Fisher’s Exact Test for small sample sizes.  
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Repeated Measures ANOVA (or Mixed-Effects Model).  
+   - **Purpose**: Assess changes in pain scores over time and between groups.  
+   - **Why Appropriate**:  
+     1. Pain scores are measured longitudinally at multiple time points.  
+     2. Accounts for within-subject correlations.  
+   - **Why It May Not Be Appropriate**: Assumes sphericity, which may not hold.  
+   - **When NOT to Use**: If sphericity assumption is violated and corrections (e.g., Greenhouse-Geisser) are insufficient.  
+   - **Alternative**: Mixed-Effects Model for more flexibility in handling missing data and unequal variances.  
+
+2. **Test Name**: Pearson or Spearman Correlation.  
+   - **Purpose**: Assess the correlation between sealer extrusion and pain scores.  
+   - **Why Appropriate**:  
+     1. Both variables are continuous or ordinal.  
+     2. Directly addresses a secondary objective of the study.  
+   - **Why It May Not Be Appropriate**: Assumes linearity and normality for Pearson correlation.  
+   - **When NOT to Use**: If data are non-linear or heavily skewed.  
+   - **Alternative**: Spearman correlation for non-parametric data.  
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Logistic Regression.  
+   - **Purpose**: Model the likelihood of sealer extrusion as a function of treatment group and other covariates (e.g., age, sex).  
+   - **Why Appropriate**:  
+     1. Sealer extrusion is a binary outcome.  
+     2. Allows adjustment for potential confounders.  
+   - **Why It May Not Be Appropriate**: Requires a larger sample size for reliable estimates.  
+   - **When NOT to Use**: If the number of events (extrusions) is too low.  
+   - **Alternative**: Exact logistic regression for small sample sizes.  
+
+2. **Test Name**: Kaplan-Meier Survival Analysis.  
+   - **Purpose**: Analyze time to pain resolution between groups.  
+   - **Why Appropriate**:  
+     1. Time-to-event data (pain resolution) is of interest.  
+     2. Accounts for censored data (e.g., patients lost to follow-up).  
+   - **Why It May Not Be Appropriate**: Assumes proportional hazards, which may not hold.  
+   - **When NOT to Use**: If follow-up times are inconsistent or incomplete.  
+   - **Alternative**: Cox Proportional Hazards Model.  
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Paired t-Test**:  
+   - **Reason**: Compares paired data, but the study involves independent groups.  
+
+2. **One-Way ANOVA**:  
+   - **Reason**: Designed for more than two groups, whereas this study has only two groups.  
+
+3. **Wilcoxon Signed-Rank Test**:  
+   - **Reason**: Used for paired or matched data, not independent groups.  
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan is designed to comprehensively address the study’s objectives while accounting for the data structure and assumptions. Mandatory tests focus on group comparisons for primary outcomes (pain scores, sealer extrusion, medication use). Recommended tests enhance rigor by analyzing longitudinal trends and correlations. Optional tests provide supplementary insights into secondary outcomes and time-to-event data. The plan ensures robustness by including alternatives for assumption violations, ensuring valid and interpretable results.

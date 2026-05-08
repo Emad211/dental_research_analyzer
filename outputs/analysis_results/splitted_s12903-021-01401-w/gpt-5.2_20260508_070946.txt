@@ -1,0 +1,343 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_s12903-021-01401-w.pdf
+Status : ok
+Time   : 20260508_070946
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — Information extraction (study characteristics)
+
+### Study design and setting
+- **Design:** Parallel-group **randomized controlled clinical trial** (allocation ratio 1:1).
+- **Setting:** Department of Endodontics, Biruni University (Istanbul, Turkey).
+- **Operator:** All procedures performed by the **same operator** over ~5 months.
+- **Trial registration:** NCT04486196 (retrospectively registered).
+- **Follow-up:** Pain assessed after **each of two visits** at **8 h, 24 h, 48 h, 7 d**.
+
+### Objective and hypothesis
+- **Primary objective:** Evaluate whether **980‑nm diode laser irradiation** after conventional final irrigation reduces **post-operative pain (PP)** after RCT in eligible teeth.
+- **Null hypothesis:** No difference in PP between laser vs control groups.
+
+### Population
+- **Screened:** 395 patients.
+- **Enrolled:** 60 healthy patients (age **18–65**).
+- **Teeth:** **Asymptomatic, single-rooted teeth** with apical periodontitis defined by **PAI score 3 or 4** (radiographic).
+- **Exclusion criteria (key):** recent antibiotics (1 month), anti-inflammatory analgesics (5 days), systemic disorders, pregnancy/lactation, traumatic occlusion, other teeth needing RCT, previously treated/calcified canals, resorption, periodontal disease/sinus tract, severe crown destruction preventing rubber dam.
+
+### Randomization / blinding
+- **Randomization:** “Simple randomization” (method details not provided).
+- **Blinding:** Patients likely **not blinded** (explicit limitation: patients aware of group assignment may influence reporting). Assessor/operator collected outcomes by contacting patients (not blinded).
+
+### Interventions (two-visit RCT for all)
+All patients received:
+- Chemomechanical preparation + **Ca(OH)₂** intracanal medicament at visit 1.
+- Visit 2 at **7 days**: removal of Ca(OH)₂, obturation (cold lateral condensation, AH Plus), composite restoration.
+
+**Control group (n=30):**
+- Final irrigation: **5 ml 2.5% NaOCl**, then **5 ml 17% EDTA for 3 min**, then **5 ml distilled water**.
+
+**Laser group (n=30):**
+- Same final irrigation as control **plus** intracanal **980‑nm diode laser irradiation** after final irrigation at **both visits**:
+  - 200 μm fiber, pulsed mode; output power 2.4 W, energy 12 J/cycle; 10s irradiation + 10s pause = 1 cycle; **4 cycles**.
+  - Inserted to working length; apical-to-coronal movement at ~2 mm/s with circling.
+
+### Outcomes and measurements
+
+**Primary outcome (continuous/ordinal):**
+- **Post-operative pain level** measured using **VAS 0–10** at:
+  - 8 h, 24 h, 48 h, 7 d **after visit 1**
+  - 8 h, 24 h, 48 h, 7 d **after visit 2**
+- Also categorized as: none (0), mild (1–3), moderate (4–7), severe (8–10) (derived from VAS).
+
+**Secondary outcomes:**
+- **Analgesic use** at 8 h, 24 h, 48 h, 7 d after each visit (binary at each time point).
+- **Time interval to medication intake** (time-to-event type variable; unclear unit/precision, but recorded by patient).
+
+**Baseline covariates recorded:**
+- Age (years), Sex (male/female).
+- PAI eligibility (3 or 4), single-rooted, asymptomatic (selection criteria).
+
+**Data collection:**
+- Patients trained to complete VAS at home.
+- Operator contacted patients at scheduled times and recorded PP and analgesic intake on forms.
+
+### Sample size calculation
+- Based on pilot study; G*Power:
+  - Effect size = 0.82, alpha = 0.05, power = 80%.
+  - Minimum 25/group; inflated to **30/group** for dropouts (total 60).
+
+---
+
+## TASK 2 — Statistical analysis plan (SAP)
+
+### General principles (applies to all categories)
+- **Analysis populations:**
+  - **Intention-to-treat (ITT)** as primary (all randomized participants analyzed in assigned group).
+  - **Per-protocol (PP)** sensitivity (exclude major protocol deviations, if defined).
+- **Descriptives:**
+  - Continuous: mean±SD and median (IQR) due to likely skew/zero inflation of pain.
+  - Categorical: n (%).
+- **Primary estimand:** Between-group difference in post-operative pain trajectory across time and visit (especially early time points).
+- **Multiplicity:** Many comparisons (2 visits × 4 time points). Prefer a model-based primary test; if multiple pairwise tests are used, control family-wise error (e.g., Holm) or specify a hierarchical testing order (e.g., primary time point = 24 h after each visit).
+- **Missing data:** Record reasons; if missingness is nontrivial, use mixed models (MAR) or multiple imputation as sensitivity; avoid complete-case only.
+
+---
+
+# CATEGORY A — MANDATORY (without these analysis is incomplete)
+
+## A1) Mixed-effects model for repeated measures (MMRM) / GEE for VAS pain over time
+**Test name:**  
+- Preferred: **Linear mixed-effects model (LMM/MMRM)** for VAS (or **GEE**), with subject-level repeated measures.  
+- If treating VAS as ordinal/zero-inflated: **mixed-effects ordinal logistic model** (cumulative link mixed model) as an alternative primary.
+
+**Purpose:**  
+Assess overall **treatment effect** on pain while accounting for **within-patient correlation** across time points and across both visits, and estimate effects at specific times (e.g., 24h).
+
+**Why appropriate (≥2 reasons):**
+1. Pain is measured **repeatedly in the same patient** (8h/24h/48h/7d) after **two visits** → observations are correlated; mixed/GEE models handle this properly.
+2. Provides a **single global test** (group, time, group×time; optionally visit and interactions), reducing reliance on many separate Mann–Whitney tests and limiting multiplicity inflation.
+3. Can incorporate **incomplete follow-up** without discarding participants (valid under MAR for LMM).
+
+**Why it may not be appropriate (≥1 reason):**
+- VAS is bounded (0–10) and often **zero-inflated**, possibly violating normality/homoscedasticity for LMM.
+
+**When this test should NOT be used:**
+- If sample size is too small for model complexity (e.g., sparse cells at later times) and model fails to converge, or if VAS distribution is extremely discrete with heavy piling at 0 and 10 making linear modeling misleading without transformation/robustness.
+
+**Alternatives if assumptions are violated:**
+- **Robust LMM** (Huber/ sandwich SEs), or **GEE with robust SEs**.
+- **Mixed-effects ordinal logistic regression** on categorized pain (none/mild/moderate/severe).
+- **Two-part model** (logistic for any pain + conditional model for >0 pain) if extreme zero inflation.
+
+**Suggested model specification (minimal):**
+- Outcome: VAS (0–10) at each follow-up time after each visit.
+- Fixed effects: group (laser/control), time (8h/24h/48h/7d), visit (1 vs 2), and key interactions: group×time, group×visit (and optionally group×time×visit).
+- Random effect: subject intercept (and possibly random slope for time if stable).
+- Covariates (optional but reasonable): age, sex (pre-specified adjustment improves precision).
+
+---
+
+## A2) Between-group comparison of analgesic use at each time point (binary outcome)
+**Test name:** **Fisher’s exact test** (or chi-square if expected counts adequate).
+
+**Purpose:**  
+Compare proportions of patients taking analgesics in laser vs control at each follow-up time (particularly early time points).
+
+**Why appropriate (≥2 reasons):**
+1. Outcome is **binary** (use vs no use) per time point.
+2. Some cells are **sparse/zero** (e.g., 0% in laser group) → Fisher’s exact maintains validity.
+
+**Why it may not be appropriate (≥1 reason):**
+- Doing it separately at many time points ignores correlation and increases multiplicity.
+
+**When this test should NOT be used:**
+- As the sole approach if the goal is overall inference across repeated times; also not appropriate if you need adjusted estimates (covariates).
+
+**Alternatives if assumptions are violated / better approach:**
+- **GEE logistic regression** or **mixed-effects logistic regression** for repeated binary outcomes across time/visit (global test + time-specific contrasts).
+- If quasi-separation due to many zeros: **Firth penalized logistic regression** for adjusted comparisons.
+
+---
+
+## A3) Baseline comparability and descriptive checks (not “hypothesis testing” driven)
+**Test name:** Descriptive summary; optionally **standardized mean differences (SMD)**.
+
+**Purpose:**  
+Assess balance of baseline covariates (age, sex) across randomized groups and describe sample.
+
+**Why appropriate (≥2 reasons):**
+1. Randomization should balance groups; SMDs quantify balance without overinterpreting p-values.
+2. Helps identify covariates for precision adjustment and informs external validity.
+
+**Why it may not be appropriate (≥1 reason):**
+- Formal significance testing of baseline variables is often discouraged (p-values reflect chance and sample size).
+
+**When this test should NOT be used:**
+- Do not use baseline p-values to decide whether randomization “worked” or to select covariates purely by significance.
+
+**Alternatives if assumptions are violated:**
+- For continuous covariates, if still testing: **Welch t-test** or **Mann–Whitney**; but prefer SMD reporting.
+
+---
+
+# CATEGORY B — RECOMMENDED (improves rigor)
+
+## B1) Ordinal regression for categorized pain severity (none/mild/moderate/severe) with repeated measures
+**Test name:** **Mixed-effects ordinal logistic regression** (cumulative link mixed model) or **GEE ordinal model**.
+
+**Purpose:**  
+Model pain as an **ordered categorical outcome**, aligned with clinically used categories.
+
+**Why appropriate (≥2 reasons):**
+1. Pain categories are **ordinal** and not interval-scaled; ordinal models respect ordering without assuming equal spacing.
+2. Handles **ceiling/floor effects** (e.g., many zeros at 7 days) better than linear models.
+
+**Why it may not be appropriate (≥1 reason):**
+- **Proportional odds assumption** may be violated; sparse categories (e.g., severe) can destabilize estimates.
+
+**When this test should NOT be used:**
+- If categories are too sparse (e.g., almost no moderate/severe in one group/time), causing convergence issues.
+
+**Alternatives if assumptions are violated:**
+- **Partial proportional odds model**, or collapse categories (e.g., none vs any; none/mild vs moderate/severe).
+- **Binary mixed model** for “any pain” or “moderate/severe pain”.
+
+---
+
+## B2) Time-to-first-analgesic intake analysis
+**Test name:** **Kaplan–Meier curves + log-rank test**; and/or **Cox proportional hazards model**.
+
+**Purpose:**  
+Compare **time until first ibuprofen intake** between groups after each visit.
+
+**Why appropriate (≥2 reasons):**
+1. Outcome is inherently **time-to-event** with potential **censoring** (no medication during follow-up).
+2. Uses more information than a binary “took analgesic” indicator at fixed time points.
+
+**Why it may not be appropriate (≥1 reason):**
+- If almost nobody takes analgesics in one group (as here), estimates may be unstable; Cox may face separation.
+
+**When this test should NOT be used:**
+- If time is not recorded accurately (heaping/rounding) or if event counts are extremely low (e.g., 0 events in laser group) making hazard ratio estimation unreliable.
+
+**Alternatives if assumptions are violated:**
+- If Cox PH violated: **restricted mean survival time (RMST)** difference.
+- If zero events in a group: report **KM curves descriptively**; consider **exact methods** or **Poisson/negative binomial** for counts (if multiple intakes recorded) but here it’s “first intake”.
+
+---
+
+## B3) Adjusted treatment effect estimation (covariate adjustment)
+**Test name:** Same primary models (LMM/GEE/ordinal mixed) but **adjusted** for age and sex (pre-specified).
+
+**Purpose:**  
+Increase precision and address any chance imbalance.
+
+**Why appropriate (≥2 reasons):**
+1. Even in RCTs, adjustment can improve **efficiency** and precision.
+2. Age/sex may relate to pain perception; adjustment supports robustness.
+
+**Why it may not be appropriate (≥1 reason):**
+- Overfitting risk if too many covariates relative to sample size.
+
+**When this test should NOT be used:**
+- Do not add many post-randomization variables or data-driven covariate fishing.
+
+**Alternatives if assumptions are violated:**
+- Use **penalized regression** or keep adjustment minimal (age, sex only).
+
+---
+
+## B4) Multiple comparison control / hierarchical endpoint strategy
+**Test name:** **Holm–Bonferroni** (family-wise) or **Benjamini–Hochberg** (FDR), or a **pre-specified hierarchy**.
+
+**Purpose:**  
+Control false positives given many time-point contrasts.
+
+**Why appropriate (≥2 reasons):**
+1. There are multiple time points and two visits → inflated Type I error if many unadjusted tests.
+2. Improves credibility of “significant at 24h/48h” findings.
+
+**Why it may not be appropriate (≥1 reason):**
+- Can be conservative, reducing power in small samples.
+
+**When this test should NOT be used:**
+- If a single global mixed-model interaction test is pre-specified as primary and only limited contrasts are confirmatory, strict correction across all exploratory contrasts may be unnecessary.
+
+**Alternatives if assumptions are violated:**
+- Use **model-based** estimation with planned contrasts and limited family definitions; report **effect sizes with CIs** and treat other comparisons as exploratory.
+
+---
+
+# CATEGORY C — OPTIONAL (supplementary insights)
+
+## C1) Nonparametric AUC (area-under-curve) of pain over time
+**Test name:** Compare patient-level **pain AUC** between groups using **Mann–Whitney U** (or t-test if approx normal).
+
+**Purpose:**  
+Summarize overall pain burden across time after each visit.
+
+**Why appropriate (≥2 reasons):**
+1. Produces a single interpretable summary per patient (overall pain experience).
+2. Reduces multiple time-point testing.
+
+**Why it may not be appropriate (≥1 reason):**
+- Requires complete or imputed data across time; AUC can be biased with missingness.
+
+**When this test should NOT be used:**
+- If many missing time points and no principled imputation strategy.
+
+**Alternatives if assumptions are violated:**
+- Mixed-model based **estimated marginal mean AUC**; or **multiple imputation** then AUC.
+
+---
+
+## C2) Effect sizes and confidence intervals
+**Test name:**  
+- Continuous: **Hodges–Lehmann median difference** (with CI) or mean difference from LMM.  
+- Binary: **risk difference**, **risk ratio**, or **odds ratio** (with CI).
+
+**Purpose:**  
+Quantify magnitude/clinical relevance beyond p-values.
+
+**Why appropriate (≥2 reasons):**
+1. Clinical interpretation needs effect size (e.g., VAS difference at 24h).
+2. Enables comparison with other studies and meta-analysis.
+
+**Why it may not be appropriate (≥1 reason):**
+- Some effect size estimators unstable with zero cells (e.g., RR/OR when 0 events).
+
+**When this test should NOT be used:**
+- Avoid uncorrected ORs with complete separation (0 events in one arm).
+
+**Alternatives if assumptions are violated:**
+- Use **continuity corrections**, **exact methods**, or **Firth penalized logistic** for ORs; use **risk difference** with exact CI.
+
+---
+
+## C3) Sensitivity analyses for outcome scale handling
+**Test name:**  
+- Dichotomize pain as **any pain (VAS>0)** or **moderate/severe (VAS≥4)** and analyze via **mixed logistic regression/GEE**.
+
+**Purpose:**  
+Assess robustness and provide clinically meaningful endpoints.
+
+**Why appropriate (≥2 reasons):**
+1. Addresses heavy clustering at 0 and clinical thresholds (VAS≥4 often meaningful).
+2. Provides outcomes easily communicated to clinicians/patients.
+
+**Why it may not be appropriate (≥1 reason):**
+- Dichotomization loses information and power.
+
+**When this test should NOT be used:**
+- As the only primary analysis for a continuous/ordinal outcome.
+
+**Alternatives if assumptions are violated:**
+- Ordinal mixed model or two-part models.
+
+---
+
+## TASK 3 — Tests that should NOT be used (and why)
+
+1. **Independent-samples t-test at each time point for VAS** (as the main approach)  
+   - VAS is bounded and often non-normal with many zeros; repeated testing inflates Type I error; ignores within-patient correlation across time and visits.
+
+2. **Multiple paired t-tests within each group across time (e.g., 8h vs 24h vs 48h)**  
+   - Strong multiplicity problem; violates independence; does not directly test the treatment×time effect.
+
+3. **One-way ANOVA treating each time point as independent groups**  
+   - Repeated measurements are not independent; violates ANOVA assumptions unless using repeated-measures ANOVA (and even then, sphericity issues).
+
+4. **Pearson correlation between group (coded 0/1) and pain**  
+   - Not an appropriate inferential method for group comparisons; does not handle repeated measures or non-normal outcomes.
+
+5. **Chi-square test when expected counts are small/zero (analgesic use)**  
+   - Invalid approximation; Fisher’s exact or logistic models are needed.
+
+6. **Linear regression on time-to-analgesic (raw times) without censoring methods**  
+   - Ignores censoring (many patients may never take analgesic), violating model structure.
+
+---
+
+## TASK 4 — Summary justification of the overall approach
+
+The study is a 2-arm RCT with **repeated pain measurements** after **two treatment visits**, creating correlated longitudinal data. The primary analysis should therefore use a **repeated-measures framework (mixed-effects or GEE)** to estimate the treatment effect over time (and by visit) while properly accounting for within-patient correlation and reducing multiplicity. Analgesic use should be analyzed with **exact or logistic repeated-measures methods**, and medication timing, when informative, should be handled with **survival methods** to incorporate censoring. Effect sizes with CIs and sensitivity analyses (ordinal/binary pain endpoints) strengthen interpretability and robustness.

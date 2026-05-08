@@ -1,0 +1,24 @@
+{
+  "pdf_name": "splitted_incidence_of_postoperative_pain_after_single_visit.9.pdf",
+  "timestamp": "20260508_070511",
+  "models": {
+    "gpt-5.2": {
+      "provider": "OpenAI",
+      "model": "gpt-5.2",
+      "status": "ok",
+      "chars": 15898
+    },
+    "gpt-4o": {
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "status": "ok",
+      "chars": 6313
+    },
+    "gpt-5.1": {
+      "provider": "OpenAI",
+      "model": "gpt-5.1",
+      "status": "ok",
+      "chars": 29304
+    }
+  }
+}

@@ -1,0 +1,156 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_e8a757f2d88ebad66feec53a84e97084.pdf
+Status : ok
+Time   : 20260508_064939
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Randomized Clinical Trial (RCT) following CONSORT guidelines.
+
+2. **Objectives**:  
+   - **Primary Objective**: To evaluate the impact of piezoelectric surgery on the quality of life (QoL) during the first week post-surgery.  
+   - **Secondary Objective**: To compare intraoperative hemorrhage control between piezosurgery and conventional carbide burs.
+
+3. **Study Groups**:  
+   - **Piezo Group**: Patients undergoing surgery with a piezoelectric device.  
+   - **Control Group**: Patients undergoing surgery with a conventional carbide bur.
+
+4. **Sample Size**:  
+   - Total: 40 patients (74 teeth).  
+   - 20 patients in each group.  
+   - Sample size calculation based on postoperative pain (clinically significant difference = 0.8, pooled SD = 0.824, power = 80%, significance level = 5%, and 20% attrition rate).
+
+5. **Randomization**:  
+   - Block randomization with opaque envelopes.  
+   - Patients and independent observers were blinded, but operator blinding was not possible.
+
+6. **Eligibility Criteria**:  
+   - **Inclusion**:  
+     - Medically fit patients (ASA I or II).  
+     - Age: 16–55 years.  
+     - Symptomatic/asymptomatic apical periodontitis in previously treated teeth with large periapical lesions (≥5 mm).  
+     - Intact buccal cortical plate on CBCT imaging.  
+     - Maxillary and mandibular anterior teeth with periradicular lesions <20 mm.  
+     - Adequate root canal treatment and final restoration.  
+   - **Exclusion**:  
+     - Systemic diseases, pregnancy, lactation, anticoagulant/antiplatelet therapy.  
+     - Teeth with deep pockets (>4 mm), fractures, perforations, or apicomarginal defects.
+
+7. **Variables**:  
+   - **Primary Outcome**:  
+     - Quality of life (QoL) assessed using a modified patient perception questionnaire (5-point Likert scale).  
+   - **Secondary Outcome**:  
+     - Hemorrhage control during surgery (scored as 0, 1, or 2).  
+   - **Other Variables**:  
+     - Pain (VAS scale, 0–100).  
+     - Analgesic intake (number of tablets/day).  
+
+8. **Data Collection Methods**:  
+   - QoL: Modified patient perception questionnaire (validated and translated into local language).  
+   - Pain: Visual Analog Scale (VAS).  
+   - Hemorrhage Control: Scored by blinded evaluators using a 3-point scale (0 = no control, 1 = intermittent control, 2 = complete control).  
+   - Analgesic Intake: Self-reported by patients.  
+   - Data collected daily for 7 days post-surgery.
+
+9. **Surgical Procedure**:  
+   - Performed under an operating microscope by a single operator.  
+   - Piezo Group: Bone cutting with piezoelectric device (specific tips and settings detailed).  
+   - Control Group: Bone cutting with surgical carbide bur.  
+   - Root-end resection and filling performed in both groups.  
+
+10. **Blinding**:  
+    - Patients and independent observers were blinded.  
+    - Operator blinding was not feasible.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Test Name**: Independent Samples t-Test (or Mann-Whitney U Test if assumptions are violated).  
+   - **Purpose**: Compare mean QoL scores and VAS pain scores between the piezo and control groups.  
+   - **Why Appropriate**:  
+     1. The study involves comparing continuous outcomes (QoL and pain) between two independent groups.  
+     2. The sample size (n = 20 per group) is adequate for parametric testing if normality is met.  
+   - **Why It May Not Be Appropriate**: Assumptions of normality and homogeneity of variances may not hold.  
+   - **When NOT to Use**: If data is heavily skewed or contains outliers.  
+   - **Alternative**: Mann-Whitney U Test (non-parametric).
+
+2. **Test Name**: Chi-Square Test (or Fisher’s Exact Test if expected cell counts are <5).  
+   - **Purpose**: Compare the proportion of patients achieving adequate hemorrhage control (score = 2) between groups.  
+   - **Why Appropriate**:  
+     1. The outcome is categorical (adequate vs. inadequate hemorrhage control).  
+     2. The groups are independent.  
+   - **Why It May Not Be Appropriate**: Small sample size in some categories may violate assumptions.  
+   - **When NOT to Use**: If expected frequencies are too low.  
+   - **Alternative**: Fisher’s Exact Test.
+
+3. **Test Name**: Repeated Measures ANOVA (or Friedman Test if assumptions are violated).  
+   - **Purpose**: Analyze changes in QoL and pain scores over time (days 1–7) within and between groups.  
+   - **Why Appropriate**:  
+     1. The study involves repeated measurements of continuous outcomes over time.  
+     2. It accounts for within-subject correlations.  
+   - **Why It May Not Be Appropriate**: Assumptions of sphericity and normality may not hold.  
+   - **When NOT to Use**: If data is non-normal or variances are unequal across time points.  
+   - **Alternative**: Friedman Test (non-parametric).
+
+---
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Test Name**: Mixed-Effects Model.  
+   - **Purpose**: Assess group differences in QoL and pain over time while accounting for repeated measures.  
+   - **Why Appropriate**:  
+     1. Handles missing data more effectively than ANOVA.  
+     2. Accounts for random effects (e.g., inter-patient variability).  
+   - **Why It May Not Be Appropriate**: Requires advanced statistical software and expertise.  
+   - **When NOT to Use**: If the dataset is too small for model convergence.  
+   - **Alternative**: Repeated Measures ANOVA.
+
+2. **Test Name**: Logistic Regression.  
+   - **Purpose**: Model the likelihood of achieving adequate hemorrhage control (score = 2) based on group and other covariates.  
+   - **Why Appropriate**:  
+     1. Allows adjustment for potential confounders.  
+     2. Provides odds ratios for interpretation.  
+   - **Why It May Not Be Appropriate**: Requires a larger sample size for reliable estimates.  
+   - **When NOT to Use**: If the sample size is insufficient or the outcome is rare.  
+   - **Alternative**: Chi-Square Test.
+
+---
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Test Name**: Effect Size Calculation (e.g., Cohen’s d for continuous outcomes).  
+   - **Purpose**: Quantify the magnitude of differences between groups.  
+   - **Why Appropriate**:  
+     1. Provides clinically meaningful interpretation of results.  
+     2. Complements p-values.  
+   - **Why It May Not Be Appropriate**: Not inferential, only descriptive.  
+   - **When NOT to Use**: If the primary focus is hypothesis testing.  
+   - **Alternative**: Confidence intervals for mean differences.
+
+2. **Test Name**: Subgroup Analysis.  
+   - **Purpose**: Explore potential differences in outcomes by age, gender, or lesion size.  
+   - **Why Appropriate**:  
+     1. Identifies effect modifiers.  
+     2. Provides additional insights into patient subgroups.  
+   - **Why It May Not Be Appropriate**: Risk of overfitting and multiple testing errors.  
+   - **When NOT to Use**: If the sample size is too small for subgroup comparisons.  
+   - **Alternative**: Descriptive statistics.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Paired t-Test**:  
+   - **Reason**: The groups are independent, not paired.  
+2. **One-Way ANOVA**:  
+   - **Reason**: Only two groups are being compared.  
+3. **Pearson Correlation**:  
+   - **Reason**: The study does not involve assessing linear relationships between continuous variables.
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan aligns with the study design, objectives, and data structure. Primary analyses focus on group comparisons for QoL, pain, and hemorrhage control using appropriate parametric or non-parametric tests. Repeated measures analyses account for temporal trends, while logistic regression and mixed-effects models enhance rigor. Effect size calculations and subgroup analyses provide supplementary insights. The plan ensures robust, clinically meaningful, and statistically valid conclusions.

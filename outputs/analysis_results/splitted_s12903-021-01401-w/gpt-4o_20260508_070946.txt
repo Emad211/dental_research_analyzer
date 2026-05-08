@@ -1,0 +1,143 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_s12903-021-01401-w.pdf
+Status : ok
+Time   : 20260508_070946
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**:  
+   - Parallel randomized controlled trial (RCT) with an allocation ratio of 1:1.
+   - Followed CONSORT guidelines.
+
+2. **Objective**:  
+   - To evaluate the effect of a 980-nm diode laser following conventional irrigation on post-operative pain (PP) after root canal treatment (RCT) in asymptomatic single-rooted teeth with a periapical index (PAI) score of 3 or 4.
+
+3. **Groups**:  
+   - **Control Group**: Final irrigation with 2.5% sodium hypochlorite (NaOCl), 17% ethylenediaminetetraacetic acid (EDTA), and distilled water, followed by calcium hydroxide (Ca(OH)₂) dressing.  
+   - **Laser Group**: Same irrigation protocol as the control group, followed by root canal irradiation using a 980-nm diode laser.
+
+4. **Sample Size**:  
+   - Total: 60 patients (30 per group).  
+   - Sample size calculation: Effect size = 0.82, Power = 80%, Significance level = 0.05.
+
+5. **Participants**:  
+   - Inclusion criteria: Healthy patients aged 18–65 years with asymptomatic single-rooted teeth, PAI score of 3 or 4, no systemic disorders, no recent antibiotic or anti-inflammatory use, and no other dental issues (e.g., root canal fillings, periodontal diseases).  
+   - Exclusion criteria: Systemic disorders, pregnancy/lactation, recent antibiotic or anti-inflammatory use, traumatic occlusions, multiple teeth requiring RCT, calcified canals, root resorption, severe crown destruction, or sinus tracts.
+
+6. **Variables**:  
+   - **Primary Outcome**: Post-operative pain (PP) measured using a Visual Analogue Scale (VAS) at 8 hours, 24 hours, 48 hours, and 7 days post-treatment.  
+   - **Secondary Outcome**: Analgesic use (600 mg ibuprofen) and time to medication intake.  
+   - **Covariates**: Age, sex.
+
+7. **Measurements**:  
+   - Pain levels: Assessed using a 10-point VAS (0 = no pain, 10 = worst pain). Pain categorized as none (0), mild (1–3), moderate (4–7), and severe (8–10).  
+   - Analgesic use: Recorded at 8 hours, 24 hours, 48 hours, and 7 days post-treatment.  
+   - Demographics: Age and sex.
+
+8. **Data Collection Methods**:  
+   - Pain levels and analgesic use recorded by patients on a VAS form at home.  
+   - Patients trained on how to complete the VAS form.  
+   - Demographic data collected at baseline.
+
+9. **Randomization**:  
+   - Simple randomization method used to allocate patients to groups.  
+   - No significant differences in age or sex between groups.
+
+10. **Statistical Analysis Methods**:  
+    - Mann–Whitney U test: Between-group comparisons of VAS scores.  
+    - Wilcoxon signed-rank test: Within-group comparisons of VAS scores over time.  
+    - Student’s t-test: Age and sex distribution between groups.  
+    - Fisher’s exact chi-square test: Analgesic use differences.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+1. **Mann–Whitney U Test**  
+   - **Purpose**: Compare VAS pain scores between the laser and control groups at each time point.  
+   - **Why Appropriate**:  
+     1. VAS pain scores are ordinal data, making non-parametric tests suitable.  
+     2. Small sample size (n=30 per group) may not meet normality assumptions.  
+   - **Why It May Not Be Appropriate**: Assumes independent observations, which may not hold if patients' responses are correlated across time points.  
+   - **When NOT to Use**: If data are normally distributed and sample size is large.  
+   - **Alternative**: Independent samples t-test if normality is met.
+
+2. **Wilcoxon Signed-Rank Test**  
+   - **Purpose**: Compare within-group changes in VAS pain scores across time points.  
+   - **Why Appropriate**:  
+     1. Non-parametric test suitable for paired ordinal data.  
+     2. Accounts for repeated measures within the same group.  
+   - **Why It May Not Be Appropriate**: Sensitive to tied ranks in small datasets.  
+   - **When NOT to Use**: If data are normally distributed.  
+   - **Alternative**: Paired t-test if normality is met.
+
+3. **Fisher’s Exact Test**  
+   - **Purpose**: Compare proportions of analgesic use between groups.  
+   - **Why Appropriate**:  
+     1. Suitable for small sample sizes and categorical data.  
+     2. Provides exact p-values for 2x2 contingency tables.  
+   - **Why It May Not Be Appropriate**: Limited to binary outcomes.  
+   - **When NOT to Use**: For larger datasets where chi-square test is more efficient.  
+   - **Alternative**: Chi-square test for larger sample sizes.
+
+#### CATEGORY B – RECOMMENDED TESTS
+1. **Repeated Measures ANOVA (or Mixed-Effects Model)**  
+   - **Purpose**: Analyze VAS scores over time, accounting for within-subject correlations.  
+   - **Why Appropriate**:  
+     1. Accounts for repeated measures across multiple time points.  
+     2. Allows for interaction effects between group and time.  
+   - **Why It May Not Be Appropriate**: Assumes normality of residuals and sphericity.  
+   - **When NOT to Use**: If data are non-normal or sphericity is violated.  
+   - **Alternative**: Non-parametric Friedman test.
+
+2. **Logistic Regression**  
+   - **Purpose**: Assess factors (e.g., group, age, sex) associated with analgesic use.  
+   - **Why Appropriate**:  
+     1. Suitable for binary outcomes (analgesic use: yes/no).  
+     2. Adjusts for potential confounders.  
+   - **Why It May Not Be Appropriate**: Requires large sample size for stable estimates.  
+   - **When NOT to Use**: If sample size is too small.  
+   - **Alternative**: Fisher’s exact test for unadjusted comparisons.
+
+#### CATEGORY C – OPTIONAL TESTS
+1. **Friedman Test**  
+   - **Purpose**: Non-parametric alternative to repeated measures ANOVA for comparing VAS scores across time points.  
+   - **Why Appropriate**:  
+     1. Suitable for ordinal data.  
+     2. Does not assume normality.  
+   - **Why It May Not Be Appropriate**: Limited to within-group comparisons.  
+   - **When NOT to Use**: If between-group comparisons are required.  
+   - **Alternative**: Repeated measures ANOVA.
+
+2. **Effect Size Calculation (e.g., Cohen’s d)**  
+   - **Purpose**: Quantify the magnitude of differences between groups.  
+   - **Why Appropriate**:  
+     1. Provides clinically meaningful interpretation of results.  
+     2. Complements p-values.  
+   - **Why It May Not Be Appropriate**: Not inferential; does not test hypotheses.  
+   - **When NOT to Use**: If focus is solely on hypothesis testing.  
+   - **Alternative**: Confidence intervals for mean differences.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+1. **Independent Samples t-Test**  
+   - **Why Not Appropriate**: VAS scores are ordinal, and the sample size may not meet normality assumptions.  
+   - **Alternative**: Mann–Whitney U test.
+
+2. **Chi-Square Test**  
+   - **Why Not Appropriate**: Less accurate than Fisher’s exact test for small sample sizes.  
+   - **Alternative**: Fisher’s exact test.
+
+3. **Pearson Correlation**  
+   - **Why Not Appropriate**: VAS scores are ordinal, and correlation does not test group differences.  
+   - **Alternative**: Mann–Whitney U test or Wilcoxon signed-rank test.
+
+---
+
+### TASK 4: SUMMARY
+The proposed statistical analysis plan prioritizes non-parametric tests (Mann–Whitney U, Wilcoxon signed-rank, Fisher’s exact test) due to the ordinal nature of VAS scores and the small sample size. Recommended tests, such as repeated measures ANOVA and logistic regression, enhance the analysis by accounting for time and covariates. Optional tests, like effect size calculations, provide additional insights. The overall approach ensures robust, valid, and clinically meaningful results while addressing potential limitations in the dataset.

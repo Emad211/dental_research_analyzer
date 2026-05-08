@@ -1,0 +1,623 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_s12903-021-01401-w.pdf
+Status : ok
+Time   : 20260508_070946
+══════════════════════════════════════════════════════════════════════
+
+TASK 1: INFORMATION EXTRACTION  
+
+1. Study design  
+- Type: Parallel-group randomized controlled clinical trial (two-arm)  
+- Allocation ratio: 1:1  
+- Setting: Endodontics Department, Faculty of Dentistry, Biruni University, Istanbul, Turkey  
+- Duration of recruitment/intervention: 5 months  
+- Ethical approval: Biruni University ethics committee (2015-KAEK-43–19-04)  
+- Trial registration: NCT04486196 (retrospective)  
+- CONSORT adherence: Yes (checklist mentioned)  
+
+2. Study population  
+- Source population: Patients aged 18–65 years referred to the endodontics department  
+- Screened: 395 patients  
+- Included: 60 “healthy” patients  
+- Inclusion criteria (tooth-level):  
+  - Asymptomatic single-rooted teeth  
+  - Periapical index (PAI) score 3 or 4 (chronic apical periodontitis; necrotic/infected teeth)  
+  - No previous pain history for the tooth  
+- Exclusion criteria:  
+  - Antibiotic use within last month  
+  - Anti-inflammatory analgesic use within last 5 days  
+  - Systemic disorders  
+  - Pregnancy or lactation  
+  - Traumatic occlusion  
+  - Other teeth requiring RCT  
+  - Previously root canal–treated teeth, calcified canals, root resorption  
+  - Periodontal disease or sinus tract  
+  - Severe crown destruction preventing rubber dam  
+- Baseline covariates recorded: age (years), sex (male/female)  
+
+3. Sample size and power  
+- Planned sample size: 25 per group (based on pilot, G*Power 3.1)  
+- Parameters: effect size (presumably standardized mean difference) = 0.82, power 80%, α = 0.05  
+- Inflation for dropout: target 30 per group (total N = 60)  
+- Final analyzed: 30 in control, 30 in laser (no dropouts indicated)  
+
+4. Randomization and allocation  
+- Randomization: “simple randomization” into two groups (method not fully detailed; presumably patient-level allocation)  
+- Allocation ratio: 1:1  
+- Blinding:  
+  - Operator not blinded (performs laser vs no laser)  
+  - Patients aware of group (they knew if laser was used)  
+  - Data collection of VAS by patients; operator records analgesic use from patient reports  
+  - No explicit mention of blinded outcome assessment or statistician  
+
+5. Intervention groups  
+
+5.1 Common treatment elements for both groups  
+- Two-visit RCT:  
+  - Visit 1: Cleaning and shaping, final irrigation, Ca(OH)₂ dressing, temporary restoration; VAS monitoring at home  
+  - Visit 2 (after 7 days): Removal of Ca(OH)₂, final irrigation, obturation with cold lateral condensation and AH Plus sealer, permanent composite restoration; VAS monitoring at home  
+- Final irrigation regimen (both groups, both visits before any laser):  
+  - 5 mL of 2.5% NaOCl  
+  - 5 mL of 17% EDTA for 3 min  
+  - 5 mL distilled water  
+- Working length determination: combination of periapical radiographs and electronic apex locator  
+- Operator: single experienced operator for all endodontic procedures  
+
+5.2 Control group  
+- Visit 1: final irrigation as above; canals dried; Ca(OH)₂ paste applied; temporary restoration; VAS form given  
+- Visit 2: Ca(OH)₂ removed with irrigation and X4 file; obturation and permanent restoration; no laser at any point  
+- Post-op contact: operator contacted patients at predetermined times to ask about PP and analgesic intake  
+
+5.3 Laser group  
+- Visit 1: same final irrigation and drying as control, then intra-canal laser irradiation:  
+  - Device: 980-nm diode laser (Medency Primo 10 W)  
+  - Fibre: 200 µm, tip length 25 mm, spot diameter ~0.02 cm, area ~0.000314 cm²  
+  - Settings: output power 2.4 W, energy 12 J per cycle, pulsed mode, pulse duration 20 μs, 50 Hz; each cycle = 10 s irradiation + 10 s pause; 4 cycles per canal  
+  - Average power: 1.2 W (power density ~3822 W/cm²)  
+  - Application technique: fibre inserted to working length; slow (2 mm/s) helical/circular withdrawal from apical to coronal, contacting dentinal walls; repeated as per cycles  
+  - After irradiation: Ca(OH)₂ paste applied; temporary restoration; VAS given  
+- Visit 2: after Ca(OH)₂ removal and drying, same laser irradiation protocol applied; then obturation and permanent restoration as in control  
+- Safety: both operator and patient wore protective eyewear; no fiber breakage; no thermal adverse events reported  
+
+6. Outcomes and measurements  
+
+6.1 Primary outcome (implicit)  
+- Post-operative pain intensity (PP) after RCT, at different time points after each visit  
+
+Measurement:  
+- Instrument: Visual analogue scale (VAS) 0–10 (numeric rating from 0 to 10)  
+- Collection: Patient-completed questionnaires at home; training given on VAS usage  
+- Time points after each visit: 8 h, 24 h, 48 h, 7 d  
+- Recorded data:  
+  - Continuous VAS score (0–10)  
+  - Categorized pain levels:  
+    - None: 0  
+    - Mild: 1–3  
+    - Moderate: 4–7  
+    - Severe: 8–10  
+- Analytic representation in tables:  
+  - For each time point, group-specific:  
+    - Number (%) in each pain category  
+    - Mean ± SD and median VAS values  
+
+6.2 Secondary outcomes  
+- Analgesic use  
+  - Recommended medication: ibuprofen 600 mg every 6 h as needed for severe pain  
+  - Data recorded:  
+    - Whether analgesic was used at 8 h, 24 h, 48 h, 7 d post-op  
+    - Time interval to first medication intake  
+  - Analytic representation:  
+    - Frequency (n, %) of patients using analgesics at each time point by group  
+
+- Baseline comparability  
+  - Age (continuous)  
+  - Sex (categorical: male/female)  
+
+7. Statistical methods actually used (per article)  
+- Software: SPSS v22 (IBM)  
+- Significance threshold: p < 0.05  
+- Between-group comparisons:  
+  - Pain (VAS): Mann–Whitney U test (per time point, per visit)  
+  - Analgesic use: Fisher’s exact chi-square test  
+  - Age: Student’s t-test  
+  - Sex: “Continuity (Yates) correction” for chi-square (reported as such in table footnote)  
+- Within-group comparisons (first vs second visit):  
+  - Pain (VAS): Wilcoxon signed-rank test, per group, per time point  
+
+8. Data structure  
+- Observational units:  
+  - Patient-level randomized; one tooth per patient; repeated pain measures within patient  
+- Design structure:  
+  - Between factor: Group (2 levels: Control vs Laser)  
+  - Within factors:  
+    - Visit (2 levels: 1st vs 2nd visit)  
+    - Time after visit (4 levels: 8 h, 24 h, 48 h, 7 d)  
+- Outcomes:  
+  - VAS pain (ordinal/continuous) repeated measures  
+  - Binary analgesic use at each time point  
+  - Pain categories (nominal/ordinal)  
+
+---
+
+TASK 2: STATISTICAL ANALYSIS PLAN  
+
+Below is an improved plan structured around the actual design, grouped by mandatory, recommended, and optional analyses.  
+
+Important: Because pain is measured repeatedly within the same patient (four time points after each of two visits), the primary analysis should explicitly account for within-patient correlation and multiple time points.
+
+--------------------------------  
+CATEGORY A – MANDATORY TESTS  
+--------------------------------  
+
+A1. Descriptive statistics of baseline and outcomes  
+
+Test / Method:  
+- Descriptive statistics (not a formal “test” but mandatory):  
+  - Means, SDs, medians, IQRs for continuous/ordinal variables (age, VAS)  
+  - Frequencies and percentages for categorical variables (sex, pain categories, analgesic use).  
+
+Purpose:  
+- To describe sample characteristics and outcome distributions by group and time.  
+
+Why appropriate:  
+1) Essential to interpret and contextualize inferential tests.  
+2) Clarifies skewness / discreteness of VAS and analgesic use, informing choice of parametric vs nonparametric methods.  
+
+Why it may not be appropriate:  
+- N/A (description is always appropriate)  
+
+When not to use:  
+- Not applicable.  
+
+Alternative if assumptions violated:  
+- Use robust summary measures (medians, IQR, trimmed means) if distributions are highly skewed or bounded.  
+
+---
+
+A2. Baseline comparability of groups  
+
+Tests:  
+- Age: Independent samples t-test or Mann–Whitney U test (depending on distribution).  
+- Sex: Chi-square test (or Fisher’s exact if small counts).  
+
+Purpose:  
+- To verify success of randomization with respect to key baseline covariates (age, sex).  
+
+Why appropriate:  
+1) Randomization should eliminate systematic differences; these tests check balance and help interpret results.  
+2) Age and sex are potential confounders of pain perception; confirming balance increases confidence that observed differences are due to the intervention.  
+
+Why it may not be appropriate:  
+- Strictly, testing baseline differences is not necessary in randomized trials and can be misleading; imbalance can occur by chance.  
+
+When NOT to use:  
+- Do not interpret statistically significant baseline differences as evidence that randomization “failed”; instead consider covariate adjustment in primary analysis.  
+
+Alternative if assumptions violated:  
+- If age is non-normal or variances unequal, use Mann–Whitney U or Welch’s t-test.  
+- For sparse sex counts, use Fisher’s exact.  
+
+---
+
+A3. Primary comparison of pain intensity between groups over time (repeated measures)  
+
+Preferred Test:  
+- Linear mixed-effects model (LMM) on VAS scores or generalized linear mixed model (GLMM) on ordinal pain categories.  
+
+Option 1: LMM on continuous VAS  
+
+Model specification:  
+- Outcome: VAS (0–10) per patient per timepoint per visit.  
+- Fixed effects:  
+  - Group (Control vs Laser)  
+  - Visit (1 vs 2)  
+  - Time after visit (8 h, 24 h, 48 h, 7 d; can be factor)  
+  - Group × Visit  
+  - Group × Time  
+  - Visit × Time (optional)  
+  - Group × Visit × Time (only if needed; otherwise treat interaction more simply).  
+- Random effects:  
+  - Random intercept for patient (and optionally random slope for time after visit).  
+- Correlation structure:  
+  - Within-subject correlation handled by the random effects; can also specify an AR(1) residual structure if needed.  
+
+Purpose:  
+- To assess whether the trajectory of pain over time differs between laser and control groups across visits and time points.  
+
+Why appropriate:  
+1) Accounts for correlated repeated measurements within patients (multiple time points and visits).  
+2) Handles unbalanced data and missing observations without resorting to complete-case analysis.  
+3) Models the whole time-course, increasing power and reducing type I error compared with multiple pairwise tests.  
+
+Why it may not be appropriate:  
+- VAS is bounded (0–10) and often skewed; LMM assumes residuals are approximately normal and homoscedastic, which may be violated.  
+
+When this test should NOT be used:  
+- If VAS scores are extremely skewed with many zeros, or if residual diagnostics show severe non-normality and heteroscedasticity that cannot be resolved via transformations.  
+
+Alternative if assumptions are violated:  
+- Use GLMM with appropriate distribution:  
+  - Ordinal logistic mixed model for categorized pain (none/mild/moderate/severe)  
+  - Or a nonparametric repeated-measures method (see A4).  
+
+Option 2: GLMM for ordinal pain  
+
+Model:  
+- Cumulative logit mixed model (proportional odds) with same fixed and random effects structure, outcome = pain category.  
+
+Advantages:  
+- Respects ordinal nature of pain categories; does not assume equal intervals.  
+
+---
+
+A4. Nonparametric repeated-measures alternative (if LMM not feasible)  
+
+Test:  
+- For each visit separately, use a nonparametric approach across time:  
+  - Friedman test (within each group) to test change over time (8 h, 24 h, 48 h, 7 d)  
+  - Mann–Whitney U at each time point for between-group comparisons, with multiplicity adjustment (e.g., Holm).  
+
+Purpose:  
+- To compare repeated pain scores across time within and between groups without assuming normality.  
+
+Why appropriate:  
+1) VAS pain scores in this study are skewed and include many zeros, making nonparametric tests attractive.  
+2) Friedman test explicitly accounts for within-subject dependency for time within a visit.  
+
+Why it may not be appropriate:  
+- Does not jointly model time and group interactions; limited in interpreting complex patterns; multiple tests inflate type I error.  
+
+When NOT to use:  
+- When sample size is large and a mixed model can be properly specified and interpreted; nonparametric tests become less efficient and harder to interpret.  
+
+Alternative if assumptions violated:  
+- If Friedman’s test assumptions (e.g., data at all time points) are violated due to missing data, use LMM/GLMM that can handle missingness under MAR (missing at random).  
+
+---
+
+A5. Primary analysis of analgesic use between groups  
+
+Test:  
+- For each time point and visit:  
+  - Fisher’s exact test (or chi-square) comparing proportion of patients taking analgesics in control vs laser group.  
+
+Purpose:  
+- To evaluate whether laser treatment reduces the need for analgesics.  
+
+Why appropriate:  
+1) Analgesic use is binary; Fisher’s exact test/chi-square is standard for comparing proportions.  
+2) Small event numbers (especially in laser group) favor Fisher’s exact test.  
+
+Why it may not be appropriate:  
+- Multiple independent tests for each time point ignore repeated measures and correlations (same patients contributing multiple time points).  
+
+When NOT to use:  
+- As the only analysis if you want a unified estimate of treatment effect over time; repeated-measures logistic models are superior.  
+
+Alternative if assumptions violated:  
+- Use a mixed-effects logistic regression:  
+  - Outcome: analgesic use (yes/no)  
+  - Fixed: group, visit, time, interactions  
+  - Random intercept for patient.  
+
+This model should be preferred if enough events occur; Fisher’s exact can be used as a sensitivity analysis for key time points (e.g., 24 h).  
+
+---
+
+A6. Within-group change in pain between visits  
+
+Test:  
+- Wilcoxon signed-rank test (or paired t-test if distribution ~normal) comparing VAS at visit 1 vs visit 2 at each time point, within each group.  
+
+Purpose:  
+- To assess whether pain after obturation (visit 2) differs from pain after first-stage disinfection (visit 1) within each treatment group.  
+
+Why appropriate:  
+1) Directly addresses the secondary question: whether the second visit is less painful than the first.  
+2) Within-patient paired comparison is well captured by Wilcoxon signed-rank when data are non-normal.  
+
+Why it may not be appropriate:  
+- Does not adjust for multiple comparisons across time points and groups; potential type I error inflation.  
+
+When NOT to use:  
+- When the primary mixed model already includes visit as a factor and shows no interaction; repeated simple tests may be redundant and confusing.  
+
+Alternative if assumptions violated:  
+- Use nonparametric repeated-measures models (e.g., all timepoints in a mixed model) where visit is a factor; interpret visit’s main effect.  
+
+---
+
+A7. Multiplicity control  
+
+Method:  
+- Adjust p-values for multiple comparisons when conducting multiple pairwise tests (e.g., Bonferroni or Holm).  
+
+Purpose:  
+- To control family-wise error rate due to multiple timepoint-specific tests.  
+
+Why appropriate:  
+1) The study assesses multiple time points and visits; uncorrected multiple testing increases false positives.  
+2) Enhances credibility of reported significant findings.  
+
+Why it may not be appropriate:  
+- Overly conservative corrections (e.g., Bonferroni) may reduce power in small RCT.  
+
+When NOT to use:  
+- If the primary analysis is a single mixed model with a prespecified primary contrast (e.g., difference at 24 h after visit 1), and other analyses are explicitly labelled exploratory.  
+
+Alternative:  
+- Use hierarchical testing or focus on prespecified primary endpoint (e.g., 24 h after first visit).  
+
+--------------------------------  
+CATEGORY B – RECOMMENDED TESTS  
+--------------------------------  
+
+B1. Mixed-effects logistic regression for analgesic use over time  
+
+Test:  
+- Generalized linear mixed model (GLMM) with logit link.  
+
+Model:  
+- Outcome: analgesic use (yes/no) at each time point and visit.  
+- Fixed: group, visit, time, and interaction(s).  
+- Random: patient intercept.  
+
+Purpose:  
+- To estimate overall and time-specific odds ratios for analgesic use comparing laser vs control, accounting for repeated measures.  
+
+Why appropriate:  
+1) Analgesic use is sparse and repeated within patient; GLMM appropriately models correlated binary data.  
+2) Provides interpretable effect sizes (odds ratios with CI) over the whole trajectory.  
+
+Why it may not be appropriate:  
+- If events are extremely rare (e.g., zero events in one group at most times), model may not converge or yield unstable estimates.  
+
+When NOT to use:  
+- With small N and very low event counts; simpler Fisher’s tests at key timepoints are more stable.  
+
+Alternative if assumptions violated:  
+- Use penalized logistic regression (e.g., Firth’s correction) at key time points or exact logistic regression for single-time analyses.  
+
+---
+
+B2. Model checking and diagnostics for mixed models  
+
+Tests / Methods:  
+- Residual diagnostics for LMM (plots of residuals vs fitted values, Q-Q plots).  
+- Influence diagnostics (e.g. Cook’s distance, leverage).  
+- For GLMM: assess goodness-of-fit (e.g., via deviance, conditional residuals), check proportional odds assumption for ordinal models.  
+
+Purpose:  
+- To ensure modelling assumptions (normality, homoscedasticity, link function adequacy) are reasonably met.  
+
+Why appropriate:  
+1) Validates the primary model; avoids misleading conclusions from misspecified models.  
+2) May indicate need for transformation or alternative modelling (e.g., ordinal rather than continuous).  
+
+Why it may not be appropriate:  
+- Very small datasets can yield noisy diagnostics that are hard to interpret.  
+
+When NOT to use:  
+- Never skip entirely, but interpret cautiously with small samples.  
+
+Alternative if assumptions violated:  
+- Use robust methods (e.g., rank-based methods, bootstrapped SEs), or switch to GLMM with appropriate distribution.  
+
+---
+
+B3. Effect size estimation with confidence intervals  
+
+Tests / Methods:  
+- For VAS:  
+  - At key timepoints (e.g., 24 h), estimate mean difference (Laser – Control) with 95% CI.  
+  - From LMM, report estimated marginal means and contrasts with 95% CI.  
+- For categorical outcomes:  
+  - Relative risks or odds ratios (with CIs) for analgesic use.  
+
+Purpose:  
+- To quantify the magnitude and precision of the treatment effect, not just p-values.  
+
+Why appropriate:  
+1) Clinical relevance depends on effect size; PP differences of small magnitude may be statistically but not clinically meaningful.  
+2) Confidence intervals communicate uncertainty and support evidence-based interpretation.  
+
+Why it may not be appropriate:  
+- None; effect size reporting is standard and strongly recommended.  
+
+When NOT to use:  
+- N/A.  
+
+Alternative if assumptions violated:  
+- Use nonparametric effect sizes, e.g., Hodges–Lehmann median difference, probability of superiority, or risk difference with CI via exact methods.  
+
+---
+
+B4. Sensitivity analyses  
+
+Tests:  
+- Sensitivity to alternative outcome definitions:  
+  1) Dichotomize VAS (e.g., PP present vs none, or moderate/severe vs none/mild) and analyze using logistic regression / GLMM.  
+  2) Analyze only 24 h pain, pre-specified as primary timepoint.  
+
+Purpose:  
+- To evaluate robustness of conclusions to different analytic choices.  
+
+Why appropriate:  
+1) Pain measurement may be subjective and skewed; alternate dichotomization mirrors clinical decisions (e.g., moderate/severe pain as “clinically significant”).  
+2) Focusing on 24 h (typical peak pain) aligns with clinical expectations and reduces multiplicity.  
+
+Why it may not be appropriate:  
+- Dichotomization reduces information and power.  
+
+When NOT to use:  
+- If sample size is too small to support reliable logistic modelling.  
+
+Alternative if assumptions violated:  
+- Use exact methods or permutation tests for dichotomized outcomes.  
+
+---
+
+B5. Exploratory subgroup or covariate-adjusted analyses (if justified)  
+
+Tests:  
+- LMM/GLMM including age and sex as covariates; optionally test for interaction(s).  
+
+Purpose:  
+- To explore whether the laser effect is consistent across age/sex; adjust for potential residual imbalance.  
+
+Why appropriate:  
+1) Even in RCTs, covariate adjustment can increase precision and account for chance imbalances.  
+2) Age and sex may influence pain thresholds; adjusting helps isolate intervention effects.  
+
+Why it may not be appropriate:  
+- With N=60, multiple interaction tests may be underpowered and exploratory only.  
+
+When NOT to use:  
+- When sample size is too small to yield stable interaction estimates; do not overinterpret subgroup findings.  
+
+Alternative if assumptions violated:  
+- Conduct simple stratified descriptive analyses (e.g., pain vs group within broad age strata) without formal testing.  
+
+--------------------------------  
+CATEGORY C – OPTIONAL TESTS  
+--------------------------------  
+
+C1. Time-to-first-analgesic analysis  
+
+Test:  
+- Kaplan–Meier survival curves with log-rank test; Cox proportional hazards model if appropriate.  
+
+Outcome:  
+- Time from each visit to first analgesic intake; censor patients with no analgesic use at last follow-up.  
+
+Purpose:  
+- To compare timing of analgesic use between groups, not just occurrence.  
+
+Why appropriate:  
+1) Utilizes detailed information on time-to-event (as recorded) rather than simple point-prevalence.  
+2) Survival analysis is ideal for time-to-first-event outcomes.  
+
+Why it may not be appropriate:  
+- With rare events and many patients never requiring analgesics, curves may be flat and comparisons unstable.  
+
+When NOT to use:  
+- If event numbers are extremely small (e.g., no events in the laser group), survival models become uninformative.  
+
+Alternative if assumptions violated:  
+- Report descriptive statistics of time-to-analgesic (median, range) and use nonparametric tests (e.g., exact Wilcoxon) where possible.  
+
+---
+
+C2. Ordinal regression at specific key timepoints  
+
+Test:  
+- Ordinal logistic regression (proportional odds) at 24 h after each visit.  
+
+Purpose:  
+- To compare full distribution of pain categories between groups at key timepoints.  
+
+Why appropriate:  
+1) Models ordinal categories without collapsing; interprets odds of higher pain categories.  
+2) 24 h is a clinically meaningful peak; focusing here simplifies interpretation.  
+
+Why it may not be appropriate:  
+- Small cell counts in severe/moderate categories can violate proportional odds assumptions and cause instability.  
+
+When NOT to use:  
+- When some categories are empty for one group (e.g., no moderate or severe pain in laser group), leading to convergence issues.  
+
+Alternative if assumptions violated:  
+- Collapse categories (e.g., none vs any pain; none/mild vs moderate/severe) and use binary logistic regression or exact tests.  
+
+---
+
+C3. Graphical depiction of pain trajectories  
+
+Methods:  
+- Line plots with means or medians and error bars by group, visit, and time.  
+- Boxplots or violin plots for VAS at each time x group.  
+
+Purpose:  
+- To visualize differences in pain profiles over time; helps clinicians understand the shape and magnitude of treatment effect.  
+
+Why appropriate:  
+1) Graphs often reveal patterns (e.g., differences at early vs late time points) not obvious from tables.  
+2) Aid in communicating results to clinicians and patients.  
+
+Why it may not be appropriate:  
+- None; graphs are generally beneficial.  
+
+When NOT to use:  
+- n/a; just constrain to key plots to avoid overcomplexity.  
+
+Alternative:  
+- None required.  
+
+---
+
+TASK 3: INAPPROPRIATE TESTS AND WHY  
+
+Below are examples of tests that should not be used (or should be avoided as primary methods) for this study, with rationale.
+
+1. Repeated-measures ANOVA (rm-ANOVA) without modelling between visits and unbalanced data  
+- Why inappropriate:  
+  - Assumes sphericity and normally distributed residuals; VAS with many zeros and skewness, plus small N, violate these assumptions.  
+  - Does not handle missing data well; requires complete cases across all time points, leading to loss of data.  
+- When NOT to use:  
+  - As the main analysis; only consider if all assumptions hold strictly and data are complete (unlikely here).  
+- Alternative: LMM as described above.  
+
+2. Simple unadjusted multiple independent t-tests at each time point  
+- Why inappropriate:  
+  - Ignores within-subject correlation and multiplicity; inflated type I error.  
+  - VAS may not satisfy normality; sample size modest.  
+- Alternative: Mann–Whitney U or mixed models with multiplicity control.  
+
+3. One-way ANOVA or Kruskal–Wallis treating each timepoint as independent observations  
+- Why inappropriate:  
+  - Repeated measures from the same individual are not independent; violates independence assumption.  
+- Alternative: Friedman test or mixed models.  
+
+4. Pearson correlation between time and pain within group treated as cross-sectional  
+- Why inappropriate:  
+  - Treats repeated measurements as independent; non-independent errors.  
+- Alternative: LMM with time as fixed effect and patient random effect.  
+
+5. Logistic regression ignoring clustering (patient-level repeated measures)  
+- Why inappropriate:  
+  - If applied to pooled repeated time points as if independent, underestimates standard errors and inflates type I error.  
+- Alternative: mixed-effects logistic regression or GEE.  
+
+6. Parametric tests on raw VAS assuming equal intervals and perfect normality without checking  
+- Why inappropriate:  
+  - VAS is bounded; distribution often skewed; parametric assumptions may be violated.  
+- Alternative: Nonparametric tests or generalized models.  
+
+7. Using McNemar’s test for between-group comparisons  
+- Why inappropriate:  
+  - McNemar’s is for paired binary data (same subjects measured under two conditions); here, groups are independent.  
+- Alternative: Fisher’s exact/chi-square, or mixed logistic models.  
+
+8. MANOVA treating timepoints as independent outcome variables with no correlation structure  
+- Why inappropriate:  
+  - MANOVA requires multivariate normality and large sample sizes; rare for this type of outcome.  
+- Alternative: LMM/GLMM.  
+
+---
+
+TASK 4: SUMMARY – JUSTIFICATION OF OVERALL ANALYTICAL APPROACH  
+
+- The study is a two-arm parallel RCT with repeated measures of pain (VAS) at multiple time points after two visits within the same patients.  
+- Pain scores are bounded, likely skewed, and measured repeatedly within patients, so standard independent-sample tests at each time point are suboptimal.  
+- A mixed-model framework (LMM or GLMM) naturally accommodates:  
+  - The correlation among repeated measures within each patient.  
+  - Unbalanced or missing data if present.  
+  - Multiple timepoints and visits, allowing estimation of group × time and group × visit effects in a single coherent model.  
+- Nonparametric alternatives (Mann–Whitney, Wilcoxon, Friedman, Fisher’s exact) remain useful as supplemental or sensitivity analyses, particularly given the modest sample size and non-normal distributions.  
+- The planned analyses prioritize:  
+  - A single, prespecified primary analysis (mixed model for VAS, with focus on 24 h pain as key endpoint).  
+  - Complementary analyses for analgesic use and for pain category distributions.  
+  - Appropriate multiplicity control and model diagnostics.  
+
+This approach yields statistically sound and clinically interpretable conclusions about whether intra-canal 980-nm diode laser treatment reduces post-operative pain and analgesic use after RCT in single-rooted teeth with apical periodontitis.

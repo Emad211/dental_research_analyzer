@@ -1,0 +1,354 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.2
+PDF    : splitted_incidence_of_postoperative_pain_after_single_visit.9.pdf
+Status : ok
+Time   : 20260508_070511
+══════════════════════════════════════════════════════════════════════
+
+## TASK 1 — INFORMATION EXTRACTION (study characteristics)
+
+### Study identification
+- **Title:** Incidence of postoperative pain after single-visit and multiple-visit root canal therapy: A randomized controlled trial  
+- **Setting:** Department of Conservative Dentistry and Endodontics, Hitkarini Dental College, India  
+- **Ethics/registration:** IEC approval; registered in CTRI (**CTRI/2019/05/019067**)  
+
+### Objectives
+- **Primary objective:** Compare **post-obturation pain prevalence** at **6 h, 12 h, 1 day, and 2 days** after treatment between:
+  - **Single-visit RCT (SV)** vs **Two-visit RCT (MV)**
+- **Secondary objective:** Compare **tenderness on percussion** **1 week after obturation** between groups.
+
+### Study design
+- **Design:** **Parallel-group randomized controlled trial (RCT)**.
+- **Unit of randomization/analysis:** **Patient/tooth** (mandibular first molar).
+- **Operator:** All RCTs performed by **principal investigator** (single operator).
+
+### Participants
+- **Screened:** 90  
+- **Excluded pre-randomization:** 15 not meeting inclusion + 5 not consenting  
+- **Randomized/recruited:** **70** (35 per group)
+
+#### Inclusion criteria (as reported)
+- Consent for planned SV or two-visit treatment
+- **Moderately curved root canals**
+- Tooth type implied by aim: **mandibular first molar** requiring RCT
+
+#### Exclusion criteria (as reported)
+- Any systemic disease
+- Pregnancy
+- Calcified canals, unusual canal morphology, extra root, or procedural error during treatment
+- Periapical radiolucency **> 0.5 cm**
+- Took antibiotics and/or analgesics right after first appointment
+- **Post-randomization exclusion:** if rescue medication taken within **48 h** after treatment → excluded from study (introduces attrition/non-ITT concerns)
+
+### Interventions / Groups
+- **Group 1 (SV):** Cleaning/shaping + **obturated same visit**
+  - Obturation: gutta-percha + **Sealapex** sealer, **lateral compaction**
+  - Temporary restoration; post-obturation radiograph
+- **Group 2 (Two-visit):**
+  - Visit 1: cleaning/shaping + **calcium hydroxide** intracanal medicament; provisional seal
+  - Visit 2 (after **1 week**): obturation same method/materials as Group 1
+- **Rescue medication:** **Ibuprofen** prescribed; advised only for severe pain
+
+### Clinical protocol (key standardizations)
+- Anesthesia: inferior alveolar nerve block with 2% lidocaine + 1:80,000 epinephrine
+- Isolation: rubber dam
+- WL: apex locator (Root ZX) + radiographic confirmation
+- Instrumentation: hybrid hand K-files + S-one NiTi rotary
+- Irrigation: 3% NaOCl + saline; 17% EDTA; final saline
+- Apical preparation: ≥ 3 sizes larger than initial apical file
+- Restoration: composite after 1 week of obturation
+
+### Outcomes, variables, measurement schedule
+1. **Pain**
+   - **Preoperative pain:** recorded in clinic using **Heft-Parker VAS (HP VAS)**
+   - **Postoperative pain:** recorded by patient on HP VAS at:
+     - **6 hours**, **12 hours**, **1 day**, **2 days** (post-obturation)
+   - Data collection: patient takes form home; **telephone reminder**
+   - Variable type: HP VAS is often treated as continuous, but is ordinal/interval-like; distribution frequently skewed with many zeros.
+2. **Tenderness on percussion**
+   - Assessed at **1 week after obturation**
+   - Scale not described (likely binary present/absent or ordinal grading)
+
+### Sample size planning (as reported)
+- Formula for comparing two means:
+  \[
+  n=\frac{(Z_{\alpha}+Z_{\beta})^{2}\,2s^{2}}{(\bar{x}_{1}-\bar{x}_{2})^{2}}
+  \]
+- **α=0.05**, **power=80%**
+- Computed **30/group**, inflated to **35/group** for dropouts
+
+---
+
+## TASK 2 — STATISTICAL ANALYSIS PLAN
+
+### General principles (apply to all analyses)
+- **Analysis population:** Prefer **intention-to-treat (ITT)** (all randomized). The paper’s planned exclusion of rescue-medication users within 48h is **post-randomization** and risks bias; if such exclusions occur, report both:
+  - **Primary:** ITT (include rescue-medication users; treat pain as observed; add sensitivity analysis)
+  - **Sensitivity:** Per-protocol (excluding major protocol deviations), clearly justified
+- **Descriptive stats:** mean±SD and/or median (IQR) for pain; counts (%) for categorical.
+- **Baseline comparability:** summarize demographics/clinical characteristics if available (age/sex/preop pain/periapical status etc.—not provided in excerpt but should be collected/checked).
+- **Multiplicity:** primary outcome assessed at 4 time points → control family-wise error or specify hierarchical testing.
+- **Missing data:** pain diaries may be incomplete; plan for missingness:
+  - If using mixed models: valid under MAR (missing at random) with appropriate modeling
+  - Otherwise: multiple imputation as sensitivity
+
+---
+
+# CATEGORY A — MANDATORY (without these the analysis is incomplete)
+
+## A1) Linear Mixed-Effects Model (LMM) or Generalized Linear Mixed Model (GLMM) for repeated HP VAS pain
+**Test/model name:** Repeated-measures **mixed-effects model** (time, group, group×time; subject random intercept).  
+- Use **LMM** if residuals acceptable after transformation; use **GLMM** (e.g., Gamma/log, Tweedie, or ordinal mixed model) if pain is skewed/zero-inflated.
+
+**Purpose**
+- Compare **post-obturation pain trajectories** across time between SV vs two-visit groups.
+
+**Why appropriate (≥2 reasons)**
+1. Pain is measured **repeatedly within the same patient**, so observations are correlated; mixed models account for this.
+2. Tests the clinically relevant question: **does pain differ by group over time** (group×time interaction) rather than isolated time-point tests.
+3. Can accommodate **unequal variances** and **incomplete follow-up** (under MAR) better than complete-case ANOVA.
+
+**Why it may not be appropriate (≥1 reason)**
+- HP VAS may be **non-normal, bounded, and zero-inflated**, making a standard LMM with normal errors poorly fitting.
+
+**When this test should NOT be used**
+- When pain is clearly **ordinal with heavy floor effects** and you cannot justify treating it as continuous, and no suitable transformation resolves this.
+
+**Alternative if assumptions are violated**
+- **Ordinal mixed-effects model** (cumulative logit) treating HP VAS in ordered categories.
+- **GLMM with Gamma (log link)** for positive pain plus a **two-part (hurdle) model** if many zeros.
+- **Nonparametric longitudinal methods** (e.g., rank-based methods) as a fallback.
+
+**Implementation details**
+- Fixed effects: group (SV vs MV), time (categorical: 6h/12h/1d/2d), group×time.
+- Covariate adjustment (if collected): **preoperative pain** (strong predictor), age/sex, periapical status.
+- Report: estimated marginal means at each time, differences with 95% CI, interaction P value.
+
+---
+
+## A2) Between-group comparison of tenderness on percussion at 1 week
+**Test name:** **Chi-square test of independence** (or **Fisher’s exact** if expected counts small).
+
+**Purpose**
+- Compare **proportion with tenderness** at 1 week between SV and MV groups.
+
+**Why appropriate (≥2 reasons)**
+1. Outcome is categorical (likely **present/absent**).
+2. Groups are **independent** due to randomization.
+
+**Why it may not be appropriate**
+- If tenderness is recorded on an **ordinal scale** (none/mild/moderate/severe), chi-square loses ordering information.
+
+**When this test should NOT be used**
+- When expected cell counts are too small for chi-square and Fisher’s exact is not used; or when outcome is ordinal and you want an effect estimate respecting order.
+
+**Alternative if assumptions are violated**
+- **Fisher’s exact test** (small counts).
+- **Ordinal logistic regression** (if ordinal tenderness grading).
+- **Log-binomial/Poisson regression with robust SE** to estimate risk ratio.
+
+---
+
+## A3) Primary estimand reporting: effect sizes with confidence intervals
+**Test name:** Not a “test” per se, but **mandatory reporting** of effect sizes:
+- Pain: mean/median differences at each time, and/or overall trajectory difference
+- Tenderness: risk difference, risk ratio, or odds ratio with 95% CI
+
+**Purpose**
+- Provide clinically interpretable magnitude of effect.
+
+**Why appropriate**
+1. P-values alone don’t quantify clinical relevance.
+2. Required for transparent RCT reporting (CONSORT-aligned).
+
+**Why it may not be appropriate**
+- Some effect measures (e.g., OR) can be misleading when outcomes are common.
+
+**When it should NOT be used**
+- Don’t preferentially report odds ratios if tenderness prevalence is high and RR/RD is more interpretable.
+
+**Alternatives**
+- Use **risk ratio** (Poisson robust) or **risk difference** (binomial identity model).
+
+---
+
+# CATEGORY B — RECOMMENDED (improves rigor)
+
+## B1) Baseline comparability checks (descriptive + limited inference)
+**Test name:** 
+- Continuous baseline variables: **t-test** or **Mann–Whitney U**
+- Categorical: **Chi-square/Fisher**
+
+**Purpose**
+- Describe balance after randomization; identify large imbalances that may warrant covariate adjustment.
+
+**Why appropriate**
+1. Even with randomization, small samples can show imbalance by chance.
+2. Helps justify adjusted analyses (e.g., controlling for preop pain).
+
+**Why it may not be appropriate**
+- Significance testing of baseline variables is often discouraged because imbalance testing is not the goal of randomization.
+
+**When it should NOT be used**
+- Do not use baseline P-values to decide “success” of randomization or to decide inclusion/exclusion of covariates mechanically.
+
+**Alternative**
+- Prefer **standardized mean differences (SMDs)** and clinical judgment.
+
+---
+
+## B2) ANCOVA-style adjustment for preoperative pain (as covariate)
+**Test/model name:** Mixed-effects model including **preoperative pain** as covariate.
+
+**Purpose**
+- Increase precision and control for an important prognostic factor.
+
+**Why appropriate**
+1. Preoperative pain strongly predicts postoperative pain in endodontics.
+2. Adjustment improves power/precision even in RCTs.
+
+**Why it may not be appropriate**
+- If preoperative pain is missing for many participants or measured inconsistently.
+
+**When it should NOT be used**
+- If covariate is post-randomization (not the case here) or affected by treatment.
+
+**Alternative**
+- Stratified analysis by baseline pain category; multiple imputation for missing baseline pain.
+
+---
+
+## B3) Multiple-comparisons control for 4 time points
+**Test name:** **Holm correction** (family-wise) or **Benjamini–Hochberg** (FDR) for pairwise time-point contrasts.
+
+**Purpose**
+- Limit false positives when comparing groups at multiple times.
+
+**Why appropriate**
+1. Four post-op time points increase type I error if tested separately.
+2. Encourages pre-specification of primary contrast(s) (e.g., 24h peak pain).
+
+**Why it may not be appropriate**
+- If the primary inference is based on the **global group×time interaction** from the mixed model, additional correction may be unnecessary for that global test.
+
+**When it should NOT be used**
+- Avoid blanket correction if you pre-specify one primary time point/contrast and treat others as secondary/exploratory.
+
+**Alternative**
+- Hierarchical testing sequence (interaction first; then time-specific contrasts only if interaction significant).
+
+---
+
+## B4) Sensitivity analysis for rescue medication use (post-randomization)
+**Test/model name:** 
+- Include a binary indicator “rescue medication within 48h” as outcome/mediator; or
+- **Two-part approach**: (i) pain outcome, (ii) rescue-med use as separate endpoint.
+
+**Purpose**
+- Address bias introduced by excluding those who took analgesics; quantify whether groups differ in rescue-med need.
+
+**Why appropriate**
+1. Rescue medication is clinically meaningful and related to pain severity.
+2. Excluding these patients biases toward lower pain and breaks randomization.
+
+**Why it may not be appropriate**
+- Rescue medication may be rare; low event counts limit inference.
+
+**When it should NOT be used**
+- Don’t adjust for rescue medication as a covariate in the primary model if it lies on the causal pathway (post-treatment mediator), unless doing mediation-specific analyses.
+
+**Alternative**
+- Treat rescue medication as part of a **composite endpoint** (“moderate/severe pain or rescue med”) as sensitivity.
+
+---
+
+# CATEGORY C — OPTIONAL (supplementary insights)
+
+## C1) Area Under the Curve (AUC) for pain over 0–48h
+**Test name:** Compare **AUC** between groups (t-test/Mann–Whitney or regression).
+
+**Purpose**
+- Summarize overall pain burden across repeated measures into one metric.
+
+**Why appropriate**
+1. Clinically intuitive “total pain experience.”
+2. Avoids multiple time-point testing.
+
+**Why it may not be appropriate**
+- AUC requires reasonably complete pain series; missing points complicate calculation.
+
+**When it should NOT be used**
+- When missingness is substantial and not handled appropriately.
+
+**Alternative**
+- Model-based estimated AUC from mixed model predictions; multiple imputation.
+
+---
+
+## C2) Time-to-no-pain analysis
+**Test name:** **Kaplan–Meier** curves + **log-rank test**; **Cox regression**.
+
+**Purpose**
+- Compare how quickly patients become pain-free between groups.
+
+**Why appropriate**
+1. Uses timing information (6h/12h/1d/2d) in a clinically interpretable way.
+2. Handles censoring if pain persists beyond follow-up.
+
+**Why it may not be appropriate**
+- Pain is only assessed at discrete time points; event time is interval-censored.
+
+**When it should NOT be used**
+- If you cannot handle interval censoring and simply assign event times naively.
+
+**Alternative**
+- **Discrete-time survival model** or methods for **interval-censored** data.
+
+---
+
+## C3) Subgroup / effect-modification (pre-specified only)
+**Test name:** Interaction terms (e.g., group×baseline pain category; group×sex).
+
+**Purpose**
+- Explore whether treatment effect differs by baseline pain or other factors.
+
+**Why appropriate**
+1. Could identify clinically relevant heterogeneity (e.g., symptomatic vs asymptomatic).
+2. Supports hypothesis generation for future trials.
+
+**Why it may not be appropriate**
+- Small sample (70) → underpowered; high risk of false positives.
+
+**When it should NOT be used**
+- Post hoc subgrouping without pre-specification and without interaction testing.
+
+**Alternative**
+- Report descriptively; meta-analytic follow-up in larger datasets.
+
+---
+
+## TASK 3 — INAPPROPRIATE TESTS (should NOT be used)
+
+1. **Separate independent t-tests at each time point without multiplicity control**
+   - Inflates type I error; ignores within-subject correlation; inefficient vs mixed model.
+
+2. **One-way ANOVA treating the four time points as independent groups**
+   - Violates independence (same patients repeated measures).
+
+3. **Paired t-test within each group over time as primary analysis**
+   - Doesn’t answer between-group comparative question; multiple testing; ignores interaction.
+
+4. **Correlation (Pearson/Spearman) between group code and pain**
+   - Group is not a continuous variable; correlation is not an appropriate comparative framework.
+
+5. **Per-protocol-only analysis excluding rescue-med users as the sole primary analysis**
+   - Post-randomization exclusion introduces selection bias and undermines randomization.
+
+6. **Linear regression on pooled repeated observations without clustering/robust SE**
+   - Underestimates SE due to within-subject correlation.
+
+---
+
+## TASK 4 — SUMMARY (overall analytical approach)
+
+Use a **randomized parallel-group framework** with **repeated-measures modeling** for postoperative HP VAS pain across 6h–48h, emphasizing the **group×time** effect and reporting **time-specific marginal mean differences with 95% CIs** while addressing multiplicity. Analyze **1-week percussion tenderness** with a **binary/ordinal group comparison** (chi-square/Fisher or ordinal regression). Preserve randomization via **ITT**, and handle key practical issues (missing diaries and rescue-medication use) with **pre-specified sensitivity analyses**.

@@ -1,0 +1,134 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-4o
+PDF    : splitted_incidence_of_postoperative_pain_after_single_visit.9.pdf
+Status : ok
+Time   : 20260508_070511
+══════════════════════════════════════════════════════════════════════
+
+### TASK 1: INFORMATION EXTRACTION
+
+#### Study Characteristics:
+1. **Study Design**: 
+   - Randomized Controlled Trial (RCT)
+   - Parallel group design
+
+2. **Objective**:
+   - Primary: Compare the prevalence of postobturation pain at 6-, 12-hour, 1-, and 2-day intervals after single-visit (SV) versus two-visit (MV) root canal therapy (RCT) on mandibular first molars.
+   - Secondary: Compare tenderness to percussion after 1 week of treatment.
+
+3. **Study Groups**:
+   - Group 1: Single-visit RCT (SV group, n=35)
+   - Group 2: Two-visit RCT (MV group, n=35)
+
+4. **Sample Size**:
+   - Initial estimation: 30 patients per group
+   - Adjusted for dropouts: 35 patients per group
+   - Total: 70 patients
+
+5. **Inclusion Criteria**:
+   - Patients consenting to SV or MV treatment
+   - Moderately curved root canals
+
+6. **Exclusion Criteria**:
+   - Systemic diseases
+   - Pregnancy
+   - Teeth with calcified canals, unusual canal morphology, extra roots, or procedural errors
+   - Teeth with periapical radiolucency >0.5 cm
+   - Patients taking antibiotics/analgesics immediately after the first appointment
+
+7. **Randomization**:
+   - Random list generation to allocate patients into two groups (SV and MV).
+
+8. **Intervention**:
+   - **SV Group**: RCT completed in one visit, obturation with gutta-percha and Sealapex sealer.
+   - **MV Group**: RCT completed in two visits, calcium hydroxide dressing placed as an interappointment medicament, obturation in the second visit using the same materials as SV.
+   - Both groups received ibuprofen as rescue medication for severe pain.
+
+9. **Outcome Variables**:
+   - **Primary Outcome**: Postoperative pain (measured using Heft-Parker Visual Analog Scale [HP VAS]) at 6-, 12-hour, 1-, and 2-day intervals.
+   - **Secondary Outcome**: Tenderness to percussion after 1 week.
+
+10. **Data Collection Methods**:
+    - Pain levels recorded by patients on HP VAS forms at specified intervals.
+    - Telephonic reminders to ensure compliance.
+    - Tenderness to percussion evaluated clinically after 1 week.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+1. **Test Name**: Independent Samples t-test
+   - **Purpose**: Compare mean pain scores between SV and MV groups at each time interval (6-, 12-hour, 1-, and 2-day).
+   - **Why Appropriate**: 
+     - Continuous outcome variable (pain scores).
+     - Two independent groups (SV vs. MV).
+   - **Why It May Not Be Appropriate**: Assumes normality of pain score distribution.
+   - **When This Test Should NOT Be Used**: If pain score data are not normally distributed.
+   - **Alternative**: Mann-Whitney U test (nonparametric equivalent).
+
+2. **Test Name**: Chi-Square Test
+   - **Purpose**: Compare the proportion of patients experiencing tenderness to percussion between SV and MV groups after 1 week.
+   - **Why Appropriate**:
+     - Categorical outcome variable (presence/absence of tenderness).
+     - Two independent groups.
+   - **Why It May Not Be Appropriate**: Assumes expected cell counts ≥5.
+   - **When This Test Should NOT Be Used**: If expected cell counts are too small.
+   - **Alternative**: Fisher’s Exact Test.
+
+#### CATEGORY B – RECOMMENDED
+1. **Test Name**: Repeated Measures ANOVA
+   - **Purpose**: Assess changes in pain scores over time (6-, 12-hour, 1-, and 2-day) within and between groups.
+   - **Why Appropriate**:
+     - Longitudinal data (repeated measures of pain scores).
+     - Allows for interaction testing (time × group).
+   - **Why It May Not Be Appropriate**: Assumes sphericity.
+   - **When This Test Should NOT Be Used**: If sphericity assumption is violated.
+   - **Alternative**: Linear mixed-effects model.
+
+2. **Test Name**: Kaplan-Meier Survival Analysis
+   - **Purpose**: Assess time to resolution of pain (pain score = 0) between groups.
+   - **Why Appropriate**:
+     - Time-to-event data (resolution of pain).
+     - Accounts for censored data (e.g., patients lost to follow-up).
+   - **Why It May Not Be Appropriate**: Assumes proportional hazards.
+   - **When This Test Should NOT Be Used**: If proportional hazards assumption is violated.
+   - **Alternative**: Cox Proportional Hazards Model.
+
+#### CATEGORY C – OPTIONAL
+1. **Test Name**: Logistic Regression
+   - **Purpose**: Identify predictors of tenderness to percussion after 1 week.
+   - **Why Appropriate**:
+     - Binary outcome variable (tenderness: yes/no).
+     - Adjusts for potential confounders (e.g., age, gender).
+   - **Why It May Not Be Appropriate**: Requires sufficient sample size for reliable estimates.
+   - **When This Test Should NOT Be Used**: If sample size is too small.
+   - **Alternative**: Exact Logistic Regression.
+
+2. **Test Name**: Subgroup Analysis
+   - **Purpose**: Explore differences in outcomes based on patient characteristics (e.g., gender, age).
+   - **Why Appropriate**:
+     - Provides additional insights into effect modifiers.
+     - Helps tailor clinical recommendations.
+   - **Why It May Not Be Appropriate**: Risk of multiple comparisons leading to Type I error.
+   - **When This Test Should NOT Be Used**: If subgroups are too small.
+   - **Alternative**: Pool subgroups if sample size is insufficient.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1. **Paired t-test**:
+   - **Why Inappropriate**: Compares dependent (paired) data, but the study involves independent groups (SV vs. MV).
+   
+2. **One-Way ANOVA**:
+   - **Why Inappropriate**: Designed for comparing more than two groups, but this study has only two groups.
+
+3. **Wilcoxon Signed-Rank Test**:
+   - **Why Inappropriate**: Used for paired data, not independent groups.
+
+---
+
+### TASK 4: SUMMARY
+
+The proposed analytical approach ensures robust evaluation of the study’s objectives. The primary analysis focuses on comparing pain scores and tenderness outcomes between SV and MV groups using appropriate parametric or nonparametric tests. Longitudinal methods (e.g., Repeated Measures ANOVA) account for within-subject correlations over time. Recommended and optional analyses (e.g., Kaplan-Meier, logistic regression) enhance the depth of understanding by exploring temporal patterns and predictors. Assumptions for each test will be checked, and alternatives will be employed if necessary. This comprehensive plan balances rigor with feasibility, ensuring valid and actionable conclusions.

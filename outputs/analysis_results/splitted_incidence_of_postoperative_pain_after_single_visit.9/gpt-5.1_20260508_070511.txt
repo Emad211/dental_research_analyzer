@@ -1,0 +1,599 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — OpenAI / gpt-5.1
+PDF    : splitted_incidence_of_postoperative_pain_after_single_visit.9.pdf
+Status : ok
+Time   : 20260508_070511
+══════════════════════════════════════════════════════════════════════
+
+TASK 1: INFORMATION EXTRACTION  
+
+I’ll first structure all methodological information contained in the provided text.
+
+1. Study design  
+- Type: Prospective randomized controlled clinical trial (parallel‑group design)  
+- Objective (primary): Compare post‑obturation pain prevalence at 6 h, 12 h, 1 day, and 2 days between:  
+  - Single-visit RCT (SV; Group 1)  
+  - Two‑visit RCT (MV; Group 2)  
+- Objective (secondary): Compare tenderness on percussion after 1 week of obturation between groups.  
+- Setting: Department of Conservative Dentistry and Endodontics, Hitkarini Dental College, Jabalpur, India.  
+- Trial registration: CTRI/2019/05/019067  
+- Ethics: Institutional Ethics Committee approval obtained.  
+
+2. Participants  
+
+2.1. Population and screening  
+- Target population: Patients seeking root canal therapy (RCT) of mandibular first molars.  
+- Screened: 90 patients  
+- Excluded at screening:  
+  - 15 did not meet inclusion criteria  
+  - 5 did not consent  
+- Enrolled: 70 patients  
+- Informed consent: Obtained from all participants  
+
+2.2. Inclusion criteria  
+- Patients who consented to planned SV or two‑visit treatment  
+- Moderately curved root canals  
+
+2.3. Exclusion criteria  
+- Systemic disease  
+- Pregnancy  
+- Teeth with:  
+  - Calcified canals  
+  - Unusual canal morphology  
+  - Extra root  
+  - Procedural error during treatment  
+- Teeth with periapical radiolucency > 0.5 cm  
+- Patients who took antibiotics and/or analgesics right after the first appointment of therapy  
+
+2.4. Additional post‑randomization exclusion  
+- “If a patient in either group took rescue medication within 48 hours after the treatment, he/she was excluded from the study.”  
+  → This yields potential post‑randomization attrition (exact numbers not provided in the text you gave).  
+
+3. Sample size  
+
+- Sample size calculation formula:  
+  \( n = \frac{(Z_{\alpha} + Z_{\beta})^2 \cdot 2s^2}{(\bar{x}_1 - \bar{x}_2)^2} \)  
+  - α = 0.05 (significance level 5%)  
+  - Power = 80% (β = 0.20)  
+  - Assumes continuous outcome with SD = s and mean difference (x̄1 − x̄2)  
+- Estimated required: 30 patients per group  
+- Inflated: 35 per group (to account for dropouts)  
+- Allocated: 35 SV, 35 MV  
+
+4. Randomization and groups  
+
+- Design: Parallel group trial  
+- Randomization: A random list was generated (method not further specified)  
+- Allocation ratio: 1:1  
+- Groups:  
+  - Group 1: Single‑visit RCT (SV) – n = 35 initially  
+  - Group 2: Two‑visit RCT (MV) – n = 35 initially  
+
+5. Interventions  
+
+5.1. Common protocol elements (both groups)  
+- Operator: All RCTs done by the principal investigator  
+- Local anesthesia: Inferior alveolar nerve block with 2% lidocaine + 1:80,000 epinephrine  
+- Isolation: Rubber dam  
+- Access preparation  
+- Canal negotiation and apical patency: #10 K‑file  
+- Working length: Determined with apex locator (Root ZX, J Morita) and confirmed by periapical radiograph  
+- Cleaning and shaping:  
+  - Hybrid technique: Hand K‑files (Mani Inc., Japan) + S‑one NiTi rotary files (Fanta)  
+  - Tapers: 0.04 and 0.06  
+  - Speed: 350 rpm, slow gentle in‑and‑out  
+  - Irrigation: 3% NaOCl and saline during preparation; 3% NaOCl + 17% EDTA; final irrigant saline  
+  - Apical preparation: Files at least three sizes larger than initial apical file  
+- Drying: Sterile absorbent points  
+- Obturation method (when done):  
+  - Gutta‑percha cones + Sealapex sealer  
+  - Lateral compaction technique  
+- Postobturation radiograph: Taken for all teeth after obturation  
+- Rescue medication: Ibuprofen prescribed; to be taken only for severe pain  
+- Final restoration: After 1 week of obturation, restored with composite (Herculite Précis, Kerr, Asia)  
+
+5.2. Group‑specific procedures  
+- Group 1 (SV):  
+  - Canals obturated in the same visit as cleaning and shaping  
+  - Temporary restoration placed after obturation  
+- Group 2 (two‑visit/MV):  
+  - After cleaning and shaping, interappointment medicament: Calcium hydroxide dressing (RC Cal, Prime Dental Products)  
+  - Sealing temporary: Sterile cotton pellet + provisional filling (Prime TMP‑RS eugenol‑free)  
+  - After 1 week: Canals obturated using same materials/method as Group 1  
+
+5.3. Exclusion related to rescue medication  
+- Any patient using rescue ibuprofen within 48 h after treatment was excluded from the study (per protocol).  
+
+6. Outcomes and measurements  
+
+6.1. Primary outcome: Post‑obturation pain  
+
+- Instrument: Heft‑Parker Visual Analog Scale (HP VAS)  
+  - Type: 170 mm horizontal line VAS, typically categorized into ranges (mild, moderate, severe), but in this text: they clearly collected numerical VAS measurements.  
+- Preoperative pain:  
+  - Assessed using HP VAS in the clinician’s presence to ensure proper understanding  
+- Postoperative pain measurement schedule (same for both groups):  
+  - 6 hours after obturation  
+  - 12 hours after obturation  
+  - 1 day after obturation  
+  - 2 days after obturation  
+- Data collection method:  
+  - Patient given the HP VAS form to record pain at specified times  
+  - Telephonic reminder to ensure adherence  
+  - Forms returned after completion  
+- Stated primary aim: Compare post‑obturation pain prevalence (i.e., proportion with pain) at each timepoint between SV and MV groups.  
+  ⇒ Potential derived outcomes:  
+  - Continuous: HP VAS score at each time point  
+  - Binary: presence vs absence of pain (HP VAS > 0 vs = 0, depending on their operational definition)  
+  - Possibly categorical pain intensity (mild/moderate/severe) if they categorized HP VAS (not explicit here).  
+
+6.2. Secondary outcome: Tenderness to percussion at 1 week  
+
+- Assessment: Clinical evaluation of tenderness to percussion (TTP) at 1 week after obturation  
+- Variable type: Binary (tender vs not tender) per tooth  
+- Timing: Single follow‑up point (1 week) for both groups  
+
+6.3. Additional variables (explicit or implicit)  
+- Group assignment: SV vs MV (binary, between‑subject factor)  
+- Time: Pain measured at 4 post‑op time points (within‑subject factor)  
+- Preoperative pain score (HP VAS) – baseline covariate  
+- Potential exclusion indicator: Rescue medication used within 48 h (yes/no)  
+- It is not specified that any demographic data (e.g., age, sex) or tooth‑specific characteristics (e.g., degree of curvature) were recorded as variables for analysis, though they were part of eligibility assessment.  
+
+7. Data handling and design considerations  
+
+- Design features:  
+  - Parallel‑group RCT  
+  - Blinding: Not described; likely unblinded (open‑label), with self-reported pain outcomes  
+  - Single operator (principal investigator) to reduce operator variability  
+- Follow‑up points:  
+  - Pain: Preop, 6 h, 12 h, 1 day, 2 days  
+  - TTP: 1 week  
+- Attrition: Patients taking rescue medication within 48 h excluded; dropout numbers not given in provided text.  
+
+8. Statistical analysis (as reported)  
+
+- The “Statistical analysis” heading is present but the actual methods are on a page not included in your text; only the heading appears. So we do not know which tests they actually used.  
+
+---
+
+TASK 2: STATISTICAL ANALYSIS PLAN  
+
+Below is a full proposed analysis plan tailored to what is described. I separate tests into Categories A (mandatory), B (recommended), and C (optional). For each test: name, purpose, suitability, limitations, when not to use, and alternatives.
+
+Assumptions:  
+- Continuous HP VAS scores behave approximately as continuous outcome, likely non‑normal and skewed.  
+- Sample size per group ≈ 30–35 (smaller after exclusions).  
+
+### CATEGORY A – MANDATORY ANALYSES  
+
+A1. Descriptive statistics  
+
+1) Test / method: Descriptive statistics (means, medians, SD, IQR, frequencies, proportions)  
+
+- Purpose:  
+  - Summarize baseline and outcome data for each group.  
+  - Provide context for the inferential tests and interpret clinical meaning.  
+
+- Why appropriate (2 reasons):  
+  1. This is essential for understanding distributions of HP VAS scores and presence of pain over time in each group.  
+  2. Descriptives allow checking for data entry errors and preliminary assessment of assumptions (normality, variance, etc.).  
+
+- Why it may not be appropriate (1 reason):  
+  - Not inappropriate per se; but mean and SD alone may mislead if HP VAS is highly skewed or heavily zero‑inflated; medians/IQR and distribution plots may be more informative.  
+
+- When this method should NOT be used:  
+  - Not applicable – descriptive statistics are always needed, but use appropriate summary measures for data type.  
+
+- Alternative if assumptions are violated:  
+  - For skewed continuous variables: use medians, IQR, and nonparametric plots (boxplots, kernel densities) rather than relying solely on means and SD.  
+
+---
+
+A2. Baseline comparability between groups  
+
+2) Test name:  
+   - Independent samples t‑test (for continuous approximately normal variables)  
+   - Mann–Whitney U test (for non‑normal or ordinal data, e.g., HP VAS)  
+   - Chi‑square test / Fisher’s exact test (for categorical variables)  
+
+Primary baseline variable of interest: preoperative HP VAS.  
+
+- Purpose:  
+  - Assess whether baseline characteristics (especially preoperative pain) differ between groups, which might confound post‑operative pain comparisons.  
+
+- Why appropriate (2 reasons):  
+  1. Randomization in small samples can yield imbalances; testing baseline helps characterize any such imbalances.  
+  2. Baseline preoperative pain can be a strong determinant of postoperative pain; checking comparability supports the validity of between‑group comparisons.  
+
+- Why it may not be appropriate (1 reason):  
+  - Formal hypothesis testing of baseline differences in RCTs is debated; imbalance can and should be adjusted for regardless of p‑values. Over‑reliance on baseline p‑values can be misleading.  
+
+- When not to use:  
+  - Avoid multiple hypothesis tests on numerous baseline variables; better to describe descriptively and adjust using regression when clinically important imbalances exist.  
+
+- Alternative if assumptions violated:  
+  - For non‑normal preoperative HP VAS: use Mann–Whitney U instead of t‑test.  
+  - For sparse categorical data: use Fisher’s exact test instead of chi‑square.  
+
+---
+
+A3. Primary analysis – between‑group comparison of pain prevalence at each time point  
+
+3) Test name: Chi‑square test of independence  
+
+- Purpose:  
+  - Compare prevalence (proportion of patients with pain) at each timepoint (6 h, 12 h, 1 day, 2 days) between SV and MV groups.  
+
+- Why appropriate (2 reasons):  
+  1. The primary outcome is explicitly defined as pain prevalence; this is naturally a binary outcome (pain present vs absent) at each timepoint.  
+  2. Groups are independent and sample sizes per cell should be moderate, making chi‑square appropriate for comparing proportions.  
+
+- Why it may not be appropriate (1 reason):  
+  - If the number of patients with pain is small in some cells (expected frequencies <5), chi‑square assumptions are violated.  
+
+- When this test should NOT be used:  
+  - When sample sizes are small and expected counts in any cell of the 2×2 table are <5.  
+  - When repeated‑measures correlation across time is to be modeled jointly – chi‑square at each timepoint ignores within‑subject correlation; more advanced modeling is preferable if resources allow.  
+
+- Alternative if assumptions violated:  
+  - Fisher’s exact test for 2×2 tables when expected counts are low.  
+  - For modeling all timepoints together: generalized estimating equations (GEE) with binomial distribution and logit link (see B3).  
+
+---
+
+A4. Primary analysis – between‑group comparison of pain severity (continuous HP VAS) at each time point  
+
+4) Test name: Mann–Whitney U test (nonparametric)  
+
+- Purpose:  
+  - Compare the distribution (or median) of HP VAS scores between SV and MV groups at each post‑operative timepoint.  
+
+- Why appropriate (2 reasons):  
+  1. HP VAS scores are continuous but often skewed and zero‑inflated; Mann–Whitney does not require normality and is robust to outliers.  
+  2. Two independent groups and ordinal/continuous outcome – Mann–Whitney is a standard method in pain trials.  
+
+- Why it may not be appropriate (1 reason):  
+  - It tests for a shift in distributions (not strictly mean differences) and assumes similar shapes; interpretation of effect size may be less straightforward.  
+
+- When this test should NOT be used:  
+  - When there are many ties (e.g., if HP VAS is heavily discretized or categorized) – the test loses power and accuracy.  
+  - When there is strong interest in modeling repeated measures jointly or adjusting for baseline preoperative pain – then regression‑based approaches are preferable.  
+
+- Alternative if assumptions violated:  
+  - If data are approximately normal with similar variances: independent samples t‑test.  
+  - More comprehensive approach: linear mixed‑effects model (see B2) or rank‑based ANCOVA.  
+
+---
+
+A5. Within‑group change over time in pain (descriptive / exploratory)  
+
+5) Test name: Friedman test (nonparametric repeated‑measures across time within each group)  
+
+- Purpose:  
+  - Assess whether pain scores change over time within each group (6 h, 12 h, 1 day, 2 days).  
+
+- Why appropriate (2 reasons):  
+  1. Pain repeated over time on the same individuals – Friedman accounts for within‑subject correlation.  
+  2. HP VAS likely non‑normal, and sample size modest; Friedman is a non‑parametric alternative to repeated‑measures ANOVA.  
+
+- Why it may not be appropriate (1 reason):  
+  - It is limited to within‑group comparisons and does not directly compare the time‑course between groups; post‑hoc pairwise tests are needed for specific time comparisons.  
+
+- When this test should NOT be used:  
+  - When there is substantial missing data at some timepoints or unbalanced repeated measures; Friedman requires complete cases across all repeated measures.  
+
+- Alternative if assumptions violated:  
+  - For incomplete repeated measures or more complex trajectories: linear mixed‑effects model or GEE (see B2/B3).  
+
+---
+
+A6. Secondary outcome – tenderness to percussion at 1 week  
+
+6) Test name: Chi‑square test of independence  
+
+- Purpose:  
+  - Compare prevalence of tenderness to percussion at 1 week between SV and MV groups.  
+
+- Why appropriate (2 reasons):  
+  1. TTP is a binary outcome; chi‑square compares proportions between two independent groups.  
+  2. This is aligned with the secondary aim and typical analysis of binary clinical outcomes.  
+
+- Why it may not be appropriate (1 reason):  
+  - If the number of patients with TTP is very small, expected counts may be <5 and chi‑square assumptions violated.  
+
+- When this test should NOT be used:  
+  - When any expected cell count in the 2×2 table is <5.  
+
+- Alternative if assumptions violated:  
+  - Fisher’s exact test.  
+  - Logistic regression if adjustment for confounders or baseline covariates (e.g., preoperative pain) is warranted (see B1).  
+
+---
+
+A7. Handling of exclusions and attrition  
+
+7) Method: CONSORT‑style flow description, per‑protocol vs intention‑to‑treat (ITT) sensitivity analysis  
+
+- Purpose:  
+  - Document numbers analyzed in each group and how exclusions (rescue medication use) and missing pain forms were handled.  
+  - Perform at least a per‑protocol analysis as designed, and consider ITT if feasible (e.g., treat rescue‑medication use as a failure).  
+
+- Why appropriate (2 reasons):  
+  1. Clarifies whether treatment effect estimates are robust to attrition/exclusion decisions.  
+  2. RCT standards (CONSORT) require reporting flow of participants and primary analysis population.  
+
+- Why it may not be appropriate (1 reason):  
+  - ITT may be difficult if key outcomes are missing for excluded cases; imputation may introduce further assumptions.  
+
+- When not to use:  
+  - Not applicable – some form of participant flow and justification of analysis population is essential.  
+
+- Alternatives:  
+  - If ITT not feasible, clearly state per‑protocol analysis and explore worst‑case/best‑case sensitivity analyses for excluded participants.  
+
+---
+
+### CATEGORY B – RECOMMENDED ANALYSES  
+
+B1. Logistic regression for binary outcomes (pain prevalence and TTP)  
+
+8) Test name: Logistic regression (binary outcome)  
+
+- Purpose:  
+  - Model the odds of having pain at each timepoint (or TTP at 1 week) as a function of group (SV vs MV), adjusting for potential covariates (e.g., preoperative HP VAS, sex if available, etc.).  
+
+- Why appropriate (2 reasons):  
+  1. Provides adjusted comparisons, reducing confounding by baseline preoperative pain or other covariates.  
+  2. Offers effect sizes as odds ratios with confidence intervals, which are interpretable for clinicians.  
+
+- Why it may not be appropriate (1 reason):  
+  - With small sample size or rare outcomes (few patients with pain), logistic regression can be unstable; coefficients may be imprecise or non‑estimable.  
+
+- When this test should NOT be used:  
+  - When events are extremely rare (e.g., <5 events) – logistic regression may not converge.  
+  - When sample size is too small to support multiple covariates (rule‑of‑thumb: ≥10 events per parameter).  
+
+- Alternative if assumptions violated:  
+  - Exact logistic regression for sparse data.  
+  - Fisher’s exact test for unadjusted comparisons if regression is unstable.  
+
+---
+
+B2. Linear mixed‑effects model for HP VAS over time  
+
+9) Test name: Linear mixed‑effects model (LMM) for repeated measures  
+
+- Purpose:  
+  - Analyze HP VAS over time (6 h, 12 h, 1 day, 2 days) jointly, with fixed effects for group, time, and group×time interaction, and random subject effect.  
+
+- Why appropriate (2 reasons):  
+  1. Accounts for correlation of repeated measures within patients and can handle missing observations at later timepoints.  
+  2. Provides a coherent estimate of the overall treatment effect and how the treatment effect may change over time (interaction).  
+
+- Why it may not be appropriate (1 reason):  
+  - HP VAS often is non‑normal and skewed; LMM assumes residuals approx. normal and linearity; violation may affect validity, especially in small sample.  
+
+- When this test should NOT be used:  
+  - When sample size is small and the model becomes overparameterized (e.g., too complex covariance structure).  
+  - When HP VAS is highly zero‑inflated and heavily skewed, linear model assumptions break down.  
+
+- Alternative if assumptions violated:  
+  - Transform HP VAS (e.g., log(y+constant)) if non‑zero, though zeros complicate this.  
+  - Use generalized linear mixed model (GLMM) with appropriate link or GEE (see B3).  
+  - Use non‑parametric repeated‑measures methods (e.g., rank‑based ANOVA-type tests).  
+
+---
+
+B3. GEE for repeated binary pain outcomes  
+
+10) Test name: Generalized estimating equations (GEE) with binomial family and logit link  
+
+- Purpose:  
+  - Model probability of pain over time, accounting for repeated measures within each patient, with predictors group, time, group×time.  
+
+- Why appropriate (2 reasons):  
+  1. Primary focus is on pain prevalence (binary outcome); GEE provides robust marginal estimates of odds ratios while accounting for within‑patient correlation.  
+  2. GEE is less sensitive to misspecification of correlation structure, and provides population‑averaged effects, which are clinically appealing.  
+
+- Why it may not be appropriate (1 reason):  
+  - Sample size (70 total) may be borderline for a multivariable GEE across 4 timepoints; small sample may yield unstable parameter estimates.  
+
+- When this test should NOT be used:  
+  - When there are very few events or large dropout; robust sandwich estimates might be unreliable with small clusters (patients).  
+
+- Alternative if assumptions violated:  
+  - Fit simple logistic regression at each timepoint (as in A3/B1) instead of pooled repeated‑measures GEE.  
+  - Use mixed‑effects logistic regression (GLMM) if convergence is possible.  
+
+---
+
+B4. Adjusted analysis of TTP at 1 week  
+
+11) Test name: Logistic regression for TTP (binary) with adjustment for preoperative pain  
+
+- Purpose:  
+  - Estimate effect of group on TTP at 1 week, adjusting for baseline factors (e.g., preoperative HP VAS).  
+
+- Why appropriate (2 reasons):  
+  1. Preoperative pain and inflammatory status might influence 1‑week tenderness independently of group; adjustment yields less biased group effect.  
+  2. Provides odds ratios and CIs for TTP comparing SV vs MV.  
+
+- Why it may not be appropriate (1 reason):  
+  - If TTP is rare (few cases), logistic regression with covariates may fail due to separation or very wide confidence intervals.  
+
+- When not to use:  
+  - When events are extremely rare (<10 total events) – unadjusted Fisher’s exact test might be more appropriate.  
+
+- Alternative if assumptions violated:  
+  - Exact logistic regression or unadjusted Fisher’s exact test.  
+
+---
+
+B5. Multiple comparisons adjustment  
+
+12) Method: Adjustment for multiple testing (e.g., Holm–Bonferroni)  
+
+- Purpose:  
+  - Control type I error inflation arising from multiple timepoint comparisons (4 timepoints for pain prevalence/severity).  
+
+- Why appropriate (2 reasons):  
+  1. Multiple comparisons (e.g., pain at 4 timepoints) increase false positive risk; adjustment maintains a more conservative overall α.  
+  2. Provides a more credible interpretation of p‑values across timepoints.  
+
+- Why it may not be appropriate (1 reason):  
+  - In small studies, multiple comparison adjustment can be overly conservative and reduce power; pre‑specifying a single primary timepoint (e.g., 24 h) might be preferable.  
+
+- When not to use:  
+  - If a single primary endpoint/timepoint is prespecified and others are clearly labeled exploratory; then adjustment may not be essential.  
+
+- Alternative:  
+  - Emphasize effect sizes and confidence intervals rather than relying on multiplicity‑adjusted p‑values.  
+
+---
+
+### CATEGORY C – OPTIONAL ANALYSES  
+
+C1. Effect size estimation and confidence intervals  
+
+13) Method:  
+   - Risk difference, relative risk, and odds ratio for pain prevalence  
+   - Standardized mean differences (Cohen’s d) or Hodges–Lehmann median difference for HP VAS  
+
+- Purpose:  
+  - Provide effect size measures with 95% confidence intervals to quantify clinical importance (beyond p‑values).  
+
+- Why appropriate (2 reasons):  
+  1. Clinicians need magnitude and direction of effect, not just statistical significance.  
+  2. Some readers prefer measures like risk difference and NNT (number needed to treat).  
+
+- Why it may not be appropriate (1 reason):  
+  - In small sample with wide confidence intervals, effect size estimates may appear imprecise and can be misinterpreted as “no effect” despite clinically relevant trends.  
+
+- When not to use:  
+  - Not truly “not to use”; but refrain from over‑interpreting very imprecise estimates.  
+
+- Alternative:  
+  - Present descriptive differences and emphasize uncertainty.  
+
+---
+
+C2. Subgroup analyses (exploratory)  
+
+14) Test name: Stratified analyses (e.g., by baseline pain category) using chi‑square or logistic regression with interaction terms  
+
+- Purpose:  
+  - Explore whether treatment effect differs by subgroups such as:  
+    - High vs low preoperative pain categories  
+    - Presence of preoperative pain vs none  
+
+- Why appropriate (2 reasons):  
+  1. Clinical interest in whether benefits of SV vs MV differ in patients starting with high vs low pain.  
+  2. May help generate hypotheses for future studies.  
+
+- Why it may not be appropriate (1 reason):  
+  - Power is likely insufficient; subgroup analyses are prone to spurious findings and should be clearly labeled exploratory.  
+
+- When this test should NOT be used:  
+  - When total sample size is small and subgroups become very small (e.g., <10 per cell).  
+
+- Alternative:  
+  - Report descriptive subgroup summaries without formal hypothesis testing.  
+
+---
+
+C3. Sensitivity analysis including rescue‑medication users  
+
+15) Method: Sensitivity analyses (e.g., treating rescue‑medication use as worst‑case pain outcome)  
+
+- Purpose:  
+  - Explore robustness of findings to handling of patients who used rescue medication (excluded per protocol).  
+
+- Why appropriate (2 reasons):  
+  1. Excluding patients who take rescue medication may bias results towards lower pain; sensitivity analysis mitigates this concern.  
+  2. Provides bounds for plausible treatment effects under different assumptions.  
+
+- Why it may not be appropriate (1 reason):  
+  - If rescue‑medication data are incomplete or not clearly linked to pain timepoints, defining a coherent rule (e.g., maximum pain) may be difficult.  
+
+- When not to use:  
+  - When rescue‑medication use is extremely rare and unlikely to influence conclusions.  
+
+- Alternative:  
+  - Qualitative discussion of potential bias due to exclusion without quantitative sensitivity modeling.  
+
+---
+
+C4. Graphical displays  
+
+16) Method:  
+   - Line plots of mean (or median) HP VAS over time by group  
+   - Bar plots of pain prevalence over time by group  
+
+- Purpose:  
+  - Visualize trajectory and differences between SV and MV.  
+
+- Why appropriate (2 reasons):  
+  1. Graphs facilitate intuitive understanding of the timing and magnitude of pain differences.  
+  2. Can help detect anomalies (e.g., outliers, unexpected patterns).  
+
+- Why it may not be appropriate (1 reason):  
+  - Misleading if scales are manipulated or if sample sizes differ significantly between timepoints; proper labeling and scales are required.  
+
+- When not to use:  
+  - Not a “test” per se; but avoid complex graphics when data are limited or missingness patterns are large.  
+
+- Alternative:  
+  - Simple table summaries.  
+
+---
+
+TASK 3: INAPPROPRIATE TESTS  
+
+Tests/methods that should NOT be used in this study (with reasons):
+
+1) Paired t‑test for between‑group comparisons of pain at single timepoints  
+- Why inappropriate:  
+  - Paired t‑tests require paired data (same subjects under two conditions); here the two groups (SV vs MV) are independent.  
+
+2) Repeated‑measures ANOVA ignoring group structure (single factor only)  
+- Why inappropriate:  
+  - This would analyze only within‑group time effects and ignore between‑group differences which are central to the research question.  
+
+3) One‑way ANOVA for HP VAS across time within a group (without repeated‑measures structure)  
+- Why inappropriate:  
+  - Treating repeated measures as independent violates independence assumptions and inflates type I error.  
+
+4) Pearson correlation to compare groups  
+- Why inappropriate:  
+  - Correlation measures association between two continuous variables; here the main comparison is between groups for pain outcomes, not correlation between continuous measures.  
+
+5) Independent samples t‑tests for HP VAS without checking distribution/variance assumptions  
+- Why inappropriate:  
+  - HP VAS often is skewed; t‑tests without assessing normality and homoscedasticity may yield misleading inferences, especially with small samples and zero‑inflation.  
+
+6) Multiple unadjusted chi‑square tests across many subgroups and timepoints without any multiplicity control or pre‑specification  
+- Why inappropriate:  
+  - Increases false positives substantially; in a small trial, this undermines credibility of findings.  
+
+7) Use of parametric tests on ordinally categorized pain levels (e.g., “mild/moderate/severe”) treated as numeric 1–3 without justification  
+- Why inappropriate:  
+  - Ordinal categories do not have equal intervals; treating them as continuous violates assumptions; ordinal methods (e.g., Mann–Whitney, ordinal logistic regression) are preferable.  
+
+8) Stepwise regression for exploratory adjustment  
+- Why inappropriate:  
+  - Stepwise procedures are unstable with small sample size, inflate type I error, and may generate models that don’t replicate; better to pre‑specify covariates.  
+
+---
+
+TASK 4: SUMMARY OF OVERALL ANALYTICAL APPROACH  
+
+- The study is a parallel‑group RCT comparing SV vs MV RCT in mandibular first molars, with the main endpoint being post‑operative pain prevalence and severity at several early timepoints, and secondary endpoint TTP at 1 week.  
+- The analytical strategy should:  
+  - Start with comprehensive descriptive statistics.  
+  - Address the primary aim via comparison of pain prevalence (binary) and pain severity (continuous HP VAS) between groups at each measured timepoint, using chi‑square/Fisher (for prevalence) and Mann–Whitney (for HP VAS), with consideration of multiple testing and pre‑specification of a primary timepoint if possible.  
+  - Address within‑group trajectories via non‑parametric repeated‑measures tests and, where feasible, more powerful modeling of repeated measures with mixed models or GEE.  
+  - Analyze TTP using chi‑square/Fisher and optionally logistic regression with adjustment for baseline pain.  
+  - Properly handle exclusions (rescue‑medication users) and missing data, report participant flow, and, if possible, conduct sensitivity analyses to assess robustness.  
+
+This analytical plan aligns with the randomized design, data structure (binary and continuous repeated outcomes), and modest sample size, while balancing rigorous inference with realistic modeling assumptions.
