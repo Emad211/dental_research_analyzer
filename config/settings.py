@@ -47,20 +47,10 @@ OCR_MODEL = "gemini-3-flash-preview"
 ANALYSIS_MODELS = [
 
     {
-        "key":      "gpt-5.2",
-        "name":     "gpt-5.2",
-        "provider": "OpenAI",
-    },
-    {
-        "key":      "gpt-4o",
-        "name":     "gpt-4o",
-        "provider": "OpenAI",
-    },
-    {
-        "key":      "gpt-5.1",
-        "name":     "gpt-5.1",
-        "provider": "OpenAI",
-    },
+        "key":      "gemini-3.1-pro-preview",
+        "name":     "gemini-3.1-pro-preview",
+        "provider": "Google",
+    }
 ]
 
 # ============================================================
