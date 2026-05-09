@@ -1033,3 +1033,119 @@ The primary analytical strategy should therefore:
 - Address missing data via transparent sensitivity analyses.
 
 This approach respects the trial’s randomized design, binary and longitudinal nature of outcomes, modest clustering, and limited sample size, while providing clinically interpretable comparisons of Biodentine, Theracal, and Dycal as IPT materials in young permanent teeth.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_160916
+──────────────────────────────────────────────────────────────────────
+
+Here is the comprehensive extraction and statistical analysis plan based on the provided text, structured from the perspective of a biostatistician.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Randomized Clinical Trial (RCT); double-blinded (participant and outcome assessor blinded; operator unblinded).
+*   **Objectives:** To comparatively evaluate Biodentine, Theracal, and Dycal as indirect pulp therapy (IPT) agents in young permanent teeth.
+*   **Participants:** 60 children aged 7–15 years (Mean age: 12.36 ± 2.29 years). Final analyzed sample: 49 patients (23 males, 26 females).
+*   **Sample Size:** Calculated requirement was 45 (15/group) based on α=0.05, 80% power, 10% outcome difference. Enrolled: 60 teeth (20/group). Final analyzed: 54 teeth (18/group) due to a 10% dropout rate.
+*   **Groups (Independent Variable):** 3 parallel arms based on the intervening material:
+    *   Group 1: Biodentine
+    *   Group 2: Theracal
+    *   Group 3: Dycal (Calcium Hydroxide - Control/Gold Standard)
+*   **Unit of Randomization:** The tooth (Note: Patients with multiple eligible teeth had separate randomizations per tooth). Simple randomization via colored balls.
+*   **Follow-up Intervals:** 3 weeks, 3 months, 6 months, 12 months, 18 months, and 24 months.
+*   **Variables & Measurements (Dependent Variables):**
+    *   *Primary/Clinical Criteria:* Postoperative pain, sensitivity to palpation/percussion, mobility, soft tissue inflammation, sinus tract, fistula.
+    *   *Secondary/Radiographic Criteria:* External/internal resorption, PDL widening, periapical involvement, root apex development.
+    *   *Overall Outcome:* Dichotomous/Binary (Success vs. Failure) based on the combined clinical and radiographic criteria.
+*   **Other Variables:** Inter-examiner agreement (2 investigators).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Tests without which the analysis would be incomplete)
+
+**1. Cohen’s Kappa Statistic**
+*   **Purpose:** To calculate the inter-examiner agreement between the two investigators for clinical and radiographic evaluations.
+*   **Why appropriate:** 
+    1) The outcome variables (presence/absence of pain, resorption, etc.) are categorical. 
+    2) It accounts for the possibility of agreement occurring by chance, unlike simple percentage agreement.
+*   **Why it may not be appropriate:** If the prevalence of a specific clinical sign (e.g., fistula) is extremely low (close to 0%), Kappa can become artificially low (the "Kappa paradox").
+*   **When NOT to use:** Do not use for continuous data (e.g., measuring exact pocket depth in millimeters).
+*   **Alternative:** Gwet’s AC1 statistic (if the Kappa paradox occurs due to highly skewed trait prevalence).
+
+**2. Chi-Square Test of Independence (or Fisher's Exact Test)**
+*   **Purpose:** To compare the overall success/failure rates among the three material groups at the final 24-month follow-up, and to compare baseline categorical demographics (gender, tooth type).
+*   **Why appropriate:** 
+    1) The primary outcome (Success/Failure) is a nominal, dichotomous variable. 
+    2) The independent variable consists of three distinct, independent categorical groups.
+*   **Why it may not be appropriate:** It does not account for the time at which the failure occurred (a failure at 3 weeks is treated the same as a failure at 24 months).
+*   **When NOT to use:** Do not use if more than 20% of the expected cell counts are less than 5.
+*   **Alternative:** Fisher’s Exact Test (if expected cell frequencies are < 5) or Freeman-Halton extension of Fisher's exact test for 3x2 tables.
+
+**3. One-Way ANOVA**
+*   **Purpose:** To compare the mean baseline age across the three intervention groups to ensure successful randomization.
+*   **Why appropriate:** 
+    1) Age is a continuous variable. 
+    2) There are three independent groups being compared.
+*   **Why it may not be appropriate:** If the age distribution within the groups is heavily skewed or contains severe outliers.
+*   **When NOT to use:** Do not use if the assumption of normality or homogeneity of variances (Levene's test) is severely violated.
+*   **Alternative:** Kruskal-Wallis H test (non-parametric).
+
+#### CATEGORY B – RECOMMENDED (Tests that enhance the quality and rigor of the analysis)
+
+**1. Kaplan-Meier Survival Analysis with Log-Rank Test**
+*   **Purpose:** To evaluate and compare the "survival" (success over time) of the three pulp capping materials across the 24-month follow-up period.
+*   **Why appropriate:** 
+    1) The study features longitudinal follow-ups with a time-to-event (failure) structure. 
+    2) It appropriately handles right-censored data (teeth that were successful up to the point the patient dropped out or the study ended).
+*   **Why it may not be appropriate:** If the assumption of proportional hazards is violated (e.g., if Dycal fails early but stabilizes, while Theracal fails late, causing survival curves to cross).
+*   **When NOT to use:** Do not use if the exact time of failure is unknown and only the final outcome at 24 months was recorded (though the 6 follow-up intervals allow for interval-censored survival analysis).
+*   **Alternative:** Generalized Wilcoxon test (Breslow test) if early failures are more clinically relevant than late failures.
+
+**2. Generalized Estimating Equations (GEE) for Binary Outcomes**
+*   **Purpose:** To compare success rates while adjusting for the clustering effect (multiple teeth treated within the same patient).
+*   **Why appropriate:** 
+    1) The methodology states: "In case the patient had more than one tooth... randomization was done separately for each tooth." This violates the assumption of independent observations. 
+    2) GEE accounts for within-subject correlation (teeth in the same mouth share the same host factors, oral hygiene, and diet).
+*   **Why it may not be appropriate:** If the number of patients with multiple teeth is negligibly small (e.g., only 1 or 2 patients out of 49), the model may fail to converge or overcomplicate the analysis.
+*   **When NOT to use:** Do not use if all observations are strictly independent (one tooth per patient).
+*   **Alternative:** Mixed-Effects Logistic Regression (using the patient as a random effect).
+
+**3. Post-Hoc Pairwise Comparisons (e.g., Bonferroni-corrected Chi-Square)**
+*   **Purpose:** To determine exactly *which* groups differ from each other if the overall Chi-Square or Log-Rank test is significant.
+*   **Why appropriate:** 
+    1) The study has 3 groups; an overall significant p-value does not tell us if Biodentine is better than Theracal, only that the 3 are not equal. 
+    2) Bonferroni correction prevents the inflation of Type I error (false positives) when making multiple comparisons.
+*   **Why it may not be appropriate:** Bonferroni can be overly conservative, potentially increasing Type II errors (false negatives) in small sample sizes.
+*   **When NOT to use:** Do not use if the primary omnibus test (overall Chi-square) is not statistically significant.
+*   **Alternative:** Benjamini-Hochberg procedure (False Discovery Rate) for a less conservative adjustment.
+
+#### CATEGORY C – OPTIONAL (Tests that provide supplementary insights)
+
+**1. Cox Proportional Hazards Regression**
+*   **Purpose:** To assess the effect of the materials on the time-to-failure while controlling for potential confounding covariates (e.g., age, gender, tooth type [maxillary vs. mandibular]).
+*   **Why appropriate:** 
+    1) Allows for multivariate analysis of survival data. 
+    2) Can quantify the risk of failure (Hazard Ratios) between materials.
+*   **Why it may not be appropriate:** The sample size (54 teeth) is relatively small for a multivariate model; adding too many covariates could lead to overfitting.
+*   **When NOT to use:** Do not use if the proportional hazards assumption is violated.
+*   **Alternative:** Stratified Kaplan-Meier analysis (e.g., running separate survival analyses for maxillary vs. mandibular teeth).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test / ANOVA (for the primary outcome):** The primary outcome is categorical (Success/Failure), not continuous. You cannot calculate a "mean" success.
+*   **Pearson Correlation Coefficient:** The study is comparing distinct groups against a categorical outcome, not looking for a linear relationship between two continuous variables.
+*   **Paired t-test / Repeated Measures ANOVA:** Although there are repeated follow-ups, the outcome is not a continuous score measured over time (like blood pressure). Once a tooth "fails," it is a terminal event for the study purposes. Furthermore, the groups being compared (Biodentine vs Theracal vs Dycal) are independent of one another.
+
+---
+
+### TASK 4: SUMMARY OF ANALYTICAL APPROACH
+
+The overall analytical approach must transition from basic descriptive statistics to robust inferential and survival analyses. Because the primary outcome is binary (Success vs. Failure) measured at multiple intervals over 24 months, **Survival Analysis (Kaplan-Meier with Log-rank test)** is the most rigorous way to evaluate the data, as it accounts for *when* materials fail, not just *if* they fail. 
+
+Crucially, the methodology explicitly states that some patients had multiple teeth enrolled and randomized independently. This introduces a "clustering effect," violating the core statistical assumption of independent observations. Therefore, while basic Chi-square tests are useful for preliminary data visualization, the definitive analysis must utilize **Generalized Estimating Equations (GEE) or Mixed-Effects Logistic Regression** to adjust for intra-patient correlation. Finally, an Intention-to-Treat (ITT) approach should be considered to account for the 10% dropout rate, ensuring the preservation of the initial randomization benefits.

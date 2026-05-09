@@ -1,0 +1,104 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_the_effect_of_payment_methods_on_dental_service.4.pdf
+Status : ok
+Time   : 20260509_175357
+══════════════════════════════════════════════════════════════════════
+
+Here is the comprehensive information extraction and statistical analysis plan based on the provided article text.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Retrospective cohort study.
+*   **Objective:** To describe the service mix of private general practitioners (GPs) and investigate the association between the service mix and the method of payment (Salary vs. Fee-for-Service) in a single dental clinic.
+*   **Setting:** A single dental clinic in the suburbs of Tehran that transitioned from a salary-based system to a Fee-for-Service (FFS) system in 2018.
+*   **Study Groups (Independent Variable):** 
+    *   *Period 1:* Salary payment method (October 1–30, 2018).
+    *   *Period 2:* Fee-for-Service (FFS) payment method (March 1–30, 2019).
+*   **Participants (Dentists):** Total $N = 36$ dentists.
+    *   *Note on Text Discrepancy:* The text contains a contradiction. Paragraph 2 states "36 dentists who worked in both... nine only in FFS... nine only in salary" (Total 54). However, Paragraph 4 explicitly clarifies the breakdown as 36 total dentists: Dentists 1-12 (worked in both, $n=12$), Dentists 13-24 (Salary only, $n=12$), and Dentists 25-36 (FFS only, $n=12$). The analysis plan will proceed using the detailed breakdown of 36 total dentists.
+*   **Sample Size (Patients):** 85 patient records randomly selected per dentist for each period they worked. Total records = 3,060.
+*   **Dependent Variable (Outcome):** Dental service mix, categorized into an ordinal scale of 4 groups based on invasiveness:
+    1. Practices without treatments (visits, diagnostic radiography, referrals).
+    2. Preventive treatments (simple restorations, scaling).
+    3. Aggressive treatments (RCT, extraction, crown).
+    4. Highly aggressive treatments (surgery).
+*   **Exclusion Criteria:** Incomplete records, ambiguous records, specialized services (orthodontics, implants, crown lengthening), patients under 18 years old, and charity services.
+*   **Data Collection:** Retrospective review of paper and computerized archives.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given the hierarchical nature of the data (patients nested within dentists) and the mix of paired data (dentists working in both periods) and independent data (dentists working in only one period), the following statistical plan is recommended.
+
+#### CATEGORY A – MANDATORY
+*Tests without which the analysis would be incomplete.*
+
+**1. Mixed-Effects Ordinal Logistic Regression (or Generalized Estimating Equations - GEE)**
+*   **Purpose:** To evaluate the primary association between payment method (Salary vs. FFS) and the ordinal service mix category, while accounting for the clustered data structure.
+*   **Why appropriate:** 
+    1. The outcome variable (service mix) is naturally ordinal (ranging from no treatment to highly aggressive).
+    2. It accounts for the clustering effect (85 independent patients nested within each specific dentist) and handles the missing/unbalanced repeated measures (some dentists in both periods, some in only one).
+*   **Why it may not be appropriate:** It assumes proportional odds (that the effect of the payment method is consistent across all thresholds of the ordinal outcome).
+*   **When this test should NOT be used:** When the proportional odds assumption is severely violated (e.g., if FFS increases preventive treatments but decreases highly aggressive treatments simultaneously).
+*   **Alternative if assumptions are violated:** Mixed-Effects Multinomial Logistic Regression (treating the 4 categories as nominal rather than ordinal).
+
+**2. Chi-Square Test for Independence (Unadjusted Baseline)**
+*   **Purpose:** To provide a crude, unadjusted comparison of the overall distribution of the four service mix categories between the Salary and FFS periods.
+*   **Why appropriate:** 
+    1. Both the predictor (Payment method) and outcome (Service mix) are categorical.
+    2. It provides an easily interpretable baseline descriptive statistic for readers before moving to complex modeling.
+*   **Why it may not be appropriate:** It assumes all 3,060 observations are completely independent, ignoring the fact that patients are clustered by dentist.
+*   **When this test should NOT be used:** When expected cell counts in the contingency table are less than 5 (highly unlikely with $N=3,060$).
+*   **Alternative if assumptions are violated:** Fisher’s Exact Test (if cell counts are low).
+
+#### CATEGORY B – RECOMMENDED
+*Tests that enhance the quality and rigor of the analysis.*
+
+**1. Marginal Homogeneity Test (or Wilcoxon Signed-Rank Test on aggregated dentist-level data)**
+*   **Purpose:** To conduct a subgroup analysis strictly on the 12 dentists who worked in *both* periods.
+*   **Why appropriate:** 
+    1. It isolates the true behavioral change within the *exact same providers*, eliminating confounding by individual dentist characteristics (e.g., age, training).
+    2. It properly handles the paired nature of this specific subgroup.
+*   **Why it may not be appropriate:** It requires aggregating patient data into a median/mean score for each dentist, which loses patient-level variance.
+*   **When this test should NOT be used:** When comparing the dentists who only worked in the Salary period against those who only worked in the FFS period (independent groups).
+*   **Alternative if assumptions are violated:** Paired t-test (if the aggregated service mix scores are normally distributed and treated as continuous).
+
+**2. Mann-Whitney U Test (on aggregated dentist-level data)**
+*   **Purpose:** To compare the service mix between the 12 dentists who *only* worked in the Salary period and the 12 dentists who *only* worked in the FFS period.
+*   **Why appropriate:** 
+    1. Allows for the comparison of two completely independent groups.
+    2. Non-parametric test is ideal for ordinal data or non-normally distributed aggregated scores.
+*   **Why it may not be appropriate:** It discards the valuable paired data from the 12 dentists who worked in both periods.
+*   **When this test should NOT be used:** If the aggregated data is perfectly normally distributed and continuous.
+*   **Alternative if assumptions are violated:** Independent Samples t-test.
+
+#### CATEGORY C – OPTIONAL
+*Tests that provide supplementary insights.*
+
+**1. Interaction Analysis (Payment Method × Dentist Cohort)**
+*   **Purpose:** To test if the effect of the payment method differs between dentists who transitioned (worked both periods) versus those hired specifically for one system (worked one period).
+*   **Why appropriate:** 
+    1. Provides insight into whether the observed effect is driven by a change in existing staff behavior or by the hiring of new staff with different practice styles.
+    2. Adds depth to the economic/behavioral theory of the paper.
+*   **Why it may not be appropriate:** The sample size at the dentist level ($n=12$ per group) may be underpowered to detect statistically significant interaction effects.
+*   **When this test should NOT be used:** If the primary mixed-effects model fails to converge due to complexity.
+*   **Alternative if assumptions are violated:** Stratified analysis (running the primary model separately for the "both" group and the "single" groups).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test / ANOVA on raw patient data:** The outcome variable (service mix) is categorical/ordinal (4 distinct groups), not continuous. Using parametric tests on raw ordinal categories violates fundamental assumptions of continuous, normally distributed data.
+*   **Standard Paired t-test on raw patient data:** While 12 *dentists* are paired across the two periods, the *patients* are entirely different. You cannot pair a random patient from October with a random patient from March.
+*   **Pearson Correlation:** Both the independent variable (binary) and dependent variable (ordinal) are categorical. Pearson correlation requires two continuous variables.
+
+---
+
+### TASK 4: SUMMARY
+
+**Justification of the Overall Analytical Approach:**
+The primary methodological challenge in this study is the complex data architecture: the outcome is ordinal, observations are clustered (patients nested within dentists), and the predictor features a mix of paired and independent samples. 
+
+A naive approach (like relying solely on Chi-square tests) would violate the assumption of independence by ignoring the fact that a single dentist's treatment philosophy heavily influences their 85 patient records. Therefore, the analytical approach must center on **Mixed-Effects Modeling** (specifically Ordinal Logistic Regression). This allows the model to treat the "Dentist" as a random effect, properly accounting for intra-cluster correlation, while evaluating the "Payment Method" as a fixed effect. Furthermore, splitting the analysis to look specifically at the 12 dentists who experienced *both* systems (using paired non-parametric tests) will provide the most robust evidence of actual behavioral change, isolating the payment method from individual provider bias.

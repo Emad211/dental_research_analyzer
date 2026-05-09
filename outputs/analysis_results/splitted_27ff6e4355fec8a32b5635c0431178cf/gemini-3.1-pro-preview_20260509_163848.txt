@@ -1,0 +1,111 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_27ff6e4355fec8a32b5635c0431178cf.pdf
+Status : ok
+Time   : 20260509_163848
+══════════════════════════════════════════════════════════════════════
+
+Here is the comprehensive extraction and statistical analysis plan based on the provided clinical trial text.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Randomized, controlled, double-blinded, in-vivo clinical trial.
+*   **Objectives:** To evaluate and compare clinical periodontal parameters in patients with true combined endodontic-periodontal lesions (EPL) treated with four different modalities.
+*   **Study Population:** 25–55 year-old Saudi patients, medically fit, with an upper anterior non-vital single-rooted tooth with true combined EPL.
+*   **Sample Size:** $N = 120$ teeth (calculated via G*Power: 95% CI, 80% power, moderate effect size). Blocked randomization (block size = 3) was used to assign $n = 30$ per group.
+*   **Study Groups (2x2 Factorial Design):**
+    *   *Group I:* Conventional RCT (Gutta Percha) [Control]
+    *   *Group II:* RCT with Mineral Trioxide Aggregate (MTA)
+    *   *Group III:* RCT (Gutta Percha) + Bone Grafting
+    *   *Group IV:* RCT (MTA) + Bone Grafting
+*   **Variables & Measurements:**
+    *   *Continuous Variables:* Probing depth (PD) in mm, relative clinical attachment level (rCAL) in mm, Gingival recession in mm, Keratinized Tissue Width (KTW) in mm.
+    *   *Categorical/Ordinal Variables:* Gingival phenotype (G.Ph.), Cone Beam Computed Tomography Periapical Index (CBCTPAI) score, Success rate (defined as CBCTPAI 0 or 1).
+*   **Time Points (Repeated Measures):**
+    *   *Clinical:* Baseline, 3, 6, and 12 months.
+    *   *Radiographic:* Baseline, 6 months, and 12 months.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the distribution for continuous variables (PD, rCAL, recession, KTW).
+*   **Why appropriate:** (1) It is highly reliable for sample sizes of $n=30$ per group. (2) It dictates whether parametric or non-parametric tests should be used for the primary outcomes.
+*   **Why it may not be appropriate:** It can be overly sensitive to minor deviations from normality in larger overall samples ($N=120$).
+*   **When NOT to use:** Do not use for categorical or ordinal data (e.g., CBCTPAI, Success rate).
+*   **Alternative:** Kolmogorov-Smirnov test or visual inspection of Q-Q plots.
+
+**2. Two-Way Mixed ANOVA (Repeated Measures with Between-Subjects Factor)**
+*   **Purpose:** To compare continuous clinical parameters (PD, rCAL, etc.) across the 4 groups and across the 4 time points (Baseline, 3, 6, 12 months).
+*   **Why appropriate:** (1) It accounts for both the within-subjects variance (time) and between-subjects variance (treatment groups). (2) It tests for the interaction effect between time and treatment, showing if the *rate* of healing differs by group.
+*   **Why it may not be appropriate:** It assumes sphericity (equal variances of the differences between all possible pairs of within-subject conditions).
+*   **When NOT to use:** When data is severely skewed, ordinal, or when there is a massive amount of missing data (dropouts).
+*   **Alternative:** Generalized Estimating Equations (GEE) or Linear Mixed-Effects Models (LMM); Friedman test (if non-parametric).
+
+**3. Chi-Square Test of Independence (or Fisher’s Exact Test)**
+*   **Purpose:** To compare the categorical "Success rate" (CBCTPAI 0 or 1 vs. >1) and Gingival Phenotype across the 4 groups at 6 and 12 months.
+*   **Why appropriate:** (1) It is the standard test for comparing proportions between independent groups. (2) It easily handles the $4 \times 2$ contingency table structure of this study.
+*   **Why it may not be appropriate:** If the expected frequency in any cell falls below 5, the Chi-Square approximation becomes unreliable.
+*   **When NOT to use:** When comparing continuous variables or when observations are not independent (e.g., comparing baseline success to 12-month success within the same group).
+*   **Alternative:** Fisher’s Exact Test (if expected cell counts are < 5).
+
+#### CATEGORY B – RECOMMENDED (Enhance Rigor)
+
+**1. Two-Way Factorial ANOVA (at specific endpoints, e.g., 12 months)**
+*   **Purpose:** To evaluate the main effects and interaction of the two independent interventions: Obturation Material (GP vs. MTA) and Bone Graft (Yes vs. No).
+*   **Why appropriate:** (1) The study is inherently a $2 \times 2$ factorial design, and this test isolates the specific effect of the graft versus the material. (2) It determines if combining MTA and Bone Graft yields a synergistic effect compared to their additive individual effects.
+*   **Why it may not be appropriate:** It only looks at one time point (cross-sectional) rather than the longitudinal trajectory.
+*   **When NOT to use:** If the dependent variable is ordinal (CBCTPAI).
+*   **Alternative:** Factorial Kruskal-Wallis (Aligned Rank Transform) if data is non-parametric.
+
+**2. Generalized Estimating Equations (GEE) for Ordinal Data**
+*   **Purpose:** To analyze the changes in the ordinal CBCTPAI scores over time across the groups.
+*   **Why appropriate:** (1) CBCTPAI is an ordinal scale; treating it as continuous violates statistical assumptions. (2) GEE robustly handles repeated ordinal measures and accounts for within-patient correlation over time.
+*   **Why it may not be appropriate:** It requires a relatively large sample size to estimate the working correlation matrix accurately, and interpretation of odds ratios can be complex for clinical audiences.
+*   **When NOT to use:** For single time-point cross-sectional comparisons.
+*   **Alternative:** Ordinal Logistic Regression (for single time points) or Friedman test.
+
+**3. Post-Hoc Tests (e.g., Bonferroni or Tukey's HSD)**
+*   **Purpose:** To identify exactly which groups differ from one another if the ANOVA yields a significant result.
+*   **Why appropriate:** (1) Controls the family-wise error rate (Type I error) when making multiple pairwise comparisons. (2) Provides adjusted p-values and confidence intervals for the mean differences.
+*   **Why it may not be appropriate:** Bonferroni can be overly conservative, potentially increasing Type II errors (missing true differences).
+*   **When NOT to use:** When the omnibus test (ANOVA) is not statistically significant.
+*   **Alternative:** Benjamini-Hochberg procedure (False Discovery Rate).
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. Kaplan-Meier Survival Analysis**
+*   **Purpose:** To evaluate the "time to success" (time taken to reach CBCTPAI 0 or 1).
+*   **Why appropriate:** (1) Provides a visual and statistical representation of how quickly different treatments achieve radiographic success. (2) Can handle right-censored data if some patients don't achieve success by 12 months.
+*   **Why it may not be appropriate:** With only 3 radiographic time points (Baseline, 6, 12 months), the survival curve will be very stepped and lack granularity.
+*   **When NOT to use:** When the exact time of the event is unknown and intervals are too wide.
+*   **Alternative:** Cox Proportional-Hazards Model (if adjusting for covariates like baseline defect size).
+
+**2. Multiple Imputation (Intention-to-Treat Analysis)**
+*   **Purpose:** To handle missing data from patients who drop out before the 12-month follow-up.
+*   **Why appropriate:** (1) Preserves the benefits of randomization. (2) Prevents attrition bias, which is common in 12-month clinical trials.
+*   **Why it may not be appropriate:** If data is Not Missing At Random (NMAR), imputation models may introduce bias.
+*   **When NOT to use:** If there is zero missing data (100% follow-up).
+*   **Alternative:** Last Observation Carried Forward (LOCF) - though generally discouraged in modern biostatistics.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test:** Should NOT be used to compare the groups. Because there are 4 groups, using multiple t-tests will severely inflate the Type I error rate (alpha inflation). ANOVA must be used instead.
+*   **Paired t-test (as the primary analysis):** Should NOT be used to simply compare baseline to 12 months within each group separately. This ignores the control groups and fails to test if the *differences between treatments* are statistically significant.
+*   **Pearson Correlation for CBCTPAI:** Should NOT be used. CBCTPAI is an ordinal index (categories of severity). Pearson assumes continuous, normally distributed data. Spearman's rank correlation must be used if correlation is desired.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must respect the longitudinal, $2 \times 2$ factorial nature of this randomized controlled trial. The core strategy involves using **Mixed-Design ANOVAs** (or Linear Mixed Models) to track continuous clinical healing (PD, rCAL) over the 12-month period, allowing the researchers to see not just *if* a treatment works, but *how fast* it works compared to others. 
+
+Because the study tests two distinct interventions (MTA vs. GP, and Bone Graft vs. No Graft), utilizing a **Factorial ANOVA** framework is vital to determine if there is a synergistic interaction between MTA and bone grafting. Finally, radiographic success (CBCTPAI) must be treated with care; because it is ordinal/categorical, it requires non-parametric approaches (like **GEE** or **Chi-Square**) rather than standard parametric means testing. This comprehensive approach ensures that both clinical and radiographic outcomes are evaluated rigorously while controlling for statistical errors.

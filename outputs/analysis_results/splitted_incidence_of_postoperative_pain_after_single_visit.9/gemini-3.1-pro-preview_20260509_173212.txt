@@ -1,0 +1,109 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_incidence_of_postoperative_pain_after_single_visit.9.pdf
+Status : ok
+Time   : 20260509_173212
+══════════════════════════════════════════════════════════════════════
+
+Here is a comprehensive biostatistical extraction and statistical analysis plan based on the provided text.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Randomized Controlled Trial (RCT), parallel-group, in vivo.
+*   **Primary Objective:** To compare the prevalence of post-obturation pain at 6 hours, 12 hours, 1 day, and 2 days after single-visit (SV) versus two-visit (MV) root canal therapy.
+*   **Secondary Objective:** To compare tenderness on percussion after 1 week of treatment.
+*   **Study Groups:** 
+    *   Group 1: Single-visit RCT ($n=35$)
+    *   Group 2: Two-visit RCT ($n=35$)
+*   **Sample Size:** 70 patients total (35 per group). Calculated based on 80% power and 5% significance level (initial calculation was 30/group, increased to 35 to account for dropouts).
+*   **Variables:**
+    *   *Independent Variable:* Treatment modality (Single-visit vs. Two-visit).
+    *   *Dependent Variables:* Postoperative pain scores; Tenderness on percussion.
+    *   *Controlled/Confounding Variables:* Tooth type (mandibular first molars only), root curvature (moderately curved), systemic diseases (excluded), pregnancy (excluded), procedural errors/complex morphology (excluded), rescue medication usage (excluded if taken within 48h).
+*   **Measurements:**
+    *   *Pain:* Heft-Parker Visual Analog Scale (HP VAS).
+    *   *Tenderness:* Clinical evaluation (likely categorical: Present/Absent).
+*   **Data Collection Methods:** Baseline pain recorded in the clinic. Postoperative pain recorded by the patient at home at 4 specific time intervals (6h, 12h, 24h, 48h) using the HP VAS form, prompted by telephonic reminders. Tenderness evaluated clinically at 1 week.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+*Note: Pain scores measured via VAS are frequently non-normally distributed (skewed). Therefore, this plan prioritizes non-parametric tests, with parametric alternatives provided if normality assumptions are met.*
+
+#### CATEGORY A – MANDATORY (Core tests required to answer the research objectives)
+
+**1. Mann-Whitney U Test**
+*   **Purpose:** To compare the HP VAS pain scores between Group 1 and Group 2 at each specific time point (Baseline, 6h, 12h, 1 day, 2 days).
+*   **Why appropriate:** (1) It compares two independent groups. (2) It does not assume a normal distribution, which is ideal for ordinal or skewed continuous pain scale data.
+*   **Why it may not be appropriate:** It involves multiple testing across different time points, which can inflate the Type I error rate (false positives) unless a correction (e.g., Bonferroni) is applied.
+*   **When NOT to use:** If the pain score data is proven to be perfectly normally distributed with equal variances.
+*   **Alternative:** Independent Samples t-test (if data is normally distributed).
+
+**2. Friedman Test**
+*   **Purpose:** To evaluate the change in pain scores *within* each group across the five time points (Baseline, 6h, 12h, 1 day, 2 days).
+*   **Why appropriate:** (1) It is designed for repeated measures on the same subjects. (2) It is the non-parametric equivalent of repeated-measures ANOVA, suitable for VAS scores.
+*   **Why it may not be appropriate:** It only tells you that a difference exists somewhere across the time points, requiring post-hoc tests (like Wilcoxon signed-rank) to find exactly where the changes occurred.
+*   **When NOT to use:** If there is a high rate of missing data (e.g., patients failing to return the form), as the Friedman test typically requires complete cases and will drop subjects with missing time points.
+*   **Alternative:** Repeated Measures ANOVA (if data is normal) or Linear Mixed Models (if there is missing data).
+
+**3. Chi-Square Test of Independence (or Fisher’s Exact Test)**
+*   **Purpose:** To compare the incidence of tenderness on percussion (Secondary Objective) between the two groups at 1 week.
+*   **Why appropriate:** (1) Tenderness on percussion is typically recorded as categorical data (e.g., Present vs. Absent). (2) It effectively compares proportions between two independent groups.
+*   **Why it may not be appropriate:** It does not account for the *severity* of tenderness if the clinician graded it on a continuous scale.
+*   **When NOT to use:** Chi-square should not be used if more than 20% of the expected cell frequencies are less than 5.
+*   **Alternative:** Fisher’s Exact Test (mandatory if expected cell counts are < 5).
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**4. Generalized Estimating Equations (GEE) or Linear Mixed Models (LMM)**
+*   **Purpose:** To analyze the main effects of Treatment Group, Time, and the Group × Time interaction on pain scores simultaneously.
+*   **Why appropriate:** (1) It accounts for the correlated nature of repeated measures over time. (2) Unlike the Friedman test, LMM/GEE can handle missing data without dropping the entire patient from the analysis, which is crucial for take-home surveys.
+*   **Why it may not be appropriate:** It is computationally complex and the interpretation of interaction terms can be difficult for general clinical audiences.
+*   **When NOT to use:** If the sample size is severely depleted due to dropouts, the model may fail to converge.
+*   **Alternative:** Two-way Mixed ANOVA (requires strict assumptions of normality and sphericity).
+
+**5. Baseline Demographic Comparisons (Independent t-test & Chi-Square)**
+*   **Purpose:** To compare age and gender distributions between Group 1 and Group 2 at baseline.
+*   **Why appropriate:** (1) Ensures that the randomization process was successful. (2) Confirms that any differences in pain are due to the treatment, not baseline demographic imbalances.
+*   **Why it may not be appropriate:** Some statisticians argue that if randomization is done correctly, baseline significance testing is philosophically redundant.
+*   **When NOT to use:** Do not use the t-test for age if the age distribution is highly skewed (e.g., mostly young adults with a few elderly outliers).
+*   **Alternative:** Mann-Whitney U test for age.
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**6. Kaplan-Meier Survival Analysis**
+*   **Purpose:** To evaluate the "time to complete pain relief" (time until HP VAS = 0) between the two groups.
+*   **Why appropriate:** (1) Treats pain relief as a "survival" event, providing a clear clinical picture of healing speed. (2) Easily visualizes the trajectory of recovery for clinicians.
+*   **Why it may not be appropriate:** Pain can fluctuate (go away and come back), whereas survival analysis assumes an event happens once and is final.
+*   **When NOT to use:** If a large portion of patients never reach zero pain within the 48-hour observation window (too much right-censoring).
+*   **Alternative:** Cox Proportional Hazards Regression (if adjusting for covariates like baseline pain).
+
+**7. Spearman’s Rank-Order Correlation**
+*   **Purpose:** To determine if baseline preoperative pain severity correlates with postoperative pain severity at 6 or 12 hours.
+*   **Why appropriate:** (1) Identifies if patients who start with worse pain inherently experience worse post-op pain regardless of treatment. (2) Non-parametric, fitting for VAS scores.
+*   **Why it may not be appropriate:** Correlation does not imply causation; it cannot adjust for the treatment group effect simultaneously.
+*   **When NOT to use:** If the relationship between baseline and post-op pain is non-monotonic (e.g., U-shaped).
+*   **Alternative:** Pearson Correlation (if data is normally distributed).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test (as the primary default):** Unless the HP VAS scores are explicitly tested for normality (e.g., via Shapiro-Wilk test) and proven normal, using a t-test is inappropriate. Pain scores are almost always skewed toward zero (floor effect) as healing occurs.
+*   **One-Way ANOVA:** Inappropriate because there are only two treatment groups. One-way ANOVA is designed for comparing three or more independent groups.
+*   **Paired t-test for Group 1 vs. Group 2:** Inappropriate because the patients in Group 1 and Group 2 are independent of each other. Paired tests are only for matched samples or before/after measurements within the *same* group.
+*   **Pearson Correlation for Pain Scores:** Inappropriate because it assumes both variables are continuous and normally distributed. VAS pain scores are better treated with non-parametric rank correlations.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must account for two primary statistical challenges: the non-normal nature of pain scale data and the repeated-measures design (data collected at 5 distinct time points). 
+
+The core analysis should rely on non-parametric tests (Mann-Whitney U for between-group comparisons and Friedman for within-group time comparisons) to safely handle the Heft-Parker VAS scores. Categorical data (tenderness at 1 week) should be analyzed using Chi-Square or Fisher's Exact tests. 
+
+To elevate the rigor of the study, a Linear Mixed Model or GEE is highly recommended. This will allow the researchers to test the interaction between time and treatment while robustly handling any missing data from patients who fail to return their take-home pain diaries. Finally, because the methodology states that patients taking rescue medication within 48 hours are *excluded*, the researchers are performing a "Per-Protocol" analysis. It is strongly advised to also conduct an "Intention-to-Treat" (ITT) sensitivity analysis to ensure that excluding patients with severe pain (who needed rescue meds) does not artificially bias the results toward showing lower pain scores.

@@ -1,0 +1,120 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_sgarancini,+09_10_GIE_21_02_280.pdf
+Status : ok
+Time   : 20260509_175254
+══════════════════════════════════════════════════════════════════════
+
+Here is a comprehensive extraction and statistical analysis plan based on the provided dental research article.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Prospective, three-arm, parallel-group, single-blind, single-center, randomized clinical trial (RCT).
+*   **Objectives:** To compare the efficacy of depotphoresis and diode laser (DL) against a control group regarding microbial load reduction, postoperative pain reduction, and periapical lesion healing after 6 months.
+*   **Population:** 90 patients (aged 18–60) with pulp necrosis and chronic apical periodontitis.
+*   **Groups (3 Arms):**
+    1.  Depotphoresis (Cupral + electric current) (n=30 enrolled, 26 analyzed)
+    2.  Diode Laser (940 nm, 2 W) (n=30 enrolled, 25 analyzed)
+    3.  Control (Calcium hydroxide) (n=30 enrolled, 16 analyzed)
+*   **Sample Size:** Calculated as 25 per group; 30 enrolled per group to account for dropouts (Total N=90). *Note: High attrition in the control group (14 lost).*
+*   **Variables & Measurements:**
+    *   *Microbial Load (CFU/ml):* Measured at three time points: S1 (baseline/after access), S2 (after chemomechanical prep/intervention), S3 (second session/after medicament removal).
+    *   *Postoperative Pain (VAS):* Measured on a 0–10 Visual Analog Scale at 6h, 12h, 24h, 48h, 72h, and 7 days post-treatment.
+    *   *Periapical Healing (Lesion Size in mm):* Measured via CBCT in three orthogonal planes (apicocoronal, mesiodistal, buccolingual) at baseline and 6 months.
+*   **Data Collection/Blinding:** Single-blind (patients blinded via mock applications). Independent blinded examiners for VAS. CBCT evaluated by two endodontists (third for tie-breaking).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+*Note: Microbial CFU data is inherently highly skewed and must be $\log_{10}$ transformed prior to any parametric analysis.*
+
+#### CATEGORY A – MANDATORY TESTS (Core Analysis)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of continuous data (CFU counts, VAS scores, lesion dimensions).
+*   **Why appropriate:** (1) Essential for determining whether to use parametric or non-parametric tests. (2) Highly accurate for sample sizes under 50 per group.
+*   **Why it may not be appropriate:** Can be overly sensitive to minor deviations from normality in larger samples (though less of an issue with n=16 to 26).
+*   **When NOT to use:** When analyzing strictly categorical data (e.g., gender).
+*   **Alternative:** Kolmogorov-Smirnov test.
+
+**2. Kruskal-Wallis H Test (or One-Way ANOVA if data is normal)**
+*   **Purpose:** To compare baseline characteristics (age, baseline CFU, baseline lesion size) and between-group differences at specific time points (e.g., CFU at S2, VAS at 24h).
+*   **Why appropriate:** (1) Accommodates the comparison of three independent groups. (2) Kruskal-Wallis does not require the assumption of normal distribution, which is ideal for ordinal VAS scores and raw CFU data.
+*   **Why it may not be appropriate:** Less statistically powerful than ANOVA if the data actually perfectly meets parametric assumptions.
+*   **When NOT to use:** When comparing only two groups, or when comparing repeated measures within the same group.
+*   **Alternative:** One-Way ANOVA (if data is normally distributed and variances are equal).
+
+**3. Linear Mixed-Effects Models (LMM) or Generalized Estimating Equations (GEE)**
+*   **Purpose:** To analyze repeated measures data (VAS over 6 time points; CFU over 3 time points).
+*   **Why appropriate:** (1) Excellently handles missing data without dropping the entire patient (crucial here due to the loss of 14 control patients). (2) Accounts for the correlation of repeated measures within the same subject over time.
+*   **Why it may not be appropriate:** Computationally complex and requires careful selection of the covariance structure.
+*   **When NOT to use:** When analyzing data collected at only a single time point.
+*   **Alternative:** Friedman Test (non-parametric) or Repeated Measures ANOVA (parametric, but requires imputation for missing data).
+
+**4. Paired t-test (or Wilcoxon Signed-Rank Test)**
+*   **Purpose:** To evaluate within-group healing by comparing CBCT lesion size at baseline versus 6 months.
+*   **Why appropriate:** (1) Specifically designed to compare two related/paired continuous variables. (2) Directly answers the objective of whether healing occurred within each specific treatment arm.
+*   **Why it may not be appropriate:** Does not compare the treatments *against* each other, only against their own baselines.
+*   **When NOT to use:** When comparing independent groups (e.g., Laser vs. Control).
+*   **Alternative:** Wilcoxon Signed-Rank Test (if differences are not normally distributed).
+
+#### CATEGORY B – RECOMMENDED TESTS (Enhance Quality)
+
+**1. Intraclass Correlation Coefficient (ICC)**
+*   **Purpose:** To measure inter-rater reliability between the two endodontists evaluating the CBCT images.
+*   **Why appropriate:** (1) Validates the reliability and reproducibility of the primary radiographic outcome. (2) Reduces the risk of measurement bias.
+*   **Why it may not be appropriate:** Assumes that the raters are evaluating the exact same subjects under the exact same conditions.
+*   **When NOT to use:** For objective, machine-generated data that requires no human interpretation (e.g., automated apex locator readings).
+*   **Alternative:** Cohen’s Kappa (if lesion healing was categorized as success/failure rather than continuous mm).
+
+**2. Analysis of Covariance (ANCOVA)**
+*   **Purpose:** To compare the 6-month lesion sizes between the three groups while controlling for baseline lesion size.
+*   **Why appropriate:** (1) Adjusts for any accidental baseline imbalances in lesion size between groups. (2) Increases statistical power by reducing within-group error variance.
+*   **Why it may not be appropriate:** Requires the assumption of homogeneity of regression slopes (the relationship between baseline and 6-month size must be similar across all groups).
+*   **When NOT to use:** If the covariate (baseline size) is not linearly related to the dependent variable (6-month size).
+*   **Alternative:** Kruskal-Wallis test on the *change scores* (Baseline minus 6-month size).
+
+**3. Multiple Imputation (MI)**
+*   **Purpose:** To handle the missing data resulting from patient dropouts, particularly the 46% dropout in the control group.
+*   **Why appropriate:** (1) Preserves the Intention-to-Treat (ITT) principle, which is the gold standard for RCTs. (2) Prevents the bias that occurs if dropouts are related to treatment efficacy (e.g., control patients dropping out due to lack of healing).
+*   **Why it may not be appropriate:** Assumes data is Missing at Random (MAR); if data is Missing Not At Random (MNAR), MI may introduce bias.
+*   **When NOT to use:** When missing data is negligible (e.g., <5%) or when analyzing Per-Protocol populations exclusively.
+*   **Alternative:** Last Observation Carried Forward (LOCF) - though generally discouraged in modern biostatistics.
+
+#### CATEGORY C – OPTIONAL TESTS (Supplementary Insights)
+
+**1. Kaplan-Meier Survival Analysis**
+*   **Purpose:** To analyze the "time to complete pain resolution" (time until VAS = 0).
+*   **Why appropriate:** (1) Provides a dynamic view of patient comfort rather than just mean pain scores. (2) Easily handles censored data (patients who drop out before pain resolves).
+*   **Why it may not be appropriate:** Pain resolution might happen very quickly (within 24-48 hours), making survival curves look stepped and less informative.
+*   **When NOT to use:** For cross-sectional data or data without a clear "event" time.
+*   **Alternative:** Cox Proportional-Hazards Model (if adjusting for covariates like age or baseline pain).
+
+**2. Effect Size Calculations (e.g., Partial Eta-Squared or Cohen’s d)**
+*   **Purpose:** To quantify the magnitude of the difference between treatments, independent of sample size.
+*   **Why appropriate:** (1) A p-value only tells if a difference exists; effect size tells if the difference is clinically meaningful. (2) Highly recommended by CONSORT guidelines.
+*   **Why it may not be appropriate:** Can be difficult to interpret for complex mixed models or non-parametric data.
+*   **When NOT to use:** When the primary study objective is purely equivalence or non-inferiority without establishing superiority.
+*   **Alternative:** Rank-biserial correlation (for non-parametric effect sizes).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1.  **Independent Samples t-test:** Should NOT be used to compare the three groups. Running multiple t-tests (A vs B, B vs C, A vs C) inflates the Type I error rate (false positives). An omnibus test like ANOVA or Kruskal-Wallis must be used first.
+2.  **Standard Repeated Measures ANOVA (Complete Case Analysis):** Should NOT be used due to the massive dropout in the control group (from 30 to 16). Standard RM-ANOVA uses listwise deletion, meaning any patient missing even one VAS score or the S3 CFU count will be entirely deleted from the analysis, destroying statistical power and introducing severe bias.
+3.  **Chi-Square Test for CFU or VAS:** Should NOT be used because CFU and VAS are continuous/ordinal variables, not categorical frequencies. Converting them into arbitrary categories (e.g., "High Pain" vs "Low Pain") results in a massive loss of data resolution.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must address three distinct types of data: highly skewed continuous data (CFU), ordinal repeated-measures data (VAS), and continuous pre-post data (CBCT lesion size). 
+
+The most critical methodological challenge in this study is the severe attrition in the control group (nearly 50% dropout). Therefore, the statistical plan heavily relies on **Linear Mixed Models (LMM)** or **Generalized Estimating Equations (GEE)** for longitudinal data (VAS and CFU), as these models utilize all available data points without requiring listwise deletion. 
+
+Furthermore, microbial counts must be $\log_{10}$ transformed prior to analysis to satisfy parametric assumptions. For radiographic healing, an **ANCOVA** is recommended to compare 6-month outcomes while controlling for baseline lesion size, ensuring that any initial disparities do not confound the final results. Finally, calculating the **Intraclass Correlation Coefficient (ICC)** is vital to validate the reliability of the two endodontists measuring the CBCT scans, ensuring the primary long-term outcome is robust and reproducible.

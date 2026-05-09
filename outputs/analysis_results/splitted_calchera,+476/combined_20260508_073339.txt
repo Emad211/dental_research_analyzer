@@ -1117,3 +1117,101 @@ TASK 4: SUMMARY OF ANALYTICAL APPROACH
   5) Supplement with effect size estimates and, optionally, factorial and sensitivity analyses to separate sealer from technique effects and check robustness.
 
 This approach respects the experimental design, accounts for measurement reliability, and uses statistical methods aligned with the nature of the leakage outcome, while avoiding inappropriate tests that misrepresent the structure of the data.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_171105
+──────────────────────────────────────────────────────────────────────
+
+Here is the comprehensive information extraction and statistical analysis plan based on the provided dental research article.
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** *In vitro* randomized experimental study.
+*   **Objectives:** To evaluate the apical sealing ability (microleakage) of a bioceramic sealer (BioRoot RCS) compared to a Zinc Oxide Eugenol (ZOE) sealer (Pulp Canal Sealer) when used with three different obturation techniques (cold and warm).
+*   **Null Hypotheses:** 
+    1. Bioceramic cement seals the apex similarly to traditional ZOE cement.
+    2. Bioceramic cement seals the apex similarly when used with cold or warm obturation techniques.
+*   **Sample Size:** The text states "Eigthy [80] intact human single-rooted maxillary premolars." *Biostatistician's Note: There is a critical discrepancy in the authors' manuscript. They state 80 teeth were used, but list 5 groups with n=20 each (which totals 100 teeth). The analysis plan will assume 5 groups of either n=16 (to total 80) or n=20 (totaling 100).*
+*   **Groups (Independent Variables):** 5 independent groups based on Sealer + Technique combinations:
+    *   *Group 1:* Thermafil (Warm) + Pulp Canal Sealer (ZOE)
+    *   *Group 2:* Thermafil (Warm) + BioRoot RCS (Bioceramic)
+    *   *Group 3:* Warm vertical condensation (Warm) + Pulp Canal Sealer (ZOE)
+    *   *Group 4:* Single GP cone (Cold) + BioRoot RCS (Bioceramic)
+    *   *Group 5:* Warm vertical condensation (Warm) + BioRoot RCS (Bioceramic)
+*   **Dependent Variable:** Apical microleakage.
+*   **Measurements:** The amount of tracer (ammoniacal silver nitrate) along the interface. The text notes two observers independently "scored" the amount of tracer. In endodontic microleakage studies, "scoring" typically implies an ordinal scale (e.g., 0 = no leakage, 1 = mild, 2 = moderate, 3 = severe). 
+*   **Data Collection Methods:** Teeth were immersed in tracer, sectioned longitudinally, and examined under a digital microscope by two independent, blinded(?) observers.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given that the dependent variable is a "score" (ordinal data), non-parametric statistics are the primary choice. If the "score" is actually a continuous measurement in millimeters, parametric equivalents can be used if normality assumptions are met.
+
+#### CATEGORY A – MANDATORY (Essential for a complete analysis)
+
+**1. Cohen’s Weighted Kappa (or Intraclass Correlation Coefficient - ICC)**
+*   **Purpose:** To measure inter-rater reliability between the two independent observers.
+*   **Why appropriate:** (1) The methodology explicitly states two observers independently scored the samples; establishing their agreement is mandatory before analyzing the data. (2) Weighted Kappa is ideal for ordinal scores, while ICC is ideal if the scores are continuous measurements.
+*   **Why it may not be appropriate:** If the two observers resolved all disagreements by consensus before recording the final data, calculating reliability on the final dataset would be impossible/redundant.
+*   **When this test should NOT be used:** Do not use this test to compare the actual differences between the 5 experimental groups.
+*   **Alternative if assumptions are violated:** Spearman’s Rank Correlation (though less robust as it measures correlation, not absolute agreement).
+
+**2. Kruskal-Wallis H Test**
+*   **Purpose:** To determine if there are statistically significant differences in microleakage scores across the 5 independent groups.
+*   **Why appropriate:** (1) It is the non-parametric equivalent of a one-way ANOVA, perfectly suited for ordinal dependent variables (leakage scores). (2) It accommodates the comparison of more than two independent groups simultaneously.
+*   **Why it may not be appropriate:** It only tells you that *at least one* group is different, but does not specify which ones. It also has less statistical power than parametric tests if the data is actually continuous and normally distributed.
+*   **When this test should NOT be used:** Should not be used if the study design involved repeated measures on the same teeth.
+*   **Alternative if assumptions are violated:** One-way ANOVA (if it is revealed that the "scores" are actually continuous data in millimeters and normally distributed).
+
+**3. Dunn’s Test with Bonferroni Correction (Post-Hoc Analysis)**
+*   **Purpose:** To perform pairwise comparisons to identify exactly which groups significantly differ from one another, answering the specific null hypotheses.
+*   **Why appropriate:** (1) It is the standard post-hoc test following a significant Kruskal-Wallis test. (2) The Bonferroni correction adjusts the p-value to prevent Type I error inflation caused by multiple comparisons (e.g., comparing Group 1 vs 2, Group 2 vs 4, etc.).
+*   **Why it may not be appropriate:** Bonferroni can be overly conservative, potentially increasing Type II errors (false negatives) when there are many comparisons.
+*   **When this test should NOT be used:** Must NOT be used if the initial Kruskal-Wallis omnibus test is not statistically significant (p > 0.05).
+*   **Alternative if assumptions are violated:** Mann-Whitney U tests with a Benjamini-Hochberg False Discovery Rate (FDR) correction.
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To formally test the data for normal distribution.
+*   **Why appropriate:** (1) It is highly accurate for small sample sizes (n=16 or 20 per group). (2) It provides statistical justification for choosing non-parametric tests over parametric ones.
+*   **Why it may not be appropriate:** If the data is strictly categorical/ordinal (e.g., scores of 0, 1, 2, 3), normality testing is conceptually unnecessary as ordinal data is inherently non-normal.
+*   **When this test should NOT be used:** Do not use for sample sizes larger than 2,000 (where Kolmogorov-Smirnov is preferred, though not applicable here).
+*   **Alternative if assumptions are violated:** Visual inspection of Q-Q plots and histograms.
+
+**2. Descriptive Statistics (Median and Interquartile Range - IQR)**
+*   **Purpose:** To summarize the central tendency and dispersion of the data for each group.
+*   **Why appropriate:** (1) Median and IQR are the correct descriptive statistics for ordinal or skewed continuous data. (2) They provide a clear, interpreitable summary of the raw data for the reader.
+*   **Why it may not be appropriate:** If the data is perfectly normal and continuous, Mean and Standard Deviation would be more informative.
+*   **When this test should NOT be used:** Do not use Mean and Standard Deviation to report purely ordinal categorical scores (e.g., a mean score of "1.7" on a 0-3 categorical scale is mathematically flawed).
+*   **Alternative if assumptions are violated:** Frequencies and percentages (e.g., "60% of Group 1 scored a 0").
+
+#### CATEGORY C – OPTIONAL (Provides supplementary insights)
+
+**1. Ordinal Logistic Regression (or Aligned Rank Transform ANOVA)**
+*   **Purpose:** To isolate the main effects and interaction of "Sealer Type" (Bioceramic vs ZOE) and "Temperature Technique" (Warm vs Cold).
+*   **Why appropriate:** (1) It allows for the evaluation of multiple independent variables simultaneously rather than just treating the 5 groups as distinct silos. (2) It directly addresses the specific wording of the null hypotheses regarding material vs. technique.
+*   **Why it may not be appropriate:** The study design is not a fully crossed factorial design (e.g., there is no "Single Cone + ZOE" group), which makes interaction terms difficult or impossible to calculate cleanly.
+*   **When this test should NOT be used:** If the proportional odds assumption for ordinal logistic regression is violated.
+*   **Alternative if assumptions are violated:** Stick strictly to the pairwise comparisons (Dunn's test) to answer the hypotheses.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+The following tests should **NOT** be used in this study:
+
+1.  **Independent Samples t-test:** Inappropriate because there are 5 groups. Using multiple t-tests to compare 5 groups will massively inflate the Type I error rate (false positives).
+2.  **Repeated Measures ANOVA / Friedman Test:** Inappropriate because the groups are independent. Different teeth were used in each group; the same teeth were not tested multiple times.
+3.  **Pearson Correlation Coefficient:** Inappropriate because the study is looking for differences between categorical groups regarding an outcome, not evaluating a linear relationship between two continuous variables.
+4.  **Chi-Square Test of Independence (on raw scores):** While possible if scores are grouped (e.g., Leakage vs. No Leakage), using it on a 5x4 contingency table (5 groups x 4 score levels) with n=16/20 per group will likely result in expected cell counts below 5, violating the test's core assumption and rendering it invalid.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach is rooted in **non-parametric statistics**, driven by the fact that microleakage was evaluated via "scoring" by human observers, which inherently generates ordinal data. 
+
+The first critical step is validating the measurement tool by establishing inter-rater reliability between the two observers (using Cohen's Kappa). Once reliability is confirmed, the Kruskal-Wallis H test serves as the primary omnibus test to determine if any significant differences exist among the five independent groups. Finally, Dunn's post-hoc test with Bonferroni correction will safely isolate exactly which sealer and technique combinations outperformed the others, directly answering the authors' null hypotheses without inflating the risk of false-positive results. *Note: The authors must clarify the mathematical discrepancy regarding their sample size (80 total vs. 5 groups of 20) prior to finalizing the analysis.*

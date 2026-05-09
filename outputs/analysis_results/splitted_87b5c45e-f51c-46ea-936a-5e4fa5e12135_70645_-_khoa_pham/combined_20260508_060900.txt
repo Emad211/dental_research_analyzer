@@ -1049,3 +1049,111 @@ Therefore:
 - Non-parametric and robust alternatives are specified whenever parametric assumptions may be questionable, which is likely with small sample size and skewed pain data.
 
 This plan ensures that the main hypothesis (no difference in pain between instrumentation with connected vs unconnected EAL) is tested appropriately, with adequate attention to the data structure, potential confounding, and clinical interpretability.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_164108
+──────────────────────────────────────────────────────────────────────
+
+Here is a comprehensive extraction and statistical analysis plan based on the provided dental research article, written from the perspective of an expert biostatistician.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Parallel-group, randomized controlled trial (RCT) with a 1:1 allocation ratio. Single-operator, single-visit endodontic treatment.
+*   **Objectives:** To evaluate and compare postoperative pain after root canal treatment using a traditional endodontic motor with an unconnected Electronic Apex Locator (EAL) versus an endodontic motor with a connected EAL.
+*   **Null Hypothesis:** There are no differences in postoperative pain intensities between the two experimental groups.
+*   **Participants:** 42 healthy adult patients (>18 years) requiring endodontic therapy on a first or second maxillary or mandibular molar.
+*   **Clinical Diagnoses Included:** Symptomatic irreversible pulpitis OR symptomatic apical periodontitis.
+*   **Groups:**
+    *   *Group 1 (Control, n=21):* Traditional motor (WaveOne) with unconnected EAL (ProPex Pixi).
+    *   *Group 2 (Intervention, n=21):* Motor with connected EAL (E Connect S + E-Pex Pro) featuring auto-stop/reverse at the apex.
+*   **Sample Size:** Calculated as 36 (based on 80% power, $\alpha=0.05$). Aimed for 42 (21 per group) to account for potential dropouts. Final analyzed: 42.
+*   **Variables:**
+    *   *Independent Variable:* Type of instrumentation technique (Connected vs. Unconnected EAL).
+    *   *Dependent Variables (Outcomes):* Postoperative pain intensity, Postoperative pain on percussion, Analgesic intake.
+    *   *Covariates/Baseline Data:* Age, gender, tooth type (maxillary/mandibular, 1st/2nd molar), diagnosis, preoperative pain, preoperative pain on percussion.
+*   **Measurements & Data Collection:**
+    *   Pain measured using the Heft-Parker Visual Analogue Scale (HP-VAS), a 170 mm unnumbered line with categorical descriptors (0=no pain, 0-54=mild, 55-113=moderate, 114-170=severe).
+    *   Time points: Preoperative, 6, 24, 48, 72 hours, and 1 week postoperatively.
+    *   Analgesic intake: Recorded post-procedure (400mg ibuprofen prescribed for unbearable pain).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given the nature of pain scores (which frequently exhibit non-normal distributions, floor effects over time, and are measured repeatedly), the following statistical plan is recommended.
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of continuous data (age, baseline pain, and postoperative HP-VAS scores at each time point).
+*   **Why appropriate:** (1) Pain scores (VAS) are notoriously skewed, especially as pain resolves over 72 hours. (2) It dictates whether parametric or non-parametric tests must be used for the primary outcome.
+*   **Why it may not be appropriate:** It can be underpowered in small sample sizes, though n=42 is generally sufficient to detect major deviations from normality.
+*   **When NOT to use:** For categorical data (e.g., gender, tooth type).
+*   **Alternative:** Kolmogorov-Smirnov test, or visual inspection of Q-Q plots and histograms.
+
+**2. Mann-Whitney U Test (or Independent t-test)**
+*   **Purpose:** To compare continuous baseline characteristics (age, preoperative pain) and postoperative pain scores at specific individual time points (6, 24, 48, 72h, 1 week) between the two groups.
+*   **Why appropriate:** (1) HP-VAS pain scores are highly likely to violate normality assumptions, making this non-parametric test ideal. (2) It allows for direct comparison of the primary outcome between the two independent groups at specific clinical milestones.
+*   **Why it may not be appropriate:** It does not account for the correlated nature of repeated measures across time within the same patient.
+*   **When NOT to use:** If the data is perfectly normally distributed (use parametric) or when comparing more than two groups.
+*   **Alternative:** Independent samples t-test (if data is strictly normal and variances are equal).
+
+**3. Chi-Square Test of Independence (or Fisher’s Exact Test)**
+*   **Purpose:** To compare categorical variables between groups (gender, diagnosis, tooth type, and incidence of analgesic intake).
+*   **Why appropriate:** (1) Essential to prove baseline equivalence (randomization success) for categorical confounders. (2) Analgesic intake is a binary categorical outcome (Yes/No) that directly impacts pain interpretation.
+*   **Why it may not be appropriate:** Chi-square is invalid if expected cell counts are less than 5.
+*   **When NOT to use:** When analyzing continuous variables (like exact VAS scores).
+*   **Alternative:** Fisher’s Exact Test (mandatory if expected cell frequencies are < 5, which is highly likely in a sample of n=42 when split by subgroups like diagnosis).
+
+#### CATEGORY B – RECOMMENDED (Enhances Rigor)
+
+**1. Generalized Estimating Equations (GEE) or Linear Mixed-Effects Models (LMM)**
+*   **Purpose:** To analyze the primary outcome (pain scores) across all time points simultaneously, assessing the "Group × Time" interaction.
+*   **Why appropriate:** (1) It accounts for the within-subject correlation of repeated pain measurements (a patient's pain at 24h is correlated with their pain at 6h). (2) It handles missing data better than traditional repeated-measures ANOVA, should any patients fail to report a specific time point.
+*   **Why it may not be appropriate:** Requires advanced statistical software and expertise to specify the correct working correlation matrix.
+*   **When NOT to use:** If only a single postoperative time point was measured.
+*   **Alternative:** Friedman test (non-parametric) for within-group changes over time, combined with Mann-Whitney for between-group changes.
+
+**2. Rank-Biserial Correlation or Cohen’s *d***
+*   **Purpose:** To calculate the effect size of the difference in pain between the two groups.
+*   **Why appropriate:** (1) P-values only indicate statistical significance; effect sizes indicate clinical relevance. (2) Helps validate if the "connected EAL" provides a *meaningful* reduction in pain, not just a mathematical one.
+*   **Why it may not be appropriate:** Can be difficult to interpret clinically on a 170mm scale without established Minimal Clinically Important Difference (MCID) thresholds.
+*   **When NOT to use:** When the primary statistical test yields a highly non-significant result with zero trend, making effect size redundant.
+*   **Alternative:** Hodges-Lehmann estimate of median difference.
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To evaluate the "time to complete pain resolution" (time until VAS = 0).
+*   **Why appropriate:** (1) Patients care most about *when* their pain will completely stop. (2) It provides a dynamic view of recovery rather than just comparing static means.
+*   **Why it may not be appropriate:** The time points are discrete and widely spaced (6, 24, 48, 72h), which limits the granularity of survival curves.
+*   **When NOT to use:** If no patients reach a pain score of 0 during the 1-week follow-up.
+*   **Alternative:** Cox Proportional Hazards regression (if adjusting for covariates).
+
+**2. Analysis of Covariance (ANCOVA) or Multivariable Regression**
+*   **Purpose:** To compare postoperative pain while adjusting for baseline covariates (e.g., preoperative pain, diagnosis of pulpitis vs. apical periodontitis).
+*   **Why appropriate:** (1) As noted by Peer Reviewer 2, mixing vital (pulpitis) and necrotic (apical periodontitis) teeth is a major confounding factor; adjusting for this is critical. (2) Preoperative pain strongly predicts postoperative pain.
+*   **Why it may not be appropriate:** ANCOVA assumes normality and homogeneity of regression slopes, which VAS data often violates.
+*   **When NOT to use:** If the sample size is too small to support multiple predictors (rule of thumb: 10-15 subjects per predictor).
+*   **Alternative:** Stratified analysis (analyzing pulpitis and apical periodontitis patients separately).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Repeated Measures ANOVA (Standard):** Should NOT be used. Standard RM-ANOVA assumes normality, sphericity, and cannot handle missing data well. Pain scores (VAS) usually violate the normality assumption, and sphericity is almost always violated in time-course pain data.
+*   **Unpaired Student’s t-tests across all time points without correction:** Should NOT be used. Running multiple t-tests (at 6, 24, 48, 72h, 1 week) inflates the Type I error rate (false positives). If individual time points are tested, a Bonferroni or Holm-Bonferroni correction must be applied.
+*   **Pearson Correlation:** Should NOT be used to correlate categorical descriptors (mild, moderate, severe) with other variables. Pearson is for continuous, normally distributed data. Spearman’s rank correlation must be used for ordinal data.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must prioritize non-parametric statistics and repeated-measures modeling due to the use of the Heft-Parker VAS for pain assessment. Pain data typically exhibits a non-normal distribution with a strong right skew as healing occurs. 
+
+First, the analysis must validate the randomization process by comparing baseline demographics, preoperative pain, and crucially, the clinical diagnosis (pulpitis vs. apical periodontitis) using Chi-square/Fisher's exact and Mann-Whitney tests. Because the study includes two vastly different pulpal diagnoses (vital vs. necrotic), which inherently have different pain trajectories, it is imperative to either adjust for diagnosis using regression models (GEE/LMM) or stratify the analysis. 
+
+The primary outcome should be evaluated using a Generalized Estimating Equation (GEE) to account for the correlated nature of repeated measures over time. Furthermore, analgesic intake must be analyzed as a critical confounding variable, as taking ibuprofen will artificially lower VAS scores, potentially masking differences between the two instrumentation techniques. Reporting effect sizes alongside p-values will be necessary to determine if the connected EAL system offers a *clinically meaningful* benefit to the patient.

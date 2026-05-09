@@ -1,0 +1,105 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_the_effect_of_root_canal_treatment_on_oral.9.pdf
+Status : ok
+Time   : 20260509_175451
+══════════════════════════════════════════════════════════════════════
+
+Here is the comprehensive extraction and statistical analysis plan based on the provided dental research article.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Randomized Clinical Trial (Parallel groups).
+*   **Objectives:** To measure and compare the impact of single-visit versus multiple-visit root canal treatment on Oral Health-Related Quality of Life (OHRQoL).
+*   **Study Population:** Patients aged 16 to 60 years diagnosed with symptomatic irreversible pulpitis and normal periapical tissue, requiring root canal treatment.
+*   **Exclusion Criteria:** Calcified canals, systemic diseases complicating treatment (e.g., endocarditis), or root resorption.
+*   **Groups:**
+    *   *Group 1:* Single-visit root canal treatment.
+    *   *Group 2:* Multiple-visit root canal treatment.
+*   **Sample Size:** *Critical Discrepancy Noted.* The text states a power calculation required 16 subjects per group (total 32). However, later in the text, it states: "The patients were assigned randomly into two groups of fifty patients each" (total 100). 
+*   **Independent Variables:** Treatment modality (Single vs. Multiple visits), Time (Pre-treatment, Post-treatment).
+*   **Dependent Variable:** OHRQoL, measured continuously/ordinally via the OHIP-14 score (Range: 0 to 56; higher scores indicate greater negative impact).
+*   **Data Collection Method:** Face-to-face interview using the Arabic version of the OHIP-14 questionnaire.
+*   **Measurement Timepoints:** 
+    *   *Single-visit group:* 2 timepoints (Baseline, Post-obturation).
+    *   *Multiple-visit group:* 3 timepoints (Baseline, Post-extirpation/access, Post-obturation).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given that the OHIP-14 yields a sum score (0-56), it is traditionally treated as continuous data in dental literature, provided it meets normality assumptions. 
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the OHIP-14 score distributions within each group and timepoint.
+*   **Why appropriate:** (1) The sample size per group might be small (n=16 or n=50), making normality checks crucial. (2) It dictates whether parametric or non-parametric tests must be used for the primary analysis.
+*   **Why it may not be appropriate:** If the sample size is exactly 50 per group, the test can be overly sensitive to minor, clinically insignificant deviations from normality.
+*   **When NOT to use:** When the sample size is extremely large (e.g., >300), where visual inspections (Q-Q plots) are preferred.
+*   **Alternative:** Kolmogorov-Smirnov test or visual assessment of Q-Q plots and histograms.
+
+**2. Linear Mixed-Effects Model (LMM)** *(Note: Authors explicitly mentioned "mixed-effect models")*
+*   **Purpose:** To evaluate the main effects of treatment group, time, and the group-by-time interaction on OHIP-14 scores.
+*   **Why appropriate:** (1) It perfectly handles the asymmetrical measurement timepoints between the two groups (2 timepoints vs. 3 timepoints). (2) It accounts for the correlated nature of repeated measures within the same patient while handling any missing data (dropouts) without listwise deletion.
+*   **Why it may not be appropriate:** It can be overly complex if only the baseline and final (post-obturation) scores are being compared, ignoring the intermediate visit.
+*   **When NOT to use:** If the data is severely skewed and cannot be transformed, violating the assumption of normally distributed residuals.
+*   **Alternative:** Generalized Estimating Equations (GEE) if the outcome distribution is strictly treated as ordinal/non-normal.
+
+**3. Independent Samples t-test (or Mann-Whitney U test)**
+*   **Purpose:** To compare baseline OHIP-14 scores between the single-visit and multiple-visit groups.
+*   **Why appropriate:** (1) Establishes baseline equivalence, ensuring randomization was successful. (2) Simple and highly interpretable for comparing two independent groups.
+*   **Why it may not be appropriate:** If the data violates the assumption of normality and equal variances (for the t-test).
+*   **When NOT to use:** When comparing more than two groups, or when comparing paired (pre/post) data.
+*   **Alternative:** Mann-Whitney U test (if data is non-parametric).
+
+#### CATEGORY B – RECOMMENDED (Enhances Quality)
+
+**1. Analysis of Covariance (ANCOVA)**
+*   **Purpose:** To compare the final post-obturation OHIP-14 scores between the two groups while statistically controlling for baseline OHIP-14 scores and age.
+*   **Why appropriate:** (1) Adjusts for any accidental baseline imbalances in OHIP-14 scores between groups. (2) Reduces within-group error variance, increasing statistical power to detect a true treatment effect.
+*   **Why it may not be appropriate:** If the covariate (baseline score) interacts with the treatment (violating the assumption of homogeneity of regression slopes).
+*   **When NOT to use:** If the relationship between the baseline score and final score is non-linear.
+*   **Alternative:** Quade's rank analysis of covariance (non-parametric ANCOVA).
+
+**2. Chi-Square Test for Independence**
+*   **Purpose:** To compare categorical baseline demographic variables (e.g., gender, socioeconomic status collected during the interview) between the two groups.
+*   **Why appropriate:** (1) Confirms that randomization successfully distributed categorical confounders equally. (2) Identifies potential covariates for the main analysis.
+*   **Why it may not be appropriate:** If expected cell counts are too small (less than 5).
+*   **When NOT to use:** When dealing with continuous variables (like exact age) or paired categorical data.
+*   **Alternative:** Fisher’s Exact Test (if expected cell frequencies are < 5).
+
+**3. Cohen’s *d* (Effect Size Calculation)**
+*   **Purpose:** To quantify the magnitude of the difference in OHIP-14 improvement between the two groups.
+*   **Why appropriate:** (1) P-values only indicate if a difference exists, whereas effect sizes tell the clinician if the difference is *meaningful*. (2) Facilitates inclusion in future meta-analyses.
+*   **Why it may not be appropriate:** Cohen's *d* assumes normal distribution and equal variances; it can be misleading if data is highly skewed.
+*   **When NOT to use:** When the primary analysis relies entirely on non-parametric rank-based tests.
+*   **Alternative:** Rank-biserial correlation or Cliff's Delta (for non-parametric data).
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. Wilcoxon Signed-Rank Test (Item-level analysis)**
+*   **Purpose:** To evaluate changes in specific OHIP-14 domains (e.g., physical pain vs. psychological discomfort) from baseline to final visit within each group.
+*   **Why appropriate:** (1) The OHIP-14 has 7 distinct domains; overall scores might hide specific areas of improvement. (2) Individual items are ordinal (0-4 Likert scale), making non-parametric tests ideal.
+*   **Why it may not be appropriate:** Increases the risk of Type I error due to multiple comparisons.
+*   **When NOT to use:** If the researcher is only interested in the global OHRQoL score and lacks statistical power for sub-analyses.
+*   **Alternative:** Paired t-test (if domain sum scores are normally distributed, though less likely for sub-scales).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Standard Repeated Measures ANOVA:** **DO NOT USE.** The study design features an asymmetrical follow-up schedule (Group 1 has 2 timepoints; Group 2 has 3 timepoints). Standard RM-ANOVA requires balanced data (equal timepoints for all subjects) and will drop any patient missing the intermediate visit, ruining the analysis.
+*   **Pearson Correlation Coefficient (for pre/post comparison):** **DO NOT USE.** Correlation measures the strength of a linear relationship, not the mean difference. A patient's score could drop from 50 to 10, showing massive improvement, but still yield a high correlation if the trend is linear, failing to answer the research question regarding *improvement*.
+*   **Unpaired t-test on raw post-treatment scores (without baseline context):** **DO NOT USE.** Comparing only the final scores between groups ignores where the patients started. A group might have a higher final score simply because they had a higher baseline score, not because the treatment was less effective.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must first resolve the critical discrepancy in the reported sample size (n=32 vs. n=100). Assuming the data is collected, the approach should begin with descriptive statistics and normality checks (Shapiro-Wilk) to establish the distribution of the OHIP-14 scores. Baseline equivalence must be confirmed using independent t-tests and Chi-square tests to validate the randomization process. 
+
+Because the study design involves repeated measures with an unequal number of timepoints between the two groups (2 vs. 3 visits), traditional RM-ANOVA is invalid. Therefore, the authors' suggested use of **Linear Mixed-Effects Models (LMM)** is the most robust and appropriate choice. LMM will allow for the comparison of OHRQoL trajectories over time between the single and multiple-visit groups while utilizing all available data points. Finally, incorporating ANCOVA to adjust for baseline scores and calculating effect sizes will ensure the clinical relevance of the findings is accurately reported.

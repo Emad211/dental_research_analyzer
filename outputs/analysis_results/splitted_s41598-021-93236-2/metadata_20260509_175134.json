@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splitted_s41598-021-93236-2.pdf",
+  "timestamp": "20260509_175134",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "ok",
+      "chars": 9133
+    }
+  }
+}

@@ -983,3 +983,109 @@ TASK 4: SUMMARY – JUSTIFICATION OF OVERALL ANALYTICAL APPROACH
   - Aligns with the sample size justification based on an effect size f=0.5 (ANOVA framework).
   - Maximizes statistical power while maintaining control of Type I error.
   - Provides clinically interpretable estimates (means, differences, effect sizes) for the impact of different cryotherapy protocols on both pain (clinical outcome) and IL‑6 (biological marker).
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_173303
+──────────────────────────────────────────────────────────────────────
+
+Here is a comprehensive statistical analysis plan based on the provided text, structured according to your instructions.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Double-blinded, parallel-group, Randomized Clinical Trial (RCT).
+*   **Objectives:** To evaluate the effect of intracanal cryotherapy (cold temperature irrigants) on postendodontic pain and inflammation (interleukin-6 expression) using different irrigation protocols.
+*   **Sample Size:** Total N = 48 patients (n = 12 per group). Calculated *a priori* (Power = 80%, α = 0.05, effect size *f* = 0.5).
+*   **Study Population:** Patients aged 20–50 years with symptomatic apical periodontitis (AP).
+*   **Inclusion Criteria:** Preoperative pain score > 7 on the Visual Analog Scale (VAS).
+*   **Exclusion Criteria:** Periapical abscess, recent use (past 2 months) of immunosuppressive/anti-inflammatory/antibiotic drugs, medically compromised, pregnant/lactating.
+*   **Groups (Independent Variable):** 4 irrigation protocols:
+    *   *Group I (Control):* 5% NaOCl at Room Temp (RT) throughout + final rinse 5% NaOCl RT.
+    *   *Group II:* 5% cold NaOCl (2°C–5°C) throughout + final rinse 5% cold NaOCl.
+    *   *Group III:* 5% NaOCl RT throughout + final rinse 5% cold NaOCl.
+    *   *Group IV:* 5% NaOCl RT throughout + final rinse cold saline (2°C–5°C).
+*   **Dependent Variables & Measurements:**
+    *   *Clinical Pain:* Measured via Visual Analog Scale (VAS) (Ordinal/Continuous scale, 0-10).
+    *   *Inflammation:* Interleukin-6 (IL-6) expression (Continuous variable, likely measured via RT-qPCR based on reference 17).
+*   **Time Points (Implied):** Preoperative (baseline) and postoperative (likely 24-48h based on the introduction).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the data distribution for both VAS scores and IL-6 expression.
+*   **Why appropriate:** (1) The sample size per group is very small (n=12), making it unsafe to assume normality via the Central Limit Theorem. (2) It is highly sensitive and accurate for small sample sizes compared to the Kolmogorov-Smirnov test.
+*   **Why it may not be appropriate:** It can be underpowered in very small samples, sometimes failing to detect non-normality when it exists.
+*   **When NOT to use:** When sample sizes are extremely large (e.g., >2000), where it becomes overly sensitive to trivial deviations.
+*   **Alternative:** Q-Q plots for visual inspection of normality.
+
+**2. Kruskal-Wallis H Test**
+*   **Purpose:** To compare baseline and postoperative VAS pain scores across the four groups.
+*   **Why appropriate:** (1) VAS scores are inherently ordinal data. (2) With n=12 per group, pain scores are highly likely to be skewed, violating ANOVA assumptions.
+*   **Why it may not be appropriate:** It tests for stochastic dominance rather than differences in medians/means, which can sometimes be harder to interpret clinically.
+*   **When NOT to use:** If the data is perfectly normally distributed and continuous, as it has less statistical power than a parametric test.
+*   **Alternative:** One-way ANOVA (if VAS data miraculously meets normality and homogeneity of variance assumptions).
+
+**3. One-Way ANOVA (Analysis of Variance)**
+*   **Purpose:** To compare postoperative IL-6 expression levels across the four groups.
+*   **Why appropriate:** (1) Gene expression data (IL-6) is continuous. (2) It allows for the simultaneous comparison of four groups without inflating the Type I error rate.
+*   **Why it may not be appropriate:** Gene expression data is often heavily right-skewed and may violate the assumption of normality unless log-transformed.
+*   **When NOT to use:** If Levene’s test shows unequal variances across groups or if the data severely violates normality.
+*   **Alternative:** Kruskal-Wallis H test (if non-normal) or Welch’s ANOVA (if variances are unequal).
+
+**4. Wilcoxon Signed-Rank Test**
+*   **Purpose:** To compare preoperative vs. postoperative VAS pain scores within each specific group.
+*   **Why appropriate:** (1) It accounts for the paired/repeated nature of the data (same patient, two time points). (2) It does not require the assumption of normally distributed differences.
+*   **Why it may not be appropriate:** It discards the magnitude of the differences if they are extreme, relying only on ranks.
+*   **When NOT to use:** When comparing independent groups (different patients).
+*   **Alternative:** Paired t-test (if the differences between pre- and post-op scores are normally distributed).
+
+#### CATEGORY B – RECOMMENDED (Enhancing Rigor)
+
+**1. Dunn’s Post-Hoc Test (with Bonferroni correction)**
+*   **Purpose:** To determine exactly *which* of the four groups differ from one another regarding VAS scores, following a significant Kruskal-Wallis result.
+*   **Why appropriate:** (1) It adjusts the p-values to prevent Type I error inflation from multiple pairwise comparisons. (2) It is the specific non-parametric post-hoc designed to follow Kruskal-Wallis.
+*   **Why it may not be appropriate:** The Bonferroni correction can be overly conservative, potentially increasing Type II errors (missing true differences).
+*   **When NOT to use:** If the initial Kruskal-Wallis test is not statistically significant.
+*   **Alternative:** Conover-Iman test or Mann-Whitney U tests with Benjamini-Hochberg False Discovery Rate (FDR) correction.
+
+**2. Tukey’s HSD (Honestly Significant Difference) Post-Hoc Test**
+*   **Purpose:** To identify specific group differences in IL-6 expression following a significant One-Way ANOVA.
+*   **Why appropriate:** (1) It controls the family-wise error rate excellently when making all possible pairwise comparisons. (2) It provides confidence intervals for the mean differences.
+*   **Why it may not be appropriate:** It assumes equal variances; if variances are unequal, it becomes inaccurate.
+*   **When NOT to use:** If Levene's test indicates that the assumption of homogeneity of variances is violated.
+*   **Alternative:** Games-Howell post-hoc test (if variances are unequal).
+
+**3. Two-Way Mixed ANOVA (or Generalized Estimating Equations - GEE)**
+*   **Purpose:** To analyze the interaction between "Time" (Pre-op vs Post-op) and "Group" (Irrigation protocol) simultaneously.
+*   **Why appropriate:** (1) It determines if the *rate of change* in pain/IL-6 differs depending on the treatment group. (2) It utilizes all data points in a single comprehensive model.
+*   **Why it may not be appropriate:** Mixed ANOVA has strict assumptions (sphericity, normality) that are easily violated with n=12.
+*   **When NOT to use:** If data is strictly ordinal and highly skewed without the possibility of transformation.
+*   **Alternative:** Friedman test (for non-parametric repeated measures) or Aligned Rank Transform (ART) ANOVA.
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. Spearman’s Rank-Order Correlation**
+*   **Purpose:** To evaluate the relationship between postoperative IL-6 expression levels and postoperative VAS pain scores.
+*   **Why appropriate:** (1) It can determine if biological inflammation (IL-6) directly correlates with subjective clinical pain. (2) It handles the ordinal nature of the VAS scale perfectly.
+*   **Why it may not be appropriate:** Correlation does not equal causation; it cannot prove that IL-6 *caused* the pain.
+*   **When NOT to use:** If the relationship between the variables is distinctly non-monotonic (e.g., U-shaped).
+*   **Alternative:** Pearson correlation (if both variables are continuous and normally distributed).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test:** Inappropriate because there are *four* groups in this study. Using multiple t-tests to compare groups I vs II, I vs III, etc., will drastically inflate the Type I error rate (false positives).
+*   **Chi-Square Test of Independence:** Inappropriate because the primary outcome variables (VAS pain scores and IL-6 levels) are ordinal and continuous, respectively. Chi-square is strictly for categorical/nominal data (e.g., Gender, Success/Failure).
+*   **Pearson Correlation (for raw VAS scores):** Inappropriate because VAS is an ordinal scale with a restricted range (0-10) and is highly likely to be skewed, violating Pearson's assumption of continuous, normally distributed variables.
+
+---
+
+### TASK 4: SUMMARY
+
+The analytical approach for this RCT must account for the multi-arm design (4 groups) and the relatively small sample size (n=12 per group). Because small samples are prone to non-normality, the plan prioritizes rigorous distribution testing (Shapiro-Wilk). 
+
+For the subjective clinical outcome (VAS pain), a non-parametric pathway (Kruskal-Wallis, Wilcoxon, Dunn's) is mandated due to the ordinal and likely skewed nature of pain scores. For the objective biological outcome (IL-6 expression), a parametric pathway (ANOVA, paired t-test, Tukey's) is proposed, provided the data meets normality assumptions (potentially via log-transformation). The inclusion of interaction models (Mixed ANOVA/GEE) will robustly answer whether the *change* in pain and inflammation over time is significantly dependent on the specific cryotherapy protocol used.

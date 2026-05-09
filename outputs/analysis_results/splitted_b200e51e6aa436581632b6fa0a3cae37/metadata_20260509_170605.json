@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splitted_b200e51e6aa436581632b6fa0a3cae37.pdf",
+  "timestamp": "20260509_170605",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "ok",
+      "chars": 9779
+    }
+  }
+}

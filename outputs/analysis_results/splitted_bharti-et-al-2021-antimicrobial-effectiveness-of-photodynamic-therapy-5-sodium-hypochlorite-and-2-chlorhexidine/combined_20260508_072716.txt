@@ -996,3 +996,114 @@ TASK 4: SUMMARY OF OVERALL ANALYTICAL APPROACH
 - Non-parametric methods serve as robust backups if parametric assumptions are not satisfied.  
 
 This integrated plan respects the design (randomized, triple-blind, parallel-group, paired measurements), the data structure (counts, potentially skewed), and clinical importance (extent of CFU reduction and complete disinfection), yielding a rigorous and interpretable assessment of the antimicrobial effectiveness of PDT, NaOCl and CHO.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_170814
+──────────────────────────────────────────────────────────────────────
+
+Based on the provided text from the dental research article, here is the comprehensive information extraction and statistical analysis plan.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Triple-blind randomized clinical trial (in vivo).
+*   **Objective:** To compare the antimicrobial effectiveness of Photodynamic Therapy (PDT), 5% Sodium Hypochlorite (NaOCl), and 2% Chlorhexidine Gluconate (CHO) in disinfecting infected teeth that previously underwent root canal treatment.
+*   **Null Hypothesis:** There is no difference in the elimination of microbes between PDT, NaOCl, and CHO.
+*   **Sample Size:** 54 patients total (25 men, 29 women; mean age 38 years). 18 patients per group. (Calculated for 80% power and 95% confidence interval).
+*   **Groups (Interventions):**
+    *   Group 1: 5% Sodium Hypochlorite (NaOCl)
+    *   Group 2: 2% Chlorhexidine Gluconate (CHO)
+    *   Group 3: Photodynamic Therapy (PDT)
+*   **Variables:**
+    *   *Independent Variable:* Disinfection protocol (Categorical: 3 levels).
+    *   *Dependent Variable:* Microbial count (Continuous: Colony-Forming Units [CFU]) and average percentage reduction of viable microorganisms (Continuous).
+    *   *Time Points:* Pre-intervention (S1) and Post-intervention (S2).
+*   **Data Collection Methods:** Microbiological samples collected from a single root canal using sterile paper points. S1 collected after old gutta-percha removal; S2 collected after the specific disinfection protocol. Samples transported in anaerobic media, incubated anaerobically at 37°C for 48 hours, and CFUs counted using light microscopy (400x).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+*Note: Microbiological CFU data is notoriously skewed. It is highly probable that the raw CFU counts will require a log10 transformation prior to parametric analysis, or the use of non-parametric alternatives.*
+
+#### CATEGORY A – MANDATORY TESTS
+*(Tests without which the analysis would be incomplete)*
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the continuous data distribution (CFU counts and percentage reduction) within each group.
+*   **Why appropriate:** (1) The sample size per group is small (n=18), making it crucial to verify normality before choosing parametric tests. (2) It is highly sensitive to deviations from normality in small sample sizes.
+*   **Why it may not be appropriate:** It only tests for normality, not for the actual differences between the intervention groups.
+*   **When this test should NOT be used:** When sample sizes are very large (e.g., >50), where the Kolmogorov-Smirnov test or visual inspection (Q-Q plots) might be preferred.
+*   **Alternative:** Kolmogorov-Smirnov test or visual assessment using Histograms/Q-Q plots.
+
+**2. One-Way ANOVA (Analysis of Variance)**
+*   **Purpose:** To compare the mean "percentage reduction of viable microorganisms" across the three independent groups (NaOCl, CHO, PDT).
+*   **Why appropriate:** (1) It allows for the simultaneous comparison of three independent groups, avoiding the Type I error inflation that occurs with multiple t-tests. (2) It directly tests the study's null hypothesis regarding the difference in microbial elimination between the three protocols.
+*   **Why it may not be appropriate:** It assumes the data is normally distributed and that variances are equal across groups (homoscedasticity).
+*   **When this test should NOT be used:** When the dependent variable is ordinal, or if the data severely violates normality assumptions even after log transformation.
+*   **Alternative:** Kruskal-Wallis H Test (if data is non-parametric).
+
+**3. Paired Samples t-test**
+*   **Purpose:** To compare the pre-intervention (S1) and post-intervention (S2) CFU counts *within* each specific group.
+*   **Why appropriate:** (1) The data is paired (measurements taken from the exact same root canal before and after treatment). (2) It confirms whether each individual treatment was actually effective at reducing bacteria compared to its own baseline.
+*   **Why it may not be appropriate:** It does not tell you which treatment is *better* than the others, only that a specific treatment worked.
+*   **When this test should NOT be used:** When comparing measurements between two different groups of patients (independent samples).
+*   **Alternative:** Wilcoxon Signed-Rank Test (if data is non-parametric).
+
+**4. Post-Hoc Tests (e.g., Tukey's HSD)**
+*   **Purpose:** To determine exactly *which* groups significantly differ from one another, assuming the One-Way ANOVA yields a significant p-value.
+*   **Why appropriate:** (1) ANOVA only tells you that *at least one* group is different, but not which one; post-hoc tests identify the specific differences (e.g., PDT vs. NaOCl). (2) Tukey's HSD controls for the family-wise error rate during multiple comparisons.
+*   **Why it may not be appropriate:** It is statistically invalid to run this if the initial omnibus test (ANOVA) is not statistically significant.
+*   **When this test should NOT be used:** When there are only two groups being compared in the study.
+*   **Alternative:** Dunn’s Test (if the Kruskal-Wallis test was used instead of ANOVA).
+
+#### CATEGORY B – RECOMMENDED TESTS
+*(Tests that enhance the quality and rigor of the analysis)*
+
+**1. One-Way ANOVA on Baseline Data (S1)**
+*   **Purpose:** To compare the initial bacterial load (S1 CFUs) across the three groups before any disinfection protocol is applied.
+*   **Why appropriate:** (1) It validates the randomization process by ensuring all groups started with a statistically similar level of infection. (2) If baselines are significantly different, it warns the researcher that comparing post-treatment raw scores will be biased.
+*   **Why it may not be appropriate:** Randomization theoretically accounts for baseline differences, making this test technically redundant in a perfectly executed RCT.
+*   **When this test should NOT be used:** In a cross-over design where the same patient acts as their own control for all treatments.
+*   **Alternative:** Kruskal-Wallis H Test (if baseline CFU data is non-normal).
+
+**2. ANCOVA (Analysis of Covariance)**
+*   **Purpose:** To compare the post-intervention (S2) CFU counts across the three groups while statistically controlling for the pre-intervention (S1) CFU counts.
+*   **Why appropriate:** (1) It is statistically more powerful than simply comparing percentage reductions. (2) It adjusts for any minor, naturally occurring variations in the baseline bacterial load among patients, providing a purer measure of the treatment effect.
+*   **Why it may not be appropriate:** It requires strict assumptions, including the homogeneity of regression slopes (the relationship between S1 and S2 must be similar across all groups).
+*   **When this test should NOT be used:** When the covariate (S1) is not linearly related to the dependent variable (S2).
+*   **Alternative:** One-Way ANOVA on the calculated "change scores" or "percentage reduction" (as planned by the authors).
+
+#### CATEGORY C – OPTIONAL TESTS
+*(Tests that provide supplementary insights)*
+
+**1. Chi-Square Test of Independence**
+*   **Purpose:** To compare the demographic distribution (e.g., gender) across the three groups.
+*   **Why appropriate:** (1) Ensures demographic homogeneity across groups. (2) Rules out gender as a confounding variable in the healing/disinfection process.
+*   **Why it may not be appropriate:** Demographics are not the primary outcome of this microbiological study.
+*   **When this test should NOT be used:** When expected cell counts in the contingency table are less than 5.
+*   **Alternative:** Fisher’s Exact Test (if sample sizes in categorical bins are too small).
+
+**2. Effect Size Calculation (e.g., Eta-squared for ANOVA, Cohen's d for paired tests)**
+*   **Purpose:** To quantify the magnitude of the difference between the treatments.
+*   **Why appropriate:** (1) P-values only indicate if a difference exists, whereas effect size tells the clinician if the difference is large enough to matter in clinical practice. (2) It facilitates future meta-analyses.
+*   **Why it may not be appropriate:** It does not provide statistical significance or confidence intervals on its own.
+*   **When this test should NOT be used:** When the primary statistical tests yield non-significant results (though reporting it is still good practice, it is less meaningful).
+*   **Alternative:** Reporting 95% Confidence Intervals for the mean differences.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test:** Should NOT be used to compare the three treatment groups. The t-test can only compare two groups at a time. Running multiple t-tests (Group 1 vs 2, 2 vs 3, 1 vs 3) drastically inflates the Type I error rate (false positives).
+*   **Repeated Measures ANOVA (Between Groups):** Should NOT be used to compare the three interventions. This test is designed for studies where the *same* subjects receive *all* treatments (cross-over design). In this study, the groups consist of independent, different patients.
+*   **Pearson Correlation Coefficient:** Should NOT be used to evaluate the primary objective. The study is looking for *differences* between categorical groups (treatments) regarding a continuous outcome, not the linear *relationship* between two continuous variables.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must account for three independent groups with continuous, paired measurements (pre- and post-treatment). Because microbiological CFU data is highly prone to skewness, the analysis must begin with normality testing (Shapiro-Wilk). 
+
+To ensure methodological rigor, baseline equivalence should first be established by comparing S1 counts across groups. Within-group efficacy must be proven using paired tests (S1 vs S2). Finally, to test the primary null hypothesis, a between-group comparison of the percentage reduction (or S2 counts controlling for S1 via ANCOVA) is required. If the data is normal (or log-transformed to normality), One-Way ANOVA followed by Tukey's post-hoc is the gold standard. If the data remains non-normal, the non-parametric Kruskal-Wallis and Wilcoxon pathways must be utilized. This approach ensures both the absolute efficacy of each treatment and their relative superiority are statistically validated while controlling for baseline variances and Type I errors.

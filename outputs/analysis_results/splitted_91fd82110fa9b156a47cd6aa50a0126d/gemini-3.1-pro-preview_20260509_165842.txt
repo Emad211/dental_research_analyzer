@@ -1,0 +1,118 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_91fd82110fa9b156a47cd6aa50a0126d.pdf
+Status : ok
+Time   : 20260509_165842
+══════════════════════════════════════════════════════════════════════
+
+Here is the comprehensive extraction and statistical analysis plan based on the provided manuscript.
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Design:** Prospective cohort study.
+**Objectives:** To evaluate the influence of various preoperative and intraoperative predictors on the outcome of root canal retreatment in symptomatic mandibular first molars with periapical lesions after a minimum of 2 years.
+**Population/Sample Size:** 
+*   *Initial:* 120 symptomatic mandibular first molars (in 120 patients >18 years old).
+*   *Final Analyzed:* 103 molars/patients (85.3% recall rate). 17 lost to follow-up/excluded (2 vertical root fractures, 15 unavailable).
+**Dependent Variable (Outcome):** Treatment outcome, initially categorized as ordinal (Healed, Healing, Nonhealing) using a modified Periapical Index (PAI), then dichotomized into:
+*   *Success:* Healed + Healing (91 cases; 88.3%)
+*   *Failure:* Nonhealing (12 cases; 11.7%)
+**Independent Variables (Predictors):**
+*   *Preoperative:* Age (continuous), Gender (categorical), Soft tissue tenderness (present/absent), Intraoral swelling (present/absent), Periapical lesion size (3–10 mm; continuous/categorical), PAI score (4 or 5), Apical level of previous filling (short/adequate/overfill), Density of previous filling (poor/good/unfilled).
+*   *Intraoperative:* Active exudate drainage (present/absent), Apical level of new filling (short/adequate/overfill), Density of new filling (good/poor), Complications (extrusion, broken instrument, perforation, flare-up), Restoration type (single crown/composite), Number of visits (2, 3, or 4).
+**Measurements & Data Collection:** 
+*   Clinical examination (pain, tenderness, swelling, mobility, restoration quality).
+*   Radiographic assessment (PAI scoring) by two independent, calibrated endodontists.
+*   Follow-up intervals: 3, 6, 9, 12 months, then every 6 months (year 2), then yearly up to 4 years.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+*(Tests without which the analysis would be incomplete)*
+
+**1. Cohen’s Kappa (or Weighted Kappa)**
+*   **Purpose:** To measure inter-rater reliability between the two independent endodontists scoring the radiographs using the PAI system.
+*   **Why appropriate:** 
+    1) The primary outcome relies entirely on subjective radiographic scoring by human observers; proving their agreement is vital for internal validity. 
+    2) The PAI score is categorical/ordinal, making Kappa the standard metric for agreement beyond chance.
+*   **Why it may not be appropriate:** If the distribution of PAI scores is highly skewed (e.g., almost all scores are exactly the same), Kappa can be artificially low (the "Kappa paradox").
+*   **When NOT to use:** Do not use if the radiographic measurement was a continuous variable (e.g., exact lesion volume in mm³).
+*   **Alternative:** Gwet’s AC1 statistic (if the Kappa paradox is observed) or Percentage Agreement.
+
+**2. Chi-Square Test of Independence (or Fisher’s Exact Test)**
+*   **Purpose:** To perform univariate analysis comparing categorical predictor variables (e.g., gender, exudate presence, restoration type) against the dichotomized outcome (Success vs. Failure).
+*   **Why appropriate:** 
+    1) Both the independent variables (e.g., swelling present/absent) and the dependent variable (Success/Failure) are categorical. 
+    2) It allows for the initial identification of factors associated with treatment failure before building a complex model.
+*   **Why it may not be appropriate:** It does not account for confounding variables or the effect of time to follow-up.
+*   **When NOT to use:** Do not use Chi-Square if more than 20% of the expected cell frequencies are less than 5.
+*   **Alternative:** Fisher’s Exact Test (mandatory here, as the "Failure" group only has 12 cases, meaning expected cell counts in cross-tabulations will frequently drop below 5).
+
+**3. Multiple Logistic Regression**
+*   **Purpose:** To identify independent predictors of root canal retreatment success/failure while controlling for confounding variables.
+*   **Why appropriate:** 
+    1) The primary outcome is dichotomous (Success vs. Failure). 
+    2) It allows the researchers to evaluate the adjusted impact of multiple preoperative and intraoperative variables simultaneously.
+*   **Why it may not be appropriate:** The low number of failure events (n=12) severely limits the number of predictors that can be included in the model without causing overfitting (the "rule of 10 events per variable" suggests only 1-2 predictors should be modeled).
+*   **When NOT to use:** Do not use if the outcome is kept in its 3-tier ordinal format (Healed, Healing, Nonhealing).
+*   **Alternative:** Penalized Logistic Regression (Firth's Logistic Regression) to handle the rare events/small sample size of the failure group.
+
+#### CATEGORY B – RECOMMENDED TESTS
+*(Tests that enhance the quality and rigor of the analysis)*
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of continuous variables (e.g., patient age, exact lesion size in mm).
+*   **Why appropriate:** 
+    1) It is highly accurate for sample sizes around n=100. 
+    2) It dictates whether parametric or non-parametric tests should be used for continuous predictors.
+*   **Why it may not be appropriate:** It can be overly sensitive to minor deviations from normality in larger sample sizes (though at n=103, it is acceptable).
+*   **When NOT to use:** Do not use for categorical or ordinal variables (like PAI scores).
+*   **Alternative:** Kolmogorov-Smirnov test or visual inspection of Q-Q plots.
+
+**2. Mann-Whitney U Test (or Independent t-test)**
+*   **Purpose:** To compare continuous variables (e.g., age, lesion size) between the Success and Failure groups.
+*   **Why appropriate:** 
+    1) It allows researchers to see if continuous baseline characteristics differ between outcomes. 
+    2) Mann-Whitney is robust against non-normal distributions and unequal group sizes (91 Success vs. 12 Failure).
+*   **Why it may not be appropriate:** It dichotomizes the outcome, ignoring the time it took for the tooth to heal or fail.
+*   **When NOT to use:** Do not use if comparing more than two groups (e.g., comparing age across Healed, Healing, and Nonhealing).
+*   **Alternative:** Independent t-test (if data is perfectly normally distributed and variances are equal).
+
+#### CATEGORY C – OPTIONAL TESTS
+*(Tests that provide supplementary insights)*
+
+**1. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To analyze the "time-to-healing" or "time-to-failure" across the 2 to 4-year follow-up period.
+*   **Why appropriate:** 
+    1) The study has variable follow-up times (2 to 4 years) and patients were assessed at multiple intervals. 
+    2) It accounts for right-censored data (patients who dropped out or hadn't failed by the end of the study).
+*   **Why it may not be appropriate:** Exact time of failure/healing is interval-censored (only known to have happened *between* dental visits), which standard Kaplan-Meier handles poorly compared to specialized interval-censored models.
+*   **When NOT to use:** Do not use if all patients were evaluated at exactly one identical time point.
+*   **Alternative:** Cox Proportional Hazards Regression (if adjusting for multiple covariates over time).
+
+**2. Ordinal Logistic Regression**
+*   **Purpose:** To analyze the predictors against the original 3-tier outcome (Healed, Healing, Nonhealing).
+*   **Why appropriate:** 
+    1) It prevents the loss of data granularity that occurs when "Healed" and "Healing" are lumped together. 
+    2) It respects the natural clinical progression of periapical healing.
+*   **Why it may not be appropriate:** It requires the assumption of proportional odds (that the effect of a predictor is the same across all threshold splits of the outcome), which is often violated in clinical data.
+*   **When NOT to use:** Do not use if the proportional odds assumption is violated.
+*   **Alternative:** Multinomial Logistic Regression.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Paired t-test / Repeated Measures ANOVA:** These are used to compare continuous means within the same subjects over time. The primary outcome here is categorical (PAI score/Healing status), not a continuous measurement.
+*   **Linear Regression:** The dependent variable (Success/Failure) is binary. Linear regression requires a continuous dependent variable and would yield predicted probabilities outside the 0-1 range.
+*   **Pearson Correlation:** This measures the linear relationship between two continuous variables. The vast majority of variables in this study (exudate, swelling, gender, outcome) are categorical.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must account for the observational, prospective cohort design with a binary clinical outcome (Success vs. Failure) and a heavy imbalance between groups (91 successes vs. 12 failures). 
+
+The analysis should begin by validating the measurement tool using **Cohen's Kappa** to ensure the two endodontists agreed on the PAI scores. Following this, descriptive statistics should summarize the cohort. Univariate analysis using **Fisher's Exact Test** (due to the small number of failures) and **Mann-Whitney U tests** will identify individual preoperative and intraoperative factors associated with treatment outcome. Finally, a **Multiple Logistic Regression** (preferably penalized due to the low event rate of 12 failures) should be utilized to isolate independent predictors of success while controlling for confounders. If the researchers recorded the exact visit at which healing or failure was noted, incorporating **Survival Analysis (Kaplan-Meier)** would highly elevate the methodological rigor by accounting for the variable 2-to-4-year follow-up timeline.

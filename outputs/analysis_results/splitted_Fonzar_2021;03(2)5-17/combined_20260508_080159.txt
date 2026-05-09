@@ -713,3 +713,100 @@ Given the topic—20-year prognosis of root canal treatment in teeth from patien
 - Perform appropriate **diagnostics and sensitivity analyses** to evaluate robustness and model assumptions.
 
 This framework aligns with standard practice in endodontic prognosis research and is consistent with the type of conclusions reported (hazard/predictor interpretation, long-term survival rates, and cause-specific failures). Once the actual Methods section is available, these recommendations can be refined to match the exact data structure and study design.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_172520
+──────────────────────────────────────────────────────────────────────
+
+*Disclaimer: The provided text contained mostly redacted pages, headers, and the Conclusions/References sections. The Introduction and Methods sections were missing. Therefore, the information extracted below has been reverse-engineered and inferred directly from the Conclusions section provided on Page 12.*
+
+### TASK 1: INFORMATION EXTRACTION
+
+Based on the provided Conclusions section, the following study characteristics can be deduced:
+
+*   **Study Design:** Long-term longitudinal cohort study (20-year follow-up). Given the timeframe, it is highly likely a retrospective cohort study, though it could be a prospective registry.
+*   **Objectives:** To evaluate the 20-year prognosis and clinical survival rate of endodontically treated and re-treated teeth in patients undergoing multidisciplinary rehabilitation for advanced periodontitis, and to identify predictors of failure.
+*   **Population/Sample:** Patients affected by advanced periodontitis. (Exact sample size of patients and teeth is not provided in the text).
+*   **Groups/Comparisons:** 
+    *   Treatment sessions: One session vs. Two sessions.
+    *   Reason for treatment: Endodontic vs. Non-endodontic reasons.
+    *   Preoperative status: Presence vs. Absence of radiolucency.
+    *   Treatment type: Initial endodontic treatment vs. Re-treatment.
+*   **Variables:**
+    *   *Primary Dependent Variable (Outcome):* Tooth survival (Time-to-event: extraction).
+    *   *Secondary Dependent Variables:* Reason for extraction (endodontic vs. non-endodontic), occurrence of complications.
+    *   *Independent Variables (Predictors):* Age (aging), number of treatment sessions, reason for endodontic treatment, preoperative radiolucency, treatment type (primary vs. retreatment), and abutment status.
+*   **Measurements/Data Collection:** Clinical and radiographic follow-up over a 20-year period, recording tooth loss, reasons for loss, and complications.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Because dental studies frequently involve multiple teeth per patient, the data is "clustered." The statistical plan must account for both the time-to-event nature of the data and the intra-patient correlation.
+
+#### CATEGORY A – MANDATORY (Tests without which the analysis would be incomplete)
+
+**1. Kaplan-Meier (KM) Survival Analysis**
+*   **Purpose:** To estimate the overall 20-year clinical survival rate of the endodontically treated teeth.
+*   **Why appropriate:** 
+    1) It perfectly handles time-to-event data and right-censoring (e.g., patients lost to follow-up or dying before the 20-year mark). 
+    2) It provides a clear, visual step-function curve of survival probability over time, which is the standard for reporting "survival rates" in dental literature.
+*   **Why it may not be appropriate:** It is a univariate analysis and cannot adjust for confounding variables (like age or preoperative radiolucency) simultaneously.
+*   **When this test should NOT be used:** When exact times to the event (extraction) are unknown and only a binary outcome at the end of 20 years is available.
+*   **Alternative if assumptions are violated:** Life Table analysis (if exact times are unknown but intervals are known) or simple binary logistic regression (if time-to-event data is completely discarded).
+
+**2. Shared Frailty Cox Proportional Hazards Model (or Cox with Robust Standard Errors)**
+*   **Purpose:** To identify multivariable predictors of failure (e.g., aging, sessions, reasons for treatment) while accounting for clustered data.
+*   **Why appropriate:** 
+    1) It allows for the simultaneous evaluation of multiple covariates (age, sessions, radiolucency) on the hazard of tooth loss. 
+    2) The "shared frailty" component (or robust variance estimator) corrects for the fact that multiple teeth within the same patient are not statistically independent.
+*   **Why it may not be appropriate:** It assumes that the hazard ratio between groups remains constant over the 20-year period (Proportional Hazards assumption).
+*   **When this test should NOT be used:** When the proportional hazards (PH) assumption is severely violated (e.g., if two-session treatments fail early but survive well later, while one-session treatments fail late).
+*   **Alternative if assumptions are violated:** Time-dependent Cox regression (incorporating time-varying covariates) or Parametric Survival Models (e.g., Weibull model).
+
+#### CATEGORY B – RECOMMENDED (Tests that enhance the quality and rigor of the analysis)
+
+**1. Competing Risks Regression (Fine-Gray Model)**
+*   **Purpose:** To analyze the specific risk of *endodontic* failure, acknowledging that teeth might be extracted for other reasons.
+*   **Why appropriate:** 
+    1) The population has "advanced periodontitis." A tooth extracted for periodontal reasons cannot subsequently fail for endodontic reasons (a competing risk). 
+    2) Standard Cox regression treats non-endodontic extractions as censored, which overestimates the true risk of endodontic failure.
+*   **Why it may not be appropriate:** It can be complex to interpret for clinical audiences, as it models the subdistribution hazard rather than the cause-specific hazard.
+*   **When this test should NOT be used:** If all extractions, regardless of cause, are strictly defined as the primary failure endpoint with no distinction made between causes.
+*   **Alternative if assumptions are violated:** Cause-specific Cox regression (censoring competing events, though with acknowledged limitations).
+
+**2. Log-Rank Test (with cluster adjustment if possible)**
+*   **Purpose:** To compare the survival curves of categorical predictors (e.g., Re-treatment vs. Initial treatment; 1-session vs. 2-sessions).
+*   **Why appropriate:** 
+    1) It provides a simple, non-parametric statistical comparison of the survival distributions between two or more independent groups. 
+    2) It is highly intuitive and pairs perfectly with Kaplan-Meier visual plots.
+*   **Why it may not be appropriate:** Standard log-rank tests do not account for the clustering of multiple teeth in the same patient.
+*   **When this test should NOT be used:** When survival curves cross each other significantly (indicating non-proportional hazards).
+*   **Alternative if assumptions are violated:** Peto-Peto test (if curves cross early) or relying solely on the Frailty Cox model.
+
+#### CATEGORY C – OPTIONAL (Tests that provide supplementary insights)
+
+**1. Generalized Estimating Equations (GEE) for Logistic Regression**
+*   **Purpose:** To evaluate the binary outcome of "complications" (which affected 2.6% of teeth) or overall success at a fixed time point (20 years).
+*   **Why appropriate:** 
+    1) It handles binary outcomes (Complication: Yes/No) efficiently. 
+    2) It accounts for intra-patient correlation (multiple teeth per patient) using a working correlation matrix.
+*   **Why it may not be appropriate:** It ignores the time-to-event data entirely, treating a tooth lost at year 1 the same as a tooth lost at year 19.
+*   **When this test should NOT be used:** When the primary goal is to understand the *timeline* or rate of failure rather than just the final binary state.
+*   **Alternative if assumptions are violated:** Generalized Linear Mixed Models (GLMM) with patient-level random effects.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test / ANOVA:** Inappropriate because the primary outcome (tooth survival/extraction) is a time-to-event and binary variable, not a continuous, normally distributed variable.
+*   **Standard Logistic Regression / Standard Chi-Square Test:** Inappropriate because these tests assume all observations are completely independent. In dental research, a single patient often contributes multiple teeth. Ignoring this clustering artificially inflates the sample size and leads to Type I errors (false positives).
+*   **Pearson Correlation:** Inappropriate for evaluating the relationship between categorical predictors (like number of sessions or presence of radiolucency) and a survival outcome.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must be rooted in **Survival Analysis**, as the study evaluates a 20-year longitudinal prognosis. Because the study population consists of patients with advanced periodontitis who likely had multiple teeth treated, the statistical models **must account for clustering** (intra-patient correlation) to avoid spurious precision. 
+
+The primary analysis should utilize Kaplan-Meier curves for descriptive survival rates, followed by a Shared Frailty Cox Proportional Hazards model to identify independent predictors of failure (such as age and number of sessions). Furthermore, because teeth in periodontally compromised patients are at high risk of being extracted for non-endodontic reasons, implementing a **Competing Risks analysis** is highly recommended to accurately isolate the true endodontic failure rate.

@@ -1,0 +1,106 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_ijcpd-14-471.pdf
+Status : ok
+Time   : 20260509_172940
+══════════════════════════════════════════════════════════════════════
+
+*Disclaimer: The provided text did not contain the actual "Introduction" and "Methods" sections. It only contained blank pages 1-3 and a title ("Quality of Obturation in Primary Teeth") with four references on page 4. However, based on the title and the specific references provided (which focus on comparing manual vs. rotary instrumentation for cleaning capacity, instrumentation time, and obturation quality in primary teeth), I have inferred the standard methodological framework for this type of study to complete your request.*
+
+Here is the comprehensive statistical analysis plan based on the inferred study design.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION (Inferred from Title & References)
+
+*   **Study Design:** Likely an *in vivo* randomized controlled clinical trial or an *in vitro* comparative experimental study.
+*   **Objectives:** To evaluate and compare the quality of obturation, instrumentation time, and potentially cleaning capacity between different root canal preparation techniques (e.g., manual vs. rotary files) in primary teeth.
+*   **Groups:** At least two independent groups (e.g., Group 1: Manual Instrumentation; Group 2: Rotary System A; Group 3: Rotary System B).
+*   **Sample Size:** Not specified in the text (typically ranges from 30 to 60 teeth/canals per group in such endodontic studies).
+*   **Variables:**
+    *   *Independent Variable:* Instrumentation technique (Categorical).
+    *   *Dependent Variables:*
+        1.  Quality of obturation (Categorical/Ordinal: e.g., Optimal/Flush, Underfilled, Overfilled).
+        2.  Instrumentation time (Continuous: measured in seconds or minutes).
+        3.  Cleaning capacity (Continuous or Ordinal score, if evaluated).
+*   **Measurements & Data Collection:** 
+    *   *Obturation Quality:* Evaluated via post-operative radiographs by blinded examiners.
+    *   *Instrumentation Time:* Recorded using a stopwatch.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Essential for basic analysis)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the distribution for continuous data (Instrumentation Time).
+*   **Why appropriate:** 
+    1) It is highly sensitive and accurate for small to medium sample sizes typical in dental research. 
+    2) It dictates whether parametric or non-parametric tests should be used for subsequent analysis.
+*   **Why it may not be appropriate:** 1) In very large sample sizes, it can be overly sensitive, flagging minor deviations from normality as statistically significant.
+*   **When this test should NOT be used:** When analyzing categorical or ordinal data (e.g., Quality of Obturation categories).
+*   **Alternative if assumptions are violated:** Kolmogorov-Smirnov test (though generally less powerful for small samples) or visual inspection via Q-Q plots.
+
+**2. One-Way ANOVA (Analysis of Variance) OR Independent Samples t-test**
+*   **Purpose:** To compare the mean instrumentation time between the study groups. (Use t-test for 2 groups; ANOVA for 3+ groups).
+*   **Why appropriate:** 
+    1) It is the standard method for comparing continuous dependent variables across independent categorical groups. 
+    2) ANOVA controls the overall Type I error rate, which would be inflated if multiple t-tests were used.
+*   **Why it may not be appropriate:** 1) It assumes homogeneity of variances and normal distribution; endodontic time data is often skewed depending on operator experience.
+*   **When this test should NOT be used:** When the continuous data is heavily skewed, or when comparing ordinal data (like cleaning capacity scores).
+*   **Alternative if assumptions are violated:** Kruskal-Wallis H test (for ANOVA) or Mann-Whitney U test (for t-test).
+
+**3. Chi-Square Test of Independence**
+*   **Purpose:** To compare the frequencies of obturation quality categories (e.g., Optimal, Underfilled, Overfilled) across the different instrumentation groups.
+*   **Why appropriate:** 
+    1) It is specifically designed to test for associations between two categorical variables. 
+    2) It provides a straightforward interpretation of whether the proportion of optimal obturations differs by file system.
+*   **Why it may not be appropriate:** 1) It loses statistical power and validity if the expected frequency in any cell of the contingency table is less than 5.
+*   **When this test should NOT be used:** When dealing with continuous variables or when the observations are not independent (e.g., multiple canals from the same tooth treated as independent without adjustment).
+*   **Alternative if assumptions are violated:** Fisher’s Exact Test.
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Cohen’s Kappa (or Fleiss' Kappa)**
+*   **Purpose:** To measure inter-examiner and intra-examiner reliability for the radiographic evaluation of obturation quality.
+*   **Why appropriate:** 
+    1) Radiographic assessment is subjective; proving that examiners agree ensures the data is reliable. 
+    2) It accounts for the possibility of agreement occurring by chance, unlike simple percentage agreement.
+*   **Why it may not be appropriate:** 1) Kappa values can be paradoxically low if the prevalence of a specific category (e.g., optimal obturation) is extremely high, even if actual agreement is high.
+*   **When this test should NOT be used:** When the variable being measured is continuous (e.g., measuring exact length of fill in millimeters).
+*   **Alternative if assumptions are violated:** Gwet’s AC1 statistic or Percentage Agreement (with limitations).
+
+**2. Post-Hoc Tests (e.g., Tukey's HSD or Bonferroni)**
+*   **Purpose:** To determine exactly which groups differ from each other regarding instrumentation time, following a significant One-Way ANOVA.
+*   **Why appropriate:** 
+    1) ANOVA only tells you that *at least one* group is different; post-hoc tests identify the specific pairs. 
+    2) They adjust the p-value to prevent Type I error inflation during multiple pairwise comparisons.
+*   **Why it may not be appropriate:** 1) Tukey's assumes equal variances across groups; if variances are unequal, it will yield inaccurate results.
+*   **When this test should NOT be used:** When the initial ANOVA is not statistically significant, or if there are only two groups in the study.
+*   **Alternative if assumptions are violated:** Games-Howell post-hoc test (if variances are unequal) or Dunn's test (if Kruskal-Wallis was used).
+
+#### CATEGORY C – OPTIONAL (Provides supplementary insights)
+
+**1. Multinomial Logistic Regression**
+*   **Purpose:** To predict the likelihood of a specific obturation outcome (Optimal vs. Underfilled vs. Overfilled) based on the instrumentation technique, while controlling for covariates (e.g., tooth type, canal curvature).
+*   **Why appropriate:** 
+    1) Allows for the adjustment of confounding variables that a simple Chi-square test cannot handle. 
+    2) Provides Odds Ratios, giving a quantifiable measure of effect size (e.g., "Rotary system A is 3 times more likely to yield optimal obturation than manual").
+*   **Why it may not be appropriate:** 1) Requires a relatively large sample size to ensure stable estimates; small sample sizes can lead to overfitting.
+*   **When this test should NOT be used:** When the outcome variable is continuous (e.g., instrumentation time).
+*   **Alternative if assumptions are violated:** Ordinal Logistic Regression (if the obturation categories are strictly ranked from worst to best).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Paired Samples t-test / Repeated Measures ANOVA:** These tests are inappropriate because the study compares *independent* groups (different teeth/canals assigned to different file systems). These tests are only used when the same subjects are measured multiple times (e.g., before and after treatment).
+*   **Pearson Correlation Coefficient:** Inappropriate because the primary goal is to compare differences between distinct groups (manual vs. rotary), not to measure the linear relationship between two continuous variables.
+*   **Linear Regression:** Inappropriate for the primary outcome (Quality of Obturation) because the outcome is categorical, not continuous.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach for this study must be bifurcated based on the data types of the primary outcomes. Because the study evaluates both a continuous variable (instrumentation time) and a categorical variable (quality of obturation), the plan relies on distribution testing (Shapiro-Wilk) to guide the continuous data toward either parametric (ANOVA) or non-parametric (Kruskal-Wallis) comparative tests. Simultaneously, categorical outcomes will be handled via Chi-Square or Fisher's Exact tests. Crucially, because the assessment of obturation quality relies on human interpretation of radiographs, establishing examiner reliability via Cohen's Kappa is a highly recommended step to validate the integrity of the dependent variable before any comparative analysis is conducted.

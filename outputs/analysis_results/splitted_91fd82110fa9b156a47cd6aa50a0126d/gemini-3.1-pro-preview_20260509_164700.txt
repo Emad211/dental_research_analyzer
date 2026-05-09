@@ -1,0 +1,128 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_91fd82110fa9b156a47cd6aa50a0126d.pdf
+Status : ok
+Time   : 20260509_164700
+══════════════════════════════════════════════════════════════════════
+
+Here is the comprehensive extraction and statistical analysis plan based on the provided article.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Prospective cohort study (Observational), adhering to STROBE and PRILE 2020 guidelines.
+*   **Objective:** To evaluate the influence of various preoperative and intraoperative predictors on the outcome of root canal retreatment in symptomatic mandibular first molars with periapical lesions after a minimum of 2 years.
+*   **Population & Sample Size:** 
+    *   *Initial assessment:* 420 patients.
+    *   *Eligible/Enrolled:* 120 symptomatic mandibular first molars.
+    *   *Lost to follow-up:* 17 (2 vertical root fractures, 15 unavailable).
+    *   *Final Analyzed Sample:* 103 teeth/patients (85.3% recall rate).
+*   **Follow-up Duration:** Minimum 2 years, up to 4 years (evaluated at 3, 6, 9, 12 months, then every 6 months in year 2, then annually).
+*   **Dependent Variable (Outcome):** Treatment outcome based on clinical and radiographic (modified PAI) criteria. 
+    *   *Original categories:* Healed (PAI 1-2, no symptoms), Healing (PAI 3-4 with reduced size, no symptoms), Nonhealing (PAI 4-5 unchanged/increased, or symptoms).
+    *   *Analyzed categories (Dichotomized):* Success (Healed + Healing) vs. Failure (Nonhealing).
+*   **Independent Variables (Predictors):**
+    *   *Preoperative:* Age, gender, soft tissue tenderness, intraoral swelling, periapical lesion size (3–10 mm), PAI score (4 or 5), initial apical level (short/adequate/overfill), initial filling density (poor/good/unfilled).
+    *   *Intraoperative:* Active exudate drainage, final apical level, final filling density, complications (extrusion, broken instrument, perforation, flare-up), restoration type (single crown/composite), number of visits (2, 3, or 4).
+*   **Data Collection/Measurements:** Clinical examination (pain, tenderness, swelling, mobility, restoration quality) and radiographic assessment (PAI scoring by two independent, calibrated endodontists; worst score recorded in case of disagreement).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Essential for a complete analysis)
+
+**1. Cohen’s Kappa (or Weighted Kappa)**
+*   **Purpose:** To measure inter-rater reliability between the two independent endodontists for the PAI radiographic scoring.
+*   **Why appropriate:** 
+    1) Radiographic evaluation using the PAI scale is subjective; proving that the two raters agreed validates the reliability of the primary outcome measure. 
+    2) Weighted Kappa specifically accounts for the ordinal nature of the PAI scale (1 to 5), penalizing large disagreements more than small ones.
+*   **Why it may not be appropriate:** If one rater scores exactly the same for every single patient (zero variance), the Kappa calculation will fail or be misleading.
+*   **When NOT to use:** Do not use for continuous variables (e.g., exact lesion size in millimeters).
+*   **Alternative:** Intraclass Correlation Coefficient (ICC) if the PAI scores are treated as continuous/interval data.
+
+**2. Chi-Square Test of Independence (or Fisher’s Exact Test)**
+*   **Purpose:** To evaluate bivariate associations between categorical predictor variables (e.g., gender, presence of exudate, restoration type) and the dichotomized outcome (Success vs. Failure).
+*   **Why appropriate:** 
+    1) The primary outcome is categorical (binary). 
+    2) The majority of the extracted predictors (swelling, density, apical level) are categorical.
+*   **Why it may not be appropriate:** Chi-square loses statistical power if the sample size in specific sub-categories is very small.
+*   **When NOT to use:** When more than 20% of the expected cell counts in the contingency table are less than 5.
+*   **Alternative:** Fisher’s Exact Test (mandatory when expected cell counts are < 5, which is highly likely given the small number of failures, $n=12$).
+
+**3. Multiple Logistic Regression**
+*   **Purpose:** To identify independent predictors of treatment success while controlling for confounding variables.
+*   **Why appropriate:** 
+    1) The dependent variable is binary (Success vs. Failure). 
+    2) It allows for the simultaneous evaluation of multiple preoperative and intraoperative predictors to see which ones truly drive the outcome.
+*   **Why it may not be appropriate:** With only 12 "Failure" events, the model is at high risk of overfitting. A standard rule of thumb is 10 events per predictor variable; thus, putting all variables into the model simultaneously will cause mathematical instability.
+*   **When NOT to use:** When the outcome is continuous, or if there is perfect separation (e.g., if *all* teeth with single crowns succeeded and *all* with composite failed).
+*   **Alternative:** Penalized Logistic Regression (Firth's Logistic Regression) to handle the rare events/small sample size of the failure group.
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of continuous variables (e.g., patient age, lesion size in mm).
+*   **Why appropriate:** 
+    1) It is highly accurate for sample sizes around $N=100$. 
+    2) It dictates whether parametric or non-parametric tests should be used for subsequent continuous data analysis.
+*   **Why it may not be appropriate:** It can be overly sensitive to minor deviations from normality, though this is less of an issue at $N=103$.
+*   **When NOT to use:** Do not use for categorical or ordinal data (like PAI scores).
+*   **Alternative:** Kolmogorov-Smirnov test, or visual inspection using Q-Q plots.
+
+**2. Independent Samples t-test (or Mann-Whitney U test)**
+*   **Purpose:** To compare continuous predictors (like age or exact lesion size) between the Success and Failure groups.
+*   **Why appropriate:** 
+    1) Allows researchers to determine if the mean/median age or lesion size differs significantly between teeth that healed versus those that failed. 
+    2) Provides a foundation for deciding whether to include these continuous variables in the logistic regression model.
+*   **Why it may not be appropriate:** If the continuous data is highly skewed and the t-test is used, the results may be invalid.
+*   **When NOT to use:** When comparing categorical variables.
+*   **Alternative:** Mann-Whitney U test (if the Shapiro-Wilk test shows the data violates the assumption of normality).
+
+**3. Variance Inflation Factor (VIF) Analysis**
+*   **Purpose:** To check for multicollinearity among the predictor variables before running the logistic regression.
+*   **Why appropriate:** 
+    1) Many endodontic variables are correlated (e.g., "number of visits" is directly tied to "presence of exudate"). 
+    2) High multicollinearity inflates standard errors and makes regression coefficients unreliable.
+*   **Why it may not be appropriate:** It only measures linear relationships between predictors; it does not solve the problem of small sample size.
+*   **When NOT to use:** When conducting simple bivariate analyses (it is strictly a pre-regression diagnostic).
+*   **Alternative:** Correlation matrices (Spearman/Pearson) to manually check for highly correlated pairs of predictors.
+
+#### CATEGORY C – OPTIONAL (Provides supplementary insights)
+
+**1. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To analyze the *time* it takes for a tooth to achieve "Healed" status, or the *time* to "Failure".
+*   **Why appropriate:** 
+    1) The study has variable follow-up times (2 to 4 years) and multiple recall intervals (3, 6, 9, 12 months, etc.). 
+    2) It accounts for censored data (patients who dropped out or haven't failed yet by the end of the study).
+*   **Why it may not be appropriate:** The exact time of healing or failure is interval-censored (it happens between appointments, not on an exact day), which standard Kaplan-Meier doesn't handle perfectly.
+*   **When NOT to use:** If all patients were evaluated at exactly one uniform time point (e.g., exactly at 24 months with no intermediate checks).
+*   **Alternative:** Cox Proportional Hazards Regression (if adjusting for multiple covariates over time).
+
+**2. Wilcoxon Signed-Rank Test**
+*   **Purpose:** To compare the preoperative PAI scores (4 or 5) with the postoperative PAI scores (1 through 5) within the same patients.
+*   **Why appropriate:** 
+    1) It utilizes the paired nature of the data (same tooth, before and after). 
+    2) It proves that the treatment had a statistically significant effect on reducing lesion size overall, regardless of the binary success/failure cutoff.
+*   **Why it may not be appropriate:** The study's primary aim is predicting *outcome categories*, not just proving that retreatment reduces PAI scores generally.
+*   **When NOT to use:** When comparing independent groups (e.g., exudate vs. no exudate).
+*   **Alternative:** Paired t-test (only if PAI scores were somehow treated as continuous and normally distributed, which is statistically incorrect for a 5-point ordinal scale).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Analysis of Variance (ANOVA) / ANCOVA:** Inappropriate because the primary outcome variable (Success vs. Failure) is binary, not continuous. ANOVA requires a continuous dependent variable.
+*   **Multiple Linear Regression:** Inappropriate for the same reason as ANOVA. Predicting a binary outcome with linear regression violates the assumption of linearity and can yield predicted probabilities outside the 0-1 range.
+*   **Pearson Correlation Coefficient:** Inappropriate for the main analysis because it measures the linear relationship between two *continuous* variables. Most variables in this study (and the outcome) are categorical or ordinal.
+*   **Paired t-test for the main outcome:** Inappropriate because the outcome is categorical. Furthermore, you cannot pair "preoperative predictors" with "postoperative success" in a t-test format.
+
+---
+
+### TASK 4: SUMMARY
+
+The analytical approach for this prospective cohort study must be anchored in the fact that the primary outcome is a dichotomized categorical variable (Success vs. Failure). Therefore, the core methodology relies on **categorical data analysis**. 
+
+The analysis should begin with descriptive statistics and validation of the radiographic scoring using **Weighted Kappa** to ensure inter-rater reliability. Following this, bivariate screening using **Fisher's Exact Tests** (due to the low number of failures, $n=12$) and **Mann-Whitney U tests** will identify which individual predictors are associated with the outcome. Finally, a carefully constructed **Multiple Logistic Regression** (potentially penalized due to the low event-per-variable ratio) is required to isolate the independent predictors of retreatment success. Optional survival analysis could leverage the longitudinal recall data to provide deeper insights into the *timeline* of healing, adding significant clinical value to the findings.

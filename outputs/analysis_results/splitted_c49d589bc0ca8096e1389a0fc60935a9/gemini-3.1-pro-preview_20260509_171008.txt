@@ -1,0 +1,114 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_c49d589bc0ca8096e1389a0fc60935a9.pdf
+Status : ok
+Time   : 20260509_171008
+══════════════════════════════════════════════════════════════════════
+
+Here is a comprehensive extraction and statistical analysis plan based on the provided article text, structured from the perspective of an expert biostatistician.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Single-blind, randomized, placebo-controlled, parallel-group clinical trial.
+*   **Objective:** To evaluate the effect of low-level laser therapy (LLLT) on the success rate of inferior alveolar nerve blocks (IANB) in mandibular molars with symptomatic irreversible pulpitis (SIP).
+*   **Sample Size:** 88 patients total, allocated 1:1 ($n=44$ per group). Determined via a priori power analysis based on a pilot study ($\alpha = 0.05$, power $\beta = 0.80$, effect size = 0.782).
+*   **Study Groups:**
+    1.  *Intervention:* IANB + LLLT (940 nm diode laser, 0.5 W, 60 seconds total application).
+    2.  *Control:* IANB + Placebo (mock laser application).
+*   **Inclusion Criteria:** 18–65 years old; mandibular molars with SIP; ASA 1–2; moderate to severe preoperative pain (VAS $\ge$ 45 mm).
+*   **Exclusion Criteria:** Recent analgesic/anti-inflammatory use (<12 h); NSAID allergy; pregnancy/breastfeeding; opioid use; GI disease; periodontal disease; systemic disorders/allergies to anesthetics; periapical radiolucency; >1 painful tooth; lack of pulpal bleeding upon access.
+*   **Variables:**
+    *   *Independent Variable:* Treatment allocation (LLLT vs. Placebo).
+    *   *Primary Dependent Variable:* Anesthesia success (Categorical/Binary). Defined as "Successful" (VAS $\le$ 44 mm) or "Unsuccessful" (VAS > 44 mm) during access cavity preparation and canal shaping.
+    *   *Secondary Dependent Variables:* Intraoperative pain scores (Continuous: 0-100 mm VAS) and Pain categories (Ordinal: No pain [0-4], Mild [5-44], Moderate [45-74], Severe [75-100]).
+    *   *Baseline Covariates:* Preoperative pain scores (VAS).
+*   **Data Collection Methods:** 100-mm Visual Analogue Scale (VAS) for pain measurement. Cold test and electric pulp tester (EPT) for diagnosis and confirmation of initial lip numbness/pulpal anesthesia.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+*(Tests without which the analysis would be incomplete)*
+
+**1. Chi-Square Test of Independence**
+*   **Purpose:** To compare the primary outcome (anesthesia success vs. failure rates) between the LLLT and Control groups.
+*   **Why appropriate:** 
+    1) The primary outcome is a binary categorical variable (Success/Failure).
+    2) The two groups are independent of each other.
+*   **Why it may not be appropriate:** If the sample size in any specific subgroup drops drastically, leading to expected cell frequencies of less than 5.
+*   **When this test should NOT be used:** When analyzing paired or matched data (e.g., comparing the same patient's response at two different times).
+*   **Alternative:** Fisher’s Exact Test (if expected cell counts are < 5).
+
+**2. Independent Samples t-test OR Mann-Whitney U Test (for Baseline Equivalence)**
+*   **Purpose:** To compare preoperative VAS pain scores between the two groups to ensure randomization was successful and groups were balanced at baseline.
+*   **Why appropriate:** 
+    1) It is critical to prove that one group did not start with significantly worse pain than the other, which would confound the results.
+    2) VAS scores can be treated as continuous data.
+*   **Why it may not be appropriate:** VAS scores are frequently skewed and may violate the assumption of normal distribution required for a t-test.
+*   **When this test should NOT be used:** When comparing more than two groups, or when comparing pre-op to post-op scores within the *same* group.
+*   **Alternative:** Mann-Whitney U test (if Shapiro-Wilk test shows baseline VAS scores are non-normally distributed).
+
+#### CATEGORY B – RECOMMENDED TESTS
+*(Tests that enhance the quality and rigor of the analysis)*
+
+**1. Mann-Whitney U Test (for Intraoperative VAS Scores)**
+*   **Purpose:** To compare the exact intraoperative VAS scores (0-100) between the two groups, rather than just the binary "success/failure" threshold.
+*   **Why appropriate:** 
+    1) Provides a more granular assessment of pain reduction than a simple binary cutoff.
+    2) Pain scores (VAS) in clinical trials are notoriously non-normal (often clustering at extremes), making this non-parametric test ideal.
+*   **Why it may not be appropriate:** It is less statistically powerful than a parametric test if the data actually follows a perfect normal distribution.
+*   **When this test should NOT be used:** If the data is normally distributed and meets the assumption of homogeneity of variances.
+*   **Alternative:** Independent Samples t-test (if data is normally distributed).
+
+**2. Chi-Square Test for Trend (Cochran-Armitage) or Ordinal Logistic Regression**
+*   **Purpose:** To analyze the 4-tier pain categories shown in Table 1 (No pain, Mild, Moderate, Severe) between the groups.
+*   **Why appropriate:** 
+    1) It respects the ordinal (ranked) nature of the pain categories.
+    2) It provides more statistical power than a standard Chi-square test by accounting for the directional trend of pain severity.
+*   **Why it may not be appropriate:** The sample sizes in the extreme categories (e.g., "Severe" pain $n=3$ in LLLT group) are very small, which can destabilize the model.
+*   **When this test should NOT be used:** When the categorical variables are nominal (unranked, e.g., types of teeth).
+*   **Alternative:** Fisher-Freeman-Halton Exact Test (for $2 \times 4$ contingency tables with small cell counts, though it loses the ordinality).
+
+#### CATEGORY C – OPTIONAL TESTS
+*(Tests that provide supplementary insights)*
+
+**1. Binary Logistic Regression**
+*   **Purpose:** To predict the odds of anesthesia success while controlling for baseline covariates (e.g., preoperative VAS score, patient age, gender).
+*   **Why appropriate:** 
+    1) Allows the researchers to isolate the effect of LLLT by adjusting for potential confounders.
+    2) Provides an Odds Ratio (OR), which is highly interpretable for clinicians.
+*   **Why it may not be appropriate:** If the groups are perfectly balanced at baseline (due to strict randomization), covariate adjustment may be unnecessary and overcomplicate the analysis.
+*   **When this test should NOT be used:** When the outcome variable is continuous (e.g., exact VAS score).
+*   **Alternative:** Mantel-Haenszel Chi-Square (to stratify the success rates by a specific categorical confounder, like baseline pain severity).
+
+**2. Number Needed to Treat (NNT) and Relative Risk (RR) Calculation**
+*   **Purpose:** To translate the statistical findings into practical clinical metrics.
+*   **Why appropriate:** 
+    1) NNT tells a dentist exactly how many patients they need to treat with LLLT to achieve one additional successful block.
+    2) Highly valued in evidence-based dentistry for clinical decision-making.
+*   **Why it may not be appropriate:** It is a descriptive epidemiological metric rather than a formal hypothesis test for statistical significance.
+*   **When this test should NOT be used:** In retrospective case-control studies (where Odds Ratios must be used instead of Relative Risk).
+*   **Alternative:** Odds Ratio (OR).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+The following tests should **NOT** be used in this study:
+
+*   **Paired t-test / Wilcoxon Signed-Rank Test:** These are for dependent/paired samples. Because this is a parallel-group trial comparing two different sets of patients (LLLT vs. Placebo), independent tests must be used. (Note: These *could* be used to compare pre-op to intra-op pain within a single group, but that does not answer the primary research question of comparing the two interventions).
+*   **ANOVA (Analysis of Variance):** ANOVA is designed to compare means across three or more independent groups. This study only has two groups.
+*   **Pearson Correlation Coefficient:** This test evaluates the linear relationship between two continuous variables. The primary goal here is comparing group differences, not correlating variables.
+*   **Kaplan-Meier Survival Analysis:** This is used for time-to-event data. The outcome in this study is measured at a specific procedural milestone (access cavity/shaping), not by the time elapsed until pain occurs.
+
+---
+
+### TASK 4: SUMMARY OF ANALYTICAL APPROACH
+
+The overall analytical approach should follow a logical progression from baseline validation to primary and secondary outcome evaluation. 
+
+First, baseline equivalence must be established using an Independent t-test or Mann-Whitney U test to ensure randomization successfully balanced preoperative pain between the groups. Second, the primary clinical question—whether LLLT improves the binary success rate of IANB—must be answered using a Chi-Square test. To extract maximum value from the data, secondary analyses should utilize non-parametric tests (Mann-Whitney U) to compare the continuous intraoperative VAS scores, and ordinal tests to evaluate the shift in categorical pain severity (Table 1). Finally, calculating clinical metrics like Relative Risk and Number Needed to Treat (NNT) will bridge the gap between statistical significance and practical dental application. This multi-tiered approach ensures statistical rigor, accounts for the non-normal nature of pain scales, and provides highly actionable clinical insights.

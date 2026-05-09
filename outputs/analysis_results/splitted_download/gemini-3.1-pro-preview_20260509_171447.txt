@@ -1,0 +1,101 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_download.pdf
+Status : ok
+Time   : 20260509_171447
+══════════════════════════════════════════════════════════════════════
+
+Here is the comprehensive information extraction and statistical analysis plan based on the provided dental research article.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Randomized Clinical Trial (RCT), parallel-group, single-blinded (patients blinded, clinicians not blinded), 1:1 allocation ratio.
+*   **Objective:** To compare the effects of using gel and solution forms of 5.25% Sodium Hypochlorite (NaOCl) on postoperative pain in mandibular molar teeth with symptomatic irreversible pulpitis.
+*   **Null Hypothesis:** There is no difference in postoperative pain between the gel and solution forms of NaOCl.
+*   **Study Population:** Healthy individuals aged 18-45 with mandibular molars diagnosed with symptomatic irreversible pulpitis and moderate to severe preoperative pain (VAS 4-10).
+*   **Sample Size:** Total N = 114 (57 per group). Calculated for 95% confidence, 95.1% power, and effect size d=0.1121. *(Note: Flowchart indicates 5 dropouts in Group 1 and 5 dropouts in Group 2, leaving 52 per group for follow-up).*
+*   **Groups:**
+    *   *Group 1 (Control/Standard):* 5.25% NaOCl solution (5 mL).
+    *   *Group 2 (Intervention):* 5.25% NaOCl gel (Chloraxid gel) + 5 mL saline irrigation.
+*   **Variables:**
+    *   *Independent Variable:* Form of NaOCl irrigant (Categorical: Solution vs. Gel).
+    *   *Dependent Variable (Primary):* Postoperative pain scores (Continuous/Ordinal: 0-10).
+    *   *Dependent Variable (Secondary):* Categorized pain levels (Ordinal: 0=no pain, 1-3=mild, 4-6=moderate, 7-10=severe).
+    *   *Time Factor:* Preoperative, 6th, 24th, 48th, 72nd hours, and 1 week post-treatment.
+*   **Data Collection Method:** Patient self-reported Visual Analogue Scale (VAS) forms, collected via phone call 1 week after treatment.
+*   **Confounding Control:** Standardized single-visit procedure, same rotary files (ProTaper Next), same final irrigation protocol, same obturation technique, standardized rescue medication (Ibuprofen 400mg).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Essential for basic validity)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the continuous data (Age, baseline VAS, post-op VAS scores).
+*   **Why appropriate:** (1) Determines whether parametric or non-parametric tests should be used for subsequent analysis. (2) Highly accurate for sample sizes under 2000.
+*   **Why it may not be appropriate:** Can be overly sensitive to minor deviations from normality in larger sample sizes, though N=114 is generally acceptable.
+*   **When NOT to use:** When analyzing strictly categorical data (e.g., gender, categorized pain levels).
+*   **Alternative:** Kolmogorov-Smirnov test (though less powerful) or visual inspection of Q-Q plots.
+
+**2. Mann-Whitney U Test**
+*   **Purpose:** To compare continuous/ordinal variables (VAS scores) between the two independent groups at specific, individual time points (e.g., Group 1 vs Group 2 at 24 hours).
+*   **Why appropriate:** (1) Postoperative pain scores (VAS) are notoriously skewed (clustering near zero as time progresses), violating parametric assumptions. (2) It is robust against outliers.
+*   **Why it may not be appropriate:** It does not account for the repeated-measures nature of the data across the 6 time points, increasing the risk of Type I error if used repeatedly without correction.
+*   **When NOT to use:** If the VAS data is perfectly normally distributed (rare for pain data).
+*   **Alternative:** Independent Samples t-test (if data is normally distributed).
+
+**3. Friedman Test**
+*   **Purpose:** To evaluate the change in VAS pain scores *within* each group over the 6 time points.
+*   **Why appropriate:** (1) It is the non-parametric equivalent of repeated-measures ANOVA, ideal for skewed VAS data. (2) It effectively tracks the trajectory of pain reduction within a single treatment arm.
+*   **Why it may not be appropriate:** It requires complete data sets; patients who dropped out (missing data) must be excluded (listwise deletion), which reduces statistical power.
+*   **When NOT to use:** When comparing the two different groups against each other (it only tests within a single group).
+*   **Alternative:** Repeated Measures ANOVA (if data is normal) or Mixed-Effects Models.
+
+**4. Chi-Square Test of Independence (or Fisher's Exact Test)**
+*   **Purpose:** To compare baseline categorical demographics (e.g., gender distribution) and the incidence of categorized pain (none, mild, moderate, severe) between groups.
+*   **Why appropriate:** (1) Essential to prove baseline equivalence between groups to ensure randomization worked. (2) Perfectly suited for nominal/ordinal categorical data.
+*   **Why it may not be appropriate:** Chi-square loses validity if expected cell counts are less than 5 (highly likely in the "severe pain" category at later time points).
+*   **When NOT to use:** When analyzing continuous VAS scores.
+*   **Alternative:** Fisher’s Exact Test (must be used if >20% of expected cell counts are <5).
+
+#### CATEGORY B – RECOMMENDED (Enhances rigor and handles complex data)
+
+**1. Generalized Estimating Equations (GEE) or Linear Mixed Models (LMM)**
+*   **Purpose:** To analyze the main effects of Treatment, Time, and the Treatment × Time interaction on VAS scores.
+*   **Why appropriate:** (1) Unlike the Friedman test, GEE/LMM can handle missing data (the 10 dropouts) without dropping the patient entirely from the analysis (adheres to Intention-to-Treat principles). (2) It accounts for the correlation of repeated measures within the same patient over time.
+*   **Why it may not be appropriate:** Requires advanced statistical software and expertise to specify the correct working correlation matrix.
+*   **When NOT to use:** If data is measured at only one single time point.
+*   **Alternative:** Two-way repeated measures ANOVA (only if strict assumptions of normality and sphericity are met, and missing data is imputed).
+
+**2. Bonferroni or Holm-Bonferroni Correction**
+*   **Purpose:** To adjust the p-value threshold for multiple comparisons.
+*   **Why appropriate:** (1) If the researchers choose to run Mann-Whitney U tests at all 6 time points, the chance of a false positive (Type I error) inflates drastically. (2) It maintains the family-wise error rate at 0.05.
+*   **Why it may not be appropriate:** Traditional Bonferroni can be overly conservative, increasing Type II error (failing to detect a true difference).
+*   **When NOT to use:** When only a single primary endpoint/test is being evaluated.
+*   **Alternative:** False Discovery Rate (FDR) via Benjamini-Hochberg procedure.
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To compare the "time to complete pain relief" (time until VAS = 0) between the two groups.
+*   **Why appropriate:** (1) Provides a highly clinically relevant metric for dentists (e.g., "How fast until the patient is completely pain-free?"). (2) Elegantly handles censored data (patients who drop out or never reach 0 pain by day 7).
+*   **Why it may not be appropriate:** Pain is measured at discrete intervals (6h, 24h, etc.) rather than exact continuous times, which makes the survival curve stepped rather than smooth.
+*   **When NOT to use:** If the event of interest (zero pain) occurs in almost no patients or all patients immediately.
+*   **Alternative:** Cox Proportional Hazards Regression (if adjusting for covariates like baseline pain).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test (for post-op pain):** Postoperative pain data, especially as it resolves over a week, will be heavily right-skewed (many zeros). Using a t-test violates the assumption of normality and will yield inaccurate p-values.
+*   **Repeated Measures ANOVA (rANOVA):** This test requires the assumption of sphericity and normality. Furthermore, rANOVA uses listwise deletion for missing data. Because the flowchart shows 10 patients were lost to follow-up/discontinued, rANOVA would discard all their available data, introducing attrition bias.
+*   **Pearson Correlation Coefficient:** The study objective is to compare differences between two distinct groups, not to measure the linear relationship between two continuous variables.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must account for three primary statistical challenges: the non-normal (ordinal/skewed) nature of VAS pain scores, the repeated-measures design (6 time points), and the presence of missing data due to patient dropout (attrition). 
+
+While traditional dental literature often relies on a combination of Mann-Whitney U (between groups) and Friedman tests (within groups), this approach is statistically fragmented and handles missing data poorly. Therefore, the most robust approach is to utilize **Generalized Estimating Equations (GEE) or Mixed-Effects Modeling**. This allows for the simultaneous evaluation of the treatment effect, the time effect, and their interaction, while retaining patients with incomplete follow-up data (Intention-to-Treat). Baseline equivalence must first be established using Chi-square and Mann-Whitney tests to ensure the integrity of the randomization process.

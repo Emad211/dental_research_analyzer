@@ -1,0 +1,116 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_cbb50020d6bd571e47e12e2979176800.pdf
+Status : ok
+Time   : 20260509_171351
+══════════════════════════════════════════════════════════════════════
+
+Here is a comprehensive biostatistical analysis plan based on the provided Introduction and Methods sections of the dental research article.
+
+### TASK 1: INFORMATION EXTRACTION
+
+**1. Study Design:**
+*   Prospective Cohort Study.
+
+**2. Objectives:**
+*   To evaluate the clinical and radiographic outcomes of Vital Pulp Therapy (VPT) using iRoot BP Plus in permanent teeth with irreversible pulpitis caused by caries.
+*   To analyze preoperative factors affecting the prognosis of VPT.
+
+**3. Participants & Sample Size:**
+*   **Target Population:** Patients aged 6 to 20 years with deep caries exposing the pulp and symptoms of irreversible pulpitis.
+*   **Initial Assessment:** 382 patients.
+*   **Included in Study:** 72 teeth/patients.
+*   **Analyzed Sample:** 57 teeth in 57 patients (after exclusions for hemostasis failure and loss to follow-up). 
+*   *Note on Independence:* One tooth per participant was selected to ensure statistical independence.
+
+**4. Study Groups (Interventions):**
+Group allocation was determined intraoperatively by hemostasis time (using 1% NaOCl):
+*   **Direct Pulp Capping (DPC):** Hemostasis within 5 mins ($n=22$).
+*   **Partial Pulpotomy (PP):** Hemostasis > 5 mins initially, but < 5 mins after 2-3mm pulp removal ($n=22$ analyzed).
+*   **Full Pulpotomy (FP):** Hemostasis > 5 mins after partial removal, but < 5 mins after full crown pulp removal ($n=13$ analyzed).
+
+**5. Variables:**
+*   **Dependent Variable (Outcome):** Prognosis/Success of VPT (Binary: Success vs. Failure). Success is defined by a composite of 8 strict clinical and radiographic criteria.
+*   **Independent Variables (Predictors):** 14 variables were extracted for modeling: Sex, Age (categorized), Root maturation (open/closed), Cave shape (occlusal/proximal), Spontaneous pain, Nocturnal pain, Referred pain, Cold test response, Pain level of cold test, Heat test response, Pain level of heat test, Electrical vitality test difference, Percussion sensitivity, and VPT type.
+
+**6. Data Collection & Follow-up:**
+*   **Measurements:** verbal Numerical Rating Scale (vNRS) for pain, cold/heat tests, electrical vitality tests, percussion, and periapical radiographs.
+*   **Follow-up Timeline:** 3, 6, 12 months, and annually thereafter (range: 6 to 36 months, mean: 16.0 months).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given the sample size ($N=57$) and the high success rate (91.2%, meaning only ~5 failures occurred), the statistical approach must be highly conservative to avoid overfitting.
+
+#### CATEGORY A – MANDATORY TESTS
+*Tests without which the analysis would be incomplete.*
+
+**1. Descriptive Statistics (Frequencies, Percentages, Means, Standard Deviations)**
+*   **Purpose:** To summarize the baseline demographic and clinical characteristics of the cohort.
+*   **Why appropriate:** 1) Provides context for the study population. 2) Allows readers to assess the baseline comparability of the three VPT groups.
+*   **Why it may not be appropriate:** Does not provide inferential p-values to test hypotheses.
+*   **When NOT to use:** Never; it is universally required in clinical research.
+*   **Alternative:** Median and Interquartile Range (IQR) if continuous data (like age or follow-up time) are not normally distributed.
+
+**2. Fisher’s Exact Test**
+*   **Purpose:** To compare categorical baseline characteristics and univariable success rates between the three VPT groups.
+*   **Why appropriate:** 1) The total sample size is small ($N=57$). 2) The number of outcome events (failures) is extremely low (~5), meaning expected cell counts in a contingency table will almost certainly be less than 5.
+*   **Why it may not be appropriate:** It only tests one variable at a time and cannot adjust for confounding factors.
+*   **When NOT to use:** When expected cell counts are all > 5 and sample sizes are large (where Chi-square is more efficient).
+*   **Alternative:** Freeman-Halton extension of Fisher's exact test (for 3x2 tables).
+
+**3. Cohen’s Kappa Statistic**
+*   **Purpose:** To measure intra-observer and inter-observer agreement for clinical and radiographic assessments.
+*   **Why appropriate:** 1) Radiographic interpretation is subjective; proving reliability is vital. 2) Multiple operators/evaluators were involved in the study.
+*   **Why it may not be appropriate:** Kappa can be misleadingly low if the prevalence of a specific finding (like a radiographic failure) is extremely rare (the "Kappa paradox").
+*   **When NOT to use:** When evaluating continuous variables (e.g., exact pain scores).
+*   **Alternative:** Gwet’s AC1 statistic (which is robust to the prevalence paradox) or Intraclass Correlation Coefficient (ICC) for continuous data.
+
+#### CATEGORY B – RECOMMENDED TESTS
+*Tests that enhance the quality and rigor of the analysis.*
+
+**1. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To estimate and compare the probability of VPT success over time across the three groups.
+*   **Why appropriate:** 1) Follow-up times varied significantly among patients (6 to 36 months). 2) It accounts for "censored" data (patients who were successful at their last follow-up but haven't reached the 36-month mark).
+*   **Why it may not be appropriate:** The number of failures (events) is so low that the survival curves will look like flat lines with very few steps, limiting statistical power.
+*   **When NOT to use:** When all patients have the exact same follow-up duration.
+*   **Alternative:** Exact logistic regression (if time-to-event is ignored and only binary success/failure at a specific cutoff is analyzed).
+
+**2. Firth’s Penalized Logistic Regression**
+*   **Purpose:** To perform multivariable analysis on predictors of VPT failure while correcting for small sample size and rare events.
+*   **Why appropriate:** 1) Standard logistic regression fails when events are rare (only 5 failures), causing "complete separation." 2) Firth's method applies a penalty to maximum likelihood estimation, reducing bias and preventing the infinitely large standard errors seen in the authors' original Table 2.
+*   **Why it may not be appropriate:** Even with penalization, fitting 14 variables on 57 patients is mathematically unsound. The model must be restricted to 1 or 2 highly justified predictors.
+*   **When NOT to use:** When you have a large sample size with an adequate number of events (e.g., >10 events per predictor).
+*   **Alternative:** Exact Logistic Regression.
+
+#### CATEGORY C – OPTIONAL TESTS
+*Tests that provide supplementary insights.*
+
+**1. Kruskal-Wallis H Test**
+*   **Purpose:** To compare continuous or ordinal variables (e.g., age, vNRS pain scores) across the three VPT groups.
+*   **Why appropriate:** 1) Pain scores are ordinal, not continuous. 2) The sample sizes in the subgroups (13 to 22) are small, making normal distribution assumptions risky.
+*   **Why it may not be appropriate:** It does not tell you *which* specific groups differ from each other, only that a difference exists somewhere.
+*   **When NOT to use:** When data are perfectly normally distributed and variances are equal.
+*   **Alternative:** One-way ANOVA (if assumptions of normality and homogeneity of variance are met).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+**1. Standard Binary Logistic Regression (with 14 predictors)**
+*   **Why it should NOT be used:** The authors used this, but it is a severe methodological flaw. In regression modeling, the "Events Per Variable" (EPV) rule dictates that you need at least 10 to 15 events (in this case, treatment failures) for every predictor included in the model. With only ~5 failures in the entire cohort, putting 14 variables into a standard logistic regression causes severe overfitting and quasi-complete separation. This is evidenced in the authors' Table 2, where the Standard Errors (S.E.) for variables like "Root maturation" and "Percussion sensitivity" are massive, and the Exp(B) (Odds Ratios) are highly distorted (e.g., 0.000 or 0.002). 
+
+**2. Pearson Chi-Square Test**
+*   **Why it should NOT be used:** Because the overall failure rate is only 8.8% (5 out of 57), any 2x2 or 3x2 cross-tabulation will result in expected cell frequencies of less than 5. The Chi-Square test relies on large-sample approximations that fail under these conditions.
+
+**3. Independent Samples t-test / ANOVA for Pain Scores**
+*   **Why it should NOT be used:** The vNRS pain scale yields ordinal data. Furthermore, the small sample sizes per group make it difficult to satisfy the assumption of normality required for parametric testing.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach for this study must prioritize methods suited for **small sample sizes and rare events**. Because the success rate of the intervention is exceptionally high (>90%), the statistical power to identify preoperative factors that predict *failure* is severely limited. 
+
+The authors' original approach of using a 14-variable standard binary logistic regression is statistically invalid due to severe overfitting. Instead, the analysis should rely heavily on robust descriptive statistics and exact non-parametric tests (like Fisher's Exact Test) for univariable comparisons. To account for the varying follow-up times (6 to 36 months), Kaplan-Meier survival analysis should be utilized rather than simple binary outcomes. If a multivariable model is absolutely necessary, the researchers must drastically reduce the number of predictors (to a maximum of 1 or 2 clinically vital variables) and utilize Firth's Penalized Logistic Regression to handle the rare occurrence of treatment failures.

@@ -1,0 +1,127 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_download_(1).pdf
+Status : ok
+Time   : 20260509_171537
+══════════════════════════════════════════════════════════════════════
+
+As an expert biostatistician, I have reviewed the provided Introduction and Methods sections of the article. Below is the comprehensive extraction of methodological information and a tailored Statistical Analysis Plan (SAP) designed specifically for a cost-minimization analysis nested within a clustered Randomized Clinical Trial (RCT).
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**1. Study Design:**
+*   Cost-minimization analysis (prospective economic evaluation) nested within a parallel-arm Randomized Clinical Trial (RCT).
+*   Follows CHEERS (Consolidated Health Economic Evaluation Reporting Standards) guidelines.
+
+**2. Objectives & Hypothesis:**
+*   *Objective:* To economically assess four post-retained restorative strategies for endodontically treated teeth.
+*   *Hypothesis:* Glass fiber-retained direct composite resin restorations (GFP + CR) are less expensive than cast post and core (CPC) or glass fiber posts with metal-ceramic crowns (GFP + MC).
+
+**3. Target Population & Setting:**
+*   *Setting:* Dental school clinic; procedures performed by 25 supervised undergraduate students.
+*   *Population:* Patients with good oral health requiring intraradicular retention in endodontically treated anterior or posterior teeth, with bilateral posterior occlusal contact.
+
+**4. Sample Size & Grouping:**
+*   *Sample:* 141 participants, 225 teeth (Note: This indicates **clustered data**, as there are multiple teeth per patient).
+*   *Comparators (4 groups based on ferrule presence):*
+    *   *No ferrule:* GFP + metal-ceramic crown (n=71) vs. CPC + metal-ceramic crown (n=79).
+    *   *2-mm ferrule:* GFP + metal-ceramic crown (n=36) vs. GFP + direct composite resin (n=39).
+
+**5. Variables & Data Collection:**
+*   *Independent Variables:* Restorative strategy (4 groups), Tooth type (anterior, premolar, molar - used as a stratification variable in randomization).
+*   *Dependent Variables:* Treatment costs (primary for this specific analysis), Clinical success/survival (primary for the parent RCT).
+*   *Randomization:* Stratified by tooth type; allocation concealed via sealed opaque envelopes.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given that 225 teeth were treated in 141 patients, the data violates the assumption of independence. Furthermore, cost data is typically right-skewed and strictly positive. The statistical plan must account for these factors.
+
+#### CATEGORY A – MANDATORY TESTS
+*(Tests without which the analysis would be incomplete)*
+
+**1. Generalized Linear Mixed Models (GLMM) with Gamma Distribution and Log Link**
+*   **Purpose:** To compare the mean costs between the four restorative strategies while accounting for multiple teeth within the same patient.
+*   **Why appropriate:** 
+    1) It accounts for the clustering effect (intra-class correlation) of having up to 225 teeth nested within 141 patients by using patient ID as a random effect. 
+    2) The Gamma distribution with a log link perfectly handles the right-skewed, strictly positive nature of healthcare cost data.
+*   **Why it may not be appropriate:** If the cost data is surprisingly normally distributed (rare) or if the model fails to converge due to small cluster sizes.
+*   **When NOT to use:** When there is only one tooth per patient (no clustering), or if cost data contains zeros or negative values.
+*   **Alternative:** Generalized Estimating Equations (GEE) with a Gamma distribution.
+
+**2. Descriptive Statistics (Measures of Central Tendency and Dispersion)**
+*   **Purpose:** To summarize patient demographics, baseline clinical characteristics, and raw cost data.
+*   **Why appropriate:** 
+    1) Essential for establishing baseline equivalence between the randomized groups. 
+    2) Provides a transparent overview of the raw, unadjusted economic burden.
+*   **Why it may not be appropriate:** Descriptive statistics alone cannot test hypotheses or adjust for confounding/clustering.
+*   **When NOT to use:** Never; descriptive statistics are universally required.
+*   **Alternative:** N/A.
+
+#### CATEGORY B – RECOMMENDED TESTS
+*(Tests that enhance the quality and rigor of the analysis)*
+
+**1. Non-parametric Bootstrapping (for Cost Differences)**
+*   **Purpose:** To calculate 95% Confidence Intervals (CIs) for the mean cost differences between groups.
+*   **Why appropriate:** 
+    1) Cost data is highly skewed, and bootstrapping does not rely on strict parametric assumptions of normality. 
+    2) It provides highly robust confidence intervals for economic evaluations, which is standard practice in health economics.
+*   **Why it may not be appropriate:** It can be computationally intensive and complex to program when accounting for the clustered nature of the data (requires cluster-level bootstrapping).
+*   **When NOT to use:** When the sample size is extremely small, as the empirical distribution will not accurately reflect the population.
+*   **Alternative:** Wald confidence intervals derived directly from the GLMM.
+
+**2. One-Way Sensitivity Analysis (Deterministic)**
+*   **Purpose:** To test the robustness of the cost-minimization conclusion by varying key cost parameters (e.g., material costs, student vs. professional time costs).
+*   **Why appropriate:** 
+    1) Required by CHEERS guidelines for economic evaluations. 
+    2) Clinical procedures were done by students; adjusting time-costs to reflect private practice scenarios increases external validity.
+*   **Why it may not be appropriate:** If all costs are absolute, fixed, and not subject to market variation (highly unlikely in dentistry).
+*   **When NOT to use:** When the study is purely clinical and contains no economic modeling.
+*   **Alternative:** Probabilistic Sensitivity Analysis (PSA) using Monte Carlo simulations.
+
+**3. Kaplan-Meier Survival Analysis with Frailty Models**
+*   **Purpose:** To confirm that the clinical survival rates of the restorations are indeed statistically similar.
+*   **Why appropriate:** 
+    1) A cost-minimization analysis *requires* the assumption of equal clinical efficacy; this must be statistically proven. 
+    2) A "frailty" model adjusts for the clustered data (multiple teeth per patient) in survival analysis.
+*   **Why it may not be appropriate:** If the parent RCT has already published these exact survival curves elsewhere and this paper is strictly an economic add-on.
+*   **When NOT to use:** If follow-up time is not recorded or all restorations survived (no events).
+*   **Alternative:** Cox Proportional Hazards model with robust standard errors.
+
+#### CATEGORY C – OPTIONAL TESTS
+*(Tests that provide supplementary insights)*
+
+**1. Subgroup Analysis by Tooth Type (Interaction Terms)**
+*   **Purpose:** To determine if the cost differences between restorative strategies vary depending on whether the tooth is anterior, premolar, or molar.
+*   **Why appropriate:** 
+    1) Randomization was explicitly stratified by tooth type, indicating anatomical variation is a known confounder. 
+    2) Molars may require more composite material or longer chair time, altering the cost dynamics.
+*   **Why it may not be appropriate:** The study may not be adequately powered to detect differences within these smaller subgroups.
+*   **When NOT to use:** When subgroup sample sizes drop below a statistically meaningful threshold (e.g., n < 10 per cell).
+*   **Alternative:** Including tooth type strictly as a covariate rather than an interaction term.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+**1. Independent Samples t-test or One-Way ANOVA**
+*   *Why:* These tests assume that all observations are independent. Because 225 teeth belong to 141 patients, the data is clustered. Using t-tests/ANOVA will artificially inflate the degrees of freedom, underestimate standard errors, and increase the risk of Type I errors (false positives). Furthermore, they assume a normal distribution, which cost data rarely follows.
+
+**2. Incremental Cost-Effectiveness Ratio (ICER) Calculation**
+*   *Why:* The authors explicitly state this is a *cost-minimization analysis*. Cost-minimization is used when the clinical outcomes of the interventions are proven to be equal. ICERs are only calculated in Cost-Effectiveness Analyses (CEA) when one treatment is both more effective and more costly, to determine how much extra you pay per unit of health gained.
+
+**3. Standard Chi-Square Test (for success/failure rates)**
+*   *Why:* Similar to the t-test, the standard Chi-square test assumes independent observations. It cannot account for the fact that if one patient has poor oral hygiene or bruxism, multiple teeth in that same patient's mouth are more likely to fail.
+
+---
+
+### TASK 4: SUMMARY AND JUSTIFICATION OF ANALYTICAL APPROACH
+
+The overall analytical approach must bridge two distinct statistical disciplines: **health economics** and **clustered clinical data analysis**. 
+
+Because the study evaluates 225 teeth within 141 patients, the foundational requirement of the analysis is to utilize mixed-effects modeling (GLMM) to account for intra-patient correlation. Treating the teeth as independent would be a fatal methodological flaw. 
+
+Secondly, because the primary outcome of this specific paper is *cost*, the analysis must respect the mathematical properties of financial data—namely, that costs cannot be negative and are usually right-skewed (a few procedures take much longer or require more material, pulling the mean upward). Therefore, utilizing a Gamma distribution with a log link, supported by non-parametric bootstrapping for confidence intervals, is the most statistically rigorous approach. Finally, incorporating sensitivity analyses ensures the findings align with CHEERS guidelines and provides external validity, allowing clinicians to apply these cost-minimization findings to real-world private practice settings outside of a dental school environment.

@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splitted_bharti-et-al-2021-antimicrobial-effectiveness-of-photodynamic-therapy-5-sodium-hypochlorite-and-2-chlorhexidine.pdf",
+  "timestamp": "20260509_170814",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "ok",
+      "chars": 10400
+    }
+  }
+}

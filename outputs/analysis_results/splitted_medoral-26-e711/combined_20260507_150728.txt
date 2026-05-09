@@ -896,3 +896,118 @@ By combining:
 - And quantitative lesion size and healing analyses (paired tests, correlation/regression),
 
 the plan adequately addresses the core question: whether follow-up using only periapical and panoramic radiographs provides reliable information about periapical lesion status compared with CBCT, and under what circumstances it may or may not be sufficient.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_173948
+──────────────────────────────────────────────────────────────────────
+
+Here is the comprehensive extraction and statistical analysis plan based on the provided text.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Retrospective cohort type diagnostic accuracy/sensitivity study.
+*   **Objectives:** To assess the diagnostic validity (sensitivity) of two-dimensional radiographs (periapical and panoramic) compared to CBCT (reference standard) for detecting periapical lesions preoperatively and at 6-48 months follow-up after endodontic microsurgery.
+*   **Study Groups/Conditions:** 
+    *   *Timepoints:* Preoperative vs. Follow-up (6-48 months).
+    *   *Imaging Modalities:* Periapical radiograph (Index Test 1), Panoramic radiograph (Index Test 2), CBCT (Reference Standard).
+*   **Sample Size:** Not explicitly stated in the provided text (requires the full results section), but consists of patients who underwent endodontic microsurgery by a single surgeon.
+*   **Inclusion Criteria:** Patients with pre-op and follow-up CBCT, periapical, and panoramic radiographs of sufficient quality; follow-up at 6-48 months.
+*   **Exclusion Criteria:** Use of regenerative procedures (bone grafts, membranes).
+*   **Variables & Measurements:**
+    *   *Categorical (Binary):* Presence/absence of periapical lesion (Defined as radiolucency >2x PDL width; for CBCT, visible in ≥2 planes).
+    *   *Continuous:* Lesion area in mm² (for 2D radiographs, measured via manual tracing in Itk-Snap).
+    *   *Continuous:* Lesion volume in mm³ (for CBCT, measured via manual tracing in Planmeca Romexis).
+*   **Data Collection Methods:** Two independent examiners evaluated images. 2D images evaluated first, CBCT at least 2 weeks later. Disagreements resolved by a third advisor. Calibration performed on 10 external images twice, 1 week apart.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Essential for study completion)
+
+**1. Cohen’s Kappa Statistic**
+*   **Purpose:** To assess inter-examiner and intra-examiner reliability for the categorical detection of periapical lesions (Presence/Absence).
+*   **Why appropriate:** 
+    1) The study explicitly mentions two independent examiners and a calibration phase. 
+    2) The primary diagnostic variable (lesion presence) is a binary categorical variable.
+*   **Why it may not be appropriate:** If the prevalence of lesions is extremely high or extremely low, Kappa can be artificially deflated (the "Kappa paradox").
+*   **When NOT to use:** Do not use for continuous measurements (area/volume).
+*   **Alternative:** Gwet’s AC1 statistic (if the Kappa paradox is observed due to highly skewed prevalence).
+
+**2. Intraclass Correlation Coefficient (ICC)**
+*   **Purpose:** To assess inter-examiner and intra-examiner reliability for the continuous measurements (lesion area in mm² and volume in mm³).
+*   **Why appropriate:** 
+    1) Evaluates both the degree of correlation and agreement between the two examiners' manual tracings. 
+    2) Essential to validate the reproducibility of the manual freehand selection method used in Itk-Snap and Planmeca software.
+*   **Why it may not be appropriate:** ICC is sensitive to the range of values; a highly homogenous sample of lesion sizes might yield artificially low ICC values.
+*   **When NOT to use:** Do not use for the binary presence/absence data.
+*   **Alternative:** Concordance Correlation Coefficient (CCC).
+
+**3. Diagnostic Accuracy Metrics & McNemar’s Test**
+*   **Purpose:** To calculate Sensitivity, Specificity, PPV, and NPV of 2D radiographs vs. CBCT, and to statistically compare the detection rates.
+*   **Why appropriate:** 
+    1) Directly answers the primary objective of the study (diagnostic validity/sensitivity). 
+    2) McNemar's test specifically accounts for the *paired* nature of the data (the same tooth is evaluated by 2D and 3D modalities).
+*   **Why it may not be appropriate:** If the sample size of discordant pairs (e.g., detected on CBCT but missed on 2D) is extremely small (<25), standard McNemar's may be inaccurate.
+*   **When NOT to use:** Do not use for independent/unpaired groups.
+*   **Alternative:** Exact McNemar’s test (binomial exact test) if the number of discordant pairs is small.
+
+**4. Wilcoxon Signed-Rank Test**
+*   **Purpose:** To compare the continuous size of lesions preoperatively versus at follow-up within the same imaging modality.
+*   **Why appropriate:** 
+    1) The data is paired (pre-op vs. post-op of the same lesion). 
+    2) Lesion sizes (area/volume) in dental research are typically non-normally distributed (skewed).
+*   **Why it may not be appropriate:** If the differences between pre-op and post-op measurements are perfectly normally distributed, this test is less powerful than its parametric equivalent.
+*   **When NOT to use:** Do not use to directly compare 2D area (mm²) with 3D volume (mm³), as the units of measurement are fundamentally different.
+*   **Alternative:** Paired t-test (if the assumption of normality of differences is strictly met).
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Spearman’s Rank-Order Correlation**
+*   **Purpose:** To evaluate the relationship between 2D lesion area (mm²) and 3D lesion volume (mm³).
+*   **Why appropriate:** 
+    1) Allows researchers to see if an increase/decrease in 2D area reliably reflects an increase/decrease in 3D volume. 
+    2) Does not assume a linear relationship or normal distribution, which is ideal since area scales quadratically and volume scales cubically.
+*   **Why it may not be appropriate:** Correlation does not imply agreement; it only shows if the variables move in the same direction.
+*   **When NOT to use:** Do not use to claim that 2D area can perfectly predict 3D volume without further regression analysis.
+*   **Alternative:** Pearson Correlation (if data is log-transformed to achieve normality and linearity).
+
+**2. Bland-Altman Plot Analysis**
+*   **Purpose:** To assess the agreement between the continuous measurements of the two 2D modalities (Periapical vs. Panoramic area).
+*   **Why appropriate:** 
+    1) Visualizes the mean difference (bias) and limits of agreement between the two 2D techniques. 
+    2) Identifies if the discrepancy between the two methods gets larger as the lesion size increases (proportional bias).
+*   **Why it may not be appropriate:** It requires the two measurements to be in the exact same units (which they are here: mm²), but cannot be used between 2D and 3D.
+*   **When NOT to use:** Do not use to compare Periapical Area (mm²) with CBCT Volume (mm³).
+*   **Alternative:** Passing-Bablok regression.
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Generalized Estimating Equations (GEE) or Mixed-Effects Logistic Regression**
+*   **Purpose:** To analyze diagnostic accuracy while accounting for multiple lesions within the same patient.
+*   **Why appropriate:** 
+    1) The methodology notes: "If a multiple root tooth had more than one periapical lesion..." implying clustering of data. 
+    2) Observations within the same patient/tooth are not statistically independent.
+*   **Why it may not be appropriate:** If the vast majority of patients only have one lesion, the mathematical complexity of GEE is unnecessary and may fail to converge.
+*   **When NOT to use:** Do not use if there is strictly only one lesion evaluated per patient.
+*   **Alternative:** Standard logistic regression (if only one lesion per patient is randomly selected for analysis).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test / Mann-Whitney U Test:** Completely inappropriate for comparing pre-op and post-op sizes, or for comparing detection rates between imaging modalities. The data in this study is strictly *paired* (the same patient/tooth is measured at two time points and by three different machines).
+*   **Chi-Square Test of Independence:** Inappropriate for comparing the sensitivity/detection rates between 2D and 3D imaging. Chi-square assumes independent observations, but here the imaging results belong to the same teeth. McNemar's test must be used instead.
+*   **Pearson Correlation for Inter-examiner Reliability:** Inappropriate because Pearson only measures linear correlation, not absolute agreement. If Examiner A always measures exactly 5mm² larger than Examiner B, Pearson's *r* could be 1.0 (perfect correlation), even though their actual agreement is terrible. ICC must be used.
+*   **Direct comparison tests (t-test) between Area and Volume:** It is mathematically invalid to test for a "difference" between a 2D measurement (mm²) and a 3D measurement (mm³). 
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must be anchored in the **paired nature** of the study design. Because the same lesions are evaluated across different imaging modalities and time points, all comparative statistical tests must account for dependency (e.g., McNemar's, Wilcoxon signed-rank). 
+
+The analysis should proceed in three logical phases: 
+1. **Validation of Measurements:** Establishing inter- and intra-examiner reliability (Kappa and ICC) to prove the manual tracing and detection methods are sound.
+2. **Diagnostic Validity (Primary Aim):** Using CBCT as the gold standard to calculate the sensitivity of 2D modalities via paired contingency analyses.
+3. **Efficacy & Correlation:** Assessing the reduction in lesion size over time within each modality, and exploring the mathematical correlation between 2D area and 3D volume changes. This structured approach ensures methodological rigor and directly answers the research question regarding the reliability of 2D follow-up.

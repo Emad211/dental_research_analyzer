@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splitted_A_Prospective_Comparative_Randomized_Clinical_Trial_of_Three_Endodontic_Retrograde_Filling_Materials.pdf",
+  "timestamp": "20260509_165926",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "error",
+      "chars": 27
+    }
+  }
+}

@@ -1,0 +1,119 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_academic_performance_and_dental_student.7.pdf
+Status : ok
+Time   : 20260509_170311
+══════════════════════════════════════════════════════════════════════
+
+Here is a comprehensive information extraction and statistical analysis plan based on the provided article, structured according to your requirements.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Design:** Retrospective cohort study (with a nested cross-sectional survey component).
+**Objectives:** 
+1. To evaluate the consequences of emergency remote teaching (online modalities) on student learning satisfaction.
+2. To compare the academic performance of students taught via emergency remote teaching with a historical cohort taught via conventional face-to-face methods.
+
+**Study Groups & Sample Size (Total N = 76):**
+*   **Group 1 (Pandemic Cohort):** 39 undergraduate 3rd-year dental students (2019–2020 academic year) exposed to emergency remote teaching.
+*   **Group 2 (Pre-pandemic Cohort):** 37 undergraduate 3rd-year dental students (2018–2019 academic year) exposed to conventional face-to-face teaching.
+
+**Variables & Measurements:**
+*   **Independent Variable 1 (Between-subjects):** Cohort/Teaching environment (Emergency Remote Teaching vs. Pre-pandemic Face-to-Face).
+*   **Dependent Variable 1 (Continuous):** Academic performance (Overall scores in summative multiple-choice examinations).
+*   **Independent Variable 2 (Within-subjects):** Method of lecture delivery (Face-to-face vs. Online-synchronized vs. Online-asynchronized).
+*   **Dependent Variable 2 (Ordinal/Categorical):** Student satisfaction. Measured on a 3-point scale (Satisfied, Neutral, Unsatisfied) across 18 specific domains (comprehension, communication, stress, time, tech support, etc.) and overall preference.
+
+**Data Collection Methods:**
+*   **Performance Data:** Extracted retrospectively via the ExamSoft platform (overall scores and item analysis).
+*   **Satisfaction Data:** Collected via an anonymous online questionnaire sent by email before the summative assessment.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+*(Tests without which the analysis would be incomplete)*
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the continuous data (summative exam scores) for both cohorts.
+*   **Why appropriate:** (1) The sample sizes per group are relatively small (< 50), making Shapiro-Wilk highly accurate. (2) It dictates whether parametric or non-parametric tests must be used for the primary performance analysis.
+*   **Why it may not be appropriate:** If the data contains extreme, isolated outliers, the test might falsely reject normality for an otherwise normal distribution.
+*   **When NOT to use:** Do not use for the ordinal satisfaction survey data.
+*   **Alternative:** Kolmogorov-Smirnov test (though less powerful for small samples) or visual inspection of Q-Q plots.
+
+**2. Independent Samples t-test**
+*   **Purpose:** To compare the mean summative exam scores between the Pandemic cohort (N=39) and the Pre-pandemic cohort (N=37).
+*   **Why appropriate:** (1) It compares the means of two distinct, independent groups. (2) The dependent variable (exam scores) is continuous.
+*   **Why it may not be appropriate:** It assumes the data is normally distributed and that variances between the two groups are equal.
+*   **When NOT to use:** Should not be used if the exam scores are highly skewed or if the data is ordinal.
+*   **Alternative:** Mann-Whitney U test (if the assumption of normality is violated).
+
+**3. Friedman Test**
+*   **Purpose:** To compare student satisfaction ratings across the three different teaching methods (face-to-face, online-synchronized, online-asynchronized) within the Pandemic cohort.
+*   **Why appropriate:** (1) The data is ordinal (Satisfied, Neutral, Unsatisfied). (2) It is a within-subjects (repeated measures) design, as the *same* 39 students are rating all three methods.
+*   **Why it may not be appropriate:** It only tells you that a difference exists somewhere among the three methods, not exactly which methods differ from one another (requires post-hoc testing).
+*   **When NOT to use:** Do not use for comparing independent groups (e.g., comparing the pandemic cohort to the pre-pandemic cohort).
+*   **Alternative:** Repeated Measures ANOVA (only if the ordinal scale is assumed to be continuous and normally distributed, which is generally frowned upon for 3-point scales).
+
+#### CATEGORY B – RECOMMENDED TESTS
+*(Tests that enhance the quality and rigor of the analysis)*
+
+**1. Levene’s Test for Equality of Variances**
+*   **Purpose:** To test the assumption of equal variances (homoscedasticity) between the two cohorts' exam scores prior to running the t-test.
+*   **Why appropriate:** (1) Validates the assumptions of the Independent Samples t-test. (2) Ensures Type I error rates are not inflated.
+*   **Why it may not be appropriate:** Can be overly sensitive to minor deviations in variance if the sample size is very large (though not a major issue here with N=76).
+*   **When NOT to use:** Not applicable for non-parametric tests or ordinal data.
+*   **Alternative:** Welch’s t-test (which does not assume equal variances and can be used by default).
+
+**2. Wilcoxon Signed-Rank Test (with Bonferroni Correction)**
+*   **Purpose:** To serve as a post-hoc test following a significant Friedman test to identify exactly which teaching methods significantly differ in satisfaction.
+*   **Why appropriate:** (1) It correctly handles paired ordinal data. (2) Applying a Bonferroni correction (adjusting the p-value threshold) prevents the inflation of false positives from multiple comparisons.
+*   **Why it may not be appropriate:** It discards information about the magnitude of differences, relying only on ranks.
+*   **When NOT to use:** Do not use without first achieving a statistically significant result in the overarching Friedman test.
+*   **Alternative:** Sign test (less powerful as it only considers the direction of differences, not the magnitude of ranks).
+
+**3. Cohen’s d (Effect Size)**
+*   **Purpose:** To quantify the magnitude of the difference in exam scores between the two cohorts.
+*   **Why appropriate:** (1) P-values only indicate statistical significance, whereas effect size indicates clinical/educational relevance. (2) It allows for comparison with other educational interventions in future meta-analyses.
+*   **Why it may not be appropriate:** Cohen's d assumes normality and equal variances; if data is highly skewed, it can be misleading.
+*   **When NOT to use:** Do not use if the primary comparison was done using non-parametric tests (Mann-Whitney).
+*   **Alternative:** Rank-biserial correlation or Rosenthal’s *r* (if using the Mann-Whitney U test).
+
+#### CATEGORY C – OPTIONAL TESTS
+*(Tests that provide supplementary insights)*
+
+**1. Cronbach’s Alpha**
+*   **Purpose:** To measure the internal consistency and reliability of the 18-item satisfaction questionnaire.
+*   **Why appropriate:** (1) Validates that the custom-made survey reliably measures the underlying construct of "satisfaction." (2) Adds methodological rigor to the survey instrument.
+*   **Why it may not be appropriate:** The 18 questions cover diverse domains (tech support vs. comprehension), which might be multidimensional rather than a single construct.
+*   **When NOT to use:** Do not use for single-item questions (like the overall preference question).
+*   **Alternative:** McDonald’s Omega (often considered a more robust measure of reliability than Cronbach's Alpha).
+
+**2. Spearman’s Rank-Order Correlation**
+*   **Purpose:** To explore if there is a relationship between a student's overall satisfaction score and their final exam score within the pandemic cohort.
+*   **Why appropriate:** (1) Mixes continuous data (scores) with ordinal data (satisfaction). (2) Does not assume a linear relationship, only a monotonic one.
+*   **Why it may not be appropriate:** Correlation does not equal causation; a positive result might be confounded by student baseline intelligence or motivation.
+*   **When NOT to use:** Do not use if you are trying to predict an outcome (regression would be needed).
+*   **Alternative:** Kendall’s Tau (better for small data sets with many tied ranks, which is likely with a 3-point Likert scale).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Paired Samples t-test:** **INAPPROPRIATE** for comparing the exam scores. The pandemic cohort and pre-pandemic cohort consist of entirely different students. The data is independent, not paired.
+*   **One-Way ANOVA:** **INAPPROPRIATE** for comparing exam scores because there are only two groups (ANOVA requires three or more). It is also inappropriate for the satisfaction survey because the survey data is ordinal and repeated, not independent and continuous.
+*   **Pearson Correlation:** **INAPPROPRIATE** for correlating satisfaction with exam scores. Pearson requires both variables to be continuous and normally distributed. Satisfaction is measured on a 3-point ordinal scale.
+*   **Chi-Square Test of Independence (for the 3 teaching methods):** **INAPPROPRIATE** if used to compare satisfaction *across the three methods*. Because the *same* students rated all three methods, the assumption of independence of observations is violated. (Note: Chi-square *can* be used to describe demographic frequencies, but not the repeated-measures satisfaction).
+
+---
+
+### TASK 4: SUMMARY
+
+The analytical approach for this study must be divided into two distinct statistical pathways due to the nature of the variables. 
+
+For **Objective 1 (Academic Performance)**, the study utilizes a between-subjects design comparing two independent cohorts. Therefore, parametric testing (Independent Samples t-test) is the gold standard, provided the continuous exam scores meet the assumptions of normality (Shapiro-Wilk) and homoscedasticity (Levene's test). If assumptions are violated, a shift to non-parametric testing (Mann-Whitney U) is required. 
+
+For **Objective 2 (Student Satisfaction)**, the study utilizes a within-subjects design where a single cohort evaluates three different teaching modalities using an ordinal 3-point scale. Because the data is ordinal and paired, non-parametric repeated-measures testing (Friedman test) is mandatory, followed by adjusted post-hoc tests (Wilcoxon Signed-Rank) to isolate specific differences in student preferences. This dual-pronged approach ensures mathematical rigor while respecting the distinct data types generated by the study's methodology.

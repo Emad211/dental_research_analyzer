@@ -912,3 +912,133 @@ The core analytical strategy should therefore:
 5) Quantify reliability of radiographic assessments via kappa statistics.  
 
 This approach aligns with the data structure (primarily categorical, ordered outcomes, time‑to‑event for sinus closure), respects key assumptions, allows adjustment for confounding, and keeps the analyses clinically interpretable for endodontic research.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_165147
+──────────────────────────────────────────────────────────────────────
+
+Here is the comprehensive information extraction and statistical analysis plan based on the provided dental research article.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Retrospective clinical cohort study.
+*   **Objectives:** 
+    1. To report the clinical and radiographic outcomes of root canal treatment/retreatment of teeth with chronic apical abscesses and intraoral sinus tracts.
+    2. To evaluate the influence of preoperative, intraoperative, and postoperative variables on the treatment outcome.
+*   **Sample Size:** 137 teeth from 128 patients (selected from an initial pool of 144 referred patients).
+*   **Follow-up Period:** 1 to 17 years (variable). Short-term sinus tract healing evaluated at 7, 14, 21, and 30 days.
+
+**Variables:**
+*   **Dependent Variables (Outcomes):**
+    *   *Short-term:* Sinus tract healing (Dichotomous: Healed/Closed vs. Not healed/Active/Persistent/Recurrent).
+    *   *Long-term:* Periradicular healing (Categorical/Ordinal: Healed, Healing, Diseased). *Note: For statistical modeling, this is typically dichotomized into Favorable (Healed + Healing) vs. Unfavorable (Diseased).*
+*   **Independent Variables (Predictors):**
+    *   *Preoperative:* Age (continuous), Sex (categorical), Sinus tract location (buccal, distal, palatal/lingual), Lesion size (small ≤5mm, large >5 to <10mm, very large ≥10mm), Root canal status (necrotic pulp vs. previous treatment), Tooth type, Tooth location (maxillary/mandibular), Symptoms, Periodontal probing, Tooth mobility.
+    *   *Intraoperative:* Number of sessions (single vs. multiple), Working length, Obturation technique, Quality of root canal filling (adequate vs. inadequate), Filling of lateral canals.
+    *   *Postoperative:* Quality of coronal restoration (adequate vs. inadequate).
+
+**Measurements & Data Collection:**
+*   Clinical exams (pulp tests, probing, mobility).
+*   Radiographic evaluation using the Periapical Index (PAI) system (Scores 1-5).
+*   Evaluations performed by 2 blinded, calibrated endodontists using reference radiographs. Disagreements resolved by joint discussion.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Cohen’s Kappa (or Weighted Kappa)**
+*   **Purpose:** To assess inter-rater reliability between the two blinded evaluators for the PAI scoring.
+*   **Why appropriate:** 
+    1) It quantifies the degree of agreement between two raters beyond what would be expected by chance. 
+    2) Weighted Kappa is specifically suited for ordinal data (like the PAI 1-5 scale), giving partial credit for close disagreements (e.g., scoring 3 vs. 4).
+*   **Why it may not be appropriate:** It can be overly sensitive to the prevalence of the condition (the "kappa paradox"), potentially yielding a low score even with high absolute agreement.
+*   **When NOT to use:** If the raters are not independent (e.g., they evaluated the radiographs together initially rather than independently).
+*   **Alternative:** Gwet’s AC1 statistic or simple Percentage of Agreement.
+
+**2. Chi-Square Test of Independence (or Fisher’s Exact Test)**
+*   **Purpose:** To conduct bivariate analysis comparing categorical predictor variables (e.g., single vs. multiple visits, adequate vs. inadequate restoration) against the dichotomized outcome (Favorable vs. Unfavorable).
+*   **Why appropriate:** 
+    1) The vast majority of the extracted independent variables and the primary outcome are categorical. 
+    2) It provides a straightforward, easily interpretable assessment of crude associations.
+*   **Why it may not be appropriate:** It does not account for confounding variables or the highly variable follow-up times (1 to 17 years).
+*   **When NOT to use:** When expected cell frequencies in the contingency table are less than 5.
+*   **Alternative:** Fisher’s Exact Test (mandatory if expected cell counts are < 5).
+
+**3. Binary Logistic Regression**
+*   **Purpose:** To perform multivariable analysis identifying independent predictors of treatment success while controlling for confounders.
+*   **Why appropriate:** 
+    1) It allows for the simultaneous evaluation of multiple preoperative, intraoperative, and postoperative variables on a dichotomous outcome (Healed/Healing vs. Diseased). 
+    2) It provides Odds Ratios (OR), which are standard and easily interpretable in clinical dental literature.
+*   **Why it may not be appropriate:** It treats a 1-year follow-up success the same as a 17-year follow-up success, ignoring the "time-at-risk" for failure.
+*   **When NOT to use:** If the number of outcome events (failures) is too small relative to the number of predictors (rule of thumb: need at least 10 events per predictor to avoid overfitting).
+*   **Alternative:** Penalized logistic regression (Firth's method) if the event rate is very low.
+
+#### CATEGORY B – RECOMMENDED (Enhances Quality and Rigor)
+
+**1. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To estimate the probability of tooth survival/success over time and compare survival curves between groups (e.g., initial treatment vs. retreatment).
+*   **Why appropriate:** 
+    1) The follow-up time varies drastically (1 to 17 years); this method accounts for right-censored data (patients lost to follow-up or who haven't failed by the end of the study). 
+    2) It provides a much more accurate reflection of long-term prognosis than a simple cross-sectional logistic regression.
+*   **Why it may not be appropriate:** Exact time of failure is often unknown in retrospective dental studies (interval censoring), as a failure may have occurred anytime between the last good check-up and the current bad one.
+*   **When NOT to use:** If all patients have the exact same follow-up duration.
+*   **Alternative:** Actuarial life tables.
+
+**2. Cox Proportional Hazards Regression**
+*   **Purpose:** Multivariable survival analysis to determine the effect of several variables on the time-to-failure.
+*   **Why appropriate:** 
+    1) It adjusts for confounders while simultaneously accounting for the variable follow-up times. 
+    2) It generates Hazard Ratios (HR), providing a dynamic view of risk over time.
+*   **Why it may not be appropriate:** It relies heavily on the assumption of proportional hazards (the risk between groups remains constant over time), which may not hold true (e.g., early failures due to procedural errors vs. late failures due to coronal leakage).
+*   **When NOT to use:** When the proportional hazards assumption is violated.
+*   **Alternative:** Parametric survival models (e.g., Weibull model) or time-dependent Cox regression.
+
+**3. Generalized Estimating Equations (GEE) or Mixed-Effects Models**
+*   **Purpose:** To adjust for the clustering effect of multiple teeth within the same patient.
+*   **Why appropriate:** 
+    1) The study includes 137 teeth from 128 patients, meaning 9 patients contributed more than one tooth. 
+    2) Teeth within the same patient share systemic, genetic, and behavioral factors (e.g., oral hygiene), violating the assumption of independent observations.
+*   **Why it may not be appropriate:** The clustering effect here is very small (only 9 extra teeth). The statistical complexity might outweigh the practical impact on the results.
+*   **When NOT to use:** If the sample consists of exactly one tooth per patient.
+*   **Alternative:** Randomly selecting only one tooth per patient for the analysis (though this discards data).
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. Ordinal Logistic Regression**
+*   **Purpose:** To analyze the outcome using its original 3-tier classification (Healed, Healing, Diseased) rather than dichotomizing it.
+*   **Why appropriate:** 
+    1) It retains the granularity of the data, acknowledging that "Healing" is a distinct clinical state from fully "Healed." 
+    2) Prevents the loss of statistical power associated with dichotomizing variables.
+*   **Why it may not be appropriate:** Interpretation of proportional odds is less intuitive for clinical practitioners than simple Odds Ratios.
+*   **When NOT to use:** If the assumption of proportional odds (that the effect of predictors is the same across all threshold levels of the outcome) is violated.
+*   **Alternative:** Multinomial logistic regression.
+
+**2. Mann-Whitney U Test (or Independent t-test)**
+*   **Purpose:** To compare continuous variables (e.g., patient age) between the Success and Failure groups.
+*   **Why appropriate:** 
+    1) Allows for the assessment of age as a continuous predictor without arbitrary categorization. 
+    2) Mann-Whitney is robust to non-normal distributions, which is common in age data for dental clinics.
+*   **Why it may not be appropriate:** It only looks at one variable at a time, ignoring confounding factors.
+*   **When NOT to use:** If the continuous data is perfectly normally distributed and variances are equal, the Independent t-test is more powerful.
+*   **Alternative:** Independent t-test (if normality assumptions are met).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Linear Regression:** Should NOT be used because the primary outcome (Healed/Healing/Diseased) is categorical, not continuous. Linear regression requires a continuous dependent variable.
+*   **Paired t-test / Repeated Measures ANOVA:** Should NOT be used. Although patients are followed over time, the outcome is a clinical status (success/failure) rather than a continuous metric measured repeatedly (like blood pressure). 
+*   **Pearson Correlation:** Should NOT be used because the vast majority of the variables in this study are categorical or ordinal. Pearson requires two continuous, normally distributed variables.
+
+---
+
+### TASK 4: SUMMARY
+
+The analytical approach for this study must transition from validating the measurement tools to assessing crude associations, and finally to robust multivariable modeling. First, **Cohen’s Kappa** is essential to validate the reliability of the PAI scoring between the two blinded evaluators. Next, descriptive statistics and **Chi-square/Fisher's exact tests** will provide a baseline understanding of how individual clinical factors relate to treatment success. 
+
+However, because the follow-up time varies massively (1 to 17 years), relying solely on standard Logistic Regression is statistically flawed, as it ignores the time patients were at risk of failure. Therefore, the core of the advanced analysis should rely on **Survival Analysis (Kaplan-Meier and Cox Proportional Hazards Regression)** to account for right-censored data and variable follow-up times. Finally, because a few patients contributed more than one tooth, applying a **Generalized Estimating Equation (GEE)** will ensure that intra-patient clustering does not artificially inflate statistical significance, ensuring the highest level of methodological rigor.

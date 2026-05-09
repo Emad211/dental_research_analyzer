@@ -1,0 +1,99 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_EJ2020.pdf
+Status : ok
+Time   : 20260509_172121
+══════════════════════════════════════════════════════════════════════
+
+**TASK 1: INFORMATION EXTRACTION**
+
+*   **Study Design:** Randomized controlled trial (RCT), prospective.
+*   **Objectives:** To evaluate the effect of two calcium silicate-based root canal sealers (EndoSeal MTA and EndoSequence BC Sealer) on postoperative pain following single-visit root canal treatment on molar teeth, compared to an epoxy/amine resin-based sealer (AH Plus).
+*   **Groups:**
+    *   Group 1: AH Plus (Dentsply) (n=30)
+    *   Group 2: EndoSeal MTA (Maruchi) (n=30)
+    *   Group 3: EndoSequence BC Sealer (Brasseler) (n=30)
+*   **Sample Size:** 90 patients (30 per group). Initially, 96 patients were enrolled, but 6 withdrew before the canal filling process.
+*   **Variables:**
+    *   **Independent Variable:** Type of root canal sealer (AH Plus, EndoSeal MTA, EndoSequence BC Sealer).
+    *   **Dependent Variables:**
+        *   Postoperative pain intensity (measured by Visual Analog Scale - VAS).
+        *   Frequency of analgesic drug intake.
+*   **Measurements:**
+    *   **Pain Intensity:** Visual Analog Scale (VAS) from 0 ("no pain") to 100 ("unbearable pain").
+    *   **Analgesic Intake:** Categorical scale (0: No pain/no analgesic needed; 1: Moderate pain controlled by analgesics; 2: Unbearable pain not controlled by analgesics).
+*   **Data Collection Methods:**
+    *   Patients completed two forms (VAS for pain and categorical scale for analgesic intake) at specific time points: 6, 12, 24, and 48 hours after treatment, and on the 3rd, 4th, 5th, 6th, and 7th days.
+    *   Data was collected via daily phone calls for 7 days.
+
+**TASK 2: STATISTICAL ANALYSIS PLAN**
+
+**CATEGORY A – MANDATORY**
+
+1.  **Test Name:** Kruskal-Wallis Test (or One-way ANOVA if data is normally distributed)
+    *   **Purpose:** To compare the postoperative pain intensity (VAS scores) among the three sealer groups at each time point (6h, 12h, 24h, 48h, 3d, 4d, 5d, 6d, 7d).
+    *   **Why appropriate:**
+        *   It compares continuous/ordinal data (VAS scores) across three independent groups.
+        *   VAS scores often do not follow a normal distribution, making the non-parametric Kruskal-Wallis test a safer choice. If normality and homogeneity of variance are confirmed, a One-way ANOVA can be used.
+    *   **Why it may not be appropriate:** If the data is normally distributed and variances are equal, ANOVA is more powerful.
+    *   **When this test should NOT be used:** If comparing only two groups (use Mann-Whitney U or t-test).
+    *   **Alternative if assumptions are violated:** If using ANOVA and assumptions (normality, homogeneity of variance) are violated, use the Kruskal-Wallis test.
+
+2.  **Test Name:** Friedman Test (or Repeated Measures ANOVA if data is normally distributed)
+    *   **Purpose:** To evaluate the change in postoperative pain intensity (VAS scores) over time *within* each sealer group.
+    *   **Why appropriate:**
+        *   It analyzes repeated measures (VAS scores at multiple time points) on the same subjects.
+        *   It accounts for the non-normal distribution often seen with VAS scores.
+    *   **Why it may not be appropriate:** If the data is normally distributed and sphericity is met, Repeated Measures ANOVA is more powerful.
+    *   **When this test should NOT be used:** If the measurements are independent (not from the same subjects).
+    *   **Alternative if assumptions are violated:** If using Repeated Measures ANOVA and sphericity is violated, use Greenhouse-Geisser correction or the Friedman test.
+
+3.  **Test Name:** Chi-square Test of Independence (or Fisher's Exact Test)
+    *   **Purpose:** To compare the frequency of analgesic intake (categorical data: 0, 1, 2) among the three sealer groups.
+    *   **Why appropriate:**
+        *   It compares categorical variables between independent groups.
+        *   It determines if there's a significant association between the type of sealer and the need for analgesics.
+    *   **Why it may not be appropriate:** If expected cell frequencies are too small (less than 5 in more than 20% of cells), the Chi-square test may be inaccurate.
+    *   **When this test should NOT be used:** When dealing with continuous data.
+    *   **Alternative if assumptions are violated:** Fisher's Exact Test should be used if expected cell counts are too low.
+
+**CATEGORY B – RECOMMENDED**
+
+1.  **Test Name:** Post-hoc tests (e.g., Dunn's test with Bonferroni correction for Kruskal-Wallis/Friedman; Tukey's HSD for ANOVA)
+    *   **Purpose:** To determine exactly *which* groups or time points differ significantly if the overall Kruskal-Wallis, Friedman, or ANOVA test is significant.
+    *   **Why appropriate:**
+        *   The omnibus tests (Kruskal-Wallis, ANOVA) only tell you that *at least one* difference exists, not where it is.
+        *   Post-hoc tests control for Type I error inflation when making multiple comparisons.
+    *   **Why it may not be appropriate:** If the overall test is not statistically significant, post-hoc tests should generally not be performed.
+    *   **When this test should NOT be used:** When the omnibus test is not significant.
+    *   **Alternative if assumptions are violated:** Different post-hoc tests exist depending on the specific violations (e.g., Games-Howell if variances are unequal in ANOVA).
+
+2.  **Test Name:** Kaplan-Meier Survival Analysis (or Log-rank test)
+    *   **Purpose:** To analyze the time it takes for patients to become completely pain-free (VAS = 0) in each group.
+    *   **Why appropriate:**
+        *   It handles "time-to-event" data effectively.
+        *   It can account for censored data (e.g., patients who still have pain at the end of the 7-day follow-up).
+    *   **Why it may not be appropriate:** If all patients become pain-free very quickly, the analysis might not be informative.
+    *   **When this test should NOT be used:** When the outcome is not a time-to-event variable.
+    *   **Alternative if assumptions are violated:** Cox Proportional Hazards regression if adjusting for covariates is necessary.
+
+**CATEGORY C – OPTIONAL**
+
+1.  **Test Name:** Generalized Estimating Equations (GEE) or Mixed-Effects Models
+    *   **Purpose:** To model the longitudinal pain data (VAS scores over time) while accounting for the correlation between repeated measures within the same patient, and potentially adjusting for covariates (e.g., age, gender, initial pain level).
+    *   **Why appropriate:**
+        *   Provides a more sophisticated analysis of longitudinal data than simple repeated measures ANOVA or Friedman tests.
+        *   Can handle missing data more robustly.
+    *   **Why it may not be appropriate:** These models can be complex to set up and interpret, and may require a larger sample size for stable estimates.
+    *   **When this test should NOT be used:** If the data is cross-sectional (no repeated measures).
+    *   **Alternative if assumptions are violated:** Depending on the specific violation, different correlation structures or link functions can be specified within the GEE or mixed-effects framework.
+
+**TASK 3: INAPPROPRIATE TESTS**
+
+*   **Independent t-test:** Inappropriate for comparing pain scores across *three* groups. It is only for comparing two groups. Using multiple t-tests increases the risk of Type I error.
+*   **Pearson Correlation:** Inappropriate for comparing the mean/median differences between groups. It is used to assess the linear relationship between two continuous variables.
+*   **Linear Regression:** While possible if modeling pain as a continuous outcome based on sealer type (dummy coded), it's less direct than ANOVA/Kruskal-Wallis for simply comparing group means/medians, especially given the likely non-normal distribution of VAS scores.
+
+**TASK 4: SUMMARY**
+
+The analytical approach focuses on comparing the primary outcomes (postoperative pain intensity and analgesic intake) across the three sealer groups and over time. Given that pain scores (VAS) are often not normally distributed, non-parametric tests like the Kruskal-Wallis test (for between-group comparisons at specific times) and the Friedman test (for within-group changes over time) are the most robust choices (Category A). If significant differences are found, appropriate post-hoc tests (Category B) are essential to identify specific group differences while controlling for multiple comparisons. Analyzing the categorical data for analgesic intake requires a Chi-square or Fisher's Exact test (Category A). To provide a more comprehensive understanding of the pain resolution process, a survival analysis (Kaplan-Meier) could be used to evaluate the time to complete pain relief (Category B). More advanced modeling like GEE (Category C) could be considered for a nuanced longitudinal analysis, but the core non-parametric tests are sufficient to address the study's primary hypotheses.

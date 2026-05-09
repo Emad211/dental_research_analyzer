@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splittedijcpd-14-243.pdf",
+  "timestamp": "20260509_175545",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "ok",
+      "chars": 10421
+    }
+  }
+}

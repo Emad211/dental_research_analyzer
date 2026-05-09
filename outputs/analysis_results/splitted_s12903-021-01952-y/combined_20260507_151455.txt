@@ -946,3 +946,88 @@ TASK 4: SUMMARY / JUSTIFICATION OF OVERALL ANALYTICAL APPROACH
 - Optional methods (competing risks, parametric survival models, sensitivity analyses on outcome definition) can deepen understanding but are secondary to the core KM and Cox analyses.
 
 This approach aligns with standard practice in clinical and dental epidemiology for time‑to‑event data and directly addresses the investigators’ stated objectives and null hypothesis.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_174946
+──────────────────────────────────────────────────────────────────────
+
+Based on the provided Introduction and Methods sections of the article, here is a comprehensive biostatistical extraction and statistical analysis plan.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Retrospective cohort study.
+*   **Study Objective:** To examine the survival rates of nonsurgical root canal treatments (NSRCT) performed on permanent teeth of children and to assess predictors of failure.
+*   **Null Hypothesis:** Age, gender, insurance type, tooth type, and jaw type have no effect on treatment outcome (survival).
+*   **Setting:** Boston University Henry M. Goldman School of Dental Medicine (BUGSDM) (Records from Jan 1, 2007, to Dec 31, 2015).
+*   **Sample Size:** 341 patients with 424 teeth (after excluding 432 patients/507 teeth due to lack of follow-up).
+*   **Primary Outcome Variable:** Time-to-event (Time until failure of endodontically treated teeth [ETT]).
+    *   *Failure definition:* Tooth became symptomatic OR required extraction, endodontic retreatment, or apical surgery.
+    *   *Survival (Censored) definition:* Absence of clinical signs/symptoms and no treatment intervention.
+*   **Covariates (Independent Variables):**
+    *   *Age at treatment:* Categorical (6–11, 12–14, and 15–18 years).
+    *   *Gender:* Categorical (Male/Female).
+    *   *Insurance type (Proxy for SES):* Categorical (Medicaid/MassHealth vs. private/self-paid).
+    *   *Tooth type:* Categorical (Posterior vs. Anterior).
+    *   *Jaw type:* Categorical (Maxillary vs. Mandibular).
+*   **Data Collection Method:** Extraction from deidentified electronic dental records using a study ID.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given that the primary outcome is "time until failure" and includes patients with varying lengths of follow-up (right-censored data), Survival Analysis is the required statistical framework. Furthermore, because there are 424 teeth among 341 patients, there is a clustering effect (some patients contributed more than one tooth) that must be accounted for.
+
+#### CATEGORY A – MANDATORY (Core tests required for the analysis)
+
+**1. Kaplan-Meier (KM) Estimator with Log-Rank Test**
+*   **Purpose:** To estimate the survival probability of ETT over time and compare survival curves across categorical covariates (e.g., age groups, tooth type).
+*   **Why appropriate:** 1) It effectively handles right-censored time-to-event data. 2) It is non-parametric, meaning it does not assume an underlying probability distribution for survival times.
+*   **Why it may not be appropriate:** It cannot adjust for multiple confounding variables simultaneously (univariable only).
+*   **When this test should NOT be used:** When analyzing continuous predictor variables or when survival curves cross significantly (violating the assumption of proportional hazards).
+*   **Alternative if assumptions are violated:** Parametric survival models (e.g., Weibull distribution) or generalized Wilcoxon test (if early failures are more clinically relevant than late failures).
+
+**2. Multivariable Cox Proportional Hazards Regression with Cluster-Robust Standard Errors (or Shared Frailty Model)**
+*   **Purpose:** To evaluate the independent effect of multiple covariates (age, gender, insurance, etc.) on the hazard of ETT failure simultaneously.
+*   **Why appropriate:** 1) It allows for multivariable adjustment to isolate the independent effect of each predictor. 2) Using cluster-robust standard errors accounts for the intra-subject correlation (the fact that multiple teeth within the same patient are not statistically independent).
+*   **Why it may not be appropriate:** It relies heavily on the assumption that the hazard ratio remains constant over time (Proportional Hazards assumption).
+*   **When this test should NOT be used:** If the proportional hazards assumption is severely violated (e.g., the effect of age changes drastically between year 1 and year 5).
+*   **Alternative if assumptions are violated:** Time-dependent Cox regression (incorporating time-varying covariates) or an Accelerated Failure Time (AFT) model.
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Schoenfeld Residuals Test**
+*   **Purpose:** To statistically test the Proportional Hazards (PH) assumption of the Cox regression model.
+*   **Why appropriate:** 1) It provides mathematical validation that the core assumption of the mandatory Cox model is met. 2) It allows for graphical plotting to visually inspect how covariate effects behave over time.
+*   **Why it may not be appropriate:** It is a diagnostic tool, not an inferential test to answer the clinical research question.
+*   **When this test should NOT be used:** When using non-proportional models (like AFT models or logistic regression).
+*   **Alternative if assumptions are violated:** Log-minus-log (LML) survival plots for categorical variables.
+
+**2. Descriptive Statistics with Chi-Square / Fisher’s Exact Tests**
+*   **Purpose:** To summarize the baseline characteristics of the cohort and compare the distribution of covariates between failed and survived teeth.
+*   **Why appropriate:** 1) Provides a clear clinical picture of the study population. 2) Identifies potential baseline imbalances that need careful attention in the multivariable model.
+*   **Why it may not be appropriate:** It treats the outcome as binary and completely ignores the "time-to-event" and censoring aspects of the data.
+*   **When this test should NOT be used:** To draw final conclusions about the survival or failure rate of the teeth.
+*   **Alternative if assumptions are violated:** N/A (Standard exploratory data analysis).
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Competing Risks Regression (Fine-Gray Model)**
+*   **Purpose:** To account for teeth that may have been lost due to reasons unrelated to endodontic failure (e.g., trauma, orthodontic extraction).
+*   **Why appropriate:** 1) In pediatric dentistry, teeth are frequently extracted for orthodontics; treating this as standard censoring in a Kaplan-Meier model overestimates the risk of endodontic failure. 2) It provides a more accurate real-world cumulative incidence of endodontic failure.
+*   **Why it may not be appropriate:** The dataset may not have recorded the specific reasons for extraction, making it impossible to differentiate competing risks from true failures.
+*   **When this test should NOT be used:** If there are no competing events, or if all extractions are strictly defined as endodontic failures.
+*   **Alternative if assumptions are violated:** Cause-specific Cox regression.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Standard Binary Logistic Regression:** Should NOT be used for the primary outcome. Logistic regression treats the outcome as a simple binary (success vs. failure) and ignores the time at risk. It treats a tooth that failed at 1 month the same as a tooth that failed at 5 years, and it cannot properly handle censored patients (those lost to follow-up).
+*   **Independent Samples t-test / ANOVA:** Should NOT be used to compare time-to-failure between groups. Time-to-event data is rarely normally distributed (it is usually highly skewed) and these tests cannot incorporate censored data, leading to heavily biased estimates.
+*   **Standard (Unadjusted) Cox Proportional Hazards Model:** Should NOT be used because it assumes all 424 teeth are completely independent. Since 341 patients provided the 424 teeth, there is a clustering effect. Ignoring this violates the assumption of independence, artificially deflates standard errors, and increases the risk of Type I errors (false positives).
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must be rooted in **Survival Analysis** because the primary outcome is a time-to-event variable containing right-censored data (patients with varying follow-up times who did not experience failure). The Kaplan-Meier method is ideal for visualizing and estimating unadjusted survival probabilities across different age groups and tooth types. However, to test the null hypothesis rigorously, a multivariable Cox Proportional Hazards model is required to adjust for confounding variables. Crucially, because the dataset contains multiple teeth from single patients (424 teeth / 341 patients), the biostatistical approach *must* utilize cluster-robust standard errors or a shared frailty model to account for intra-patient correlation; failing to do so would compromise the validity of the p-values and confidence intervals.

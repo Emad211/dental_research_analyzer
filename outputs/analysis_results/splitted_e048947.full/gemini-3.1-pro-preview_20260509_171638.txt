@@ -1,0 +1,112 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_e048947.full.pdf
+Status : ok
+Time   : 20260509_171638
+══════════════════════════════════════════════════════════════════════
+
+Here is the comprehensive information extraction and statistical analysis plan based on the provided dental research article.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Two-arm parallel design, randomized controlled trial (RCT).
+*   **Study Objective:** To compare the antimicrobial efficacy of Calcipex (Calcium Hydroxide alone) and Metapex (Calcium Hydroxide with iodoform) in the endodontic treatment of teeth with chronic apical periodontitis.
+*   **Study Groups:** 
+    *   Group A (Control): Calcipex (water-based CH paste)
+    *   Group B (Intervention): Metapex (oil-based CH paste with iodoform)
+*   **Sample Size:** Total $N = 60$ ($n = 30$ per group). Calculated based on a previous study (mean 50.3±13 CFU/mL, 95% CI, 0.05 precision, inflated to 30 per group).
+*   **Variables:**
+    *   *Independent Variable:* Type of intracanal medicament (Categorical: Calcipex vs. Metapex).
+    *   *Dependent Variable (Primary Outcome):* Antimicrobial efficacy measured by bacterial load reduction (Continuous: Colony-Forming Units per milliliter [CFU/mL]).
+    *   *Time Points:* Baseline/Pre-medication (S1 - Day 1) and Follow-up/Post-medication (S2 - Day 7±3).
+*   **Data Collection & Measurements:** Samples collected using sterile paper points retained in the canal for 60 seconds. Cultured in Brain-Heart Infusion Broth, diluted up to $10^5$, plated on blood agar, and incubated anaerobically for 24 hours. Bacterial growth counted as CFU/mL.
+*   **Randomization & Blinding:** Block randomization (block size 6) facilitated by a Clinical Trial Unit. Triple-blinded (patient, microbiologist/analyzer, and statistician). The clinician placing the medicament is unblinded due to color differences in the pastes.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+*Biostatistician's Note: Microbiological count data (CFU/mL) is inherently highly skewed and spans multiple magnitudes. Before any inferential analysis, the raw CFU/mL data MUST be $\log_{10}$-transformed (e.g., $\log_{10}(\text{CFU} + 1)$) to approximate a normal distribution.*
+
+#### CATEGORY A – MANDATORY (Essential for complete analysis)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the distribution of the $\log_{10}$-transformed CFU/mL data and the reduction scores.
+*   **Why appropriate:** 
+    1) With $n=30$ per group, the sample size is on the threshold of the Central Limit Theorem; confirming normality is crucial. 
+    2) It is more robust and accurate than the Kolmogorov-Smirnov test for sample sizes under 50.
+*   **Why it may not be appropriate:** If the data contains many identical values (ties), the test's power can be affected.
+*   **When NOT to use:** Do not use on raw, untransformed CFU/mL data, as it will universally fail due to extreme right-skewness.
+*   **Alternative:** Visual inspection using Q-Q plots and histograms.
+
+**2. Independent Samples t-test (or Mann-Whitney U Test)**
+*   **Purpose:** To compare the mean $\log_{10}$ bacterial reduction ($\Delta$CFU = S1 - S2) between Group A and Group B.
+*   **Why appropriate:** 
+    1) It directly answers the primary research question (Alternate Hypothesis) comparing the two medicaments. 
+    2) It is the standard method for comparing the means of two independent, randomized groups.
+*   **Why it may not be appropriate:** It assumes equal variances between the two groups. If the oil-based paste has a highly variable effect compared to the water-based paste, this assumption fails.
+*   **When NOT to use:** Should not be used if the $\log_{10}$-transformed data still violates normality assumptions severely.
+*   **Alternative:** Mann-Whitney U test (if normality is violated) or Welch’s t-test (if variances are unequal).
+
+**3. Paired Samples t-test (or Wilcoxon Signed-Rank Test)**
+*   **Purpose:** To evaluate the within-group antimicrobial efficacy by comparing baseline (S1) to follow-up (S2) CFU/mL within each group separately.
+*   **Why appropriate:** 
+    1) It proves whether each medicament actually worked compared to baseline. 
+    2) It accounts for the paired nature of the data (same tooth measured twice).
+*   **Why it may not be appropriate:** It only looks at within-group changes and does not provide statistical evidence of superiority of one drug over the other.
+*   **When NOT to use:** When comparing Group A to Group B.
+*   **Alternative:** Wilcoxon Signed-Rank Test (if the differences between S1 and S2 are not normally distributed).
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Analysis of Covariance (ANCOVA)**
+*   **Purpose:** To compare the post-medication (S2) CFU/mL between the two groups while statistically controlling for the baseline (S1) CFU/mL.
+*   **Why appropriate:** 
+    1) Baseline bacterial loads can vary wildly between patients despite randomization; ANCOVA adjusts for this variance. 
+    2) It provides greater statistical power than simply comparing change scores ($\Delta$CFU).
+*   **Why it may not be appropriate:** It requires the assumption of homogeneity of regression slopes (the relationship between S1 and S2 must be similar in both groups).
+*   **When NOT to use:** If the covariate (S1) is not linearly related to the dependent variable (S2), or if the data severely violates parametric assumptions.
+*   **Alternative:** Quade's rank analysis of covariance (non-parametric ANCOVA).
+
+**2. Levene’s Test for Equality of Variances**
+*   **Purpose:** To test the assumption of homoscedasticity (equal variances) between Group A and Group B prior to running the independent t-test.
+*   **Why appropriate:** 
+    1) Oil-based and water-based vehicles may result in different dispersion of antimicrobial effects. 
+    2) It dictates whether a standard t-test or Welch's t-test should be used.
+*   **Why it may not be appropriate:** It can be overly sensitive to minor deviations from normality.
+*   **When NOT to use:** If you have already decided to use non-parametric tests (Mann-Whitney U) due to severe non-normality.
+*   **Alternative:** Brown-Forsythe test (more robust to non-normal data).
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Two-Way Mixed ANOVA (Repeated Measures)**
+*   **Purpose:** To evaluate the interaction effect between "Time" (S1 vs S2) and "Group" (Calcipex vs Metapex).
+*   **Why appropriate:** 
+    1) It allows for the simultaneous evaluation of within-subject effects (time) and between-subject effects (treatment). 
+    2) The interaction term directly tests if the *rate* of bacterial reduction differs between the two medicaments.
+*   **Why it may not be appropriate:** It is mathematically complex and may be redundant if ANCOVA is already performed.
+*   **When NOT to use:** If there is a high rate of missing data at S2 (dropouts), as standard Repeated Measures ANOVA uses listwise deletion.
+*   **Alternative:** Linear Mixed-Effects Model (handles missing data better).
+
+**2. Cohen’s *d* (Effect Size Calculation)**
+*   **Purpose:** To quantify the magnitude of the difference in antimicrobial efficacy between the two groups.
+*   **Why appropriate:** 
+    1) P-values only tell if a difference exists; effect size tells if the difference is clinically meaningful. 
+    2) Highly recommended by modern reporting guidelines (CONSORT).
+*   **Why it may not be appropriate:** Cohen's *d* is designed for normally distributed parametric data.
+*   **When NOT to use:** If the primary analysis relies on non-parametric tests.
+*   **Alternative:** Rank-biserial correlation or Cliff's Delta (for non-parametric data).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Chi-Square Test / Fisher's Exact Test:** Inappropriate because the primary outcome (CFU/mL) is a continuous/count variable, not categorical. Unless the researchers plan to dichotomize the outcome into "Bacterial Growth Present" vs. "No Bacterial Growth" (which is not stated in the methodology and loses valuable data granularity), these tests should not be used.
+*   **Pearson Correlation Coefficient:** Inappropriate because the study objective is to compare differences between two distinct groups, not to measure the linear association between two continuous variables.
+*   **Independent t-test on RAW (untransformed) CFU data:** Highly inappropriate. Microbiological count data is exponentially distributed. Using parametric tests on raw CFU data will result in massive standard deviations (often larger than the mean) and invalid p-values.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must center on handling the specific nature of microbiological count data. The raw CFU/mL data must first be $\log_{10}$-transformed to stabilize variance and approximate normality. Following transformation, the baseline comparability of the groups should be verified. The core analysis should utilize a **Paired t-test** to confirm that both medicaments effectively reduce bacterial load from Day 1 to Day 7. To test the alternate hypothesis (comparing the two drugs), an **ANCOVA** is the most robust approach, comparing Day 7 log-CFU counts between groups while controlling for Day 1 baseline counts. If parametric assumptions cannot be met even after log-transformation, the analysis must pivot to robust non-parametric equivalents (Wilcoxon Signed-Rank and Mann-Whitney U tests).

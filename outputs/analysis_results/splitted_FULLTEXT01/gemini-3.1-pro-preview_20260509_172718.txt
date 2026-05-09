@@ -1,0 +1,114 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_FULLTEXT01.pdf
+Status : ok
+Time   : 20260509_172718
+══════════════════════════════════════════════════════════════════════
+
+Based on the provided text from the dental research article, here is the comprehensive information extraction and statistical analysis plan.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Historical (retrospective) cohort study with a 10-year follow-up.
+*   **Primary Objective:** To evaluate the long-term (10-year) survival rate of root-filled teeth treated by General Dental Practitioners (GDPs).
+*   **Secondary Objective:** To identify prognostic factors affecting tooth survival.
+*   **Setting:** Public Dental Service in Norrbotten county, Sweden (28 clinics, 102 GDPs).
+*   **Sample Size:** 280 individuals (1 root-filled tooth randomly selected per individual to avoid intra-patient clustering).
+*   **Outcome Variable (Dependent Variable):** Tooth survival (time-to-event). Measured as the elapsed time in days from the completion of the root canal treatment to tooth extraction.
+*   **Censoring:** Right-censored data. If extraction did not occur, the last known date of the tooth's presence was used.
+*   **Independent Variables (Predictors/Covariates):** 
+    *   *Demographics:* Age, Gender.
+    *   *Pre-operative/Anatomical:* Tooth type, number of contact points, terminal arch location, sinus tract, apical status, previous root filling, marginal bone status.
+    *   *Intra-operative:* Antibiotics, intra-pulpal anesthesia, acute problems, number of caregivers, number of sessions, elapsed time to root filling, rubber dam use, pulp bleeding, pulp necrosis, apical size, type of filling, root-filling quality, procedural accidents.
+    *   *Post-operative:* Postoperative pain, use of plug, post placement, abutment status.
+*   **Data Collection Methods:** Extraction from electronic and analogue dental records, radiographs, and clinical examinations/phone calls for patients with missing follow-up data.
+*   **Quality Control:** Inter-examiner and intra-examiner calibration and agreement assessments.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Essential for incomplete analysis)
+
+**1. Kaplan-Meier Estimator**
+*   **Purpose:** To estimate and plot the overall 10-year survival probability of the root-filled teeth.
+*   **Why appropriate:** 
+    1) It perfectly handles time-to-event data with right-censored observations (patients lost to follow-up or who haven't had an extraction). 
+    2) It provides a non-parametric estimate of survival at any specific time point (e.g., exactly at 5 or 10 years), which directly answers the primary objective.
+*   **Why it may not be appropriate:** It cannot adjust for multiple confounding variables simultaneously.
+*   **When NOT to use:** When the exact time of the event is unknown for all patients, or if there is heavy interval censoring that cannot be approximated.
+*   **Alternative:** Actuarial (Life-Table) method.
+
+**2. Multivariable Cox Proportional Hazards Regression**
+*   **Purpose:** To identify independent prognostic factors for tooth extraction while controlling for confounders.
+*   **Why appropriate:** 
+    1) It allows for the evaluation of multiple categorical and continuous independent variables simultaneously on a time-to-event outcome. 
+    2) It calculates adjusted Hazard Ratios (HR), which quantify the risk of extraction associated with each predictor, fulfilling the secondary objective.
+*   **Why it may not be appropriate:** It assumes that the hazard ratio between groups remains constant over time (Proportional Hazards assumption).
+*   **When NOT to use:** When the Proportional Hazards assumption is severely violated (e.g., a variable is highly protective in year 1 but increases risk in year 9).
+*   **Alternative:** Parametric survival models (e.g., Weibull, Exponential) or Extended Cox models with time-dependent covariates.
+
+**3. Cohen’s Kappa (κ) / Intraclass Correlation Coefficient (ICC)**
+*   **Purpose:** To quantify inter-examiner and intra-examiner reliability during the calibration phase.
+*   **Why appropriate:** 
+    1) The methodology explicitly states that records were reviewed by two authors independently to assess agreement. 
+    2) Kappa is the gold standard for categorical variables (e.g., apical status: normal/abnormal), while ICC is ideal for continuous variables (e.g., apical size).
+*   **Why it may not be appropriate:** Kappa can be misleadingly low if the prevalence of a specific finding (e.g., procedural accidents) is extremely low (the "Kappa paradox").
+*   **When NOT to use:** When comparing agreement on variables that were automatically extracted by the computer (e.g., age, gender).
+*   **Alternative:** Gwet’s AC1 statistic (to overcome the Kappa paradox) or simple percentage agreement.
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Log-Rank Test**
+*   **Purpose:** To compare the survival distributions of two or more independent categorical groups (e.g., acute problems vs. no acute problems) before multivariable modeling.
+*   **Why appropriate:** 
+    1) It provides a formal statistical test (p-value) to see if survival curves differ significantly. 
+    2) It helps in the initial screening of variables to decide which should be included in the multivariable Cox model.
+*   **Why it may not be appropriate:** It does not provide an effect size (like a Hazard Ratio), only a p-value.
+*   **When NOT to use:** When comparing continuous variables (e.g., age in years) without categorizing them first.
+*   **Alternative:** Peto-Peto-Prentice test or Wilcoxon (Breslow) test (gives more weight to early events).
+
+**2. Schoenfeld Residuals Test**
+*   **Purpose:** To test the Proportional Hazards (PH) assumption of the Cox regression model.
+*   **Why appropriate:** 
+    1) Validates the mathematical foundation of the Cox model; without it, the model's conclusions could be spurious. 
+    2) It allows the researcher to plot residuals over time to visually inspect for violations.
+*   **Why it may not be appropriate:** In small sample sizes with few events, the test lacks the statistical power to detect violations.
+*   **When NOT to use:** When using parametric survival models that do not rely on the PH assumption.
+*   **Alternative:** Visual inspection of log-minus-log (LML) survival plots.
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Shared Frailty Cox Model (Mixed-Effects Survival Model)**
+*   **Purpose:** To account for potential clustering effects at the dentist or clinic level.
+*   **Why appropriate:** 
+    1) The 280 teeth were treated by 102 different GDPs across 28 clinics. A specific dentist's skill level might cluster outcomes. 
+    2) It adds a random effect ("frailty") to the model, providing more accurate standard errors.
+*   **Why it may not be appropriate:** The model may fail to converge if the number of events (extractions) per GDP is too low (which is highly likely here, as 280 patients / 102 GDPs = ~2.7 patients per GDP).
+*   **When NOT to use:** When there is no hierarchical or clustered structure to the data.
+*   **Alternative:** Cox model with robust standard errors (Huber-White sandwich estimator).
+
+**2. Competing Risks Regression (Fine-Gray Model)**
+*   **Purpose:** To account for patient death as a competing risk to tooth extraction.
+*   **Why appropriate:** 
+    1) If a patient dies during the 10-year follow-up, they can never experience the event (tooth extraction). 
+    2) Standard Cox models treat deaths as right-censored (assuming they could still have an extraction if they lived), which overestimates the risk of extraction.
+*   **Why it may not be appropriate:** The authors already excluded 331 patients who died *before* the cohort was finalized. If the mortality rate in the remaining 280 is negligible, this complex model is unnecessary.
+*   **When NOT to use:** When the competing event is rare or non-existent.
+*   **Alternative:** Cause-specific Cox proportional hazards models.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Binary Logistic Regression:** Inappropriate because it treats the outcome as a simple binary variable (Extracted: Yes/No) at a fixed point in time, completely ignoring the *time* it took for the event to occur and failing to account for censored patients who dropped out at year 3 versus year 9.
+*   **Independent Samples t-test / ANOVA:** Inappropriate for comparing the "time to extraction" between groups. These tests assume normal distribution of continuous data and cannot handle right-censored data (patients whose teeth survived past the study period).
+*   **Pearson Correlation:** Inappropriate for assessing the relationship between continuous predictors (e.g., age) and survival time, as it cannot incorporate censored data.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must be rooted in **Survival Analysis** (Time-to-Event analysis). Because the primary outcome is tooth extraction over a 10-year period, and because patients have varying lengths of follow-up (censoring), standard regression or mean-comparison tests are invalid. 
+
+The strategy should begin with data validation (Kappa/ICC for examiner reliability), proceed to univariable descriptive survival estimates (Kaplan-Meier curves and Log-rank tests), and culminate in a Multivariable Cox Proportional Hazards Regression to identify true prognostic factors while controlling for clinical confounders. Given the hierarchical nature of dental care, exploring clustering effects (frailty models) would represent a gold-standard biostatistical approach.

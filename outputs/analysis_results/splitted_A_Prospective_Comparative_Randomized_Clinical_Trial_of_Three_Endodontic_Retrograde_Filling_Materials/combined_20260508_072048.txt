@@ -1040,3 +1040,107 @@ TASK 4: SUMMARY OF OVERALL ANALYTICAL APPROACH
   - Quantifies measurement reliability via ICC and addresses missing data through sensitivity analyses.
 
 This framework is consistent with good practice in clinical dental trials: it respects the randomized design, the structure of repeated measurements, the small sample size, and the nature (continuous and ordinal) of the key outcomes, while avoiding inappropriate parametric tests and incomplete-case-only analyses that would waste data and potentially bias conclusions.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_164758
+──────────────────────────────────────────────────────────────────────
+
+Based on the provided text, here is the comprehensive information extraction and statistical analysis plan.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Prospective, comparative, randomized clinical trial. Double-blinded (radiologist and biostatistician were blinded; patients were blinded to material, but the surgeon was not).
+*   **Objective:** To determine which of three retrograde filling materials is most effective in promoting healing of periapical lesions of endodontic origin following apical microsurgery.
+*   **Study Groups (3):** 
+    1. EndoSequence (E)
+    2. ProRoot MTA (M)
+    3. Biodentine (B)
+*   **Sample Size:** 
+    *   Initial randomization: 74 patients.
+    *   Eligible baseline: 59 patients.
+    *   Follow-up attrition: 51 (2 months), 45 (4 months), 35 (6 months).
+    *   Final analyzed at 6 months: n=35 (EndoSequence=13, ProRoot MTA=14, Biodentine=8).
+*   **Variables & Measurements:**
+    *   *Independent Variable:* Retrograde filling material (Categorical, 3 levels).
+    *   *Dependent Variable 1 (Continuous):* Size of the periapical radiolucent area (largest dimension measured on CBCT).
+    *   *Dependent Variable 2 (Ordinal):* Subjective evaluation of healing (4 categories: Radiolucent/no healing, Some healing, Moderate healing, Good healing).
+    *   *Timepoints (Repeated Measures):* Preoperative, immediate postoperative, 2 months, 4 months, and 6 months.
+*   **Data Collection Methods:** CBCT scans evaluated using Invivo6 software. Measurements performed by a single blinded, board-certified oral and maxillofacial radiologist. All evaluations were done twice (with at least a one-week interval) to assess intra-observer reliability.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given the small final sample size (n=35, with one group as small as n=8), the high dropout rate, and the mix of continuous and ordinal data, non-parametric tests and advanced modeling for missing data are required.
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Intraclass Correlation Coefficient (ICC)**
+*   **Purpose:** To assess the intra-observer reliability of the radiologist's continuous measurements (lesion size) taken at two different times.
+*   **Why appropriate:** (1) It specifically accounts for both degree of correlation and agreement between measurements. (2) It is the gold standard for continuous reliability data.
+*   **Why it may not be appropriate:** It assumes the variance between the two measurement time points is relatively stable.
+*   **When this test should NOT be used:** It should not be used for the subjective, ordinal healing categories (use Cohen’s Weighted Kappa instead).
+*   **Alternative if assumptions are violated:** Pearson correlation coefficient (though inferior, as it measures correlation, not absolute agreement).
+
+**2. Kruskal-Wallis H Test**
+*   **Purpose:** To compare the continuous (lesion size) and ordinal (healing category) outcomes across the three material groups at specific time points (e.g., baseline, 6 months).
+*   **Why appropriate:** (1) The final sample sizes per group (13, 14, 8) are too small to assume a normal distribution. (2) It is the ideal non-parametric test for comparing three or more independent groups.
+*   **Why it may not be appropriate:** It has less statistical power than parametric equivalents, increasing the risk of a Type II error (false negative).
+*   **When this test should NOT be used:** When comparing repeated measures *within* the same group over time.
+*   **Alternative if assumptions are violated:** One-way ANOVA (if data transformation achieves normality).
+
+**3. Friedman Test**
+*   **Purpose:** To evaluate the change in lesion size and healing scores *within* each material group across the 5 time points.
+*   **Why appropriate:** (1) It is the non-parametric equivalent of repeated-measures ANOVA, suitable for small n. (2) It correctly accounts for the dependent nature of data measured on the same patients over time.
+*   **Why it may not be appropriate:** It requires complete data sets (listwise deletion for missing data), meaning patients who dropped out before 6 months would be excluded from this specific test.
+*   **When this test should NOT be used:** When comparing independent groups against each other.
+*   **Alternative if assumptions are violated:** Repeated Measures ANOVA (if normality is met).
+
+#### CATEGORY B – RECOMMENDED (Enhancing Rigor)
+
+**1. Linear Mixed-Effects Model (LMM) / Generalized Estimating Equations (GEE)**
+*   **Purpose:** To analyze the longitudinal continuous data (lesion size) while accounting for the massive dropout rate (from 59 to 35 patients).
+*   **Why appropriate:** (1) Unlike the Friedman test, LMM/GEE does not require listwise deletion; it uses all available data (Handling Missing at Random - MAR). (2) It accounts for the correlation of repeated measures within the same subject while testing for Group × Time interactions.
+*   **Why it may not be appropriate:** Mixed models can be mathematically complex to converge when sample sizes in sub-groups are extremely small (e.g., n=8).
+*   **When this test should NOT be used:** If the data is purely cross-sectional with no repeated measures.
+*   **Alternative if assumptions are violated:** Non-parametric imputation methods followed by Friedman test.
+
+**2. Post-Hoc Mann-Whitney U Tests with Bonferroni Correction**
+*   **Purpose:** To determine exactly *which* groups differ if the Kruskal-Wallis test yields a significant result.
+*   **Why appropriate:** (1) Allows for pairwise comparisons (E vs M, E vs B, M vs B). (2) The Bonferroni correction prevents the inflation of Type I error (false positives) that occurs when running multiple tests.
+*   **Why it may not be appropriate:** Bonferroni can be overly conservative, potentially masking true clinical differences (Type II error).
+*   **When this test should NOT be used:** As a primary test before establishing overall significance with a Kruskal-Wallis test.
+*   **Alternative if assumptions are violated:** Dunn’s Test.
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. Kaplan-Meier Survival Analysis**
+*   **Purpose:** To measure the "time-to-event," defining the event as reaching the "Good healing" ordinal category.
+*   **Why appropriate:** (1) It elegantly handles the dropouts by treating them as "right-censored" data. (2) It provides a clinical timeline of how fast materials work, rather than just final outcomes.
+*   **Why it may not be appropriate:** The exact day of healing is unknown; it is only observed at discrete intervals (interval censoring).
+*   **When this test should NOT be used:** If the outcome is strictly continuous without a defined "success" threshold.
+*   **Alternative if assumptions are violated:** Cox Proportional Hazards Model (if adjusting for covariates like baseline lesion size).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **One-Way ANOVA / Repeated Measures ANOVA:** Should NOT be used. The sample size at 6 months (n=8 for Biodentine) is far too small to satisfy the assumption of normality required for parametric testing. Furthermore, ANOVA cannot be used on the ordinal "subjective healing" categories.
+*   **Independent / Paired t-tests:** Should NOT be used. There are three groups in this study, not two. Using multiple t-tests would severely inflate the family-wise error rate.
+*   **Chi-Square Test of Independence (for lesion size):** Should NOT be used for the continuous lesion size data, as Chi-Square is strictly for categorical frequency data. It would require artificially binning the continuous data, resulting in a massive loss of statistical power.
+*   **Completer-Only Analysis (as the sole method):** Analyzing *only* the 35 patients who finished the 6-month trial is highly inappropriate given the ~40% dropout rate. This introduces severe attrition bias, as patients who dropped out might have done so due to treatment failure or pain.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must pivot heavily toward **non-parametric statistics** due to the small, unequal sample sizes at the 6-month mark (13, 14, 8) and the inclusion of ordinal variables. The core analysis relies on Kruskal-Wallis and Friedman tests to evaluate differences between materials and healing over time. 
+
+However, the most critical statistical challenge in this study is the **high attrition rate** (24 out of 59 eligible patients dropped out). Relying solely on the 35 completers introduces significant bias. Therefore, the inclusion of a **Linear Mixed-Effects Model (LMM)** is highly recommended to utilize all available data points from dropouts, ensuring the final conclusions regarding the efficacy of EndoSequence, ProRoot MTA, and Biodentine are statistically robust and clinically reliable. Finally, rigorous intra-observer reliability testing (ICC) is mandatory to validate the single-rater methodology.
+
+──────────────────────────────────────────────────────────────────────
+MODEL 5: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_165926
+──────────────────────────────────────────────────────────────────────
+
+[Error: Request timed out.]

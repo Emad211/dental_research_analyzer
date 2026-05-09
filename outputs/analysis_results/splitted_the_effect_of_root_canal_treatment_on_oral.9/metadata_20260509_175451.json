@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splitted_the_effect_of_root_canal_treatment_on_oral.9.pdf",
+  "timestamp": "20260509_175451",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "ok",
+      "chars": 9422
+    }
+  }
+}

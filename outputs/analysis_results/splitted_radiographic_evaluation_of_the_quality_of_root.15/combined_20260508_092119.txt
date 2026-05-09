@@ -920,3 +920,103 @@ TASK 4: SUMMARY OF ANALYTICAL APPROACH
 - Effect sizes (odds ratios, risk differences with confidence intervals) should be reported to facilitate interpretation and comparison with other studies.  
 - Optional analyses (time trends, stratified analyses, sensitivity analyses) can provide further educational and clinical insight while respecting sample size constraints.  
 - Throughout, the analysis must recognize the cross-sectional, tooth-level nature of the data and the potential clustering by student and/or patient, addressing or at least acknowledging this limitation in inference.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_174317
+──────────────────────────────────────────────────────────────────────
+
+Based on the provided Introduction and Methods sections, here is the comprehensive information extraction and Statistical Analysis Plan (SAP) tailored to this dental research study.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Retrospective, cross-sectional, observational study.
+*   **Primary Objective:** To assess the quality of root canal fillings (RCT) and the frequency of procedural errors performed by undergraduate female dental students.
+*   **Sample Size:** 306 post-endodontically treated teeth (anterior and posterior).
+*   **Study Population/Groups:** Female undergraduate dental students categorized by academic level (4th, 5th, and 6th year).
+*   **Data Source:** Patient dental records and digital periapical radiographs (preoperative, working length, postoperative) from 2013 to 2019.
+*   **Variables:**
+    *   *Dependent/Outcome Variables:* Quality of RCT (Categorical: Acceptable vs. Unacceptable). Specific procedural errors (Categorical: Overfilling, Underfilling, Inadequate density/voids).
+    *   *Independent/Predictor Variables:* Student academic year (4th, 5th, 6th), tooth type (anterior vs. posterior), patient age (continuous), pulpal and periapical diagnosis (categorical).
+*   **Measurement/Data Collection:** Radiographic evaluation using SIDEX and Dentalplus software. Evaluated independently by two senior endodontists (minimum 5 years experience) with calibration and consensus resolution.
+*   **Exclusion Criteria:** Incomplete treatments, missing/poor-quality radiographs, <2 mm of periapical region visible, anatomical superimposition.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Essential Tests)
+
+**1. Descriptive Statistics (Frequencies, Percentages, Means, Standard Deviations)**
+*   **Purpose:** To summarize the baseline characteristics of the sample and report the primary outcome (frequency of acceptable vs. unacceptable RCTs and specific errors).
+*   **Why appropriate:**
+    1. It directly answers the primary objective of reporting the frequency of procedural errors.
+    2. It provides the necessary foundational data (e.g., distribution of tooth types, student years) required for readers to understand the sample demographics.
+*   **Why it may not be appropriate:** It only describes the data and does not test for statistical significance or associations between variables.
+*   **When this test should NOT be used:** Never; descriptive statistics are universally required as the first step in any quantitative analysis.
+*   **Alternative if assumptions are violated:** For continuous variables (like patient age) that violate normality, use Median and Interquartile Range (IQR) instead of Mean and SD.
+
+**2. Pearson Chi-Square Test of Independence**
+*   **Purpose:** To determine if there is a significant association between categorical independent variables (e.g., student year, tooth type) and the categorical outcome (Acceptable vs. Unacceptable RCT).
+*   **Why appropriate:**
+    1. Both the independent variables (student year, tooth type) and the dependent variable (RCT quality) are categorical/nominal.
+    2. The study groups (different teeth, different students) are independent of one another.
+*   **Why it may not be appropriate:** It does not account for potential confounding variables (e.g., a 4th-year student might be assigned easier anterior teeth, skewing the results).
+*   **When this test should NOT be used:** When more than 20% of the expected cell frequencies are less than 5, or if any expected cell frequency is less than 1.
+*   **Alternative if assumptions are violated:** Fisher’s Exact Test.
+
+**3. Cohen’s Kappa Statistic (Inter-rater Reliability)**
+*   *Note: The authors mentioned calculating this, but it is mandatory to include in the SAP.*
+*   **Purpose:** To measure the level of agreement between the two senior endodontists evaluating the radiographs.
+*   **Why appropriate:**
+    1. The outcome relies entirely on human visual assessment, which is subjective and prone to bias.
+    2. It accounts for the possibility that the raters agree by random chance, making it superior to simple percentage agreement.
+*   **Why it may not be appropriate:** Kappa can be misleadingly low if the prevalence of a specific finding (e.g., overfilling) is extremely rare, even if raters highly agree (the "Kappa paradox").
+*   **When this test should NOT be used:** When the data is continuous (e.g., measuring the exact millimeter length of the gutta-percha), rather than categorical.
+*   **Alternative if assumptions are violated:** Gwet’s AC1 statistic (to resolve the Kappa paradox) or Intraclass Correlation Coefficient (ICC) if measurements were continuous.
+
+#### CATEGORY B – RECOMMENDED (Enhances Quality and Rigor)
+
+**1. Multivariable Binary Logistic Regression**
+*   **Purpose:** To evaluate the independent effect of multiple predictors (student year, tooth type, patient age) on the likelihood of an acceptable RCT.
+*   **Why appropriate:**
+    1. The primary outcome is binary (Acceptable = 1, Unacceptable = 0).
+    2. It allows the researchers to control for confounding variables (e.g., determining if 6th-year students perform better *regardless* of whether they are working on anterior or posterior teeth).
+*   **Why it may not be appropriate:** If the sample size is too small relative to the number of predictors, the model may suffer from overfitting.
+*   **When this test should NOT be used:** If there is severe multicollinearity between predictor variables, or if the outcome is not binary.
+*   **Alternative if assumptions are violated:** Penalized logistic regression (e.g., Firth's logistic regression) if there is a problem with complete separation or small sample sizes.
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. Cochran-Armitage Test for Trend**
+*   **Purpose:** To assess if there is a linear trend in the proportion of acceptable RCTs across the ordinal categories of student experience.
+*   **Why appropriate:**
+    1. The independent variable "Student Year" is ordinal (4th < 5th < 6th year).
+    2. It provides a more specific insight than the Chi-square test by answering: "Does RCT quality consistently improve as students progress through dental school?"
+*   **Why it may not be appropriate:** It assumes the change between categories is linear and directional; if 5th years perform worse than both 4th and 6th years, the test loses its utility.
+*   **When this test should NOT be used:** When the independent variable is strictly nominal with no inherent order (e.g., tooth type: anterior vs. posterior).
+*   **Alternative if assumptions are violated:** Standard Pearson Chi-Square test (which tests for any difference, regardless of trend).
+
+**2. Multinomial Logistic Regression**
+*   **Purpose:** To predict the specific *type* of procedural error (Underfill vs. Overfill vs. Voids) based on predictors like student year or tooth type.
+*   **Why appropriate:**
+    1. The outcome variable has more than two nominal categories.
+    2. It can reveal specific clinical weaknesses (e.g., 4th-year students might be more prone to underfilling, while 6th-year students might be prone to overfilling).
+*   **Why it may not be appropriate:** Requires a larger sample size; if certain errors (like overfilling) have very low frequencies, the model will fail to converge.
+*   **When this test should NOT be used:** If the dependent variable categories are ordered/ordinal (e.g., mild, moderate, severe).
+*   **Alternative if assumptions are violated:** Collapse the error categories into a binary variable (e.g., Error vs. No Error) and use Binary Logistic Regression.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples T-Test / ANOVA:** These tests compare the *means of continuous variables* across groups. The primary outcome of this study (Acceptable/Unacceptable RCT) is categorical. You cannot calculate a "mean" of an acceptable root canal.
+*   **Survival Analysis (Kaplan-Meier / Cox Proportional Hazards):** These tests require "time-to-event" data. This is a retrospective cross-sectional evaluation of radiographs taken at the time of treatment completion. There is no longitudinal follow-up data tracking how long the teeth survived before failing.
+*   **Pearson Correlation Coefficient:** This measures the linear relationship between two *continuous* variables. The variables in this study (student year, tooth type, RCT quality) are categorical or ordinal.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach for this study must be heavily grounded in **categorical data analysis**. Because the primary endpoints are discrete classifications based on European Society of Endodontology guidelines (Acceptable vs. Unacceptable; Overfill/Underfill/Voids), non-parametric frequency comparisons (Chi-Square) form the backbone of the analysis. To elevate the study from a simple descriptive report to a rigorous clinical evaluation, Multivariable Logistic Regression is highly recommended to isolate the true impact of student experience (academic year) while controlling for the anatomical difficulty of the procedure (anterior vs. posterior teeth). Furthermore, because the data relies on human interpretation of radiographs, robust inter-rater reliability testing (Kappa) is absolutely vital to ensure the internal validity of the findings.

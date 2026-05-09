@@ -793,3 +793,95 @@ The study involves paired ordinal and binary outcomes measured on the same teeth
 - Consider clustering by patient and reliability of scoring if data are available.
 
 This approach respects the paired, ordinal nature of the data, addresses the main clinical questions (improvement in quality and periapical healing), and provides interpretable, clinically relevant estimates while avoiding inappropriate parametric or independence‑based methods.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_172218
+──────────────────────────────────────────────────────────────────────
+
+Here is the comprehensive statistical analysis plan based on the extracted information from the provided dental research article.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Retrospective, observational, longitudinal (pre-post) study.
+*   **Objectives:** To assess the quality of root canal (RC) filling before and after RC re-treatment, and to evaluate changes in periapical status.
+*   **Sample Size:** 238 radiographs of failed endodontic treatments.
+*   **Timepoints/Groups:** Paired data consisting of Baseline (before re-treatment) and Follow-up (at 6 months).
+*   **Data Collection Method:** Digital Intraoral Periapical Radiographs (IOPARs).
+*   **Variables & Measurements:**
+    *   *Periapical Status (PAI):*
+        *   **Ordinal:** Scored on a scale of 1 to 5.
+        *   **Dichotomous/Binary:** Presence vs. Absence of periapical lesion (The text contains contradictory definitions: "0 vs 1" and "PAI < 3 vs PAI > 3", but both result in a binary categorical variable).
+    *   *Quality of Root Canal Filling:*
+        *   **Ordinal:** Scored on a scale of 1 to 6 (based on density and distance to apex).
+        *   **Dichotomous/Binary:** Adequate vs. Inadequate RCT (Adequate = acceptable length + homogenous filling).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given that the data consists of the same subjects (teeth/radiographs) measured at two different time points (baseline and 6 months), the data is **paired/dependent**. Furthermore, the variables are **ordinal** (scores) and **nominal/binary** (adequate/inadequate, presence/absence). Therefore, non-parametric paired tests are required.
+
+#### CATEGORY A – MANDATORY (Core tests for the main objectives)
+
+**1. Wilcoxon Signed-Rank Test**
+*   **Purpose:** To compare the ordinal PAI scores (1-5) and ordinal RC filling quality scores (1-6) between baseline and the 6-month follow-up.
+*   **Why appropriate:** (1) The data is ordinal, not continuous. (2) The study design is paired (repeated measures on the same teeth).
+*   **Why it may not be appropriate:** If the distribution of the differences between the paired observations is highly skewed or not symmetrical.
+*   **When NOT to use:** When comparing two independent groups (e.g., comparing treatments between two different sets of patients).
+*   **Alternative:** Sign Test (if the assumption of symmetrical differences is violated).
+
+**2. McNemar’s Test**
+*   **Purpose:** To compare the dichotomous variables (Adequate vs. Inadequate RC filling; Presence vs. Absence of periapical lesion) between baseline and the 6-month follow-up.
+*   **Why appropriate:** (1) The variables are binary/dichotomous. (2) The observations are paired/dependent.
+*   **Why it may not be appropriate:** If the number of discordant pairs (cases that changed status from baseline to 6 months) is very small (typically < 25).
+*   **When NOT to use:** When observations are independent, or when analyzing variables with more than two categories.
+*   **Alternative:** Exact McNemar's Test (Binomial Exact Test) if the number of discordant pairs is too small.
+
+**3. Descriptive Statistics**
+*   **Purpose:** To summarize the sample characteristics.
+*   **Why appropriate:** (1) Provides baseline understanding of the data. (2) Necessary for reporting frequencies, percentages for categorical data, and medians/Interquartile Ranges (IQR) for ordinal scores.
+*   **Why it may not be appropriate:** Descriptive statistics alone cannot test hypotheses or determine statistical significance.
+*   **When NOT to use:** Never; it is universally required.
+*   **Alternative:** N/A.
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Cohen’s Kappa (or Weighted Kappa)**
+*   **Purpose:** To assess intra-examiner and inter-examiner reliability in scoring the radiographs.
+*   **Why appropriate:** (1) Radiographic interpretation (PAI and filling quality) is highly subjective. (2) It quantifies the level of agreement beyond chance for categorical/ordinal data.
+*   **Why it may not be appropriate:** If there is very little variation in the scores, Kappa can be artificially low (the "prevalence paradox").
+*   **When NOT to use:** When assessing agreement for continuous variables.
+*   **Alternative:** Gwet’s AC1 statistic (more robust to the prevalence paradox) or Percentage Agreement.
+
+**2. Spearman’s Rank-Order Correlation**
+*   **Purpose:** To evaluate the relationship between the quality of the RC filling (score 1-6) and the periapical status (PAI score 1-5) at the 6-month follow-up.
+*   **Why appropriate:** (1) Both variables are ordinal. (2) It does not assume a linear relationship, only a monotonic one.
+*   **Why it may not be appropriate:** If the relationship between the two variables is non-monotonic (e.g., U-shaped).
+*   **When NOT to use:** When trying to establish direct causation, or when both variables are perfectly continuous and normally distributed.
+*   **Alternative:** Kendall’s Tau (often preferred for smaller datasets or when there are many tied ranks).
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Binary Logistic Regression**
+*   **Purpose:** To identify if baseline factors (e.g., baseline PAI score, baseline filling quality, patient age/gender if collected) predict the success of the re-treatment (defined as absence of lesion at 6 months).
+*   **Why appropriate:** (1) The outcome variable (success/failure) is binary. (2) It allows for the control of multiple confounding variables simultaneously.
+*   **Why it may not be appropriate:** If the sample size of "failures" at 6 months is too small, the model will overfit (rule of thumb: need at least 10 events per predictor).
+*   **When NOT to use:** When the outcome variable is continuous or ordinal.
+*   **Alternative:** Generalized Estimating Equations (GEE) if multiple teeth were treated within the same patient (to account for within-patient clustering).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+The following tests should **NOT** be used in this study:
+
+*   **Paired t-test:** Inappropriate because the variables (PAI scores 1-5, Quality scores 1-6) are ordinal, not continuous. Furthermore, ordinal scores derived from indices rarely meet the assumption of normal distribution required for a t-test.
+*   **Independent Samples t-test / ANOVA:** Inappropriate because the study utilizes a repeated-measures design (baseline and 6 months on the *same* teeth). These tests assume independent observations.
+*   **Pearson Correlation:** Inappropriate because it assumes both variables are continuous and normally distributed with a linear relationship. The data here is ordinal.
+*   **Chi-Square Test of Independence (for pre-post comparison):** Inappropriate for comparing baseline to 6-month data. Chi-square assumes that the groups being compared are independent. Because the same teeth are evaluated twice, McNemar's test must be used instead.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach for this study must be grounded in **non-parametric statistics for paired data**. Because the study evaluates the same 238 radiographs before and after endodontic re-treatment, the data is inherently dependent. Furthermore, the measurement tools utilized (PAI scoring and RC filling quality scoring) yield ordinal and dichotomous categorical data, strictly precluding the use of parametric tests like the t-test. The core analysis will rely on the Wilcoxon Signed-Rank test for ordinal shifts and McNemar's test for binary shifts. Additionally, because radiographic evaluation is subjective, incorporating reliability testing (Cohen's Kappa) is highly recommended to validate the methodological rigor of the data collection process.

@@ -965,3 +965,104 @@ TASK 4 – SUMMARY OF ANALYTICAL APPROACH
   - Analyze hemodynamic changes, adverse events, and analgesic use as secondary endpoints with appropriate tests for continuous and categorical data.  
   - Perform sensitivity analyses using non‑parametric or ordinal methods if model assumptions are questionable, and explore AUC or time‑to‑relief as optional summaries.  
 - This approach respects the randomized design, properly handles the repeated measures nature of the data, limits bias through ITT analysis, and provides clinically interpretable results with quantified uncertainty.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_172847
+──────────────────────────────────────────────────────────────────────
+
+Based on the provided Introduction and Methods sections of the article, here is the comprehensive extraction and statistical analysis plan.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Double-blind, randomized, parallel-group clinical trial.
+*   **Objective:** To determine the effect of adding clonidine to articaine/epinephrine on post-operative pain relief in patients with symptomatic irreversible pulpitis.
+*   **Sample Size:** 105 patients assessed $\rightarrow$ 100 randomized (50 per group) $\rightarrow$ 98 completed (1 lost/discontinued per group). *Note: One additional patient in the clonidine group was excluded from data analysis due to post-operative analgesic consumption, indicating a Per-Protocol analysis approach.*
+*   **Study Population:** Healthy patients (ASA I), aged 15–60 years, with symptomatic irreversible pulpitis in a mandibular posterior tooth.
+*   **Groups:**
+    *   *Intervention (Case) Group:* Inferior Alveolar Nerve Block (IANB) with 0.2 mL clonidine (30 µg) + 1.8 mL 4% articaine with 1:100,000 epinephrine.
+    *   *Control Group:* IANB with 0.2 mL distilled water + 1.8 mL 4% articaine with 1:100,000 epinephrine.
+*   **Variables & Measurements:**
+    *   *Primary Dependent Variable (Continuous/Ordinal):* Post-operative pain intensity, measured via a 170 mm Heft-Parker Visual Analog Scale (HP VAS). Also categorized into 4 ordinal groups: No pain (0 mm), Mild (>0 to ≤54 mm), Moderate (>54 to <114 mm), Severe (≥114 mm).
+    *   *Secondary Dependent Variables (Continuous):* Blood pressure (BP) and Heart rate (HR).
+    *   *Safety/Adverse Events (Categorical):* Nausea, vomiting, drowsiness, dizziness, headaches.
+    *   *Independent Variable:* Treatment group (Clonidine vs. Control).
+    *   *Timepoints:* Baseline (pre-operative), 5 minutes post-injection (for BP/HR), and 6, 12, 24, 48, and 72 hours post-treatment (for pain).
+*   **Data Collection Methods:** Pre-operative questionnaire (demographics, medical history, baseline pain). Digital blood pressure monitor for BP/HR. Phone calls or text messages for post-operative pain and adverse events follow-up.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Linear Mixed-Effects Model (LMM) or Generalized Estimating Equations (GEE)**
+*   **Purpose:** To analyze the continuous HP VAS pain scores across the multiple time points (baseline, 6, 12, 24, 48, 72 hours) between the two groups.
+*   **Why appropriate:** 1) It accounts for the intra-subject correlation of repeated measures on the same patient over time. 2) It robustly handles missing data (e.g., the patients lost to follow-up) without requiring listwise deletion, unlike traditional Repeated Measures ANOVA.
+*   **Why it may not be appropriate:** Pain scores (VAS) are often highly skewed and may not meet the assumption of normality of residuals required for LMM.
+*   **When this test should NOT be used:** If the dependent variable is strictly analyzed as categorical/ordinal rather than continuous.
+*   **Alternative if assumptions are violated:** Friedman test (for within-group changes over time) followed by Mann-Whitney U tests (for between-group differences at specific time points) with Bonferroni correction.
+
+**2. Independent Samples t-test**
+*   **Purpose:** To compare baseline continuous characteristics (Age, Baseline VAS, Baseline BP/HR) between the intervention and control groups.
+*   **Why appropriate:** 1) Ensures that the randomization process was successful in creating comparable groups. 2) Provides a straightforward comparison of means for independent groups.
+*   **Why it may not be appropriate:** It assumes the data is normally distributed and that variances are equal between groups.
+*   **When this test should NOT be used:** If the continuous data is heavily skewed or contains extreme outliers.
+*   **Alternative if assumptions are violated:** Mann-Whitney U test (Wilcoxon rank-sum test).
+
+**3. Chi-Square Test of Independence**
+*   **Purpose:** To compare baseline categorical variables (e.g., Gender) and the categorized pain levels (None, Mild, Moderate, Severe) between groups at specific time points.
+*   **Why appropriate:** 1) It is the standard test for comparing proportions between two independent categorical variables. 2) It allows researchers to see if the *severity distribution* of pain differs by treatment.
+*   **Why it may not be appropriate:** It loses statistical power if expected cell frequencies are too low.
+*   **When this test should NOT be used:** When more than 20% of the expected cell counts are less than 5, or any expected cell count is less than 1.
+*   **Alternative if assumptions are violated:** Fisher’s Exact Test (for 2x2 tables) or Freeman-Halton extension of Fisher's Exact Test (for 2x4 tables).
+
+#### CATEGORY B – RECOMMENDED (Enhance Quality and Rigor)
+
+**1. Analysis of Covariance (ANCOVA)**
+*   **Purpose:** To compare the 5-minute post-injection Blood Pressure and Heart Rate between groups while controlling for baseline BP and HR.
+*   **Why appropriate:** 1) It adjusts for any slight baseline differences in cardiovascular metrics, isolating the true effect of the injection. 2) It increases statistical power by reducing within-group error variance.
+*   **Why it may not be appropriate:** It assumes a linear relationship between the covariate (baseline BP/HR) and the dependent variable (post-injection BP/HR).
+*   **When this test should NOT be used:** If the assumption of homogeneity of regression slopes is violated (i.e., the relationship between baseline and post-injection BP differs between the two groups).
+*   **Alternative if assumptions are violated:** Calculate the change score (Post - Pre) and analyze using a Mann-Whitney U test.
+
+**2. Fisher’s Exact Test**
+*   **Purpose:** To compare the incidence of adverse events (nausea, vomiting, drowsiness, dizziness, headaches) between the two groups.
+*   **Why appropriate:** 1) Adverse events in this type of study are typically rare, leading to small cell counts. 2) It provides an exact p-value regardless of sample size.
+*   **Why it may not be appropriate:** It is computationally intensive for tables larger than 2x2 (though modern software handles this easily).
+*   **When this test should NOT be used:** If the sample size and event occurrence are large enough that a standard Chi-Square test is perfectly adequate and faster.
+*   **Alternative if assumptions are violated:** N/A (Fisher's is the non-parametric alternative to Chi-Square; if data is large, revert to Chi-Square).
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To analyze the "time to complete pain relief" (time until VAS = 0) between the two groups.
+*   **Why appropriate:** 1) It treats pain relief as a time-to-event outcome, which is highly clinically relevant. 2) It properly accounts for right-censored data (patients who never reach VAS=0 by 72 hours).
+*   **Why it may not be appropriate:** The time points are discrete and widely spaced (6, 12, 24, 48, 72h), which creates interval-censored data rather than precise continuous time-to-event data.
+*   **When this test should NOT be used:** If the exact time of pain cessation is unknown and the discrete intervals are too broad to provide meaningful survival curves.
+*   **Alternative if assumptions are violated:** Ordinal logistic regression analyzing pain categories over time.
+
+**2. Cohen’s *d* or Rank-Biserial Correlation (Effect Size Calculation)**
+*   **Purpose:** To quantify the magnitude of the difference in pain scores between the clonidine and control groups.
+*   **Why appropriate:** 1) P-values only indicate if a difference exists; effect sizes indicate if the difference is clinically meaningful. 2) It facilitates future meta-analyses.
+*   **Why it may not be appropriate:** Cohen's *d* relies on means and standard deviations, which can be misleading if the VAS data is highly skewed.
+*   **When this test should NOT be used:** When the primary analysis relies entirely on non-parametric tests due to severe non-normality.
+*   **Alternative if assumptions are violated:** Cliff’s Delta or Rank-Biserial Correlation (non-parametric effect sizes).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Unpaired (Independent) t-tests for comparing VAS scores at every single time point independently:** Doing this (e.g., t-test at 6h, another at 12h, another at 24h) inflates the Type I error rate (false positives) due to multiple comparisons and completely ignores the fact that the same patients are being measured repeatedly.
+*   **Pearson Correlation Coefficient for Treatment vs. Pain:** The treatment variable is categorical (Clonidine vs. Control). Pearson correlation requires two continuous variables.
+*   **Intention-to-Treat (ITT) Imputation for the patient who took Ibuprofen (if strict physiological efficacy is the goal):** The authors explicitly state they excluded a patient from data analysis to "prevent calculation error" because they took rescue analgesia. Analyzing this via a standard Per-Protocol approach is what the authors intended. (However, from a strict clinical trial reporting standard, an ITT analysis *should* ideally be done as a sensitivity analysis).
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must address three distinct data challenges: confirming baseline equivalence, evaluating a repeated-measures continuous/ordinal primary outcome (pain), and assessing safety metrics. 
+
+First, baseline demographics and clinical characteristics must be compared using independent t-tests and Chi-square tests to validate the randomization. For the primary outcome (post-operative pain), because measurements are taken repeatedly over 72 hours, a Linear Mixed-Effects Model (LMM) is the most robust approach. It accounts for intra-subject correlation and handles the few dropouts gracefully. Because pain data is often skewed and the authors specifically categorized the VAS scores, supplementing the continuous analysis with categorical comparisons (Chi-square/Fisher's Exact) at specific time points will provide a comprehensive view of the drug's efficacy. Finally, safety data (BP/HR) should be analyzed using ANCOVA to control for baseline variations, while adverse events, likely being rare, necessitate Fisher's Exact tests. This multi-tiered approach ensures statistical rigor, accounts for the specific nature of pain data, and directly answers the clinical research question.

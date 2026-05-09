@@ -1,9 +1,9 @@
+import re
 import time
 from pathlib import Path
-from typing import Dict
+from typing import Dict, Optional
 
 from openai import OpenAI
-from google.genai import types, Client as GeminiClient
 
 from config.settings import (
     API_KEY,
@@ -22,108 +22,119 @@ _SYSTEM_PROMPT = (
 )
 
 
+def _normalize_name(s: str) -> str:
+    """
+    نرمال‌سازی برای match کردن اسم پوشه‌ها با stem:
+    - lower
+    - حذف فاصله/underscore/dash
+    - نگه داشتن فقط a-z0-9 و نقطه (چون توی stemهایی مثل JOCPD45.3.3 مهمه)
+    """
+    s = s.lower().strip()
+    s = s.replace(" ", "").replace("_", "").replace("-", "")
+    s = re.sub(r"[^a-z0-9.]+", "", s)
+    return s
+
+
 class StatisticalAnalyzer:
     """
-    Statistical analysis using multiple AI models.
-    - Gemini models  → Google Gemini SDK (direct)
-    - All other models → OpenAI-compatible SDK
+    همه مدل‌ها از طریق OpenAI-compatible SDK صدا زده می‌شوند.
+    همچنین:
+      - پوشه جدید ساخته نمی‌شود (فقط همان پوشه موجود برای PDF استفاده می‌شود)
+      - combined جدید ساخته نمی‌شود (combined موجود append می‌شود)
     """
 
     def __init__(self):
-        # OpenAI-compatible client (for non-Gemini models)
-        self.openai_client = OpenAI(api_key=API_KEY, base_url=BASE_URL)
-
-        # Google Gemini client (for Gemini models)
-        self.gemini_client = GeminiClient(
-            api_key=API_KEY,
-            http_options=types.HttpOptions(base_url="https://api.gapgpt.app/")
-        )
-
-        logger.info(
-            f"StatisticalAnalyzer ready — {len(ANALYSIS_MODELS)} models configured"
-        )
+        self.client = OpenAI(api_key=API_KEY, base_url=BASE_URL)
+        logger.info(f"StatisticalAnalyzer ready — {len(ANALYSIS_MODELS)} models configured")
 
     # ------------------------------------------------------------------
-    def _is_gemini(self, model_name: str) -> bool:
-        """Check if a model should use the Gemini SDK."""
-        return model_name.lower().startswith("gemini")
-
-    # ------------------------------------------------------------------
-    def _call_gemini(self, model_name: str, prompt: str) -> str:
-        """Send request using Google Gemini SDK."""
-        response = self.gemini_client.models.generate_content(
-            model=model_name,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                system_instruction=_SYSTEM_PROMPT,
-                temperature=0.3,
-                max_output_tokens=8192,
-            )
-        )
-        return response.text.strip()
-
-    # ------------------------------------------------------------------
-    def _call_openai(self, model_name: str, prompt: str) -> str:
-        """Send request using OpenAI-compatible SDK."""
-        response = self.openai_client.chat.completions.create(
+    def _call_model(self, model_name: str, prompt: str) -> str:
+        response = self.client.chat.completions.create(
             model=model_name,
             temperature=0.3,
             max_tokens=8192,
             messages=[
                 {"role": "system", "content": _SYSTEM_PROMPT},
-                {"role": "user",   "content": prompt},
+                {"role": "user", "content": prompt},
             ],
         )
         return response.choices[0].message.content.strip()
 
     # ------------------------------------------------------------------
-    def _call_model(self, model_name: str, prompt: str) -> str:
-        """Route request to the correct SDK based on model name."""
-        if self._is_gemini(model_name):
-            logger.info(f"    → Using Google Gemini SDK")
-            return self._call_gemini(model_name, prompt)
-        else:
-            logger.info(f"    → Using OpenAI-compatible SDK")
-            return self._call_openai(model_name, prompt)
+    def _resolve_existing_out_dir(self, pdf_name: str) -> Path:
+        """
+        دقیقاً پوشه‌ای را پیدا می‌کند که قبلاً برای این PDF ساخته شده.
+        هیچ پوشه‌ی جدیدی ساخته نمی‌شود.
+        """
+        stem = Path(pdf_name).stem
+
+        # 1) بهترین حالت: پوشه دقیقاً همنام stem
+        direct = ANALYSIS_RESULTS_DIR / stem
+        if direct.exists() and direct.is_dir():
+            return direct
+
+        # 2) fallback: case-insensitive + normalize match
+        wanted = _normalize_name(stem)
+        candidates = []
+        for d in ANALYSIS_RESULTS_DIR.iterdir():
+            if d.is_dir() and _normalize_name(d.name) == wanted:
+                candidates.append(d)
+
+        if len(candidates) == 1:
+            return candidates[0]
+        if len(candidates) > 1:
+            # اگر چندتا بود، جدیدترین پوشه (mtime) را انتخاب می‌کنیم
+            candidates.sort(key=lambda p: p.stat().st_mtime, reverse=True)
+            logger.warning(
+                "Multiple matching output directories found; using the most recently modified: "
+                f"{candidates[0].name}"
+            )
+            return candidates[0]
+
+        # 3) اگر پیدا نشد: طبق درخواست تو، پوشه جدید نمی‌سازیم → خطا می‌دهیم
+        raise FileNotFoundError(
+            "No existing analysis_results folder found for this PDF.\n"
+            f"Expected something like: {direct}\n"
+            "طبق تنظیمات فعلی شما، قرار است پوشه از قبل وجود داشته باشد "
+            "(مثلاً خروجی مدل‌های قبلی)."
+        )
 
     # ------------------------------------------------------------------
-    def run(
-        self,
-        ocr_text: str,
-        pdf_name: str,
-        delay: float = 3.0,
-    ) -> Dict:
-        """
-        Run statistical analysis with all configured models.
+    @staticmethod
+    def _latest_file(out_dir: Path, pattern: str) -> Optional[Path]:
+        files = sorted(out_dir.glob(pattern))
+        return files[-1] if files else None
 
-        Args:
-            ocr_text: OCR-extracted text
-            pdf_name: Original PDF filename
-            delay:    Delay between API calls (seconds)
-
-        Returns:
-            Dictionary with results from each model
+    # ------------------------------------------------------------------
+    @staticmethod
+    def _next_model_index(combined_text: str) -> int:
         """
-        prompt  = STATISTICAL_PROMPT.format(ocr_text=ocr_text)
+        بزرگترین شماره MODEL را از داخل combined پیدا می‌کند.
+        اگر نبود، از 1 شروع می‌کند.
+        """
+        nums = [int(m.group(1)) for m in re.finditer(r"\bMODEL\s+(\d+)\s*:", combined_text)]
+        return (max(nums) + 1) if nums else 1
+
+    # ------------------------------------------------------------------
+    def run(self, ocr_text: str, pdf_name: str, delay: float = 3.0) -> Dict:
+        prompt = STATISTICAL_PROMPT.format(ocr_text=ocr_text)
         results: Dict[str, Dict] = {}
 
         logger.info(f"Starting statistical analysis — {len(ANALYSIS_MODELS)} models")
         logger.info("─" * 60)
 
         for idx, model_cfg in enumerate(ANALYSIS_MODELS):
-            key      = model_cfg["key"]
-            name     = model_cfg["name"]
+            key = model_cfg["key"]
+            name = model_cfg["name"]
             provider = model_cfg["provider"]
 
-            logger.info(
-                f"[{idx+1}/{len(ANALYSIS_MODELS)}] {provider} — {name}"
-            )
+            logger.info(f"[{idx+1}/{len(ANALYSIS_MODELS)}] {provider} — {name}")
+            logger.info("    → Using OpenAI-compatible SDK")
 
             try:
                 answer = self._call_model(name, prompt)
                 status = "ok"
                 logger.info(f"  ✓ Received: {len(answer):,} characters")
-
             except Exception as exc:
                 answer = f"[Error: {exc}]"
                 status = "error"
@@ -131,28 +142,27 @@ class StatisticalAnalyzer:
 
             results[key] = {
                 "provider": provider,
-                "model":    name,
-                "status":   status,
-                "text":     answer,
+                "model": name,
+                "status": status,
+                "text": answer,
             }
 
             if idx < len(ANALYSIS_MODELS) - 1:
                 time.sleep(delay)
 
         self._save(results, pdf_name)
-
         logger.info("─" * 60)
         logger.info("All analyses completed.")
         return results
 
     # ------------------------------------------------------------------
     def _save(self, results: Dict, pdf_name: str) -> None:
-        """Save each model's result + combined report."""
-        ts      = timestamp()
-        stem    = Path(pdf_name).stem
-        out_dir = ANALYSIS_RESULTS_DIR / stem
-        out_dir.mkdir(parents=True, exist_ok=True)
+        ts = timestamp()
 
+        # ✅ مهم: پوشه را از قبل موجود پیدا کن؛ پوشه جدید نساز
+        out_dir = self._resolve_existing_out_dir(pdf_name)
+
+        # 1) ذخیره خروجی مدل جدید (این فایل‌ها طبیعی است که جدید باشند)
         for key, data in results.items():
             header = (
                 f"{'═'*70}\n"
@@ -164,20 +174,51 @@ class StatisticalAnalyzer:
             )
             save_text(out_dir / f"{key}_{ts}.txt", header + data["text"])
 
-        save_text(out_dir / f"combined_{ts}.txt",
-                  self._build_combined(results, pdf_name, ts))
+        # 2) combined: اگر موجود است، همان را append کن؛ combined جدید نساز
+        combined_path = self._latest_file(out_dir, "combined_*.txt")
+        if combined_path is None:
+            # اگر واقعاً هیچ combinedای وجود ندارد، اولین combined را می‌سازیم (به ناچار)
+            combined_path = out_dir / f"combined_{ts}.txt"
+            initial = (
+                f"{'═'*70}\n"
+                f"COMBINED STATISTICAL ANALYSIS REPORT\n"
+                f"PDF  : {pdf_name}\n"
+                f"Created: {ts}\n"
+                f"{'═'*70}\n"
+            )
+            save_text(combined_path, initial)
 
+        combined_text = combined_path.read_text(encoding="utf-8")
+        model_index = self._next_model_index(combined_text)
+
+        blocks = []
+        for _, data in results.items():
+            blocks.append(
+                "\n" +
+                ("─" * 70) + "\n" +
+                f"MODEL {model_index}: {data['provider']} — {data['model']}  [OpenAI-compatible SDK]\n"
+                f"RUN  : {ts}\n" +
+                ("─" * 70) + "\n\n" +
+                data["text"].strip() + "\n"
+            )
+            model_index += 1
+
+        with combined_path.open("a", encoding="utf-8") as f:
+            f.write("".join(blocks))
+
+        # 3) metadata (اختیاری): من همچنان metadata جدید می‌سازم چون گفتی فقط combined جدید نساز.
+        # اگر خواستی این هم "آپدیت" شود و فایل جدید نسازد، بگو تا همان فایل metadata موجود را هم merge کنم.
         save_json(
             out_dir / f"metadata_{ts}.json",
             {
-                "pdf_name":  pdf_name,
+                "pdf_name": pdf_name,
                 "timestamp": ts,
                 "models": {
                     k: {
                         "provider": v["provider"],
-                        "model":    v["model"],
-                        "status":   v["status"],
-                        "chars":    len(v["text"]),
+                        "model": v["model"],
+                        "status": v["status"],
+                        "chars": len(v["text"]),
                     }
                     for k, v in results.items()
                 },
@@ -185,26 +226,4 @@ class StatisticalAnalyzer:
         )
 
         logger.info(f"Results saved → {out_dir}")
-
-    # ------------------------------------------------------------------
-    @staticmethod
-    def _build_combined(results: Dict, pdf_name: str, ts: str) -> str:
-        """Build a single combined report from all models."""
-        sep   = "═" * 70
-        parts = [
-            sep,
-            "COMBINED STATISTICAL ANALYSIS REPORT",
-            f"PDF  : {pdf_name}",
-            f"Time : {ts}",
-            f"Models: {len(results)}",
-            sep,
-        ]
-        for i, (key, data) in enumerate(results.items(), start=1):
-            sdk = "Gemini SDK" if data["model"].lower().startswith("gemini") else "OpenAI SDK"
-            parts += [
-                f"\n{'─'*70}",
-                f"MODEL {i}: {data['provider']} — {data['model']}  [{sdk}]",
-                f"{'─'*70}\n",
-                data["text"],
-            ]
-        return "\n".join(parts)
+        logger.info(f"Combined updated → {combined_path.name}")

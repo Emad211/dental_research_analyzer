@@ -1,0 +1,116 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_e11e00fd60f9ba6c758dd87aec7b4d13.pdf
+Status : ok
+Time   : 20260509_171731
+══════════════════════════════════════════════════════════════════════
+
+Here is a comprehensive statistical analysis plan based on the provided dental research article, structured according to your requirements.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Parallel, randomized, double-blind (participants, guardians, and data assessor; operator was unblinded), 1:1 allocation ratio, Randomized Clinical Trial (RCT).
+*   **Objectives:** To compare the clinical and radiographic outcomes of 5% Potassium Nitrate (KNO₃) in polycarboxylate cement versus Mineral Trioxide Aggregate (MTA) as pulpotomy biomaterials in asymptomatic vital immature permanent mandibular first molars.
+*   **Groups:**
+    *   *Intervention:* 5% KNO₃ in polycarboxylate cement (n=25).
+    *   *Control:* White MTA (n=25).
+*   **Sample Size:** 50 molars from 48 children (25 per group). *Note: 2 children had bilateral treatments, introducing a minor clustering effect.*
+*   **Variables & Measurements:**
+    *   *Primary Outcomes (Categorical/Binary - Yes/No):*
+        *   Clinical success (absence of pain, sensitivity, swelling, sinus tract) measured at 1 week, 6 months, and 12 months.
+        *   Radiographic success (root maturogenesis progress, absence of periradicular/interradicular lesions, absence of root resorption) measured at 6 months and 12 months.
+    *   *Secondary Outcomes (Continuous & Categorical):*
+        *   Radiometric analysis (Continuous): Percentage difference in root length and apical foramen diameter (mesial and distal roots) calculated from preoperative, 6-month, and 12-month radiographs (measured in pixels, converted to mm, adjusted for magnification).
+        *   Apical closure (Categorical/Binary): Complete vs. incomplete apical closure at 12 months.
+*   **Data Collection Methods:** Clinical examination (binary assessment), Radiographic examination (binary assessment for pathology; continuous digital measurement using Photoshop CS5 for root dimensions).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Core tests required for basic analysis)
+
+**1. Fisher’s Exact Test**
+*   **Purpose:** To compare the primary binary outcomes (clinical success, radiographic success, and complete apical closure) between the intervention and control groups at specific time points (e.g., 12 months).
+*   **Why appropriate:**
+    1. It is ideal for comparing categorical (binary) variables between two independent groups.
+    2. Given the high success rates typical in vital pulp therapy and the small sample size (n=25/group), expected cell counts in the "failure" category will likely be less than 5, making Fisher's exact test mathematically superior to Chi-square.
+*   **Why it may not be appropriate:** It does not account for repeated measures over time (e.g., tracking the same tooth from 1 week to 12 months).
+*   **When this test should NOT be used:** When analyzing continuous data (like root length in mm).
+*   **Alternative if assumptions are violated:** N/A (Fisher's is the exact alternative to the Chi-square test when assumptions of the latter are violated).
+
+**2. Independent Samples t-test**
+*   **Purpose:** To compare the continuous secondary outcomes (percentage change in root length and apical foramen diameter) between the KNO₃ and MTA groups at the 6-month and 12-month marks.
+*   **Why appropriate:**
+    1. It compares the means of a continuous variable between two independent, mutually exclusive groups.
+    2. It provides a straightforward interpretation of the magnitude of difference (effect size) between the two materials.
+*   **Why it may not be appropriate:** It assumes the continuous data is normally distributed, which may not be true for small sample sizes (n=25).
+*   **When this test should NOT be used:** When comparing categorical data (success/failure) or when comparing more than two groups.
+*   **Alternative if assumptions are violated:** Mann-Whitney U test (Non-parametric).
+
+**3. Repeated Measures ANOVA (RM-ANOVA)**
+*   **Purpose:** To evaluate the change in continuous radiometric measurements (root length, foramen diameter) across the three time points (preoperative, 6 months, 12 months) within each group.
+*   **Why appropriate:**
+    1. It accounts for the non-independence of data (the same tooth measured three times).
+    2. It can identify if there is a significant interaction between "Time" and "Material" (e.g., if one material induces root growth faster than the other).
+*   **Why it may not be appropriate:** It requires complete data sets; if a patient misses a 6-month follow-up but attends the 12-month, RM-ANOVA drops the patient entirely (listwise deletion).
+*   **When this test should NOT be used:** When the outcome variable is binary/categorical.
+*   **Alternative if assumptions are violated:** Friedman Test (if normality is violated) or Linear Mixed-Effects Model (if sphericity is violated or data is missing).
+
+---
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Linear Mixed-Effects Model (LMM)**
+*   **Purpose:** To analyze the continuous radiometric changes over time between groups, replacing the RM-ANOVA.
+*   **Why appropriate:**
+    1. It handles missing data gracefully without dropping the entire subject (crucial since the flowchart shows 2 dropouts).
+    2. It can account for the clustering effect of the 2 children who contributed 2 teeth to the study (48 children, 50 teeth) by adding "Patient" as a random effect.
+*   **Why it may not be appropriate:** It is computationally complex and may overfit the data given the relatively small sample size.
+*   **When this test should NOT be used:** When analyzing purely cross-sectional, independent data without repeated measures or clustering.
+*   **Alternative if assumptions are violated:** Generalized Estimating Equations (GEE).
+
+**2. Intraclass Correlation Coefficient (ICC)**
+*   **Purpose:** To assess the intra-rater reliability of the unblinded operator who performed the digital radiometric measurements on Photoshop.
+*   **Why appropriate:**
+    1. The operator was not blinded to the materials, introducing high risk for measurement bias. High ICC on repeated measurements of a subset of radiographs proves measurement consistency.
+    2. It is the gold standard for assessing reliability of continuous measurements.
+*   **Why it may not be appropriate:** If the operator only measured each radiograph exactly once and no calibration subset was created, ICC cannot be calculated.
+*   **When this test should NOT be used:** To test for differences between the two treatment groups.
+*   **Alternative if assumptions are violated:** Bland-Altman Plot (to visually assess agreement and bias).
+
+---
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To compare the "time to failure" between the KNO₃ and MTA groups.
+*   **Why appropriate:**
+    1. It accounts for right-censored data (patients lost to follow-up).
+    2. It provides a visual survival curve of the biomaterials over the 12-month period.
+*   **Why it may not be appropriate:** With only three discrete time points and likely very few clinical failures, the survival curves will be flat, step-like, and statistically uninformative.
+*   **When this test should NOT be used:** When analyzing continuous outcomes like root length.
+*   **Alternative if assumptions are violated:** Cox Proportional Hazards Model (if adjusting for covariates like patient age).
+
+**2. Shapiro-Wilk Test**
+*   **Purpose:** To test the assumption of normality for the continuous radiometric data prior to selecting parametric tests.
+*   **Why appropriate:**
+    1. It is highly accurate for small sample sizes (n < 50).
+    2. It dictates whether t-tests or non-parametric alternatives should be used.
+*   **Why it may not be appropriate:** It is strictly an assumption check, not a test that answers the clinical research question.
+*   **When this test should NOT be used:** On categorical or binary data.
+*   **Alternative if assumptions are violated:** Visual inspection using Q-Q plots.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Paired t-test (for between-group analysis):** Should NOT be used to compare the KNO₃ group to the MTA group. The study uses a parallel design with independent groups, not a split-mouth or matched-pairs design.
+*   **Pearson Correlation Coefficient:** Should NOT be used. The objective is to compare differences between groups and changes over time, not to find linear associations between two different continuous variables.
+*   **Chi-Square Test of Independence:** Should NOT be used for the primary outcomes. Because the sample size is small (n=25 per group) and pulpotomy success rates are historically very high (>90%), the expected frequency in the "failure" cells will almost certainly be less than 5, violating Chi-square assumptions.
+
+---
+
+### TASK 4: SUMMARY
+
+The analytical approach for this RCT must address a mix of binary clinical/radiographic outcomes and continuous radiometric measurements across multiple time points. Because the sample size is relatively small and success rates are expected to be high, **Fisher's Exact Test** is the safest and most robust choice for comparing binary success rates between the two materials. For the continuous radiometric data (root length and foramen diameter), while an Independent t-test and RM-ANOVA are standard, a **Linear Mixed-Effects Model (LMM)** is highly recommended. LMM will handle the inevitable missing data from dropouts and account for the minor clustering effect (48 patients, 50 teeth). Finally, because the operator performing the digital measurements was unblinded, calculating an **Intraclass Correlation Coefficient (ICC)** on a subset of measurements is vital to validate the reliability of the secondary outcomes and defend against measurement bias.

@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splitted_ijcpd-14-471.pdf",
+  "timestamp": "20260509_172940",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "ok",
+      "chars": 9013
+    }
+  }
+}

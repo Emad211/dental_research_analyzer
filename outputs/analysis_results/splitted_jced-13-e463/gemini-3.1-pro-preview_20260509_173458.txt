@@ -1,0 +1,114 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_jced-13-e463.pdf
+Status : ok
+Time   : 20260509_173458
+══════════════════════════════════════════════════════════════════════
+
+Here is the comprehensive information extraction and statistical analysis plan based on the provided dental research article.
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Prospective, randomized, two-arm, parallel-group clinical trial (1:1 allocation ratio).
+*   **Objective:** To evaluate and compare the treatment outcomes of Advanced Platelet-Rich Fibrin (A-PRF) versus Platelet-Rich Fibrin (PRF) as scaffolds in Regenerative Endodontic Treatment (RET) of traumatized immature non-vital anterior teeth.
+*   **Study Groups:** 
+    *   Group 1: A-PRF scaffold
+    *   Group 2: PRF scaffold
+*   **Sample Size:** Initially enrolled $N=30$ ($n=15$ per group). However, 9 patients were excluded/lost to follow-up during the 12-month period, leaving a final analyzed sample of $N=21$.
+*   **Participants:** Patients aged 8–30 years with cooperative behavior, having an immature single-rooted non-vital tooth (trauma etiology), apical width >1mm, with or without periapical lesions, and no systemic diseases.
+*   **Independent Variable:** Type of autologous platelet concentrate scaffold (A-PRF vs. PRF).
+*   **Dependent Variables & Measurements:**
+    1.  *Periapical Status/Healing:* Categorical/Ordinal. Measured using the Periapical Index (PAI) scores (1 to 5). Grouped into outcomes: Healed, Healing, or Diseased.
+    2.  *Root Length:* Continuous. Measured radiographically (preoperative vs. postoperative). *(Inferred from standard RET protocols and the article's conclusion).*
+    3.  *Root Dentin Thickness:* Continuous. Measured radiographically (preoperative vs. postoperative). *(Inferred from the article's conclusion).*
+    4.  *Clinical Symptoms:* Categorical (Nominal). Presence/absence of pain, swelling, or sinus tract.
+*   **Time Points:** Baseline (Preoperative), 6 months, and 12 months.
+*   **Data Collection:** Standardized parallel technique radiographs and clinical evaluations performed by a single investigator.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given the high attrition rate (9 dropouts) and the small final sample size ($N=21$, roughly 10-11 per group), non-parametric tests will likely dominate the analysis, though parametric tests are listed conditionally.
+
+#### CATEGORY A – MANDATORY TESTS
+*(Tests without which the analysis would be incomplete)*
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the distribution for continuous variables (root length, root dentin thickness).
+*   **Why appropriate:** 1) The sample size is very small ($n \approx 10$ per group), making visual inspection of normality (like Q-Q plots) unreliable. 2) It is highly sensitive and specifically designed for small sample sizes ($N < 50$).
+*   **Why it may not be appropriate:** It can sometimes be underpowered in extremely small sample sizes, failing to detect non-normality.
+*   **When NOT to use:** Do not use for categorical or ordinal data (e.g., PAI scores, Healed/Diseased status).
+*   **Alternative:** Kolmogorov-Smirnov test (though less preferred for small samples).
+
+**2. Mann-Whitney U Test (or Independent Samples t-test if normal)**
+*   **Purpose:** To compare the continuous radiographic changes (gain in root length and root thickness) between the A-PRF and PRF groups.
+*   **Why appropriate:** 1) It does not assume a normal distribution, which is highly probable given the small sample size. 2) It is ideal for comparing two independent groups on a continuous or ordinal dependent variable.
+*   **Why it may not be appropriate:** It tests for differences in mean ranks, not actual means, which can sometimes make clinical interpretation slightly less intuitive than a t-test.
+*   **When NOT to use:** Do not use if the data is perfectly normally distributed and variances are equal (use t-test instead to maximize statistical power).
+*   **Alternative:** Independent Samples t-test (if Shapiro-Wilk confirms normality and Levene’s test confirms equal variance).
+
+**3. Wilcoxon Signed-Rank Test (or Paired t-test if normal)**
+*   **Purpose:** To evaluate within-group changes from baseline to 12 months for root length and dentin thickness (i.e., did A-PRF significantly increase root length from baseline?).
+*   **Why appropriate:** 1) It accounts for the paired nature of the data (same tooth measured twice). 2) It does not require the assumption of normally distributed differences.
+*   **Why it may not be appropriate:** It discards the magnitude of the differences if they are extreme, relying only on ranks, which might lose some data granularity.
+*   **When NOT to use:** Do not use for comparing the A-PRF group against the PRF group (independent samples).
+*   **Alternative:** Paired samples t-test (if the differences between paired values are normally distributed).
+
+**4. Fisher’s Exact Test**
+*   **Purpose:** To compare the categorical treatment outcomes (Healed / Healing / Diseased) between the two scaffold groups.
+*   **Why appropriate:** 1) The sample size is small ($N=21$), meaning expected cell frequencies in a contingency table will almost certainly be less than 5. 2) It provides an exact p-value for small, sparse datasets.
+*   **Why it may not be appropriate:** It can be computationally intensive for tables larger than 2x2, though modern software handles 2x3 tables easily.
+*   **When NOT to use:** Do not use if the sample size is large and all expected cell counts are $>5$.
+*   **Alternative:** Freeman-Halton extension of Fisher's exact test (specifically for 2x3 tables) or Likelihood Ratio test.
+
+#### CATEGORY B – RECOMMENDED TESTS
+*(Tests that enhance the quality and rigor of the analysis)*
+
+**1. Intra-class Correlation Coefficient (ICC)**
+*   **Purpose:** To establish intra-rater reliability for the radiographic measurements.
+*   **Why appropriate:** 1) The methodology states a "single investigator" performed the radiographic evaluations; proving that this investigator is consistent with themselves is vital for internal validity. 2) It is the gold standard for assessing reliability of continuous measurements (root length/thickness).
+*   **Why it may not be appropriate:** It requires the investigator to have measured a subset of the radiographs at least twice, blinded to their first measurement. If this wasn't done, ICC cannot be calculated.
+*   **When NOT to use:** Do not use for categorical data (e.g., Healed/Diseased).
+*   **Alternative:** Cohen’s Kappa (for the ordinal PAI scores).
+
+**2. Baseline Equivalence Testing (Mann-Whitney U / Fisher's Exact)**
+*   **Purpose:** To ensure the two groups were statistically similar at baseline regarding age, initial root length, and initial PAI scores.
+*   **Why appropriate:** 1) Despite randomization, small sample sizes often lead to baseline imbalances by chance. 2) It proves that any post-operative differences are due to the scaffolds, not pre-existing group differences.
+*   **Why it may not be appropriate:** Some statisticians argue that if randomization was truly random, baseline testing is philosophically redundant.
+*   **When NOT to use:** Do not use as the primary outcome measure.
+*   **Alternative:** ANCOVA (using baseline scores as a covariate), though assumptions likely won't be met here.
+
+#### CATEGORY C – OPTIONAL TESTS
+*(Tests that provide supplementary insights)*
+
+**1. Effect Size Calculation (Rank-Biserial Correlation or Cohen’s *d*)**
+*   **Purpose:** To determine the magnitude of the difference between A-PRF and PRF, not just the statistical significance.
+*   **Why appropriate:** 1) P-values are heavily influenced by small sample sizes; effect sizes tell the clinician if the difference is actually meaningful. 2) It aids future researchers in conducting power analyses for systematic reviews.
+*   **Why it may not be appropriate:** Confidence intervals around effect sizes in small samples can be extremely wide, making them difficult to interpret definitively.
+*   **When NOT to use:** Do not use as a replacement for inferential statistics, but rather as an accompaniment.
+*   **Alternative:** Number Needed to Treat (NNT) for categorical success rates.
+
+**2. Intention-to-Treat (ITT) Analysis using Multiple Imputation**
+*   **Purpose:** To account for the 9 patients who dropped out of the study.
+*   **Why appropriate:** 1) A dropout rate of 30% (9 out of 30) introduces severe attrition bias. 2) ITT preserves the benefits of the original randomization.
+*   **Why it may not be appropriate:** Imputing data for nearly 30% of a small sample can introduce artificial variance and relies heavily on the assumption that data is Missing at Random (MAR).
+*   **When NOT to use:** Do not use if the reasons for dropout are known to be directly related to treatment failure (Missing Not At Random - MNAR), which requires different modeling.
+*   **Alternative:** Per-protocol analysis (analyzing only the 21 completers), which is likely what the authors did, but it overestimates treatment efficacy.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Pearson’s Chi-Square Test:** Should NOT be used to compare categorical outcomes (Healed/Healing/Diseased). The final sample size is 21. A 2x3 table will inevitably have expected cell counts below 5, violating the fundamental assumption of the Chi-Square test and leading to Type I errors.
+*   **Analysis of Variance (ANOVA):** Should NOT be used to compare the groups unless rigorous normality and homogeneity of variance are proven. Given $n \approx 10$ per group, parametric assumptions are highly unlikely to be met.
+*   **Pearson Correlation Coefficient:** Should NOT be used. The study objective is to *compare* outcomes between two distinct groups, not to find the linear relationship between two continuous variables.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must be highly conservative due to the small final sample size ($N=21$) resulting from a high attrition rate. The analysis should begin with descriptive statistics and baseline equivalence testing to ensure the randomization held despite the dropouts. 
+
+Because the sample size is too small to reliably assume a normal distribution, the core analytical framework should rely on robust **non-parametric statistics**. The Mann-Whitney U test will evaluate the superiority of A-PRF over PRF regarding root thickness and length, while the Wilcoxon Signed-Rank test will validate the overall efficacy of the RET procedure within each group. Fisher's Exact test is strictly required for categorical clinical outcomes due to sparse data. Finally, because a single investigator performed all measurements, establishing intra-rater reliability (ICC/Kappa) is critical to validate the study's radiographic findings. Reporting effect sizes will provide much-needed clinical context to the p-values.

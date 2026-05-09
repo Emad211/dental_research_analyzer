@@ -933,3 +933,127 @@ TASK 4: SUMMARY OF ANALYTICAL APPROACH
   - Appropriate analyses of secondary outcomes (analgesic use, unscheduled appointments) with chi-square/Fisher’s exact tests and effect sizes with confidence intervals.  
 
 - The plan emphasizes assumption checking, potential covariate adjustment, and transparency about multiplicity. This approach aligns with best practices for clinical trials, provides clinically interpretable results, and maximizes the informative value of the collected data while avoiding inappropriate tests and over-interpretation.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_171923
+──────────────────────────────────────────────────────────────────────
+
+Here is the comprehensive extraction and statistical analysis plan based on the provided dental research article.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Randomized Clinical Trial (RCT), parallel-group design, single-blinded (patients blinded).
+*   **Objective:** To compare the effect of 5.25% NaOCl gel versus 5.25% NaOCl solution on postoperative pain following root canal treatment.
+*   **Null Hypothesis:** There is no difference between the NaOCl gel and solution groups in terms of postoperative pain.
+*   **Groups:** Two groups (1:1 allocation ratio):
+    1.  NaOCl solution group (5.25%)
+    2.  NaOCl gel group (5.25%)
+*   **Sample Size:** Calculated requirement was 18 patients per group (α=0.05, effect size=0.84, power=0.80). Actual enrollment was 30 patients per group (N=60 total) to account for potential dropouts.
+*   **Inclusion Criteria:** Healthy (ASA I), age 18–65, molar teeth, symptomatic apical periodontitis, symptomatic irreversible pulpitis, no radiolucency, preoperative pain > 50 on a 10 cm Visual Analog Scale (VAS).
+*   **Exclusion Criteria:** Previous root canal, root fracture, swelling, pathological mobility, pocket depth > 3 mm, antibiotics/analgesics within 1 month prior, radiographic lesions.
+*   **Variables:**
+    *   *Independent Variable:* Type of irrigant (NaOCl gel vs. NaOCl solution).
+    *   *Dependent Variable (Primary):* Postoperative pain levels.
+    *   *Dependent Variables (Secondary):* Analgesic intake, unscheduled appointments.
+    *   *Covariate/Baseline:* Preoperative pain level.
+*   **Measurements & Timepoints:** Pain measured using a 10 cm VAS at 5 timepoints: Preoperative (baseline), 24 hours, 48 hours, 72 hours, and 1 week post-treatment.
+*   **Data Collection Methods:** Patient-reported questionnaire recording VAS scores, analgesic intake, and unscheduled appointments.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Core tests required for basic analysis)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the distribution of VAS pain scores at each time point.
+*   **Why appropriate:**
+    1. VAS scores can often be skewed (e.g., most patients reporting zero pain at 1 week), making normality checks vital.
+    2. The sample size (n=30 per group) is small enough that the Shapiro-Wilk test is highly accurate for detecting deviations from normality.
+*   **Why it may not be appropriate:** If the data is heavily clustered at the extremes (0 or 100), the test will automatically fail, but visual inspection (Q-Q plots) might be more informative than the p-value alone.
+*   **When NOT to use:** Do not use for categorical data (analgesic intake, unscheduled appointments).
+*   **Alternative:** Kolmogorov-Smirnov test (though less powerful for n=30) or visual assessment of histograms/Q-Q plots.
+
+**2. Two-Way Mixed ANOVA (Repeated Measures)**
+*   **Purpose:** To compare the mean VAS pain scores between the two groups (between-subjects factor) across the five timepoints (within-subjects factor).
+*   **Why appropriate:**
+    1. It evaluates both the main effects (Treatment group, Time) and the interaction effect (Treatment × Time), which is the exact objective of the study.
+    2. It accounts for the correlated nature of repeated pain measurements taken from the same patient over time.
+*   **Why it may not be appropriate:** It requires complete datasets. If patients fail to return the 1-week questionnaire (dropouts), listwise deletion will discard their earlier data, reducing statistical power.
+*   **When NOT to use:** When the assumption of sphericity is violated (Mauchly's test) and cannot be corrected, or if the VAS data is severely non-normally distributed.
+*   **Alternative:** Friedman test (for within-group time differences) and Mann-Whitney U test (for between-group differences at specific time points) if data is non-parametric.
+
+**3. Chi-Square Test of Independence (or Fisher’s Exact Test)**
+*   **Purpose:** To compare the proportion of patients who took analgesics or required unscheduled appointments between the gel and solution groups.
+*   **Why appropriate:**
+    1. Analgesic intake and unscheduled appointments are nominal categorical variables (Yes/No).
+    2. It provides a straightforward comparison of complication/intervention rates between the two independent groups.
+*   **Why it may not be appropriate:** If the overall incidence of analgesic use or unscheduled appointments is extremely low, the expected cell counts may drop below 5, violating Chi-Square assumptions.
+*   **When NOT to use:** When comparing continuous variables (like the VAS scores).
+*   **Alternative:** Fisher’s Exact Test (must be used if >20% of expected cell frequencies are less than 5).
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Independent Samples t-test (or Mann-Whitney U test) for Baseline Equivalence**
+*   **Purpose:** To compare preoperative VAS scores between the gel and solution groups.
+*   **Why appropriate:**
+    1. Ensures that the randomization process was successful and that one group did not start with significantly worse pain than the other.
+    2. Validates that any postoperative differences are due to the intervention, not baseline disparities.
+*   **Why it may not be appropriate:** Some statisticians argue that baseline testing in properly randomized trials is unnecessary because any differences are due to chance by definition.
+*   **When NOT to use:** Do not use to compare the 3+ postoperative time points simultaneously (inflates Type I error).
+*   **Alternative:** Mann-Whitney U test if baseline VAS scores are not normally distributed.
+
+**2. Linear Mixed-Effects Model (LMM)**
+*   **Purpose:** An advanced alternative to the Mixed ANOVA to evaluate pain scores over time between groups.
+*   **Why appropriate:**
+    1. LMM handles missing data (dropouts) using Maximum Likelihood Estimation, retaining patients in the analysis even if they missed the 72h or 1-week questionnaire.
+    2. It can easily incorporate covariates (like baseline pain or tooth type) into the model.
+*   **Why it may not be appropriate:** It is computationally complex and may be difficult to interpret for a general dental audience compared to a standard ANOVA.
+*   **When NOT to use:** If the sample size is extremely small or if the data is strictly categorical.
+*   **Alternative:** Generalized Estimating Equations (GEE).
+
+**3. Bonferroni or Tukey Post-Hoc Tests**
+*   **Purpose:** To determine exactly *where* the differences lie if the Mixed ANOVA/LMM shows a significant interaction or main effect.
+*   **Why appropriate:**
+    1. Controls the Family-Wise Error Rate (Type I error) when making multiple pairwise comparisons (e.g., comparing groups at 24h, 48h, 72h).
+    2. Pinpoints the specific timepoint where the NaOCl gel is superior (as the conclusion hints at "day 1").
+*   **Why it may not be appropriate:** Bonferroni can be overly conservative, potentially increasing Type II errors (false negatives) and masking true, subtle clinical differences.
+*   **When NOT to use:** When the main ANOVA/LMM yields non-significant results.
+*   **Alternative:** Benjamini-Hochberg procedure (False Discovery Rate) or Sidak correction.
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Analysis of Covariance (ANCOVA)**
+*   **Purpose:** To compare postoperative pain at specific time points (e.g., 24 hours) while statistically controlling for baseline preoperative pain.
+*   **Why appropriate:**
+    1. Reduces within-group error variance, increasing the statistical power to detect a true difference between the irrigants.
+    2. Adjusts for any slight, non-significant baseline imbalances between the groups.
+*   **Why it may not be appropriate:** Assumes homogeneity of regression slopes (the relationship between pre-op and post-op pain must be the same in both groups).
+*   **When NOT to use:** If the covariate (baseline pain) is highly correlated with the treatment itself (impossible here since baseline is pre-treatment).
+*   **Alternative:** Multiple linear regression.
+
+**2. Logistic Regression**
+*   **Purpose:** To predict the likelihood of a patient needing analgesics based on multiple predictors (Treatment group, Baseline pain, Age).
+*   **Why appropriate:**
+    1. Allows for the assessment of the treatment effect on analgesic use while controlling for confounding variables.
+    2. Provides an Odds Ratio (OR), which is a highly interpretable metric for clinical risk assessment.
+*   **Why it may not be appropriate:** The sample size (N=60) limits the number of predictors you can include without overfitting the model (rule of thumb is 10 events per predictor).
+*   **When NOT to use:** When predicting a continuous outcome (like VAS score).
+*   **Alternative:** Poisson regression (if analyzing the *count* of analgesic pills taken rather than Yes/No).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Multiple Independent t-tests (Uncorrected):** Running separate t-tests at 24h, 48h, 72h, and 1 week to compare the two groups is highly inappropriate. This will severely inflate the Type I error rate (alpha inflation), leading to false-positive conclusions.
+*   **One-Way ANOVA:** Inappropriate because there are two independent variables (Treatment Group and Time). A One-Way ANOVA can only handle one independent variable and ignores the repeated-measures nature of the data.
+*   **Paired Samples t-test (in isolation):** While it could show that pain decreased from baseline to 24h *within* the gel group, it cannot compare the gel group to the solution group. It fails to answer the primary research question.
+*   **Pearson Correlation for Agreement:** Should not be used to assess the relationship between time points. Repeated measures require models that account for auto-correlation (like LMM or Repeated Measures ANOVA), not simple bivariate correlations.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach is dictated by the study's design as a parallel-group RCT with longitudinal, repeated continuous measurements (VAS scores) and categorical secondary outcomes (analgesics). 
+
+The strategy begins with mandatory assumption checks (normality) and baseline equivalence testing to validate the randomization. The core analysis relies on a Two-Way Mixed ANOVA (or preferably a Linear Mixed Model to robustly handle expected dropouts at the 1-week mark) to evaluate the interaction between the irrigant type and time on postoperative pain. This is supplemented by appropriate post-hoc testing with alpha correction to pinpoint specific days of significance (e.g., 24 hours). Finally, categorical tests (Chi-square/Fisher's) are utilized to analyze secondary clinical outcomes like analgesic consumption. This comprehensive approach ensures statistical rigor, controls for error rates, and directly answers the study's null hypothesis.

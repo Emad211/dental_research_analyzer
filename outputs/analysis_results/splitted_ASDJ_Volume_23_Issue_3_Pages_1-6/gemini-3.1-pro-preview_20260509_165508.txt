@@ -1,0 +1,100 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_ASDJ_Volume_23_Issue_3_Pages_1-6.pdf
+Status : ok
+Time   : 20260509_165508
+══════════════════════════════════════════════════════════════════════
+
+Here is the comprehensive data extraction and statistical analysis plan based on the provided dental research article.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Title:** Post Operative Pain Assessment After Manual Dynamic Agitation at Three Different Time Intervals (An In Vivo Study)
+*   **Study Design:** Single-arm, prospective, repeated-measures observational clinical study (In Vivo). *Note: There is no control group; the comparison is within the same subjects across time.*
+*   **Objective:** To compare the levels of postoperative pain after manual dynamic activation of irrigation at three different time intervals.
+*   **Null Hypothesis:** There is no difference in the level of postoperative pain at different time intervals after manual dynamic agitation.
+*   **Sample Size:** N = 22 patients.
+*   **Population/Demographics:** Females only, aged 25-45 years, medically free of systemic diseases.
+*   **Clinical Condition:** Symptomatic irreversible pulpitis in lower molars with mature roots.
+*   **Intervention:** Single-visit endodontic treatment using Fanta rotary files, 2.5% NaOCl irrigation, and manual dynamic agitation for 60 seconds using a master cone, followed by lateral compaction obturation.
+*   **Variables:**
+    *   *Independent Variable:* Time (3 levels: 6 hours, 24 hours, and 48 hours post-treatment).
+    *   *Dependent Variable:* Postoperative pain intensity.
+*   **Measurement Tool:** Numerical Rating Scale (NRS) ranging from 0 to 10. The scale is also categorized into: 0 (no pain), 1-3 (mild), 4-6 (moderate), and 7-10 (severe).
+*   **Data Collection Method:** Patient self-reporting using the NRS at the specified time intervals.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given the small sample size (n=22), the repeated-measures design (same patients measured 3 times), and the ordinal nature of the dependent variable (NRS 0-10), non-parametric statistics are the most robust choice.
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Friedman Test**
+*   **Purpose:** To test the null hypothesis by comparing the overall differences in pain scores across the three time points (6h, 24h, 48h).
+*   **Why appropriate:**
+    1. It is specifically designed for comparing three or more paired/repeated measures.
+    2. It does not assume normal distribution, which is ideal for ordinal data (NRS) and small sample sizes (n=22).
+*   **Why it may not be appropriate:** It only tells you that a difference exists somewhere among the time points, but it does not specify *between which specific* time points the difference lies.
+*   **When this test should NOT be used:** When comparing independent groups (e.g., comparing two different irrigation techniques in different patients).
+*   **Alternative if assumptions are violated:** Repeated Measures ANOVA (only if the NRS data is treated as continuous and strictly meets the assumption of normality and sphericity, which is highly unlikely here).
+
+**2. Wilcoxon Signed-Rank Test with Bonferroni Correction (Post-Hoc Analysis)**
+*   **Purpose:** To conduct pairwise comparisons (6h vs 24h; 24h vs 48h; 6h vs 48h) to pinpoint exactly where the significant changes in pain occurred.
+*   **Why appropriate:**
+    1. It correctly handles paired/dependent ordinal data for two time points.
+    2. Applying the Bonferroni correction (adjusting the alpha level, e.g., p < 0.016 instead of 0.05) prevents the inflation of Type I error (false positives) caused by multiple testing.
+*   **Why it may not be appropriate:** The Bonferroni correction is highly conservative and may reduce statistical power, increasing the risk of a Type II error (false negative) in a small sample of 22.
+*   **When this test should NOT be used:** If the initial Friedman test is non-significant (p > 0.05), post-hoc testing should not be performed.
+*   **Alternative if assumptions are violated:** Dunn’s Test for multiple comparisons.
+
+#### CATEGORY B – RECOMMENDED (Enhances Quality)
+
+**1. Descriptive Statistics (Median, Interquartile Range [IQR], and Frequencies)**
+*   **Purpose:** To summarize the central tendency and dispersion of the pain scores, and to show the clinical distribution of pain categories.
+*   **Why appropriate:**
+    1. Medians and IQRs are mathematically correct for ordinal data (NRS), unlike Means and Standard Deviations which can be skewed by outliers.
+    2. Reporting frequencies/percentages of the categorical pain levels (None, Mild, Moderate, Severe) provides immediate clinical relevance for dental practitioners.
+*   **Why it may not be appropriate:** Medians can sometimes obscure small but clinically meaningful shifts in data that a mean might capture.
+*   **When this test should NOT be used:** If the data is strictly continuous, normally distributed, and lacks outliers.
+*   **Alternative if assumptions are violated:** Mean and Standard Deviation (if the researcher insists on treating the 11-point NRS as a continuous variable).
+
+**2. Kendall’s W (Coefficient of Concordance)**
+*   **Purpose:** To calculate the effect size for the Friedman test.
+*   **Why appropriate:**
+    1. It provides the *magnitude* of the pain reduction over time, moving beyond a simple "significant/non-significant" p-value.
+    2. It standardizes the effect on a scale from 0 (no agreement/effect) to 1 (complete agreement/massive effect).
+*   **Why it may not be appropriate:** It is not as universally understood by clinical readers as standard mean differences.
+*   **When this test should NOT be used:** If the Friedman test is not the primary omnibus test.
+*   **Alternative if assumptions are violated:** Partial Eta-Squared (if using Repeated Measures ANOVA).
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. Generalized Estimating Equations (GEE) for Ordinal Logistic Regression**
+*   **Purpose:** To model the probability of a patient being in a higher or lower pain category over time.
+*   **Why appropriate:**
+    1. It accounts for the within-subject correlation of repeated measures.
+    2. It handles missing data much better than the Friedman test (e.g., if a patient drops out at 48 hours, their 6h and 24h data can still be used).
+*   **Why it may not be appropriate:** GEE relies on large-sample asymptotic theory; a sample size of 22 may result in unstable model estimates.
+*   **When this test should NOT be used:** When the sample size is too small for the model to converge.
+*   **Alternative if assumptions are violated:** Mixed-Effects Ordinal Regression.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+The following tests should **NOT** be used in this study:
+
+1.  **Independent Samples t-test / Mann-Whitney U Test:** These tests assume that the groups being compared are completely independent (different people). This study measures the *same* 22 patients over time.
+2.  **One-Way ANOVA / Kruskal-Wallis Test:** Similar to the above, these are for three or more *independent* groups. Using them here would violate the assumption of independence and ignore the paired nature of the data.
+3.  **Pearson Correlation:** The study is looking for *differences* in pain across time intervals, not the linear relationship between two continuous variables.
+4.  **Chi-Square Test of Independence (on raw repeated measures):** If used to compare the frequencies of pain categories across the three time points, it would be invalid because it assumes independent observations. (McNemar-Bowker or Cochran's Q would be the paired equivalents for categorical data).
+
+---
+
+### TASK 4: SUMMARY OF ANALYTICAL APPROACH
+
+The overall analytical approach is dictated by three primary factors: a single-arm design, repeated measures (6h, 24h, 48h), and an ordinal dependent variable (NRS pain scale) with a relatively small sample size (n=22). 
+
+Because the data violates the assumption of independence required for standard between-group tests, and likely violates the normality assumption required for parametric tests, a **non-parametric repeated-measures approach** is required. The analysis should begin with descriptive statistics utilizing Medians, IQRs, and categorical frequencies. The core hypothesis testing must be conducted using the **Friedman test** to detect overall differences across time, followed by **Wilcoxon Signed-Rank tests with a Bonferroni correction** to identify specific time-point differences while protecting against Type I errors. This approach ensures statistical rigor while accurately reflecting the clinical reality of the data.

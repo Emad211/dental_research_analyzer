@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splitted_follow_up_of_endodontically_treated_teeth_without.3.pdf",
+  "timestamp": "20260509_172422",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "ok",
+      "chars": 9682
+    }
+  }
+}

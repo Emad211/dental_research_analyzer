@@ -1,0 +1,105 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_s41598-021-93236-2.pdf
+Status : ok
+Time   : 20260509_175134
+══════════════════════════════════════════════════════════════════════
+
+Based on the provided text from the dental research article, here is the comprehensive biostatistical extraction and statistical analysis plan.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** *In vivo* prospective cohort study (Single-arm, longitudinal/repeated measures).
+*   **Objectives:** To evaluate the regenerative potential of a platelet-rich fibrin (PRF) scaffold in non-vital immature permanent maxillary central incisors over a 2-year follow-up.
+    *   *Primary:* Elimination of pain/swelling, bony healing, resolution of apical radiolucency.
+    *   *Secondary:* Increase in root length, increase in root dentin thickness, decrease in apical diameter.
+    *   *Tertiary:* Positive pulp vitality response.
+*   **Groups:** One group (Single-arm: all received PRF scaffold).
+*   **Sample Size:** 19 patients, 23 teeth. *(Critical biostatistical note: 4 patients contributed 2 teeth each, creating clustered/nested data).*
+*   **Variables & Measurements:**
+    *   *Continuous Variables:* Apical diameter (mm), Root length (mm), Mesial dentinal wall thickness (apical & middle third, mm), Distal dentinal wall thickness (apical & middle third, mm).
+    *   *Categorical/Binary Variables:* Pain/swelling (presence/absence), Pulp vitality (positive/negative via cold/heat tests), Periapical status (PAI index - ordinal).
+*   **Data Collection Timepoints:** Pre-operative (baseline), and post-operative at 3, 6, 9, 12, 15, 18, and 24 months.
+*   **Data Collection Methods:** Clinical assessment (sensibility testing, symptoms) and digital radiographic assessment.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given the longitudinal nature of the study and the clustering of data (multiple teeth in some patients), the following statistical tests are recommended.
+
+#### CATEGORY A – MANDATORY (Tests without which the analysis would be incomplete)
+
+**1. Linear Mixed-Effects Models (LMM) or Generalized Estimating Equations (GEE)**
+*   **Purpose:** To analyze the changes in continuous radiographic measurements (root length, dentin thickness, apical diameter) across the 8 timepoints.
+*   **Why appropriate:**
+    1. It accounts for the *clustering effect* (4 patients having 2 teeth), as treating all 23 teeth as independent would violate statistical assumptions.
+    2. It handles longitudinal repeated measures efficiently, even if some patients miss a specific follow-up appointment (handles missing data better than traditional ANOVA).
+*   **Why it may not be appropriate:** It can be mathematically complex and may suffer from convergence issues given the relatively small sample size (N=23).
+*   **When this test should NOT be used:** If all data points are strictly independent (e.g., exactly one tooth per patient) and measured at only one timepoint.
+*   **Alternative if assumptions are violated:** Friedman test (non-parametric), but this requires aggregating the data of the 4 patients with two teeth (e.g., taking the average of their two teeth) to ensure strict independence.
+
+**2. Generalized Linear Mixed Models (GLMM) for Binary Outcomes**
+*   **Purpose:** To evaluate changes in categorical/binary outcomes over time (e.g., presence/absence of pain, positive/negative pulp vitality).
+*   **Why appropriate:**
+    1. Specifically designed for binary repeated-measures data.
+    2. Accounts for the intra-patient correlation (clustering of teeth).
+*   **Why it may not be appropriate:** Binary mixed models require larger sample sizes to achieve adequate power; with N=23, the model might overfit or fail to converge.
+*   **When this test should NOT be used:** When analyzing continuous variables like root length in millimeters.
+*   **Alternative if assumptions are violated:** Cochran’s Q test (for multiple timepoints) or McNemar’s test (comparing just baseline to 24 months), provided the clustered teeth are averaged or one is randomly excluded to maintain independence.
+
+#### CATEGORY B – RECOMMENDED (Tests that enhance quality and rigor)
+
+**1. Shapiro-Wilk Test & Q-Q Plots**
+*   **Purpose:** To assess the normality of the continuous variables (radiographic measurements) at each timepoint.
+*   **Why appropriate:**
+    1. The sample size is small (N=23), making the assumption of a normal distribution highly questionable.
+    2. It dictates whether parametric or non-parametric post-hoc tests should be utilized.
+*   **Why it may not be appropriate:** In very small sample sizes, the Shapiro-Wilk test has low power and might fail to detect non-normality.
+*   **When this test should NOT be used:** For categorical or ordinal data (like the PAI index or vitality tests).
+*   **Alternative if assumptions are violated:** Visual inspection of histograms and Q-Q plots is the direct alternative to formal normality testing.
+
+**2. Post-Hoc Pairwise Comparisons with Holm-Bonferroni Correction**
+*   **Purpose:** To determine exactly *which* specific follow-up timepoints (e.g., 12 months vs. baseline, 24 months vs. baseline) show statistically significant differences.
+*   **Why appropriate:**
+    1. Prevents the inflation of Type I error (false positives) that occurs when making multiple comparisons across 8 timepoints.
+    2. Holm-Bonferroni is sequentially less conservative than standard Bonferroni, preserving statistical power in a small cohort.
+*   **Why it may not be appropriate:** Even with the Holm adjustment, correcting for 8 timepoints can severely reduce power, potentially leading to Type II errors (false negatives).
+*   **When this test should NOT be used:** If the primary omnibus test (e.g., the LMM) shows no overall significant difference across time.
+*   **Alternative if assumptions are violated:** False Discovery Rate (FDR) control (e.g., Benjamini-Hochberg procedure).
+
+#### CATEGORY C – OPTIONAL (Tests that provide supplementary insights)
+
+**1. Intra-class Correlation Coefficient (ICC) / Cohen’s Kappa**
+*   **Purpose:** To evaluate intra-examiner and inter-examiner reliability for the radiographic measurements and PAI scoring.
+*   **Why appropriate:**
+    1. Measuring fractions of millimeters on radiographs is highly subjective and prone to human error.
+    2. Proving high agreement validates the reliability of the study's core data.
+*   **Why it may not be appropriate:** If the measurements were taken by a single, unblinded examiner without repeating the measurements, ICC cannot be calculated.
+*   **When this test should NOT be used:** For fully automated, machine-generated absolute values where human interpretation is absent.
+*   **Alternative if assumptions are violated:** Bland-Altman plots to visually assess agreement and bias between measurements.
+
+**2. Kaplan-Meier Survival Analysis**
+*   **Purpose:** To perform a time-to-event analysis for achieving a positive pulp vitality response or complete apical closure.
+*   **Why appropriate:**
+    1. Provides a clear clinical timeline (median time) of when practitioners can expect success.
+    2. Effectively handles right-censored data (teeth that did not achieve vitality by the 24-month mark).
+*   **Why it may not be appropriate:** The sample size is very small, which will result in wide confidence intervals and step-heavy, unreliable survival curves.
+*   **When this test should NOT be used:** If the event (e.g., vitality) occurs for all subjects at the exact same timepoint.
+*   **Alternative if assumptions are violated:** Simply reporting the median time-to-event with an interquartile range (IQR).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test / Mann-Whitney U test:** These tests compare two *independent* groups. This study is a single-arm design where the same group is measured repeatedly over time.
+*   **Standard Repeated Measures ANOVA (without adjustments):** This test strictly assumes the independence of subjects. Because 4 patients contributed 2 teeth, the data contains clustered/nested dependencies. Using standard RM-ANOVA would violate the assumption of independence and artificially inflate the degrees of freedom.
+*   **Pearson Correlation (for time trends):** Using simple correlation to track growth over time ignores the repeated-measures structure of the data and the intra-subject correlation, leading to invalid p-values.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must address three primary biostatistical challenges: the longitudinal nature of the data (8 timepoints), the small sample size (N=23), and the **clustering effect** (multiple teeth nested within single patients). 
+
+Because treating multiple teeth from the same patient as independent entities is a fatal flaw in dental statistics, the analytical approach must be anchored by **Mixed-Effects Models (LMM/GLMM)**. These models will accurately track the regenerative changes (root length, dentin thickness, vitality) over the 2-year period while mathematically adjusting for the nested data structure and handling any missing follow-up data. Supplementing this with rigorous post-hoc corrections (Holm-Bonferroni) will ensure that the reported timelines for significant clinical healing are statistically sound and free from Type I error inflation.

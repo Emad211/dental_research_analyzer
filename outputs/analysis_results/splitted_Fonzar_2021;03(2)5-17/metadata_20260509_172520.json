@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splitted_Fonzar_2021;03(2)5-17.pdf",
+  "timestamp": "20260509_172520",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "ok",
+      "chars": 8921
+    }
+  }
+}

@@ -936,3 +936,98 @@ TASK 4: SUMMARY AND JUSTIFICATION OF ANALYTICAL APPROACH
 - Use of log transformation, nonparametric sensitivity analyses, and effect size estimation ensures that conclusions are robust to the non-normal, skewed nature of microbiological data and that effect magnitudes are clinically interpretable.
 
 Overall, this analytical strategy aligns with the study design, respects the structure and distribution of the data, and provides a rigorous and transparent framework for assessing the impact of adjunctive laser irradiation on root canal bacterial load.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_170714
+──────────────────────────────────────────────────────────────────────
+
+Here is a comprehensive statistical analysis plan based on the provided dental research article.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** *In vivo*, randomized controlled clinical trial (RCT).
+*   **Objective:** To investigate the disinfectant effect of a 445-nm diode laser as an adjuvant therapy option, testing the hypothesis that it additionally reduces residual bacterial counts after conventional root canal disinfection.
+*   **Sample Size:** 57 patients total.
+*   **Groups:** 3 parallel groups (n = 19 per group):
+    *   *Group A:* Additional rinsing with 5 mL NaOCl (3%) for 1 min.
+    *   *Group B:* Laser irradiation (445 nm, 0.6 W, 4 × 10 s).
+    *   *Group C:* Combination of NaOCl + Laser (A + B).
+*   **Variables:**
+    *   *Independent Variables:* 
+        1. Treatment Group (3 levels: NaOCl, Laser, Combination).
+        2. Time (3 time points: implied as baseline, post-chemomechanical preparation, and post-adjuvant treatment).
+    *   *Dependent Variables:* 
+        1. *Primary:* Total bacterial load (TBL) measured in genome equivalent colony-forming units (CFUs) per milliliter.
+        2. *Secondary:* Quantity/presence of 8 specific bacterial species (*P. endodontalis, T. denticola, T. forsythia, F. nucleatum, P. gingivalis, P. intermedia, P. micros, E. faecalis*).
+*   **Measurements & Data Collection:** Microbiological samples collected using sterile paper points left in the root canal for 1 minute. Analyzed via quantitative real-time polymerase chain reaction (qPCR) after DNA extraction.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+*Note: Microbiological CFU data typically exhibit exponential growth and extreme positive skewness. It is standard biostatistical practice to apply a $\log_{10}$ transformation to TBL data prior to parametric analysis.*
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Two-Way Mixed-Design ANOVA (Repeated Measures)**
+*   **Purpose:** To compare the $\log_{10}$-transformed TBL across the 3 treatment groups and across the 3 time points.
+*   **Why appropriate:** 
+    1. It simultaneously analyzes the between-subjects factor (Treatment Group) and the within-subjects factor (Time).
+    2. It tests for an interaction effect (Group × Time), which is crucial to see if the *rate* of bacterial reduction differs depending on the adjuvant therapy used.
+*   **Why it may not be appropriate:** It assumes the data (even after log transformation) are normally distributed and that the variances of the differences between all combinations of related groups are equal (sphericity).
+*   **When this test should NOT be used:** If the $\log_{10}$-transformed data still severely violate normality assumptions, or if there is a high rate of missing data across time points.
+*   **Alternative:** Generalized Estimating Equations (GEE) or Linear Mixed Models (LMM), which handle missing data and non-normal distributions better; or non-parametric equivalents (Friedman test for time, Kruskal-Wallis for groups).
+
+**2. Post-Hoc Pairwise Comparisons (e.g., Bonferroni or Tukey's HSD)**
+*   **Purpose:** To determine exactly which groups or time points significantly differ from one another following a significant ANOVA result.
+*   **Why appropriate:** 
+    1. Controls the family-wise Type I error rate when making multiple comparisons.
+    2. Pinpoints the exact source of the statistical significance (e.g., proving Group C is significantly better than Group B).
+*   **Why it may not be appropriate:** Highly conservative adjustments (like Bonferroni) can severely reduce statistical power, increasing the risk of Type II errors (false negatives) in small samples (n=19).
+*   **When this test should NOT be used:** If the omnibus test (Mixed ANOVA) does not yield a statistically significant main effect or interaction.
+*   **Alternative:** Benjamini-Hochberg False Discovery Rate (FDR) procedure.
+
+#### CATEGORY B – RECOMMENDED (Quality and Rigor)
+
+**1. Shapiro-Wilk Test & Levene’s Test**
+*   **Purpose:** To test the assumptions of normality (Shapiro-Wilk) and homogeneity of variances (Levene's) for the continuous data.
+*   **Why appropriate:** 
+    1. Validates the use of parametric tests like ANOVA.
+    2. Justifies the necessity of the $\log_{10}$ transformation for the raw CFU data.
+*   **Why it may not be appropriate:** With n=19 per group, the Shapiro-Wilk test may lack the statistical power to detect deviations from normality.
+*   **When this test should NOT be used:** If the researcher has pre-determined the use of non-parametric tests regardless of the data distribution.
+*   **Alternative:** Visual inspection of data distribution using Q-Q (quantile-quantile) plots and histograms.
+
+**2. Kruskal-Wallis H Test (for specific bacterial species)**
+*   **Purpose:** To compare the quantities of the 8 specific bacterial species across the 3 treatment groups.
+*   **Why appropriate:** 
+    1. Specific bacterial counts often contain many "zero" values (if eradicated), creating heavily skewed, non-normal distributions that log-transformation cannot fix.
+    2. It does not assume normality or homogeneity of variance.
+*   **Why it may not be appropriate:** It evaluates differences in mean ranks rather than actual means, making clinical interpretation of the magnitude of difference slightly more abstract.
+*   **When this test should NOT be used:** If the qPCR data for specific bacteria is recorded strictly as categorical (Presence/Absence) rather than continuous counts.
+*   **Alternative:** If data is categorical (Presence/Absence), use the Chi-Square Test of Independence or Fisher's Exact Test.
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. Calculation of Effect Size (Partial Eta Squared $\eta_p^2$ and Cohen's *d*)**
+*   **Purpose:** To quantify the magnitude of the difference in bacterial reduction between the treatment protocols.
+*   **Why appropriate:** 
+    1. Provides clinical relevance (a statistically significant p-value does not always mean a clinically meaningful reduction).
+    2. Allows future researchers to use the data for meta-analyses and power calculations.
+*   **Why it may not be appropriate:** Effect sizes can be inflated or unstable in studies with smaller sample sizes and high biological variance.
+*   **When this test should NOT be used:** When the primary inferential tests are not statistically significant (reporting effect sizes for non-significant findings can be misleading).
+*   **Alternative:** Reporting 95% Confidence Intervals (CIs) for the mean differences.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test:** Should NOT be used to compare the treatment groups. Because there are three groups, running multiple t-tests will inflate the Type I error rate (alpha inflation). An ANOVA is required.
+*   **Paired t-test / Wilcoxon Signed-Rank Test (in isolation):** Should NOT be used as the primary method to compare baseline to post-treatment. While it handles repeated measures, doing this separately for each group ignores the between-group comparisons and interaction effects.
+*   **Pearson Correlation:** Should NOT be used. The primary independent variables (Treatment Group, Time) are categorical, not continuous. Correlation is meant to assess the linear relationship between two continuous variables.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must account for the exponential nature of microbiological data and the repeated-measures design of the clinical trial. Because raw CFU counts violate parametric assumptions, the data must first undergo a $\log_{10}$ transformation. A Two-Way Mixed-Design ANOVA is the most robust approach, as it allows the researchers to evaluate how bacterial loads change over time (within-subjects) and whether those changes differ depending on the assigned disinfection protocol (between-subjects). Rigorous assumption checking is recommended to validate this approach, with non-parametric alternatives reserved for specific bacterial species that may exhibit heavy zero-inflation. This strategy ensures statistical rigor while directly answering the study's hypothesis regarding the adjunctive efficacy of the 445-nm laser.

@@ -967,3 +967,129 @@ TASK 4 – SUMMARY OF ANALYTICAL APPROACH
   5. Conduct sensitivity analyses with non-parametric methods to ensure robustness to violations of normality.  
 
 This approach aligns with the study design, handles small sample and repeated measures appropriately, and yields clinically interpretable comparisons of antimicrobial efficacy between triple antibiotic paste and propolis.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_175545
+──────────────────────────────────────────────────────────────────────
+
+Here is the comprehensive information extraction and statistical analysis plan based on the provided dental research article.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Single-blinded, randomized clinical trial (*in vivo*).
+*   **Study Objective:** To evaluate and compare the antimicrobial efficacy of triple antibiotic paste (TAP) and propolis as intracanal medicaments in young permanent teeth.
+*   **Study Population:** Children aged 7 to 14 years with no systemic diseases.
+*   **Sample Size:** 30 single-rooted young permanent teeth (calculated with 90% power and 10% beta error).
+*   **Groups:**
+    *   *Group I (Control/Standard):* Triple Antibiotic Paste (Ciprofloxacin, Metronidazole, Minocycline in 1:1:1 ratio) + saline ($n=15$).
+    *   *Group II (Test):* Propolis powder + saline in 1.5:1 ratio ($n=15$).
+*   **Inclusion Criteria:** Non-vital tooth with open apex, history of trauma, clinical/radiographic periapical pathology, restorable single-rooted teeth.
+*   **Exclusion Criteria:** Grade III mobility, medically compromised children.
+*   **Variables:**
+    *   *Independent Variables:* Type of intracanal medicament (TAP vs. Propolis); Time (S1, S2, S3).
+    *   *Dependent Variable:* Antimicrobial efficacy (measured via manual bacterial colony counts).
+*   **Data Collection/Time Points:**
+    *   *Sample 1 (S1 - Baseline):* After access cavity preparation.
+    *   *Sample 2 (S2 - Post-irrigation):* After irrigation with 1.5% NaOCl and saline (evaluates irrigation efficacy, establishes baseline for medicament).
+    *   *Sample 3 (S3 - Post-medicament):* After 3–4 weeks of intracanal medicament placement (evaluates medicament efficacy).
+*   **Measurement Method:** Paper points placed in the canal for 1 minute, transferred to Brain Heart Infusion (BHI) broth, followed by manual counting of bacterial colonies by a blinded independent investigator.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+*Note: Bacterial colony counts (Colony Forming Units - CFUs) are continuous but notoriously highly skewed in microbiological studies. The SAP accounts for this.*
+
+#### CATEGORY A – MANDATORY TESTS (Core Analysis)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the bacterial colony count data distribution.
+*   **Why appropriate:**
+    1. The sample size per group is small ($n=15$), making it difficult to assume normality visually.
+    2. Microbiological count data is almost always non-normally distributed (skewed right).
+*   **Why it may not be appropriate:** If the sample size were extremely large, the test might be overly sensitive to trivial deviations from normality (though not the case here).
+*   **When NOT to use:** Do not use if the data has already been categorized (e.g., "growth" vs. "no growth").
+*   **Alternative:** Kolmogorov-Smirnov test (though Shapiro-Wilk is preferred for $n < 50$).
+
+**2. Mann-Whitney U Test (or Independent Samples t-test if normal)**
+*   **Purpose:** To compare the bacterial colony counts between Group I (TAP) and Group II (Propolis) at the critical S3 time point.
+*   **Why appropriate:**
+    1. It compares two independent groups.
+    2. It does not require the assumption of normal distribution, which is highly likely violated with raw CFU counts.
+*   **Why it may not be appropriate:** It compares mean ranks rather than actual means, which can sometimes be less intuitive for clinical interpretation.
+*   **When NOT to use:** Do not use if the data is perfectly normally distributed and variances are equal (a parametric test would have more statistical power).
+*   **Alternative:** Independent Samples t-test (if data is normally distributed or log-transformed successfully).
+
+**3. Friedman Test (or Repeated Measures ANOVA if normal)**
+*   **Purpose:** To evaluate the change in bacterial colony counts within each group across the three time points (S1 to S2 to S3).
+*   **Why appropriate:**
+    1. The data involves repeated measures (three dependent time points) on the same subjects (teeth).
+    2. It accommodates non-parametric, skewed microbiological data.
+*   **Why it may not be appropriate:** It only tells you that a difference exists somewhere among the three time points, requiring further post-hoc testing to find exactly where the difference lies.
+*   **When NOT to use:** Do not use if comparing independent groups, or if the data is normally distributed.
+*   **Alternative:** Repeated Measures ANOVA (if data is normally distributed and meets the assumption of sphericity).
+
+#### CATEGORY B – RECOMMENDED TESTS (Enhance Quality and Rigor)
+
+**1. Logarithmic Transformation (Log10)**
+*   **Purpose:** To normalize the highly skewed bacterial colony count data before analysis.
+*   **Why appropriate:**
+    1. It is the gold standard in microbiology for handling exponential bacterial growth/reduction data.
+    2. It often allows for the use of more powerful parametric tests (like ANOVA and t-tests) instead of non-parametric ones.
+*   **Why it may not be appropriate:** If the raw counts are very low (e.g., many zeros), log transformation can be problematic (though adding a constant like Log10(x+1) can fix this).
+*   **When NOT to use:** Do not use if the raw data is already normally distributed.
+*   **Alternative:** Square root transformation, or strictly using non-parametric tests on raw data.
+
+**2. Wilcoxon Signed-Rank Test (Post-Hoc for within-group)**
+*   **Purpose:** To compare specific pairs of time points within the same group (e.g., S1 vs S2 to prove irrigation worked; S2 vs S3 to prove the medicament worked).
+*   **Why appropriate:**
+    1. It isolates the specific clinical interventions (irrigation vs. medicament).
+    2. It accounts for the paired nature of the data (same tooth measured twice).
+*   **Why it may not be appropriate:** Conducting multiple pairwise comparisons increases the risk of Type I error (false positives).
+*   **When NOT to use:** Do not use without applying a Bonferroni correction to adjust the p-value for multiple comparisons.
+*   **Alternative:** Paired t-test (if data is normally distributed).
+
+**3. Baseline Equivalence Testing (Mann-Whitney U at S1 and S2)**
+*   **Purpose:** To prove that both groups started with similar bacterial loads before the medicament was applied.
+*   **Why appropriate:**
+    1. Ensures that randomization was successful.
+    2. Proves that any difference at S3 is due to the medicament, not because one group had fewer bacteria to begin with.
+*   **Why it may not be appropriate:** Some statisticians argue that testing for baseline differences in a truly randomized trial is philosophically flawed, as any difference is by definition due to chance.
+*   **When NOT to use:** Do not use as the primary outcome measure; it is strictly a preliminary check.
+*   **Alternative:** Analysis of Covariance (ANCOVA) using S2 as a covariate.
+
+#### CATEGORY C – OPTIONAL TESTS (Supplementary Insights)
+
+**1. Analysis of Covariance (ANCOVA)**
+*   **Purpose:** To compare S3 counts between groups while statistically controlling for S2 counts.
+*   **Why appropriate:**
+    1. It accounts for any slight baseline variations in bacterial load after irrigation (S2).
+    2. It provides a highly precise estimate of the medicament's true effect.
+*   **Why it may not be appropriate:** Requires strict assumptions, including homogeneity of regression slopes and normal distribution of residuals.
+*   **When NOT to use:** Do not use if the relationship between S2 and S3 is non-linear.
+*   **Alternative:** Compare the "Percentage Reduction" $[(S2 - S3) / S2 \times 100]$ between groups using a Mann-Whitney U test.
+
+**2. Cohen’s *d* or *r* (Effect Size)**
+*   **Purpose:** To determine the magnitude of the difference between TAP and Propolis.
+*   **Why appropriate:**
+    1. P-values only tell if a difference exists; effect sizes tell how large and clinically meaningful that difference is.
+    2. Helps future researchers perform sample size calculations for systematic reviews.
+*   **Why it may not be appropriate:** Can be difficult to interpret clinically if the data is heavily transformed (e.g., log10).
+*   **When NOT to use:** Do not use if the primary statistical test is not statistically significant (though some argue effect size should always be reported).
+*   **Alternative:** Number Needed to Treat (NNT), though less applicable for continuous count data.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Chi-Square Test / Fisher's Exact Test:** These are for categorical data (e.g., Male/Female, Success/Failure). The dependent variable here is bacterial colony counts, which is continuous/discrete numerical data. Unless the researchers dichotomized the data into "Bacterial Growth Present" vs. "No Bacterial Growth" (which is not stated in the methods), these tests are invalid.
+*   **Pearson Correlation Coefficient:** This test measures the linear relationship between two continuous variables. The objective of this study is to test for *differences* between groups and time points, not to see if one variable correlates with another.
+*   **Independent Samples t-test (without normality checks):** Applying a parametric t-test directly to raw microbiological count data is a common but severe error. Bacterial counts are almost always exponentially skewed. Using a t-test without first proving normality or log-transforming the data will yield invalid p-values.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach should be structured as a **2x3 mixed-design analysis** (2 independent groups $\times$ 3 repeated time points). Because the primary outcome is bacterial colony counts, the biostatistical priority is handling the anticipated non-normal distribution of the data. 
+
+The most rigorous approach is to first apply a **Log10 transformation** to the raw CFU counts. If the transformed data achieves normality, a Mixed ANOVA followed by Independent and Paired t-tests should be used. If the data remains skewed, the analysis must rely on robust non-parametric alternatives: the **Friedman test** (for time effects: S1 $\rightarrow$ S2 $\rightarrow$ S3) and the **Mann-Whitney U test** (for group effects: TAP vs. Propolis at S3). Crucially, the statistical analysis must isolate the difference between S2 and S3, as S1 to S2 merely proves the efficacy of the NaOCl irrigation, whereas S2 to S3 directly answers the research question regarding the efficacy of the intracanal medicaments.

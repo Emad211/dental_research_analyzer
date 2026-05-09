@@ -1151,3 +1151,111 @@ TASK 4: SUMMARY OF OVERALL ANALYTICAL APPROACH
 - Adjust for key initial characteristics (baseline pain, baseline CFU, presence of radiolucency) in regression models to improve precision and robustness.  
 - Emphasize intention-to-treat analyses, with careful handling of missing data (e.g., last observation carried forward or, preferably, multiple imputation for pain; baseline observation carried forward not recommended unless justified).  
 - This analytical strategy aligns with the study design, measurement scales, and typical distributions of pain and CFU, ensuring both statistical validity and clinical interpretability.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_163956
+──────────────────────────────────────────────────────────────────────
+
+Here is the comprehensive information extraction and statistical analysis plan based on the provided dental research article.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Double-blind, randomized clinical trial (RCT). Two-arm parallel group design.
+*   **Objectives:** To evaluate and compare the effect of the XP-endo Shaper versus conventional rotary files (iRaCe) on postoperative pain and intracanal bacterial reduction in oval root canals with necrotic pulps.
+*   **Study Population:** Healthy adults (20–60 years) with mandibular premolars featuring single oval root canals, necrotic pulps, and no-to-mild preoperative pain.
+*   **Sample Size:** 60 patients total (randomized 1–60), implying 30 patients per group.
+*   **Study Groups:**
+    *   *Intervention (Group A):* XP-endo Shaper single file system.
+    *   *Control (Group B):* iRaCe rotary file system.
+*   **Variables & Measurements:**
+    *   *Primary Outcome 1 (Pain):* Postoperative pain measured via a modified Visual Analogue Scale (VAS, 10 cm line). Data was categorized into 4 ordinal scores: 1 (None: 0), 2 (Mild: 1–3), 3 (Moderate: 4–6), and 4 (Severe: 7–10). Measured at pre-op, 6h, 12h, 24h, 2d, 3d, 4d, and 5d.
+    *   *Primary Outcome 2 (Microbiology):* Intracanal bacterial counts (CFUs/mL) measured via culture technique. Sampled at two time points: Pre-instrumentation (S1) and Post-instrumentation (S2).
+    *   *Secondary Outcome 1 (Analgesics):* Incidence (Yes/No) and count (number of tablets) of Ibuprofen 400mg intake.
+    *   *Secondary Outcome 2 (Flare-ups):* Incidence of flare-ups (Yes/No).
+    *   *Secondary Outcome 3 (Swelling):* Swelling severity on a 4-point ordinal scale (none, small, moderate, large).
+    *   *Baseline Covariates:* Age, gender, periapical radiolucency status (<3mm vs. none).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+*(Tests without which the analysis would be incomplete)*
+
+**1. Mann-Whitney U Test**
+*   **Purpose:** To compare the ordinal postoperative pain scores (1-4) and swelling scores between the two groups at each specific time point.
+*   **Why appropriate:** 1) The pain data has been categorized into an ordinal scale (4 levels), making non-parametric testing ideal. 2) It does not assume a normal distribution, which pain scores rarely follow.
+*   **Why it may not be appropriate:** It does not account for the repeated-measures nature of the data across the 8 time points, potentially inflating the Type I error rate if multiple tests are run without correction.
+*   **When NOT to use:** If the researchers decide to use the raw 10cm continuous VAS scores AND those scores are perfectly normally distributed.
+*   **Alternative:** Independent samples t-test (if raw VAS is used and normally distributed).
+
+**2. Wilcoxon Signed-Rank Test**
+*   **Purpose:** To evaluate within-group bacterial reduction (comparing S1 to S2) and within-group changes in pain scores from baseline to specific follow-ups.
+*   **Why appropriate:** 1) It effectively handles paired, non-normally distributed data (like CFU counts). 2) It is appropriate for evaluating before-and-after changes in ordinal pain scores.
+*   **Why it may not be appropriate:** It only compares two time points at a time, ignoring the overall trend of pain reduction over the 5 days.
+*   **When NOT to use:** When comparing independent groups (e.g., Group A vs. Group B).
+*   **Alternative:** Paired t-test (for log-transformed, normally distributed CFU data).
+
+**3. Fisher’s Exact Test**
+*   **Purpose:** To compare the incidence of flare-ups, analgesic intake (Yes/No), and baseline categorical variables (gender, periapical status) between the two groups.
+*   **Why appropriate:** 1) Perfect for comparing binary/categorical outcomes between two independent groups. 2) More robust than Chi-square when expected cell counts are small (which is highly likely for rare events like flare-ups in a sample of 30 per group).
+*   **Why it may not be appropriate:** It does not provide information on the *time* it took for a flare-up to occur, only whether it happened or not.
+*   **When NOT to use:** When analyzing continuous or ordinal variables.
+*   **Alternative:** Pearson Chi-square test (if all expected cell frequencies are > 5).
+
+#### CATEGORY B – RECOMMENDED TESTS
+*(Tests that enhance the quality and rigor of the analysis)*
+
+**1. Generalized Estimating Equations (GEE) or Mixed-Effects Ordinal Logistic Regression**
+*   **Purpose:** To analyze the repeated ordinal pain scores over the entire 5-day follow-up period.
+*   **Why appropriate:** 1) It accounts for the intra-subject correlation (the fact that pain scores from the same patient over time are correlated). 2) It allows for the testing of "Group", "Time", and "Group × Time interaction" simultaneously without inflating Type I error.
+*   **Why it may not be appropriate:** It requires a larger sample size to achieve model convergence and can be complex to interpret for non-statisticians.
+*   **When NOT to use:** If there is massive missing data (dropouts) that are not missing completely at random (though GEE handles missing data better than older methods).
+*   **Alternative:** Friedman test (for non-parametric within-group changes over time).
+
+**2. Analysis of Covariance (ANCOVA) on Log-Transformed CFU Data**
+*   **Purpose:** To compare post-instrumentation (S2) bacterial counts between groups while controlling for baseline (S1) bacterial counts.
+*   **Why appropriate:** 1) Baseline bacterial load heavily influences post-op load; ANCOVA adjusts for this mathematically. 2) Log10 transformation normalizes the highly skewed exponential growth data typical of CFUs.
+*   **Why it may not be appropriate:** If the relationship between the baseline covariate (S1) and the dependent variable (S2) is not linear, violating ANCOVA assumptions.
+*   **When NOT to use:** On raw, untransformed CFU/mL data, as it will severely violate the assumption of normality and homoscedasticity.
+*   **Alternative:** Mann-Whitney U test on the calculated *percentage reduction* of bacteria.
+
+**3. Negative Binomial or Poisson Regression**
+*   **Purpose:** To compare the *number* of analgesic tablets consumed between the two groups.
+*   **Why appropriate:** 1) Analgesic counts are "count data" (discrete integers: 0, 1, 2, 3...), which these models are specifically designed for. 2) Negative binomial regression perfectly handles "overdispersion" (when the variance is greater than the mean, common in pain medication intake).
+*   **Why it may not be appropriate:** If the vast majority of patients took zero tablets, resulting in a "zero-inflated" dataset that standard Poisson cannot handle.
+*   **When NOT to use:** For continuous variables or binary outcomes.
+*   **Alternative:** Mann-Whitney U test (as a simpler, non-parametric alternative for count data).
+
+#### CATEGORY C – OPTIONAL TESTS
+*(Tests that provide supplementary insights)*
+
+**1. Kaplan-Meier Survival Analysis**
+*   **Purpose:** To evaluate the "time to complete pain resolution" (time to reach a pain score of 0).
+*   **Why appropriate:** 1) It elegantly handles "censored" data (patients who still have pain at day 5). 2) It provides a highly visual and clinically meaningful metric (e.g., "median time to pain relief").
+*   **Why it may not be appropriate:** Pain resolution might happen between measured intervals (e.g., between 24h and 48h), making the exact "time of death (resolution)" imprecise.
+*   **When NOT to use:** If all patients resolve their pain at the exact same time point.
+*   **Alternative:** Cox Proportional Hazards Regression (if adjusting for covariates like baseline periapical status).
+
+**2. Spearman’s Rank-Order Correlation**
+*   **Purpose:** To assess the relationship between baseline bacterial load (S1) and initial postoperative pain intensity (e.g., at 6h or 12h).
+*   **Why appropriate:** 1) It does not assume a linear relationship or normal distribution. 2) It can handle the ordinal nature of the pain scores against the continuous (but skewed) CFU data.
+*   **Why it may not be appropriate:** Correlation does not equal causation; other factors (like extruded debris) might be the actual cause of pain.
+*   **When NOT to use:** If both variables are perfectly normally distributed and linearly related.
+*   **Alternative:** Pearson correlation (if both variables are continuous and normally distributed).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test on raw CFU/mL data:** Bacterial counts grow exponentially and are highly right-skewed. Using a parametric test on raw CFU data violates the assumption of normality and will yield invalid p-values. (Data *must* be Log10 transformed first).
+*   **Repeated Measures ANOVA (RM-ANOVA) on Pain Scores:** The authors explicitly categorized the VAS into 4 ordinal scores. RM-ANOVA requires continuous, normally distributed data. Furthermore, RM-ANOVA cannot handle missing data (it uses listwise deletion), which is common in multi-day follow-ups.
+*   **Pearson Correlation for Pain vs. Swelling:** Both of these variables are measured on ordinal scales (1-4 for pain, 4-point scale for swelling). Pearson requires continuous, normally distributed data.
+
+---
+
+### TASK 4: SUMMARY
+
+The analytical approach for this study must be tailored to handle three specific data challenges: **ordinal repeated measures** (pain), **highly skewed continuous data** (bacterial CFUs), and **rare categorical events** (flare-ups). 
+
+While traditional dental literature often relies on multiple Mann-Whitney U and Wilcoxon tests (Category A), this approach inflates Type I error due to multiple comparisons across 8 time points. Therefore, the recommended approach (Category B) elevates the statistical rigor by utilizing Generalized Estimating Equations (GEE) to model pain over time, and ANCOVA on Log10-transformed data to assess bacterial reduction while controlling for baseline infection severity. This strategy ensures robust, mathematically sound conclusions regarding the clinical efficacy of the XP-endo Shaper versus the iRaCe system.

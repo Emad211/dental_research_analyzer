@@ -743,3 +743,88 @@ TASK 4: SUMMARY – OVERALL ANALYTICAL APPROACH
   - Awareness of sample size and assumption constraints.
 
 This structure will allow clear, statistically sound conclusions about whether there is a meaningful difference between units and how filling quality/material influence the success of periapical surgery.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_161129
+──────────────────────────────────────────────────────────────────────
+
+*Disclaimer: As an expert biostatistician reviewing the provided text, I must first note a significant discrepancy in the provided manuscript. Page 2 contains text from a completely unrelated study regarding an *S. aureus* endophthalmitis rabbit model, and Page 3 contains formatting artifacts. The actual "Methods" section for the dental study is missing. However, based on the Title, the Conclusion (Page 4), and Reference 21 (which matches the title and indicates a retrospective design), I have inferred the methodological framework to provide a robust and accurate statistical analysis plan.*
+
+Here is the comprehensive extraction and statistical analysis plan based on the inferred study parameters.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Retrospective comparative cohort study (inferred from context and Reference 21).
+*   **Objectives:** To compare the clinical and radiographic outcomes (success vs. failure) of periapical surgery performed in two different hospital units, and to evaluate the contribution of filling quality and filling material to these outcomes.
+*   **Groups:** 
+    *   Group 1: Patients treated in the Endodontic Unit.
+    *   Group 2: Patients treated in the Oral Surgery Unit.
+*   **Sample Size:** Not specified in the provided text.
+*   **Variables:**
+    *   *Independent Variables (Predictors):* Treating Unit (Categorical: Endodontic vs. Oral Surgery), Quality of filling (Categorical: e.g., adequate vs. inadequate), Filling material (Categorical: e.g., amalgam, MTA, glass ionomer).
+    *   *Dependent Variables (Outcomes):* Clinical outcome (Binary: Success / Failure), Radiographic outcome (Binary: Success / Failure).
+*   **Measurements & Data Collection:** Clinical examination records (symptoms, sinus tracts, swelling) and radiographic assessments (healing of periapical radiolucency) extracted retrospectively from patient files.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Essential for basic analysis)
+
+**1. Pearson Chi-Square Test (or Fisher’s Exact Test)**
+*   **Purpose:** To compare the proportion of clinical and radiographic success/failure between the Endodontic and Oral Surgery units, as well as across different filling qualities and materials.
+*   **Why appropriate:** 
+    1) Both the independent variables (Treating Unit, Filling Material) and the primary dependent variables (Success/Failure) are categorical nominal data. 
+    2) The groups being compared are independent of one another.
+*   **Why it may not be appropriate:** If the sample size is very small, leading to expected cell frequencies of less than 5 in the contingency table.
+*   **When this test should NOT be used:** When dealing with continuous outcome variables (e.g., measuring the exact millimeter reduction of a lesion) or paired/matched data (e.g., same patient treated in both units).
+*   **Alternative if assumptions are violated:** Fisher’s Exact Test (used when >20% of expected cell counts are <5).
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Multivariable Logistic Regression**
+*   **Purpose:** To determine the independent effect of the treating unit on surgical success while adjusting for confounding variables (e.g., quality of filling, filling material, tooth type).
+*   **Why appropriate:** 
+    1) The primary outcome is binary (Success vs. Failure). 
+    2) The conclusion explicitly states that "quality of filling and filling material are two main contributing factors," meaning their confounding effects must be mathematically controlled to isolate the true effect of the treating unit.
+*   **Why it may not be appropriate:** If the overall sample size or the number of "failure" events is too small (rule of thumb requires at least 10 outcome events per predictor variable).
+*   **When this test should NOT be used:** If the outcome is continuous, or if the data involves time-to-event survival analysis with varying follow-up times.
+*   **Alternative if assumptions are violated:** Firth’s Penalized Logistic Regression (if there is a small sample size or quasi-complete separation of data).
+
+**2. Cohen’s Kappa Statistic**
+*   **Purpose:** To measure inter-rater reliability for the radiographic assessments.
+*   **Why appropriate:** 
+    1) Radiographic healing is a subjective visual assessment; proving that different examiners agree validates the data. 
+    2) It accounts for the possibility of agreement occurring by chance, which simple percentage agreement does not.
+*   **Why it may not be appropriate:** If only a single examiner evaluated all the radiographs in the study.
+*   **When this test should NOT be used:** When assessing agreement on continuous measurements (e.g., exact lesion volume).
+*   **Alternative if assumptions are violated:** Intraclass Correlation Coefficient (ICC) if the radiographic evaluation is converted to a continuous scale (e.g., measuring lesion size in mm²).
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To compare the "time-to-failure" between the Endodontic and Oral Surgery units.
+*   **Why appropriate:** 
+    1) In retrospective surgical studies, patients often have highly variable follow-up times (e.g., 1 year vs. 5 years). 
+    2) It allows the inclusion of "censored" data (patients who were lost to follow-up or who had not failed by the end of the study).
+*   **Why it may not be appropriate:** If the exact date of failure is unknown, or if the study utilizes a strict, single-time-point cross-sectional follow-up (e.g., exactly 12 months for all patients).
+*   **When this test should NOT be used:** When time-to-event data is not recorded or when comparing continuous variables.
+*   **Alternative if assumptions are violated:** Cox Proportional Hazards Regression (if you also need to adjust for multiple covariates like filling material over time).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test / ANOVA:** These tests compare the *means* of continuous variables. Because the primary outcomes in this study are categorical/binary (Success vs. Failure), using tests designed for continuous data is fundamentally incorrect.
+*   **Paired t-test / McNemar’s Test:** These tests are used for paired or matched data (e.g., before-and-after measurements on the same individual). The patients in the Endodontic unit and Oral Surgery unit represent independent groups, making paired tests invalid.
+*   **Pearson Correlation:** This is used to measure the linear relationship between two continuous variables. Since the variables here (Unit, Material, Success/Failure) are categorical, correlation analysis is inappropriate.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach should be rooted in categorical data analysis, given that the primary endpoints (clinical and radiographic outcomes) are binary (Success/Failure). The analysis should begin with descriptive statistics to summarize patient demographics and clinical characteristics. Bivariate analysis using the **Chi-Square test** is mandatory to establish baseline comparisons between the Endodontic and Oral Surgery units. 
+
+However, because surgical outcomes are multifactorial, relying solely on Chi-Square is insufficient. A **Multivariable Logistic Regression** model is highly recommended to adjust for critical covariates identified by the authors—specifically, filling material and filling quality. This ensures that any observed differences (or lack thereof) between the two hospital units are not merely artifacts of one unit using better materials or achieving better filling quality. Finally, validating the radiographic data via **Cohen's Kappa** will ensure the subjective measurements are reliable and scientifically rigorous.

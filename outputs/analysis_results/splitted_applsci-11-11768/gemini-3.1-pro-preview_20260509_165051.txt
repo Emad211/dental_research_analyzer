@@ -1,0 +1,116 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_applsci-11-11768.pdf
+Status : ok
+Time   : 20260509_165051
+══════════════════════════════════════════════════════════════════════
+
+Based on the provided Introduction and Methods sections of the article, here is the comprehensive information extraction and statistical analysis plan.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Prospective longitudinal clinical study.
+*   **Study Objective:** To evaluate various preoperative factors affecting the outcome of surgical endodontic treatment (periapical surgery).
+*   **Setting:** Dow University of Health Sciences, Karachi (July 2017 to December 2018).
+*   **Sample Size:** Initial enrollment = 52 patients. Final analyzed sample = 40 patients (7 healed after conventional re-RCT, 5 lost to follow-up).
+*   **Inclusion Criteria:** 15–57 years old; chronic apical periodontitis of single-rooted anterior teeth; radiolucency > 4 mm; loss of lamina dura/PDL space; failed previous RCT or open apex due to trauma.
+*   **Exclusion Criteria:** Medically compromised (ASA III); pre-existing periodontal disease; lesion < 4 mm; multirooted teeth; cracks/root fractures; pregnant/lactating women.
+*   **Intervention:** Conventional re-root canal treatment followed by periapical surgery (full-thickness flap, root-end resection, retrograde cavity preparation with ultrasonic tip, MTA retrograde filling).
+*   **Follow-up Timepoints:** 3 to 6 months (post-RCT evaluation), 6 months, and 12 months (post-surgery evaluation).
+*   **Independent Variables (Predictors):** Age, gender, smoking status, size of preoperative periapical lesion, presence of pretreatment clinical signs and symptoms (pain, swelling, sinus tract, tenderness to palpation, tenderness to percussion, mobility, discoloration).
+*   **Dependent Variable (Outcome):** Periapical healing (typically dichotomized as Success/Failure).
+*   **Measurements/Data Collection:** 
+    *   *Clinical:* Presence/absence of pain, swelling, sinus tract, tenderness, mobility, discoloration.
+    *   *Radiographic:* Periapical Index (PAI) using digital radiographs with parallel technique.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given the small sample size ($n=40$) and the nature of the variables (binary outcomes, ordinal radiographic indices, categorical/continuous predictors), non-parametric and exact tests are heavily favored.
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Fisher’s Exact Test**
+*   **Purpose:** To determine the association between categorical preoperative factors (e.g., smoking status, gender, presence of specific symptoms) and the binary surgical outcome (Healed vs. Failed).
+*   **Why appropriate:** 
+    1) The outcome variable is categorical (binary).
+    2) The sample size is small ($n=40$), meaning expected cell frequencies in a contingency table will almost certainly be less than 5 (especially for rare outcomes like surgical failure).
+*   **Why it may not be appropriate:** It only assesses one predictor at a time and cannot adjust for confounding variables (e.g., age or lesion size).
+*   **When NOT to use:** When analyzing continuous predictors (like exact age in years or exact lesion size in mm).
+*   **Alternative:** Chi-square test (only if all expected cell counts are $\ge$ 5, which is highly unlikely here).
+
+**2. Mann-Whitney U Test (Wilcoxon Rank-Sum Test)**
+*   **Purpose:** To compare continuous preoperative factors (e.g., age, preoperative lesion size in mm) between the two outcome groups (Healed vs. Failed).
+*   **Why appropriate:** 
+    1) The sample size is small, making the assumption of normal distribution risky.
+    2) It is highly robust against outliers (e.g., an unusually large periapical lesion).
+*   **Why it may not be appropriate:** It tests for differences in mean ranks, not actual means, making clinical interpretation of the absolute difference slightly less intuitive.
+*   **When NOT to use:** When comparing categorical predictors (like smoking status) against the outcome.
+*   **Alternative:** Independent Samples t-test (if Shapiro-Wilk test proves the continuous data is perfectly normally distributed).
+
+**3. Cohen’s Kappa (or Weighted Kappa)**
+*   **Purpose:** To evaluate intra-examiner and inter-examiner reliability for the radiographic Periapical Index (PAI) scoring.
+*   **Why appropriate:** 
+    1) PAI is a subjective ordinal scale; proving that the examiners scored the radiographs consistently is mandatory for study validity.
+    2) It accounts for agreement occurring by chance.
+*   **Why it may not be appropriate:** Kappa can be paradoxically low if the prevalence of a specific PAI score is very high or very low in the sample (Kappa paradox).
+*   **When NOT to use:** When assessing agreement for continuous measurements (e.g., exact lesion size in mm).
+*   **Alternative:** Gwet's AC1 statistic (if the Kappa paradox is observed due to skewed prevalence of scores).
+
+#### CATEGORY B – RECOMMENDED (Enhances Quality and Rigor)
+
+**1. Firth’s Penalized Logistic Regression**
+*   **Purpose:** To evaluate the independent effect of multiple preoperative factors on the surgical outcome while adjusting for confounders.
+*   **Why appropriate:** 
+    1) Standard logistic regression will fail or overfit due to the small sample size ($n=40$) and the likely low number of "failure" events (separation issue).
+    2) Firth’s method applies a penalty to maximum likelihood estimation, reducing bias in small samples with rare events.
+*   **Why it may not be appropriate:** Even with penalization, adding too many predictors (e.g., all 7 clinical symptoms + age + smoking) will still overwhelm a model with only 40 patients.
+*   **When NOT to use:** If the number of outcome events (failures) is zero, or if analyzing a continuous outcome.
+*   **Alternative:** Exact Logistic Regression (computationally heavy but excellent for small samples).
+
+**2. Friedman Test**
+*   **Purpose:** To analyze the change in the ordinal Periapical Index (PAI) scores across three time points (Baseline, 6 months, 12 months).
+*   **Why appropriate:** 
+    1) PAI is an ordinal variable (usually scored 1 to 5).
+    2) The data is repeated measures (longitudinal) on the same 40 patients.
+*   **Why it may not be appropriate:** It only tells you that a difference exists somewhere across the time points, requiring post-hoc tests (like Wilcoxon signed-rank with Bonferroni correction) to find exactly where the change occurred.
+*   **When NOT to use:** If the data has missing values (e.g., patients missed the 6-month follow-up but attended the 12-month).
+*   **Alternative:** Repeated Measures ANOVA (only if PAI is treated as continuous and differences are normally distributed, which is not recommended).
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. McNemar’s Test**
+*   **Purpose:** To compare the proportion of patients presenting with specific clinical symptoms (e.g., pain, swelling) at baseline versus 12 months.
+*   **Why appropriate:** 
+    1) It is specifically designed for paired nominal data (pre-test/post-test binary outcomes).
+    2) It provides direct statistical evidence of symptom resolution.
+*   **Why it may not be appropriate:** In successful periapical surgery, symptom resolution is often 100%, meaning the test might not compute meaningfully if there is zero variance at 12 months.
+*   **When NOT to use:** When comparing independent groups (e.g., smokers vs. non-smokers).
+*   **Alternative:** Exact McNemar's test (if discordant pairs are very small).
+
+**2. Relative Risk (RR) / Odds Ratio (OR) Calculation**
+*   **Purpose:** To quantify the effect size of risk factors (e.g., "Smokers are X times more likely to fail than non-smokers").
+*   **Why appropriate:** 
+    1) Provides clinical relevance rather than just statistical significance (p-values).
+    2) Easily interpretable for dental practitioners reading the study.
+*   **Why it may not be appropriate:** With small sample sizes, the 95% Confidence Intervals for OR/RR will be extremely wide, indicating low precision.
+*   **When NOT to use:** When the predictor is continuous (unless calculating OR per unit increase via regression).
+*   **Alternative:** Number Needed to Treat/Harm (NNT/NNH).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Pearson Chi-Square Test:** Should NOT be used. With $n=40$, dividing patients into groups (e.g., Smoking [Yes/No] vs. Outcome [Success/Failure]) will almost certainly result in expected cell counts below 5, violating the primary assumption of the Chi-Square test.
+*   **Standard Multiple Linear Regression:** Should NOT be used. The primary outcome (Healing) is categorical/binary, not continuous. Linear regression would yield predicted probabilities outside the 0-1 range.
+*   **Repeated Measures ANOVA:** Should NOT be used for PAI scores. PAI is an ordinal index, not a continuous measurement. Furthermore, the assumption of normality of residuals will likely be violated with a sample size of 40.
+*   **Standard Binary Logistic Regression (with >3 predictors):** Should NOT be used. A common rule of thumb is 10 events per predictor variable. If 8 out of 40 surgeries fail, you have 8 events. Putting 5 predictors into a standard logistic model will cause severe overfitting and artificially inflated standard errors.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach for this study must be tailored to its **small sample size ($n=40$)**, the **longitudinal design**, and the **categorical/ordinal nature** of the primary clinical and radiographic outcomes. 
+
+Because traditional parametric tests rely on large-sample approximations and normal distributions, the core strategy relies on robust **exact and non-parametric statistics** (Fisher's Exact, Mann-Whitney U, Friedman test). To answer the primary objective—identifying factors affecting outcomes—bivariate analyses will form the foundation. However, to provide rigorous, publication-quality evidence, advanced techniques suited for small samples, such as **Firth’s Penalized Logistic Regression**, are recommended to adjust for confounding variables (like smoking and lesion size) without overfitting the model. Finally, establishing examiner reliability (Cohen's Kappa) for the radiographic PAI scoring is critical to validate the dependent variable.

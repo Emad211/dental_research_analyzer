@@ -1107,3 +1107,114 @@ TASK 4: SUMMARY – JUSTIFICATION OF OVERALL ANALYTICAL APPROACH
   - Appropriate multiplicity control and model diagnostics.  
 
 This approach yields statistically sound and clinically interpretable conclusions about whether intra-canal 980-nm diode laser treatment reduces post-operative pain and analgesic use after RCT in single-rooted teeth with apical periodontitis.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_174851
+──────────────────────────────────────────────────────────────────────
+
+Here is the comprehensive information extraction and statistical analysis plan based on the provided dental research article.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Parallel randomized controlled trial (RCT), in vivo, allocation ratio 1:1.
+*   **Objectives:** To assess the effect of a 980-nm diode laser following chemomechanical root canal preparation on the severity of post-operative pain (PP) after root canal treatment (RCT).
+*   **Study Population:** Healthy patients (18–65 years) with asymptomatic, single-rooted teeth and a periapical index (PAI) score of 3 or 4.
+*   **Groups:**
+    *   *Control Group (n=30):* Final irrigation with 2.5% NaOCl, 17% EDTA, and distilled water.
+    *   *Laser Group (n=30):* Same irrigation protocol + 980-nm diode laser irradiation.
+*   **Sample Size:** 60 patients total (30 per group). Calculated via G*Power (Effect size: 0.82, Power: 80%, Alpha: 0.05).
+*   **Variables:**
+    *   *Independent Variable:* Treatment modality (Control vs. Laser).
+    *   *Dependent Variables:*
+        *   Post-operative pain (PP) measured via Visual Analogue Scale (VAS, 0–10). Categorized as none (0), mild (1–3), moderate (4–7), and severe (8–10).
+        *   Analgesic use (Frequency/Time interval to medication intake).
+    *   *Covariates/Demographics:* Age (continuous), Sex (categorical).
+*   **Time Points:** 8 h, 24 h, 48 h, and 7 days after the 1st visit; and 8 h, 24 h, 48 h, and 7 days after the 2nd visit.
+*   **Data Collection Methods:** Patient self-reported questionnaires (VAS forms) completed at home at specific time intervals.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Core tests required for baseline analysis)
+
+**1. Mann-Whitney U Test**
+*   **Purpose:** To compare the median VAS pain scores between the Control and Laser groups at specific, individual time points.
+*   **Why appropriate:** 1) VAS scores are ordinal/non-normally distributed continuous data. 2) The two groups (Control and Laser) are independent of each other.
+*   **Why it may not be appropriate:** It does not account for the repeated-measures nature of the data (testing the same patients over 4 time points).
+*   **When NOT to use:** When the dependent variable is perfectly normally distributed and meets parametric assumptions.
+*   **Alternative:** Independent samples t-test (if normality and homoscedasticity assumptions are met).
+
+**2. Wilcoxon Signed-Rank Test**
+*   **Purpose:** To compare VAS pain scores within the same group between two different time points (e.g., 1st visit vs. 2nd visit at 24h).
+*   **Why appropriate:** 1) The data is paired (same patients measured twice). 2) It does not assume a normal distribution of the differences, which is ideal for skewed VAS scores.
+*   **Why it may not be appropriate:** It can only compare two time points at a time, increasing the risk of Type I error if multiple pairs are tested without correction.
+*   **When NOT to use:** When comparing independent groups (e.g., Laser vs. Control).
+*   **Alternative:** Paired samples t-test (if the differences between paired scores are normally distributed).
+
+**3. Fisher’s Exact Test**
+*   **Purpose:** To compare the frequency of analgesic use (Yes/No) and sex distribution between the two groups.
+*   **Why appropriate:** 1) The variables are categorical. 2) The expected cell counts in the contingency tables are frequently less than 5 (e.g., 0 patients in the laser group used analgesics), making standard Chi-square invalid.
+*   **Why it may not be appropriate:** It is computationally intensive for very large sample sizes or tables larger than 2x2 (though not an issue for this specific study).
+*   **When NOT to use:** When analyzing continuous data (like age or exact VAS scores).
+*   **Alternative:** Pearson Chi-Square test with Yates' continuity correction (only if all expected cell frequencies are > 5).
+
+**4. Independent Samples t-test**
+*   **Purpose:** To compare the mean age between the Control and Laser groups to ensure successful randomization.
+*   **Why appropriate:** 1) Age is a continuous variable. 2) It effectively tests for baseline equivalence between two independent groups.
+*   **Why it may not be appropriate:** It assumes the age distribution is normal and variances are equal between groups.
+*   **When NOT to use:** If the age distribution is heavily skewed or contains extreme outliers.
+*   **Alternative:** Mann-Whitney U test.
+
+#### CATEGORY B – RECOMMENDED (Enhances rigor and addresses study design complexity)
+
+**1. Generalized Estimating Equations (GEE) or Mixed-Effects Ordinal Logistic Regression**
+*   **Purpose:** To analyze the repeated measures of VAS scores over time, accounting for the correlation of multiple measurements from the same patient.
+*   **Why appropriate:** 1) It accounts for the longitudinal design (4 time points per visit), preventing the inflation of Type I errors caused by running multiple Mann-Whitney tests. 2) It can handle ordinal data (VAS categories) and non-normal distributions robustly.
+*   **Why it may not be appropriate:** It is statistically complex and may suffer from convergence issues with small sample sizes (n=30 per group) and zero-variance cells (e.g., 0 pain at 7 days).
+*   **When NOT to use:** When data points are completely independent (cross-sectional data).
+*   **Alternative:** Friedman test (though this only evaluates within-group changes over time, not group-by-time interactions).
+
+**2. Holm-Bonferroni Correction**
+*   **Purpose:** To adjust the p-values for multiple comparisons (e.g., comparing groups at 8h, 24h, 48h, and 7d).
+*   **Why appropriate:** 1) The authors performed multiple unadjusted tests, which inflates the false-positive rate. 2) Holm-Bonferroni controls the family-wise error rate but is less mathematically punishing than a standard Bonferroni correction.
+*   **Why it may not be appropriate:** It can still be conservative, potentially increasing Type II errors (failing to detect a true difference).
+*   **When NOT to use:** When only a single, pre-planned primary outcome test is being conducted.
+*   **Alternative:** False Discovery Rate (FDR) control, such as the Benjamini-Hochberg procedure.
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To analyze the "time interval to medication intake."
+*   **Why appropriate:** 1) It perfectly handles "time-to-event" data. 2) It accounts for right-censored data (patients who never took medication during the 7-day follow-up).
+*   **Why it may not be appropriate:** Because very few patients took medication overall, the survival curves might lack the statistical power to show meaningful divergence.
+*   **When NOT to use:** When the exact time of the event is unknown or unrecorded.
+*   **Alternative:** Mann-Whitney U test on the time-to-medication (though this requires excluding censored data, introducing bias).
+
+**2. Number Needed to Treat (NNT)**
+*   **Purpose:** To determine how many patients need to be treated with the laser to prevent one instance of analgesic use or severe pain.
+*   **Why appropriate:** 1) It translates abstract statistical findings into highly practical clinical guidelines. 2) It is easily understood by practicing dentists.
+*   **Why it may not be appropriate:** Confidence intervals for NNT can be difficult to interpret if the underlying absolute risk reduction is not statistically significant.
+*   **When NOT to use:** When the outcome is strictly continuous and cannot be dichotomized into "success" or "failure."
+*   **Alternative:** Relative Risk (RR) or Odds Ratio (OR).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Repeated Measures ANOVA (RM-ANOVA):** Should NOT be used. RM-ANOVA assumes that the dependent variable is continuous and normally distributed at all time points. The VAS data in this study is highly skewed (many patients reported "0" pain, especially at 48h and 7d), heavily violating the normality assumption.
+*   **Pearson Correlation:** Should NOT be used to correlate VAS scores with age. Pearson assumes both variables are continuous and normally distributed. VAS is ordinal/skewed.
+*   **Standard Pearson Chi-Square (for Analgesic Use):** Should NOT be used. Table 4 shows that 0 patients in the laser group used analgesics at any time point. This results in expected cell frequencies of less than 5, violating the primary assumption of the Chi-Square test. Fisher's Exact Test is required.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must account for the non-normal, ordinal nature of the primary outcome (VAS pain scores) and the longitudinal, repeated-measures design of the study. 
+
+The authors correctly identified that non-parametric tests (Mann-Whitney U and Wilcoxon signed-rank) are necessary due to the skewed nature of pain scores. Furthermore, because of the zero-counts in the laser group's analgesic use, Fisher's Exact Test is the only mathematically sound choice for categorical comparisons. 
+
+However, the original methodology relies on multiple independent tests across various time points without adjusting for multiple comparisons, which introduces a high risk of Type I errors (false positives). Therefore, the most rigorous statistical approach would elevate the analysis by utilizing a **Generalized Estimating Equation (GEE)** to evaluate the treatment effect over time in a single model, or at the very least, applying a **Holm-Bonferroni correction** to the p-values of the individual non-parametric tests.

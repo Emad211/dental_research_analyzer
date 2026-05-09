@@ -928,3 +928,116 @@ TASK 4: SUMMARY AND JUSTIFICATION OF OVERALL ANALYTICAL APPROACH
   - Is transparent, interpretable for clinicians, and consistent with standard practice in clinical trials of analgesic regimens.  
 
 Overall, the analysis plan centers on robust between-group comparisons of 48-hour pain (both binary and continuous), appropriate adjustment for baseline pain, and judicious use of nonparametric alternatives where assumptions of parametric tests might be violated.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_161253
+──────────────────────────────────────────────────────────────────────
+
+Here is the comprehensive data extraction and statistical analysis plan based on the provided article text.
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics & Methodology**
+*   **Study Design:** Two-arm, parallel-group, randomized clinical trial. *(Note: The authors state "non-probability randomized consecutive sampling," which is contradictory terminology, but implies consecutive eligible patients were randomized).*
+*   **Study Setting:** Operative Dentistry Department, HITEC Dental College (6-month duration).
+*   **Objectives:** To assess the outcome of regular acetaminophen prescription versus on-demand (SOS) acetaminophen on post-endodontic pain at 48 hours.
+*   **Sample Size:** N = 60 (Calculated via WHO calculator based on proportions 0.2 and 0.14, 95% CI, 90% power).
+*   **Study Population:** Patients aged 18–60 years, either gender, requiring single-visit endodontic treatment on maxillary or mandibular 1st or 2nd premolars.
+*   **Clinical Diagnosis:** Irreversible pulpitis / Necrotic pulp (negative sensibility tests).
+*   **Groups:**
+    *   *Group 1 (Intervention/Active Control):* Acetaminophen prescribed 6-hourly (Regular).
+    *   *Group 2 (Experimental):* Acetaminophen taken SOS/on-demand (Only if pain occurs).
+*   **Variables & Measurements:**
+    *   *Independent Variable:* Analgesic regimen (Categorical: Regular vs. On-demand).
+    *   *Baseline Covariate:* Pre-operative pain, measured via Visual Analogue Scale (VAS).
+    *   *Dependent Variable (Primary Outcome):* Post-operative pain at 48 hours.
+    *   *Data Transformation:* The authors explicitly state they dichotomized the continuous/ordinal VAS score into a binary categorical variable: 0-4 = "No Pain" and 5-10 = "Pain".
+*   **Standardized Procedures:** Working length via #15/20 K-files, 5.25% NaOCl irrigation, saline flush, EDTA final wash, single operator (principal investigator).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+As a biostatistician, I must address the authors' decision to dichotomize the VAS score (0-4 vs 5-10). Dichotomizing continuous/ordinal data leads to a significant loss of statistical power and variance. Therefore, the plan below addresses their stated methodology (binary outcome) while strongly recommending the analysis of the raw VAS scores.
+
+#### CATEGORY A – MANDATORY TESTS
+*(Tests without which the analysis would be incomplete based on the authors' stated methodology).*
+
+**1. Pearson Chi-Square Test of Independence**
+*   **Purpose:** To compare the proportion of patients experiencing "Pain" vs. "No Pain" at 48 hours between Group 1 and Group 2.
+*   **Why appropriate:**
+    1. The authors defined their final outcome as a categorical binary variable (Pain vs. No Pain).
+    2. The two groups (Regular vs. On-demand) are independent of each other.
+*   **Why it may not be appropriate:** It does not account for baseline pain levels, which might heavily influence the 48-hour outcome.
+*   **When this test should NOT be used:** When the data is paired/matched, or when expected cell frequencies are too low.
+*   **Alternative if assumptions are violated:** Fisher’s Exact Test (used if more than 20% of expected cell counts are less than 5).
+
+**2. Independent Samples t-test (or Mann-Whitney U Test)**
+*   **Purpose:** To compare baseline VAS scores and Age between the two groups to ensure randomization was successful (Baseline Equivalence).
+*   **Why appropriate:**
+    1. It is critical to prove that one group did not start with significantly more pain than the other.
+    2. It validates the randomization process.
+*   **Why it may not be appropriate:** If the baseline VAS scores are highly skewed, the mean (used in t-tests) is not a good measure of central tendency.
+*   **When this test should NOT be used:** When comparing categorical baseline variables (e.g., Gender, Tooth type).
+*   **Alternative if assumptions are violated:** Mann-Whitney U test (for non-normal continuous/ordinal data like VAS).
+
+#### CATEGORY B – RECOMMENDED TESTS
+*(Tests that enhance the quality and rigor of the analysis, correcting for methodological weaknesses).*
+
+**1. Mann-Whitney U Test (on RAW 48-hour VAS scores)**
+*   **Purpose:** To compare the actual, un-dichotomized VAS scores (0-10) between the two groups at 48 hours.
+*   **Why appropriate:**
+    1. VAS is an ordinal/non-normally distributed continuous scale; non-parametric testing preserves the full spectrum of the data.
+    2. It avoids the massive loss of statistical power caused by the authors' arbitrary dichotomization (e.g., treating a VAS of 4 and a VAS of 0 as the exact same outcome).
+*   **Why it may not be appropriate:** If the distributions of the two groups have completely different shapes, comparing medians becomes difficult to interpret clinically.
+*   **When this test should NOT be used:** If the data is normally distributed and meets all parametric assumptions (though rare for VAS).
+*   **Alternative if assumptions are violated:** Independent Samples t-test (if raw VAS data is perfectly normally distributed).
+
+**2. Binary Logistic Regression**
+*   **Purpose:** To evaluate the effect of the analgesic group on the binary outcome (Pain vs. No Pain) while controlling for baseline VAS scores.
+*   **Why appropriate:**
+    1. Allows adjustment for baseline pain, which is the strongest predictor of post-operative pain.
+    2. Provides an Odds Ratio (OR), which is highly interpretable for clinical decision-making.
+*   **Why it may not be appropriate:** The sample size (N=60) is relatively small. If the number of patients experiencing "Pain" is very low, the model may overfit (violating the "10 events per variable" rule).
+*   **When this test should NOT be used:** When the dependent variable is continuous (e.g., raw VAS scores).
+*   **Alternative if assumptions are violated:** Cochran-Mantel-Haenszel test (to stratify by baseline pain categories instead of regression).
+
+#### CATEGORY C – OPTIONAL TESTS
+*(Tests that provide supplementary clinical insights).*
+
+**1. Wilcoxon Signed-Rank Test**
+*   **Purpose:** To compare baseline VAS to 48-hour raw VAS *within* each group separately.
+*   **Why appropriate:**
+    1. Demonstrates whether the endodontic treatment itself successfully reduced pain from baseline in both groups.
+    2. Accounts for the paired nature of pre- and post-treatment scores in the same individuals.
+*   **Why it may not be appropriate:** The primary research question is between-group differences, not within-group changes.
+*   **When this test should NOT be used:** For comparing Group 1 against Group 2.
+*   **Alternative if assumptions are violated:** Paired Samples t-test (if the differences between paired scores are normally distributed).
+
+**2. Absolute Risk Reduction (ARR) and Number Needed to Treat/Harm (NNT/NNH)**
+*   **Purpose:** To translate the binary outcome findings into practical clinical metrics.
+*   **Why appropriate:**
+    1. Provides clinicians with a tangible metric (e.g., "How many patients do I need to prescribe regular acetaminophen to prevent one case of pain?").
+    2. Highly recommended by CONSORT guidelines for clinical trials.
+*   **Why it may not be appropriate:** If the Chi-Square test shows absolutely no statistically significant difference, calculating NNT can be misleading or yield a confidence interval that crosses infinity.
+*   **When this test should NOT be used:** When analyzing continuous outcomes.
+*   **Alternative if assumptions are violated:** Standard reporting of relative risk (RR) or Odds Ratios (OR).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+The following tests should **NOT** be used for the primary analysis of this study, and doing so would constitute a statistical error:
+
+1.  **Independent Samples t-test or ANOVA for the Primary Outcome:** The authors explicitly defined their final outcome as categorical (0-4 = No Pain, 5-10 = Pain). You cannot run parametric tests comparing means on a binary categorical variable.
+2.  **Paired t-test for Group Comparisons:** Group 1 and Group 2 consist of different individuals. Paired tests are only for matched samples or repeated measures on the same individuals.
+3.  **Pearson Correlation:** The independent variable (Group) is nominal, and the dependent variable (Pain/No Pain) is nominal. Pearson correlation requires two continuous variables.
+4.  **Repeated Measures ANOVA:** While VAS was measured twice (baseline and 48 hours), VAS data rarely meets the strict normality and sphericity assumptions required for RM-ANOVA, and the authors' dichotomization of the final score makes this impossible.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must first establish **baseline equivalence** to ensure the randomization was successful, utilizing t-tests/Mann-Whitney U for continuous demographics (Age, Baseline VAS) and Chi-Square for categorical demographics (Gender, Tooth type). 
+
+For the **primary analysis**, because the authors explicitly chose to dichotomize their outcome into "Pain" vs. "No Pain", a **Chi-Square test of independence** is mandatory to answer their specific research question. However, from a biostatistical standpoint, dichotomizing a 10-point scale at an arbitrary cut-off of 4/5 destroys valuable data variance and reduces the power of the study. Therefore, it is highly recommended to "rescue" the data by analyzing the raw 48-hour VAS scores using a **Mann-Whitney U test**. Finally, utilizing **Binary Logistic Regression** will allow the researchers to control for baseline pain, providing a much more rigorous and clinically accurate evaluation of whether regular acetaminophen prescription is truly superior to on-demand usage.

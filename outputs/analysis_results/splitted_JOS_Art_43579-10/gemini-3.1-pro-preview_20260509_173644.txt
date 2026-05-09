@@ -1,0 +1,100 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_JOS_Art_43579-10.pdf
+Status : ok
+Time   : 20260509_173644
+══════════════════════════════════════════════════════════════════════
+
+Here is the comprehensive extraction and statistical analysis plan based on the provided dental research article.
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Longitudinal, prospective, pre-post observational study (single cohort).
+*   **Objectives:** To measure and compare dental anxiety before and after endodontic microsurgery.
+*   **Setting:** Dental clinic of Universidad Peruana Cayetano Heredia, Lima, Perú.
+*   **Participants:** Patients scheduled to undergo endodontic microsurgery.
+*   **Inclusion Criteria:** Adults ($\ge 18$ years old).
+*   **Exclusion Criteria:** Patients with psychiatric or neurological diseases reported in medical records; incomplete scales.
+*   **Sampling Method:** Non-probabilistic (convenience sampling based on historical clinic averages).
+*   **Sample Size:** Initial $N = 41$; Excluded = 6; Final analyzed sample $N = 35$.
+*   **Variables & Measurements:**
+    *   *Independent Variable:* Time (Two time points: Pre-microsurgery vs. Post-microsurgery).
+    *   *Primary Dependent Variable 1 (Continuous):* Dental anxiety, measured via Visual Analogue Scale (VAS, 0-10 cm). Measured as the physical distance from "not anxious at all" to the patient's mark.
+    *   *Primary Dependent Variable 2 (Categorical):* Anxiety status, dichotomized using a cut-off score (VAS $\ge 3$ = experienced anxiety; VAS $< 3$ = no anxiety).
+*   **Data Collection Procedure:** Self-administered VAS completed in the waiting room before the procedure, and again in the waiting room after the 2-3 hour procedure while waiting for a prescription. All assessments were conducted by the same researcher.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+*(Tests without which the analysis would be incomplete)*
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the *differences* between pre-operative and post-operative VAS scores.
+*   **Why appropriate:** 1) The sample size ($N=35$) is highly suitable for the Shapiro-Wilk test, which has high power for small-to-medium samples. 2) It dictates whether parametric or non-parametric tests should be used for the primary continuous analysis.
+*   **Why it may not be appropriate:** It can sometimes be overly sensitive to trivial deviations from normality, potentially forcing the use of less powerful non-parametric tests unnecessarily.
+*   **When this test should NOT be used:** When sample sizes are extremely large (e.g., $N > 1000$), where visual inspection (Q-Q plots) is preferred.
+*   **Alternative:** Kolmogorov-Smirnov test (with Lilliefors significance correction) or visual assessment via Q-Q plots.
+
+**2. Paired Samples t-test**
+*   **Purpose:** To compare the mean continuous VAS scores before and after microsurgery.
+*   **Why appropriate:** 1) The study utilizes a repeated-measures design where the same subjects are measured twice (dependent data). 2) The authors explicitly state they calculated the VAS as a "quantitative variable," allowing for mean comparisons.
+*   **Why it may not be appropriate:** VAS scores are technically ordinal and often suffer from ceiling or floor effects, which can severely skew the data and violate the assumption of normality.
+*   **When this test should NOT be used:** When the differences between the pre- and post-operative scores significantly violate the assumption of normal distribution.
+*   **Alternative:** Wilcoxon Signed-Rank Test.
+
+**3. McNemar’s Test**
+*   **Purpose:** To compare the proportion of patients classified as "anxious" (VAS $\ge 3$) before versus after the procedure.
+*   **Why appropriate:** 1) The authors explicitly created a dichotomous categorical variable (Anxious vs. Not Anxious). 2) It is the correct test for comparing paired nominal data to see if the proportion of anxious patients changed significantly.
+*   **Why it may not be appropriate:** The standard McNemar's test relies on a chi-square distribution approximation, which loses accuracy if the number of discordant pairs (patients who changed status) is very small.
+*   **When this test should NOT be used:** When the total number of discordant pairs is less than 25.
+*   **Alternative:** Exact McNemar's Test (Binomial exact test for paired data).
+
+#### CATEGORY B – RECOMMENDED TESTS
+*(Tests that enhance the quality and rigor of the analysis)*
+
+**1. Wilcoxon Signed-Rank Test**
+*   **Purpose:** To compare the median VAS scores before and after the procedure.
+*   **Why appropriate:** 1) Pain and anxiety scales (like VAS) frequently yield non-normal, skewed distributions. 2) It is robust against outliers, which is highly beneficial in a small sample size of 35.
+*   **Why it may not be appropriate:** It has slightly less statistical power than a paired t-test if the data is, in fact, perfectly normally distributed.
+*   **When this test should NOT be used:** When the data meets all assumptions for parametric testing and maximum statistical power is required to detect a very small effect.
+*   **Alternative:** Paired Samples t-test.
+
+**2. Effect Size Calculation (Cohen’s *d* for paired samples or Rank-Biserial Correlation)**
+*   **Purpose:** To quantify the magnitude of the difference in anxiety levels before and after surgery.
+*   **Why appropriate:** 1) The authors concluded there was "no statistical difference"; an effect size will reveal if this is due to a true lack of effect or simply low statistical power (Type II error). 2) It provides clinical relevance rather than just statistical significance (p-value).
+*   **Why it may not be appropriate:** Effect sizes do not provide a probability or confidence level that the observed effect wasn't due to chance.
+*   **When this test should NOT be used:** When the primary data is heavily corrupted or biased, rendering the magnitude of the difference meaningless.
+*   **Alternative:** 95% Confidence Intervals for the mean difference.
+
+#### CATEGORY C – OPTIONAL TESTS
+*(Tests that provide supplementary insights)*
+
+**1. Spearman’s Rank-Order Correlation**
+*   **Purpose:** To determine if there is a relationship between a patient's pre-operative anxiety level and their post-operative anxiety level.
+*   **Why appropriate:** 1) It helps answer the clinical question: "Do patients who start highly anxious remain highly anxious?" 2) It does not assume a normal distribution of the VAS scores.
+*   **Why it may not be appropriate:** It only assesses the monotonic relationship (correlation) between the two time points, not the actual difference or change in anxiety levels.
+*   **When this test should NOT be used:** If the relationship between the variables is known to be non-monotonic (e.g., U-shaped).
+*   **Alternative:** Pearson Correlation Coefficient (if data is normally distributed).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+The following tests should **NOT** be used for this study:
+
+1.  **Independent Samples t-test / Mann-Whitney U test:** These tests assume that the two groups being compared are entirely independent of one another. Because this study measures the *same* 35 patients twice (before and after), the data is dependent (paired). Using independent tests would violate core assumptions and drastically reduce statistical power.
+2.  **Pearson Chi-Square Test of Independence:** If the researchers want to compare the categorical data (Anxious vs. Not Anxious), a standard Chi-Square test is inappropriate because it assumes independent observations. Because the pre- and post-categories belong to the same individuals, McNemar's test must be used instead.
+3.  **Analysis of Variance (ANOVA):** ANOVA is designed to compare means across three or more groups or time points. Since this study only has two time points (pre and post), an ANOVA is unnecessary. (While a Repeated Measures ANOVA would mathematically yield the same p-value as a paired t-test, it is an overly complex and inappropriate choice for only two time points).
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach for this study must be centered on **paired (dependent) statistical methods**, given the pre-post longitudinal design utilizing a single cohort of 35 patients. 
+
+Because the researchers extracted data from the Visual Analogue Scale in two distinct ways—as a continuous measurement (0-10 cm) and as a dichotomized category (cut-off score of 3)—the analysis requires a two-pronged approach. First, continuous changes must be evaluated using a Paired t-test (or Wilcoxon Signed-Rank test, depending on the normality of the differences). Second, categorical shifts in anxiety status must be evaluated using McNemar's test. 
+
+Given the relatively small, non-probabilistic sample size, the study is at high risk for a Type II error (failing to detect a true difference). Therefore, relying solely on p-values is insufficient; calculating effect sizes and confidence intervals is highly recommended to determine whether the lack of statistical difference reported by the authors is due to a genuine absence of clinical change, or simply a lack of statistical power.

@@ -898,3 +898,121 @@ The study is a well-powered, multicentre, double‑blind RCT comparing two scaff
 - Address missing data more robustly than LOCF, ideally using multiple imputation or mixed models, and perform sensitivity analyses.
 
 This framework provides a statistically rigorous, clinically interpretable evaluation of whether i‑PRF improves the efficacy and safety of RET in mature permanent teeth with pulp necrosis, while respecting the trial’s design and data structure.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_175039
+──────────────────────────────────────────────────────────────────────
+
+Based on the provided text from the study protocol, here is the comprehensive extraction and statistical analysis plan.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Multicenter, randomized, double-blind, parallel positive-control clinical trial.
+*   **Primary Objective:** To evaluate the efficacy of Regenerative Endodontic Therapy (RET) with injectable platelet-rich fibrin (i-PRF) versus RET with blood clot (BC) for mature permanent teeth with pulp necrosis.
+*   **Secondary Objectives:** To investigate factors influencing clinical outcomes and explore a standard RET protocol for mature permanent teeth.
+*   **Groups:** 
+    *   *Test Group:* RET with i-PRF (n = 173)
+    *   *Control Group:* RET with Blood Clot (n = 173)
+*   **Sample Size:** Total N = 346 (Allocation ratio 1:1).
+*   **Variables & Measurements:**
+    *   *Baseline/Demographics:* Sex, age, tooth position, disease type, apical hole size.
+    *   *Clinical Outcomes (Categorical/Binary & Continuous):* Crown discoloration, pocket depth, percussion, palpation, sinus tract, tooth mobility, periapical swelling, maxillofacial swelling, general symptoms, cold/heat test, vitality test.
+    *   *Radiographic Outcomes:* Periapical film, Cone Beam Computed Tomography (CBCT).
+    *   *Safety Outcomes:* Adverse events (e.g., root resorption, tooth fracture).
+    *   *Primary Endpoint:* "Success rate" (implied as a composite binary outcome based on clinical and radiographic healing).
+*   **Data Collection Schedule:** Baseline, 1, 3, 6, 12, 18, and 24 months post-surgery. (CBCT only at baseline and 24 months).
+*   **Missing Data Handling (Proposed by authors):** Last Observation Carried Forward (LOCF).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Core tests required for the primary objectives)
+
+**1. Chi-Square Test (or Fisher’s Exact Test)**
+*   **Purpose:** To compare the primary outcome (overall success rate) and categorical baseline variables (e.g., sex, disease type) between the i-PRF and BC groups.
+*   **Why appropriate:** 
+    1) The primary outcome (success/failure) is categorical.
+    2) The two groups (i-PRF vs. BC) are independent of each other.
+*   **Why it may not be appropriate:** It does not account for time-to-event or censoring (e.g., if a patient drops out at month 12, their exact time of failure/success is lost in a simple aggregate Chi-square).
+*   **When this test should NOT be used:** When expected cell counts in the contingency table are less than 5.
+*   **Alternative if assumptions are violated:** Fisher’s Exact Test.
+
+**2. Independent Samples t-test**
+*   **Purpose:** To compare continuous baseline characteristics (e.g., age, apical hole size) between the two groups to ensure successful randomization.
+*   **Why appropriate:** 
+    1) Compares the means of two independent groups.
+    2) Provides a straightforward assessment of baseline equivalence for continuous variables.
+*   **Why it may not be appropriate:** Clinical data (like apical hole size) is often skewed and may not follow a normal distribution.
+*   **When this test should NOT be used:** When the data is highly skewed, contains significant outliers, or violates the assumption of normality or homogeneity of variances.
+*   **Alternative if assumptions are violated:** Mann-Whitney U test (Wilcoxon rank-sum test).
+
+**3. Multivariable Logistic Regression**
+*   **Purpose:** To evaluate the effect of the intervention (i-PRF vs BC) on the binary success rate while adjusting for potential baseline confounders (e.g., age, tooth position, initial apical hole size).
+*   **Why appropriate:** 
+    1) Allows for the calculation of adjusted Odds Ratios (OR) for the treatment effect.
+    2) Fulfills the authors' secondary objective of investigating factors influencing clinical outcomes.
+*   **Why it may not be appropriate:** If the number of "failures" (events) is very low, the model may suffer from overfitting (violating the rule of 10 events per variable).
+*   **When this test should NOT be used:** When the outcome is continuous, or if there is severe multicollinearity among the predictor variables.
+*   **Alternative if assumptions are violated:** Penalized logistic regression (e.g., Firth's logistic regression) for rare events.
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Generalized Estimating Equations (GEE) or Linear Mixed-Effects Models (LMM)**
+*   **Purpose:** To analyze repeated measures data (e.g., pocket depth, mobility scores) collected at 1, 3, 6, 12, 18, and 24 months.
+*   **Why appropriate:** 
+    1) Accounts for the within-subject correlation of data measured repeatedly over time on the same patient.
+    2) Handles missing data much more robustly than the authors' proposed LOCF method, utilizing all available data points without fabricating data.
+*   **Why it may not be appropriate:** Can be computationally complex and difficult to interpret for non-statisticians.
+*   **When this test should NOT be used:** When data is only collected at a single time point (e.g., baseline vs. end of study only).
+*   **Alternative if assumptions are violated:** Repeated Measures ANOVA (though this requires complete case analysis and is less robust to missing data).
+
+**2. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To compare the time-to-failure (or time-to-healing) between the i-PRF and BC groups over the 24-month follow-up.
+*   **Why appropriate:** 
+    1) Accounts for right-censored data (patients who drop out or complete the 24 months without failing).
+    2) Provides a dynamic view of *when* treatments succeed or fail, rather than just a binary end-of-study snapshot.
+*   **Why it may not be appropriate:** If the exact time of the event is unknown (interval censoring between the 6-month and 12-month visits, for example).
+*   **When this test should NOT be used:** When the proportional hazards assumption is grossly violated (e.g., survival curves cross each other).
+*   **Alternative if assumptions are violated:** Cox Proportional Hazards Model with time-dependent covariates.
+
+**3. Cochran-Mantel-Haenszel (CMH) Test**
+*   **Purpose:** To compare the success rates between the two groups while stratifying by the three different study centers.
+*   **Why appropriate:** 
+    1) Controls for the "center effect" in a multicenter trial.
+    2) Ensures that a high success rate in one specific hospital doesn't artificially inflate the overall results.
+*   **Why it may not be appropriate:** Assumes that the odds ratio is consistent across all strata (centers).
+*   **When this test should NOT be used:** If there is a significant interaction between the treatment and the center (i.e., the treatment works well in Center A but fails in Center B).
+*   **Alternative if assumptions are violated:** Breslow-Day test for homogeneity of odds ratios, followed by a mixed-effects logistic regression with "Center" as a random effect.
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Cohen’s Kappa or Intraclass Correlation Coefficient (ICC)**
+*   **Purpose:** To assess inter-rater reliability for the radiographic evaluations (periapical films and CBCT).
+*   **Why appropriate:** 
+    1) Radiographic healing (e.g., apical closure) is subjective.
+    2) Proves that the outcome assessors (who are blinded) are scoring the images consistently.
+*   **Why it may not be appropriate:** Requires a subset of images to be graded by multiple blinded assessors, which adds logistical burden.
+*   **When this test should NOT be used:** When outcomes are purely objective and automated (e.g., a machine readout).
+*   **Alternative if assumptions are violated:** Percentage agreement (though less robust as it doesn't account for chance).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+Based on the authors' text, the following proposed methods are statistically inappropriate and should **NOT** be used:
+
+1.  **McNemar’s Test for comparing clinical outcomes of different centers:**
+    *   *Why it is inappropriate:* The authors state: *"McNemar’s test will be used to analyse the clinical outcomes of different centres."* McNemar's test is exclusively used for *paired* nominal data (e.g., comparing a patient's status before and after treatment). Patients in Center A are completely independent of patients in Center B. Using McNemar's to compare independent centers is a fundamental statistical error. A Chi-square test or CMH test should be used instead.
+2.  **Last Observation Carried Forward (LOCF) for missing data:**
+    *   *Why it is inappropriate:* While technically an imputation strategy rather than a test, the authors explicitly plan to use LOCF. In regenerative endodontics, healing is a progressive, time-dependent process. If a patient drops out at month 3, carrying their month 3 data forward to month 24 artificially assumes no further healing or deterioration occurred. This introduces severe bias. Modern standards require Multiple Imputation (MI) or Mixed-Effects Models.
+3.  **Principal Component Analysis (PCA) using multinomial logistic regression to adjust for confounders:**
+    *   *Why it is inappropriate:* The authors state: *"A principal component analysis will be performed using multinomial logistic regression to adjust for potential confounders."* This is a confused methodology. PCA is a dimensionality reduction technique, not an adjustment tool for clinical confounders. Furthermore, the primary outcome (success/failure) is binary, not multinomial. Standard multivariable binary logistic regression is the correct approach for confounder adjustment.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach should transition from a simplistic, cross-sectional analysis to a robust, longitudinal framework. First, baseline equivalence must be established using independent t-tests and Chi-square tests to validate the randomization. For the primary efficacy endpoint, while a Chi-square test provides a crude comparison of success rates, multivariable logistic regression is mandatory to adjust for baseline confounders (such as initial apical lesion size). 
+
+Because this study features a 24-month follow-up with six distinct measurement intervals, the authors' plan to use basic tests and LOCF imputation is highly flawed and outdated. The analysis must be upgraded to include Generalized Estimating Equations (GEE) or Mixed-Effects Models to properly handle repeated measures and missing data without introducing bias. Furthermore, survival analysis (Kaplan-Meier) should be implemented to evaluate the *time-to-healing*, and the "center effect" of the multicenter design must be controlled for using a CMH test or random-effects modeling, strictly avoiding the authors' erroneous proposal to use McNemar's test for independent centers.

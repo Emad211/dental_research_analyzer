@@ -1,0 +1,140 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_nbnfi-fe202102023523.pdf
+Status : ok
+Time   : 20260509_174128
+══════════════════════════════════════════════════════════════════════
+
+Here is the comprehensive information extraction and statistical analysis plan based on the provided dental research article.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Design:** 
+Prospective cohort study with a cross-sectional baseline analysis and a 10-year longitudinal follow-up (subpopulation of the Corogene cohort, named Parogene).
+
+**Objectives / Hypotheses:**
+1. *Cross-sectional:* Carotid artery calcification (CAC) is associated with oral infections/inflammation, dysbiotic oral bacteria, and immune responses.
+2. *Cross-sectional:* CAC is associated with the diagnosis and severity of coronary artery disease (CAD).
+3. *Longitudinal:* CAC is associated with all-cause and cardiovascular disease (CVD) mortality over a 10-year follow-up.
+
+**Study Population & Sample Size:**
+*   **Total Sample:** 508 symptomatic Finnish patients who underwent coronary angiography.
+*   **Analyzable Sample:** 492 patients (technically registered for CAC).
+
+**Groups:**
+*   **CAC Status (Primary Grouping):** No CAC (n=390), Moderate CAC (n=81), Severe CAC (n=21).
+*   **CAD Diagnosis:** No significant CAD (n=147), Chronic CAD (n=181), Acute Coronary Syndrome (ACS) (n=164).
+
+**Variables:**
+*   **Dependent/Outcome Variables:** 
+    *   *Baseline:* CAC presence and severity (None, Moderate, Severe).
+    *   *Follow-up:* All-cause mortality, CVD mortality (time-to-event).
+*   **Independent/Predictor Variables:** 
+    *   *Clinical Oral:* Number of teeth, Periodontal Probing Depth (PPD 4-5mm, $\ge$6mm), Bleeding on Probing (BOP), Periodontal Inflammation Burden Index (PIBI), carious teeth.
+    *   *Radiographic Oral:* Alveolar bone loss (ABL), widened periapical space, apical rarefactions, root canal fillings, endodontic lesion score (severity and treatment).
+    *   *Microbiological:* Levels of gram-positive and gram-negative subgingival species.
+    *   *Immunological:* Saliva and serum IgA/IgG against dysbiotic species.
+    *   *Systemic:* CAD diagnosis, CAD severity (number of stenosed arteries).
+*   **Covariates/Confounders:** Age, gender, BMI, hs-CRP, dyslipidemia, hypertension, diabetes, smoking status.
+
+**Measurements & Data Collection:**
+*   *Clinical:* Standard dental office examination by calibrated periodontists.
+*   *Radiographic:* Digital panoramic tomographs analyzed by a single dental radiologist.
+*   *Microbiological:* Pooled subgingival plaque samples analyzed via checkerboard DNA-DNA hybridization.
+*   *Immunological:* ELISA for serum and saliva antibodies.
+*   *Medical:* Angiography results, hospital records, questionnaires.
+*   *Follow-up:* Record linkage to the National Causes-of-Death Register (ICD-10 codes).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Core tests required to address hypotheses)
+
+**1. Chi-Square Test for Trend (Linear-by-Linear Association)**
+*   **Purpose:** To compare categorical variables (e.g., gender, smoking, CAD severity, ABL grade) across the three ordinal CAC groups (None, Moderate, Severe).
+*   **Why appropriate:** 1) It accounts for the ordinal nature of the CAC grading, testing for a dose-response relationship rather than just any difference. 2) It is highly suited for categorical data like CAD severity (0, 1, 2, 3 arteries).
+*   **Why it may not be appropriate:** It assumes the distance between ordinal categories is relatively equal, which may not be clinically true for "Moderate" vs "Severe" CAC.
+*   **When NOT to use:** When expected cell counts are less than 5 in more than 20% of the cells.
+*   **Alternative:** Fisher-Freeman-Halton Exact Test (if cell counts are too low).
+
+**2. Jonckheere-Terpstra Test**
+*   **Purpose:** To compare continuous, non-normally distributed variables (e.g., hs-CRP, bacterial levels, antibody titers) across the three ordinal CAC groups.
+*   **Why appropriate:** 1) It does not assume a normal distribution. 2) It specifically tests for an ordered alternative hypothesis (trend), which perfectly matches the None $\rightarrow$ Moderate $\rightarrow$ Severe CAC progression.
+*   **Why it may not be appropriate:** It is less powerful than parametric equivalents if the data actually follows a normal distribution.
+*   **When NOT to use:** When the independent variable groups do not have a natural, logical order.
+*   **Alternative:** Kruskal-Wallis H test (if looking for any difference rather than a trend); One-way ANOVA with linear contrasts (if data is normally distributed).
+
+**3. Multivariable Logistic Regression**
+*   **Purpose:** To determine the independent association between oral/systemic predictors and the presence of CAC, adjusting for confounders (age, gender, smoking, etc.).
+*   **Why appropriate:** 1) Allows for the control of multiple systemic confounders simultaneously. 2) Provides easily interpretable Odds Ratios (OR) for clinical risk assessment.
+*   **Why it may not be appropriate:** If the outcome is kept as three categories (None, Mod, Severe), standard binary logistic regression forces the researcher to collapse groups (e.g., CAC vs No CAC), losing granularity.
+*   **When NOT to use:** When there is severe multicollinearity among predictors (e.g., putting both PPD and PIBI in the same model without checking).
+*   **Alternative:** Ordinal Logistic Regression (if maintaining the 3-tier CAC grading).
+
+**4. Cox Proportional Hazards Regression**
+*   **Purpose:** To analyze the association between CAC severity and time-to-death (all-cause and CVD) over the 10-year follow-up, adjusting for baseline confounders.
+*   **Why appropriate:** 1) It accounts for both the occurrence of death and the *time* it took to occur. 2) It handles right-censored data (patients who survived past 10 years or were lost to follow-up).
+*   **Why it may not be appropriate:** It assumes that the hazard ratio remains constant over the entire 10-year follow-up period, which may not be true for aging populations.
+*   **When NOT to use:** When the proportional hazards assumption is violated.
+*   **Alternative:** Accelerated Failure Time (AFT) models or time-dependent Cox regression.
+
+#### CATEGORY B – RECOMMENDED (Enhance quality and rigor)
+
+**1. Cohen’s Kappa / Intraclass Correlation Coefficient (ICC)**
+*   **Purpose:** To assess inter-examiner reliability (between the two periodontists) and intra-examiner reliability (for the single radiologist assessing CAC and ABL).
+*   **Why appropriate:** 1) Validates the reproducibility of the clinical and radiographic measurements. 2) Reduces the risk of measurement bias being the driver of the results.
+*   **Why it may not be appropriate:** Kappa can be misleadingly low if the prevalence of a specific finding (e.g., severe CAC) is very low (the "Kappa paradox").
+*   **When NOT to use:** When assessing agreement between two different *methods* rather than two raters (use Bland-Altman instead).
+*   **Alternative:** Gwet’s AC1 statistic (more robust to trait prevalence).
+
+**2. Schoenfeld Residuals Test**
+*   **Purpose:** To test the proportional hazards assumption of the Cox regression models.
+*   **Why appropriate:** 1) It is a mandatory diagnostic step to ensure Cox model validity. 2) It identifies if the effect of CAC on mortality changes over time.
+*   **Why it may not be appropriate:** In small samples, it may lack the power to detect meaningful violations of the assumption.
+*   **When NOT to use:** When running non-survival models (e.g., logistic regression).
+*   **Alternative:** Visual inspection of log-minus-log survival plots.
+
+**3. Variance Inflation Factor (VIF) Analysis**
+*   **Purpose:** To check for multicollinearity among predictor variables before running multivariable models.
+*   **Why appropriate:** 1) Dental variables (PPD, BOP, PIBI, ABL) are highly correlated; VIF prevents model instability. 2) Ensures standard errors for Odds Ratios are not artificially inflated.
+*   **Why it may not be appropriate:** VIF only detects linear relationships between predictors, not non-linear confounding.
+*   **When NOT to use:** In simple bivariate analyses.
+*   **Alternative:** Principal Component Analysis (PCA) to combine highly correlated dental variables into a single "oral disease score."
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Competing Risk Regression (Fine-Gray Model)**
+*   **Purpose:** To analyze CVD mortality while treating death from non-CVD causes as a competing risk.
+*   **Why appropriate:** 1) In a 10-year follow-up of an older cohort, patients may die of cancer before they can die of CVD. Standard Cox models treat non-CVD deaths as censored, which overestimates CVD risk. 2) Provides a more accurate cumulative incidence of CVD death.
+*   **Why it may not be appropriate:** Results (Subdistribution Hazard Ratios) are harder to interpret clinically than standard Hazard Ratios.
+*   **When NOT to use:** When analyzing all-cause mortality (where there are no competing risks).
+*   **Alternative:** Cause-specific Cox regression.
+
+**2. Propensity Score Matching (PSM) or Inverse Probability Weighting (IPW)**
+*   **Purpose:** To balance baseline covariates (age, smoking, diabetes) between the CAC and No-CAC groups.
+*   **Why appropriate:** 1) Mimics a randomized control trial by creating highly comparable groups. 2) Reduces selection bias inherent in observational cohort studies.
+*   **Why it may not be appropriate:** The Severe CAC group is very small (n=21); PSM might result in discarding a massive amount of data from the No-CAC group (n=390) to find matches.
+*   **When NOT to use:** When the sample size of the minority group is too small to allow for robust matching.
+*   **Alternative:** Standard multivariable covariate adjustment (as currently planned).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+1.  **Independent Samples t-test / Mann-Whitney U test:** 
+    *   *Why:* These tests are designed for comparing *two* groups. The study has *three* CAC groups (None, Moderate, Severe). Using multiple t-tests inflates the Type I error rate (false positives).
+2.  **Pearson Correlation Coefficient:** 
+    *   *Why:* Pearson is for two continuous, normally distributed variables. The primary variables here are ordinal (CAC grade, CAD severity, ABL grade) or highly skewed (bacterial counts, hs-CRP). Spearman's rank or Kendall's tau must be used instead.
+3.  **Standard Linear Regression:** 
+    *   *Why:* The outcomes are either categorical (CAC presence) or time-to-event (mortality). Linear regression cannot handle binary outcomes properly (violates assumption of homoscedasticity and can predict probabilities outside 0-1) and cannot account for censoring in survival data.
+
+---
+
+### TASK 4: SUMMARY
+
+The analytical approach for this study must bridge cross-sectional epidemiological associations with longitudinal survival outcomes. Because the primary grouping variable (CAC) is ordinal (None, Moderate, Severe), the baseline analysis should rely heavily on trend tests (Jonckheere-Terpstra for continuous data, Linear-by-Linear Chi-square for categorical data) to establish dose-response relationships. 
+
+To address the cross-sectional hypotheses, multivariable logistic regression is required to isolate the independent effect of oral dysbiosis and inflammation on CAC, controlling for heavy systemic confounders like age, smoking, and hypertension. Finally, to address the longitudinal hypothesis, Cox Proportional Hazards regression is the optimal choice to evaluate the predictive power of CAC on 10-year mortality, accounting for varying follow-up times and censoring. Implementing reliability testing (ICC/Kappa) for the single radiologist and competing risk models for CVD mortality will significantly elevate the methodological rigor of the paper.

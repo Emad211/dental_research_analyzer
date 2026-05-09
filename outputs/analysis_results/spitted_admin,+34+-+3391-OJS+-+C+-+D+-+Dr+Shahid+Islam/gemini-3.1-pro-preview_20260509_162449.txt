@@ -1,0 +1,103 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : spitted_admin,+34+-+3391-OJS+-+C+-+D+-+Dr+Shahid+Islam.pdf
+Status : ok
+Time   : 20260509_162449
+══════════════════════════════════════════════════════════════════════
+
+**CLINICAL BIOSTATISTICIAN NOTICE:** 
+*The article text you provided is empty/corrupted (it contains only page headers, the phrase "The [cut off]", and a series of periods). Because the actual Introduction and Methods sections are missing, I cannot extract your specific study's details.*
+
+*To demonstrate how I will analyze your study once you provide the text, I have completed all tasks below using a **hypothetical, standard dental research study** (e.g., an in-vitro study comparing the shear bond strength of three different dental adhesives). Please reply with your actual text, and I will generate a precise, custom analysis for your specific study.*
+
+***
+
+### TASK 1: INFORMATION EXTRACTION (Hypothetical Study Example)
+*   **Study Design:** In-vitro experimental comparative study.
+*   **Objectives:** To evaluate and compare the shear bond strength (SBS) of three different universal dental adhesives applied to dentin.
+*   **Groups:** 3 independent groups (Adhesive A, Adhesive B, Adhesive C).
+*   **Sample Size:** 45 extracted human premolars (n=15 per group).
+*   **Variables:** 
+    *   *Independent Variable:* Type of dental adhesive (Categorical, 3 levels).
+    *   *Dependent Variable:* Shear bond strength (Continuous, measured in MPa).
+*   **Measurements:** Bond strength measured using a universal testing machine at a crosshead speed of 1.0 mm/min.
+*   **Data Collection Methods:** The peak load at failure (in Newtons) is recorded by the machine's software and divided by the bonded surface area to calculate SBS in Megapascals (MPa).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+*Tests without which the analysis would be incomplete.*
+
+**1. Shapiro-Wilk Test**
+*   **Test name:** Shapiro-Wilk Test of Normality
+*   **Purpose:** To assess whether the continuous dependent variable (SBS) follows a normal distribution within each of the three groups.
+*   **Why appropriate:** 
+    1) It is highly powerful and accurate for small sample sizes (n=15 per group). 
+    2) It is a strict prerequisite to determine whether parametric or non-parametric inferential tests should be used for the primary analysis.
+*   **Why it may not be appropriate:** It can be overly sensitive to trivial deviations from normality if the sample size is extremely large, though this is not an issue for n=15.
+*   **When this test should NOT be used:** When dealing with categorical or ordinal data (e.g., Adhesive Failure Index scores).
+*   **Alternative if assumptions are violated:** Visual inspection of Q-Q plots and histograms, or the Kolmogorov-Smirnov test.
+
+**2. One-Way Analysis of Variance (ANOVA)**
+*   **Test name:** One-Way ANOVA
+*   **Purpose:** To determine if there are any statistically significant differences in the mean shear bond strength across the three independent adhesive groups.
+*   **Why appropriate:** 
+    1) The study design compares three distinct, independent groups. 
+    2) The dependent variable (SBS) is continuous and (assuming it passes the Shapiro-Wilk test) normally distributed.
+*   **Why it may not be appropriate:** It assumes homogeneity of variances; if the variances between groups are vastly different, the F-statistic becomes unreliable.
+*   **When this test should NOT be used:** When the data is heavily skewed, non-normal, or when comparing only two groups (where a t-test is sufficient).
+*   **Alternative if assumptions are violated:** Kruskal-Wallis H Test (if normality is violated) or Welch’s ANOVA (if variance is unequal).
+
+#### CATEGORY B – RECOMMENDED
+*Tests that enhance the quality and rigor of the analysis.*
+
+**1. Levene’s Test**
+*   **Test name:** Levene’s Test for Equality of Variances
+*   **Purpose:** To test the assumption of homoscedasticity (homogeneity of variances) across the three groups prior to running the ANOVA.
+*   **Why appropriate:** 
+    1) It is less sensitive to departures from normality than other variance tests (like Bartlett's test). 
+    2) It mathematically justifies the use of a standard ANOVA versus a robust ANOVA.
+*   **Why it may not be appropriate:** With very small sample sizes, it may lack the statistical power to detect true heterogeneity of variance (Type II error).
+*   **When this test should NOT be used:** When analyzing paired or repeated-measures data.
+*   **Alternative if assumptions are violated:** If Levene's test is significant (variances are unequal), proceed directly to Welch’s ANOVA.
+
+**2. Tukey’s Honestly Significant Difference (HSD)**
+*   **Test name:** Tukey’s HSD Post-Hoc Test
+*   **Purpose:** To perform pairwise comparisons to identify exactly *which* specific adhesives differ from one another, provided the overall ANOVA is significant.
+*   **Why appropriate:** 
+    1) It strictly controls the Family-Wise Error Rate (Type I error) when making multiple comparisons. 
+    2) It is highly reliable and optimal when group sample sizes are equal (n=15).
+*   **Why it may not be appropriate:** It is slightly conservative and may lack power if the sample sizes are unequal.
+*   **When this test should NOT be used:** When Levene's test indicates that variances are unequal across groups.
+*   **Alternative if assumptions are violated:** Games-Howell post-hoc test (which does not assume equal variances).
+
+#### CATEGORY C – OPTIONAL
+*Tests that provide supplementary insights.*
+
+**1. Weibull Reliability Analysis**
+*   **Test name:** Weibull Distribution / Survival Analysis
+*   **Purpose:** To evaluate the probability of bond failure at given stress levels and determine the structural reliability of the adhesives.
+*   **Why appropriate:** 
+    1) It is the gold standard in dental materials research for assessing the predictability of material failure. 
+    2) It provides the Weibull modulus (m), where a higher number indicates fewer critical flaws and more predictable clinical performance.
+*   **Why it may not be appropriate:** Weibull analysis typically requires a larger sample size (ideally n ≥ 30 per group) for highly accurate parameter estimation; n=15 may yield wide confidence intervals.
+*   **When this test should NOT be used:** When the failure modes (adhesive, cohesive, mixed) are not properly categorized, as mixing failure types confounds the reliability modulus.
+*   **Alternative if assumptions are violated:** Kaplan-Meier survival analysis (if tracking time-to-failure in a dynamic fatigue test rather than static load-to-failure).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+*   **Independent Samples t-test:** Inappropriate because there are *three* groups. Conducting multiple t-tests (A vs B, B vs C, A vs C) inflates the Type I error rate, increasing the chance of a false positive.
+*   **Paired t-test / Repeated Measures ANOVA:** Inappropriate because the groups are independent (different teeth were used for different adhesives). These tests are reserved for when the *same* specimens are tested multiple times.
+*   **Chi-Square Test of Independence:** Inappropriate for the primary outcome because the dependent variable (Shear Bond Strength) is continuous. Chi-square is only used for categorical frequency data (e.g., comparing the frequency of adhesive vs. cohesive failure modes).
+
+---
+
+### TASK 4: SUMMARY
+**Justification of the overall analytical approach:**
+The proposed analytical pipeline follows a rigorous, step-wise progression standard in dental biostatistics. First, mandatory assumption checks (Shapiro-Wilk, Levene's) ensure the data qualifies for parametric testing, safeguarding against mathematical artifacts. Second, the primary inferential test (One-Way ANOVA) is utilized to detect overall differences among the independent groups without inflating error rates. Third, appropriate post-hoc testing (Tukey's HSD) pinpoints specific group differences while controlling for Type I error. Finally, an optional reliability analysis (Weibull) translates raw strength data into clinical predictability. This comprehensive approach ensures statistical rigor, reproducibility, and clinically meaningful interpretation of the dental materials tested.
+
+***
+**Please reply with the actual text of your article, and I will generate this exact level of analysis tailored to your specific study!**

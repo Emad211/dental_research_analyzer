@@ -1,0 +1,127 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_475f777a3a59b662fd1a71fb051d5df6.pdf
+Status : ok
+Time   : 20260509_164455
+══════════════════════════════════════════════════════════════════════
+
+Here is the comprehensive information extraction and statistical analysis plan based on the provided manuscript.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** *In vitro* experimental laboratory study.
+*   **Objective:** To investigate the impact of core mass and alloy of different endodontic NiTi instruments (with the same outer diameter and different cross-sectional designs) on cyclic fatigue using matching artificial tubes.
+*   **Null Hypothesis ($H_0$):** Core mass and alloy have no impact on the fracture resistance of the tested instruments.
+*   **Study Groups (7 Independent Groups):** 
+    1. F360 (25/0.04)
+    2. Twisted file (TF) (25/0.04)
+    3. JIZAI (J_04) (25/0.04)
+    4. TruNatomy (TN) (26/0.04)
+    5. Mtwo (25/0.06)
+    6. JIZAI (J_06) (25/0.06)
+    7. Hyflex Onefile (HF) (25/~ variable)
+*   **Sample Size:** 20 instruments per group. *(Note: The text states a total of 120 instruments, but lists 7 distinct instrument groups. $7 \times 20 = 140$. This is a discrepancy in the authors' manuscript that requires clarification, but the per-group $n=20$ is explicitly stated based on an *a priori* power analysis).*
+*   **Independent Variables:** Instrument type (encompassing alloy, core mass, taper, and cross-section).
+*   **Dependent Variables (Outcomes):**
+    1. Number of Cycles to Fracture (NCF) - Continuous (Calculated as: $[Time / 60] \times rpm$).
+    2. Length of the fractured fragment (mm) - Continuous.
+    3. Fracture mode - Categorical/Binary (Cyclic fatigue vs. Torsional fracture; assessed on a subset of $n=5$ per group).
+*   **Data Collection/Measurements:** 
+    *   Time to fracture recorded via video microscopy.
+    *   Tests capped at 600 seconds (plus a 30s buffer).
+    *   Fragment length measured via digital caliper.
+    *   Fracture surface analyzed via laser scanning microscope at 500x magnification.
+    *   Temperature strictly controlled at 37 ± 1 °C.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+*Tests without which the analysis would be incomplete.*
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the distribution for continuous variables (NCF and fragment length) within each group.
+*   **Why appropriate:** 
+    1) It is highly robust and provides the highest power for testing normality in smaller sample sizes ($n=20$ per group). 
+    2) It dictates whether parametric or non-parametric tests must be used for the primary analysis.
+*   **Why it may not be appropriate:** In some cases, with exactly $n=20$, it might lack the power to detect slight deviations from normality, though it remains the gold standard.
+*   **When this test should NOT be used:** When analyzing categorical data (e.g., fracture mode).
+*   **Alternative if assumptions are violated:** Visual inspection of Q-Q plots and histograms, or the Kolmogorov-Smirnov test (though less powerful).
+
+**2. Levene’s Test**
+*   **Purpose:** To assess the homogeneity of variances across the 7 independent groups.
+*   **Why appropriate:** 
+    1) Equal variance is a strict assumption for standard One-Way ANOVA. 
+    2) It is less sensitive to departures from normality than Bartlett’s test.
+*   **Why it may not be appropriate:** If the data is heavily skewed, the mean-based Levene's test can be inaccurate (though the median-based version can be used).
+*   **When this test should NOT be used:** When comparing dependent/paired samples.
+*   **Alternative if assumptions are violated:** Brown-Forsythe test.
+
+**3. One-Way Analysis of Variance (ANOVA)**
+*   **Purpose:** To determine if there are statistically significant differences in the mean NCF and fragment lengths across the 7 instrument groups.
+*   **Why appropriate:** 
+    1) The study compares a single continuous dependent variable across more than two independent categorical groups. 
+    2) It controls the overall Type I error rate, which would be inflated if multiple t-tests were used.
+*   **Why it may not be appropriate:** It assumes normal distribution and equal variances; fatigue data (like NCF) is often skewed (e.g., Weibull or log-normal distributions).
+*   **When this test should NOT be used:** If the data is ordinal, highly skewed, or if variances are vastly unequal.
+*   **Alternative if assumptions are violated:** Kruskal-Wallis H test (if normality is violated) or Welch’s ANOVA (if normality is met but variances are unequal).
+
+**4. Tukey’s Honestly Significant Difference (HSD) Post-Hoc Test**
+*   **Purpose:** To perform pairwise comparisons between specific instrument groups to see exactly *which* ones differ, after a significant ANOVA result.
+*   **Why appropriate:** 
+    1) It strictly controls the Family-Wise Error Rate (FWER) during multiple comparisons. 
+    2) It is highly optimized for study designs with equal sample sizes ($n=20$ per group).
+*   **Why it may not be appropriate:** It is overly conservative if the researcher is only interested in comparing each group to a single control, rather than all possible pairs.
+*   **When this test should NOT be used:** If Levene's test shows unequal variances, or if the omnibus ANOVA is not statistically significant.
+*   **Alternative if assumptions are violated:** Games-Howell post-hoc test (if variances are unequal) or Dunn’s test with Bonferroni correction (if Kruskal-Wallis was used).
+
+#### CATEGORY B – RECOMMENDED TESTS
+*Tests that enhance the quality and rigor of the analysis.*
+
+**1. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To analyze the "time to fracture" (or cycles to fracture) accounting for instruments that did not break.
+*   **Why appropriate:** 
+    1) The methodology states tests were limited to 600 seconds. Any instrument surviving past this point represents "right-censored" data. Standard ANOVA cannot handle censored data. 
+    2) It provides a highly visual and clinically relevant "survival curve" for the instruments.
+*   **Why it may not be appropriate:** If *all* instruments fractured well before the 600-second mark, there is no censored data, making standard ANOVA sufficient.
+*   **When this test should NOT be used:** When the outcome is not time-to-event or if the exact time of failure is unknown (interval censoring).
+*   **Alternative if assumptions are violated:** Cox Proportional-Hazards model (if adjusting for covariates).
+
+**2. Weibull Reliability Analysis**
+*   **Purpose:** To calculate the probability of instrument survival at specific cycle counts and determine the predictability of failure.
+*   **Why appropriate:** 
+    1) It is the engineering and biomechanical gold standard for material fatigue and failure testing. 
+    2) The Weibull modulus (shape parameter) provides insight into the reliability and predictability of the instrument's failure, which means more clinically than just "average cycles to failure."
+*   **Why it may not be appropriate:** It requires a specific data distribution; if the failure mechanism is mixed (e.g., both torsional and cyclic), a single Weibull distribution may not fit well.
+*   **When this test should NOT be used:** For analyzing the fragment length data, as this is not a time-to-failure metric.
+*   **Alternative if assumptions are violated:** Lognormal distribution survival analysis.
+
+#### CATEGORY C – OPTIONAL TESTS
+*Tests that provide supplementary insights.*
+
+**1. Pearson Correlation Coefficient**
+*   **Purpose:** To evaluate the linear relationship between Fragment Length and NCF.
+*   **Why appropriate:** 
+    1) It can reveal if instruments that break further up the shaft (longer fragments) survive longer or shorter. 
+    2) It provides insight into the biomechanics of the 60° curvature stress point.
+*   **Why it may not be appropriate:** It assumes a linear relationship; the relationship between fracture location and fatigue life might be non-linear.
+*   **When this test should NOT be used:** If the data for either variable is heavily skewed or contains extreme outliers.
+*   **Alternative if assumptions are violated:** Spearman’s Rank Correlation.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test:** Should NOT be used because there are 7 groups. Running multiple t-tests (e.g., Group 1 vs 2, Group 1 vs 3) will drastically inflate the Type I error rate (false positives).
+*   **Paired t-test / Repeated Measures ANOVA:** Should NOT be used because the instruments are independent. An instrument is tested until it breaks; it cannot be tested again. There are no repeated measures on the same subject.
+*   **Chi-Square Test of Independence (for NCF):** Should NOT be used because NCF is a continuous numerical variable, not categorical. (It *could* be used for fracture mode, but since the authors are just verifying cyclic fatigue to exclude torsional fracture, the variance will likely be zero).
+*   **Multivariate Analysis of Variance (MANOVA):** While there are two dependent variables (NCF and fragment length), they measure entirely different physical phenomena. Combining them into a single synthetic variable via MANOVA would complicate clinical interpretation without adding value.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must treat this as an independent, multi-group comparative study. The primary analytical pathway relies on checking assumptions (Shapiro-Wilk, Levene's) followed by an omnibus test (One-Way ANOVA or Welch's/Kruskal-Wallis) to determine if core mass and alloy significantly affect fatigue life (NCF) and fragment length. Post-hoc testing (Tukey or Games-Howell) is strictly required to identify which specific files outperform the others. 
+
+Crucially, because the experimental design includes a 600-second cutoff, the biostatistical approach *must* account for potential right-censoring. Therefore, incorporating Survival Analysis (Kaplan-Meier) and engineering-standard Weibull Reliability Analysis will elevate the paper from a basic comparative study to a highly rigorous, clinically applicable biomechanical evaluation. Finally, the discrepancy in the stated sample size (120 total vs. 7 groups of 20 = 140) must be resolved prior to running the analysis.

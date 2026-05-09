@@ -1,0 +1,87 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_JOCPD45.5.4.pdf
+Status : ok
+Time   : 20260509_173543
+══════════════════════════════════════════════════════════════════════
+
+Based on the provided text, here is the comprehensive biostatistical extraction and statistical analysis plan.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Randomized Clinical Trial (RCT) utilizing a split-mouth/within-tooth design (paired data).
+*   **Objective:** To evaluate whether placing a resorbable collagen barrier significantly impedes the extrusion of obturating material in primary molars undergoing resorption.
+*   **Sample Size:** 47 children (from 60 screened). 47 primary mandibular molars. Total of 94 root canals (47 test, 47 control). Power analysis conducted (80% power).
+*   **Study Population:** Children aged 7-9 years, Frankel’s Class 3 or 4 behavior, no systemic diseases, requiring pulpectomy in mandibular primary molars with at least 2/3 root length remaining.
+*   **Groups (Randomized via coin flip per canal):**
+    *   *Test Group (Group A):* Resorbable collagen barrier (Coloplug) placed 2mm short of the radiographic apex + obturation (Metapex).
+    *   *Control Group (Group B):* No barrier + obturation (Metapex). Final working length also kept 2mm short of the apex.
+*   **Variables:**
+    *   *Independent Variable:* Treatment type (Categorical: Collagen barrier vs. No barrier).
+    *   *Dependent Variable:* Extrusion of obturating material (Categorical/Dichotomous: "Acceptable/No Extrusion [NE]" vs. "Over filled/Extruded [E]").
+    *   *Covariates/Other Variables:* Canal type (Mesial vs. Distal).
+*   **Data Collection/Measurements:** Pre- and post-operative digital radiographs (RVG). Evaluated by a single operator.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given the split-mouth design where two canals within the *same tooth* of the *same patient* receive different treatments, the data is **paired/correlated**. The outcome is **binary** (Extruded vs. Not Extruded). 
+
+#### CATEGORY A – MANDATORY (Essential for valid analysis)
+
+**1. McNemar’s Test**
+*   **Purpose:** To compare the proportion of extrusion between the test and control canals.
+*   **Why appropriate:** 
+    1) It specifically accounts for the paired nature of the split-mouth design (within-subject correlation). 
+    2) It is the standard test for paired nominal/dichotomous data (Extruded vs. Not Extruded).
+*   **Why it may not be appropriate:** If the number of discordant pairs (cases where the test canal extruded but the control didn't, or vice versa) is extremely small, the standard asymptotic chi-square approximation may yield inaccurate p-values.
+*   **When this test should NOT be used:** When the groups are independent (e.g., comparing parallel groups of different patients) or when the outcome is continuous.
+*   **Alternative if assumptions are violated:** Exact McNemar’s Test (or Binomial Exact Test for paired data) should be used if the number of discordant pairs is less than 10.
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Cohen’s Kappa (Intra-rater Reliability)**
+*   **Purpose:** To evaluate the consistency of the single operator's radiographic assessments.
+*   **Why appropriate:** 
+    1) The study relies on a "single operator" to assess a subjective outcome (radiographic extrusion). 
+    2) It quantifies the degree of agreement beyond what would be expected by chance for categorical variables.
+*   **Why it may not be appropriate:** If the prevalence of one outcome is extremely high (e.g., almost no canals show extrusion), Kappa can be artificially low due to the "Kappa paradox."
+*   **When this test should NOT be used:** When assessing continuous variables (where Intraclass Correlation Coefficient [ICC] is needed) or when comparing more than two raters (where Fleiss' Kappa is needed).
+*   **Alternative if assumptions are violated:** Gwet’s AC1 statistic, which is more robust to the prevalence paradox in highly skewed binary data.
+
+**2. Conditional Logistic Regression (or Generalized Estimating Equations - GEE)**
+*   **Purpose:** To model the binary outcome while accounting for the paired design and adjusting for potential confounders.
+*   **Why appropriate:** 
+    1) It allows the researchers to control for the canal type (mesial vs. distal), ensuring that anatomical differences between canals did not confound the results. 
+    2) It robustly handles the within-tooth clustering of the data.
+*   **Why it may not be appropriate:** The sample size (47 pairs) might be slightly underpowered for complex multivariable modeling if the event rate (extrusion) is very low.
+*   **When this test should NOT be used:** When the data points are completely independent of one another.
+*   **Alternative if assumptions are violated:** Stick to the unadjusted McNemar's test.
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Absolute Risk Reduction (ARR) and Number Needed to Treat (NNT)**
+*   **Purpose:** To translate the statistical findings into practical clinical metrics.
+*   **Why appropriate:** 
+    1) It provides clinicians with an easily interpretable metric (e.g., "How many teeth need the collagen barrier to prevent one case of extrusion?"). 
+    2) It is easily calculated from the paired binary proportions.
+*   **Why it may not be appropriate:** If the primary statistical test is highly non-significant, the NNT confidence interval will cross infinity, making it difficult to interpret.
+*   **When this test should NOT be used:** When the outcome is continuous or when evaluating time-to-event data without a specific time horizon.
+*   **Alternative if assumptions are violated:** Relative Risk (RR) or Odds Ratio (OR) for paired data.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Pearson Chi-Square Test / Fisher's Exact Test:** These tests assume *independence* of observations. Because the test and control canals are located in the same tooth of the same patient, they are dependent. Using these tests would artificially inflate the sample size (treating N=94 as independent rather than N=47 pairs), violating core assumptions and potentially leading to a Type I error.
+*   **Independent Samples t-test / Paired t-test:** These tests are designed for *continuous* dependent variables (e.g., measuring the exact millimeter of extrusion). The outcome in this study is categorical/binary (Extruded vs. Not Extruded).
+*   **Analysis of Variance (ANOVA):** Similar to the t-tests, ANOVA requires a continuous dependent variable and is entirely inappropriate for binary outcomes.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must be dictated by two primary study characteristics: the **split-mouth design** (which creates paired/correlated data) and the **binary outcome** (extrusion vs. no extrusion). Therefore, the statistical analysis must utilize paired non-parametric methods. 
+
+The cornerstone of this analysis is **McNemar's Test**, which correctly accounts for the within-tooth correlation. Treating the 94 canals as independent would be a fatal methodological flaw. Furthermore, because the outcome relies on the subjective radiographic interpretation of a single operator, establishing intra-rater reliability via **Cohen's Kappa** (by having the operator re-evaluate a subset of radiographs blinded at a later date) is highly recommended to validate the integrity of the data collection process.

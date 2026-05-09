@@ -918,3 +918,129 @@ This trial is a small, randomized, parallel-group sham-controlled study with rep
    - Reporting effect sizes and confidence intervals, not just p-values.
 
 Overall, the combination of mixed-effects modeling for the repeated VAS scores, supplemented by summary measures and carefully chosen time-specific comparisons, provides a statistically sound and clinically meaningful evaluation of whether LLLT reduces postoperative pain after single-visit mandibular molar retreatment compared with sham laser.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_164600
+──────────────────────────────────────────────────────────────────────
+
+Based on the provided text from the published dental research article, here is the comprehensive extraction of methodological information and the recommended Statistical Analysis Plan (SAP).
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Title:** Effect of low-level laser therapy on postoperative pain after single-visit root canal retreatment of mandibular molars: A randomized controlled clinical trial.
+*   **Study Design:** Randomized, parallel-group, sham-controlled, double-arm clinical trial.
+*   **Objective:** To compare the effect of low-level laser therapy (LLLT) on postoperative pain after single-visit endodontic retreatment (ER) in mandibular molars.
+*   **Sample Size:** Total N = 36 analyzed (n = 18 per group). Initially, 46 were assessed, 10 excluded. 
+*   **Study Groups:**
+    *   *Intervention Group:* LLLT (980-nm diode laser, 6.89 W/cm² energy density, 0.5 W power, 15 seconds per apex).
+    *   *Control Group:* Sham laser (handpiece positioned identically but not activated).
+*   **Inclusion Criteria:** Good health, symptomatic first or second mandibular molars scheduled for retreatment, previous root canal with Periapical Index (PAI) score of 2 or 3.
+*   **Variables & Measurements:**
+    *   *Primary Dependent Variable:* Postoperative pain intensity.
+    *   *Measurement Tool:* Graded Visual Analog Scale (VAS).
+    *   *Timepoints (Repeated Measures):* 4, 8, 12, and 24 hours, and 2, 3, and 7 days post-treatment.
+    *   *Independent Variables:* Treatment group (LLLT vs. Sham), Time.
+*   **Data Collection Methods:** Home questionnaires filled out by patients, prompted by phone calls at specific hours/days.
+*   **Crucial Methodological Note:** Patients were given acetaminophen (500 mg) as a rescue analgesic. *If patients reported taking an analgesic, they were excluded from the study and replaced.*
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given the longitudinal nature of the data (repeated VAS scores) and the relatively small sample size (n=18/group), the following statistical tests are recommended.
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Two-Way Repeated Measures ANOVA (or Linear Mixed-Effects Model)**
+*   **Purpose:** To evaluate the main effects of the treatment group, time, and the group-by-time interaction on postoperative pain (VAS).
+*   **Why appropriate:** 
+    1) It accounts for the correlated nature of repeated pain measurements within the same patient over 7 timepoints. 
+    2) It allows for testing whether the *pattern* of pain reduction differs between the LLLT and Sham groups (interaction effect).
+*   **Why it may not be appropriate:** VAS scores are technically ordinal (though often treated as continuous), and with n=18 per group, the data may violate the assumption of normal distribution.
+*   **When NOT to use:** If the data severely violates normality or sphericity assumptions, or if there is a high rate of missing data (dropouts).
+*   **Alternative:** Generalized Estimating Equations (GEE) or the non-parametric Friedman test (for within-group time differences) combined with Mann-Whitney U tests (for between-group differences).
+
+**2. Mann-Whitney U Test (or Independent Samples t-test)**
+*   **Purpose:** To compare VAS pain scores between the LLLT and Sham groups at *each specific timepoint* (e.g., at 4h, 8h, etc.), and to compare baseline continuous demographics (e.g., age).
+*   **Why appropriate:** 
+    1) It is robust against non-normal distributions, which are highly likely with a sample size of 18 per group. 
+    2) It effectively compares two independent groups on an ordinal/continuous scale.
+*   **Why it may not be appropriate:** It does not account for the longitudinal nature of the data if used as the *only* test, increasing the risk of Type I error if multiple timepoints are tested without correction.
+*   **When NOT to use:** When comparing more than two groups, or when comparing paired data (e.g., 4h vs 8h within the same group).
+*   **Alternative:** Independent samples t-test (if data is perfectly normally distributed and variances are equal).
+
+**3. Chi-Square Test of Independence (or Fisher’s Exact Test)**
+*   **Purpose:** To compare categorical baseline characteristics (e.g., gender, tooth type [1st vs 2nd molar], PAI scores [2 vs 3]) between the two groups.
+*   **Why appropriate:** 
+    1) Ensures that the randomization process was successful and groups are balanced at baseline. 
+    2) Identifies potential confounding variables that may need to be controlled for.
+*   **Why it may not be appropriate:** The sample size is small (N=36); expected cell counts in a 2x2 table might drop below 5.
+*   **When NOT to use:** When more than 20% of expected cell frequencies are less than 5.
+*   **Alternative:** Fisher’s Exact Test (highly recommended here due to the small sample size).
+
+#### CATEGORY B – RECOMMENDED (Enhance Quality and Rigor)
+
+**4. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the continuous data (VAS scores, age) within each group.
+*   **Why appropriate:** 
+    1) It is specifically designed and highly powered for small sample sizes (n < 50). 
+    2) It dictates whether parametric or non-parametric tests should be used for the main analysis.
+*   **Why it may not be appropriate:** With very small samples, it may lack the power to detect deviations from normality.
+*   **When NOT to use:** When sample sizes are extremely large (where even trivial deviations are flagged as significant).
+*   **Alternative:** Kolmogorov-Smirnov test, or visual inspection of Q-Q plots and histograms.
+
+**5. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To analyze the "time to analgesic consumption."
+*   **Why appropriate:** 
+    1) The methodology states patients who took analgesics were excluded and replaced. Analyzing the *rate* and *time* of analgesic use before exclusion is a critical, clinically relevant proxy for severe pain. 
+    2) It handles censored data effectively.
+*   **Why it may not be appropriate:** If no patients (or very few) in either group required rescue analgesics, the test will lack statistical power.
+*   **When NOT to use:** If the exact time of analgesic consumption was not recorded (though the text states it was).
+*   **Alternative:** Chi-square test comparing the total *proportion* of patients who required analgesics in each group.
+
+**6. Bonferroni or Benjamini-Hochberg (FDR) Correction**
+*   **Purpose:** To adjust p-values when conducting multiple pairwise comparisons (e.g., comparing groups across 7 different timepoints).
+*   **Why appropriate:** 
+    1) Reduces the inflated risk of Type I error (false positives) caused by multiple testing. 
+    2) Increases the statistical rigor of the reported findings.
+*   **Why it may not be appropriate:** Bonferroni can be overly conservative, potentially increasing Type II errors (false negatives) in small sample studies.
+*   **When NOT to use:** When conducting a single, pre-planned primary comparison.
+*   **Alternative:** Benjamini-Hochberg False Discovery Rate (FDR) which is less punitive than Bonferroni.
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**7. Area Under the Curve (AUC) Analysis**
+*   **Purpose:** To calculate a single "total pain experience" score for each patient over the 7-day period.
+*   **Why appropriate:** 
+    1) Simplifies the interpretation of longitudinal pain data into a single metric. 
+    2) Overcomes the issue of multiple comparisons across 7 timepoints.
+*   **Why it may not be appropriate:** It obscures specific time-related clinical insights (e.g., a treatment might be great at 4 hours but fail at 3 days, which AUC would hide).
+*   **When NOT to use:** If the time intervals are highly irregular and cannot be mathematically weighted properly.
+*   **Alternative:** Mean pain score averaged across all timepoints.
+
+**8. Cohen’s *d* or Partial Eta-Squared ($\eta_p^2$)**
+*   **Purpose:** To report the effect size of the LLLT intervention.
+*   **Why appropriate:** 
+    1) Provides information on the *magnitude* of the clinical effect, not just statistical significance. 
+    2) Highly useful for future researchers conducting meta-analyses.
+*   **Why it may not be appropriate:** Can be skewed by the high variance typical in subjective pain reporting.
+*   **When NOT to use:** When the primary statistical test is non-parametric (rank-biserial correlation or epsilon-squared should be used instead).
+*   **Alternative:** Cliff's Delta (for non-parametric effect size).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Paired Samples t-test (between groups):** Should NOT be used to compare the LLLT group to the Sham group. This is a parallel-group design, meaning the patients in group A are completely independent of the patients in group B. Paired tests are for split-mouth designs or pre/post tests within the *same* individual.
+*   **Pearson Correlation:** Should NOT be used to assess pain over time. Correlation measures the linear relationship between two continuous variables, but does not test for differences in means/medians between groups, which is the primary objective here.
+*   **One-Way ANOVA (pooling all timepoints):** Should NOT be used. Treating all 7 timepoints as independent observations violates the assumption of independence, as the same patient is providing 7 data points. This artificially inflates the degrees of freedom and leads to invalid conclusions.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must prioritize the longitudinal nature of the data and the relatively small sample size. The analysis should begin with assumption testing (Shapiro-Wilk) and baseline demographic comparisons (Fisher's Exact, Mann-Whitney) to validate the randomization. 
+
+For the primary outcome, a Repeated Measures approach (RM-ANOVA or LMM) is vital to understand how pain trajectories differ between the LLLT and Sham groups over the 7 timepoints. Because the study design explicitly excludes and replaces patients who take rescue analgesics, a survival analysis (Kaplan-Meier) on "time to analgesic use" is highly recommended to prevent survivorship bias and capture a crucial clinical indicator of pain. Finally, applying multiple-comparison corrections to point-by-point analyses will ensure the findings are statistically rigorous and clinically reliable.

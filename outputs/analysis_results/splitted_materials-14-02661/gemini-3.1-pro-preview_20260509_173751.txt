@@ -1,0 +1,125 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_materials-14-02661.pdf
+Status : ok
+Time   : 20260509_173751
+══════════════════════════════════════════════════════════════════════
+
+Here is the comprehensive information extraction and statistical analysis plan based on the provided dental research article.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Single-blind, randomized controlled clinical trial (RCT).
+*   **Objectives:** To compare the effects of a bioceramic sealer (Endoseal MTA) versus a conventional resin-based sealer (AH Plus) on the incidence and intensity of postoperative pain following nonsurgical root canal treatment.
+*   **Study Groups:** Stratified by tooth type, then randomized by sealer.
+    *   **Group 1 (Anterior teeth/Premolars):**
+        *   Group 1En: Endoseal MTA with single-cone technique.
+        *   Group 1AH: AH Plus with continuous wave technique.
+    *   **Group 2 (Molars):**
+        *   Group 2En: Endoseal MTA with single-cone technique.
+        *   Group 2AH: AH Plus with continuous wave technique.
+*   **Sample Size:**
+    *   Initially enrolled: 108 patients.
+    *   Randomized: 88 patients (41 in Group 1; 47 in Group 2).
+    *   Analyzed (after loss to follow-up): 67 patients total.
+        *   Group 1: 17 (Endoseal) + 15 (AH Plus) = 32.
+        *   Group 2: 18 (Endoseal) + 17 (AH Plus) = 35.
+*   **Independent Variables:**
+    *   Sealer type / Obturation technique (Endoseal MTA/single-cone vs. AH Plus/continuous wave).
+    *   Tooth location (Anterior/Premolar vs. Molar).
+    *   Time (Preoperative, Postoperative Days 1 through 7).
+*   **Dependent Variables:**
+    *   Pain intensity (at rest and while biting).
+    *   Pain incidence (presence/absence of pain).
+*   **Measurements & Data Collection:**
+    *   Visual Analog Scale (VAS) used to measure pain intensity.
+    *   Measured preoperatively (baseline).
+    *   Measured postoperatively over 7 consecutive days (patient self-reported).
+    *   Recall check on Day 7.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given the sample size per subgroup (n=15 to 18) and the use of VAS (which is ordinal and often heavily skewed towards zero in post-op pain studies), non-parametric statistics are heavily favored for direct comparisons, alongside advanced modeling for longitudinal data.
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the distribution of VAS scores and baseline continuous variables (e.g., age).
+*   **Why appropriate:** (1) The sample sizes per subgroup are small (<20), making visual assessment of normality unreliable. (2) It dictates whether parametric or non-parametric tests should be used for subsequent analyses.
+*   **Why it may not be appropriate:** It can be underpowered in very small sample sizes, failing to detect non-normality.
+*   **When NOT to use:** When analyzing strictly categorical data (e.g., gender, pain incidence).
+*   **Alternative:** Kolmogorov-Smirnov test (though less accurate for small samples) or Q-Q plots.
+
+**2. Chi-Square Test of Independence (or Fisher’s Exact Test)**
+*   **Purpose:** To compare categorical variables between groups (e.g., gender distribution, incidence of pain [Yes/No] at specific time points).
+*   **Why appropriate:** (1) Essential for confirming baseline equivalence between the randomized groups. (2) Directly answers the objective regarding the *incidence* of postoperative pain.
+*   **Why it may not be appropriate:** Chi-square loses validity if expected cell counts are less than 5.
+*   **When NOT to use:** When analyzing continuous or ordinal pain intensity (VAS) scores.
+*   **Alternative:** Fisher’s Exact Test (must be used if >20% of expected cell counts are <5, which is highly likely given the small subgroup sizes).
+
+**3. Mann-Whitney U Test**
+*   **Purpose:** To compare the intensity of postoperative pain (VAS scores) between the two sealer groups (Endoseal vs. AH Plus) at specific time points (e.g., Day 1, Day 2).
+*   **Why appropriate:** (1) VAS scores are ordinal data. (2) Postoperative pain data typically exhibits a non-normal distribution (floor effect as patients heal), and subgroup sample sizes are small.
+*   **Why it may not be appropriate:** It does not account for the repeated-measures nature of the data across the 7 days simultaneously.
+*   **When NOT to use:** If the VAS data is perfectly normally distributed and variances are equal.
+*   **Alternative:** Independent Samples t-test (if assumptions of normality and homogeneity of variance are met).
+
+**4. Friedman Test**
+*   **Purpose:** To evaluate the change in pain intensity (VAS) within each group over time (Pre-op to Day 7).
+*   **Why appropriate:** (1) It is the non-parametric equivalent of repeated-measures ANOVA, suitable for skewed VAS data. (2) It accounts for the fact that the same patients are being measured repeatedly over 7 days.
+*   **Why it may not be appropriate:** It only tells you that a difference exists somewhere over the 7 days, requiring post-hoc testing (e.g., Wilcoxon signed-rank with Bonferroni correction) to find exactly where.
+*   **When NOT to use:** When comparing independent groups (e.g., Endoseal vs. AH Plus).
+*   **Alternative:** Repeated Measures ANOVA (if data is normally distributed).
+
+#### CATEGORY B – RECOMMENDED (Enhances Rigor)
+
+**1. Generalized Estimating Equations (GEE) or Mixed-Effects Models**
+*   **Purpose:** To analyze the longitudinal VAS data while accounting for within-subject correlation and covariates.
+*   **Why appropriate:** (1) It allows for the simultaneous evaluation of Sealer Type, Time, and Tooth Type (Anterior vs. Molar) while handling the repeated measures over 7 days. (2) Mixed models can handle missing data (dropouts) better than traditional repeated-measures ANOVA.
+*   **Why it may not be appropriate:** Requires a larger sample size to achieve stable estimates; with only ~30 patients per main group, the model might overfit.
+*   **When NOT to use:** If data is only collected at a single time point.
+*   **Alternative:** Two-way repeated measures ANOVA (if normality assumptions are met and missing data is excluded).
+
+**2. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To compare the "time to complete pain relief" (time until VAS = 0) between the two sealer groups.
+*   **Why appropriate:** (1) Pain resolution is a time-to-event variable. (2) It provides a highly clinically relevant metric (e.g., "Median days to become pain-free").
+*   **Why it may not be appropriate:** If almost all patients experience pain relief on the exact same day, the curves will not provide meaningful separation.
+*   **When NOT to use:** When analyzing the maximum intensity of pain experienced.
+*   **Alternative:** Cox Proportional Hazards Regression (if adjusting for covariates like pre-op pain).
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. Spearman’s Rank-Order Correlation**
+*   **Purpose:** To determine if there is a correlation between preoperative pain intensity and postoperative pain intensity.
+*   **Why appropriate:** (1) Preoperative pain is a known confounder for postoperative pain; this quantifies that relationship. (2) It does not assume a linear relationship or normal distribution.
+*   **Why it may not be appropriate:** Correlation does not imply causation; it cannot adjust for the type of sealer used.
+*   **When NOT to use:** When looking for differences between groups rather than relationships between variables.
+*   **Alternative:** Pearson Correlation (if both variables are continuous and normally distributed).
+
+**2. Kruskal-Wallis H Test**
+*   **Purpose:** To compare pain scores across more than two independent subgroups simultaneously (e.g., Group 1En vs. Group 1AH vs. Group 2En vs. Group 2AH).
+*   **Why appropriate:** (1) Allows for a global test of differences across all four randomized strata. (2) Does not require normal distribution.
+*   **Why it may not be appropriate:** It does not test for interaction effects (e.g., does the sealer perform differently in molars vs. anteriors?).
+*   **When NOT to use:** When comparing only two groups.
+*   **Alternative:** Two-way ANOVA (if data is normally distributed, to test for main effects and interactions).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test / One-Way ANOVA (without strict assumption checks):** VAS data for pain is rarely normally distributed, especially as pain subsides over 7 days (creating a heavy right skew/floor effect). Using parametric tests on small samples (n=15-18) of skewed ordinal data increases the risk of Type I and Type II errors.
+*   **Paired Samples t-test (for between-group analysis):** The Endoseal and AH Plus groups consist of different patients. Paired tests are only for matched samples or within-subject (pre/post) comparisons.
+*   **Pearson Correlation:** Assumes continuous, normally distributed data with a linear relationship. VAS scores are ordinal, making Spearman's rank correlation the mathematically correct choice.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must prioritize **non-parametric methodologies** and **longitudinal data techniques**. Because the study utilizes a Visual Analog Scale (VAS) on relatively small subgroups (n=15–18), the data is highly likely to violate the assumptions of normality required for parametric testing. 
+
+The core analysis should establish baseline equivalence using Chi-square/Fisher's exact tests and Mann-Whitney U tests. To address the primary objectives, the Mann-Whitney U test will compare pain intensity between sealers at specific days, while the Friedman test will evaluate pain reduction over time within each group. To elevate the rigor of the study, Generalized Estimating Equations (GEE) or Mixed Models are strongly recommended to analyze the repeated measures over 7 days while controlling for covariates like tooth type and preoperative pain. Finally, utilizing Kaplan-Meier survival analysis to measure "time to zero pain" will provide highly translatable clinical insights for dental practitioners.

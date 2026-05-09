@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splitted_JOCPD45.5.4.pdf",
+  "timestamp": "20260509_173543",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "ok",
+      "chars": 7240
+    }
+  }
+}

@@ -1,0 +1,118 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_Calibration_improves_observer_reliability_in_detecting_periapical_pathology_on_panoramic_radiographs.pdf
+Status : ok
+Time   : 20260509_171202
+══════════════════════════════════════════════════════════════════════
+
+Based on the provided Introduction and Methods sections of the article, here is a comprehensive extraction of the study characteristics and a detailed statistical analysis plan tailored to the specific methodological needs of this research.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Methodological/Diagnostic reliability and observer agreement study with a longitudinal, repeated-measures component (pre-calibration, post-calibration, and long-term follow-up).
+*   **Objectives:** To investigate whether calibration against a reference standard improves observer reliability when using panoramic radiography (PR) to assess variables indicative of endodontic inflammatory disease.
+*   **Sample Size:** 100 panoramic radiographs (PRs), subsampled from a larger cohort of 1593 PRs.
+*   **Study Groups/Observers:**
+    *   *Reference Standard:* 2 experienced specialists (1 endodontist, 1 radiologist) who established a consensus baseline.
+    *   *Test Observers:* 3 observers of varying experience (1 general dentist, 2 fifth-year dental students).
+*   **Variables & Data Types:**
+    *   *Remaining teeth:* Count/Continuous.
+    *   *Root-filled teeth:* Categorical (Binary: presence/absence per tooth).
+    *   *Teeth with periapical lesions:* Categorical (Binary: presence/absence per tooth).
+    *   *DMFT-score (Decayed, Missing, Filled Teeth):* Count/Continuous.
+*   **Data Collection Timepoints:**
+    *   *Time 1 (T1):* Initial independent assessment (Pre-calibration).
+    *   *Intervention:* Individualized calibration based on T1 performance.
+    *   *Time 2 (T2):* Second independent assessment 2–3 weeks later (Post-calibration).
+    *   *Time 3 (T3):* Third independent assessment 3 months later, with the 100 PRs concealed within the full 1593 PR dataset (Long-term retention).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given the mix of categorical (lesions, root fillings) and continuous/count data (DMFT, remaining teeth), as well as the repeated-measures design, the following statistical tests are recommended.
+
+#### CATEGORY A – MANDATORY (Essential for completing the analysis)
+
+**1. Cohen’s Kappa (κ)**
+*   **Purpose:** To measure the exact agreement between each individual observer and the reference standard for categorical variables (periapical lesions, root-filled teeth) at each time point.
+*   **Why appropriate:** 
+    1) It accounts for agreement occurring by chance, which is critical in diagnostic imaging where disease prevalence may be low. 
+    2) It is the gold standard for evaluating binary rater agreement against a known reference.
+*   **Why it may not be appropriate:** It can be artificially lowered by the "Kappa paradox" if the prevalence of the condition (e.g., periapical lesions) is extremely high or extremely low in the sample.
+*   **When NOT to use:** Do not use for continuous variables like the DMFT score.
+*   **Alternative:** Gwet’s AC1 statistic (more robust to prevalence imbalances).
+
+**2. Intraclass Correlation Coefficient (ICC) - Two-Way Mixed Effects, Absolute Agreement**
+*   **Purpose:** To evaluate the reliability between each observer and the reference standard for continuous/count variables (DMFT score, number of remaining teeth).
+*   **Why appropriate:** 
+    1) It measures absolute agreement, not just correlation, penalizing for systematic bias (e.g., if an observer consistently undercounts teeth). 
+    2) It is specifically designed for continuous data assessed by multiple raters.
+*   **Why it may not be appropriate:** It assumes the data is normally distributed; DMFT scores in a specific cohort (like myocardial infarction patients) might be heavily skewed.
+*   **When NOT to use:** Do not use for binary categorical data (presence/absence of lesions).
+*   **Alternative:** Lin’s Concordance Correlation Coefficient (CCC) or non-parametric alternatives for reliability.
+
+**3. Z-test for Comparing Kappa Coefficients (or evaluation of 95% Confidence Intervals)**
+*   **Purpose:** To statistically test if the *change* in agreement (Kappa) from T1 to T2, and T2 to T3, is statistically significant.
+*   **Why appropriate:** 
+    1) The primary objective is to prove that calibration *improves* reliability; simply showing a higher Kappa number is insufficient without proving statistical significance. 
+    2) It allows for direct comparison of observer performance across time.
+*   **Why it may not be appropriate:** Standard Z-tests for Kappa assume independent samples, but these are the *same* radiographs evaluated by the *same* observers over time (paired data).
+*   **When NOT to use:** When comparing completely different, non-overlapping datasets where variance cannot be pooled.
+*   **Alternative:** Bootstrapping to generate empirical 95% confidence intervals for the *difference* in Kappas.
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**4. Diagnostic Accuracy Metrics (Sensitivity, Specificity, PPV, NPV)**
+*   **Purpose:** To determine *how* the observers improved. Did calibration reduce false positives (improving specificity) or reduce false negatives (improving sensitivity)?
+*   **Why appropriate:** 
+    1) The study utilizes a "reference standard," allowing the analysis to move beyond mere agreement into actual diagnostic performance. 
+    2) The methodology notes that observers were told to adjust their thresholds (e.g., Observer 1 was told to lower the threshold, Observers 2 & 3 to raise it). Sensitivity/specificity will prove if these specific instructions worked.
+*   **Why it may not be appropriate:** The "reference standard" is a consensus of two experts on a panoramic radiograph, which the authors admit has low sensitivity compared to CBCT. It is an imperfect gold standard.
+*   **When NOT to use:** If a true reference standard (like histology or CBCT) is completely absent and consensus cannot be trusted.
+*   **Alternative:** Latent Class Analysis (LCA) to estimate diagnostic accuracy without a perfect gold standard.
+
+**5. Bland-Altman Analysis**
+*   **Purpose:** To visually and quantitatively assess the agreement between observers and the reference standard for the DMFT score.
+*   **Why appropriate:** 
+    1) It clearly illustrates the mean bias (e.g., if students systematically score DMFT higher than experts). 
+    2) It establishes 95% limits of agreement, providing clinical context to the errors.
+*   **Why it may not be appropriate:** DMFT scores are discrete counts (integers), which can cause data points on a Bland-Altman plot to overlap heavily, making visual interpretation difficult without jittering.
+*   **When NOT to use:** For binary variables (periapical lesions).
+*   **Alternative:** Mountain plots (folded empirical cumulative distribution plots).
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**6. Fleiss’ Kappa**
+*   **Purpose:** To measure the inter-observer agreement *among the three test observers* (excluding the reference standard).
+*   **Why appropriate:** 
+    1) It answers a secondary question: Did calibration make the observers agree more with *each other*, standardizing the diagnostic process? 
+    2) It handles multiple (>2) raters simultaneously.
+*   **Why it may not be appropriate:** The primary aim is agreement with the *reference standard*, not peer-to-peer agreement.
+*   **When NOT to use:** When comparing only two raters (use Cohen's Kappa instead).
+*   **Alternative:** Light’s Kappa (average of all pairwise Cohen's Kappas).
+
+**7. Generalized Estimating Equations (GEE) or Generalized Linear Mixed Models (GLMM)**
+*   **Purpose:** To model the probability of a correct diagnosis (matching the reference) over time, accounting for the clustering of teeth within patients.
+*   **Why appropriate:** 
+    1) Periapical lesions are assessed per tooth. A single panoramic radiograph contains up to 32 teeth. Teeth within the same patient's mouth are not statistically independent. 
+    2) GEE accounts for this intra-subject correlation.
+*   **Why it may not be appropriate:** It is highly complex and may overcomplicate a study primarily aimed at a clinical dental audience accustomed to basic Kappa statistics.
+*   **When NOT to use:** If the sample size of clusters (patients) is too small (not an issue here with N=100).
+*   **Alternative:** Standard logistic regression with robust standard errors.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Pearson Correlation Coefficient:** Should **NOT** be used to assess observer agreement for DMFT or remaining teeth. Pearson measures linear relationship, not absolute agreement. An observer could systematically score exactly double the reference standard (terrible agreement), yet yield a perfect Pearson correlation of *r* = 1.0.
+*   **Independent Samples t-test / ANOVA:** Should **NOT** be used to compare scores across T1, T2, and T3. The data is paired (the exact same 100 radiographs are read by the exact same observers). Using independent tests violates the assumption of independence and drastically reduces statistical power.
+*   **Chi-Square Test of Independence:** Should **NOT** be used to compare the detection rates of periapical lesions between time points. Because the data is paired, McNemar's test or Cochran's Q must be used instead.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must be divided into two distinct tracks based on data type: categorical analysis (Kappa, Sensitivity/Specificity) for the detection of lesions and root fillings, and continuous/count analysis (ICC, Bland-Altman) for DMFT and remaining teeth. 
+
+Because the study's core objective is to measure the *effect of an intervention* (calibration) over time (T1 vs. T2 vs. T3), the analysis cannot stop at simply reporting baseline agreement. It must utilize repeated-measures statistics and confidence interval comparisons to prove that the change in observer reliability is statistically significant. Furthermore, because the study utilizes a reference standard, incorporating diagnostic accuracy metrics (Sensitivity/Specificity) will provide deep clinical insight into *how* the observers' diagnostic behaviors changed following calibration.

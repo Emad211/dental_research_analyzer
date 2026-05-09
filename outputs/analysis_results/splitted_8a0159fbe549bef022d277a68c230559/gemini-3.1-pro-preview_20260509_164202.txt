@@ -1,0 +1,125 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_8a0159fbe549bef022d277a68c230559.pdf
+Status : ok
+Time   : 20260509_164202
+══════════════════════════════════════════════════════════════════════
+
+Based on the provided text from the Introduction and Methods sections, here is the comprehensive information extraction and Statistical Analysis Plan (SAP) for the study. 
+
+*Note: Because the provided text cuts off at "For pain evaluation...", standard methodological assumptions for endodontic anesthesia trials (e.g., defining IANB success as a binary outcome based on intraoperative VAS scores) have been applied to complete the SAP.*
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Prospective, double-blind, randomized clinical trial (RCT).
+*   **Objective:** To determine the combined effect of preoperative ibuprofen and dexamethasone on the success rate of Inferior Alveolar Nerve Block (IANB) in mandibular molars with Symptomatic Irreversible Pulpitis (SIP).
+*   **Null Hypothesis:** There is no effect of the combination of ibuprofen and dexamethasone on the success of IANB.
+*   **Sample Size:** 94 adult patients.
+*   **Study Groups:** While the text cuts off before explicitly listing the groups, the title and sample size (94) strongly imply at least two groups (e.g., Intervention [Ibuprofen + Dexamethasone] vs. Control/Placebo). *If there are 4 groups (Combo, Ibuprofen only, Dexa only, Placebo), the statistical approach adjusts slightly as noted below.*
+*   **Inclusion Criteria:** Adults, moderate to severe pain (55–170 mm on Heft-Parker VAS), mandibular molars, normal periapical radiograph, ASA I or II, no analgesics for 12 hours prior.
+*   **Exclusion Criteria:** <18 years old, allergies/hypersensitivity to study meds/anesthetics, pregnant/nursing, immunocompromised, active pathosis at injection site, inability to give consent.
+*   **Variables:**
+    *   *Independent Variable:* Premedication group assignment.
+    *   *Dependent Variable (Primary):* Success of IANB (Categorical/Binary: Success vs. Failure).
+    *   *Dependent Variable (Secondary):* Pain scores during treatment (Continuous/Ordinal via VAS).
+    *   *Covariates:* Baseline pain score (55-170 mm VAS), Age, Sex, Tooth type.
+*   **Measurements & Tools:** Heft-Parker Visual Analog Scale (VAS) for pain; Electric Pulp Testing (Digitest) and Cold testing (Endo Ice) for diagnosis confirmation.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+*(Tests without which the analysis would be incomplete)*
+
+**1. Chi-Square Test of Independence (or Fisher’s Exact Test)**
+*   **Purpose:** To compare the primary outcome (proportion of IANB success vs. failure) between the study groups, and to compare baseline categorical variables (e.g., Sex distribution).
+*   **Why appropriate:** 
+    1) The primary outcome (anesthetic success) is a categorical, binary variable. 
+    2) The study compares independent groups (randomized arms).
+*   **Why it may not be appropriate:** It does not account for potential confounding variables (e.g., differences in baseline pain) that might influence the outcome.
+*   **When NOT to use:** When expected cell counts in the contingency table are less than 5.
+*   **Alternative:** Fisher’s Exact Test (if expected cell counts are < 5).
+
+**2. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of continuous data (e.g., Age, baseline VAS scores).
+*   **Why appropriate:** 
+    1) It is highly sensitive and accurate for sample sizes under 100 (N=94). 
+    2) It dictates whether parametric or non-parametric tests should be used for continuous variables.
+*   **Why it may not be appropriate:** It can be overly sensitive to minor deviations from normality, though this is less of an issue at N=94 than in massive datasets.
+*   **When NOT to use:** When the data is strictly categorical or binary.
+*   **Alternative:** Kolmogorov-Smirnov test, or visual inspection of Q-Q plots.
+
+**3. Independent Samples t-test OR Mann-Whitney U test**
+*   **Purpose:** To compare baseline continuous variables (Age, initial VAS pain scores) between groups to ensure randomization was successful. *(Note: If >2 groups, use One-Way ANOVA or Kruskal-Wallis).*
+*   **Why appropriate:** 
+    1) Essential to prove baseline equivalence, which validates the RCT design. 
+    2) Directly compares the central tendency of continuous variables across independent groups.
+*   **Why it may not be appropriate:** If the data is highly skewed (common with pain VAS scores), the mean (used in t-tests) is not a reliable measure of central tendency.
+*   **When NOT to use:** Do not use the t-test if the data violates the assumption of normality (Shapiro-Wilk $p < 0.05$) or homogeneity of variance.
+*   **Alternative:** Mann-Whitney U test (for non-normal data) or Welch’s t-test (if variances are unequal).
+
+#### CATEGORY B – RECOMMENDED TESTS
+*(Tests that enhance the quality and rigor of the analysis)*
+
+**4. Binary Logistic Regression**
+*   **Purpose:** To evaluate the effect of the premedication on IANB success while controlling for baseline covariates (e.g., initial pain score, age, tooth type).
+*   **Why appropriate:** 
+    1) Baseline pain severity is a known strong predictor of IANB failure; regression adjusts for any accidental baseline imbalances. 
+    2) It allows for the calculation of Adjusted Odds Ratios (aOR).
+*   **Why it may not be appropriate:** If the sample size is too small relative to the number of predictors, the model may overfit.
+*   **When NOT to use:** When the dependent variable is continuous, or if there is perfect separation in the data (e.g., one group has 100% success).
+*   **Alternative:** Mantel-Haenszel test (for stratified categorical analysis).
+
+**5. Relative Risk (RR) and 95% Confidence Intervals**
+*   **Purpose:** To quantify the clinical magnitude of the treatment effect.
+*   **Why appropriate:** 
+    1) Provides a highly interpretable metric for clinicians (e.g., "Patients taking the combo are 2 times more likely to achieve profound anesthesia"). 
+    2) Confidence intervals provide a measure of precision for the estimate.
+*   **Why it may not be appropriate:** RR can sometimes be misinterpreted by laypersons compared to absolute risk reduction.
+*   **When NOT to use:** In case-control studies (where Odds Ratios must be used instead).
+*   **Alternative:** Odds Ratio (OR) or Absolute Risk Reduction (ARR).
+
+#### CATEGORY C – OPTIONAL TESTS
+*(Tests that provide supplementary insights)*
+
+**6. Number Needed to Treat (NNT)**
+*   **Purpose:** To determine how many patients need to receive the ibuprofen/dexamethasone combination to achieve one additional successful IANB compared to the control.
+*   **Why appropriate:** 
+    1) It is the ultimate metric for clinical decision-making and cost-benefit analysis. 
+    2) Easily derived from the Absolute Risk Reduction.
+*   **Why it may not be appropriate:** It does not provide statistical significance, only clinical relevance.
+*   **When NOT to use:** When the primary outcome result is not statistically significant (NNT is meaningless if the difference is due to chance).
+*   **Alternative:** Number Needed to Harm (NNH) if evaluating adverse effects.
+
+**7. Kaplan-Meier Analysis / Log-Rank Test**
+*   **Purpose:** If the researchers recorded the *time to onset* of pulpal anesthesia (via EPT/cold test at intervals), this tests the speed of anesthesia onset between groups.
+*   **Why appropriate:** 
+    1) Time-to-event analysis handles censored data (patients who never achieve anesthesia). 
+    2) Provides a visual survival curve of anesthesia onset.
+*   **Why it may not be appropriate:** The text does not explicitly state that time-to-onset was measured as an outcome.
+*   **When NOT to use:** When the exact time of the event is unknown or not recorded.
+*   **Alternative:** Cox Proportional Hazards Regression (if adjusting for covariates).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Paired Samples t-test / Wilcoxon Signed-Rank Test:** 
+    *   *Why:* These tests are for dependent/paired data (e.g., comparing the same patient's pain before and after). The primary objective here compares the success rate between *independent* groups of different patients.
+*   **Pearson Correlation Coefficient:** 
+    *   *Why:* Correlation evaluates the linear relationship between two continuous variables. The primary outcome here (Success/Failure) is binary, and the independent variable (Group) is categorical.
+*   **Linear Regression:** 
+    *   *Why:* Linear regression requires a continuous dependent variable. Because the primary outcome is binary (IANB success: Yes/No), linear regression violates core assumptions and would yield invalid predictions.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach for this RCT should be structured sequentially, moving from baseline validation to primary outcome testing, and concluding with clinical effect quantification. 
+
+First, the baseline characteristics (Age, Sex, Initial VAS) must be analyzed using descriptive statistics and appropriate comparative tests (t-tests/Mann-Whitney and Chi-square) to confirm that the double-blind randomization successfully created equivalent groups. Because pain scores (VAS) are notoriously skewed, non-parametric tests are highly recommended for continuous baseline data. 
+
+The primary hypothesis testing relies on the Chi-square test to compare the binary success rates of the IANB between groups. To ensure maximum rigor, Binary Logistic Regression should be employed to adjust for baseline pain scores, as initial pain severity is a known confounder in endodontic anesthesia success. Finally, calculating the Relative Risk (RR) and Number Needed to Treat (NNT) will translate the statistical findings into practical, evidence-based metrics that endodontists can directly apply to clinical practice.

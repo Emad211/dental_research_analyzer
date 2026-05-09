@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splitted_incidence_of_postoperative_pain_after_single_visit.9.pdf",
+  "timestamp": "20260509_173212",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "ok",
+      "chars": 9695
+    }
+  }
+}

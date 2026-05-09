@@ -1,0 +1,100 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_EEJ_6_2_155_159.pdf
+Status : ok
+Time   : 20260509_172015
+══════════════════════════════════════════════════════════════════════
+
+Based on the provided fragments of the article (Title, Highlights, Introduction, CONSORT flow diagram, and the brief conclusion snippet), here is the comprehensive information extraction and statistical analysis plan. 
+
+*Note: As Pages 2 and parts of Page 4 were omitted from the provided text, some methodological specifics (like exact time intervals for measurements) are inferred from standard endodontic study designs using Electric Pulp Testing (EPT).*
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Double-blind, randomized, parallel-group clinical trial.
+*   **Objectives:** To evaluate the effect of 810 nm diode low-level laser therapy (LLLT) on the pulpal anesthesia (pain threshold) of maxillary premolars.
+*   **Groups:** Two independent groups:
+    *   Group 1 (Likely Intervention/Laser): Allocated $n=12$
+    *   Group 2 (Likely Control/Sham): Allocated $n=13$
+*   **Sample Size:** 
+    *   Assessed for eligibility: $n=40$
+    *   Randomized: $n=25$
+    *   Lost to follow-up: $n=5$ (2 from Group 1; 3 from Group 2)
+    *   Final analyzed (Per Protocol): $n=20$ (Likely 10 per group).
+*   **Variables:**
+    *   *Independent Variable:* Treatment allocation (810 nm Diode LLLT vs. Control/Sham).
+    *   *Dependent Variable:* Pulpal pain threshold / level of anesthesia.
+*   **Measurements & Data Collection:** Measured using an Electric Pulp Test (EPT) assay (extracted from the Page 4 snippet). EPT typically provides a continuous or ordinal numerical value (often 0-80) representing the threshold at which the patient feels a sensation.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given the small final sample size ($n=10$ per group), the statistical analysis must be highly sensitive to data distribution (normality).
+
+#### CATEGORY A – MANDATORY (Essential for basic analysis)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the EPT scores in both groups.
+*   **Why appropriate:** 
+    1) It is the most robust and statistically powerful test for small sample sizes ($n < 50$). 
+    2) It dictates whether parametric or non-parametric tests should be used for the primary analysis.
+*   **Why it may not be appropriate:** With very small sample sizes ($n=10$ per group), it may lack the statistical power to detect slight deviations from normality.
+*   **When this test should NOT be used:** For very large sample sizes (e.g., $n > 300$), where the Kolmogorov-Smirnov test is preferred or the Central Limit Theorem applies.
+*   **Alternative if assumptions are violated:** Visual inspection using Q-Q plots or histograms.
+
+**2. Mann-Whitney U Test (or Independent Samples t-test)**
+*   **Purpose:** To compare the post-intervention EPT scores between the Laser group and the Control group.
+*   **Why appropriate:** 
+    1) EPT scores in small samples frequently violate normality assumptions, making this non-parametric test ideal. 
+    2) It is highly effective for comparing two independent groups without assuming equal variances.
+*   **Why it may not be appropriate:** It compares mean ranks rather than actual means, which can sometimes be less clinically intuitive to interpret than a mean difference.
+*   **When this test should NOT be used:** When the data is perfectly normally distributed and variances are equal (a parametric test would have more power).
+*   **Alternative if assumptions are violated:** Independent Samples t-test (if data is normally distributed) or Welch’s t-test (if normally distributed but variances are unequal).
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Wilcoxon Signed-Rank Test (or Paired t-test)**
+*   **Purpose:** To compare baseline EPT scores to post-intervention EPT scores *within* each specific group.
+*   **Why appropriate:** 
+    1) It accounts for the paired nature of pre- and post-treatment measurements on the same tooth. 
+    2) It confirms whether the laser (or placebo) actually caused a significant change from the patient's own baseline.
+*   **Why it may not be appropriate:** It does not tell you if the intervention is better than the control, only that a change occurred within that specific group.
+*   **When this test should NOT be used:** When comparing data between two different groups of patients.
+*   **Alternative if assumptions are violated:** Paired samples t-test (if the differences between paired values are normally distributed).
+
+**2. Effect Size Calculation (Rank-Biserial Correlation or Cohen’s d)**
+*   **Purpose:** To quantify the magnitude of the difference in pain threshold between the laser and control groups.
+*   **Why appropriate:** 
+    1) P-values only indicate statistical significance, whereas effect size indicates clinical relevance. 
+    2) It allows future researchers to use this data for meta-analyses and sample size calculations.
+*   **Why it may not be appropriate:** In very small samples, effect size estimates can be volatile and have wide confidence intervals.
+*   **When this test should NOT be used:** When the primary statistical test fails to show any meaningful trend, though reporting it is still good practice.
+*   **Alternative if assumptions are violated:** Number Needed to Treat (NNT) if the EPT scores are dichotomized (e.g., "successful anesthesia" vs "failed anesthesia").
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Intention-to-Treat (ITT) Analysis using Multiple Imputation**
+*   **Purpose:** To include the 5 patients who were lost to follow-up in the final analysis.
+*   **Why appropriate:** 
+    1) Preserves the original randomization of $n=25$. 
+    2) Reduces attrition bias, which is critical in RCTs.
+*   **Why it may not be appropriate:** With 20% of the sample lost (5 out of 25), imputing data might introduce artificial noise, especially in a small dataset.
+*   **When this test should NOT be used:** When the mechanism of missing data is "Missing Not At Random" (MNAR) and cannot be reliably estimated.
+*   **Alternative if assumptions are violated:** Per-Protocol analysis (analyzing only the 20 patients who completed the study, which is standard for early-stage dental trials).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Pearson Correlation Coefficient:** Inappropriate because the study aims to compare differences between two distinct groups (Laser vs. Control), not to measure the linear relationship between two continuous variables.
+*   **Chi-Square Test of Independence:** Inappropriate because the primary outcome (EPT score) is a continuous/ordinal variable, not categorical. (This would only be appropriate if EPT scores were converted into binary outcomes like "Anesthetized" vs. "Not Anesthetized").
+*   **One-Way ANOVA:** Inappropriate because there are only two independent groups. While mathematically equivalent to an independent t-test in this scenario, using ANOVA is unnecessarily complex and conceptually misaligned for a two-arm study.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach is dictated by the study design (a 2-arm parallel RCT) and the small final sample size ($n=20$). Because small samples are prone to non-normal distributions, the analysis must begin with a strict assessment of normality (Shapiro-Wilk). The core strategy relies on comparing the primary outcome (EPT scores) between the two independent groups using either an Independent t-test (if normal) or a Mann-Whitney U test (if non-normal). To ensure the results are clinically meaningful and not just a product of baseline differences, within-group changes (baseline vs. post-treatment) and effect sizes must be calculated. This conservative, non-parametric-leaning approach ensures that the conclusions regarding the 810 nm diode laser's efficacy are statistically sound and not inflated by outliers.

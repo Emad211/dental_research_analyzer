@@ -982,3 +982,90 @@ TASK 4 – SUMMARY / JUSTIFICATION OF OVERALL ANALYTICAL APPROACH
 - The clustering of teeth within patients is acknowledged; due to small numbers, adjustment via mixed models can only be used in an exploratory manner and not as definitive confirmatory analysis.  
 - Additional exploratory analyses examine the influence of root canal treatment quality and patient-level factors (smoking, antibiotics) on outcomes, using robust small-sample tests (Mann–Whitney, Fisher’s exact) and carefully interpreting results as hypothesis-generating.  
 - This strategy optimally balances methodological rigor with the practical constraints of a small pilot dataset, while providing clinically relevant and statistically sound insights to inform future, larger studies.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_174744
+──────────────────────────────────────────────────────────────────────
+
+Based on the provided Introduction and Methods sections, here is the comprehensive extraction and statistical analysis plan tailored to the specific nuances of this dental research study.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Retrospective pilot study.
+*   **Objective:** To evaluate the effect of sole endodontic treatment on periodontal healing in teeth with grade 3 combined endo-periodontal lesions (without root damage) in periodontally compromised patients.
+*   **Hypothesis:** Sole endodontic treatment facilitates periodontal healing.
+*   **Sample Size:** 19 teeth nested within 13 patients (indicates clustered/hierarchical data).
+*   **Study Groups:** Single-arm (pre-treatment vs. post-treatment comparison). No control group.
+*   **Timepoints:** Baseline (pre-treatment) and Follow-up (6 to 17 months post-treatment).
+*   **Variables & Measurements:**
+    *   *Primary Outcome:* Change in Pocket Probing Depth (PPD) [Continuous].
+    *   *Secondary Outcomes:* Change in Clinical Attachment Loss (CAL) [Continuous]; Change in Periodontal Apical Index (PAI) [Ordinal, 5-point scale].
+    *   *Derived Outcomes:* Clinical Success/Failure (Binary: $\ge$ 50% improvement in PPD and CAL = success); Radiographic Success/Failure (Binary: improvement in PAI = success).
+    *   *Other Clinical Parameters:* Furcation involvement, tooth mobility [Ordinal/Categorical].
+    *   *Covariates/Confounders:* Restorations, caries, baseline sensitivity, smoking status, adjunctive antibiotic therapy, follow-up duration (6-17 months).
+    *   *Quality Assessment:* Root canal filling quality (Length, Density, Missed canals) [Categorical].
+*   **Data Collection Methods:** Clinical periodontal assessment (PPD, CAL, mobility, furcation); Radiographic assessment (PAI evaluated by 1 blinded investigator; Root canal quality evaluated by 2 investigators with consensus).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given the small sample size ($N=19$) and the clustering effect (multiple teeth in some patients), non-parametric tests and mixed-effects modeling are prioritized.
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Wilcoxon Signed-Rank Test**
+*   **Purpose:** To compare pre-treatment and post-treatment values for PPD, CAL, and PAI.
+*   **Why appropriate:** 1) The sample size is small ($N=19$), making the assumption of normal distribution risky for continuous variables (PPD, CAL). 2) The PAI is an ordinal variable, which requires a non-parametric approach.
+*   **Why it may not be appropriate:** It assumes all observations are independent, which is violated here since 19 teeth come from 13 patients (clustering).
+*   **When NOT to use:** Do not use if the data are unpaired (independent groups) or if the distribution of differences is highly skewed in a way that violates the assumption of symmetry.
+*   **Alternative:** Paired t-test (if Shapiro-Wilk test confirms the differences are normally distributed and clustering is ignored).
+
+**2. Linear Mixed-Effects Model (LMM) / Generalized Estimating Equations (GEE)**
+*   **Purpose:** To evaluate the change in primary (PPD) and secondary (CAL) outcomes while accounting for the hierarchical nature of the data.
+*   **Why appropriate:** 1) It accounts for intra-patient correlation (clustering) since some patients contributed more than one tooth. 2) It can easily adjust for the variable follow-up times (6 to 17 months) by including time as a covariate.
+*   **Why it may not be appropriate:** Mixed models can be unstable or fail to converge when the sample size (number of clusters/patients = 13) is very small.
+*   **When NOT to use:** Do not use if there is strictly only one tooth per patient (making the random effect redundant).
+*   **Alternative:** Aggregate the data (e.g., average the tooth scores per patient) and run a patient-level Wilcoxon Signed-Rank test.
+
+#### CATEGORY B – RECOMMENDED (Enhances Rigor)
+
+**3. Cohen’s Kappa (or Weighted Kappa)**
+*   **Purpose:** To assess inter-rater reliability between the two investigators evaluating the quality of the root canal filling.
+*   **Why appropriate:** 1) Validates the reproducibility of the radiographic quality assessment. 2) Essential for proving that the "consensus" method was based on initially reliable independent ratings.
+*   **Why it may not be appropriate:** If the prevalence of a specific rating is extremely high (e.g., 18 out of 19 fillings are "Adequate"), Kappa can be artificially low due to the "Kappa paradox."
+*   **When NOT to use:** Do not use for continuous variables (use Intraclass Correlation Coefficient instead).
+*   **Alternative:** Gwet’s AC1 statistic (which is robust to the Kappa paradox in highly skewed marginal distributions).
+
+**4. Fisher’s Exact Test**
+*   **Purpose:** To assess the association between categorical covariates (e.g., smoking status, antibiotic use) and the derived binary outcomes (Clinical Success vs. Failure).
+*   **Why appropriate:** 1) Perfect for small sample sizes where expected cell counts in a contingency table will be less than 5. 2) Provides an exact p-value for 2x2 categorical comparisons.
+*   **Why it may not be appropriate:** It only tests unadjusted associations and cannot account for confounding variables simultaneously.
+*   **When NOT to use:** Do not use if you have a large sample size with well-populated cells (where Chi-square is computationally more efficient), or for continuous data.
+*   **Alternative:** Barnard's Exact Test (often more powerful than Fisher's for 2x2 tables).
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**5. Spearman’s Rank-Order Correlation**
+*   **Purpose:** To explore the relationship between the change in clinical parameters (e.g., $\Delta$PPD) and the change in radiographic parameters ($\Delta$PAI).
+*   **Why appropriate:** 1) Does not assume normality. 2) Can handle the correlation between a continuous variable (PPD) and an ordinal variable (PAI).
+*   **Why it may not be appropriate:** It does not imply causation and ignores the clustering effect of multiple teeth per patient.
+*   **When NOT to use:** Do not use if the relationship between the variables is known to be non-monotonic (e.g., U-shaped).
+*   **Alternative:** Kendall’s Tau (often preferred for very small datasets with many tied ranks).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test / Mann-Whitney U Test:** Inappropriate because the primary analysis involves paired data (the same teeth measured before and after treatment). These tests are for independent groups.
+*   **Pearson Correlation:** Inappropriate because PAI is an ordinal scale, and Pearson requires continuous, normally distributed variables.
+*   **Chi-Square Test of Independence:** Inappropriate for comparing success rates across covariates (like smoking) because the total sample size is 19. The expected frequency in several cells will inevitably drop below 5, violating the core assumption of the Chi-Square test.
+*   **Multivariable Logistic/Linear Regression:** Inappropriate due to the severe risk of overfitting. A standard rule of thumb requires 10-15 observations per predictor. With $N=19$, attempting to model outcomes adjusting for smoking, antibiotics, and baseline values simultaneously will yield invalid, highly inflated estimates.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach is dictated by three main constraints: a small sample size ($N=19$), a pre-post paired design, and clustered data (multiple teeth per patient). 
+
+Because this is a pilot study with limited statistical power, the primary strategy relies on robust non-parametric tests (Wilcoxon Signed-Rank) to evaluate baseline-to-follow-up changes without violating normality assumptions. However, because ignoring the non-independence of teeth within the same patient can lead to Type I errors, utilizing a Linear Mixed-Effects Model (LMM) is highly recommended as the most rigorous way to handle the clustering while simultaneously adjusting for the highly variable follow-up times (6 to 17 months). Categorical success metrics and inter-rater reliability should be handled with exact tests (Fisher's) and agreement statistics (Kappa) suitable for small, sparse datasets. This conservative, non-parametric, and cluster-aware approach ensures the pilot data is interpreted reliably without overstating the statistical claims.

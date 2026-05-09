@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splitted_academic_performance_and_dental_student.7.pdf",
+  "timestamp": "20260509_170037",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "error",
+      "chars": 27
+    }
+  }
+}

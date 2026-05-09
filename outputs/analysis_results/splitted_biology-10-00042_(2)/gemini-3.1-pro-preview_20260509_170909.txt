@@ -1,0 +1,111 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_biology-10-00042_(2).pdf
+Status : ok
+Time   : 20260509_170909
+══════════════════════════════════════════════════════════════════════
+
+Based on the provided text from the dental research article, here is the comprehensive information extraction and statistical analysis plan.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Triple-armed, single-blinded, randomized controlled clinical trial (RCT).
+*   **Objective:** To compare the instrumentation time and obturation quality of the XP-endo Shaper adaptive system with the pediatric rotary file Kedo-S and manual hand K-files in primary molars.
+*   **Study Groups (3 Arms):** 
+    *   Group 1: XP-endo Shaper (Adaptive rotary file)
+    *   Group 2: Kedo-S (Pediatric rotary file)
+    *   Group 3: Hand K-files (Manual instrumentation / Control)
+*   **Sample Size:** 75 patients/teeth in total (n = 25 per group). 
+*   **Standardization/Inclusion:** Children aged 4–9 years, Frankl behavior rating 4 or 5, necrotic primary molars with exactly 3 canals, minimum 2/3 root structure remaining.
+*   **Variables & Measurements:**
+    *   *Independent Variable:* Type of root canal instrumentation (Categorical: 3 levels).
+    *   *Primary Dependent Variable 1:* Total instrumentation time (Continuous: measured in minutes using a digital stopwatch).
+    *   *Primary Dependent Variable 2:* Quality of obturation (Categorical/Ordinal: 3 levels - Optimal [1 mm short of apex], Underfilled [2 mm short], Overfilled [beyond apex], assessed radiographically).
+*   **Data Collection Methods:** Single-visit pulpectomy by a single operator. Time recorded from first file introduction to final irrigation. Post-obturation radiographs evaluated by a blinded observer.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+*(Tests without which the analysis would be incomplete)*
+
+**1. One-Way Analysis of Variance (ANOVA)**
+*   **Purpose:** To compare the mean instrumentation time across the three independent study groups.
+*   **Why appropriate:** 
+    1) The independent variable consists of three distinct, unrelated groups. 
+    2) The dependent variable (time) is continuous.
+*   **Why it may not be appropriate:** Time data in clinical procedures is often positively skewed (a few cases taking unusually long), which may violate the assumption of normal distribution.
+*   **When this test should NOT be used:** If the data is heavily skewed or if the variances between the three groups are vastly unequal (heteroscedasticity).
+*   **Alternative if assumptions are violated:** Kruskal-Wallis H test (non-parametric).
+
+**2. Chi-Square Test of Independence**
+*   **Purpose:** To compare the distribution of obturation quality (Optimal, Underfilled, Overfilled) across the three instrumentation groups.
+*   **Why appropriate:** 
+    1) Both the independent variable (instrumentation group) and dependent variable (obturation quality) are categorical. 
+    2) The observations are independent (each tooth belongs to only one patient/group).
+*   **Why it may not be appropriate:** If the operator is highly skilled, categories like "Underfilled" or "Overfilled" may have very few occurrences, leading to small cell counts.
+*   **When this test should NOT be used:** When more than 20% of the expected cell frequencies are less than 5, or if any expected cell frequency is less than 1.
+*   **Alternative if assumptions are violated:** Fisher-Freeman-Halton Exact Test (an extension of Fisher's Exact Test for 3x3 tables).
+
+#### CATEGORY B – RECOMMENDED TESTS
+*(Tests that enhance the quality and rigor of the analysis)*
+
+**1. Shapiro-Wilk Test & Levene’s Test**
+*   **Purpose:** To test the assumptions of normality (Shapiro-Wilk) and homogeneity of variances (Levene's) for the instrumentation time data.
+*   **Why appropriate:** 
+    1) They provide mathematical proof that the data meets the strict assumptions required for a One-Way ANOVA. 
+    2) They prevent the reporting of spurious p-values derived from inappropriate parametric testing.
+*   **Why it may not be appropriate:** In smaller sample sizes (though n=25 per group is borderline acceptable), these tests can be underpowered to detect deviations from normality.
+*   **When this test should NOT be used:** When the sample size is extremely large (e.g., >500), as even trivial deviations will flag as statistically significant.
+*   **Alternative if assumptions are violated:** Visual inspection using Q-Q plots and histograms to make a clinical judgment on data distribution.
+
+**2. Tukey’s Honestly Significant Difference (HSD) Test**
+*   **Purpose:** To perform post-hoc pairwise comparisons to identify exactly *which* groups differ in instrumentation time (e.g., Group 1 vs 2, 1 vs 3, 2 vs 3) after a significant ANOVA.
+*   **Why appropriate:** 
+    1) It strictly controls for the Family-Wise Error Rate (Type I error) across multiple comparisons. 
+    2) It is highly robust when group sample sizes are equal (n=25 for all).
+*   **Why it may not be appropriate:** It assumes that the variances across all groups are equal.
+*   **When this test should NOT be used:** If Levene's test indicates that the assumption of homogeneity of variances has been violated.
+*   **Alternative if assumptions are violated:** Games-Howell post-hoc test (if variances are unequal) or Dunn’s test (if the non-parametric Kruskal-Wallis was used).
+
+**3. Cohen’s Kappa (or Weighted Kappa)**
+*   **Purpose:** To assess the intra-examiner reliability of the blinded observer evaluating the radiographs.
+*   **Why appropriate:** 
+    1) Radiographic assessment of obturation quality is subjective. 
+    2) It proves that the blinded evaluator's grading is consistent and reproducible.
+*   **Why it may not be appropriate:** The methodology does not explicitly state that the observer evaluated the radiographs twice. Kappa requires repeat measurements.
+*   **When this test should NOT be used:** If the observer only looked at the radiographs a single time, making reliability calculation impossible.
+*   **Alternative if assumptions are violated:** Percentage agreement (though statistically weaker as it does not account for chance agreement).
+
+#### CATEGORY C – OPTIONAL TESTS
+*(Tests that provide supplementary insights)*
+
+**1. Effect Size Calculations (Eta-squared $\eta^2$ and Cramer’s V)**
+*   **Purpose:** To quantify the magnitude of the difference between groups (Eta-squared for time; Cramer's V for obturation quality).
+*   **Why appropriate:** 
+    1) P-values only indicate *if* a difference exists, whereas effect sizes indicate *how large* and clinically meaningful the difference is. 
+    2) It aids future researchers in performing power analyses for subsequent trials.
+*   **Why it may not be appropriate:** Can be misleading if the sample size is too small, resulting in excessively wide confidence intervals around the effect size.
+*   **When this test should NOT be used:** If the primary omnibus tests (ANOVA/Chi-Square) are not statistically significant, calculating effect sizes is generally unwarranted.
+*   **Alternative if assumptions are violated:** Cohen’s *d* for specific pairwise group comparisons.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test:** Should NOT be used because there are *three* groups in this study. Running multiple t-tests (1 vs 2, 2 vs 3, 1 vs 3) drastically inflates the risk of a Type I error (false positive).
+*   **Paired t-test / Repeated Measures ANOVA:** Should NOT be used because the groups consist of independent samples (different teeth/patients in each group). These tests are reserved for within-subject designs (e.g., measuring the same tooth before and after a procedure).
+*   **Pearson Correlation:** Should NOT be used because the study is comparing distinct categorical groups against outcomes, not looking for a linear relationship between two continuous variables.
+
+---
+
+### TASK 4: SUMMARY
+
+**Overall Analytical Approach Justification:**
+The study utilizes a classic 3-arm parallel randomized controlled design. Because the study features two distinct types of dependent variables—one continuous (instrumentation time) and one categorical (obturation quality)—a dual-pathway analytical approach is required. 
+
+The continuous data must be evaluated using a One-Way ANOVA (contingent upon normality and variance checks) followed by strict post-hoc testing to control for Type I errors. The categorical data requires a Chi-Square test of independence to assess proportional differences in obturation quality. By incorporating assumption checks (Shapiro-Wilk/Levene's) and reliability metrics (Cohen's Kappa for the blinded evaluator), the statistical plan ensures that the findings regarding the novel XP-endo Shaper are both mathematically sound and clinically reliable.

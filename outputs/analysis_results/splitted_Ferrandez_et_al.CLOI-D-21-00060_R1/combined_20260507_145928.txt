@@ -1234,3 +1234,106 @@ TASK 4 – SUMMARY OF ANALYTICAL APPROACH
 - Optional ordinal or multinomial models for healing, sensitivity analyses around “uncertain” outcomes, and propensity score methods strengthen robustness and address the non‑randomized design.
 
 This integrated plan provides a coherent, assumption‑aware framework to evaluate both the primary and secondary aims and to control for confounding inherent in a historical controlled cohort.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_172328
+──────────────────────────────────────────────────────────────────────
+
+Based on the provided Introduction and Methods sections, here is a comprehensive biostatistical extraction and statistical analysis plan tailored to this historical controlled cohort study in endodontics.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Historical controlled cohort study (Retrospective cohort).
+*   **Primary Objective:** To radiographically determine the 2-year periapical healing of Non-Surgical Root Canal Treatment (NSRCT) accessed through existing crowns versus NSRCT performed after restoration removal and subsequent new crown placement.
+*   **Secondary Objective:** To determine the complication rate (porcelain fracture and de-cementation) of accessing through existing extra-coronal restorations up to 2 years post-operatively.
+*   **Study Groups (Independent Variable):** 3 Groups (Total N = 245 based on Table 2)
+    1.  Crown retained (n=106)
+    2.  Crown removed (n=57)
+    3.  Restoration removed (n=82)
+*   **Primary Outcome (Dependent Variable 1):** Radiographic periapical healing at 1 to 2 years. Measured categorically: Complete healing, Incomplete healing, Uncertain, Failed. *(Note: In endodontic literature, these are typically dichotomized into "Success" [Complete/Incomplete] vs. "Failure" [Uncertain/Failed] for multivariable analysis).*
+*   **Secondary Outcome (Dependent Variable 2):** Complication rate (porcelain fracture, de-cementation) up to 2 years. Measured dichotomously (Yes/No) over time.
+*   **Covariates/Potential Confounders:** Sex, Age, Tooth type, Size of pre-operative periapical radiolucency, Presence of sinus tract, Previous treatment (primary vs. retreatment), Quality of final restoration, Crown material, Post-RCT core material, Function as abutment.
+*   **Data Collection Methods:** Clinical records extraction, radiographic evaluation by an independent calibrated assessor (with 30% cross-checked by a second assessor for reliability), and clinical examination using a DG16/23 explorer.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY TESTS
+*Tests without which the analysis would be incomplete and scientifically invalid.*
+
+**1. Cohen’s Kappa (or Weighted Kappa)**
+*   **Purpose:** To assess inter-examiner reliability for the radiographic evaluation of healing (between assessor JR and SM on 30% of the sample).
+*   **Why appropriate:** (1) The primary outcome is categorical/ordinal. (2) It accounts for agreement occurring by chance, which is critical for subjective radiographic assessments.
+*   **Why it may not be appropriate:** If the prevalence of one outcome category (e.g., "Complete healing") is extremely high, it can cause the "Kappa paradox," resulting in a low Kappa score despite high actual agreement.
+*   **When NOT to use:** When assessing continuous variables (e.g., measuring the exact millimeter size of the lesion).
+*   **Alternative:** Gwet’s AC1 statistic (resolves the Kappa paradox) or Percentage Agreement.
+
+**2. Chi-Square Test of Independence (or Fisher's Exact Test)**
+*   **Purpose:** To compare the crude proportions of periapical healing (success vs. failure) and baseline categorical variables across the three treatment groups.
+*   **Why appropriate:** (1) The independent variable (treatment group) and dependent variable (healing status) are both categorical. (2) It allows for the comparison of more than two independent groups simultaneously.
+*   **Why it may not be appropriate:** It does not adjust for the baseline confounding variables (like age, previous treatment, or core material) which Table 2 shows are significantly different between groups.
+*   **When NOT to use:** When expected cell counts in the contingency table are less than 5 for more than 20% of the cells.
+*   **Alternative:** Fisher’s Exact Test (if cell counts are < 5) or Freeman-Halton extension for 3x2 tables.
+
+**3. Multiple Binary Logistic Regression**
+*   **Purpose:** To evaluate the independent effect of the treatment group on periapical healing while adjusting for baseline confounders.
+*   **Why appropriate:** (1) The study is a historical cohort; therefore, groups are not randomized and baseline imbalances (e.g., previous treatment $p<0.0001$) *must* be controlled for. (2) It handles a mix of continuous (age, lesion size) and categorical (tooth type, restoration quality) predictors against a binary outcome (Healing Success vs. Failure).
+*   **Why it may not be appropriate:** If the number of outcome events (failures) is too small relative to the number of predictors, the model will suffer from overfitting.
+*   **When NOT to use:** If the outcome variable is kept as a 4-level ordinal variable rather than being dichotomized.
+*   **Alternative:** Ordinal Logistic Regression (if keeping the 4 healing categories: Complete > Incomplete > Uncertain > Failed) or Poisson Regression with robust error variance (to report Relative Risks instead of Odds Ratios).
+
+#### CATEGORY B – RECOMMENDED TESTS
+*Tests that enhance the quality, rigor, and clinical utility of the analysis.*
+
+**1. Kaplan-Meier Survival Analysis & Log-Rank Test**
+*   **Purpose:** To analyze the secondary outcome (complication rates: fracture/de-cementation) over the "up to 2 years" follow-up period.
+*   **Why appropriate:** (1) It accounts for "time-to-event" data, which is highly relevant since complications can happen at any point up to 2 years. (2) It properly handles censored data (patients who drop out or reach the end of the study without a complication).
+*   **Why it may not be appropriate:** If the exact timing of the complications was not recorded in the clinical notes, and only a binary "did it happen within 2 years" is available.
+*   **When NOT to use:** When adjusting for multiple continuous and categorical covariates simultaneously.
+*   **Alternative:** Simple Chi-square test (if time-to-event data is missing and only binary outcomes at 2 years are available).
+
+**2. Cox Proportional Hazards Regression**
+*   **Purpose:** To adjust for confounders when analyzing the secondary outcome (time to restorative complication).
+*   **Why appropriate:** (1) Allows adjustment for factors that heavily influence crown survival, such as "Function as abutment" and "Crown material". (2) Provides Hazard Ratios, which are highly interpretable for clinical survival data.
+*   **Why it may not be appropriate:** If the proportional hazards assumption is violated (e.g., if the risk of de-cementation for one group spikes early but drops later compared to another group).
+*   **When NOT to use:** If the exact time of the complication is unknown.
+*   **Alternative:** Parametric survival models (e.g., Weibull regression) if the proportional hazards assumption is violated.
+
+#### CATEGORY C – OPTIONAL TESTS
+*Tests that provide supplementary insights or robustness checks.*
+
+**1. Propensity Score Matching (PSM) or Inverse Probability Treatment Weighting (IPTW)**
+*   **Purpose:** To create a synthetic sample in which baseline confounding variables are balanced across the treatment groups, mimicking a randomized controlled trial.
+*   **Why appropriate:** (1) Highly effective for observational studies with significant baseline imbalances (as seen in Table 2). (2) Provides a more robust causal inference regarding the treatment effect.
+*   **Why it may not be appropriate:** PSM may result in a loss of sample size if matches cannot be found for all patients, reducing statistical power.
+*   **When NOT to use:** When the sample size is too small to generate reliable propensity scores.
+*   **Alternative:** Standard multivariable logistic regression (as outlined in Category A).
+
+**2. One-way ANOVA or Kruskal-Wallis H Test**
+*   **Purpose:** To compare continuous baseline variables (Age, Size of pre-operative lesion) across the three groups to check for baseline balance.
+*   **Why appropriate:** (1) Compares means/medians across three independent groups. (2) Validates whether randomization/selection was truly unbiased.
+*   **Why it may not be appropriate:** Baseline significance testing in observational studies is sometimes criticized because any difference is, by definition, not due to chance but due to selection bias; the focus should be on the magnitude of difference (effect size).
+*   **When NOT to use:** ANOVA should not be used if the continuous data is heavily skewed or violates the assumption of homogeneity of variances.
+*   **Alternative:** Kruskal-Wallis (if data is non-parametric/skewed).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test:** Inappropriate because there are *three* study groups (Crown retained, Crown removed, Restoration removed), not two. Using multiple t-tests inflates the Type I error rate.
+*   **Paired t-test / Repeated Measures ANOVA:** Inappropriate because the groups consist of independent observations (different patients/teeth in each group). This is not a crossover or matched-pairs design.
+*   **Linear Regression:** Inappropriate for the primary outcome because periapical healing is a categorical/binary outcome, not a continuous numerical variable.
+*   **McNemar’s Test:** Inappropriate because it is used for paired nominal data (e.g., comparing a diagnostic test on the same patient twice). The groups in this study are independent.
+
+---
+
+### TASK 4: SUMMARY OF ANALYTICAL APPROACH
+
+The overall analytical approach must transition from validating the measurement tools to crude comparisons, and finally to rigorous confounder adjustment. 
+
+First, **Cohen's Kappa** is essential to prove that the subjective radiographic assessments of healing are reliable between examiners. Next, descriptive statistics and **Chi-square/ANOVA** tests are required to highlight baseline differences between the three historical cohorts. Because Table 2 already indicates significant selection bias (e.g., differences in previous treatments, core materials, and abutment function), crude comparisons of healing are insufficient. 
+
+Therefore, the core of the analysis relies on **Multiple Logistic Regression** to isolate the true effect of accessing a tooth through an existing crown on periapical healing, controlling for these baseline imbalances. Finally, to address the secondary aim regarding restorative complications, a time-to-event approach using **Kaplan-Meier and Cox Regression** is highly recommended to accurately model the survival of the restorations over the 2-year follow-up period.

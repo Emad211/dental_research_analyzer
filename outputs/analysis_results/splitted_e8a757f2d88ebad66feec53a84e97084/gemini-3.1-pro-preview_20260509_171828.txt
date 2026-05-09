@@ -1,0 +1,126 @@
+══════════════════════════════════════════════════════════════════════
+STATISTICAL ANALYSIS — Google / gemini-3.1-pro-preview
+PDF    : splitted_e8a757f2d88ebad66feec53a84e97084.pdf
+Status : ok
+Time   : 20260509_171828
+══════════════════════════════════════════════════════════════════════
+
+Here is the comprehensive extraction and statistical analysis plan based on the provided dental research article.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** CONSORT-compliant, prospective, randomized, parallel-group, single-center clinical trial.
+*   **Primary Objective:** To evaluate the impact of piezoelectric surgery versus conventional carbide burs on the patient's quality of life (QoL) during the first week postsurgery.
+*   **Secondary Objective:** To compare intraoperative hemorrhage control between the two techniques.
+*   **Study Groups:**
+    *   *Intervention (Piezo Group):* Osteotomy and root-end resection using a piezoelectric device ($n = 20$ patients).
+    *   *Control Group:* Osteotomy and root-end resection using a surgical carbide bur and curettes ($n = 20$ patients).
+*   **Sample Size:** 40 patients total, contributing 74 teeth (indicating clustering: some patients had multiple teeth treated). Calculated for 80% power, 5% alpha, 0.8 clinical difference in pain, 0.824 SD, and 20% attrition.
+*   **Blinding:** Patients were blinded (sham setup used). Two independent observers were blinded for hemorrhage assessment. The operator could not be blinded.
+
+**Variables & Measurements:**
+*   **Independent Variable:** Surgical technique (Piezoelectric device vs. Carbide bur).
+*   **Dependent Variables & Data Collection:**
+    1.  *Intraoperative Hemorrhage Control:* Ordinal scale (0 = inadequate/no control, 1 = intermittent, 2 = complete). Assessed intraoperatively by the surgeon and 2 blinded evaluators (consensus reached if needed).
+    2.  *Quality of Life (Oral/General Functions):* 5-point Likert scale (1 = not at all to 5 = very much) assessing mouth opening, chewing, speaking, sleeping, daily routine, and work. Self-reported daily for 7 days.
+    3.  *Postoperative Symptoms:* 5-point Likert scale assessing swelling, nausea, and bad taste/breath. Self-reported daily for 7 days.
+    4.  *Postoperative Pain:* Visual Analog Scale (VAS) (0 = no pain to 100 = worst possible pain). Self-reported daily for 7 days.
+    5.  *Analgesic Intake:* Count data (number of pills taken per day). Self-reported daily for 7 days.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+*Note: Because 40 patients contributed 74 teeth, there is a "clustering" effect (multiple teeth nested within single patients). The statistical approach must account for this lack of independence.*
+
+#### CATEGORY A – MANDATORY TESTS
+*(Tests without which the analysis would be incomplete)*
+
+**1. Generalized Linear Mixed Models (GLMM) / Generalized Estimating Equations (GEE)**
+*   **Purpose:** To analyze repeated-measures ordinal data (QoL Likert scores, Symptom Likert scores) and count data (Analgesic intake) over the 7-day period.
+*   **Why appropriate:**
+    1. It easily handles the non-normal distribution of ordinal and count data.
+    2. It accounts for two levels of correlated data: repeated measures over time (Days 1-7) and clustered data (multiple teeth within the same patient).
+*   **Why it may not be appropriate:** It requires a relatively large sample size to estimate robust standard errors; with $n=40$, the model might struggle to converge if too many covariates are added.
+*   **When NOT to use:** When data points are completely independent (no repeated measures, no clustering).
+*   **Alternative:** Friedman test (for time effect within groups) and Mann-Whitney U test (for group differences at specific days) with Bonferroni correction.
+
+**2. Linear Mixed-Effects Model (LMM)**
+*   **Purpose:** To analyze continuous repeated-measures data (VAS Pain scores) over the 7 days.
+*   **Why appropriate:**
+    1. It accounts for the correlation of repeated daily pain scores and the clustering of teeth within patients.
+    2. It handles missing data (e.g., if a patient forgets to fill out the diary on Day 3) much better than traditional repeated-measures ANOVA.
+*   **Why it may not be appropriate:** If the VAS scores are heavily skewed (e.g., most patients report 0 pain by day 3), the assumption of normality of residuals may be violated.
+*   **When NOT to use:** If the dependent variable is categorical or ordinal.
+*   **Alternative:** Two-way Mixed ANOVA (if no missing data and no clustering) or Non-parametric marginal models.
+
+**3. Mann-Whitney U Test**
+*   **Purpose:** To compare the intraoperative hemorrhage control scores between the Piezo and Control groups.
+*   **Why appropriate:**
+    1. The dependent variable is an ordinal scale (0, 1, 2).
+    2. The two groups are independent of each other.
+*   **Why it may not be appropriate:** It does not account for the clustering effect if multiple teeth in the same patient had separate hemorrhage scores.
+*   **When NOT to use:** When comparing paired/matched data (e.g., same tooth measured twice).
+*   **Alternative:** Proportional Odds Logistic Regression (which can also be adjusted for clustering).
+
+#### CATEGORY B – RECOMMENDED TESTS
+*(Tests that enhance the quality and rigor of the analysis)*
+
+**1. Fleiss’ Kappa or Kendall’s Coefficient of Concordance (W)**
+*   **Purpose:** To assess inter-rater reliability among the 3 observers (1 surgeon, 2 blinded evaluators) for the hemorrhage control scores.
+*   **Why appropriate:**
+    1. Validates the reliability of the primary intraoperative metric, ensuring the lack of operator blinding didn't introduce severe bias.
+    2. Specifically designed for assessing agreement between *more than two* raters on categorical/ordinal data.
+*   **Why it may not be appropriate:** If the raters discussed every single case to reach a consensus *before* recording their initial independent scores, the test is moot.
+*   **When NOT to use:** When assessing agreement on continuous variables (like VAS).
+*   **Alternative:** Intraclass Correlation Coefficient (ICC) (Two-way random, absolute agreement).
+
+**2. Chi-Square Test of Independence / Fisher’s Exact Test**
+*   **Purpose:** To compare baseline categorical characteristics (e.g., gender, tooth location) between the two groups.
+*   **Why appropriate:**
+    1. Ensures that the randomization process was successful and groups are balanced.
+    2. Identifies potential confounding variables that may need to be controlled for in the mixed models.
+*   **Why it may not be appropriate:** Fisher's Exact is required if expected cell counts drop below 5, which is highly likely with a sample size of 20 per group.
+*   **When NOT to use:** When comparing continuous baseline variables (e.g., Age).
+*   **Alternative:** Logistic regression.
+
+#### CATEGORY C – OPTIONAL TESTS
+*(Tests that provide supplementary insights)*
+
+**1. Area Under the Curve (AUC) Analysis for Pain**
+*   **Purpose:** To calculate a single "total pain burden" score for each patient over the 7 days, then compare groups using an Independent t-test or Mann-Whitney U.
+*   **Why appropriate:**
+    1. Simplifies the interpretation of longitudinal pain data into a single, clinically meaningful metric.
+    2. Avoids the complexities of time-by-treatment interaction interpretations.
+*   **Why it may not be appropriate:** It loses the granularity of *when* the pain occurred (e.g., high pain on day 1 vs. day 7).
+*   **When NOT to use:** When the time intervals between measurements are highly irregular or unknown.
+*   **Alternative:** Comparing only the peak (maximum) pain score between groups.
+
+**2. Spearman’s Rank-Order Correlation**
+*   **Purpose:** To explore the relationship between intraoperative hemorrhage control (ordinal) and Day 1 postoperative pain/swelling (ordinal/non-normal).
+*   **Why appropriate:**
+    1. Does not assume normality or a strict linear relationship.
+    2. Can provide clinical insight into whether better bleeding control directly translates to less immediate postoperative discomfort.
+*   **Why it may not be appropriate:** Correlation does not imply causation; other surgical factors might influence both bleeding and pain.
+*   **When NOT to use:** When assessing relationships between two normally distributed continuous variables.
+*   **Alternative:** Kendall’s Tau.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test for Hemorrhage Scores:** Hemorrhage is scored on a 3-point ordinal scale (0, 1, 2). The t-test assumes continuous, normally distributed data. Using it here would yield mathematically invalid means (e.g., a bleeding score of 1.4).
+*   **Uncorrected Multiple t-tests (or Mann-Whitney tests) for Daily Pain:** Running separate tests for Day 1, Day 2, Day 3, etc., without adjusting for multiple comparisons (like Bonferroni) severely inflates the Type I error rate (false positives).
+*   **Repeated Measures ANOVA (Standard):** Because 40 patients contributed 74 teeth, the data contains clustering (multiple teeth per patient). Standard RM-ANOVA assumes all subjects contribute equally and independently. It also handles missing data poorly (listwise deletion), which is common in 7-day patient diaries.
+*   **Pearson Correlation for QoL Likert Scales:** Pearson assumes continuous, normally distributed data with a linear relationship. Likert scales are ordinal; therefore, non-parametric correlation (Spearman) is required.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must transition from standard cross-sectional analysis to advanced longitudinal modeling. Because the study features a hierarchical data structure—repeated daily measurements (Days 1-7) nested within teeth, which are in turn nested within patients (74 teeth in 40 patients)—traditional tests like ANOVA are insufficient. 
+
+The core of the analysis relies on **Mixed-Effects Models (LMM and GLMM/GEE)**. These models are uniquely capable of handling the correlated nature of both the repeated 7-day diary entries and the clustering of multiple teeth per patient, while also accommodating the specific distributions of the data (continuous for VAS, ordinal for Likert QoL, count for analgesics). Furthermore, because the operator could not be blinded, validating the intraoperative hemorrhage scores using inter-rater reliability testing (**Fleiss' Kappa**) among the blinded observers is a critical methodological safeguard to ensure the integrity of the secondary objective.

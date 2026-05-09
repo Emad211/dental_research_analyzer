@@ -966,3 +966,100 @@ Accordingly, the core analytical strategy focuses on:
 - Evaluating **within‑group changes** from baseline pain using paired methods to illustrate the clinical effect of anesthesia.
 
 Recommended enhancements include ordinal modeling of pain categories, mixed models for repeated HP‑VAS measures, and sensitivity analyses for post‑randomization exclusions, all of which improve rigor, account for the longitudinal and hierarchical nature of the data, and support more robust conclusions while respecting the modest sample size and the randomized design.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_174548
+──────────────────────────────────────────────────────────────────────
+
+Based on the provided Introduction and Methods sections of the article, here is the comprehensive extraction and statistical analysis plan.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Prospective, double-blind, randomized, placebo-controlled clinical trial.
+*   **Objective:** To evaluate the efficacy of buccal piroxicam infiltration on the success of Inferior Alveolar Nerve Block (IANB) and buccal infiltration using 2% lignocaine with adrenaline in patients with irreversible pulpitis.
+*   **Participants:** 56 patients (aged 15 to 65 years) with ASA Class I or II medical history.
+*   **Sample Size:** 28 patients per group (Calculated sample size was 52 based on 80% power and 0.82 effect size; rounded to 56 to account for manual errors/dropouts).
+*   **Study Groups:**
+    *   **Group 1 (Control):** Standard IANB + buccal lignocaine + buccal infiltration with normal saline (Syringe A).
+    *   **Group 2 (Test):** Standard IANB + buccal lignocaine + buccal infiltration with 20 mg/mL piroxicam (Syringe B).
+*   **Independent Variable:** Type of supplemental buccal infiltration (Piroxicam vs. Normal Saline).
+*   **Dependent Variables (Outcomes):**
+    *   *Pain Scores:* Measured using the 170-mm Heft-Parker Visual Analogue Scale (HP-VAS).
+    *   *Anesthetic Success:* Categorical/Binary (Success = absence of pain or mild pain [HP-VAS 0–54] during procedures with no extra anesthetic needed; Failure = moderate/severe pain requiring additional anesthetic).
+*   **Time Points for Measurement:** Initial Pain Score (IPS), during Caries Removal (CR), Access Opening Procedure (AOP), and Working Length Measurement (WLM).
+*   **Data Collection Methods:** HP-VAS for subjective pain; Electric Pulp Tester (EPT) and lip numbness assessment every 5 minutes for objective pulpal anesthesia.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Essential Tests)
+
+**1. Chi-Square Test (or Fisher’s Exact Test)**
+*   **Purpose:** To compare the primary outcome (Anesthetic Success rates: Success vs. Failure) between the two groups, and to compare baseline sex distribution.
+*   **Why appropriate:** 1) Anesthetic success and sex are categorical (binary) variables. 2) It determines if the difference in proportions between two independent groups is statistically significant.
+*   **Why it may not be appropriate:** If the expected frequency in any cell of the 2x2 contingency table is less than 5, the Chi-square approximation breaks down.
+*   **When NOT to use:** When the data is paired/matched (e.g., same patient receiving both treatments on different sides), or if expected cell counts are < 5.
+*   **Alternative:** Fisher’s Exact Test (if expected cell counts are < 5).
+
+**2. Mann-Whitney U Test**
+*   **Purpose:** To compare HP-VAS pain scores between the Piroxicam and Saline groups at specific procedural stages (IPS, CR, AOP, WLM).
+*   **Why appropriate:** 1) HP-VAS pain scores are typically skewed and do not follow a normal distribution. 2) It is the ideal non-parametric test for comparing continuous/ordinal data between two independent groups.
+*   **Why it may not be appropriate:** It tests for differences in mean ranks, not absolute means, which can sometimes be less intuitive for clinical interpretation.
+*   **When NOT to use:** If the data is perfectly normally distributed and variances are equal, this test loses statistical power compared to its parametric counterpart.
+*   **Alternative:** Independent Samples t-test (if Shapiro-Wilk test confirms normal distribution of VAS scores).
+
+**3. Independent Samples t-test**
+*   **Purpose:** To compare the baseline age of patients between the two groups to ensure successful randomization.
+*   **Why appropriate:** 1) Age is a continuous variable. 2) It effectively tests the null hypothesis that the mean age of the two independent groups is equal.
+*   **Why it may not be appropriate:** If the age distribution is highly skewed (e.g., mostly young patients with a few elderly outliers), the mean becomes a poor measure of central tendency.
+*   **When NOT to use:** When the continuous data violates the assumption of normality or homogeneity of variances.
+*   **Alternative:** Mann-Whitney U Test (if age data is non-normally distributed).
+
+#### CATEGORY B – RECOMMENDED (Enhances Quality and Rigor)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of continuous variables (Age, HP-VAS scores).
+*   **Why appropriate:** 1) It is highly sensitive to deviations from normality for small to medium sample sizes (n=56). 2) It provides statistical justification for choosing between parametric and non-parametric tests.
+*   **Why it may not be appropriate:** In very small sample sizes, it may lack the power to detect non-normality.
+*   **When NOT to use:** When dealing with strictly categorical or nominal data (e.g., Sex, Success/Failure).
+*   **Alternative:** Kolmogorov-Smirnov test or visual inspection of Q-Q plots.
+
+**2. Friedman Test**
+*   **Purpose:** To evaluate the change in HP-VAS pain scores within the *same* group across the four time points (IPS, CR, AOP, WLM).
+*   **Why appropriate:** 1) It accounts for the repeated-measures nature of the data (same patients measured 4 times). 2) It does not require the assumption of normality, which is ideal for pain scores.
+*   **Why it may not be appropriate:** It only tells you that a difference exists somewhere among the time points, requiring post-hoc tests (like Wilcoxon signed-rank with Bonferroni correction) to find exactly where the difference lies.
+*   **When NOT to use:** When comparing data between the two different treatment groups (it is strictly for within-group analysis).
+*   **Alternative:** Repeated Measures ANOVA (if the pain scores are normally distributed and meet the assumption of sphericity).
+
+**3. Relative Risk (RR) / Odds Ratio (OR) with 95% Confidence Intervals**
+*   **Purpose:** To quantify the clinical effect size of piroxicam on anesthetic success.
+*   **Why appropriate:** 1) Provides a clinically meaningful metric (e.g., "Patients receiving piroxicam are X times more likely to achieve successful anesthesia"). 2) Confidence intervals provide insight into the precision of the estimate.
+*   **Why it may not be appropriate:** If the event rate is 0 in one group, the OR/RR calculation will result in an error (division by zero) without statistical adjustments.
+*   **When NOT to use:** When analyzing continuous outcomes (like exact VAS scores).
+*   **Alternative:** Absolute Risk Reduction (ARR) and Number Needed to Treat (NNT).
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. Generalized Estimating Equations (GEE) or Mixed-Effects Linear Models**
+*   **Purpose:** To analyze the interaction between "Treatment Group" and "Time" on HP-VAS scores simultaneously.
+*   **Why appropriate:** 1) It handles repeated measures robustly while allowing for missing data (if any patients dropped out). 2) It can adjust for baseline covariates like Age or Initial Pain Score.
+*   **Why it may not be appropriate:** It is highly complex and may overcomplicate the analysis for a straightforward 2-group RCT with a relatively small sample size.
+*   **When NOT to use:** If the sample size is too small to support complex modeling without overfitting.
+*   **Alternative:** Two-way Mixed ANOVA (if normality and sphericity assumptions are met).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Paired Samples t-test / Wilcoxon Signed-Rank Test (for between-group analysis):** These tests are for matched pairs or repeated measures on the *same* subjects. Group 1 and Group 2 consist of completely independent, different patients.
+*   **Pearson Correlation Coefficient:** Inappropriate for evaluating the primary outcome (Anesthetic Success), as success is a binary categorical variable, not a continuous variable.
+*   **One-Way ANOVA (for between-group VAS comparison):** ANOVA is used to compare means across *three or more* independent groups. Since there are only two groups (Piroxicam vs. Saline), an Independent t-test or Mann-Whitney U test is the correct choice. Furthermore, ANOVA assumes normality, which HP-VAS data often violates.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach for this study should be divided into three phases: **Baseline Equivalence, Primary Outcome Analysis, and Secondary Outcome Analysis.** 
+
+First, baseline demographics (Age, Sex) and Initial Pain Scores (IPS) must be compared using t-tests/Mann-Whitney and Chi-square tests to ensure the randomization successfully created comparable groups. Second, the primary clinical outcome—Anesthetic Success (a binary variable)—should be analyzed using a Chi-square test, supplemented by Relative Risk calculations to provide clinical context. Finally, the secondary outcome—HP-VAS pain scores at various procedural stages—should be analyzed using non-parametric tests (Mann-Whitney U for between-group comparisons and Friedman test for within-group trends over time), as pain scales are bounded and typically skewed. This approach ensures rigorous handling of both categorical and non-normal continuous data, directly answering the study's core hypothesis.

@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splitted_FormaminalEnlargement.pdf",
+  "timestamp": "20260509_172615",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "ok",
+      "chars": 8651
+    }
+  }
+}

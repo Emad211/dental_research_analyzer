@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splitted_FULLTEXT01.pdf",
+  "timestamp": "20260509_172718",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "ok",
+      "chars": 9456
+    }
+  }
+}

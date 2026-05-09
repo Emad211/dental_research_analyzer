@@ -199,3 +199,207 @@ I will provide a concise justification of the overall analytical approach, for e
 ---
 
 Please resend the full Introduction and Methods (or at least the complete Methods) so I can produce a precise, article-specific statistical analysis plan rather than a generic template.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_160832
+──────────────────────────────────────────────────────────────────────
+
+**CLINICAL BIOSTATISTICIAN NOTICE:** 
+It appears that the article text you intended to provide was cut off or failed to paste correctly (the provided text only contains page markers, the phrase "The [cut off]", and a series of dots). 
+
+Because I cannot extract data from an empty text, **I have provided a complete, highly detailed response based on a standard hypothetical dental research study** (e.g., a Randomized Controlled Trial comparing a new mouthwash to Chlorhexidine for reducing Plaque and Gingival Indices). 
+
+*Please reply with the actual text of your article, and I will generate an exact, customized analysis plan based on your specific study.*
+
+***
+
+### TASK 1: INFORMATION EXTRACTION [HYPOTHETICAL EXAMPLE]
+
+*   **Study Design:** Randomized Controlled Trial (RCT), parallel-group, double-blind, longitudinal.
+*   **Objectives:** To evaluate the clinical efficacy of a novel herbal mouthwash compared to 0.12% Chlorhexidine (CHX) in reducing dental plaque and gingival inflammation over a 4-week period.
+*   **Groups:** 
+    *   *Experimental Group:* Novel herbal mouthwash (n=30)
+    *   *Control Group:* 0.12% Chlorhexidine mouthwash (n=30)
+*   **Sample Size:** Total N = 60 participants.
+*   **Variables:**
+    *   *Independent Variables:* Treatment Group (Herbal vs. CHX), Time (Baseline, Week 2, Week 4).
+    *   *Dependent Variables:* Plaque Index (PI) [Silness & Löe], Gingival Index (GI) [Löe & Silness].
+*   **Measurements & Data Collection:** Clinical examinations performed by a single calibrated, blinded examiner using a periodontal probe. Scores recorded at Baseline, Week 2, and Week 4.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY (Essential for basic validity)
+
+**1. Shapiro-Wilk Test**
+*   **Purpose:** To assess the normality of the distribution of the continuous/ordinal dependent variables (PI and GI) within each group at each time point.
+*   **Why appropriate:** 
+    1) It is highly robust and provides better power than the Kolmogorov-Smirnov test for smaller sample sizes (N < 50 per group). 
+    2) Determining normality is a strict prerequisite for deciding between parametric and non-parametric inferential statistics.
+*   **Why it may not be appropriate:** 1) Clinical indices like PI and GI are technically ordinal, and while often treated as continuous in dental literature, strict statisticians may argue they inherently violate continuous normality assumptions.
+*   **When this test should NOT be used:** When the sample size is extremely large (e.g., N > 1000), as it becomes overly sensitive to trivial deviations from normality.
+*   **Alternative if assumptions are violated:** Q-Q plots and skewness/kurtosis evaluation (visual/descriptive assessment).
+
+**2. Two-Way Repeated Measures ANOVA (or Mixed ANOVA)**
+*   **Purpose:** To compare the mean differences in PI and GI between the two treatment groups across the three time points (Baseline, Week 2, Week 4).
+*   **Why appropriate:** 
+    1) It accounts for the within-subject correlation (the same patients are measured multiple times). 
+    2) It allows for the testing of the "Time × Treatment" interaction effect, which is the primary clinical question (does one mouthwash work *faster* or *better over time* than the other?).
+*   **Why it may not be appropriate:** 1) It relies on the assumption of sphericity (equal variances of the differences between all possible pairs of within-subject conditions), which is frequently violated in clinical time-series data.
+*   **When this test should NOT be used:** When there is a high rate of missing data (dropouts), as standard RM ANOVA uses listwise deletion and will discard the entire patient's record if one time point is missing.
+*   **Alternative if assumptions are violated:** Linear Mixed-Effects Models (LMM) to handle missing data, or the non-parametric Friedman Test (for within-group time differences) combined with Mann-Whitney U tests (for between-group differences).
+
+#### CATEGORY B – RECOMMENDED (Enhances quality and rigor)
+
+**1. Mauchly’s Test of Sphericity & Greenhouse-Geisser Correction**
+*   **Purpose:** To test the assumption of sphericity required for RM ANOVA and correct the degrees of freedom if the assumption is violated.
+*   **Why appropriate:** 
+    1) Prevents Type I errors (false positives) that occur when sphericity is violated. 
+    2) It is standard practice in high-impact dental journals to report sphericity corrections for longitudinal data.
+*   **Why it may not be appropriate:** 1) If the study only has two time points, sphericity is inherently met, making the test redundant (though our hypothetical has three).
+*   **When this test should NOT be used:** When using a Linear Mixed Model or Generalized Estimating Equations (GEE), as these models specify the covariance structure directly.
+*   **Alternative if assumptions are violated:** Huynh-Feldt correction (if the Greenhouse-Geisser epsilon is > 0.75).
+
+**2. Partial Eta Squared ($\eta_p^2$) / Cohen’s d**
+*   **Purpose:** To calculate the effect size, quantifying the magnitude of the difference between the mouthwashes, rather than just the statistical significance (p-value).
+*   **Why appropriate:** 
+    1) P-values only tell us if a difference exists, whereas effect sizes tell the clinician if the difference is *clinically meaningful*. 
+    2) It allows future researchers to use the data for meta-analyses and sample size calculations.
+*   **Why it may not be appropriate:** 1) Partial eta squared can overestimate the true population effect size in small samples.
+*   **When this test should NOT be used:** When the primary data violates parametric assumptions so severely that means and standard deviations are no longer representative of the central tendency.
+*   **Alternative if assumptions are violated:** Rank-biserial correlation or Cliff's Delta (for non-parametric effect sizes).
+
+#### CATEGORY C – OPTIONAL (Supplementary insights)
+
+**1. Intraclass Correlation Coefficient (ICC)**
+*   **Purpose:** To assess intra-examiner reliability (if the examiner re-evaluated a subset of patients to ensure grading consistency).
+*   **Why appropriate:** 
+    1) Proves that the clinical measurements of PI and GI are reproducible and not subject to random examiner drift. 
+    2) Strengthens the internal validity of the clinical trial.
+*   **Why it may not be appropriate:** 1) If the study utilizes automated/digital objective grading systems rather than human subjective grading, ICC may be unnecessary.
+*   **When this test should NOT be used:** When assessing agreement between two entirely different methods of measurement (e.g., comparing a clinical index to a biochemical marker); Bland-Altman plots are better there.
+*   **Alternative if assumptions are violated:** Cohen’s Kappa (if the data is strictly categorized into nominal bins rather than continuous/ordinal scores).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Independent Samples t-test (for comparing Baseline to Week 4):** 
+    *   *Why it is inappropriate:* An independent t-test assumes that the two groups being compared are completely independent. Comparing Baseline to Week 4 within the same patients violates the assumption of independence. A paired t-test or repeated measures ANOVA must be used instead.
+*   **Pearson Chi-Square Test:** 
+    *   *Why it is inappropriate:* Chi-square is used for categorical frequency data (e.g., comparing the number of male vs. female participants). Plaque and Gingival indices are ordinal/continuous scales based on mean scores, making Chi-square mathematically invalid for the primary outcomes.
+*   **Pearson Correlation (to compare Treatment A vs Treatment B):**
+    *   *Why it is inappropriate:* Correlation measures the strength of a linear relationship between two continuous variables. It does not measure differences in means between two distinct groups.
+
+---
+
+### TASK 4: SUMMARY
+
+**Justification of the Overall Analytical Approach:**
+The proposed analytical strategy relies on a longitudinal, repeated-measures framework. Because the study tracks the same patients over multiple time points, accounting for within-subject variance is paramount to avoid artificially deflating the standard error. The mandatory use of a Mixed ANOVA (or Linear Mixed Model) allows the researchers to isolate the interaction effect—specifically, whether the trajectory of plaque and gingivitis reduction differs significantly depending on which mouthwash the patient was prescribed. By supplementing this with rigorous assumption checks (Shapiro-Wilk, Mauchly's) and clinical magnitude metrics (Effect Sizes), the analysis ensures that the findings are both statistically robust and clinically translatable to daily dental practice.
+
+***
+**Please reply with the actual text of your Introduction and Methods sections, and I will generate this exact level of analysis tailored to your specific article!**
+
+──────────────────────────────────────────────────────────────────────
+MODEL 5: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_162449
+──────────────────────────────────────────────────────────────────────
+
+**CLINICAL BIOSTATISTICIAN NOTICE:** 
+*The article text you provided is empty/corrupted (it contains only page headers, the phrase "The [cut off]", and a series of periods). Because the actual Introduction and Methods sections are missing, I cannot extract your specific study's details.*
+
+*To demonstrate how I will analyze your study once you provide the text, I have completed all tasks below using a **hypothetical, standard dental research study** (e.g., an in-vitro study comparing the shear bond strength of three different dental adhesives). Please reply with your actual text, and I will generate a precise, custom analysis for your specific study.*
+
+***
+
+### TASK 1: INFORMATION EXTRACTION (Hypothetical Study Example)
+*   **Study Design:** In-vitro experimental comparative study.
+*   **Objectives:** To evaluate and compare the shear bond strength (SBS) of three different universal dental adhesives applied to dentin.
+*   **Groups:** 3 independent groups (Adhesive A, Adhesive B, Adhesive C).
+*   **Sample Size:** 45 extracted human premolars (n=15 per group).
+*   **Variables:** 
+    *   *Independent Variable:* Type of dental adhesive (Categorical, 3 levels).
+    *   *Dependent Variable:* Shear bond strength (Continuous, measured in MPa).
+*   **Measurements:** Bond strength measured using a universal testing machine at a crosshead speed of 1.0 mm/min.
+*   **Data Collection Methods:** The peak load at failure (in Newtons) is recorded by the machine's software and divided by the bonded surface area to calculate SBS in Megapascals (MPa).
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+#### CATEGORY A – MANDATORY
+*Tests without which the analysis would be incomplete.*
+
+**1. Shapiro-Wilk Test**
+*   **Test name:** Shapiro-Wilk Test of Normality
+*   **Purpose:** To assess whether the continuous dependent variable (SBS) follows a normal distribution within each of the three groups.
+*   **Why appropriate:** 
+    1) It is highly powerful and accurate for small sample sizes (n=15 per group). 
+    2) It is a strict prerequisite to determine whether parametric or non-parametric inferential tests should be used for the primary analysis.
+*   **Why it may not be appropriate:** It can be overly sensitive to trivial deviations from normality if the sample size is extremely large, though this is not an issue for n=15.
+*   **When this test should NOT be used:** When dealing with categorical or ordinal data (e.g., Adhesive Failure Index scores).
+*   **Alternative if assumptions are violated:** Visual inspection of Q-Q plots and histograms, or the Kolmogorov-Smirnov test.
+
+**2. One-Way Analysis of Variance (ANOVA)**
+*   **Test name:** One-Way ANOVA
+*   **Purpose:** To determine if there are any statistically significant differences in the mean shear bond strength across the three independent adhesive groups.
+*   **Why appropriate:** 
+    1) The study design compares three distinct, independent groups. 
+    2) The dependent variable (SBS) is continuous and (assuming it passes the Shapiro-Wilk test) normally distributed.
+*   **Why it may not be appropriate:** It assumes homogeneity of variances; if the variances between groups are vastly different, the F-statistic becomes unreliable.
+*   **When this test should NOT be used:** When the data is heavily skewed, non-normal, or when comparing only two groups (where a t-test is sufficient).
+*   **Alternative if assumptions are violated:** Kruskal-Wallis H Test (if normality is violated) or Welch’s ANOVA (if variance is unequal).
+
+#### CATEGORY B – RECOMMENDED
+*Tests that enhance the quality and rigor of the analysis.*
+
+**1. Levene’s Test**
+*   **Test name:** Levene’s Test for Equality of Variances
+*   **Purpose:** To test the assumption of homoscedasticity (homogeneity of variances) across the three groups prior to running the ANOVA.
+*   **Why appropriate:** 
+    1) It is less sensitive to departures from normality than other variance tests (like Bartlett's test). 
+    2) It mathematically justifies the use of a standard ANOVA versus a robust ANOVA.
+*   **Why it may not be appropriate:** With very small sample sizes, it may lack the statistical power to detect true heterogeneity of variance (Type II error).
+*   **When this test should NOT be used:** When analyzing paired or repeated-measures data.
+*   **Alternative if assumptions are violated:** If Levene's test is significant (variances are unequal), proceed directly to Welch’s ANOVA.
+
+**2. Tukey’s Honestly Significant Difference (HSD)**
+*   **Test name:** Tukey’s HSD Post-Hoc Test
+*   **Purpose:** To perform pairwise comparisons to identify exactly *which* specific adhesives differ from one another, provided the overall ANOVA is significant.
+*   **Why appropriate:** 
+    1) It strictly controls the Family-Wise Error Rate (Type I error) when making multiple comparisons. 
+    2) It is highly reliable and optimal when group sample sizes are equal (n=15).
+*   **Why it may not be appropriate:** It is slightly conservative and may lack power if the sample sizes are unequal.
+*   **When this test should NOT be used:** When Levene's test indicates that variances are unequal across groups.
+*   **Alternative if assumptions are violated:** Games-Howell post-hoc test (which does not assume equal variances).
+
+#### CATEGORY C – OPTIONAL
+*Tests that provide supplementary insights.*
+
+**1. Weibull Reliability Analysis**
+*   **Test name:** Weibull Distribution / Survival Analysis
+*   **Purpose:** To evaluate the probability of bond failure at given stress levels and determine the structural reliability of the adhesives.
+*   **Why appropriate:** 
+    1) It is the gold standard in dental materials research for assessing the predictability of material failure. 
+    2) It provides the Weibull modulus (m), where a higher number indicates fewer critical flaws and more predictable clinical performance.
+*   **Why it may not be appropriate:** Weibull analysis typically requires a larger sample size (ideally n ≥ 30 per group) for highly accurate parameter estimation; n=15 may yield wide confidence intervals.
+*   **When this test should NOT be used:** When the failure modes (adhesive, cohesive, mixed) are not properly categorized, as mixing failure types confounds the reliability modulus.
+*   **Alternative if assumptions are violated:** Kaplan-Meier survival analysis (if tracking time-to-failure in a dynamic fatigue test rather than static load-to-failure).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+*   **Independent Samples t-test:** Inappropriate because there are *three* groups. Conducting multiple t-tests (A vs B, B vs C, A vs C) inflates the Type I error rate, increasing the chance of a false positive.
+*   **Paired t-test / Repeated Measures ANOVA:** Inappropriate because the groups are independent (different teeth were used for different adhesives). These tests are reserved for when the *same* specimens are tested multiple times.
+*   **Chi-Square Test of Independence:** Inappropriate for the primary outcome because the dependent variable (Shear Bond Strength) is continuous. Chi-square is only used for categorical frequency data (e.g., comparing the frequency of adhesive vs. cohesive failure modes).
+
+---
+
+### TASK 4: SUMMARY
+**Justification of the overall analytical approach:**
+The proposed analytical pipeline follows a rigorous, step-wise progression standard in dental biostatistics. First, mandatory assumption checks (Shapiro-Wilk, Levene's) ensure the data qualifies for parametric testing, safeguarding against mathematical artifacts. Second, the primary inferential test (One-Way ANOVA) is utilized to detect overall differences among the independent groups without inflating error rates. Third, appropriate post-hoc testing (Tukey's HSD) pinpoints specific group differences while controlling for Type I error. Finally, an optional reliability analysis (Weibull) translates raw strength data into clinical predictability. This comprehensive approach ensures statistical rigor, reproducibility, and clinically meaningful interpretation of the dental materials tested.
+
+***
+**Please reply with the actual text of your article, and I will generate this exact level of analysis tailored to your specific study!**

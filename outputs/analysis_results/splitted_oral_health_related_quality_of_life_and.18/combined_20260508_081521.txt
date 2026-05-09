@@ -947,3 +947,125 @@ TASK 4: SUMMARY – JUSTIFICATION OF OVERALL ANALYTICAL APPROACH
 - Item‑level analyses and effect size estimation add clinical interpretability, while reliability checks confirm the scale’s performance in this population.
 
 Overall, the plan uses standard, well‑validated methods for longitudinal QOL data with a between‑group factor, maximizes information from the paired design, and specifies robust non‑parametric or regression‑based alternatives when assumptions of parametric tests are not met.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_174221
+──────────────────────────────────────────────────────────────────────
+
+Here is a comprehensive information extraction and statistical analysis plan based on the provided text, tailored to the standards of clinical and dental research methodology.
+
+---
+
+### TASK 1: INFORMATION EXTRACTION
+
+**Study Characteristics:**
+*   **Study Design:** Longitudinal prospective study.
+*   **Objectives:** To investigate factors affecting the oral health-related quality of life (QOL) and satisfaction of patients before and after root canal treatment (RCT) performed by operators with varying levels of expertise.
+*   **Independent Variables / Groups:**
+    *   *Operator Expertise (3 levels):* Undergraduate students, Postgraduate students, Specialists.
+    *   *Time (2 levels):* Before treatment, 2 weeks post-treatment.
+*   **Dependent Variables / Measurements:**
+    *   *Oral Health-Related QOL:* Measured using the validated Arabic version of the OHIP-17 questionnaire (assessed before and 2 weeks after treatment).
+    *   *Patient Satisfaction:* Measured using a semantic differential scale (assessed 2 weeks after treatment).
+    *   *Clinical/Radiographic Outcome:* Assessed via a radiographic assessment sheet (implied, though specific metrics are not detailed in the text).
+*   **Sample Size:** 250 patients (calculated based on a previous study by Liu et al.).
+*   **Inclusion Criteria:** 18–60 years of age, medically and mentally fit, capable of providing informed consent, referred for primary RCT.
+*   **Exclusion Criteria:** Uncontrolled diabetes, hypertension, blood disorders, pregnancy, undergoing orthodontic treatment, failed RCT indicated for retreatment.
+*   **Data Collection Method:** Independent examiner conducted interviews using the OHIP-17 and satisfaction scales to prevent operator-induced bias.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given that questionnaire data (OHIP-17 and semantic differential scales) yield discrete ordinal data that is conventionally summed to create continuous scores, the analysis must account for both parametric and non-parametric possibilities.
+
+#### CATEGORY A – MANDATORY TESTS
+*(Tests without which the analysis would be incomplete)*
+
+**1. Two-Way Mixed ANOVA (Repeated Measures with Between-Subjects Factor)**
+*   **Purpose:** To evaluate the effect of Time (Before vs. After) and Operator Expertise (Student vs. Postgrad vs. Specialist) on OHIP-17 scores, and their interaction.
+*   **Why appropriate:**
+    1. It simultaneously analyzes the within-subjects factor (longitudinal change in QOL) and the between-subjects factor (operator expertise).
+    2. It tests for an *interaction effect* (e.g., does the magnitude of QOL improvement depend on who performed the root canal?), which is the core objective of the study.
+*   **Why it may not be appropriate:** OHIP-17 scores are often highly skewed (not normally distributed), which violates the assumptions of ANOVA.
+*   **When NOT to use:** If the data is severely non-normal or if the assumption of sphericity/homogeneity of variance is grossly violated.
+*   **Alternative:** Friedman test (for within-group changes) combined with Kruskal-Wallis H test (for between-group differences on change scores).
+
+**2. One-Way ANOVA**
+*   **Purpose:** To compare patient satisfaction scores (measured only at 2 weeks post-treatment) across the three operator expertise groups.
+*   **Why appropriate:**
+    1. It compares the means of a continuous/interval variable across three independent groups.
+    2. It controls the overall Type I error rate, unlike running multiple t-tests.
+*   **Why it may not be appropriate:** Semantic differential scales can sometimes yield strictly ordinal data rather than interval data, making mean comparisons mathematically flawed.
+*   **When NOT to use:** If the satisfaction data is heavily skewed or variances are unequal (failed Levene’s test).
+*   **Alternative:** Kruskal-Wallis H test.
+
+**3. Descriptive Statistics (Means, SDs, Medians, IQRs, Frequencies)**
+*   **Purpose:** To summarize sociodemographic data, baseline characteristics, and raw outcome scores.
+*   **Why appropriate:**
+    1. Mandatory for Table 1 (Sociodemographics) to describe the study population.
+    2. Provides context for the magnitude of clinical changes before inferential testing.
+*   **Why it may not be appropriate:** Means/SDs are inappropriate for categorical variables (e.g., gender).
+*   **When NOT to use:** Do not use Means/SDs for nominal data or highly skewed continuous data.
+*   **Alternative:** Use Medians/Interquartile Ranges (IQR) for skewed continuous data; Frequencies/Percentages for categorical data.
+
+#### CATEGORY B – RECOMMENDED TESTS
+*(Tests that enhance the quality and rigor of the analysis)*
+
+**1. Chi-Square Test of Independence (or Fisher's Exact Test)**
+*   **Purpose:** To compare baseline sociodemographic variables (e.g., gender, education level) across the three operator groups.
+*   **Why appropriate:**
+    1. Ensures that the three operator groups are comparable at baseline (checking for selection bias).
+    2. If groups differ significantly at baseline, those variables must be controlled for in later analyses.
+*   **Why it may not be appropriate:** If expected cell counts in the contingency table are too small (less than 5).
+*   **When NOT to use:** When more than 20% of expected cell frequencies are < 5.
+*   **Alternative:** Fisher’s Exact Test.
+
+**2. Post-Hoc Tests (e.g., Tukey's HSD or Bonferroni Correction)**
+*   **Purpose:** To determine exactly *which* operator groups differ from one another if the ANOVA yields a significant result.
+*   **Why appropriate:**
+    1. ANOVA only tells you that *at least one* group is different; post-hoc tests identify the specific differences (e.g., Specialist vs. Student).
+    2. Adjusts the p-value to prevent false positives (Type I error) from multiple comparisons.
+*   **Why it may not be appropriate:** If the initial ANOVA is not statistically significant, post-hoc testing is generally unwarranted.
+*   **When NOT to use:** When the omnibus test (ANOVA) p-value is > 0.05, or if variances are unequal.
+*   **Alternative:** Games-Howell post-hoc test (if the assumption of equal variances is violated).
+
+#### CATEGORY C – OPTIONAL TESTS
+*(Tests that provide supplementary insights)*
+
+**1. Multivariable Linear Regression (or Ordinal Logistic Regression)**
+*   **Purpose:** To predict post-treatment satisfaction or QOL while adjusting for potential confounders (e.g., age, gender, baseline QOL, tooth type).
+*   **Why appropriate:**
+    1. Allows the researchers to isolate the independent effect of "operator expertise" by holding demographic variables constant.
+    2. Can identify other significant predictors of patient satisfaction.
+*   **Why it may not be appropriate:** Requires a larger sample size to avoid overfitting (though N=250 is likely sufficient for a few variables).
+*   **When NOT to use:** If there is high multicollinearity between predictor variables.
+*   **Alternative:** Non-parametric regression models or Ordinal Logistic Regression (if the satisfaction scale is treated strictly as ordinal categories).
+
+**2. Pearson or Spearman Correlation**
+*   **Purpose:** To assess the relationship between the *change* in OHIP-17 scores and the final Patient Satisfaction scores.
+*   **Why appropriate:**
+    1. Provides insight into construct validity (do patients with the greatest QOL improvement also report the highest satisfaction?).
+    2. Easy to interpret for clinical audiences.
+*   **Why it may not be appropriate:** Correlation does not imply causation and does not account for group differences.
+*   **When NOT to use:** If the relationship between the variables is non-linear.
+*   **Alternative:** Spearman's Rank Correlation (if data is non-normal or ordinal).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+The following tests should **NOT** be used in this study:
+
+1.  **Independent Samples t-test for Operator Expertise:** Inappropriate because there are *three* groups of operators (students, postgraduates, specialists). Using multiple t-tests inflates the Type I error rate (false positives). One-way ANOVA is required.
+2.  **Independent Samples t-test for Before vs. After OHIP scores:** Inappropriate because the data is longitudinal (the same patients are measured twice). This violates the assumption of independence. A paired test (Paired t-test or Mixed ANOVA) must be used.
+3.  **Pearson Chi-Square for OHIP-17 Total Scores:** Inappropriate because OHIP-17 total scores are continuous/discrete quantitative variables. Chi-square is strictly for categorical/nominal data.
+
+---
+
+### TASK 4: SUMMARY
+
+**Justification of the Overall Analytical Approach:**
+The analytical strategy is designed to address the longitudinal and multi-group nature of the study design. Because the primary objective is to evaluate how QOL changes over time depending on who performs the root canal, a **Two-Way Mixed ANOVA** is the most robust and elegant approach, as it captures both the within-subject changes (Time) and between-subject differences (Operator Expertise) simultaneously. 
+
+Furthermore, because questionnaire data (OHIP-17 and semantic differential scales) frequently violate parametric assumptions of normality, the plan heavily emphasizes checking these assumptions and provides direct non-parametric alternatives (e.g., Kruskal-Wallis, Friedman). Finally, ensuring baseline comparability across the three operator groups via Chi-square tests is vital; if patients assigned to students were systematically different from those assigned to specialists, the results would be confounded. This comprehensive approach ensures statistical rigor, minimizes Type I and Type II errors, and aligns perfectly with modern evidence-based endodontic research standards.

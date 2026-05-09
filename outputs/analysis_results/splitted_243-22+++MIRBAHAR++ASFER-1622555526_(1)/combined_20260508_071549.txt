@@ -875,3 +875,98 @@ This approach is appropriate because it:
 - Accounts for non‑random allocation and potential confounding,  
 - Provides clinically interpretable effect sizes with confidence intervals, and  
 - Is commensurate with the sample size and typical data quality in retrospective dental surgery studies.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_161211
+──────────────────────────────────────────────────────────────────────
+
+Based on the provided Introduction and Methods sections, here is the comprehensive extraction and statistical analysis plan.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Comparative prospective cohort study (implied by "patients were enrolled" and "followed up till 2 years biannually").
+*   **Study Objective:** To compare the clinical and radiographic outcomes of periapical surgery performed by endodontists versus oral surgeons.
+*   **Setting:** Bibi Aseefa Dental College, Larkana (Endodontic and Oral Surgery units).
+*   **Sampling Technique:** Non-probability consecutive sampling.
+*   **Sample Size:** Total N = 120 patients.
+*   **Study Groups:**
+    *   *Group A (n=60):* Operated by an Endodontist (high-speed handpieces, ultrasonic retro tips, amalgam, sutures removed at 1 week).
+    *   *Group B (n=60):* Operated by an Oral Surgeon (slow-speed handpiece, tungsten carbide burs, amalgam, sutures removed at 14 days).
+*   **Variables:**
+    *   *Independent Variable:* Operator specialty / Treatment protocol (Endodontist vs. Oral Surgeon).
+    *   *Dependent Variables (Outcomes):* Clinical and radiographic healing outcomes (typically categorized as Success, Doubtful, or Failure in endodontics).
+    *   *Covariates/Confounders (mentioned in Intro):* Age, sex, tooth type, preoperative signs, presence of preoperative periapical radiolucency.
+*   **Data Collection:** Clinical and radiographic assessments recorded on a predesigned proforma. Follow-ups conducted biannually (every 6 months) for up to 2 years.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+*Note: Standard endodontic surgical outcomes (e.g., Rud and Andreasen criteria) are typically categorical (Success vs. Failure). The following plan assumes a categorical primary outcome.*
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Independent Samples t-test**
+*   **Purpose:** To compare baseline continuous variables (e.g., patient age) between Group A and Group B.
+*   **Why appropriate:**
+    1. Ensures that the two independent groups are comparable at baseline, ruling out age as an immediate confounding factor.
+    2. It is the standard parametric test for comparing the means of two independent groups.
+*   **Why it may not be appropriate:** If the continuous data (e.g., age or baseline lesion size) is heavily skewed or contains significant outliers, the mean is not a reliable measure of central tendency.
+*   **When NOT to use:** Do not use if the data violates the assumption of normality or if variances are highly unequal (homoscedasticity violation).
+*   **Alternative:** Mann-Whitney U test (if data is non-parametric/skewed).
+
+**2. Pearson Chi-Square Test (or Fisher’s Exact Test)**
+*   **Purpose:** To compare categorical baseline characteristics (e.g., sex, tooth type) and the primary categorical outcome (Success vs. Failure) between the two groups at the 2-year mark.
+*   **Why appropriate:**
+    1. The study compares two independent groups using categorical variables.
+    2. It provides a straightforward, easily interpretable p-value to determine if the proportion of successful surgeries differs significantly by operator specialty.
+*   **Why it may not be appropriate:** It does not account for time-to-event data or patients who may have dropped out before the 2-year follow-up.
+*   **When NOT to use:** Do not use if more than 20% of the expected cell frequencies are less than 5, or if any expected cell frequency is less than 1.
+*   **Alternative:** Fisher’s Exact Test (if expected cell counts are too low).
+
+#### CATEGORY B – RECOMMENDED (Enhancing Rigor)
+
+**1. Multivariable Logistic Regression**
+*   **Purpose:** To evaluate the effect of the operator (Endodontist vs. Oral Surgeon) on surgical success while adjusting for potential confounders.
+*   **Why appropriate:**
+    1. The introduction explicitly states that "sex, age, tooth type, preoperative signs statistically affect surgical healing." This test controls for these variables.
+    2. It provides an Odds Ratio (OR), quantifying *how much more likely* a surgery is to succeed under one specialty compared to the other.
+*   **Why it may not be appropriate:** If the sample size is too small relative to the number of predictors (rule of thumb is 10-15 events per predictor), the model may overfit.
+*   **When NOT to use:** Do not use if the outcome is continuous (e.g., exact reduction of lesion size in millimeters) rather than binary (Success/Fail).
+*   **Alternative:** Multiple Linear Regression (if the outcome is measured as a continuous reduction in lesion size).
+
+**2. Kaplan-Meier Survival Analysis with Log-Rank Test**
+*   **Purpose:** To compare the "time-to-failure" between the two groups over the 2-year follow-up period.
+*   **Why appropriate:**
+    1. Patients are followed biannually for 2 years; failures may happen at 6, 12, 18, or 24 months. This test utilizes all time-to-event data.
+    2. It accounts for "censored" data (patients who drop out of the study or complete the 2 years without failing).
+*   **Why it may not be appropriate:** It assumes that the risk of failure is independent of the reasons for censoring (e.g., if patients drop out *because* their surgery failed, the data is biased).
+*   **When NOT to use:** Do not use if exact follow-up times are not recorded or if outcomes are only assessed at a single cross-sectional point in time.
+*   **Alternative:** Cox Proportional Hazards Regression (if you also need to adjust for covariates like age and tooth type over time).
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. Cohen’s Kappa Statistic**
+*   **Purpose:** To measure inter-rater reliability for the radiographic assessment of outcomes.
+*   **Why appropriate:**
+    1. Radiographic assessment of periapical healing is subjective. Establishing agreement between two independent blinded examiners enhances the validity of the outcome data.
+    2. It accounts for agreement occurring by chance, unlike simple percentage agreement.
+*   **Why it may not be appropriate:** It can be overly sensitive to the prevalence of the condition (the "Kappa paradox"), yielding low values even when absolute agreement is high.
+*   **When NOT to use:** Do not use if the radiographic outcome is measured on a continuous scale (e.g., exact area in $mm^2$).
+*   **Alternative:** Intraclass Correlation Coefficient (ICC) (if the radiographic assessment is continuous).
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+*   **Paired Samples t-test:** This test is used for comparing two measurements from the *same* subjects (e.g., pre-op vs. post-op continuous lesion size). Because this study compares two *different* groups of patients (Group A vs. Group B), an independent test is required.
+*   **One-Way ANOVA:** ANOVA is used to compare means across *three or more* independent groups. Since this study only has two groups (Endodontist vs. Oral Surgeon), an independent t-test is sufficient and mathematically equivalent.
+*   **Pearson Correlation Coefficient:** This is used to measure the linear relationship between two continuous variables. The primary independent variable here is categorical (operator type), making correlation analysis inappropriate for the main hypothesis.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach should follow a logical progression from descriptive to inferential, and finally to adjusted longitudinal analysis. 
+
+First, baseline characteristics must be compared using **Independent t-tests** and **Chi-square tests** to ensure the non-probability sampling did not result in skewed groups (e.g., oral surgeons getting all the difficult molar cases). Second, the primary outcome (success vs. failure) should be evaluated using a **Chi-square test**. Because the study features a 2-year biannual follow-up, incorporating **Kaplan-Meier survival analysis** is highly recommended to capture the *timing* of surgical failures, accounting for potential patient dropouts. Finally, because the literature cited in the introduction acknowledges that age, sex, and tooth type influence healing, a **Multivariable Logistic Regression** is vital to isolate the true effect of the operator's specialty by controlling for these confounding variables.

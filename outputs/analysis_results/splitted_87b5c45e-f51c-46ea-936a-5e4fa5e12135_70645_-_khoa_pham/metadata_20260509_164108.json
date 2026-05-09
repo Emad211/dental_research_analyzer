@@ -1,0 +1,12 @@
+{
+  "pdf_name": "splitted_87b5c45e-f51c-46ea-936a-5e4fa5e12135_70645_-_khoa_pham.pdf",
+  "timestamp": "20260509_164108",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "Google",
+      "model": "gemini-3.1-pro-preview",
+      "status": "ok",
+      "chars": 10318
+    }
+  }
+}

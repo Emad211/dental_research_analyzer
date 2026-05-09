@@ -1140,3 +1140,101 @@ Accordingly:
 - Inappropriate parametric methods (t-tests, ANOVA, linear regression) that treat ordinal outcomes as continuous are avoided to prevent assumption violations and misleading inferences.
 
 This analytical approach aligns with the study design, measurement scales, and sample size, providing statistically valid and clinically meaningful answers to the trial objectives.
+──────────────────────────────────────────────────────────────────────
+MODEL 4: Google — gemini-3.1-pro-preview  [OpenAI-compatible SDK]
+RUN  : 20260509_173031
+──────────────────────────────────────────────────────────────────────
+
+Here is the comprehensive extraction and statistical analysis plan based on the provided dental research article.
+
+### TASK 1: INFORMATION EXTRACTION
+
+*   **Study Design:** Single-blinded, parallel-group, randomized controlled trial (RCT).
+*   **Objectives:** To compare and evaluate children's behavior, anxiety levels, and pain perception when using manual versus rotary instrumentation for cleaning and debridement of primary root canals.
+*   **Target Population:** Children aged 4 to 7 years, cooperative on their first dental visit, requiring pulpectomy in a vital/symptomatic primary tooth.
+*   **Groups (2 Arms):**
+    *   *Group I (Control):* Manual instrumentation using K files.
+    *   *Group II (Experimental):* Rotary instrumentation using ProTaper files.
+*   **Sample Size:** 88 children total (44 per group). Calculated based on a pilot study (95% power, 5% alpha error).
+*   **Variables & Measurements:**
+    *   *Independent Variable:* Type of instrumentation (Categorical: Manual vs. Rotary).
+    *   *Dependent Variable 1 (Behavior):* Frankl’s Behavior Rating Scale (Ordinal: definitely positive, positive, negative, definitely negative). Recorded by the operating dentist.
+    *   *Dependent Variable 2 (Anxiety):* Venham’s Interval Rating Scale (Ordinal: scores 0 to 5). Recorded by the operating dentist.
+    *   *Dependent Variable 3 (Pain):* Wong-Baker FACES Pain Scale (Ordinal). Self-reported by the child post-procedure.
+*   **Data Collection Methods:** Single-visit pulpectomy performed by a single pediatric dentist. Behavior and anxiety were assessed during the procedure; pain was assessed immediately after canal preparation.
+
+---
+
+### TASK 2: STATISTICAL ANALYSIS PLAN
+
+Given that all three primary outcome measures (Frankl, Venham, Wong-Baker) yield **ordinal** data, non-parametric statistics are the foundation of this analysis plan.
+
+#### CATEGORY A – MANDATORY (Core Analysis)
+
+**1. Mann-Whitney U Test (Wilcoxon Rank-Sum Test)**
+*   **Purpose:** To compare the median scores of anxiety (Venham) and pain (Wong-Baker) between the manual and rotary groups.
+*   **Why appropriate:**
+    1. The dependent variables are ordinal (ranked) scales, not true continuous variables.
+    2. The study compares two independent, unrelated groups.
+*   **Why it may not be appropriate:** It assumes that the distributions of the two groups have the same shape. If the shapes are drastically different, it compares mean ranks rather than medians, which can complicate clinical interpretation.
+*   **When this test should NOT be used:** When dealing with paired data (e.g., the same child tested twice) or true normally distributed continuous data.
+*   **Alternative if assumptions are violated:** Ordinal Logistic Regression.
+
+**2. Chi-Square Test for Independence**
+*   **Purpose:** To compare the distribution of categorical behavior (Frankl scale) between the two groups, and to assess baseline demographic equivalence (e.g., gender distribution between groups).
+*   **Why appropriate:**
+    1. The Frankl scale has four distinct categorical/ordinal bins.
+    2. It effectively determines if the proportion of positive/negative behaviors is dependent on the type of file used.
+*   **Why it may not be appropriate:** It loses the inherent "ranked" nature of the Frankl scale (i.e., it treats "definitely positive" and "negative" simply as different categories, not as a progression).
+*   **When this test should NOT be used:** When more than 20% of the expected cell frequencies are less than 5.
+*   **Alternative if assumptions are violated:** Fisher’s Exact Test (for small cell counts) or Mann-Whitney U (if treating Frankl strictly as ordinal).
+
+#### CATEGORY B – RECOMMENDED (Enhancing Rigor)
+
+**1. Spearman’s Rank-Order Correlation**
+*   **Purpose:** To evaluate the relationship between pain, anxiety, and behavior scores across all participants.
+*   **Why appropriate:**
+    1. All three variables are ordinal.
+    2. It provides clinical insight into whether higher self-reported pain correlates with higher dentist-observed anxiety and worse behavior.
+*   **Why it may not be appropriate:** It only measures monotonic relationships; it cannot account for confounding variables (like age) influencing all three metrics.
+*   **When this test should NOT be used:** If the relationship between variables is known to be non-monotonic (e.g., U-shaped).
+*   **Alternative if assumptions are violated:** Kendall’s Tau-b (often preferred for ordinal data with many tied ranks, which is highly likely with a 0-5 scale).
+
+**2. Effect Size Calculation (Cliff’s Delta or Rank-Biserial Correlation)**
+*   **Purpose:** To quantify the magnitude of the difference in pain and anxiety between the manual and rotary groups.
+*   **Why appropriate:**
+    1. P-values only indicate statistical significance, not clinical significance.
+    2. It standardizes the findings, allowing them to be compared with future meta-analyses.
+*   **Why it may not be appropriate:** If the primary Mann-Whitney U test shows no statistical significance, reporting effect size might lead to over-interpretation of random noise.
+*   **When this test should NOT be used:** When the primary data is nominal (use Cramer's V instead).
+*   **Alternative if assumptions are violated:** Number Needed to Treat (NNT) if the outcomes are dichotomized (e.g., "Positive" vs "Negative" behavior).
+
+#### CATEGORY C – OPTIONAL (Supplementary Insights)
+
+**1. Ordinal Logistic Regression**
+*   **Purpose:** To predict the ordinal outcomes (e.g., Venham anxiety score) based on the group assignment while adjusting for covariates like the child's exact age and gender.
+*   **Why appropriate:**
+    1. Allows for multivariate analysis, controlling for baseline differences if randomization did not perfectly balance the groups.
+    2. Respects the ordinal nature of the dependent variable.
+*   **Why it may not be appropriate:** It requires the assumption of proportional odds (the effect of the independent variable is constant across all categories of the dependent variable), which is often violated in clinical data.
+*   **When this test should NOT be used:** When sample sizes are too small, leading to empty cells and model non-convergence.
+*   **Alternative if assumptions are violated:** Multinomial Logistic Regression.
+
+---
+
+### TASK 3: INAPPROPRIATE TESTS
+
+The following tests should **NOT** be used in this study, despite being frequently (and incorrectly) used in similar dental literature:
+
+*   **Independent Samples t-test:** Inappropriate because Frankl, Venham, and Wong-Baker scales yield ordinal data, not continuous data. Furthermore, ordinal scale data in small/moderate samples rarely meet the assumption of normal distribution required for a t-test.
+*   **Paired t-test / Wilcoxon Signed-Rank Test:** Inappropriate because the study utilizes a parallel-group design (two separate groups of children). These tests are strictly for paired or repeated-measures designs (e.g., split-mouth designs).
+*   **Pearson Correlation:** Inappropriate because it assumes the variables being correlated are continuous and normally distributed. The data here is ordinal.
+*   **Analysis of Variance (ANOVA):** Inappropriate because there are only two groups (not three or more) and the dependent variables are not continuous/normally distributed.
+
+---
+
+### TASK 4: SUMMARY
+
+The overall analytical approach must be strictly **non-parametric**. Because the researchers chose to measure behavior, anxiety, and pain using established ordinal scales (Frankl, Venham, Wong-Baker), treating these scores as continuous means/averages would be a methodological error. 
+
+The core analysis relies on the **Mann-Whitney U test** to compare the ranked medians between the two independent groups, supplemented by **Chi-Square/Fisher's Exact tests** for categorical proportions. To elevate the statistical rigor of the paper, calculating **effect sizes** is highly recommended to demonstrate the *clinical magnitude* of rotary files' superiority over manual files. Finally, utilizing **Spearman's or Kendall's correlation** will provide valuable secondary insights into the psychometric triad of pediatric dentistry: how pain, anxiety, and behavior interact during endodontic procedures.
